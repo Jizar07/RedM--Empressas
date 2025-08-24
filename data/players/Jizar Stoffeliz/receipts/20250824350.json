@@ -1,0 +1,14 @@
+{
+  "receiptId": "20250824350",
+  "timestamp": "2025-08-24T16:20:48.848Z",
+  "playerName": "Jizar Stoffeliz",
+  "serviceType": "planta",
+  "quantity": 300,
+  "plantName": "Junco",
+  "playerPayment": 45,
+  "status": "REJECTED",
+  "screenshotPath": "C:\\Users\\jizar\\OneDrive\\Documents\\DiscordBot\\uploads\\temp\\temp_1756052447860_Screenshot_2025-07-22_180049.png",
+  "approved": false,
+  "rejectedBy": "jizarstoffel",
+  "rejectedAt": "2025-08-24T16:24:06.922Z"
+}

@@ -2,7 +2,7 @@
   "enabled": true,
   "farmCost": 90,
   "farmProfitRequired": 10,
-  "optimalAnimalIncome": 160,
+  "optimalAnimalIncome": 60,
   "plantPrices": {
     "basic": 0.15,
     "other": 0.2

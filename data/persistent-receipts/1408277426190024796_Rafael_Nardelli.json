@@ -1,0 +1,18 @@
+{
+  "playerName": "Rafael Nardelli",
+  "channelId": "1408277426190024796",
+  "messageId": "1409321323380867222",
+  "totalEarnings": 60,
+  "totalServices": 1,
+  "services": [
+    {
+      "receiptId": "20250824632",
+      "serviceType": "animal",
+      "itemType": "Bovino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-24T23:39:47.268Z"
+    }
+  ],
+  "lastUpdated": "2025-08-24T23:39:47.269Z"
+}

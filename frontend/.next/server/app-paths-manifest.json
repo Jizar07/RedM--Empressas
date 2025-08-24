@@ -1,3 +1,6 @@
 {
-  "/page": "app/page.js"
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/server-proxy/info/route": "app/api/server-proxy/info/route.js",
+  "/api/server-proxy/dynamic/route": "app/api/server-proxy/dynamic/route.js",
+  "/api/server-proxy/players/route": "app/api/server-proxy/players/route.js"
 }

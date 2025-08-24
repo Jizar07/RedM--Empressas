@@ -48,28 +48,6 @@
       "order": 1
     },
     {
-      "id": "firm_1755616636555",
-      "name": "🐄 ┋ FAZENDA BRAITHWAITE III",
-      "description": "",
-      "discordRoleIds": [
-        "1404938411831197848",
-        "1404938492714291341"
-      ],
-      "discordRoleNames": [
-        "🌱| Líder Fazenda BW II",
-        "🌱 | Gerente Fazenda BW II"
-      ],
-      "supplierUserIds": [
-        "1142754797171253271"
-      ],
-      "supplierUserNames": [
-        "! Mark Rodz➰"
-      ],
-      "items": [],
-      "active": true,
-      "order": 2
-    },
-    {
       "id": "firm_1755616653056",
       "name": "🐄 ┋ FAZENDA BRAITHWAITE II",
       "description": "",
@@ -82,10 +60,42 @@
         "🌱 | Gerente Fazenda BW II"
       ],
       "supplierUserIds": [
-        "1142754797171253271"
+        "1142754797171253271",
+        "375281903923757067"
       ],
       "supplierUserNames": [
-        "! Mark Rodz➰"
+        "! Mark Rodz➰",
+        "Barbosa Lessa | 974"
+      ],
+      "items": [],
+      "active": true,
+      "order": 2
+    },
+    {
+      "id": "firm_1755616636555",
+      "name": "🐄 ┋ FAZENDA BRAITHWAITE III",
+      "description": "",
+      "discordRoleIds": [
+        "1404941047347286196",
+        "1404941846639153244"
+      ],
+      "discordRoleNames": [
+        "🌿​| Líder Fazenda BW III",
+        "🌿 | Gerente Fazenda BW III"
+      ],
+      "supplierUserIds": [
+        "1142754797171253271",
+        "375281903923757067",
+        "649716210979831828",
+        "359427893354299412",
+        "633030649279938561"
+      ],
+      "supplierUserNames": [
+        "! Mark Rodz➰",
+        "! Peu Montanha 🧩",
+        "Barbosa Lessa | 974",
+        "Jane calamidade | 4288",
+        "Ojuara Abaporujucaíba | 4721"
       ],
       "items": [],
       "active": true,

@@ -1,0 +1,52 @@
+{
+  "playerName": "Jizar Stoffeliz",
+  "channelId": "1409176506801979483",
+  "messageId": "1409215097405964402",
+  "totalEarnings": 390,
+  "totalServices": 5,
+  "services": [
+    {
+      "receiptId": "20250824875",
+      "serviceType": "animal",
+      "itemType": "Cabrino",
+      "quantity": 1,
+      "payment": 160,
+      "timestamp": "2025-08-24T16:32:20.142Z"
+    },
+    {
+      "receiptId": "20250824989",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-24T16:34:02.171Z"
+    },
+    {
+      "receiptId": "20250824333",
+      "serviceType": "planta",
+      "itemType": "cafe",
+      "quantity": 100,
+      "payment": 20,
+      "timestamp": "2025-08-24T16:34:13.369Z"
+    },
+    {
+      "receiptId": "20250824524",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-24T16:37:40.953Z"
+    },
+    {
+      "receiptId": "20250824565",
+      "serviceType": "animal",
+      "itemType": "Suino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-24T16:37:45.956Z"
+    }
+  ],
+  "lastUpdated": "2025-08-24T16:37:45.959Z",
+  "finalizedAt": "2025-08-24T16:46:58.687Z",
+  "finalizedBy": "jizarstoffel"
+}

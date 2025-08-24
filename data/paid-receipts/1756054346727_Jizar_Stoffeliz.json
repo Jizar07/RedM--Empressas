@@ -1,0 +1,36 @@
+{
+  "playerName": "Jizar Stoffeliz",
+  "channelId": "1409176506801979483",
+  "messageId": "1409218362143408138",
+  "totalEarnings": 195,
+  "totalServices": 3,
+  "services": [
+    {
+      "receiptId": "20250824917",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-24T16:50:39.405Z"
+    },
+    {
+      "receiptId": "20250824942",
+      "serviceType": "animal",
+      "itemType": "Avino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-24T16:51:49.020Z"
+    },
+    {
+      "receiptId": "20250824040",
+      "serviceType": "animal",
+      "itemType": "Bovino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-24T16:51:58.073Z"
+    }
+  ],
+  "lastUpdated": "2025-08-24T16:51:58.075Z",
+  "finalizedAt": "2025-08-24T16:52:26.728Z",
+  "finalizedBy": "jizarstoffel"
+}

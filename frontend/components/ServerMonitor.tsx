@@ -7,6 +7,7 @@ import {
   UserPlus, Clock, Zap, CheckCircle, AlertCircle, Circle,
   Wifi, WifiOff, Filter, ArrowUpDown, ArrowUp, ArrowDown
 } from 'lucide-react';
+import { useSocket } from '../hooks/useSocket';
 
 // Interfaces for proper typing
 interface ServerInfo {
@@ -46,6 +47,9 @@ interface KnownPlayer {
 
 
 const ServerMonitor = () => {
+  // Socket.io hook for real-time updates
+  const { socket, isConnected, serverData } = useSocket();
+  
   const [serverInfo, setServerInfo] = useState<ServerInfo | null>(null);
   const [players, setPlayers] = useState<Player[]>([]);
   const [dynamicInfo, setDynamicInfo] = useState<DynamicInfo | null>(null);
@@ -88,79 +92,14 @@ const ServerMonitor = () => {
     { url: '/api', status: 'partial', description: 'API endpoints (authentication required)' }
   ];
 
-  // Fetch server data directly from RedM server (independent of backend)
-  const fetchServerData = async (showRefreshIndicator = false) => {
-    if (showRefreshIndicator) setIsRefreshing(true);
-    try {
-      setLoading(true);
-      setError(null);
-      
-      // Fetch from proxy API routes to avoid CORS issues
-      const [infoRes, playersRes, dynamicRes] = await Promise.all([
-        fetch('/api/server-proxy/info').catch(() => null),
-        fetch('/api/server-proxy/players').catch(() => null),
-        fetch('/api/server-proxy/dynamic').catch(() => null)
-      ]);
-
-      let hasRealData = false;
-
-      if (infoRes && infoRes.ok) {
-        const infoData = await infoRes.json();
-        setServerInfo(infoData);
-        hasRealData = true;
-      }
-
-      if (playersRes && playersRes.ok) {
-        const playersData = await playersRes.json();
-        setPlayers(playersData);
-        hasRealData = true;
-        
-        // Update known players status
-        updateKnownPlayersStatus(playersData);
-      }
-
-      if (dynamicRes && dynamicRes.ok) {
-        const dynamicData = await dynamicRes.json();
-        setDynamicInfo(dynamicData);
-        hasRealData = true;
-      }
-
-      if (!hasRealData) {
-        // Show offline status when server is unreachable
-        setServerInfo({
-          hostname: 'Atlanta Season 2 - Condado RedM RP',
-          gametype: 'RedM',
-          mapname: 'redm-map',
-          sv_maxclients: 64,
-          resources: [
-            'vorp_core', 'vorp_inventory', 'vorp_character', 'vorp_admin',
-            'atlanta_farm', 'atlanta_jobs', 'atlanta_activities',
-            'drg_admin', 'map_additions', 'interior_packs',
-            'weathersync', 'loading_screen', 'chat_system',
-            'economy_system', 'banking_system', 'crafting_system'
-          ]
-        });
-        
-        setDynamicInfo({
-          hostname: 'Atlanta Season 2 - Condado RedM RP',
-          gametype: 'RedM',
-          mapname: 'redm-map',
-          clients: 0,
-          sv_maxclients: 64
-        });
-        
-        setPlayers([]);
-        setError('RedM server appears to be offline or unreachable.');
-      }
-
-      setLastUpdate(new Date());
-    } catch (err) {
-      console.error('Server data fetch error:', err);
-      setError('Unable to connect to RedM server. Check server status.');
-    } finally {
-      setLoading(false);
+  // Manual refresh - Socket.io will handle the update
+  const handleManualRefresh = () => {
+    setIsRefreshing(true);
+    // Socket.io server will automatically fetch and emit new data
+    // We just need to wait for the next update
+    setTimeout(() => {
       setIsRefreshing(false);
-    }
+    }, 2000);
   };
 
   // Fetch known players from localStorage (independent of backend)
@@ -194,33 +133,7 @@ const ServerMonitor = () => {
   };
 
 
-  // Update known players status (using localStorage)
-  const updateKnownPlayersStatus = (currentPlayers: Player[]) => {
-    try {
-      const updatedKnownPlayers = { ...knownPlayers };
-      
-      // Mark all as offline first
-      Object.keys(updatedKnownPlayers).forEach(nameId => {
-        updatedKnownPlayers[nameId].is_online = false;
-        updatedKnownPlayers[nameId].current_ping = 0;
-      });
-      
-      // Mark online players
-      currentPlayers.forEach(player => {
-        if (updatedKnownPlayers[player.name]) {
-          updatedKnownPlayers[player.name].is_online = true;
-          updatedKnownPlayers[player.name].current_ping = player.ping;
-          updatedKnownPlayers[player.name].last_seen_id = player.id;
-          updatedKnownPlayers[player.name].last_login = new Date().toISOString();
-        }
-      });
-      
-      setKnownPlayers(updatedKnownPlayers);
-      localStorage.setItem('serverMonitor_knownPlayers', JSON.stringify(updatedKnownPlayers));
-    } catch (error) {
-      console.error('Error updating known players status:', error);
-    }
-  };
+  // Update known players status - moved to useEffect for better optimization
 
   // Add/Update known player (using localStorage)
   const handleSaveKnownPlayer = (playerData: KnownPlayer) => {
@@ -277,18 +190,67 @@ const ServerMonitor = () => {
     setEditDialogOpen(true);
   };
 
-  // Real-time updates using polling (every 30 seconds without page refresh)
+  // Initialize component
   useEffect(() => {
-    fetchServerData();
     fetchKnownPlayers();
-    
-    // Set up polling for real-time updates
-    const interval = setInterval(() => {
-      fetchServerData();
-    }, 30000);
-    
-    return () => clearInterval(interval);
   }, []);
+  
+  // Handle Socket.io server data updates
+  useEffect(() => {
+    if (serverData.info) {
+      setServerInfo(serverData.info);
+    }
+    if (serverData.players) {
+      setPlayers(serverData.players);
+    }
+    if (serverData.dynamic) {
+      setDynamicInfo(serverData.dynamic);
+    }
+    if (serverData.lastUpdate) {
+      setLastUpdate(new Date(serverData.lastUpdate));
+      setLoading(false);
+      setError(null);
+    }
+  }, [serverData]);
+
+  // Update known players status when players list changes
+  useEffect(() => {
+    // Skip if no known players to update
+    if (Object.keys(knownPlayers).length === 0) return;
+    
+    // Create updated known players
+    const updatedKnownPlayers = { ...knownPlayers };
+    let hasChanges = false;
+    
+    // Mark all as offline first
+    Object.keys(updatedKnownPlayers).forEach(nameId => {
+      if (updatedKnownPlayers[nameId].is_online) {
+        updatedKnownPlayers[nameId].is_online = false;
+        updatedKnownPlayers[nameId].current_ping = 0;
+        hasChanges = true;
+      }
+    });
+    
+    // Mark online players
+    players.forEach(player => {
+      if (updatedKnownPlayers[player.name]) {
+        const knownPlayer = updatedKnownPlayers[player.name];
+        if (!knownPlayer.is_online || knownPlayer.current_ping !== player.ping) {
+          updatedKnownPlayers[player.name].is_online = true;
+          updatedKnownPlayers[player.name].current_ping = player.ping;
+          updatedKnownPlayers[player.name].last_seen_id = player.id;
+          updatedKnownPlayers[player.name].last_login = new Date().toISOString();
+          hasChanges = true;
+        }
+      }
+    });
+    
+    // Only update state if there are actual changes
+    if (hasChanges) {
+      setKnownPlayers(updatedKnownPlayers);
+      localStorage.setItem('serverMonitor_knownPlayers', JSON.stringify(updatedKnownPlayers));
+    }
+  }, [players]); // Re-run when players array changes
 
   // Filter and sort players
   const filteredAndSortedPlayers = players
@@ -503,7 +465,7 @@ const ServerMonitor = () => {
           Server Monitor - Atlanta Season 2
         </h2>
         <button
-          onClick={() => fetchServerData(true)}
+          onClick={handleManualRefresh}
           disabled={isRefreshing}
           className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
@@ -525,6 +487,13 @@ const ServerMonitor = () => {
           <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
             <CheckCircle className="h-5 w-5 text-green-500" />
             Server Status
+            {/* Socket.io connection indicator */}
+            <span className={`ml-auto flex items-center gap-1 text-xs px-2 py-1 rounded-full ${
+              isConnected ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'
+            }`}>
+              <div className={`w-2 h-2 rounded-full ${isConnected ? 'bg-green-500' : 'bg-yellow-500'}`}></div>
+              {isConnected ? 'Live' : 'Connecting...'}
+            </span>
           </h3>
           
           {dynamicInfo ? (

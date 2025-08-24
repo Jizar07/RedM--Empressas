@@ -1,0 +1,18 @@
+{
+  "playerName": "Boris Loubach",
+  "channelId": "1404674506181574727",
+  "messageId": "1409267085024034987",
+  "totalEarnings": 60,
+  "totalServices": 1,
+  "services": [
+    {
+      "receiptId": "20250824697",
+      "serviceType": "animal",
+      "itemType": "Suino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-24T20:04:15.849Z"
+    }
+  ],
+  "lastUpdated": "2025-08-24T20:04:15.851Z"
+}

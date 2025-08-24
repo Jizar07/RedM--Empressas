@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 3051",
+    "socket": "node socket-server.js",
     "build": "next build",
     "start": "next start -p 3051",
     "lint": "next lint",
@@ -18,7 +19,9 @@
     "next": "14.2.3",
     "next-auth": "^4.24.11",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1"
   },
   "devDependencies": {
     "@types/node": "^20",

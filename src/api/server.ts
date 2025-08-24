@@ -25,6 +25,7 @@ import discordCommandsRoutes from './routes/discord-commands';
 import serviceSubmissionsRoutes from './routes/service-submissions';
 import farmServiceConfigRoutes from './routes/farm-service-config';
 import discordRolesRoutes from './routes/discord-roles';
+import moderationRoutes from './routes/moderation';
 
 export async function startApiServer(bot: BotClient): Promise<void> {
   // Make bot client available globally for API routes
@@ -98,6 +99,9 @@ export async function startApiServer(bot: BotClient): Promise<void> {
   
   // Farm service configuration
   app.use('/api/farm-service', farmServiceConfigRoutes);
+  
+  // Moderation configuration
+  app.use('/api/moderation', moderationRoutes);
   
   // Discord roles (use different path to avoid conflict)
   app.use('/api/discord-roles', discordRolesRoutes);

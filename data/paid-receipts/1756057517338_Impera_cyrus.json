@@ -1,0 +1,44 @@
+{
+  "playerName": "Impera cyrus",
+  "channelId": "1409185583049343046",
+  "messageId": "1409231951558344846",
+  "totalEarnings": 252.75,
+  "totalServices": 4,
+  "services": [
+    {
+      "receiptId": "20250824776",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 485,
+      "payment": 72.75,
+      "timestamp": "2025-08-24T17:33:22.895Z"
+    },
+    {
+      "receiptId": "20250824712",
+      "serviceType": "animal",
+      "itemType": "Suino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-24T17:43:25.369Z"
+    },
+    {
+      "receiptId": "20250824264",
+      "serviceType": "animal",
+      "itemType": "Suino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-24T17:44:08.275Z"
+    },
+    {
+      "receiptId": "20250824647",
+      "serviceType": "animal",
+      "itemType": "Suino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-24T17:44:39.111Z"
+    }
+  ],
+  "lastUpdated": "2025-08-24T17:44:39.113Z",
+  "finalizedAt": "2025-08-24T17:45:17.338Z",
+  "finalizedBy": "zerobalaa"
+}

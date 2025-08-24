@@ -27,11 +27,17 @@ const DiscordCommands = () => {
   // Form state
   const [showForm, setShowForm] = useState(false);
   const [editingCommand, setEditingCommand] = useState<string | null>(null);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<{
+    name: string;
+    description: string;
+    channels: string[];
+    action: 'online-members' | 'server-status' | 'player-list';
+    enabled: boolean;
+  }>({
     name: '',
     description: '',
     channels: [] as string[],
-    action: 'online-members' as const,
+    action: 'online-members',
     enabled: true
   });
 

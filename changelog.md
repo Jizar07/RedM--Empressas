@@ -5,6 +5,16 @@ This file is synchronized with: https://github.com/Jizar07/RedM--Empressas
 
 ## Version History
 
+### [0.013] - 2025-08-24
+- **Fixed Discord User Registration System Emergency**: Registration button in #registre-se channel completely non-functional
+- **Root Cause**: File `registrationInteraction.ts` was renamed to `.disabled` preventing button handler from loading
+- **Fix Applied**: Renamed `registrationInteraction.ts.disabled` back to `registrationInteraction.ts` to restore functionality
+- **Related Issue Found**: `ordersInteraction.ts.disabled` also discovered (orders system may be affected)
+- **Context**: Issue discovered while attempting Socket.io implementation for frontend real-time updates
+- **User Impact**: Critical - users unable to register on Discord server, extreme frustration
+- **Resolution Time**: Immediate fix once root cause identified
+- **Status**: ✅ Registration button handler restored and functional
+
 ### [0.012] - 2025-08-24
 - **Fixed ServerMonitor Real-Time Data Display - CORS Issue Resolved**: Completely resolved critical issue preventing ServerMonitor from displaying real RedM server data
 - **CORS Proxy Solution**: Created three Next.js API routes to bypass browser CORS restrictions:

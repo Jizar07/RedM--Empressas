@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Server, Users, Bot, Activity, MessageSquare, Settings, BarChart3, Shield, Package, Truck, Send, FileText } from 'lucide-react';
+import { Server, Users, Bot, Activity, MessageSquare, Settings, BarChart3, Shield, Package, Truck, Send, FileText, Gavel, ChefHat, DollarSign } from 'lucide-react';
 import ServerStatusCard from '@/components/ServerStatusCard';
 import EnhancedServerStatus from '@/components/EnhancedServerStatus';
 import PlayerManagement from '@/components/PlayerManagement';
@@ -17,6 +17,10 @@ import ChannelLogsConfig from '@/components/ChannelLogsConfig';
 import DiscordCommands from '@/components/DiscordCommands';
 import ServiceHistory from '@/components/ServiceHistory';
 import FarmServiceSettings from '@/components/FarmServiceSettings';
+import ModerationSettings from '@/components/ModerationSettings';
+import Recipes from '@/components/Recipes';
+import PriceList from '@/components/PriceList';
+import ServerMonitor from '@/components/ServerMonitor';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import UserMenu from '@/components/UserMenu';
 import SimpleUserMenu from '@/components/SimpleUserMenu';
@@ -133,6 +137,12 @@ export default function HomePage() {
           name: 'Discord Commands',
           icon: Users,
           description: 'Manage Discord slash commands'
+        },
+        {
+          id: 'moderation-settings',
+          name: 'Moderation',
+          icon: Gavel,
+          description: 'Configure moderation and auto-reply features'
         }
       ]
     }] : []),
@@ -187,6 +197,24 @@ export default function HomePage() {
       name: 'Atlanta Server',
       icon: Server,
       description: 'Server status and player management'
+    },
+    {
+      id: 'recipes',
+      name: 'Receitas',
+      icon: ChefHat,
+      description: 'Recipe calculator and order management'
+    },
+    {
+      id: 'price-list',
+      name: 'Lista de Preços',
+      icon: DollarSign,
+      description: 'Item pricing management'
+    },
+    {
+      id: 'server-monitor',
+      name: 'Monitor do Servidor',
+      icon: Activity,
+      description: 'Server monitoring and player tracking'
     },
   ];
 
@@ -281,7 +309,7 @@ export default function HomePage() {
             {/* Quick Actions */}
             <div className="card p-6">
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
                 <button
                   onClick={() => changeTab('atlanta-server')}
                   className="p-4 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-left"
@@ -298,6 +326,24 @@ export default function HomePage() {
                   <h4 className="font-medium text-gray-900">Encomendas</h4>
                   <p className="text-sm text-gray-500">Sistema de pedidos</p>
                 </button>
+                <button
+                  onClick={() => changeTab('recipes')}
+                  className="p-4 border border-orange-300 rounded-lg hover:bg-orange-50 transition-colors text-left bg-orange-50"
+                >
+                  <ChefHat className="h-6 w-6 text-orange-600 mb-2" />
+                  <h4 className="font-medium text-gray-900">Receitas</h4>
+                  <p className="text-sm text-gray-500">Calculadora de receitas</p>
+                </button>
+                <button
+                  onClick={() => changeTab('price-list')}
+                  className="p-4 border border-blue-300 rounded-lg hover:bg-blue-50 transition-colors text-left bg-blue-50"
+                >
+                  <DollarSign className="h-6 w-6 text-blue-600 mb-2" />
+                  <h4 className="font-medium text-gray-900">Lista de Preços</h4>
+                  <p className="text-sm text-gray-500">Gerenciar preços</p>
+                </button>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 <button
                   onClick={() => changeTab('registration-settings')}
                   className="p-4 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-left"
@@ -321,6 +367,14 @@ export default function HomePage() {
                   <BarChart3 className="h-6 w-6 text-gray-600 mb-2" />
                   <h4 className="font-medium text-gray-900">Analytics</h4>
                   <p className="text-sm text-gray-500">View statistics</p>
+                </button>
+                <button
+                  onClick={() => changeTab('server-monitor')}
+                  className="p-4 border border-purple-300 rounded-lg hover:bg-purple-50 transition-colors text-left bg-purple-50"
+                >
+                  <Activity className="h-6 w-6 text-purple-600 mb-2" />
+                  <h4 className="font-medium text-gray-900">Monitor do Servidor</h4>
+                  <p className="text-sm text-gray-500">Monitoramento avançado</p>
                 </button>
               </div>
             </div>
@@ -351,12 +405,12 @@ export default function HomePage() {
           </div>
         )}
 
-        {(activeTab === 'admin' || activeTab === 'registration-settings' || activeTab === 'registration-analytics' || activeTab === 'orders-settings' || activeTab === 'channel-logs-config' || activeTab === 'discord-commands') && (
+        {(activeTab === 'admin' || activeTab === 'registration-settings' || activeTab === 'registration-analytics' || activeTab === 'orders-settings' || activeTab === 'channel-logs-config' || activeTab === 'discord-commands' || activeTab === 'moderation-settings') && (
           <div className="space-y-8">
             {/* Admin Menu */}
             <div className="card p-6">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Admin Panel</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <button
                   onClick={() => changeTab('registration-settings')}
                   className={`p-6 border-2 rounded-lg text-left transition-colors ${
@@ -417,6 +471,18 @@ export default function HomePage() {
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">Discord Commands</h3>
                   <p className="text-gray-600">Manage Discord slash commands and bot interactions</p>
                 </button>
+                <button
+                  onClick={() => changeTab('moderation-settings')}
+                  className={`p-6 border-2 rounded-lg text-left transition-colors ${
+                    activeTab === 'moderation-settings'
+                      ? 'border-red-500 bg-red-50'
+                      : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
+                  }`}
+                >
+                  <Gavel className="h-8 w-8 text-gray-600 mb-3" />
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Moderation Settings</h3>
+                  <p className="text-gray-600">Configure clear command, auto-mod, and auto-reply features</p>
+                </button>
               </div>
             </div>
 
@@ -426,6 +492,7 @@ export default function HomePage() {
             {activeTab === 'orders-settings' && <OrdersSettings />}
             {activeTab === 'channel-logs-config' && <ChannelLogsConfig />}
             {activeTab === 'discord-commands' && <DiscordCommands />}
+            {activeTab === 'moderation-settings' && <ModerationSettings />}
           </div>
         )}
 
@@ -540,6 +607,11 @@ export default function HomePage() {
             {activeTab === 'farm-service-settings' && <FarmServiceSettings />}
           </div>
         )}
+
+        {/* New Tabs from Fazenda System */}
+        {activeTab === 'recipes' && <Recipes />}
+        {activeTab === 'price-list' && <PriceList />}
+        {activeTab === 'server-monitor' && <ServerMonitor />}
       </main>
 
       {/* Footer */}
