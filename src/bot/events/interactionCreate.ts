@@ -8,7 +8,11 @@ import {
   handlePlantTypeSelection,
   handleQuantitySubmit,
   handleReceiptAccept,
-  handleReceiptReject
+  handleReceiptEdit,
+  handleReceiptEditQuantity,
+  handleReceiptReject,
+  handleReceiptPayNow,
+  handleFinalPayment
 } from '../commands/farm/submit-service';
 
 export default {
@@ -24,8 +28,20 @@ export default {
         await handleReceiptAccept(interaction);
         return;
       }
+      if (interaction.customId.startsWith('receipt_edit_')) {
+        await handleReceiptEdit(interaction);
+        return;
+      }
       if (interaction.customId.startsWith('receipt_reject_')) {
         await handleReceiptReject(interaction);
+        return;
+      }
+      if (interaction.customId.startsWith('receipt_pay_now_')) {
+        await handleReceiptPayNow(interaction);
+        return;
+      }
+      if (interaction.customId.startsWith('final_payment_')) {
+        await handleFinalPayment(interaction);
         return;
       }
     }
@@ -50,6 +66,10 @@ export default {
     if (interaction.isModalSubmit()) {
       if (interaction.customId.startsWith('farm_quantity_')) {
         await handleQuantitySubmit(interaction);
+        return;
+      }
+      if (interaction.customId.startsWith('receipt_edit_quantity_')) {
+        await handleReceiptEditQuantity(interaction);
         return;
       }
     }

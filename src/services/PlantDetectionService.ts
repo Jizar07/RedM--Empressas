@@ -1,7 +1,7 @@
 import sharp from 'sharp';
 import { promises as fs } from 'fs';
 import path from 'path';
-import crypto from 'crypto';
+// import crypto from 'crypto';
 
 interface PlantDetectionResult {
   plantType: string | null;
@@ -10,7 +10,7 @@ interface PlantDetectionResult {
 }
 
 class PlantDetectionService {
-  private templateHashes: Map<string, string> = new Map();
+  // private templateHashes: Map<string, string> = new Map();
   private templatesPath = path.join(process.cwd(), 'plant-templates');
   
   constructor() {
@@ -31,22 +31,22 @@ class PlantDetectionService {
   /**
    * Generate perceptual hash for an image region
    */
-  private async generateImageHash(imagePath: string): Promise<string> {
-    try {
-      // Resize to standard size and convert to grayscale for comparison
-      const buffer = await sharp(imagePath)
-        .resize(32, 32, { fit: 'fill' })
-        .grayscale()
-        .raw()
-        .toBuffer();
-      
-      // Generate hash from pixel data
-      return crypto.createHash('md5').update(buffer).digest('hex');
-    } catch (error) {
-      console.error('Error generating image hash:', error);
-      return '';
-    }
-  }
+  // private async generateImageHash(imagePath: string): Promise<string> {
+  //   try {
+  //     // Resize to standard size and convert to grayscale for comparison
+  //     const buffer = await sharp(imagePath)
+  //       .resize(32, 32, { fit: 'fill' })
+  //       .grayscale()
+  //       .raw()
+  //       .toBuffer();
+  //     
+  //     // Generate hash from pixel data
+  //     return crypto.createHash('md5').update(buffer).digest('hex');
+  //   } catch (error) {
+  //     console.error('Error generating image hash:', error);
+  //     return '';
+  //   }
+  // }
 
   /**
    * Compare image similarity using structural similarity
@@ -82,9 +82,9 @@ class PlantDetectionService {
       // If crop region provided, extract that area
       if (cropRegion) {
         const croppedPath = path.join(this.templatesPath, `temp_crop_${Date.now()}.png`);
-        await sharp(screenshotPath)
-          .extract(cropRegion)
-          .toFile(croppedPath);
+        // await sharp(screenshotPath)
+        //   .extract(cropRegion)
+        //   .toFile(croppedPath);
         processedImage = croppedPath;
       }
 

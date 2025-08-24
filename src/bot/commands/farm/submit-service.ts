@@ -110,9 +110,9 @@ export async function handleServiceTypeSelection(interaction: StringSelectMenuIn
     userData.serviceType = serviceType;
     serviceData.set(interaction.user.id, userData);
 
-    // Update the message to show selection
+    // Update the message to remove components (DISMISS)
     await interaction.update({
-      content: `✅ **Tipo selecionado:** ${serviceType === 'animal' ? '🐄 Serviço de Animal' : '🌾 Serviço de Planta'}`,
+      content: `🌼 Tipo de serviço selecionado: ${serviceType === 'animal' ? '🐄 Animal' : '🌾 Planta'}`,
       components: []
     });
 
@@ -147,7 +147,7 @@ async function showAnimalTypeSelection(interaction: StringSelectMenuInteraction)
       .addComponents(animalTypeSelect);
 
     await interaction.followUp({
-      content: '🐄 **Selecione o tipo de animal:**',
+      content: '🐄 Selecione o tipo de animal:',
       components: [row],
       flags: MessageFlags.Ephemeral
     });
@@ -167,14 +167,14 @@ async function showPlantTypeSelection(interaction: StringSelectMenuInteraction) 
         { label: '🌽 Milho (Básico - $0.15)', value: 'Milho' },
         { label: '🌾 Trigo (Básico - $0.15)', value: 'Trigo' },
         { label: '🌿 Junco (Básico - $0.15)', value: 'Junco' },
-        { label: '🌱 Outra Planta ($0.20)', value: 'other' }
+        { label: '🌱 Outras Plantas ($0.20)', value: 'other' }
       ]);
 
     const row = new ActionRowBuilder<StringSelectMenuBuilder>()
       .addComponents(plantTypeSelect);
 
     await interaction.followUp({
-      content: '🌾 **Selecione o tipo de planta:**',
+      content: '🌾 Selecione o tipo de planta:',
       components: [row],
       flags: MessageFlags.Ephemeral
     });
@@ -203,9 +203,9 @@ export async function handleAnimalTypeSelection(interaction: StringSelectMenuInt
     userData.itemType = animalType;
     serviceData.set(interaction.user.id, userData);
 
-    // Update the message
+    // Update the message to remove components (DISMISS)
     await interaction.update({
-      content: `✅ **Animal selecionado:** ${animalType.charAt(0).toUpperCase() + animalType.slice(1)}`,
+      content: `🐄 Animal selecionado: ${animalType}`,
       components: []
     });
 
@@ -231,12 +231,25 @@ export async function handlePlantTypeSelection(interaction: StringSelectMenuInte
     const plantType = interaction.values[0];
     console.log('Plant type selected:', plantType);
 
+    // Create dismiss message
+    let dismissMessage = '';
+    if (plantType === 'Milho') {
+      dismissMessage = '🌽 Milho (Básico - $0.15)';
+    } else if (plantType === 'Trigo') {
+      dismissMessage = '🌾 Trigo (Básico - $0.15)';
+    } else if (plantType === 'Junco') {
+      dismissMessage = '🌿 Junco (Básico - $0.15)';
+    } else if (plantType === 'other') {
+      dismissMessage = '🌱 Outras Plantas ($0.20)';
+    }
+
     // Store plant type
     const userData = serviceData.get(interaction.user.id) || {};
     userData.itemType = plantType;
+    userData.plantDismissMessage = dismissMessage; // Store for later
     serviceData.set(interaction.user.id, userData);
 
-    // Show quantity modal for plants immediately 
+    // Show quantity modal directly (this will consume the interaction)
     await showQuantityModal(interaction, plantType);
 
   } catch (error) {
@@ -247,9 +260,12 @@ export async function handlePlantTypeSelection(interaction: StringSelectMenuInte
 // Show quantity modal for plants
 async function showQuantityModal(interaction: StringSelectMenuInteraction, plantType: string) {
   try {
+    const isOtherPlant = plantType === 'other';
+    const modalTitle = isOtherPlant ? '🔢 Quantidade e Nome - Outras Plantas' : `🔢 Quantidade - ${plantType}`;
+    
     const quantityModal = new ModalBuilder()
       .setCustomId(`farm_quantity_${interaction.user.id}`)
-      .setTitle(`🔢 Quantidade - ${plantType}`);
+      .setTitle(modalTitle);
 
     const quantityInput = new TextInputBuilder()
       .setCustomId('quantity')
@@ -262,6 +278,21 @@ async function showQuantityModal(interaction: StringSelectMenuInteraction, plant
     quantityModal.addComponents(
       new ActionRowBuilder<TextInputBuilder>().addComponents(quantityInput)
     );
+
+    // Add plant name field only for "outras plantas"
+    if (isOtherPlant) {
+      const plantNameInput = new TextInputBuilder()
+        .setCustomId('plant_name')
+        .setLabel('Nome da Planta')
+        .setPlaceholder('Digite o nome da planta (ex: Batata, Cenoura, etc.)')
+        .setStyle(TextInputStyle.Short)
+        .setRequired(true)
+        .setMaxLength(50);
+
+      quantityModal.addComponents(
+        new ActionRowBuilder<TextInputBuilder>().addComponents(plantNameInput)
+      );
+    }
 
     await interaction.showModal(quantityModal);
 
@@ -290,13 +321,31 @@ export async function handleQuantitySubmit(interaction: ModalSubmitInteraction):
       });
     }
 
-    // Store quantity
+    // Get stored user data
     const userData = serviceData.get(interaction.user.id) || {};
     userData.quantity = quantity;
+
+    // Check if plant name was provided (for "outras plantas")
+    try {
+      const plantName = interaction.fields.getTextInputValue('plant_name');
+      if (plantName && plantName.trim()) {
+        userData.itemType = plantName.trim(); // Replace "other" with actual plant name
+        userData.isCustomPlant = true; // Flag for pricing
+      }
+    } catch {
+      // Plant name field not present, that's fine for non-"other" plants
+    }
+
     serviceData.set(interaction.user.id, userData);
 
+    // Reply to modal with plant selection dismissal if available
+    let replyContent = `✅ **Quantidade:** ${quantity}`;
+    if (userData.plantDismissMessage) {
+      replyContent += `\n🌾 **Planta:** ${userData.plantDismissMessage}`;
+    }
+
     await interaction.reply({
-      content: `✅ **Quantidade:** ${quantity}`,
+      content: replyContent,
       flags: MessageFlags.Ephemeral
     });
 
@@ -313,29 +362,24 @@ async function askForScreenshot(interaction: any, userData: any) {
   try {
     await interaction.followUp({
       content: 
-        `✅ **Detalhes Recebidos:**\n` +
-        `• Tipo: ${userData.serviceType === 'animal' ? '🐄 Animal' : '🌾 Planta'}\n` +
-        `• Item: ${userData.itemType.charAt(0).toUpperCase() + userData.itemType.slice(1)}\n` +
-        `${userData.quantity ? `• Quantidade: ${userData.quantity}\n` : ''}` +
-        `\n📸 **Agora envie sua screenshot:**\n` +
+        `📸 **Agora envie sua screenshot:**\n` +
         `Responda com sua screenshot em anexo.\n\n` +
-        `⏱️ Você tem 5 minutos.`,
+        `⏱️ Você tem 3 minutos.\n` +
+        `⚠️ **Importante:** Faça upload da imagem diretamente (não link/URL)`,
       flags: MessageFlags.Ephemeral
     });
 
     // Wait for screenshot upload
     if (!interaction.channel) {
       await interaction.followUp({
-        content: '❌ Não foi possível acessar o canal.',
-        flags: MessageFlags.Ephemeral
+        content: '❌ Não foi possível acessar o canal.'
       });
       return;
     }
 
     if (!('createMessageCollector' in interaction.channel)) {
       await interaction.followUp({
-        content: '❌ Este tipo de canal não suporta coleta de mensagens.',
-        flags: MessageFlags.Ephemeral
+        content: '❌ Este tipo de canal não suporta coleta de mensagens.'
       });
       return;
     }
@@ -351,7 +395,7 @@ async function askForScreenshot(interaction: any, userData: any) {
         });
         return msg.author.id === interaction.user.id && msg.attachments.size > 0;
       },
-      time: 300000,
+      time: 180000,
       max: 1
     });
     console.log('✅ Message collector created successfully');
@@ -376,10 +420,7 @@ async function askForScreenshot(interaction: any, userData: any) {
         return;
       }
 
-      // Delete user's message
-      await message.delete().catch(() => {});
-
-      // Download attachment IMMEDIATELY before URL expires
+      // Download attachment IMMEDIATELY before any other operations
       console.log('📥 Downloading attachment immediately...');
       let filePath: string | undefined;
       
@@ -387,22 +428,83 @@ async function askForScreenshot(interaction: any, userData: any) {
         const tempPath = path.join(process.cwd(), 'uploads', 'temp', `temp_${Date.now()}_${attachment.name}`);
         await fs.mkdir(path.dirname(tempPath), { recursive: true });
         
-        const response = await fetch(attachment.url);
-        if (response.ok) {
-          const buffer = await response.arrayBuffer();
-          await fs.writeFile(tempPath, Buffer.from(buffer));
-          filePath = tempPath;
-          console.log('✅ Attachment downloaded successfully:', tempPath);
-        } else {
-          console.log('❌ Failed to download attachment, status:', response.status);
+        // Try multiple times with different approaches
+        let success = false;
+        
+        // Approach 1: Direct fetch with immediate processing
+        try {
+          console.log('🔄 Trying direct fetch...');
+          const response = await fetch(attachment.url, {
+            headers: {
+              'User-Agent': 'DiscordBot (https://discord.js.org, 14.0.0)'
+            }
+          });
+          
+          if (response.ok) {
+            const buffer = await response.arrayBuffer();
+            await fs.writeFile(tempPath, Buffer.from(buffer));
+            filePath = tempPath;
+            success = true;
+            console.log('✅ Direct fetch successful:', tempPath);
+          } else {
+            console.log('❌ Direct fetch failed, status:', response.status);
+          }
+        } catch (error: any) {
+          console.log('❌ Direct fetch error:', error.message);
         }
+        
+        // Approach 2: If direct fetch failed, try axios with different headers
+        if (!success) {
+          try {
+            console.log('🔄 Trying axios approach...');
+            const axios = (await import('axios')).default;
+            const response = await axios.get(attachment.url, {
+              responseType: 'arraybuffer',
+              headers: {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+                'Accept': 'image/*'
+              },
+              timeout: 10000
+            });
+            
+            await fs.writeFile(tempPath, Buffer.from(response.data));
+            filePath = tempPath;
+            success = true;
+            console.log('✅ Axios fetch successful:', tempPath);
+          } catch (error: any) {
+            console.log('❌ Axios fetch error:', error.message);
+          }
+        }
+        
+        // Approach 3: Use Discord.js attachment download method
+        if (!success) {
+          try {
+            console.log('🔄 Trying Discord.js attachment method...');
+            const stream = await fetch(attachment.proxyURL || attachment.url);
+            if (stream.ok) {
+              const buffer = await stream.arrayBuffer();
+              await fs.writeFile(tempPath, Buffer.from(buffer));
+              filePath = tempPath;
+              success = true;
+              console.log('✅ Proxy URL fetch successful:', tempPath);
+            }
+          } catch (error: any) {
+            console.log('❌ Proxy URL fetch error:', error.message);
+          }
+        }
+        
       } catch (error: any) {
-        console.log('❌ Immediate attachment download failed:', error.message);
+        console.log('❌ All download attempts failed:', error.message);
+      }
+
+      // Only delete user's message after successful download
+      if (filePath) {
+        await message.delete().catch(() => {});
       }
 
       if (!filePath) {
         await interaction.followUp({
-          content: '❌ Falha no download da imagem. Tente novamente.',
+          content: '❌ Falha no download da imagem. O link do Discord expirou muito rápido. Tente fazer upload novamente.',
           flags: MessageFlags.Ephemeral
         });
         return;
@@ -423,7 +525,7 @@ async function askForScreenshot(interaction: any, userData: any) {
     messageCollector.on('end', (collected: any) => {
       if (collected.size === 0) {
         interaction.followUp({
-          content: '❌ Nenhuma screenshot recebida. Submissão cancelada.',
+          content: '❌ ⏱️ Tempo esgotado! Nenhuma screenshot recebida. Submissão cancelada.',
           flags: MessageFlags.Ephemeral
         }).catch(() => {});
         
@@ -478,7 +580,10 @@ async function processServiceSubmission(
       playerPayment = config.optimalAnimalIncome;
     } else {
       // Plant service payment
-      const isBasicPlant = config.basicPlants.includes(data.itemType);
+      // Check if it's a custom plant (from "outras plantas") or a basic plant
+      const userData = serviceData.get(interaction.user.id) || {};
+      const isCustomPlant = userData.isCustomPlant || false;
+      const isBasicPlant = config.basicPlants.includes(data.itemType) && !isCustomPlant;
       const plantPrice = isBasicPlant ? config.plantPrices.basic : config.plantPrices.other;
       playerPayment = (data.quantity || 0) * plantPrice;
     }
@@ -656,50 +761,50 @@ async function postReceiptToWorkerChannel(interaction: any, receipt: any): Promi
 
     if (workerChannel && workerChannel.isTextBased()) {
       const embed = new EmbedBuilder()
-        .setTitle(`📋 Service Receipt #${receipt.receiptId}`)
+        .setTitle(`📋 Recibo de Serviço #${receipt.receiptId}`)
         .setColor(receipt.serviceType === 'animal' 
           ? (receipt.status === 'OPTIMAL' ? 0x00FF00 : receipt.status === 'SUBOPTIMAL' ? 0xFFFF00 : 0xFF0000)
           : 0x00FF00)
         .setTimestamp(new Date(receipt.timestamp))
-        .setFooter({ text: 'Farm Service System' });
+        .setFooter({ text: 'Sistema de Serviços da Fazenda' });
 
       if (receipt.serviceType === 'animal') {
         embed.addFields(
-          { name: 'Service', value: 'Animal Delivery', inline: true },
-          { name: 'Animals', value: `${receipt.quantity} ${receipt.animalType}`, inline: true },
+          { name: 'Serviço', value: 'Entrega de Animais', inline: true },
+          { name: 'Animais', value: `${receipt.quantity} ${receipt.animalType}`, inline: true },
           { name: 'Status', value: receipt.status, inline: true },
-          { name: 'Farm Income', value: `$${receipt.farmIncome?.toFixed(2)}`, inline: true },
-          { name: 'Your Payment', value: `$${receipt.playerPayment.toFixed(2)}`, inline: true }
+          { name: 'Renda da Fazenda', value: `$${receipt.farmIncome?.toFixed(2)}`, inline: true },
+          { name: 'Pagamento', value: `$${receipt.playerPayment.toFixed(2)}`, inline: true }
         );
 
         if (receipt.penalty && receipt.penalty > 0) {
           embed.addFields({
-            name: '⚠️ Penalty',
-            value: `-$${receipt.penalty.toFixed(2)} (animals under age 50)`,
+            name: '⚠️ Penalidade',
+            value: `-$${receipt.penalty.toFixed(2)} (animais com menos de 50 anos)`,
             inline: false
           });
         }
 
         if (receipt.playerDebt && receipt.playerDebt > 0) {
           embed.addFields({
-            name: '❌ Debt',
-            value: `$${receipt.playerDebt.toFixed(2)} owed to farm`,
+            name: '❌ Dívida',
+            value: `$${receipt.playerDebt.toFixed(2)} devido à fazenda`,
             inline: false
           });
         }
       } else {
         // Plant service
         embed.addFields(
-          { name: 'Service', value: 'Plant Deposit', inline: true },
-          { name: 'Plant Type', value: receipt.plantName, inline: true },
-          { name: 'Quantity', value: receipt.quantity.toString(), inline: true },
-          { name: 'Your Payment', value: `$${receipt.playerPayment.toFixed(2)}`, inline: true },
-          { name: 'Status', value: '⚠️ **PENDING APPROVAL**', inline: true }
+          { name: 'Serviço', value: 'Depósito de Plantas', inline: true },
+          { name: 'Tipo de Planta', value: receipt.plantName, inline: true },
+          { name: 'Quantidade', value: receipt.quantity.toString(), inline: true },
+          { name: 'Pagamento', value: `$${receipt.playerPayment.toFixed(2)}`, inline: true },
+          { name: 'Status', value: '⚠️ **AGUARDANDO APROVAÇÃO**', inline: true }
         );
         
         embed.addFields({
-          name: '📸 Manual Review Required',
-          value: `User submitted: **${receipt.quantity}** ${receipt.plantName}\n\nPlease verify the screenshot below and approve/reject accordingly.`,
+          name: '📸 Revisão Manual Necessária',
+          value: `Usuário submeteu: **${receipt.quantity}** ${receipt.plantName}\n\nPor favor, verifique a captura de tela abaixo e aprove/rejeite adequadamente.`,
           inline: false
         });
       }
@@ -707,21 +812,27 @@ async function postReceiptToWorkerChannel(interaction: any, receipt: any): Promi
       // Prepare message components
       const messagePayload: any = { embeds: [embed] };
       
-      // Add Accept/Reject buttons for all submissions (no more OCR verification)
+      // Add Accept/Edit/Reject buttons for all submissions
       const acceptButton = new ButtonBuilder()
         .setCustomId(`receipt_accept_${receipt.receiptId}`)
-        .setLabel('Accept')
+        .setLabel('Aceitar')
         .setStyle(ButtonStyle.Success)
         .setEmoji('✅');
         
+      const editButton = new ButtonBuilder()
+        .setCustomId(`receipt_edit_${receipt.receiptId}`)
+        .setLabel('Editar')
+        .setStyle(ButtonStyle.Secondary)
+        .setEmoji('✏️');
+        
       const rejectButton = new ButtonBuilder()
         .setCustomId(`receipt_reject_${receipt.receiptId}`)
-        .setLabel('Reject')
+        .setLabel('Rejeitar')
         .setStyle(ButtonStyle.Danger)
         .setEmoji('❌');
 
       const buttonRow = new ActionRowBuilder<ButtonBuilder>()
-        .addComponents(acceptButton, rejectButton);
+        .addComponents(acceptButton, editButton, rejectButton);
         
       messagePayload.components = [buttonRow];
       
@@ -764,7 +875,7 @@ export async function handleReceiptAccept(interaction: ButtonInteraction): Promi
     const receiptData = await loadReceiptData(receiptId);
     if (!receiptData) {
       await interaction.reply({
-        content: '❌ Receipt not found.',
+        content: '❌ Recibo não encontrado.',
         flags: MessageFlags.Ephemeral
       });
       return;
@@ -778,11 +889,61 @@ export async function handleReceiptAccept(interaction: ButtonInteraction): Promi
 
     await saveReceiptData(receiptData);
 
-    // Update the message
+    // IMMEDIATELY create persistent receipt when approved (not when Pay Now is clicked)
+    await createOrUpdatePersistentReceipt(interaction, receiptData);
+
+    // Create detailed receipt summary for posting
+    const currentDate = new Date(receiptData.approvedAt);
+    const timestamp = currentDate.toLocaleString('pt-BR', {
+      day: '2-digit',
+      month: '2-digit', 
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    });
+
+    const receiptEmbed = new EmbedBuilder()
+      .setTitle(`✅ Serviço Aprovado #${receiptData.receiptId}`)
+      .setColor(0x00FF00)
+      .setTimestamp(new Date(receiptData.approvedAt))
+      .setFooter({ text: 'Recibo de Serviço Aprovado' });
+
+    if (receiptData.serviceType === 'animal') {
+      receiptEmbed.addFields(
+        { name: '🐄 Tipo de Serviço', value: 'Entrega de Animais', inline: true },
+        { name: 'Animal', value: receiptData.animalType, inline: true },
+        { name: 'Quantidade', value: receiptData.quantity.toString(), inline: true },
+        { name: '💰 Pagamento', value: `$${receiptData.playerPayment.toFixed(2)}`, inline: true },
+        { name: '🗓️ Timestamp', value: timestamp, inline: true },
+        { name: '✅ Aprovado por', value: interaction.user.username, inline: true }
+      );
+    } else {
+      receiptEmbed.addFields(
+        { name: '🌾 Tipo de Serviço', value: 'Depósito de Plantas', inline: true },
+        { name: 'Planta', value: receiptData.plantName, inline: true },
+        { name: 'Quantidade', value: receiptData.quantity.toString(), inline: true },
+        { name: '💰 Pagamento', value: `$${receiptData.playerPayment.toFixed(2)}`, inline: true },
+        { name: '🗓️ Timestamp', value: timestamp, inline: true },
+        { name: '✅ Aprovado por', value: interaction.user.username, inline: true }
+      );
+    }
+
+    // Add "Pay Now" button for user
+    const payNowButton = new ButtonBuilder()
+      .setCustomId(`receipt_pay_now_${receiptData.receiptId}`)
+      .setLabel('Pagar Agora')
+      .setStyle(ButtonStyle.Primary)
+      .setEmoji('💰');
+
+    const payButtonRow = new ActionRowBuilder<ButtonBuilder>()
+      .addComponents(payNowButton);
+
+    // Update admin message
     await interaction.update({
-      content: `✅ **APPROVED** by ${interaction.user.username}`,
-      embeds: [],
-      components: []
+      content: `✅ **APROVADO** por ${interaction.user.username}`,
+      embeds: [receiptEmbed],
+      components: [payButtonRow]
     });
 
     console.log(`✅ Receipt ${receiptId} approved by ${interaction.user.username}`);
@@ -790,7 +951,162 @@ export async function handleReceiptAccept(interaction: ButtonInteraction): Promi
   } catch (error) {
     console.error('Error handling receipt accept:', error);
     await interaction.reply({
-      content: '❌ Error processing approval.',
+      content: '❌ Erro ao processar aprovação.',
+      flags: MessageFlags.Ephemeral
+    });
+  }
+}
+
+// Handle receipt edit
+export async function handleReceiptEdit(interaction: ButtonInteraction): Promise<void> {
+  try {
+    const receiptId = interaction.customId.split('_')[2];
+    console.log('✏️ Editing receipt:', receiptId);
+
+    // Load receipt data
+    const receiptData = await loadReceiptData(receiptId);
+    if (!receiptData) {
+      await interaction.reply({
+        content: '❌ Recibo não encontrado.',
+        flags: MessageFlags.Ephemeral
+      });
+      return;
+    }
+
+    // Show quantity edit modal
+    const editModal = new ModalBuilder()
+      .setCustomId(`receipt_edit_quantity_${receiptId}`)
+      .setTitle(`✏️ Editar Quantidade - #${receiptId}`);
+
+    const quantityInput = new TextInputBuilder()
+      .setCustomId('new_quantity')
+      .setLabel('Nova Quantidade')
+      .setPlaceholder(`Quantidade atual: ${receiptData.quantity}`)
+      .setValue(receiptData.quantity.toString())
+      .setStyle(TextInputStyle.Short)
+      .setRequired(true)
+      .setMaxLength(10);
+
+    editModal.addComponents(
+      new ActionRowBuilder<TextInputBuilder>().addComponents(quantityInput)
+    );
+
+    await interaction.showModal(editModal);
+
+  } catch (error) {
+    console.error('Error handling receipt edit:', error);
+    await interaction.reply({
+      content: '❌ Erro ao processar edição.',
+      flags: MessageFlags.Ephemeral
+    });
+  }
+}
+
+// Handle quantity edit modal submission
+export async function handleReceiptEditQuantity(interaction: ModalSubmitInteraction): Promise<void> {
+  try {
+    const receiptId = interaction.customId.split('_')[3];
+    const newQuantity = parseInt(interaction.fields.getTextInputValue('new_quantity').trim());
+    
+    if (isNaN(newQuantity) || newQuantity <= 0) {
+      await interaction.reply({
+        content: '❌ Por favor, digite um número válido maior que 0.',
+        flags: MessageFlags.Ephemeral
+      });
+      return;
+    }
+
+    // Load receipt data
+    const receiptData = await loadReceiptData(receiptId);
+    if (!receiptData) {
+      await interaction.reply({
+        content: '❌ Recibo não encontrado.',
+        flags: MessageFlags.Ephemeral
+      });
+      return;
+    }
+
+    // Load config to recalculate payment
+    const config = JSON.parse(await fs.readFile(path.join(process.cwd(), 'data', 'farm-service-config.json'), 'utf8'));
+    
+    // Recalculate payment with new quantity
+    let newPlayerPayment = 0;
+    if (receiptData.serviceType === 'animal') {
+      // Animal quantity doesn't affect payment, but update anyway
+      receiptData.quantity = newQuantity;
+      newPlayerPayment = config.optimalAnimalIncome;
+    } else {
+      // Plant service payment recalculation
+      const isBasicPlant = config.basicPlants.includes(receiptData.plantName);
+      const plantPrice = isBasicPlant ? config.plantPrices.basic : config.plantPrices.other;
+      newPlayerPayment = newQuantity * plantPrice;
+      receiptData.quantity = newQuantity;
+    }
+    
+    receiptData.playerPayment = newPlayerPayment;
+    receiptData.editedBy = interaction.user.username;
+    receiptData.editedAt = new Date().toISOString();
+    receiptData.originalQuantity = receiptData.originalQuantity || receiptData.quantity;
+
+    await saveReceiptData(receiptData);
+
+    // Update the message with new information
+    const embed = new EmbedBuilder()
+      .setTitle(`📋 Recibo Editado #${receiptData.receiptId}`)
+      .setColor(0xFFAA00)
+      .setTimestamp(new Date(receiptData.timestamp))
+      .setFooter({ text: 'Sistema de Serviços da Fazenda - Editado' });
+
+    if (receiptData.serviceType === 'animal') {
+      embed.addFields(
+        { name: 'Serviço', value: 'Entrega de Animais', inline: true },
+        { name: 'Animais', value: `${receiptData.quantity} ${receiptData.animalType}`, inline: true },
+        { name: 'Pagamento', value: `$${receiptData.playerPayment.toFixed(2)}`, inline: true },
+        { name: 'Editado por', value: interaction.user.username, inline: true }
+      );
+    } else {
+      embed.addFields(
+        { name: 'Serviço', value: 'Depósito de Plantas', inline: true },
+        { name: 'Tipo de Planta', value: receiptData.plantName, inline: true },
+        { name: 'Nova Quantidade', value: `${receiptData.quantity} (antes: ${receiptData.originalQuantity})`, inline: true },
+        { name: 'Novo Pagamento', value: `$${receiptData.playerPayment.toFixed(2)}`, inline: true },
+        { name: 'Editado por', value: interaction.user.username, inline: true }
+      );
+    }
+
+    // Add same action buttons again
+    const acceptButton = new ButtonBuilder()
+      .setCustomId(`receipt_accept_${receiptData.receiptId}`)
+      .setLabel('Aceitar')
+      .setStyle(ButtonStyle.Success)
+      .setEmoji('✅');
+        
+    const editButton = new ButtonBuilder()
+      .setCustomId(`receipt_edit_${receiptData.receiptId}`)
+      .setLabel('Editar Novamente')
+      .setStyle(ButtonStyle.Secondary)
+      .setEmoji('✏️');
+        
+    const rejectButton = new ButtonBuilder()
+      .setCustomId(`receipt_reject_${receiptData.receiptId}`)
+      .setLabel('Rejeitar')
+      .setStyle(ButtonStyle.Danger)
+      .setEmoji('❌');
+
+    const buttonRow = new ActionRowBuilder<ButtonBuilder>()
+      .addComponents(acceptButton, editButton, rejectButton);
+
+    await interaction.editReply({
+      embeds: [embed],
+      components: [buttonRow]
+    });
+
+    console.log(`✏️ Receipt ${receiptId} edited by ${interaction.user.username}: quantity changed to ${newQuantity}`);
+
+  } catch (error) {
+    console.error('Error handling receipt edit quantity:', error);
+    await interaction.reply({
+      content: '❌ Erro ao processar edição da quantidade.',
       flags: MessageFlags.Ephemeral
     });
   }
@@ -806,7 +1122,7 @@ export async function handleReceiptReject(interaction: ButtonInteraction): Promi
     const receiptData = await loadReceiptData(receiptId);
     if (!receiptData) {
       await interaction.reply({
-        content: '❌ Receipt not found.',
+        content: '❌ Recibo não encontrado.',
         flags: MessageFlags.Ephemeral
       });
       return;
@@ -822,7 +1138,7 @@ export async function handleReceiptReject(interaction: ButtonInteraction): Promi
 
     // Update the message
     await interaction.update({
-      content: `❌ **REJECTED** by ${interaction.user.username}`,
+      content: `❌ **REJEITADO** por ${interaction.user.username}`,
       embeds: [],
       components: []
     });
@@ -832,7 +1148,7 @@ export async function handleReceiptReject(interaction: ButtonInteraction): Promi
   } catch (error) {
     console.error('Error handling receipt reject:', error);
     await interaction.reply({
-      content: '❌ Error processing rejection.',
+      content: '❌ Erro ao processar rejeição.',
       flags: MessageFlags.Ephemeral
     });
   }
@@ -859,6 +1175,406 @@ async function loadReceiptData(receiptId: string) {
   } catch (error) {
     console.error('Error loading receipt data:', error);
     return null;
+  }
+}
+
+// Handle "Pay Now" button - create persistent receipt and running total
+export async function handleReceiptPayNow(interaction: ButtonInteraction): Promise<void> {
+  try {
+    const receiptId = interaction.customId.split('_')[3];
+    console.log('💰 Processing payment for receipt:', receiptId);
+
+    // Load receipt data
+    const receiptData = await loadReceiptData(receiptId);
+    if (!receiptData) {
+      await interaction.reply({
+        content: '❌ Recibo não encontrado.',
+        flags: MessageFlags.Ephemeral
+      });
+      return;
+    }
+
+    // Check if already paid
+    if (receiptData.paid) {
+      await interaction.reply({
+        content: '❌ Este recibo já foi pago.',
+        flags: MessageFlags.Ephemeral
+      });
+      return;
+    }
+
+    // Mark as paid
+    receiptData.paid = true;
+    receiptData.paidAt = new Date().toISOString();
+    receiptData.paidBy = interaction.user.username;
+    await saveReceiptData(receiptData);
+
+    // Update existing persistent receipt to reflect paid status
+    await updatePersistentReceiptPaidStatus(interaction, receiptData);
+
+    // Update current message to show paid status
+    const paidEmbed = new EmbedBuilder()
+      .setTitle(`💰 Recibo Pago #${receiptData.receiptId}`)
+      .setColor(0x32CD32)
+      .setTimestamp(new Date(receiptData.paidAt))
+      .setFooter({ text: 'Pagamento Processado' });
+
+    if (receiptData.serviceType === 'animal') {
+      paidEmbed.addFields(
+        { name: '🐄 Serviço', value: 'Entrega de Animais', inline: true },
+        { name: 'Animais', value: `${receiptData.quantity} ${receiptData.animalType}`, inline: true },
+        { name: 'Pagamento', value: `$${receiptData.playerPayment.toFixed(2)}`, inline: true },
+        { name: 'Pago por', value: interaction.user.username, inline: true }
+      );
+    } else {
+      paidEmbed.addFields(
+        { name: '🌾 Serviço', value: 'Depósito de Plantas', inline: true },
+        { name: 'Planta', value: receiptData.plantName, inline: true },
+        { name: 'Quantidade', value: receiptData.quantity.toString(), inline: true },
+        { name: 'Pagamento', value: `$${receiptData.playerPayment.toFixed(2)}`, inline: true },
+        { name: 'Pago por', value: interaction.user.username, inline: true }
+      );
+    }
+
+    await interaction.update({
+      content: `💰 **PAGO** - Recibo processado com sucesso`,
+      embeds: [paidEmbed],
+      components: []
+    });
+
+    console.log(`💰 Receipt ${receiptId} paid by ${interaction.user.username}`);
+
+  } catch (error) {
+    console.error('Error handling receipt payment:', error);
+    await interaction.reply({
+      content: '❌ Erro ao processar pagamento.',
+      flags: MessageFlags.Ephemeral
+    });
+  }
+}
+
+// Update persistent receipt when individual receipt is paid
+async function updatePersistentReceiptPaidStatus(interaction: ButtonInteraction, receiptData: any) {
+  try {
+    const channelId = interaction.channelId;
+    const playerName = receiptData.playerName;
+    
+    // File path for persistent receipt data
+    const persistentReceiptPath = path.join(process.cwd(), 'data', 'persistent-receipts', `${channelId}_${playerName.replace(/\s+/g, '_')}.json`);
+    
+    // Load existing persistent receipt
+    let persistentReceipt;
+    try {
+      const existingData = await fs.readFile(persistentReceiptPath, 'utf-8');
+      persistentReceipt = JSON.parse(existingData);
+    } catch {
+      console.log('No persistent receipt found to update paid status');
+      return;
+    }
+
+    // Update the specific service's paid status
+    const serviceIndex = persistentReceipt.services.findIndex((s: any) => s.receiptId === receiptData.receiptId);
+    if (serviceIndex >= 0) {
+      persistentReceipt.services[serviceIndex].timestamp = receiptData.paidAt;
+      persistentReceipt.services[serviceIndex].paid = true;
+    }
+    
+    persistentReceipt.lastUpdated = new Date().toISOString();
+
+    // Update the persistent receipt message (keep same structure)
+    const receiptEmbed = new EmbedBuilder()
+      .setTitle(`🧾 Recibo de ${playerName}`)
+      .setDescription(`**Total Acumulado: $${persistentReceipt.totalEarnings.toFixed(2)}**\n**Total de Serviços: ${persistentReceipt.totalServices}**`)
+      .setColor(0x4169E1)
+      .setTimestamp(new Date(persistentReceipt.lastUpdated))
+      .setFooter({ text: 'Recibo Atualizado' });
+
+    // Add recent services (last 5)
+    const recentServices = persistentReceipt.services.slice(-5);
+    let servicesText = '';
+    recentServices.forEach((service: any) => {
+      const serviceIcon = service.serviceType === 'animal' ? '🐄' : '🌾';
+      const paidIcon = service.paid ? '✅' : '⏳';
+      servicesText += `${paidIcon} ${serviceIcon} ${service.quantity} ${service.itemType} - $${service.payment.toFixed(2)}\n`;
+    });
+    
+    if (servicesText) {
+      receiptEmbed.addFields({
+        name: '📝 Últimos Serviços',
+        value: servicesText || 'Nenhum serviço encontrado',
+        inline: false
+      });
+    }
+
+    // "Pay All" button for final payment
+    const finalPayButton = new ButtonBuilder()
+      .setCustomId(`final_payment_${channelId}_${playerName.replace(/\s+/g, '_')}`)
+      .setLabel('Pagar Tudo')
+      .setStyle(ButtonStyle.Success)
+      .setEmoji('💰');
+
+    const finalPayRow = new ActionRowBuilder<ButtonBuilder>()
+      .addComponents(finalPayButton);
+
+    // Update the persistent receipt message
+    const channel = interaction.channel;
+    if (channel && 'send' in channel && persistentReceipt.messageId) {
+      try {
+        const receiptMessage = await channel.messages.fetch(persistentReceipt.messageId);
+        await receiptMessage.edit({
+          embeds: [receiptEmbed],
+          components: [finalPayRow]
+        });
+      } catch (error) {
+        console.log('Could not update persistent receipt message:', error);
+      }
+    }
+
+    // Save persistent receipt data
+    await fs.writeFile(persistentReceiptPath, JSON.stringify(persistentReceipt, null, 2));
+
+  } catch (error) {
+    console.error('Error updating persistent receipt paid status:', error);
+  }
+}
+
+// Create or update persistent receipt with running total
+async function createOrUpdatePersistentReceipt(interaction: ButtonInteraction, receiptData: any) {
+  try {
+    const channelId = interaction.channelId;
+    const playerName = receiptData.playerName;
+    
+    // File path for persistent receipt data
+    const persistentReceiptPath = path.join(process.cwd(), 'data', 'persistent-receipts', `${channelId}_${playerName.replace(/\s+/g, '_')}.json`);
+    await fs.mkdir(path.dirname(persistentReceiptPath), { recursive: true });
+
+    // Load or create persistent receipt
+    let persistentReceipt;
+    try {
+      const existingData = await fs.readFile(persistentReceiptPath, 'utf-8');
+      persistentReceipt = JSON.parse(existingData);
+    } catch {
+      persistentReceipt = {
+        playerName: playerName,
+        channelId: channelId,
+        messageId: null,
+        totalEarnings: 0,
+        totalServices: 0,
+        services: [],
+        lastUpdated: new Date().toISOString()
+      };
+    }
+
+    // Add new service to running total
+    persistentReceipt.totalEarnings += receiptData.playerPayment;
+    persistentReceipt.totalServices += 1;
+    persistentReceipt.services.push({
+      receiptId: receiptData.receiptId,
+      serviceType: receiptData.serviceType,
+      itemType: receiptData.serviceType === 'animal' ? receiptData.animalType : receiptData.plantName,
+      quantity: receiptData.quantity,
+      payment: receiptData.playerPayment,
+      timestamp: receiptData.paidAt || receiptData.approvedAt // Use paidAt if available, otherwise approvedAt
+    });
+    persistentReceipt.lastUpdated = new Date().toISOString();
+
+    // Create or update the persistent receipt message
+    const receiptEmbed = new EmbedBuilder()
+      .setTitle(`🧾 Recibo de ${playerName}`)
+      .setDescription(`**Total Acumulado: $${persistentReceipt.totalEarnings.toFixed(2)}**\n**Total de Serviços: ${persistentReceipt.totalServices}**`)
+      .setColor(0x4169E1)
+      .setTimestamp(new Date(persistentReceipt.lastUpdated))
+      .setFooter({ text: 'Recibo Atualizado' });
+
+    // Add recent services (last 5)
+    const recentServices = persistentReceipt.services.slice(-5);
+    let servicesText = '';
+    recentServices.forEach((service: any) => {
+      const serviceIcon = service.serviceType === 'animal' ? '🐄' : '🌾';
+      servicesText += `${serviceIcon} ${service.quantity} ${service.itemType} - $${service.payment.toFixed(2)}\n`;
+    });
+    
+    if (servicesText) {
+      receiptEmbed.addFields({
+        name: '📝 Últimos Serviços',
+        value: servicesText || 'Nenhum serviço encontrado',
+        inline: false
+      });
+    }
+
+    // "Pay All" button for final payment
+    const finalPayButton = new ButtonBuilder()
+      .setCustomId(`final_payment_${channelId}_${playerName.replace(/\s+/g, '_')}`)
+      .setLabel('Pagar Tudo')
+      .setStyle(ButtonStyle.Success)
+      .setEmoji('💰');
+
+    const finalPayRow = new ActionRowBuilder<ButtonBuilder>()
+      .addComponents(finalPayButton);
+
+    // Send or update the persistent receipt message
+    const channel = interaction.channel;
+    if (channel && 'send' in channel) {
+      let receiptMessage;
+      
+      if (persistentReceipt.messageId) {
+        // Try to update existing message
+        try {
+          receiptMessage = await channel.messages.fetch(persistentReceipt.messageId);
+          await receiptMessage.edit({
+            embeds: [receiptEmbed],
+            components: [finalPayRow]
+          });
+        } catch {
+          // Message not found, create new one
+          receiptMessage = await channel.send({
+            embeds: [receiptEmbed],
+            components: [finalPayRow]
+          });
+          persistentReceipt.messageId = receiptMessage.id;
+        }
+      } else {
+        // Create new message
+        receiptMessage = await channel.send({
+          embeds: [receiptEmbed],
+          components: [finalPayRow]
+        });
+        persistentReceipt.messageId = receiptMessage.id;
+      }
+    }
+
+    // Save persistent receipt data
+    await fs.writeFile(persistentReceiptPath, JSON.stringify(persistentReceipt, null, 2));
+
+  } catch (error) {
+    console.error('Error creating/updating persistent receipt:', error);
+  }
+}
+
+// Handle final payment - process total and clear channel except paid receipts
+export async function handleFinalPayment(interaction: ButtonInteraction): Promise<void> {
+  try {
+    const customIdParts = interaction.customId.split('_');
+    const channelId = customIdParts[2];
+    const playerName = customIdParts.slice(3).join('_').replace(/_/g, ' ');
+    
+    console.log(`💰 Processing final payment for ${playerName} in channel ${channelId}`);
+
+    // Load persistent receipt
+    const persistentReceiptPath = path.join(process.cwd(), 'data', 'persistent-receipts', `${channelId}_${playerName.replace(/\s+/g, '_')}.json`);
+    
+    let persistentReceipt;
+    try {
+      const receiptData = await fs.readFile(persistentReceiptPath, 'utf-8');
+      persistentReceipt = JSON.parse(receiptData);
+      console.log(`✅ Found persistent receipt for ${playerName}: ${persistentReceipt.totalServices} services, $${persistentReceipt.totalEarnings.toFixed(2)}`);
+    } catch (error: any) {
+      console.error(`❌ No persistent receipt found at: ${persistentReceiptPath}`, error.message);
+      await interaction.reply({
+        content: `❌ Nenhum recibo encontrado para ${playerName} neste canal.`,
+        flags: MessageFlags.Ephemeral
+      });
+      return;
+    }
+
+    // Create final paid receipt
+    const finalReceiptEmbed = new EmbedBuilder()
+      .setTitle(`💰 PAGAMENTO PROCESSADO`)
+      .setDescription(`**Trabalhador:** ${playerName}\n**Total Pago:** $${persistentReceipt.totalEarnings.toFixed(2)}\n**Serviços Realizados:** ${persistentReceipt.totalServices}`)
+      .setColor(0x00FF00)
+      .setTimestamp()
+      .setFooter({ text: `Pagamento Final - ID: ${Date.now()}` });
+
+    // Add services breakdown
+    let servicesBreakdown = '';
+    persistentReceipt.services.forEach((service: any) => {
+      const serviceIcon = service.serviceType === 'animal' ? '🐄' : '🌾';
+      servicesBreakdown += `${serviceIcon} ${service.quantity} ${service.itemType} - $${service.payment.toFixed(2)}\n`;
+    });
+    
+    finalReceiptEmbed.addFields({
+      name: '📝 Serviços Pagos',
+      value: servicesBreakdown || 'Nenhum serviço',
+      inline: false
+    });
+
+    // Clear channel of all messages except existing paid receipts
+    const channel = interaction.channel;
+    if (channel && 'send' in channel) {
+      try {
+        // Fetch recent messages
+        const messages = await channel.messages.fetch({ limit: 100 });
+        const messagesToDelete = [];
+        
+        for (const [, message] of messages) {
+          // Don't delete if it's a paid receipt (has "PAGAMENTO PROCESSADO" in title)
+          const isPaidReceipt = message.embeds.some(embed => 
+            embed.title && embed.title.includes('PAGAMENTO PROCESSADO')
+          );
+          
+          // Don't delete the main registration embed
+          const isRegistrationEmbed = message.embeds.some(embed =>
+            embed.title && embed.title.includes('Registro de Serviços da Fazenda')
+          );
+          
+          if (!isPaidReceipt && !isRegistrationEmbed && message.id !== interaction.message?.id) {
+            messagesToDelete.push(message);
+          }
+        }
+        
+        // Delete messages in batches
+        for (const message of messagesToDelete) {
+          try {
+            await message.delete();
+          } catch (error) {
+            console.log(`Could not delete message ${message.id}:`, error);
+          }
+        }
+        
+        console.log(`🧼 Cleaned ${messagesToDelete.length} messages from channel ${channelId}`);
+      } catch (error) {
+        console.error('Error cleaning channel messages:', error);
+      }
+
+      // Post final receipt
+      await channel.send({
+        embeds: [finalReceiptEmbed]
+      });
+    }
+
+    // Update the persistent receipt message to final status
+    await interaction.update({
+      embeds: [finalReceiptEmbed],
+      components: []
+    });
+
+    // Archive the persistent receipt
+    const archivePath = path.join(process.cwd(), 'data', 'paid-receipts', `${Date.now()}_${playerName.replace(/\s+/g, '_')}.json`);
+    await fs.mkdir(path.dirname(archivePath), { recursive: true });
+    
+    const archivedReceipt = {
+      ...persistentReceipt,
+      finalizedAt: new Date().toISOString(),
+      finalizedBy: interaction.user.username
+    };
+    
+    await fs.writeFile(archivePath, JSON.stringify(archivedReceipt, null, 2));
+    
+    // Remove persistent receipt file
+    try {
+      await fs.unlink(persistentReceiptPath);
+    } catch {
+      // File might not exist
+    }
+
+    console.log(`💰 Final payment processed for ${playerName}: $${persistentReceipt.totalEarnings.toFixed(2)}`);
+
+  } catch (error) {
+    console.error('Error handling final payment:', error);
+    await interaction.reply({
+      content: '❌ Erro ao processar pagamento final.',
+      flags: MessageFlags.Ephemeral
+    });
   }
 }
 
