@@ -102,7 +102,21 @@ When you see "/update" command from the user, perform the following actions:
 3. Update changelog.md if there are version-worthy changes
 4. Update CLAUDE.md if there are architectural or command changes
 
-## Recent Critical Fixes (v0.008)
+## Recent Critical Fixes (v0.010) **[RESTORE POINT]**
+
+### Complete Discord Farm Service UI/UX Overhaul - ALL WORKING (v0.010)
+- **Issue**: Multiple critical UI/UX issues in farm service system
+- **Symptoms**: Dropdowns not dismissing, receipts not creating on acceptance, Pay All errors, modal interaction failures, receipt ordering problems, duplicate payment messages
+- **Fixes**: 
+  - **Message Dismissal**: All selection dropdowns properly dismiss with confirmation messages
+  - **Receipt Flow**: Persistent receipts created immediately on "Accept Service" click
+  - **Pay All**: Fixed player name parsing and error handling for multi-word names  
+  - **Modal Errors**: Fixed InteractionAlreadyReplied by reordering interaction flow
+  - **Receipt Ordering**: Updated receipts now move to bottom below new services
+  - **Duplicate Payments**: Removed redundant message creation in final payment
+- **Result**: Complete farm service workflow working perfectly, marked as restore point
+
+### Historical Message Flooding Fix (v0.008)
 
 ### Historical Message Flooding Fix
 - **Issue**: Bot was sending 100+ historical Discord messages to webhook every time it restarted
