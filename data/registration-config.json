@@ -1,0 +1,217 @@
+{
+  "formId": "registration_form",
+  "functions": [
+    {
+      "id": "func_1755521046497",
+      "displayName": "Estagiario Fazenda BW",
+      "discordRoleId": "1364747625651245087",
+      "discordRoleName": "🌾| Estagiario Fazenda BW I",
+      "description": "Estagiario Fazenda BW",
+      "requiresApproval": false,
+      "order": 0,
+      "active": true,
+      "categoryId": "1365579138974355476",
+      "categoryName": "💰 ┋ PAGAMENTOS RANCHO",
+      "channelEmojiPrefix": "🌾・",
+      "channelPermissions": {
+        "channelTopic": "",
+        "allowedRoles": [
+          "1389443492312256584",
+          "1385345704255426670"
+        ]
+      }
+    },
+    {
+      "id": "func_1755522808187",
+      "displayName": "Estagiario Fazenda BW II",
+      "discordRoleId": "1404938182293979196",
+      "discordRoleName": "🌱| Estagiario Fazenda BW II",
+      "description": "Estagiario Fazenda BW II",
+      "requiresApproval": true,
+      "order": 1,
+      "active": true,
+      "channelEmojiPrefix": "🌱・",
+      "channelPermissions": {
+        "channelTopic": "",
+        "allowedRoles": [
+          "1389443492312256584",
+          "1385345704255426670"
+        ]
+      }
+    },
+    {
+      "id": "func_1755523176717",
+      "displayName": "Estagiario Fazenda BW III",
+      "discordRoleId": "1404941678120538142",
+      "discordRoleName": "🌿| Estagiario Fazenda BW III",
+      "description": "Estagiario Fazenda BW III",
+      "requiresApproval": false,
+      "order": 2,
+      "active": true,
+      "categoryId": "1404003816285802576",
+      "categoryName": "💰 ┋ PAGAMENTOS RANCHO BWT III",
+      "channelEmojiPrefix": "🌿・",
+      "channelPermissions": {
+        "allowedRoles": [
+          "1404941047347286196",
+          "1404941846639153244"
+        ],
+        "channelTopic": ""
+      }
+    },
+    {
+      "id": "func_1755523224551",
+      "displayName": "Familia",
+      "discordRoleId": "1365552298146660423",
+      "discordRoleName": "❤️ | Família",
+      "description": "Membro da Familia",
+      "requiresApproval": true,
+      "order": 3,
+      "active": true,
+      "channelEmojiPrefix": "❤️・",
+      "channelPermissions": {
+        "channelTopic": "",
+        "allowedRoles": [
+          "1365552298146660423"
+        ]
+      }
+    },
+    {
+      "id": "func_1755523423404",
+      "displayName": "Estabulo",
+      "discordRoleId": "1386824246021460130",
+      "discordRoleName": "🐎| Estabulo",
+      "description": "",
+      "requiresApproval": false,
+      "order": 4,
+      "active": true,
+      "categoryId": "1398472365754810559",
+      "categoryName": "🐴 ┋ HARAS E CRUZAS",
+      "channelEmojiPrefix": "┝📂・",
+      "channelPermissions": {
+        "allowedRoles": [
+          "1403410488532009152"
+        ],
+        "channelTopic": ""
+      }
+    },
+    {
+      "id": "func_1755523479088",
+      "displayName": "Hidrovia CALAMIDADE",
+      "discordRoleId": "1403935014449582163",
+      "discordRoleName": "⛵┋ HIDROVIA CALAMIDADE",
+      "description": "",
+      "requiresApproval": false,
+      "order": 6,
+      "active": true,
+      "categoryId": "1407113100041257000",
+      "categoryName": "💰 ┋ PAGAMENTOS HIDROVIA_CALAMIDADE",
+      "channelEmojiPrefix": "┝⚓・",
+      "channelPermissions": {
+        "allowedRoles": [
+          "1403934921462120549"
+        ],
+        "channelTopic": ""
+      }
+    },
+    {
+      "id": "func_1755523501963",
+      "displayName": "Tabacaria",
+      "discordRoleId": "1391807775427792957",
+      "discordRoleName": "🚬| Tabacaria",
+      "description": "",
+      "requiresApproval": true,
+      "order": 7,
+      "active": true,
+      "categoryId": "1391807775427792957",
+      "categoryName": "🚬| Tabacaria Category",
+      "channelEmojiPrefix": "🚬・",
+      "channelPermissions": {
+        "channelTopic": "",
+        "allowedRoles": [
+          "1391807775427792957"
+        ]
+      }
+    },
+    {
+      "id": "func_1755525572459",
+      "displayName": "Hidrovia BRAITHWAITE",
+      "discordRoleId": "1401989196066848819",
+      "discordRoleName": "⛴️​| Hidrovia BRAITHWAITE",
+      "description": "",
+      "requiresApproval": false,
+      "order": 7,
+      "active": true,
+      "categoryId": "1401671281077784700",
+      "categoryName": "🛥️┋ HIDROVIA BRAITHWAITE",
+      "channelEmojiPrefix": "┝📂・",
+      "channelPermissions": {
+        "allowedRoles": [
+          "1403409669191503913"
+        ],
+        "channelTopic": ""
+      }
+    }
+  ],
+  "settings": {
+    "oneTimeOnly": true,
+    "requiresVerification": false,
+    "welcomeMessage": "Bem-vindo à Familia Black Golden! Seu registro foi processado.",
+    "embedColor": "#FF0000",
+    "channelId": "1406723921687871549",
+    "serverIP": "",
+    "serverPort": ""
+  },
+  "command": {
+    "name": "register-setup",
+    "description": "Deploy the registration form to a channel",
+    "permissions": "Administrator"
+  },
+  "formDisplay": {
+    "title": "🎮 Registro Familia Black Golden",
+    "description": "**Bem-vindo a Familia Black Golden!**\n\nPara ter acesso ao servidor, você precisa completar o processo de registro.\n\n**Informações Necessárias:**\n• Seu nome completo no condado\n• Seu Pombo\n• Sua função/trabalho na Familia\n• Quem te convidou para a Familia\n\nClique no botão **Registrar** abaixo para começar.",
+    "footerText": "Familia Black Golden • Sistema de Registro",
+    "embedColor": "#00b3ff",
+    "button": {
+      "text": "Registrar",
+      "emoji": "🧾",
+      "style": "Primary"
+    }
+  },
+  "steps": {
+    "step1": {
+      "modalTitle": "Familia Black Golden - Passo 1/3",
+      "nameLabel": "Nome completo no Condado",
+      "namePlaceholder": "Digite seu nome completo no condado",
+      "pomboLabel": "Pombo",
+      "pomboPlaceholder": "Digite seu pombo"
+    },
+    "step2": {
+      "embedTitle": "Passo 2/3 - Sua função na Familia",
+      "embedDescription": "Selecione sua função/trabalho na Familia:",
+      "dropdownPlaceholder": "Selecione sua função/trabalho na Familia"
+    },
+    "step3": {
+      "embedTitle": "Passo 3/3 - Quem te convidou?",
+      "embedDescription": "Selecione quem te convidou para a Familia Black Golden:\n\n✨ **Digite para buscar** - Você pode digitar o nome da pessoa para encontrá-la rapidamente!",
+      "dropdownPlaceholder": "Selecione quem te convidou para a Familia"
+    }
+  },
+  "postRegistration": {
+    "nicknameFormat": "{ingameName} | {pombo}",
+    "sendDM": false,
+    "dmTitle": "Bem-vindo à Familia BlackGolden!",
+    "dmMessage": "Olá {ingameName},\n\nSeu registro como **{functionName}** foi aprovado!\n\nAgora você tem acesso aos canais específicos da sua função.\n\nAproveite seu tempo na Familia Black Golden!",
+    "assignRoles": true,
+    "welcomeChannelMessage": true,
+    "createChannel": true,
+    "channelNameFormat": "{ingameName}"
+  },
+  "messages": {
+    "alreadyRegistered": "❌ Você já está registrado!",
+    "sessionExpired": "❌ Registration session expired. Please start again.",
+    "registrationSuccess": "✅ Registro Realizado com Sucesso!",
+    "errorGeneric": "❌ An error occurred. Please try again.",
+    "permissionDenied": "❌ This is not your registration form."
+  }
+}

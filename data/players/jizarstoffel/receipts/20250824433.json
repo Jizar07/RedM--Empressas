@@ -1,0 +1,16 @@
+{
+  "receiptId": "20250824433",
+  "timestamp": "2025-08-24T01:28:57.845Z",
+  "playerName": "jizarstoffel",
+  "serviceType": "planta",
+  "quantity": 200,
+  "plantName": "Milho",
+  "farmCost": 0,
+  "farmProfit": 0,
+  "playerPayment": 30,
+  "status": "VERIFIED",
+  "ocrDetectedQuantity": 0,
+  "quantityMatch": false,
+  "requiresAdminApproval": false,
+  "screenshotPath": "C:\\Users\\jizar\\OneDrive\\Documents\\DiscordBot\\uploads\\screenshots\\2025-08-24T01-28-55-934Z_jizarstoffel_test2.png"
+}

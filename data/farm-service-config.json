@@ -1,0 +1,59 @@
+{
+  "enabled": true,
+  "farmCost": 90,
+  "farmProfitRequired": 10,
+  "optimalAnimalIncome": 160,
+  "plantPrices": {
+    "basic": 0.15,
+    "other": 0.2
+  },
+  "basicPlants": [
+    "Milho",
+    "Trigo",
+    "Junco"
+  ],
+  "animalTypes": [
+    "Bovino",
+    "Avino",
+    "Ovino",
+    "Cabrino",
+    "Suino",
+    "Equino"
+  ],
+  "discordSettings": {
+    "enabled": true,
+    "channelId": "1409005190920798268",
+    "embedColor": "#00FF00",
+    "commandName": "registro",
+    "commandDescription": "registro de pagamento"
+  },
+  "ocrSettings": {
+    "enabled": true,
+    "language": "por",
+    "preprocessImages": true
+  },
+  "fileSettings": {
+    "maxFileSize": 5,
+    "allowedFormats": [
+      "jpeg",
+      "jpg",
+      "png",
+      "gif"
+    ],
+    "retentionDays": 30
+  },
+  "rolePermissions": {
+    "acceptRoles": [
+      "🌾 | Gerente Fazenda BW I",
+      "🌾| Líder Fazenda BW I"
+    ],
+    "editRoles": [
+      "🌾 | Gerente Fazenda BW I",
+      "🌾| Líder Fazenda BW I"
+    ],
+    "rejectRoles": [
+      "🌾| Líder Fazenda BW I",
+      "🌾 | Gerente Fazenda BW I"
+    ]
+  }
+}

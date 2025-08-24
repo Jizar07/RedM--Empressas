@@ -1,0 +1,18 @@
+{
+  "mappings": [
+    {
+      "id": "1755648271146",
+      "channelId": "1404583987778949130",
+      "systemEndpoint": "http://localhost:8086/api/bot-data/channel-logs",
+      "enabled": true,
+      "messageTypes": [
+        "ALL",
+        "FARM",
+        "REMOVER ITEM",
+        "INSERIR ITEM"
+      ],
+      "description": "Fazenda_86 - Fazenda BWI"
+    }
+  ],
+  "lastUpdated": "2025-08-20T23:14:19.372Z"
+}
