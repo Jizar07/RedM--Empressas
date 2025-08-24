@@ -1,6 +1,7 @@
-# RedM Discord Bot
+# RedM Discord Bot / RedM--Empressas
 
 A comprehensive Discord bot for managing RedM (Red Dead Redemption Online RP) servers with a web dashboard.
+Gerenciador de empressa do RedM
 
 ## Features
 
