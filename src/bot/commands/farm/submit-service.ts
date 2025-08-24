@@ -1412,35 +1412,27 @@ async function createOrUpdatePersistentReceipt(interaction: ButtonInteraction, r
     const finalPayRow = new ActionRowBuilder<ButtonBuilder>()
       .addComponents(finalPayButton);
 
-    // Send or update the persistent receipt message
+    // Send or update the persistent receipt message (always create new message at bottom)
     const channel = interaction.channel;
     if (channel && 'send' in channel) {
       let receiptMessage;
       
       if (persistentReceipt.messageId) {
-        // Try to update existing message
+        // Delete old message to move receipt to bottom
         try {
-          receiptMessage = await channel.messages.fetch(persistentReceipt.messageId);
-          await receiptMessage.edit({
-            embeds: [receiptEmbed],
-            components: [finalPayRow]
-          });
+          const oldMessage = await channel.messages.fetch(persistentReceipt.messageId);
+          await oldMessage.delete();
         } catch {
-          // Message not found, create new one
-          receiptMessage = await channel.send({
-            embeds: [receiptEmbed],
-            components: [finalPayRow]
-          });
-          persistentReceipt.messageId = receiptMessage.id;
+          // Old message not found, that's fine
         }
-      } else {
-        // Create new message
-        receiptMessage = await channel.send({
-          embeds: [receiptEmbed],
-          components: [finalPayRow]
-        });
-        persistentReceipt.messageId = receiptMessage.id;
       }
+      
+      // Always create new message at bottom
+      receiptMessage = await channel.send({
+        embeds: [receiptEmbed],
+        components: [finalPayRow]
+      });
+      persistentReceipt.messageId = receiptMessage.id;
     }
 
     // Save persistent receipt data
@@ -1536,13 +1528,9 @@ export async function handleFinalPayment(interaction: ButtonInteraction): Promis
         console.error('Error cleaning channel messages:', error);
       }
 
-      // Post final receipt
-      await channel.send({
-        embeds: [finalReceiptEmbed]
-      });
     }
 
-    // Update the persistent receipt message to final status
+    // Update the persistent receipt message to final status (only update, don't send new)
     await interaction.update({
       embeds: [finalReceiptEmbed],
       components: []
