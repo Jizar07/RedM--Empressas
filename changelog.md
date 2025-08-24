@@ -5,6 +5,78 @@ This file is synchronized with: https://github.com/Jizar07/RedM--Empressas
 
 ## Version History
 
+### [0.012] - 2025-08-24
+- **Fixed ServerMonitor Real-Time Data Display - CORS Issue Resolved**: Completely resolved critical issue preventing ServerMonitor from displaying real RedM server data
+- **CORS Proxy Solution**: Created three Next.js API routes to bypass browser CORS restrictions:
+  - `/api/server-proxy/info` - Server information and resource list (working)
+  - `/api/server-proxy/players` - Complete player list with ping data (316+ players)
+  - `/api/server-proxy/dynamic` - Real-time player count and server status (316/2048 online)
+- **Real Data Display Verified**: ServerMonitor now shows actual live RedM server data instead of fake 0/64 fallback:
+  - Server name: "ATLANTA SEASON 2 - 3 ANOS ONLINE"
+  - Player count: 316+ out of 2048 maximum slots
+  - Complete player list with names and ping values
+  - Real-time updates every 30 seconds without page refresh
+- **Enhanced User Experience**: Added spinning refresh button with loading states and comprehensive error handling
+- **Configuration Fix**: Removed conflicting Next.js proxy configuration that was interfering with new API routes
+- **Worker Functionality Removal**: Completed removal of all worker linking functionality as requested by user
+- **Independent Operation**: ServerMonitor now fully standalone without backend dependencies
+- Technical implementation:
+  - Created three API proxy routes using Next.js 14 App Router with server-side fetching
+  - Updated ServerMonitor component to use proxy routes instead of direct HTTPS calls
+  - Fixed next.config.js by removing blanket `/api/*` proxy to port 3050
+  - Enhanced fetchServerData() with isRefreshing state and visual feedback
+  - Removed all worker-related interfaces, state variables, and UI components
+  - Added comprehensive error handling for server offline states
+- Root cause analysis:
+  - Browser CORS policies prevented direct calls from localhost:3051 to RedM server
+  - Next.js proxy configuration was intercepting API routes before they could execute
+  - Component was falling back to mock data when real API calls failed silently
+  - User frustration: "why does it say 0/64 players online when reality is 313/2048"
+- Files created:
+  - /app/api/server-proxy/info/route.ts - Server info proxy with HTTP endpoint
+  - /app/api/server-proxy/players/route.ts - Players data proxy with HTTP endpoint
+  - /app/api/server-proxy/dynamic/route.ts - Dynamic server data proxy with HTTP endpoint
+- Files modified:
+  - /components/ServerMonitor.tsx - Updated API calls, removed worker functionality, enhanced UX
+  - /next.config.js - Removed conflicting proxy configuration blocking API routes
+- Testing verified:
+  - API routes return real server data: 316+ players online, server name, complete player list
+  - ServerMonitor displays actual live data from RedM server at 131.196.197.140:30120
+  - Real-time updates work without page refresh using 30-second polling
+  - Enhanced refresh button shows loading states and prevents duplicate requests
+- Status: 🟢 ServerMonitor fully functional with real-time RedM server data display
+- **CRITICAL ISSUE RESOLVED**: User can now see actual 316+ players online instead of fake 0/64 data
+
+### [0.011] - 2025-08-24
+- **Added Basic Moderation Commands and Frontend Management**: Implemented comprehensive moderation system foundation
+- **Created /clear Command**: Bulk message deletion with filters for user and content (1-100 messages), requires ManageMessages permission
+- **Built ModerationSettings Component**: Complete frontend interface for managing bot moderation features with three tabs
+- **Implemented Moderation API**: Backend endpoints at `/api/moderation/config` for loading/saving moderation settings
+- **Designed Three-Tab Interface**:
+  - Clear Command Settings: Enable/disable, default limit, require reason, log channel configuration
+  - Auto Moderation Settings: Language filter, spam protection, caps limit, max mentions/emojis, custom word filtering
+  - Auto Reply Settings: Keyword-based auto responses with exact/partial match support
+- **Integrated into Admin Panel**: Added Moderation Settings section with Gavel icon in admin dashboard
+- **File-Based Configuration**: Persistent storage using `/data/moderation-config.json`
+- **TypeScript Compliance**: Fixed all type errors and build issues for clean compilation
+- Technical implementation:
+  - Created `/src/bot/commands/moderation/clear.ts` with Discord.js v14 slash command structure
+  - Built `/frontend/components/ModerationSettings.tsx` with React hooks and tabbed interface
+  - Added `/src/api/routes/moderation.ts` for configuration management
+  - Updated frontend routing to include moderation-settings tab
+  - Fixed TypeScript errors (unused parameters, missing types, return paths)
+- Files created/modified:
+  - src/bot/commands/moderation/clear.ts - Clear command implementation
+  - frontend/components/ModerationSettings.tsx - Complete moderation UI
+  - src/api/routes/moderation.ts - Configuration API endpoints
+  - frontend/app/page.tsx - Admin panel integration
+  - src/api/server.ts - API route registration
+- Features ready for future implementation:
+  - Auto-moderation logic framework (structure ready, implementation pending)
+  - Auto-reply system framework (structure ready, implementation pending)
+  - Custom word filtering system (UI complete, backend logic pending)
+- Status: 🟢 Clear command functional, moderation framework established
+
 ### [0.010] - 2025-08-24 **[RESTORE POINT]**
 - **🎉 COMPLETE DISCORD FARM SERVICE UI/UX OVERHAUL - ALL WORKING**: Resolved all major user interface and workflow issues
 - **Fixed Message Dismissal System**: All selection dropdowns (service type, animal type, plant type) now properly dismiss after user selection with clear confirmation messages

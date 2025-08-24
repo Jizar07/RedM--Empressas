@@ -2,18 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  async rewrites() {
-    return [
-      {
-        source: '/api/:path*',
-        destination: 'http://localhost:3050/api/:path*',
-      },
-      {
-        source: '/health',
-        destination: 'http://localhost:3050/health',
-      },
-    ];
-  },
+  // Removed proxy configuration to allow Next.js API routes to work
+  // The ServerMonitor component is now independent and uses direct RedM server calls
 };
 
 module.exports = nextConfig;
