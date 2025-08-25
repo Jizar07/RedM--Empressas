@@ -87,6 +87,29 @@ export default function FarmServiceSettings() {
   const [availableRoles, setAvailableRoles] = useState<{id: string, name: string, color: string}[]>([]);
   const [rolesLoading, setRolesLoading] = useState(false);
 
+  // Helper function to discover backend URL
+  const discoverBackendUrl = async (): Promise<string | null> => {
+    const possiblePorts = [3000, 3050, 8080, 8086];
+    
+    for (const port of possiblePorts) {
+      try {
+        const testResponse = await fetch(`http://localhost:${port}/api/internal/server-status`, {
+          method: 'GET',
+          signal: AbortSignal.timeout(3000)
+        });
+        
+        if (testResponse.ok) {
+          console.log(`✅ Found working backend on port ${port}`);
+          return `http://localhost:${port}`;
+        }
+      } catch (err) {
+        console.log(`❌ Port ${port} not responding`);
+      }
+    }
+    
+    return null;
+  };
+
   // Load current configuration
   useEffect(() => {
     loadConfig();
@@ -96,13 +119,24 @@ export default function FarmServiceSettings() {
   const loadConfig = async () => {
     try {
       setLoading(true);
-      const response = await fetch('/api/farm-service/config');
+      setError(null);
+      
+      const backendUrl = await discoverBackendUrl();
+      if (!backendUrl) {
+        setError('Discord bot backend not running. Please start the bot with "npm run dev"');
+        return;
+      }
+      
+      const response = await fetch(`${backendUrl}/api/farm-service/config`);
       if (response.ok) {
         const data = await response.json();
         setConfig({ ...defaultConfig, ...data });
+      } else {
+        setError('Failed to load configuration');
       }
-    } catch (err) {
+    } catch (err: any) {
       console.error('Error loading config:', err);
+      setError(`Configuration error: ${err.message}`);
     } finally {
       setLoading(false);
     }
@@ -113,36 +147,23 @@ export default function FarmServiceSettings() {
       setRolesLoading(true);
       setError(null);
       
-      // Try different possible backend ports
-      const possiblePorts = [3000, 3050, 8080, 8086];
-      let guildId = '1205749564775211049'; // Fallback guild ID
-      let backendUrl = null;
-      
-      // Find working backend
-      for (const port of possiblePorts) {
-        try {
-          console.log(`🔍 Trying backend on port ${port}...`);
-          const testResponse = await fetch(`http://localhost:${port}/api/internal/server-status`, {
-            method: 'GET',
-            signal: AbortSignal.timeout(3000) // 3 second timeout
-          });
-          
-          if (testResponse.ok) {
-            const configData = await testResponse.json();
-            console.log(`✅ Found working backend on port ${port}:`, configData);
-            backendUrl = `http://localhost:${port}`;
-            guildId = configData.guildId || guildId;
-            break;
-          }
-        } catch (err) {
-          console.log(`❌ Port ${port} not responding:`, err.message);
-        }
-      }
-      
+      const backendUrl = await discoverBackendUrl();
       if (!backendUrl) {
-        console.error('❌ No working backend found on any port');
+        console.error('❌ No working backend found');
         setError('Discord bot backend not running. Please start the bot with "npm run dev"');
         return;
+      }
+      
+      // Get guild ID from server status
+      let guildId = '1205749564775211049'; // Fallback guild ID
+      try {
+        const statusResponse = await fetch(`${backendUrl}/api/internal/server-status`);
+        if (statusResponse.ok) {
+          const configData = await statusResponse.json();
+          guildId = configData.guildId || guildId;
+        }
+      } catch (err) {
+        console.log('⚠️ Could not get guild ID from server, using fallback');
       }
       
       console.log('🎯 Using guild ID:', guildId);
@@ -190,7 +211,15 @@ export default function FarmServiceSettings() {
     try {
       setLoading(true);
       setError(null);
-      const response = await fetch('/api/farm-service/config', {
+      
+      const backendUrl = await discoverBackendUrl();
+      if (!backendUrl) {
+        setError('Discord bot backend not running. Please start the bot with "npm run dev"');
+        return;
+      }
+      
+      console.log('💾 Saving configuration to:', `${backendUrl}/api/farm-service/config`);
+      const response = await fetch(`${backendUrl}/api/farm-service/config`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -199,14 +228,17 @@ export default function FarmServiceSettings() {
       });
 
       if (response.ok) {
+        console.log('✅ Configuration saved successfully');
         setSuccess(true);
         setTimeout(() => setSuccess(false), 3000);
       } else {
-        const data = await response.json();
-        setError(data.error || 'Erro ao salvar configurações');
+        const data = await response.json().catch(() => ({}));
+        console.error('❌ Failed to save configuration:', response.status, data);
+        setError(data.error || `Save failed: ${response.statusText}`);
       }
-    } catch (err) {
-      setError('Erro de conexão');
+    } catch (err: any) {
+      console.error('❌ Connection error while saving:', err);
+      setError(`Connection error: ${err.message}`);
     } finally {
       setLoading(false);
     }
