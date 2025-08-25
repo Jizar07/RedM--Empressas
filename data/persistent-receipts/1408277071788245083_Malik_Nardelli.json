@@ -1,0 +1,26 @@
+{
+  "playerName": "Malik Nardelli",
+  "channelId": "1408277071788245083",
+  "messageId": "1409566540344594563",
+  "totalEarnings": 120,
+  "totalServices": 2,
+  "services": [
+    {
+      "receiptId": "20250825504",
+      "serviceType": "animal",
+      "itemType": "Ovino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T14:51:39.378Z"
+    },
+    {
+      "receiptId": "20250825276",
+      "serviceType": "animal",
+      "itemType": "Avino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T15:54:11.054Z"
+    }
+  ],
+  "lastUpdated": "2025-08-25T15:54:11.056Z"
+}

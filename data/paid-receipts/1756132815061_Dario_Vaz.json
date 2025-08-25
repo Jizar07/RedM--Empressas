@@ -1,0 +1,28 @@
+{
+  "playerName": "Dario Vaz",
+  "channelId": "1409535251805638670",
+  "messageId": "1409547680346276010",
+  "totalEarnings": 84,
+  "totalServices": 2,
+  "services": [
+    {
+      "receiptId": "20250825539",
+      "serviceType": "animal",
+      "itemType": "Equino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T14:39:07.343Z"
+    },
+    {
+      "receiptId": "20250825968",
+      "serviceType": "planta",
+      "itemType": "Junco",
+      "quantity": 160,
+      "payment": 24,
+      "timestamp": "2025-08-25T14:39:14.729Z"
+    }
+  ],
+  "lastUpdated": "2025-08-25T14:39:14.731Z",
+  "finalizedAt": "2025-08-25T14:40:15.061Z",
+  "finalizedBy": "jizarstoffel"
+}

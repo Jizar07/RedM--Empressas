@@ -1,0 +1,14 @@
+{
+  "receiptId": "20250825002",
+  "timestamp": "2025-08-25T15:46:12.805Z",
+  "playerName": "Dario Vaz",
+  "serviceType": "animal",
+  "quantity": 1,
+  "animalType": "Bovino",
+  "playerPayment": 60,
+  "status": "APPROVED",
+  "screenshotPath": "C:\\Users\\jizar\\OneDrive\\Documents\\DiscordBot\\uploads\\temp\\temp_1756136772047_image.png",
+  "approved": true,
+  "approvedBy": "jizarstoffel",
+  "approvedAt": "2025-08-25T15:54:31.012Z"
+}

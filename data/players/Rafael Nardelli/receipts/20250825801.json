@@ -1,0 +1,14 @@
+{
+  "receiptId": "20250825801",
+  "timestamp": "2025-08-25T15:48:44.094Z",
+  "playerName": "Rafael Nardelli",
+  "serviceType": "animal",
+  "quantity": 1,
+  "animalType": "Equino",
+  "playerPayment": 60,
+  "status": "APPROVED",
+  "screenshotPath": "C:\\Users\\jizar\\OneDrive\\Documents\\DiscordBot\\uploads\\temp\\temp_1756136923416_image.png",
+  "approved": true,
+  "approvedBy": "jizarstoffel",
+  "approvedAt": "2025-08-25T15:54:16.133Z"
+}

@@ -1,9 +1,9 @@
 {
   "playerName": "Rafael Nardelli",
   "channelId": "1408277426190024796",
-  "messageId": "1409543179442720890",
-  "totalEarnings": 570,
-  "totalServices": 9,
+  "messageId": "1409566577657122857",
+  "totalEarnings": 765,
+  "totalServices": 12,
   "services": [
     {
       "receiptId": "20250824632",
@@ -83,7 +83,31 @@
       "quantity": 500,
       "payment": 75,
       "timestamp": "2025-08-25T14:21:21.851Z"
+    },
+    {
+      "receiptId": "20250825397",
+      "serviceType": "animal",
+      "itemType": "Bovino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T14:51:44.451Z"
+    },
+    {
+      "receiptId": "20250825801",
+      "serviceType": "animal",
+      "itemType": "Equino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T15:54:16.133Z"
+    },
+    {
+      "receiptId": "20250825359",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-25T15:54:20.252Z"
     }
   ],
-  "lastUpdated": "2025-08-25T14:21:21.852Z"
+  "lastUpdated": "2025-08-25T15:54:20.253Z"
 }

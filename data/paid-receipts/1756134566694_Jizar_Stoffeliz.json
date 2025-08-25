@@ -1,0 +1,20 @@
+{
+  "playerName": "Jizar Stoffeliz",
+  "channelId": "1409519997977628814",
+  "messageId": "1409550880922931210",
+  "totalEarnings": 60,
+  "totalServices": 1,
+  "services": [
+    {
+      "receiptId": "20250825184",
+      "serviceType": "animal",
+      "itemType": "Avino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T14:51:58.004Z"
+    }
+  ],
+  "lastUpdated": "2025-08-25T14:51:58.005Z",
+  "finalizedAt": "2025-08-25T15:09:26.695Z",
+  "finalizedBy": "jizarstoffel"
+}

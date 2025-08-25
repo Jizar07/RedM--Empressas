@@ -15,6 +15,7 @@ import {
   handleFinalPayment
 } from '../commands/farm/submit-service';
 
+
 export default {
   name: Events.InteractionCreate,
   async execute(interaction: Interaction, client: BotClient): Promise<void> {
@@ -44,6 +45,22 @@ export default {
         await handleFinalPayment(interaction);
         return;
       }
+      
+      // Handle orders system buttons
+      if (interaction.customId === 'order_start' || 
+          interaction.customId.startsWith('order_accept_') ||
+          interaction.customId.startsWith('order_reject_')) {
+        // Dynamically import and execute the orders handler
+        try {
+          const ordersModule = await import('./ordersInteraction.handler');
+          if (ordersModule.default && ordersModule.default.execute) {
+            await ordersModule.default.execute(interaction);
+          }
+        } catch (error) {
+          console.error('Error handling order interaction:', error);
+        }
+        return;
+      }
     }
 
     // Handle farm service dropdown selections
@@ -60,6 +77,20 @@ export default {
         await handlePlantTypeSelection(interaction);
         return;
       }
+      
+      // Handle orders system select menus
+      if (interaction.customId.startsWith('order_firm_') ||
+          interaction.customId.startsWith('order_supplier_')) {
+        try {
+          const ordersModule = await import('./ordersInteraction.handler');
+          if (ordersModule.default && ordersModule.default.execute) {
+            await ordersModule.default.execute(interaction);
+          }
+        } catch (error) {
+          console.error('Error handling order interaction:', error);
+        }
+        return;
+      }
     }
 
     // Handle farm service modal submissions
@@ -70,6 +101,19 @@ export default {
       }
       if (interaction.customId.startsWith('receipt_edit_quantity_')) {
         await handleReceiptEditQuantity(interaction);
+        return;
+      }
+      
+      // Handle orders system modals
+      if (interaction.customId.startsWith('order_details_modal_')) {
+        try {
+          const ordersModule = await import('./ordersInteraction.handler');
+          if (ordersModule.default && ordersModule.default.execute) {
+            await ordersModule.default.execute(interaction);
+          }
+        } catch (error) {
+          console.error('Error handling order interaction:', error);
+        }
         return;
       }
     }

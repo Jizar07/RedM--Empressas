@@ -1,0 +1,18 @@
+{
+  "playerName": "Dario Vaz",
+  "channelId": "1409535251805638670",
+  "messageId": "1409566621458235453",
+  "totalEarnings": 60,
+  "totalServices": 1,
+  "services": [
+    {
+      "receiptId": "20250825002",
+      "serviceType": "animal",
+      "itemType": "Bovino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T15:54:31.012Z"
+    }
+  ],
+  "lastUpdated": "2025-08-25T15:54:31.013Z"
+}
