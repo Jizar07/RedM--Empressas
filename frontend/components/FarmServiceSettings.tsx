@@ -113,18 +113,24 @@ export default function FarmServiceSettings() {
       setRolesLoading(true);
       setError(null);
       
-      // Get guild ID from backend config or environment
-      const configResponse = await fetch('/api/internal/server-status');
+      // Get guild ID from backend config or environment  
+      console.log('🔍 Fetching server status to get guild ID...');
+      const configResponse = await fetch('http://localhost:3050/api/internal/server-status');
       let guildId = '1205749564775211049'; // Fallback guild ID
       
       if (configResponse.ok) {
         const configData = await configResponse.json();
+        console.log('📋 Server status response:', configData);
         guildId = configData.guildId || guildId;
+        console.log('🎯 Using guild ID:', guildId);
+      } else {
+        console.error('❌ Failed to fetch server status:', configResponse.status);
+        console.log('⚠️ Using fallback guild ID:', guildId);
       }
       
       console.log('🔍 Loading Discord roles for guild:', guildId);
       
-      const response = await fetch(`/api/discord-roles/roles/${guildId}`, {
+      const response = await fetch(`http://localhost:3050/api/discord-roles/roles/${guildId}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
