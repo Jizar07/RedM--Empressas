@@ -108,20 +108,48 @@ export default function FarmServiceSettings() {
     }
   };
 
-  const loadDiscordRoles = async () => {
+  const loadDiscordRoles = async (retryCount = 0) => {
     try {
       setRolesLoading(true);
+      setError(null);
+      
       // You'll need to get the guild ID from your config or make it configurable
       const guildId = '1205749564775211049'; // Replace with your actual guild ID
-      const response = await fetch(`/api/discord-roles/roles/${guildId}`);
+      console.log('🔍 Loading Discord roles for guild:', guildId);
+      
+      const response = await fetch(`/api/discord-roles/roles/${guildId}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      
       if (response.ok) {
         const data = await response.json();
+        console.log('✅ Successfully loaded roles:', data.roles?.length || 0);
         setAvailableRoles(data.roles || []);
       } else {
-        console.error('Failed to load Discord roles');
+        const errorData = await response.json().catch(() => ({}));
+        console.error('❌ Failed to load Discord roles:', response.status, errorData);
+        
+        if (retryCount < 2) {
+          console.log(`🔄 Retrying role loading (attempt ${retryCount + 1}/3)...`);
+          setTimeout(() => loadDiscordRoles(retryCount + 1), 1000 * (retryCount + 1));
+          return;
+        }
+        
+        setError(`Failed to load roles: ${errorData.error || response.statusText}`);
       }
-    } catch (err) {
-      console.error('Error loading Discord roles:', err);
+    } catch (err: any) {
+      console.error('❌ Error loading Discord roles:', err);
+      
+      if (retryCount < 2) {
+        console.log(`🔄 Retrying role loading after error (attempt ${retryCount + 1}/3)...`);
+        setTimeout(() => loadDiscordRoles(retryCount + 1), 1000 * (retryCount + 1));
+        return;
+      }
+      
+      setError(`Connection error: ${err.message}`);
     } finally {
       setRolesLoading(false);
     }
@@ -714,6 +742,47 @@ export default function FarmServiceSettings() {
           🔐 Role Permissions
         </h2>
         <p className="text-sm text-gray-600 mb-4">Configure which Discord roles can accept, edit, or reject farm service submissions requiring admin approval.</p>
+        
+        {/* Role Loading Status */}
+        {rolesLoading && (
+          <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-lg flex items-center gap-2">
+            <RefreshCw className="h-4 w-4 animate-spin text-blue-600" />
+            <span className="text-blue-800">Loading Discord roles...</span>
+          </div>
+        )}
+        
+        {!rolesLoading && availableRoles.length === 0 && (
+          <div className="mb-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <span className="text-yellow-800">⚠️ No Discord roles loaded.</span>
+              </div>
+              <button
+                onClick={() => loadDiscordRoles(0)}
+                className="px-3 py-1 bg-yellow-600 text-white rounded text-sm hover:bg-yellow-700 flex items-center gap-1"
+              >
+                <RefreshCw className="h-3 w-3" />
+                Retry
+              </button>
+            </div>
+            <p className="text-sm text-yellow-700 mt-1">
+              Make sure the Discord bot is connected and the guild ID is correct.
+            </p>
+          </div>
+        )}
+        
+        {!rolesLoading && availableRoles.length > 0 && (
+          <div className="mb-4 p-3 bg-green-50 border border-green-200 rounded-lg flex items-center gap-2">
+            <span className="text-green-800">✅ Successfully loaded {availableRoles.length} Discord roles.</span>
+            <button
+              onClick={() => loadDiscordRoles(0)}
+              className="ml-auto px-2 py-1 bg-green-600 text-white rounded text-xs hover:bg-green-700 flex items-center gap-1"
+            >
+              <RefreshCw className="h-3 w-3" />
+              Refresh
+            </button>
+          </div>
+        )}
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Accept Roles */}

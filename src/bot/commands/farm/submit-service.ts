@@ -43,6 +43,68 @@ async function getPlayerCharacterName(interaction: any): Promise<string | null> 
   }
 }
 
+// Role-based permission checking functions
+async function loadFarmServiceConfig(): Promise<any> {
+  try {
+    const configPath = path.join(process.cwd(), 'data', 'farm-service-config.json');
+    const configData = await fs.readFile(configPath, 'utf8');
+    return JSON.parse(configData);
+  } catch (error) {
+    console.error('Error loading farm service config:', error);
+    // Return default permissions if config can't be loaded
+    return {
+      rolePermissions: {
+        acceptRoles: ['Admin', 'Moderator'],
+        editRoles: ['Admin', 'Moderator'],
+        rejectRoles: ['Admin', 'Moderator']
+      }
+    };
+  }
+}
+
+async function userHasPermission(interaction: any, permissionType: 'accept' | 'edit' | 'reject' | 'pay'): Promise<boolean> {
+  try {
+    // Load farm service configuration
+    const config = await loadFarmServiceConfig();
+    
+    // Get user's roles from Discord
+    const member = await interaction.guild?.members.fetch(interaction.user.id);
+    if (!member) return false;
+    
+    const userRoles = member.roles.cache.map((role: any) => role.name);
+    
+    // Determine which roles are required based on permission type
+    let requiredRoles: string[] = [];
+    switch (permissionType) {
+      case 'accept':
+        requiredRoles = config.rolePermissions?.acceptRoles || ['Admin', 'Moderator'];
+        break;
+      case 'edit':
+        requiredRoles = config.rolePermissions?.editRoles || ['Admin', 'Moderator'];
+        break;
+      case 'reject':
+        requiredRoles = config.rolePermissions?.rejectRoles || ['Admin', 'Moderator'];
+        break;
+      case 'pay':
+        // Pay permissions use accept roles (workers who can approve can also pay)
+        requiredRoles = config.rolePermissions?.acceptRoles || ['Admin', 'Moderator'];
+        break;
+    }
+    
+    // Check if user has any of the required roles
+    const hasPermission = requiredRoles.some(roleName => userRoles.includes(roleName));
+    
+    console.log(`🔐 Permission check for ${interaction.user.username}: ${permissionType} - ${hasPermission ? 'GRANTED' : 'DENIED'}`);
+    console.log(`   User roles: [${userRoles.join(', ')}]`);
+    console.log(`   Required roles: [${requiredRoles.join(', ')}]`);
+    
+    return hasPermission;
+  } catch (error) {
+    console.error('Error checking user permissions:', error);
+    return false; // Deny access on error for security
+  }
+}
+
 // Handle button click to start farm service registration
 export async function handleFarmServiceStart(interaction: ButtonInteraction) {
   console.log('🚜 handleFarmServiceStart called for user:', interaction.user.username);
@@ -866,6 +928,16 @@ export async function handleReceiptAccept(interaction: ButtonInteraction): Promi
     const receiptId = interaction.customId.split('_')[2];
     console.log('🟢 Accepting receipt:', receiptId);
 
+    // Check user permissions
+    const hasPermission = await userHasPermission(interaction, 'accept');
+    if (!hasPermission) {
+      await interaction.reply({
+        content: '❌ Você não tem permissão para aceitar recibos. Contate um administrador.',
+        flags: MessageFlags.Ephemeral
+      });
+      return;
+    }
+
     // Load receipt data
     const receiptData = await loadReceiptData(receiptId);
     if (!receiptData) {
@@ -972,6 +1044,16 @@ export async function handleReceiptEdit(interaction: ButtonInteraction): Promise
     const receiptId = interaction.customId.split('_')[2];
     console.log('✏️ Editing receipt:', receiptId);
 
+    // Check user permissions
+    const hasPermission = await userHasPermission(interaction, 'edit');
+    if (!hasPermission) {
+      await interaction.reply({
+        content: '❌ Você não tem permissão para editar recibos. Contate um administrador.',
+        flags: MessageFlags.Ephemeral
+      });
+      return;
+    }
+
     // Load receipt data
     const receiptData = await loadReceiptData(receiptId);
     if (!receiptData) {
@@ -1029,6 +1111,16 @@ export async function handleReceiptEditQuantity(interaction: ModalSubmitInteract
   try {
     const receiptId = interaction.customId.split('_')[3];
     const newQuantity = parseInt(interaction.fields.getTextInputValue('new_quantity').trim());
+    
+    // Check user permissions
+    const hasPermission = await userHasPermission(interaction, 'edit');
+    if (!hasPermission) {
+      await interaction.reply({
+        content: '❌ Você não tem permissão para editar quantidades. Contate um administrador.',
+        flags: MessageFlags.Ephemeral
+      });
+      return;
+    }
     
     if (isNaN(newQuantity) || newQuantity <= 0) {
       await interaction.reply({
@@ -1140,6 +1232,16 @@ export async function handleReceiptReject(interaction: ButtonInteraction): Promi
     const receiptId = interaction.customId.split('_')[2];
     console.log('🔴 Rejecting receipt:', receiptId);
 
+    // Check user permissions
+    const hasPermission = await userHasPermission(interaction, 'reject');
+    if (!hasPermission) {
+      await interaction.reply({
+        content: '❌ Você não tem permissão para rejeitar recibos. Contate um administrador.',
+        flags: MessageFlags.Ephemeral
+      });
+      return;
+    }
+
     // Load receipt data
     const receiptData = await loadReceiptData(receiptId);
     if (!receiptData) {
@@ -1218,6 +1320,16 @@ export async function handleReceiptPayNow(interaction: ButtonInteraction): Promi
   try {
     const receiptId = interaction.customId.split('_')[3];
     console.log('💰 Processing payment for receipt:', receiptId);
+
+    // Check user permissions
+    const hasPermission = await userHasPermission(interaction, 'pay');
+    if (!hasPermission) {
+      await interaction.reply({
+        content: '❌ Você não tem permissão para processar pagamentos. Contate um administrador.',
+        flags: MessageFlags.Ephemeral
+      });
+      return;
+    }
 
     // Load receipt data
     const receiptData = await loadReceiptData(receiptId);
@@ -1500,6 +1612,16 @@ export async function handleFinalPayment(interaction: ButtonInteraction): Promis
     
     console.log(`💰 Processing final payment for ${playerName} in channel ${channelId}`);
 
+    // Check user permissions
+    const hasPermission = await userHasPermission(interaction, 'pay');
+    if (!hasPermission) {
+      await interaction.reply({
+        content: '❌ Você não tem permissão para processar pagamentos finais. Contate um administrador.',
+        flags: MessageFlags.Ephemeral
+      });
+      return;
+    }
+
     // Load persistent receipt
     const persistentReceiptPath = path.join(process.cwd(), 'data', 'persistent-receipts', `${channelId}_${playerName.replace(/\s+/g, '_')}.json`);
     
@@ -1525,15 +1647,23 @@ export async function handleFinalPayment(interaction: ButtonInteraction): Promis
       .setTimestamp()
       .setFooter({ text: `Pagamento Final - ID: ${Date.now()}` });
 
-    // Add services breakdown
+    // Add services breakdown - SHOW ALL SERVICES (not limited)
     let servicesBreakdown = '';
-    persistentReceipt.services.forEach((service: any) => {
+    persistentReceipt.services.forEach((service: any, index: number) => {
       const serviceIcon = service.serviceType === 'animal' ? '🐄' : '🌾';
-      servicesBreakdown += `${serviceIcon} ${service.quantity} ${service.itemType} - $${service.payment.toFixed(2)}\n`;
+      servicesBreakdown += `${index + 1}. ${serviceIcon} ${service.quantity} ${service.itemType} - $${service.payment.toFixed(2)}\n`;
     });
     
+    // Handle Discord's 1024 character limit for field values
+    if (servicesBreakdown.length > 1000) {
+      const truncatePoint = servicesBreakdown.lastIndexOf('\n', 1000);
+      const truncatedServices = servicesBreakdown.substring(0, truncatePoint);
+      const remainingCount = persistentReceipt.services.length - truncatedServices.split('\n').length + 1;
+      servicesBreakdown = truncatedServices + `\n... e mais ${remainingCount} serviços`;
+    }
+    
     finalReceiptEmbed.addFields({
-      name: '📝 Serviços Pagos',
+      name: `📝 Todos os Serviços Pagos (${persistentReceipt.totalServices} total)`,
       value: servicesBreakdown || 'Nenhum serviço',
       inline: false
     });
@@ -1557,7 +1687,10 @@ export async function handleFinalPayment(interaction: ButtonInteraction): Promis
             embed.title && embed.title.includes('Registro de Serviços da Fazenda')
           );
           
-          if (!isPaidReceipt && !isRegistrationEmbed && message.id !== interaction.message?.id) {
+          // Don't delete pinned messages
+          const isPinnedMessage = message.pinned;
+          
+          if (!isPaidReceipt && !isRegistrationEmbed && !isPinnedMessage && message.id !== interaction.message?.id) {
             messagesToDelete.push(message);
           }
         }
