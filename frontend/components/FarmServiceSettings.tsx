@@ -113,8 +113,15 @@ export default function FarmServiceSettings() {
       setRolesLoading(true);
       setError(null);
       
-      // You'll need to get the guild ID from your config or make it configurable
-      const guildId = '1205749564775211049'; // Replace with your actual guild ID
+      // Get guild ID from backend config or environment
+      const configResponse = await fetch('/api/internal/server-status');
+      let guildId = '1205749564775211049'; // Fallback guild ID
+      
+      if (configResponse.ok) {
+        const configData = await configResponse.json();
+        guildId = configData.guildId || guildId;
+      }
+      
       console.log('🔍 Loading Discord roles for guild:', guildId);
       
       const response = await fetch(`/api/discord-roles/roles/${guildId}`, {
