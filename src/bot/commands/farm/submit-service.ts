@@ -1534,7 +1534,9 @@ async function createOrUpdatePersistentReceipt(interaction: ButtonInteraction, r
       itemType: receiptData.serviceType === 'animal' ? receiptData.animalType : receiptData.plantName,
       quantity: receiptData.quantity,
       payment: receiptData.playerPayment,
-      timestamp: receiptData.paidAt || receiptData.approvedAt // Use paidAt if available, otherwise approvedAt
+      timestamp: receiptData.paidAt || receiptData.approvedAt, // Use paidAt if available, otherwise approvedAt
+      approvedBy: receiptData.approvedBy || 'Sistema',
+      editedBy: receiptData.editedBy // Include if service was edited
     });
     persistentReceipt.lastUpdated = new Date().toISOString();
 
@@ -1546,11 +1548,12 @@ async function createOrUpdatePersistentReceipt(interaction: ButtonInteraction, r
       .setTimestamp(new Date(persistentReceipt.lastUpdated))
       .setFooter({ text: 'Recibo Atualizado' });
 
-    // Add ALL services to the receipt
+    // Add ALL services to the receipt with approval info
     let servicesText = '';
     persistentReceipt.services.forEach((service: any, index: number) => {
       const serviceIcon = service.serviceType === 'animal' ? '🐄' : '🌾';
-      servicesText += `${index + 1}. ${serviceIcon} ${service.quantity} ${service.itemType} - $${service.payment.toFixed(2)}\n`;
+      const approvalInfo = service.approvedBy ? ` (✅ ${service.approvedBy})` : '';
+      servicesText += `${index + 1}. ${serviceIcon} ${service.quantity} ${service.itemType} - $${service.payment.toFixed(2)}${approvalInfo}\n`;
     });
     
     // Handle Discord's 1024 character limit for field values
@@ -1649,16 +1652,17 @@ export async function handleFinalPayment(interaction: ButtonInteraction): Promis
     // Create final paid receipt
     const finalReceiptEmbed = new EmbedBuilder()
       .setTitle(`💰 PAGAMENTO PROCESSADO`)
-      .setDescription(`**Trabalhador:** ${playerName}\n**Total Pago:** $${persistentReceipt.totalEarnings.toFixed(2)}\n**Serviços Realizados:** ${persistentReceipt.totalServices}`)
+      .setDescription(`**Trabalhador:** ${playerName}\n**Total Pago:** $${persistentReceipt.totalEarnings.toFixed(2)}\n**Serviços Realizados:** ${persistentReceipt.totalServices}\n**💳 Pago por:** ${interaction.user.username}`)
       .setColor(0x00FF00)
       .setTimestamp()
       .setFooter({ text: `Pagamento Final - ID: ${Date.now()}` });
 
-    // Add services breakdown - SHOW ALL SERVICES (not limited)
+    // Add services breakdown - SHOW ALL SERVICES with approval info
     let servicesBreakdown = '';
     persistentReceipt.services.forEach((service: any, index: number) => {
       const serviceIcon = service.serviceType === 'animal' ? '🐄' : '🌾';
-      servicesBreakdown += `${index + 1}. ${serviceIcon} ${service.quantity} ${service.itemType} - $${service.payment.toFixed(2)}\n`;
+      const approvalInfo = service.approvedBy ? ` (✅ ${service.approvedBy})` : '';
+      servicesBreakdown += `${index + 1}. ${serviceIcon} ${service.quantity} ${service.itemType} - $${service.payment.toFixed(2)}${approvalInfo}\n`;
     });
     
     // Handle Discord's 1024 character limit for field values
