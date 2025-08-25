@@ -113,24 +113,42 @@ export default function FarmServiceSettings() {
       setRolesLoading(true);
       setError(null);
       
-      // Get guild ID from backend config or environment  
-      console.log('🔍 Fetching server status to get guild ID...');
-      const configResponse = await fetch('http://localhost:3050/api/internal/server-status');
+      // Try different possible backend ports
+      const possiblePorts = [3000, 3050, 8080, 8086];
       let guildId = '1205749564775211049'; // Fallback guild ID
+      let backendUrl = null;
       
-      if (configResponse.ok) {
-        const configData = await configResponse.json();
-        console.log('📋 Server status response:', configData);
-        guildId = configData.guildId || guildId;
-        console.log('🎯 Using guild ID:', guildId);
-      } else {
-        console.error('❌ Failed to fetch server status:', configResponse.status);
-        console.log('⚠️ Using fallback guild ID:', guildId);
+      // Find working backend
+      for (const port of possiblePorts) {
+        try {
+          console.log(`🔍 Trying backend on port ${port}...`);
+          const testResponse = await fetch(`http://localhost:${port}/api/internal/server-status`, {
+            method: 'GET',
+            signal: AbortSignal.timeout(3000) // 3 second timeout
+          });
+          
+          if (testResponse.ok) {
+            const configData = await testResponse.json();
+            console.log(`✅ Found working backend on port ${port}:`, configData);
+            backendUrl = `http://localhost:${port}`;
+            guildId = configData.guildId || guildId;
+            break;
+          }
+        } catch (err) {
+          console.log(`❌ Port ${port} not responding:`, err.message);
+        }
       }
       
+      if (!backendUrl) {
+        console.error('❌ No working backend found on any port');
+        setError('Discord bot backend not running. Please start the bot with "npm run dev"');
+        return;
+      }
+      
+      console.log('🎯 Using guild ID:', guildId);
       console.log('🔍 Loading Discord roles for guild:', guildId);
       
-      const response = await fetch(`http://localhost:3050/api/discord-roles/roles/${guildId}`, {
+      const response = await fetch(`${backendUrl}/api/discord-roles/roles/${guildId}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
