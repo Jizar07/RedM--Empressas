@@ -1,9 +1,9 @@
 {
   "playerName": "Rafael Nardelli",
   "channelId": "1408277426190024796",
-  "messageId": "1409366214291226674",
-  "totalEarnings": 375,
-  "totalServices": 6,
+  "messageId": "1409543179442720890",
+  "totalEarnings": 570,
+  "totalServices": 9,
   "services": [
     {
       "receiptId": "20250824632",
@@ -11,7 +11,8 @@
       "itemType": "Bovino",
       "quantity": 1,
       "payment": 60,
-      "timestamp": "2025-08-24T23:39:47.268Z"
+      "timestamp": "2025-08-25T13:41:43.575Z",
+      "paid": true
     },
     {
       "receiptId": "20250825490",
@@ -19,7 +20,8 @@
       "itemType": "Bovino",
       "quantity": 1,
       "payment": 60,
-      "timestamp": "2025-08-25T00:23:48.838Z"
+      "timestamp": "2025-08-25T13:41:40.985Z",
+      "paid": true
     },
     {
       "receiptId": "20250825649",
@@ -27,7 +29,8 @@
       "itemType": "Bovino",
       "quantity": 1,
       "payment": 60,
-      "timestamp": "2025-08-25T01:46:20.321Z"
+      "timestamp": "2025-08-25T13:41:38.549Z",
+      "paid": true
     },
     {
       "receiptId": "20250825257",
@@ -35,7 +38,8 @@
       "itemType": "Ovino",
       "quantity": 1,
       "payment": 60,
-      "timestamp": "2025-08-25T02:37:51.952Z"
+      "timestamp": "2025-08-25T13:41:36.238Z",
+      "paid": true
     },
     {
       "receiptId": "20250825782",
@@ -43,7 +47,8 @@
       "itemType": "Trigo",
       "quantity": 500,
       "payment": 75,
-      "timestamp": "2025-08-25T02:38:06.036Z"
+      "timestamp": "2025-08-25T13:41:34.066Z",
+      "paid": true
     },
     {
       "receiptId": "20250825822",
@@ -51,8 +56,34 @@
       "itemType": "Bovino",
       "quantity": 1,
       "payment": 60,
-      "timestamp": "2025-08-25T02:38:09.932Z"
+      "timestamp": "2025-08-25T13:41:31.903Z",
+      "paid": true
+    },
+    {
+      "receiptId": "20250825694",
+      "serviceType": "animal",
+      "itemType": "Ovino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T13:41:21.338Z",
+      "paid": true
+    },
+    {
+      "receiptId": "20250825196",
+      "serviceType": "animal",
+      "itemType": "Bovino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T14:21:17.766Z"
+    },
+    {
+      "receiptId": "20250825203",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-25T14:21:21.851Z"
     }
   ],
-  "lastUpdated": "2025-08-25T02:38:09.933Z"
+  "lastUpdated": "2025-08-25T14:21:21.852Z"
 }

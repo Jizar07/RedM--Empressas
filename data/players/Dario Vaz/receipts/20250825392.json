@@ -1,0 +1,14 @@
+{
+  "receiptId": "20250825392",
+  "timestamp": "2025-08-25T13:52:33.782Z",
+  "playerName": "Dario Vaz",
+  "serviceType": "planta",
+  "quantity": 260,
+  "plantName": "Junco",
+  "playerPayment": 39,
+  "status": "APPROVED",
+  "screenshotPath": "C:\\Users\\jizar\\OneDrive\\Documents\\DiscordBot\\uploads\\temp\\temp_1756129952995_image.png",
+  "approved": true,
+  "approvedBy": "jizarstoffel",
+  "approvedAt": "2025-08-25T13:52:40.055Z"
+}

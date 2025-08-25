@@ -1,0 +1,14 @@
+{
+  "receiptId": "20250825060",
+  "timestamp": "2025-08-25T14:07:41.576Z",
+  "playerName": "Jizar Stoffeliz",
+  "serviceType": "animal",
+  "quantity": 1,
+  "animalType": "Suino",
+  "playerPayment": 60,
+  "status": "APPROVED",
+  "screenshotPath": "C:\\Users\\jizar\\OneDrive\\Documents\\DiscordBot\\uploads\\temp\\temp_1756130860747_Screenshot_2025-08-25_100112.png",
+  "approved": true,
+  "approvedBy": "jizarstoffel",
+  "approvedAt": "2025-08-25T14:07:50.680Z"
+}

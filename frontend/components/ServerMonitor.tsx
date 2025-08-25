@@ -7,6 +7,7 @@ import {
   UserPlus, Clock, Zap, CheckCircle, AlertCircle, Circle,
   Wifi, WifiOff, Filter, ArrowUpDown, ArrowUp, ArrowDown
 } from 'lucide-react';
+import { useSocket } from '../hooks/useSocket';
 
 // Interfaces for proper typing
 interface ServerInfo {
@@ -46,7 +47,8 @@ interface KnownPlayer {
 
 
 const ServerMonitor = () => {
-  // We'll fetch data directly instead of using Socket.io
+  // Use Socket.io for real-time updates
+  const { socket, isConnected, serverData } = useSocket();
   
   const [serverInfo, setServerInfo] = useState<ServerInfo | null>(null);
   const [players, setPlayers] = useState<Player[]>([]);
@@ -127,11 +129,14 @@ const ServerMonitor = () => {
     }
   };
 
-  // Manual refresh
+  // Manual refresh - force socket reconnection
   const handleManualRefresh = async () => {
     setIsRefreshing(true);
-    await fetchServerData();
-    setIsRefreshing(false);
+    if (socket) {
+      socket.disconnect();
+      socket.connect();
+    }
+    setTimeout(() => setIsRefreshing(false), 1000);
   };
 
   // Fetch known players from localStorage (independent of backend)
@@ -225,12 +230,19 @@ const ServerMonitor = () => {
   // Initialize component
   useEffect(() => {
     fetchKnownPlayers();
-    fetchServerData();
-    
-    // Set up auto-refresh every 30 seconds
-    const interval = setInterval(fetchServerData, 30000);
-    return () => clearInterval(interval);
+    // Remove manual API calls - using Socket.io instead
   }, []);
+
+  // Update state when socket data changes
+  useEffect(() => {
+    if (serverData.info) {
+      setServerInfo(serverData.info);
+      setPlayers(serverData.players);
+      setDynamicInfo(serverData.dynamic);
+      setLastUpdate(new Date(serverData.lastUpdate || Date.now()));
+      setLoading(false);
+    }
+  }, [serverData]);
 
   // Update known players status when players list changes
   useEffect(() => {
@@ -508,10 +520,10 @@ const ServerMonitor = () => {
             Server Status
             {/* Socket.io connection indicator */}
             <span className={`ml-auto flex items-center gap-1 text-xs px-2 py-1 rounded-full ${
-              !loading && !error ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'
+              isConnected ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
             }`}>
-              <div className={`w-2 h-2 rounded-full ${!loading && !error ? 'bg-green-500' : 'bg-yellow-500'}`}></div>
-              {!loading && !error ? 'Live' : loading ? 'Loading...' : 'Error'}
+              <div className={`w-2 h-2 rounded-full ${isConnected ? 'bg-green-500' : 'bg-red-500'} ${isConnected ? 'animate-pulse' : ''}`}></div>
+              {isConnected ? 'Live' : 'Disconnected'}
             </span>
           </h3>
           
