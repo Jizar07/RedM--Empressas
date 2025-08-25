@@ -941,5 +941,74 @@ This is a local timestamped file to track all development changes and prompts.
 - ✅ Frontend and backend running with complete farm service integration
 - ✅ Export, filtering, sorting, editing, and deleting all functional
 
+### 2025-08-25 14:29:54
+**Action**: Major comprehensive fixes for farm system, orders system, frontend connectivity, and complete audit trail implementation
+**Prompt**: `/update`
+**Context**: Extensive development session fixing multiple critical issues identified during testing and user feedback
+
+**Changes**:
+
+#### 1. **Complete Farm Service Role-Based Security Implementation (v0.016)**
+- **Implemented role-based button visibility** for Accept/Edit/Reject/Pay buttons based on configured permissions
+- **Added permission validation** on all farm service interactions using userHasPermission() function
+- **Enhanced security system** where users only see buttons they have permission to use
+- **Role configuration** loaded from `data/farm-service-config.json` with acceptRoles, editRoles, rejectRoles
+- **Permission logging** with comprehensive debugging for role checking operations
+- **Fallback security** defaults to deny access on any configuration errors
+
+#### 2. **Fixed Critical Frontend Connection Issues**  
+- **Resolved "connection error when saving settings"** by implementing backend auto-discovery system
+- **Frontend backend discovery** automatically tests ports 3000, 3050, 8080, 8086 to find working backend
+- **Enhanced role selection** with retry mechanisms and detailed error feedback in FarmServiceSettings
+- **Fixed role dropdowns** that weren't loading due to API connectivity issues
+- **Added timeout protection** (3 second timeout per port) to prevent hanging during discovery
+
+#### 3. **Orders System Interaction Handler Fix**
+- **Identified duplicate InteractionCreate event handlers** conflict between main handler and orders handler
+- **Critical bug**: Two separate event handlers (interactionCreate.ts and ordersInteraction.ts) were competing
+- **Solution**: Merged orders interaction handling into main interactionCreate.ts file
+- **Fixed "interaction failed" error** when clicking "fazer encomenda" button that was blocking orders system
+- **Maintained separation** by renaming ordersInteraction.ts to ordersInteraction.handler.ts and importing dynamically
+- **Result**: Single event handler now manages all interactions (farm + orders) without conflicts
+
+#### 4. **Pay All Receipt Display Comprehensive Fixes**
+- **Fixed Pay All receipts** to show ALL services instead of limiting to first 5 services
+- **Enhanced persistent receipts** to show complete service history during accumulation
+- **Added proper numbering** (1, 2, 3...) for better readability in service lists
+- **Discord character limit handling** with intelligent truncation ("... e mais X serviços")
+- **Pinned message preservation** during Pay All cleanup to prevent deletion of important messages
+- **Changed labels** from "Últimos Serviços" to "Todos os Serviços (X total)" for clarity
+
+#### 5. **Complete Audit Trail System Implementation**
+- **Added payer tracking** to Pay All receipts showing who processed the payment (💳 Pago por: username)
+- **Enhanced service listings** to show who approved each service (✅ username after each service)
+- **Complete accountability chain**: submission → approval → editing → payment with full user tracking
+- **Audit information** stored in persistent receipts and displayed in both accumulating and final receipts
+- **Display format**: `1. 🐄 3 Ovino - $180.00 (✅ jizarstoffel)` showing complete transaction history
+- **Enhanced transparency** for all farm service operations with full administrative oversight
+
+**Technical Achievements**:
+- ✅ **Role-based security** system fully operational with dynamic permissions
+- ✅ **Frontend-backend communication** resolved with auto-discovery system  
+- ✅ **Orders system interaction** handling working after merging event handlers
+- ✅ **Complete service history** display implemented without limitations
+- ✅ **Full audit trail** and transparency system with user tracking
+- ✅ **All TypeScript compilation** passing without errors
+- ✅ **Production-ready** system with comprehensive error handling
+
+**Version Milestones**:
+- v0.015: Pre-farm system role-based security update (Restore Point)
+- v0.016: Complete farm service role-based security & comprehensive fixes
+
+**Files Modified**:
+- `src/bot/commands/farm/submit-service.ts` - Major enhancements for audit trail and service display
+- `src/bot/events/interactionCreate.ts` - Merged orders handling to resolve conflicts
+- `frontend/components/FarmServiceSettings.tsx` - Enhanced with backend discovery and role loading
+- `src/api/routes/discord-roles.ts` - Improved error handling and debugging
+- `src/bot/events/ordersInteraction.handler.ts` - Renamed to prevent duplicate event registration
+
+**Current System State**: 
+All farm service functionality operational with complete audit trail, role-based security, orders system integration, frontend connectivity resolved, and comprehensive user tracking. System ready for production use with full transparency and administrative oversight.
+
 ---
 *Note: All timestamps are recorded to the second for precise tracking*

@@ -102,19 +102,25 @@ When you see "/update" command from the user, perform the following actions:
 3. Update changelog.md if there are version-worthy changes
 4. Update CLAUDE.md if there are architectural or command changes
 
-## Recent Critical Fixes (v0.010) **[RESTORE POINT]**
+## Recent Major Updates (v0.017) **[CURRENT VERSION]**
 
-### Complete Discord Farm Service UI/UX Overhaul - ALL WORKING (v0.010)
-- **Issue**: Multiple critical UI/UX issues in farm service system
-- **Symptoms**: Dropdowns not dismissing, receipts not creating on acceptance, Pay All errors, modal interaction failures, receipt ordering problems, duplicate payment messages
-- **Fixes**: 
-  - **Message Dismissal**: All selection dropdowns properly dismiss with confirmation messages
-  - **Receipt Flow**: Persistent receipts created immediately on "Accept Service" click
-  - **Pay All**: Fixed player name parsing and error handling for multi-word names  
-  - **Modal Errors**: Fixed InteractionAlreadyReplied by reordering interaction flow
-  - **Receipt Ordering**: Updated receipts now move to bottom below new services
-  - **Duplicate Payments**: Removed redundant message creation in final payment
-- **Result**: Complete farm service workflow working perfectly, marked as restore point
+### Complete Farm Service Role-Based Security & System Integration (v0.017) 
+- **Enhancement**: Comprehensive role-based security system with complete audit trail
+- **Features**: 
+  - **Role-Based Button Visibility**: Accept/Edit/Reject/Pay buttons only show for users with configured permissions
+  - **Permission Validation**: All interactions validate user roles against farm-service-config.json
+  - **Complete Audit Trail**: Shows who approved, edited, rejected, and paid for each service
+  - **Frontend Connectivity**: Auto-discovery system resolves backend connection issues
+  - **Orders System Integration**: Fixed interaction handler conflicts between farm and orders systems
+  - **Enhanced Service Display**: Pay All and persistent receipts show complete service history
+  - **Security Logging**: Comprehensive permission checking with detailed debugging logs
+- **Result**: Production-ready system with complete security, transparency, and audit capabilities
+
+### Farm Service UI/UX Overhaul - ALL WORKING (v0.010-v0.016) **[RESTORE POINTS]**
+- **Comprehensive Fixes**: All critical UI/UX issues resolved across multiple versions
+- **Core Functionality**: Complete farm service workflow operational
+- **Key Features**: Message dismissal, receipt flow, payment processing, modal interactions
+- **System Integration**: Farm services, orders system, frontend, and backend all working together
 
 ### Historical Message Flooding Fix (v0.008)
 

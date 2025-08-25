@@ -6,7 +6,12 @@
   "quantity": 1,
   "animalType": "Suino",
   "playerPayment": 60,
-  "status": "PENDING_APPROVAL",
+  "status": "APPROVED",
   "screenshotPath": "C:\\Users\\jizar\\OneDrive\\Documents\\DiscordBot\\uploads\\temp\\temp_1756081531746_E8CF8DA4-5ED9-45E1-B2A3-9D654055C38E.png",
-  "approved": false
+  "approved": true,
+  "approvedBy": "jizarstoffel",
+  "approvedAt": "2025-08-25T16:23:37.297Z",
+  "paid": true,
+  "paidAt": "2025-08-25T16:23:51.492Z",
+  "paidBy": "jizarstoffel"
 }

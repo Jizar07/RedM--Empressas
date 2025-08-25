@@ -5,6 +5,57 @@ This file is synchronized with: https://github.com/Jizar07/RedM--Empressas
 
 ## Version History
 
+### [0.017] - 2025-08-25 **[CURRENT]**
+- **🔒 MAJOR: Complete Farm Service Role-Based Security & Comprehensive System Fixes**: Implemented comprehensive role-based security system with complete audit trail and resolved multiple critical system issues
+- **Role-Based Button Visibility**: Implemented dynamic button visibility system where Accept/Edit/Reject/Pay buttons only show for users with configured permissions
+- **Permission Validation System**: Added userHasPermission() function with comprehensive role checking against farm-service-config.json (acceptRoles, editRoles, rejectRoles)
+- **Complete Audit Trail Implementation**: Added full accountability tracking showing who approved, edited, rejected, and paid for each service
+- **Frontend Connection Issues Fixed**: Resolved "connection error when saving settings" with automatic backend discovery system testing ports 3000, 3050, 8080, 8086
+- **Orders System Interaction Fix**: Resolved critical "interaction failed" error when clicking "fazer encomenda" button by merging duplicate InteractionCreate event handlers
+- **Pay All Receipt Complete Display**: Fixed Pay All receipts to show ALL services instead of limiting to first 5, with proper numbering and approval information
+- **Enhanced Service Display**: Both persistent and final receipts now show complete service history with format: "1. 🐄 3 Ovino - $180.00 (✅ jizarstoffel)"
+- **Pinned Message Preservation**: Pay All cleanup now preserves pinned messages while clearing other content
+- **Comprehensive Security Logging**: Added detailed permission checking logs with role validation for debugging and audit purposes
+- Technical implementation:
+  - Enhanced farm service system with role-based visibility using dynamic permission checks
+  - Fixed duplicate event handler conflict by merging orders handling into main interactionCreate.ts
+  - Implemented backend auto-discovery with timeout protection and retry mechanisms
+  - Added complete audit trail with approvedBy, editedBy, and paidBy tracking throughout service lifecycle
+  - Enhanced receipt display with Discord character limit handling and intelligent truncation
+  - Updated service storage to include approval and editing metadata for complete transparency
+- Files modified:
+  - src/bot/commands/farm/submit-service.ts - Major security enhancements, audit trail, complete service display
+  - src/bot/events/interactionCreate.ts - Merged orders handling to resolve interaction conflicts
+  - frontend/components/FarmServiceSettings.tsx - Backend discovery, enhanced role selection with retry logic
+  - src/api/routes/discord-roles.ts - Improved error handling and debugging capabilities
+  - src/bot/events/ordersInteraction.handler.ts - Renamed to prevent duplicate event registration
+- Security features:
+  - ✅ Role-based button visibility (users only see buttons they can use)
+  - ✅ Permission validation on all interactions with fallback security
+  - ✅ Complete audit trail from submission through payment
+  - ✅ Enhanced error handling and debugging throughout
+  - ✅ Configurable role permissions with real-time validation
+- Status: 🟢 Production-ready system with complete security, audit trail, and all critical issues resolved
+
+### [0.016] - 2025-08-25
+- **Complete Farm Service Role-Based Security Implementation**: Implemented comprehensive role-based permission system for all farm service actions
+- **Enhanced Audit Trail**: Added complete tracking of who approved, edited, rejected, and paid for services
+- **Fixed Frontend Connectivity**: Resolved connection errors with backend auto-discovery system
+- **Orders System Integration**: Fixed interaction handling conflicts between farm and orders systems
+- **Complete Service Display**: Enhanced Pay All and persistent receipts to show full service history
+- **System Integration**: All major components working together with comprehensive error handling
+
+### [0.015] - 2025-08-25 **[RESTORE POINT]**
+- **Pre-Farm System Security Update**: Established restore point before implementing major role-based security changes
+- **System State Backup**: Complete working state captured including farm services, registration system, and frontend functionality
+- **Recovery Point**: Commit available for instant rollback if major changes cause issues during development
+
+### [0.014] - 2025-08-25
+- **Enhanced Farm Service Management**: Added comprehensive CRUD operations and advanced filtering/sorting capabilities
+- **Fixed ServerMonitor Issues**: Resolved Socket.io dependency problems with REST API integration
+- **Improved Service History**: Complete player search, summaries, and receipt history display
+- **Enhanced Error Handling**: Fixed bot crashes from expired Discord interactions
+
 ### [0.013] - 2025-08-24
 - **Fixed Discord User Registration System Emergency**: Registration button in #registre-se channel completely non-functional
 - **Root Cause**: File `registrationInteraction.ts` was renamed to `.disabled` preventing button handler from loading

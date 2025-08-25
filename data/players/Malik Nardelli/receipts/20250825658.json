@@ -1,0 +1,14 @@
+{
+  "receiptId": "20250825658",
+  "timestamp": "2025-08-25T18:31:08.071Z",
+  "playerName": "Malik Nardelli",
+  "serviceType": "planta",
+  "quantity": 500,
+  "plantName": "Trigo",
+  "playerPayment": 75,
+  "status": "APPROVED",
+  "screenshotPath": "C:\\Users\\jizar\\OneDrive\\Documents\\DiscordBot\\uploads\\temp\\temp_1756146667336_image.png",
+  "approved": true,
+  "approvedBy": "jizarstoffel",
+  "approvedAt": "2025-08-25T18:39:48.536Z"
+}

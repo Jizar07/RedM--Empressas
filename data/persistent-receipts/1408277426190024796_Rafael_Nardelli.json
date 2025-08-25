@@ -1,9 +1,9 @@
 {
   "playerName": "Rafael Nardelli",
   "channelId": "1408277426190024796",
-  "messageId": "1409566577657122857",
-  "totalEarnings": 765,
-  "totalServices": 12,
+  "messageId": "1409601443782197409",
+  "totalEarnings": 1153.5,
+  "totalServices": 18,
   "services": [
     {
       "receiptId": "20250824632",
@@ -107,7 +107,57 @@
       "quantity": 500,
       "payment": 75,
       "timestamp": "2025-08-25T15:54:20.252Z"
+    },
+    {
+      "receiptId": "20250825769",
+      "serviceType": "animal",
+      "itemType": "Ovino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T16:21:24.951Z"
+    },
+    {
+      "receiptId": "20250825527",
+      "serviceType": "animal",
+      "itemType": "Ovino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T17:19:20.882Z"
+    },
+    {
+      "receiptId": "20250825463",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-25T17:19:26.289Z"
+    },
+    {
+      "receiptId": "20250825372",
+      "serviceType": "animal",
+      "itemType": "Ovino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T17:48:58.433Z"
+    },
+    {
+      "receiptId": "20250825008",
+      "serviceType": "animal",
+      "itemType": "Ovino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T18:09:37.889Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250825479",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 490,
+      "payment": 73.5,
+      "timestamp": "2025-08-25T18:12:52.851Z",
+      "approvedBy": "jizarstoffel"
     }
   ],
-  "lastUpdated": "2025-08-25T15:54:20.253Z"
+  "lastUpdated": "2025-08-25T18:12:52.852Z"
 }

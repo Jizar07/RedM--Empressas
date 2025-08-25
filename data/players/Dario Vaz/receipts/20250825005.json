@@ -1,0 +1,14 @@
+{
+  "receiptId": "20250825005",
+  "timestamp": "2025-08-25T16:42:46.926Z",
+  "playerName": "Dario Vaz",
+  "serviceType": "planta",
+  "quantity": 200,
+  "plantName": "Trigo",
+  "playerPayment": 30,
+  "status": "APPROVED",
+  "screenshotPath": "C:\\Users\\jizar\\OneDrive\\Documents\\DiscordBot\\uploads\\temp\\temp_1756140166296_image.png",
+  "approved": true,
+  "approvedBy": "jizarstoffel",
+  "approvedAt": "2025-08-25T17:18:54.948Z"
+}

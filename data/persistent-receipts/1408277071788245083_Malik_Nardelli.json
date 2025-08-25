@@ -1,9 +1,9 @@
 {
   "playerName": "Malik Nardelli",
   "channelId": "1408277071788245083",
-  "messageId": "1409566540344594563",
-  "totalEarnings": 120,
-  "totalServices": 2,
+  "messageId": "1409608330564866220",
+  "totalEarnings": 450,
+  "totalServices": 7,
   "services": [
     {
       "receiptId": "20250825504",
@@ -20,7 +20,50 @@
       "quantity": 1,
       "payment": 60,
       "timestamp": "2025-08-25T15:54:11.054Z"
+    },
+    {
+      "receiptId": "20250825887",
+      "serviceType": "animal",
+      "itemType": "Avino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T16:21:34.635Z"
+    },
+    {
+      "receiptId": "20250825009",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-25T17:49:43.790Z"
+    },
+    {
+      "receiptId": "20250825675",
+      "serviceType": "animal",
+      "itemType": "Suino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T18:09:54.296Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250825658",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-25T18:39:48.536Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250825090",
+      "serviceType": "animal",
+      "itemType": "Suino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T18:40:14.929Z",
+      "approvedBy": "jizarstoffel"
     }
   ],
-  "lastUpdated": "2025-08-25T15:54:11.056Z"
+  "lastUpdated": "2025-08-25T18:40:14.930Z"
 }

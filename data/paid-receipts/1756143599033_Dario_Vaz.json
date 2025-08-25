@@ -1,0 +1,44 @@
+{
+  "playerName": "Dario Vaz",
+  "channelId": "1409535251805638670",
+  "messageId": "1409593139064344596",
+  "totalEarnings": 210,
+  "totalServices": 4,
+  "services": [
+    {
+      "receiptId": "20250825002",
+      "serviceType": "animal",
+      "itemType": "Bovino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T15:54:31.012Z"
+    },
+    {
+      "receiptId": "20250825200",
+      "serviceType": "animal",
+      "itemType": "Bovino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T17:18:43.285Z"
+    },
+    {
+      "receiptId": "20250825005",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 200,
+      "payment": 30,
+      "timestamp": "2025-08-25T17:18:54.948Z"
+    },
+    {
+      "receiptId": "20250825535",
+      "serviceType": "animal",
+      "itemType": "Avino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T17:39:53.087Z"
+    }
+  ],
+  "lastUpdated": "2025-08-25T17:39:53.089Z",
+  "finalizedAt": "2025-08-25T17:39:59.034Z",
+  "finalizedBy": "zerobalaa"
+}
