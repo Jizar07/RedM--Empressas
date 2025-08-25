@@ -1546,17 +1546,24 @@ async function createOrUpdatePersistentReceipt(interaction: ButtonInteraction, r
       .setTimestamp(new Date(persistentReceipt.lastUpdated))
       .setFooter({ text: 'Recibo Atualizado' });
 
-    // Add recent services (last 5)
-    const recentServices = persistentReceipt.services.slice(-5);
+    // Add ALL services to the receipt
     let servicesText = '';
-    recentServices.forEach((service: any) => {
+    persistentReceipt.services.forEach((service: any, index: number) => {
       const serviceIcon = service.serviceType === 'animal' ? '🐄' : '🌾';
-      servicesText += `${serviceIcon} ${service.quantity} ${service.itemType} - $${service.payment.toFixed(2)}\n`;
+      servicesText += `${index + 1}. ${serviceIcon} ${service.quantity} ${service.itemType} - $${service.payment.toFixed(2)}\n`;
     });
+    
+    // Handle Discord's 1024 character limit for field values
+    if (servicesText.length > 1000) {
+      const truncatePoint = servicesText.lastIndexOf('\n', 1000);
+      const truncatedServices = servicesText.substring(0, truncatePoint);
+      const remainingCount = persistentReceipt.services.length - truncatedServices.split('\n').length + 1;
+      servicesText = truncatedServices + `\n... e mais ${remainingCount} serviços`;
+    }
     
     if (servicesText) {
       receiptEmbed.addFields({
-        name: '📝 Últimos Serviços',
+        name: `📝 Todos os Serviços (${persistentReceipt.totalServices} total)`,
         value: servicesText || 'Nenhum serviço encontrado',
         inline: false
       });
