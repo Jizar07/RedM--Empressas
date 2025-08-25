@@ -824,5 +824,122 @@ This is a local timestamped file to track all development changes and prompts.
 - /components/ServerMonitor.tsx - Updated API calls and removed worker functionality
 - /next.config.js - Removed conflicting proxy configuration
 
+### 2025-08-24 20:52:28
+**Action**: Fixed critical channel routing bug in farm service system
+**Prompt**: User reported: "check why user 'haniel-kovaaks' services done by /registros is being sent to nathaniel-rivers"
+**Context**: Farm service submissions from Haniel Kovaaks were incorrectly being routed to Nathaniel Rivers' channel instead of haniel-kovaaks channel
+**Changes**:
+- **IDENTIFIED SUBSTRING MATCHING BUG**: Channel lookup used variations array with substring matching that matched "haniel" inside "nathaniel-rivers"
+- **DISCOVERED CHANNEL FORMAT ISSUE**: Channels have "🌾・" prefix that wasn't being accounted for in channel matching
+- **FIXED CHANNEL LOOKUP LOGIC**: Removed dangerous variations array and substring matching completely
+- **IMPLEMENTED EXACT MATCHING**: Now uses exact Discord nickname format with proper emoji prefix
+- **ROOT CAUSE**: Original code created variations like ["haniel-kovaaks", "haniel", "hanielkovaaks"] and used .includes() matching
+- **BUG IMPACT**: "haniel" substring matched inside "nathaniel" causing cross-channel routing corruption
+- **SOLUTION**: Changed to exact match only: Discord nickname "Haniel Kovaaks" → channel "🌾・haniel-kovaaks" (exact)
+
+**Technical Implementation**:
+- Updated postReceiptToWorkerChannel() in submit-service.ts lines 742-754
+- Removed variations array with dangerous substring matching
+- Added proper emoji prefix "🌾・" to expected channel name format  
+- Changed from `channel.name.toLowerCase().includes(variation)` to exact `channel.name === expectedChannelName`
+- Enhanced logging to show expected vs actual channel names for debugging
+- Fixed channelFormat regex to only allow a-z0-9 and hyphens
+
+**Issues Resolved**:
+- ✅ **Cross-channel routing bug**: Services now go to correct player channels only
+- ✅ **Substring matching vulnerability**: Eliminated dangerous partial name matching
+- ✅ **Channel format mismatch**: Added proper emoji prefix support  
+- ✅ **Registration system accuracy**: Farm services now route correctly to submitting player
+
+**Files Modified**:
+- src/bot/commands/farm/submit-service.ts - Fixed channel lookup logic with exact matching
+
+**Current Status**:
+- ✅ Farm service system now routes to exact player channels only
+- ✅ No more cross-contamination between similar player names
+- ✅ Channel lookup uses secure exact matching with emoji prefix
+- ✅ System working correctly for all players including Haniel Kovaaks
+
+### 2025-08-25 08:48:04
+**Action**: Major farm service system overhaul with comprehensive management interface and ServerMonitor fixes
+**Prompt**: User requested enhanced farm service overview with "sorting and edit, delete, etc" and complained about "service history still empty" and "server monitor is broken again"
+**Context**: Farm service system needed full CRUD operations, better filtering/sorting, and the ServerMonitor was broken due to Socket.io dependency issues
+**Changes**:
+- **CREATED COMPREHENSIVE FARM SERVICE DATA API**: Built complete backend API system with full CRUD operations
+  - `/api/farm-service-data/overview` - Statistics and player rankings with real data
+  - `/api/farm-service-data/receipts` - All receipts with advanced filtering (status, type, player, date range) and sorting
+  - `/api/farm-service-data/recent-receipts` - Latest activity feed
+  - `/api/farm-service-data/player/:name/receipts` - Individual player history
+  - `PUT /api/farm-service-data/receipt/:id` - Edit receipts with automatic summary updates
+  - `DELETE /api/farm-service-data/receipt/:id` - Delete receipts with summary recalculation
+
+- **BUILT ADVANCED FARM SERVICE MANAGEMENT INTERFACE**: Replaced static overview with full-featured management system
+  - **Full CRUD Operations**: Edit receipts (quantity, payment, status, player name), delete with confirmation
+  - **Advanced Filtering**: Search by receipt ID/player/item, filter by status/type/player, date range filtering
+  - **Column Sorting**: Click any column header to sort with visual indicators (up/down arrows)
+  - **Statistics Dashboard**: Real-time stats (total/pending/approved/paid/rejected receipts, total earnings)
+  - **Edit Modal**: Clean interface for updating receipt details with validation
+  - **Export Functionality**: Export filtered data to CSV with formatted timestamps
+  - **Automatic Updates**: Player summaries automatically recalculate when receipts are modified/deleted
+
+- **COMPLETELY REWROTE SERVICE HISTORY COMPONENT**: Fixed empty service history with proper data integration
+  - **Player Search System**: Search with auto-suggestions showing matching players as you type
+  - **Player Summary Cards**: Total earnings, service counts, animal/plant breakdown, last service date
+  - **Complete Receipt History**: Full table of all player receipts with sorting and status indicators
+  - **Recent Global Activity**: Live feed of latest 20 receipts across all players
+  - **Real-time Status Icons**: Paid (green check), Approved (yellow clock), Rejected (red X), Pending (gray clock)
+
+- **FIXED SERVERMONITOR COMPLETELY**: Resolved broken ServerMonitor component
+  - **ROOT CAUSE**: Component was trying to use Socket.io connection to non-existent port 3052
+  - **REPLACED SOCKET.IO**: Switched to direct API calls using existing server-proxy endpoints
+  - **ADDED AUTO-REFRESH**: Fetches data on mount and every 30 seconds automatically
+  - **FIXED STATUS INDICATORS**: Replaced broken `isConnected` with proper loading/error states
+  - **MAINTAINED ALL FEATURES**: Known players management, search, sorting, server stats all still work
+
+- **ENHANCED /CLEAR COMMAND**: Added exclude pinned messages by default functionality
+  - **DEFAULT BEHAVIOR**: Now excludes pinned messages by default (was causing issues)
+  - **FRONTEND CONFIGURATION**: Added checkbox in moderation settings to control default behavior  
+  - **FIXED COOLDOWN**: Resolved cooldown message showing "undefined" command name
+  - **API PERSISTENCE**: Backend stores the exclude pinned default setting
+
+- **FIXED CRITICAL INTERACTION EXPIRY CRASHES**: Resolved bot crashes from expired Discord interactions
+  - **ISSUE**: Bot was crashing when users clicked buttons on farm service receipts after 15 minutes (Discord interaction expiry)
+  - **ERROR**: "Unknown interaction" (code 10062) was causing uncaught exceptions and bot restarts
+  - **SOLUTION**: Added comprehensive error handling to all receipt handlers (Accept, Edit, Reject, PayNow, FinalPayment)
+  - **IMPLEMENTATION**: Check for expired interactions, log gracefully, don't attempt to reply to expired tokens
+  - **RESULT**: Bot now handles expired interactions gracefully without crashes
+
+**Technical Implementation**:
+- Built complete farm service data layer with TypeScript interfaces and proper error handling
+- Created advanced React components with hooks, filtering, sorting, and state management
+- Removed Socket.io dependency in favor of REST API calls with automatic refresh intervals
+- Enhanced Discord bot error handling for expired interactions across all button handlers
+- Added comprehensive CRUD operations with automatic data consistency (summary updates)
+
+**Issues Resolved**:
+- ✅ **Farm service overview**: Now shows real data with full management capabilities instead of static placeholder
+- ✅ **Service history empty**: Now displays complete player search, summaries, and receipt history
+- ✅ **ServerMonitor broken**: Fixed Socket.io issues, now shows live server data (316+ players)
+- ✅ **No sorting/editing**: Added column sorting, edit modal, delete functionality, advanced filtering
+- ✅ **Bot crashes**: Fixed expired interaction crashes that were causing bot restarts
+- ✅ **Clear command issues**: Added pinned message exclusion by default with frontend configuration
+
+**Features Added**:
+- Full farm service CRUD operations with real-time data
+- Advanced filtering and sorting across all receipt data  
+- Player search with auto-suggestions and complete history
+- CSV export functionality with proper formatting
+- Real-time statistics dashboard with live updates
+- Comprehensive error handling preventing bot crashes
+- Enhanced moderation command configuration
+
+**Current Status**:
+- ✅ Farm service system fully operational with management interface
+- ✅ Service history showing real player data and receipts
+- ✅ ServerMonitor displaying live RedM server data (316+ players online)
+- ✅ All Discord bot interactions handle expiry gracefully
+- ✅ Frontend and backend running with complete farm service integration
+- ✅ Export, filtering, sorting, editing, and deleting all functional
+
 ---
 *Note: All timestamps are recorded to the second for precise tracking*

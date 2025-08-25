@@ -1,0 +1,44 @@
+{
+  "playerName": "Vinicius Cesarinni",
+  "channelId": "1409334626224308385",
+  "messageId": "1409379172425662619",
+  "totalEarnings": 268.5,
+  "totalServices": 4,
+  "services": [
+    {
+      "receiptId": "20250825138",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 490,
+      "payment": 73.5,
+      "timestamp": "2025-08-25T02:02:35.874Z"
+    },
+    {
+      "receiptId": "20250825614",
+      "serviceType": "animal",
+      "itemType": "Avino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T03:28:10.031Z"
+    },
+    {
+      "receiptId": "20250825211",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-25T03:29:35.429Z"
+    },
+    {
+      "receiptId": "20250825614",
+      "serviceType": "animal",
+      "itemType": "Avino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T03:29:39.485Z"
+    }
+  ],
+  "lastUpdated": "2025-08-25T03:29:39.487Z",
+  "finalizedAt": "2025-08-25T03:49:16.450Z",
+  "finalizedBy": "jizarstoffel"
+}

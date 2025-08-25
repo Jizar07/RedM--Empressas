@@ -17,6 +17,8 @@ import ChannelLogsConfig from '@/components/ChannelLogsConfig';
 import DiscordCommands from '@/components/DiscordCommands';
 import ServiceHistory from '@/components/ServiceHistory';
 import FarmServiceSettings from '@/components/FarmServiceSettings';
+import FarmServiceOverview from '@/components/FarmServiceOverview';
+import FarmServiceManagement from '@/components/FarmServiceManagement';
 import ModerationSettings from '@/components/ModerationSettings';
 import Recipes from '@/components/Recipes';
 import PriceList from '@/components/PriceList';
@@ -585,24 +587,7 @@ export default function HomePage() {
             </div>
 
             {/* Content Area */}
-            {activeTab === 'farm-service-overview' && (
-              <div className="card p-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">Farm Service System Overview</h2>
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
-                  <p className="text-blue-800">
-                    <strong>📋 Submissions:</strong> Workers submit forms via Discord in #farm-service-submissions channel
-                    <br />
-                    <strong>🤖 Processing:</strong> Bot uses OCR to verify screenshots and calculate payments
-                    <br />
-                    <strong>📄 Receipts:</strong> Automatically posted to individual worker channels
-                  </p>
-                </div>
-                <div className="text-center py-8 text-gray-600">
-                  <p>Discord integration and live monitoring coming soon...</p>
-                  <p className="text-sm mt-2">Configure system settings using the "Service Settings" tab</p>
-                </div>
-              </div>
-            )}
+            {activeTab === 'farm-service-overview' && <FarmServiceManagement />}
             {activeTab === 'service-history' && <ServiceHistory />}
             {activeTab === 'farm-service-settings' && <FarmServiceSettings />}
           </div>

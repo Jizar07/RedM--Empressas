@@ -24,6 +24,7 @@ import forceSyncRoutes from './routes/force-sync';
 import discordCommandsRoutes from './routes/discord-commands';
 import serviceSubmissionsRoutes from './routes/service-submissions';
 import farmServiceConfigRoutes from './routes/farm-service-config';
+import farmServiceDataRoutes from './routes/farm-service-data';
 import discordRolesRoutes from './routes/discord-roles';
 import moderationRoutes from './routes/moderation';
 
@@ -99,6 +100,9 @@ export async function startApiServer(bot: BotClient): Promise<void> {
   
   // Farm service configuration
   app.use('/api/farm-service', farmServiceConfigRoutes);
+  
+  // Farm service data (history, overview)
+  app.use('/api/farm-service-data', farmServiceDataRoutes);
   
   // Moderation configuration
   app.use('/api/moderation', moderationRoutes);

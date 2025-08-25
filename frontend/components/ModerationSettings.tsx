@@ -8,6 +8,7 @@ interface ModerationConfig {
     enabled: boolean;
     defaultLimit: number;
     requireReason: boolean;
+    excludePinnedByDefault: boolean;
     logChannel?: string;
   };
   automod: {
@@ -36,6 +37,7 @@ export default function ModerationSettings() {
       enabled: true,
       defaultLimit: 50,
       requireReason: false,
+      excludePinnedByDefault: true,
       logChannel: ''
     },
     automod: {
@@ -265,6 +267,19 @@ export default function ModerationSettings() {
                 className="h-4 w-4 text-red-600 rounded"
               />
               <span className="font-medium">Require reason for deletion</span>
+            </label>
+
+            <label className="flex items-center space-x-3">
+              <input
+                type="checkbox"
+                checked={config.clearCommand.excludePinnedByDefault}
+                onChange={(e) => setConfig(prev => ({
+                  ...prev,
+                  clearCommand: { ...prev.clearCommand, excludePinnedByDefault: e.target.checked }
+                }))}
+                className="h-4 w-4 text-red-600 rounded"
+              />
+              <span className="font-medium">Exclude pinned messages by default</span>
             </label>
 
             <div>

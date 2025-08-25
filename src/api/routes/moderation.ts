@@ -11,6 +11,7 @@ interface ModerationConfig {
     enabled: boolean;
     defaultLimit: number;
     requireReason: boolean;
+    excludePinnedByDefault: boolean;
     logChannel?: string;
   };
   automod: {
@@ -38,6 +39,7 @@ const defaultConfig: ModerationConfig = {
     enabled: true,
     defaultLimit: 50,
     requireReason: false,
+    excludePinnedByDefault: true,
     logChannel: ''
   },
   automod: {

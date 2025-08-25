@@ -1,6 +1,8 @@
 import { ChatInputCommandInteraction, PermissionFlagsBits, SlashCommandBuilder, TextChannel } from 'discord.js';
 
 const clear = {
+    name: 'clear',
+    cooldown: 5, // 5 seconds cooldown
     data: new SlashCommandBuilder()
         .setName('clear')
         .setDescription('Delete messages from the channel')
@@ -18,6 +20,10 @@ const clear = {
         .addStringOption(option =>
             option.setName('contains')
                 .setDescription('Only delete messages containing this text')
+                .setRequired(false))
+        .addBooleanOption(option =>
+            option.setName('exclude_pinned')
+                .setDescription('Exclude pinned messages from deletion (default: true)')
                 .setRequired(false)),
 
     async execute(interaction: ChatInputCommandInteraction) {
@@ -26,6 +32,7 @@ const clear = {
         const amount = interaction.options.getInteger('amount', true);
         const targetUser = interaction.options.getUser('user');
         const filterText = interaction.options.getString('contains');
+        const excludePinned = interaction.options.getBoolean('exclude_pinned') ?? true; // Default to true
         const channel = interaction.channel as TextChannel;
 
         if (!channel) {
@@ -46,12 +53,17 @@ const clear = {
                 );
             }
 
+            if (excludePinned) {
+                messages = messages.filter(msg => !msg.pinned);
+            }
+
             const messagesToDelete = Array.from(messages.values()).slice(0, amount);
             const deleted = await channel.bulkDelete(messagesToDelete, true);
 
             let response = `Successfully deleted ${deleted.size} message(s)`;
             if (targetUser) response += ` from ${targetUser.tag}`;
             if (filterText) response += ` containing "${filterText}"`;
+            if (excludePinned) response += ` (pinned messages excluded)`;
 
             await interaction.editReply(response);
         } catch (error) {

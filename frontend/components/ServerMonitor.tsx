@@ -7,7 +7,6 @@ import {
   UserPlus, Clock, Zap, CheckCircle, AlertCircle, Circle,
   Wifi, WifiOff, Filter, ArrowUpDown, ArrowUp, ArrowDown
 } from 'lucide-react';
-import { useSocket } from '../hooks/useSocket';
 
 // Interfaces for proper typing
 interface ServerInfo {
@@ -47,8 +46,7 @@ interface KnownPlayer {
 
 
 const ServerMonitor = () => {
-  // Socket.io hook for real-time updates
-  const { socket, isConnected, serverData } = useSocket();
+  // We'll fetch data directly instead of using Socket.io
   
   const [serverInfo, setServerInfo] = useState<ServerInfo | null>(null);
   const [players, setPlayers] = useState<Player[]>([]);
@@ -92,14 +90,48 @@ const ServerMonitor = () => {
     { url: '/api', status: 'partial', description: 'API endpoints (authentication required)' }
   ];
 
-  // Manual refresh - Socket.io will handle the update
-  const handleManualRefresh = () => {
+  // Fetch server data from API proxy endpoints
+  const fetchServerData = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      
+      const [infoRes, playersRes, dynamicRes] = await Promise.all([
+        fetch('/api/server-proxy/info'),
+        fetch('/api/server-proxy/players'),
+        fetch('/api/server-proxy/dynamic')
+      ]);
+      
+      if (infoRes.ok) {
+        const info = await infoRes.json();
+        setServerInfo(info);
+      }
+      
+      if (playersRes.ok) {
+        const playersData = await playersRes.json();
+        setPlayers(playersData);
+      }
+      
+      if (dynamicRes.ok) {
+        const dynamic = await dynamicRes.json();
+        setDynamicInfo(dynamic);
+      }
+      
+      setLastUpdate(new Date());
+      
+    } catch (error: any) {
+      console.error('Error fetching server data:', error);
+      setError('Failed to fetch server data');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Manual refresh
+  const handleManualRefresh = async () => {
     setIsRefreshing(true);
-    // Socket.io server will automatically fetch and emit new data
-    // We just need to wait for the next update
-    setTimeout(() => {
-      setIsRefreshing(false);
-    }, 2000);
+    await fetchServerData();
+    setIsRefreshing(false);
   };
 
   // Fetch known players from localStorage (independent of backend)
@@ -193,25 +225,12 @@ const ServerMonitor = () => {
   // Initialize component
   useEffect(() => {
     fetchKnownPlayers();
+    fetchServerData();
+    
+    // Set up auto-refresh every 30 seconds
+    const interval = setInterval(fetchServerData, 30000);
+    return () => clearInterval(interval);
   }, []);
-  
-  // Handle Socket.io server data updates
-  useEffect(() => {
-    if (serverData.info) {
-      setServerInfo(serverData.info);
-    }
-    if (serverData.players) {
-      setPlayers(serverData.players);
-    }
-    if (serverData.dynamic) {
-      setDynamicInfo(serverData.dynamic);
-    }
-    if (serverData.lastUpdate) {
-      setLastUpdate(new Date(serverData.lastUpdate));
-      setLoading(false);
-      setError(null);
-    }
-  }, [serverData]);
 
   // Update known players status when players list changes
   useEffect(() => {
@@ -489,10 +508,10 @@ const ServerMonitor = () => {
             Server Status
             {/* Socket.io connection indicator */}
             <span className={`ml-auto flex items-center gap-1 text-xs px-2 py-1 rounded-full ${
-              isConnected ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'
+              !loading && !error ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'
             }`}>
-              <div className={`w-2 h-2 rounded-full ${isConnected ? 'bg-green-500' : 'bg-yellow-500'}`}></div>
-              {isConnected ? 'Live' : 'Connecting...'}
+              <div className={`w-2 h-2 rounded-full ${!loading && !error ? 'bg-green-500' : 'bg-yellow-500'}`}></div>
+              {!loading && !error ? 'Live' : loading ? 'Loading...' : 'Error'}
             </span>
           </h3>
           

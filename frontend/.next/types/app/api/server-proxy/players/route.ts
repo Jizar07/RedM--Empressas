@@ -1,4 +1,4 @@
-// File: /mnt/c/Users/jizar/OneDrive/Documents/DiscordBot/frontend/app/api/server-proxy/players/route.ts
+// File: C:\Users\jizar\OneDrive\Documents\DiscordBot\frontend\app\api\server-proxy\players\route.ts
 import * as entry from '../../../../../../app/api/server-proxy/players/route.js'
 import type { NextRequest } from 'next/server.js'
 

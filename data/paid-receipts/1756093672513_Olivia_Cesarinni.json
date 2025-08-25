@@ -1,0 +1,46 @@
+{
+  "playerName": "Olivia Cesarinni",
+  "channelId": "1409334554304577627",
+  "messageId": "1409378760947662868",
+  "totalEarnings": 285,
+  "totalServices": 4,
+  "services": [
+    {
+      "receiptId": "20250825651",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-25T02:43:01.256Z",
+      "paid": true
+    },
+    {
+      "receiptId": "20250825646",
+      "serviceType": "animal",
+      "itemType": "Ovino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T02:42:48.605Z"
+    },
+    {
+      "receiptId": "20250825937",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-25T03:45:52.044Z",
+      "paid": true
+    },
+    {
+      "receiptId": "20250825937",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-25T03:28:01.146Z"
+    }
+  ],
+  "lastUpdated": "2025-08-25T03:45:52.046Z",
+  "finalizedAt": "2025-08-25T03:47:52.514Z",
+  "finalizedBy": "jizarstoffel"
+}

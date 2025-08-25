@@ -1,0 +1,12 @@
+{
+  "receiptId": "20250825322",
+  "timestamp": "2025-08-25T00:25:27.620Z",
+  "playerName": "Rafael Nardelli",
+  "serviceType": "planta",
+  "quantity": 500,
+  "plantName": "Milho",
+  "playerPayment": 75,
+  "status": "PENDING_APPROVAL",
+  "screenshotPath": "C:\\Users\\jizar\\OneDrive\\Documents\\DiscordBot\\uploads\\temp\\temp_1756081526786_image.png",
+  "approved": false
+}

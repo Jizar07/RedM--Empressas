@@ -1,9 +1,9 @@
 {
   "playerName": "Rafael Nardelli",
   "channelId": "1408277426190024796",
-  "messageId": "1409321323380867222",
-  "totalEarnings": 60,
-  "totalServices": 1,
+  "messageId": "1409366214291226674",
+  "totalEarnings": 375,
+  "totalServices": 6,
   "services": [
     {
       "receiptId": "20250824632",
@@ -12,7 +12,47 @@
       "quantity": 1,
       "payment": 60,
       "timestamp": "2025-08-24T23:39:47.268Z"
+    },
+    {
+      "receiptId": "20250825490",
+      "serviceType": "animal",
+      "itemType": "Bovino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T00:23:48.838Z"
+    },
+    {
+      "receiptId": "20250825649",
+      "serviceType": "animal",
+      "itemType": "Bovino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T01:46:20.321Z"
+    },
+    {
+      "receiptId": "20250825257",
+      "serviceType": "animal",
+      "itemType": "Ovino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T02:37:51.952Z"
+    },
+    {
+      "receiptId": "20250825782",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-25T02:38:06.036Z"
+    },
+    {
+      "receiptId": "20250825822",
+      "serviceType": "animal",
+      "itemType": "Bovino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T02:38:09.932Z"
     }
   ],
-  "lastUpdated": "2025-08-24T23:39:47.269Z"
+  "lastUpdated": "2025-08-25T02:38:09.933Z"
 }

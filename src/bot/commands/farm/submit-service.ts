@@ -739,24 +739,18 @@ async function postReceiptToWorkerChannel(interaction: any, receipt: any): Promi
     if (!guild) return;
 
     const categoryId = '1365579138974355476';
-    // Convert player name to channel format: "Jizar Stoffeliz" -> "jizar-stoffeliz"
+    // Convert player name to channel format: "Jizar Stoffeliz" -> "🌾・jizar-stoffeliz"
     const playerName = receipt.playerName.toLowerCase();
     const channelFormat = playerName.replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
-    const variations = [
-      channelFormat, // jizar-stoffeliz (exact channel format)
-      playerName.split(' ')[0], // jizar (first name only)
-      playerName.replace(/\s+/g, ''), // jizarstoffeliz (no spaces)
-    ];
+    const expectedChannelName = `🌾・${channelFormat}`;
     
-    console.log(`Looking for channels matching player: ${receipt.playerName}`, variations);
+    console.log(`Looking for channel: ${expectedChannelName} for player: ${receipt.playerName}`);
     
     const workerChannel = guild.channels.cache.find((channel: any) => {
       if (channel.parentId !== categoryId) return false;
       
-      // Check if any variation matches the channel name
-      return variations.some(variation => 
-        channel.name.toLowerCase().includes(variation)
-      );
+      // Match the channel with the prefix
+      return channel.name === expectedChannelName;
     });
 
     if (workerChannel && workerChannel.isTextBased()) {
@@ -858,6 +852,7 @@ async function postReceiptToWorkerChannel(interaction: any, receipt: any): Promi
       console.log(`✅ Receipt posted to ${workerChannel.name}`);
     } else {
       console.error(`Worker channel not found for: ${receipt.playerName}`);
+      console.error(`Expected channel name: ${expectedChannelName}`);
       console.log('Available channels in category:', guild.channels.cache.filter((c: any) => c.parentId === categoryId).map((c: any) => c.name));
     }
   } catch (error) {
@@ -948,12 +943,26 @@ export async function handleReceiptAccept(interaction: ButtonInteraction): Promi
 
     console.log(`✅ Receipt ${receiptId} approved by ${interaction.user.username}`);
 
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error handling receipt accept:', error);
-    await interaction.reply({
-      content: '❌ Erro ao processar aprovação.',
-      flags: MessageFlags.Ephemeral
-    });
+    
+    // Check if interaction has expired
+    if (error.code === 10062 || error.message?.includes('Unknown interaction')) {
+      console.log('Interaction expired, cannot respond');
+      return;
+    }
+    
+    // Try to respond only if interaction hasn't been responded to
+    if (!interaction.replied && !interaction.deferred) {
+      try {
+        await interaction.reply({
+          content: '❌ Erro ao processar aprovação.',
+          flags: MessageFlags.Ephemeral
+        });
+      } catch (replyError) {
+        console.error('Failed to reply to interaction:', replyError);
+      }
+    }
   }
 }
 
@@ -993,12 +1002,25 @@ export async function handleReceiptEdit(interaction: ButtonInteraction): Promise
 
     await interaction.showModal(editModal);
 
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error handling receipt edit:', error);
-    await interaction.reply({
-      content: '❌ Erro ao processar edição.',
-      flags: MessageFlags.Ephemeral
-    });
+    
+    // Check if interaction has expired
+    if (error.code === 10062 || error.message?.includes('Unknown interaction')) {
+      console.log('Interaction expired, cannot respond');
+      return;
+    }
+    
+    if (!interaction.replied && !interaction.deferred) {
+      try {
+        await interaction.reply({
+          content: '❌ Erro ao processar edição.',
+          flags: MessageFlags.Ephemeral
+        });
+      } catch (replyError) {
+        console.error('Failed to reply to interaction:', replyError);
+      }
+    }
   }
 }
 
@@ -1145,12 +1167,25 @@ export async function handleReceiptReject(interaction: ButtonInteraction): Promi
 
     console.log(`❌ Receipt ${receiptId} rejected by ${interaction.user.username}`);
 
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error handling receipt reject:', error);
-    await interaction.reply({
-      content: '❌ Erro ao processar rejeição.',
-      flags: MessageFlags.Ephemeral
-    });
+    
+    // Check if interaction has expired
+    if (error.code === 10062 || error.message?.includes('Unknown interaction')) {
+      console.log('Interaction expired, cannot respond');
+      return;
+    }
+    
+    if (!interaction.replied && !interaction.deferred) {
+      try {
+        await interaction.reply({
+          content: '❌ Erro ao processar rejeição.',
+          flags: MessageFlags.Ephemeral
+        });
+      } catch (replyError) {
+        console.error('Failed to reply to interaction:', replyError);
+      }
+    }
   }
 }
 
@@ -1244,12 +1279,25 @@ export async function handleReceiptPayNow(interaction: ButtonInteraction): Promi
 
     console.log(`💰 Receipt ${receiptId} paid by ${interaction.user.username}`);
 
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error handling receipt payment:', error);
-    await interaction.reply({
-      content: '❌ Erro ao processar pagamento.',
-      flags: MessageFlags.Ephemeral
-    });
+    
+    // Check if interaction has expired
+    if (error.code === 10062 || error.message?.includes('Unknown interaction')) {
+      console.log('Interaction expired, cannot respond');
+      return;
+    }
+    
+    if (!interaction.replied && !interaction.deferred) {
+      try {
+        await interaction.reply({
+          content: '❌ Erro ao processar pagamento.',
+          flags: MessageFlags.Ephemeral
+        });
+      } catch (replyError) {
+        console.error('Failed to reply to interaction:', replyError);
+      }
+    }
   }
 }
 
@@ -1557,12 +1605,25 @@ export async function handleFinalPayment(interaction: ButtonInteraction): Promis
 
     console.log(`💰 Final payment processed for ${playerName}: $${persistentReceipt.totalEarnings.toFixed(2)}`);
 
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error handling final payment:', error);
-    await interaction.reply({
-      content: '❌ Erro ao processar pagamento final.',
-      flags: MessageFlags.Ephemeral
-    });
+    
+    // Check if interaction has expired
+    if (error.code === 10062 || error.message?.includes('Unknown interaction')) {
+      console.log('Interaction expired, cannot respond');
+      return;
+    }
+    
+    if (!interaction.replied && !interaction.deferred) {
+      try {
+        await interaction.reply({
+          content: '❌ Erro ao processar pagamento final.',
+          flags: MessageFlags.Ephemeral
+        });
+      } catch (replyError) {
+        console.error('Failed to reply to interaction:', replyError);
+      }
+    }
   }
 }
 
