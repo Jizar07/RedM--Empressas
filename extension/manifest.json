@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "Discord Monitor",
+  "version": "1.0",
+  "description": "Monitors Discord channel for messages",
+  "content_scripts": [{
+    "matches": ["*://discord.com/*"],
+    "js": ["content.js"],
+    "run_at": "document_end"
+  }],
+  "permissions": []
+}

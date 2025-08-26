@@ -1,0 +1,426 @@
+{
+  "lastUpdated": "2025-08-26T13:02:05.019Z",
+  "totalMessages": 60,
+  "messages": [
+    {
+      "id": "msg-1756212297297-0",
+      "timestamp": "2025-08-26T12:44:57.297Z",
+      "author": "Spidey Bot",
+      "content": "Spidey BotAPP — Yesterday at 8:57 PMREGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:trigo x100Autor:Impera cyrus | FIXO: 76531Data:25/08/2025 - 21:57:59",
+      "source": "clean_extension"
+    },
+    {
+      "id": "msg-1756212297297-1",
+      "timestamp": "2025-08-26T12:44:57.297Z",
+      "author": "Unknown",
+      "content": "[8:58 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:trigo x100Autor:Impera cyrus | FIXO: 76531Data:25/08/2025 - 21:58:04",
+      "source": "clean_extension"
+    },
+    {
+      "id": "msg-1756212297297-2",
+      "timestamp": "2025-08-26T12:44:57.297Z",
+      "author": "Unknown",
+      "content": "[8:58 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:trigo x100Autor:Impera cyrus | FIXO: 76531Data:25/08/2025 - 21:58:09",
+      "source": "clean_extension"
+    },
+    {
+      "id": "msg-1756212297297-3",
+      "timestamp": "2025-08-26T12:44:57.297Z",
+      "author": "Spidey Bot",
+      "content": "Spidey BotAPP — Yesterday at 9:10 PMREGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:Cigarett x3Autor:jack sparrow | FIXO: 75262Data:25/08/2025 - 22:10:49",
+      "source": "clean_extension"
+    },
+    {
+      "id": "msg-1756212297297-4",
+      "timestamp": "2025-08-26T12:44:57.297Z",
+      "author": "Unknown",
+      "content": "[9:11 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:Bulrush_Seed x100Autor:jack sparrow | FIXO: 75262Data:25/08/2025 - 22:11:14",
+      "source": "clean_extension"
+    },
+    {
+      "id": "msg-1756212297297-5",
+      "timestamp": "2025-08-26T12:44:57.297Z",
+      "author": "Unknown",
+      "content": "[9:11 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:planttrimmer x1Autor:jack sparrow | FIXO: 75262Data:25/08/2025 - 22:11:20",
+      "source": "clean_extension"
+    },
+    {
+      "id": "msg-1756212297297-6",
+      "timestamp": "2025-08-26T12:44:57.297Z",
+      "author": "Unknown",
+      "content": "[9:11 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:hoe x1Autor:jack sparrow | FIXO: 75262Data:25/08/2025 - 22:11:22",
+      "source": "clean_extension"
+    },
+    {
+      "id": "msg-1756212297297-7",
+      "timestamp": "2025-08-26T12:44:57.297Z",
+      "author": "Unknown",
+      "content": "[9:11 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:Alaskan_Ginseng_Seed x50Autor:jack sparrow | FIXO: 75262Data:25/08/2025 - 22:11:28",
+      "source": "clean_extension"
+    },
+    {
+      "id": "msg-1756212297297-8",
+      "timestamp": "2025-08-26T12:44:57.297Z",
+      "author": "Unknown",
+      "content": "[9:11 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:chicken_male x4Autor:jack sparrow | FIXO: 75262Data:25/08/2025 - 22:11:44",
+      "source": "clean_extension"
+    },
+    {
+      "id": "msg-1756212297297-9",
+      "timestamp": "2025-08-26T12:44:57.297Z",
+      "author": "Unknown",
+      "content": "[9:11 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:common_portion_chicken x12Autor:jack sparrow | FIXO: 75262Data:25/08/2025 - 22:11:49",
+      "source": "clean_extension"
+    },
+    {
+      "id": "msg-1756213321834-0j1sufvsr",
+      "timestamp": "2025-08-26T09:14:49.084Z",
+      "author": "Spidey Bot",
+      "content": "Spidey BotAPP — 5:14 AMREGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:caixadeverduras x250Autor:Jizar Stoffeliz | FIXO: 75119Data:26/08/2025 - 06:14:48",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321833-7p5g3prsg",
+      "timestamp": "2025-08-26T06:57:39.113Z",
+      "author": "Unknown",
+      "content": "[2:57 AM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:wateringcan_empty x14Autor:Zero Bala | FIXO: 74829Data:26/08/2025 - 03:57:38",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321833-sjmwckdn9",
+      "timestamp": "2025-08-26T06:57:36.677Z",
+      "author": "Unknown",
+      "content": "[2:57 AM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:wateringcan x41Autor:Zero Bala | FIXO: 74829Data:26/08/2025 - 03:57:36",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321833-37l4jty2u",
+      "timestamp": "2025-08-26T06:57:31.639Z",
+      "author": "Spidey Bot",
+      "content": "Spidey BotAPP — 2:57 AMREGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:caixadeverduras x250Autor:Zero Bala | FIXO: 74829Data:26/08/2025 - 03:57:31",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321833-rg38jx06n",
+      "timestamp": "2025-08-26T06:53:16.895Z",
+      "author": "Unknown",
+      "content": "[2:53 AM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:corn x100Autor:Zero Bala | FIXO: 74829Data:26/08/2025 - 03:53:16",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321832-6d3n89u5p",
+      "timestamp": "2025-08-26T06:53:13.289Z",
+      "author": "Unknown",
+      "content": "[2:53 AM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:corn x200Autor:Zero Bala | FIXO: 74829Data:26/08/2025 - 03:53:13",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321832-rto5ic1ce",
+      "timestamp": "2025-08-26T06:53:08.732Z",
+      "author": "Unknown",
+      "content": "[2:53 AM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:corn x200Autor:Zero Bala | FIXO: 74829Data:26/08/2025 - 03:53:08",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321832-blkvq9vor",
+      "timestamp": "2025-08-26T06:52:34.940Z",
+      "author": "Unknown",
+      "content": "[2:52 AM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:wateringcan x55Autor:Zero Bala | FIXO: 74829Data:26/08/2025 - 03:52:34",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321832-5fgp7u3ix",
+      "timestamp": "2025-08-26T06:52:27.679Z",
+      "author": "Unknown",
+      "content": "[2:52 AM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:trigo x50Autor:Zero Bala | FIXO: 74829Data:26/08/2025 - 03:52:27",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321831-r0vb59zgx",
+      "timestamp": "2025-08-26T06:52:23.745Z",
+      "author": "Unknown",
+      "content": "[2:52 AM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:trigo x200Autor:Zero Bala | FIXO: 74829Data:26/08/2025 - 03:52:23",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321831-ea1iyuddc",
+      "timestamp": "2025-08-26T06:52:09.228Z",
+      "author": "Unknown",
+      "content": "[2:52 AM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:Bulrush x50Autor:Zero Bala | FIXO: 74829Data:26/08/2025 - 03:52:09",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321831-rt700riiz",
+      "timestamp": "2025-08-26T06:52:05.600Z",
+      "author": "Unknown",
+      "content": "[2:52 AM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:Bulrush x200Autor:Zero Bala | FIXO: 74829Data:26/08/2025 - 03:52:05",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321831-9h3sz3yof",
+      "timestamp": "2025-08-26T06:50:53.035Z",
+      "author": "Unknown",
+      "content": "[2:50 AM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:corn x100Autor:Zero Bala | FIXO: 74829Data:26/08/2025 - 03:50:52",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321830-8mov365qk",
+      "timestamp": "2025-08-26T06:50:49.313Z",
+      "author": "Unknown",
+      "content": "[2:50 AM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:corn x200Autor:Zero Bala | FIXO: 74829Data:26/08/2025 - 03:50:49",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321830-n9202fu3h",
+      "timestamp": "2025-08-26T06:50:43.225Z",
+      "author": "Unknown",
+      "content": "[2:50 AM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:corn x200Autor:Zero Bala | FIXO: 74829Data:26/08/2025 - 03:50:42",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321830-6kgto1us9",
+      "timestamp": "2025-08-26T06:50:07.740Z",
+      "author": "Unknown",
+      "content": "[2:50 AM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:trigo x50Autor:Zero Bala | FIXO: 74829Data:26/08/2025 - 03:50:07",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321829-2lx954miw",
+      "timestamp": "2025-08-26T06:50:03.418Z",
+      "author": "Unknown",
+      "content": "[2:50 AM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:trigo x200Autor:Zero Bala | FIXO: 74829Data:26/08/2025 - 03:50:02",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321829-5w2nt744t",
+      "timestamp": "2025-08-26T06:49:57.032Z",
+      "author": "Unknown",
+      "content": "[2:49 AM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:Bulrush x50Autor:Zero Bala | FIXO: 74829Data:26/08/2025 - 03:49:56",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321829-h8fn8qu33",
+      "timestamp": "2025-08-26T06:49:52.941Z",
+      "author": "Unknown",
+      "content": "[2:49 AM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:Bulrush x200Autor:Zero Bala | FIXO: 74829Data:26/08/2025 - 03:49:52",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321829-9w4x9fkzc",
+      "timestamp": "2025-08-26T06:49:26.590Z",
+      "author": "Unknown",
+      "content": "[2:49 AM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:chicken_female x20Autor:Zero Bala | FIXO: 74829Data:26/08/2025 - 03:49:26",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321828-knws0rhmm",
+      "timestamp": "2025-08-26T06:49:23.577Z",
+      "author": "Spidey Bot",
+      "content": "Spidey BotAPP — 2:49 AMREGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:goat_male x10Autor:Zero Bala | FIXO: 74829Data:26/08/2025 - 03:49:23",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321828-qeff9nkzf",
+      "timestamp": "2025-08-26T06:31:37.761Z",
+      "author": "Unknown",
+      "content": "[2:31 AM] REGISTRO - fazenda_86CAIXA ORGANIZAÇÃO - SAQUEValor sacado:$2000Autor:Zero Bala | FIXO: 74829Saldo após saque:$10215.9Data:26/08/2025 - 03:31:37",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321828-15c5w3p7q",
+      "timestamp": "2025-08-26T06:30:49.692Z",
+      "author": "Unknown",
+      "content": "[2:30 AM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:cow_female x1Autor:Zero Bala | FIXO: 74829Data:26/08/2025 - 03:30:49",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321828-ar5rr97lm",
+      "timestamp": "2025-08-26T06:30:45.727Z",
+      "author": "Unknown",
+      "content": "[2:30 AM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:pig_female x30Autor:Zero Bala | FIXO: 74829Data:26/08/2025 - 03:30:45",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321828-2iqlxkwvc",
+      "timestamp": "2025-08-26T06:30:42.942Z",
+      "author": "Unknown",
+      "content": "[2:30 AM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:sheep_male x1Autor:Zero Bala | FIXO: 74829Data:26/08/2025 - 03:30:42",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321827-gq9wf6z9d",
+      "timestamp": "2025-08-26T06:30:40.163Z",
+      "author": "Unknown",
+      "content": "[2:30 AM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:donkey_male x1Autor:Zero Bala | FIXO: 74829Data:26/08/2025 - 03:30:40",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321827-42mlkm2nq",
+      "timestamp": "2025-08-26T06:30:38.204Z",
+      "author": "Unknown",
+      "content": "[2:30 AM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:goat_female x1Autor:Zero Bala | FIXO: 74829Data:26/08/2025 - 03:30:37",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321827-5dj605vyj",
+      "timestamp": "2025-08-26T06:27:28.152Z",
+      "author": "Unknown",
+      "content": "[2:27 AM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:trigo x500Autor:Zero Bala | FIXO: 74829Data:26/08/2025 - 03:27:27",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321827-1qlv02jmj",
+      "timestamp": "2025-08-26T06:27:24.445Z",
+      "author": "Unknown",
+      "content": "[2:27 AM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:Bulrush_Seed x2Autor:Zero Bala | FIXO: 74829Data:26/08/2025 - 03:27:24",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321827-q6ki2p9ky",
+      "timestamp": "2025-08-26T06:27:20.213Z",
+      "author": "Spidey Bot",
+      "content": "Spidey BotAPP — 2:27 AMREGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:Bulrush x10Autor:Zero Bala | FIXO: 74829Data:26/08/2025 - 03:27:20",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321826-un242kybu",
+      "timestamp": "2025-08-26T02:53:13.255Z",
+      "author": "Spidey Bot",
+      "content": "Spidey BotAPP — Yesterday at 10:53 PMREGISTRO - fazenda_86CAIXA ORGANIZAÇÃO - DEPÓSITOValor depositado:$160.0Ação:jack sparrow vendeu 4 animais no matadouroSaldo após depósito:$12215.9Data:25/08/2025 - 23:53:13",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321826-3tmcz3t8n",
+      "timestamp": "2025-08-26T02:45:44.535Z",
+      "author": "Spidey Bot",
+      "content": "Spidey BotAPP — Yesterday at 10:45 PMREGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:Alaskan_Ginseng x490Autor:jack sparrow | FIXO: 75262Data:25/08/2025 - 23:45:44",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321826-qnp01o84g",
+      "timestamp": "2025-08-26T02:22:11.237Z",
+      "author": "Unknown",
+      "content": "[10:22 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:common_portion_chicken x12Autor:jack sparrow | FIXO: 75262Data:25/08/2025 - 23:22:11",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321826-o62ajit3g",
+      "timestamp": "2025-08-26T02:22:02.931Z",
+      "author": "Spidey Bot",
+      "content": "Spidey BotAPP — Yesterday at 10:22 PMREGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:Bulrush_Seed x50Autor:jack sparrow | FIXO: 75262Data:25/08/2025 - 23:22:02",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321826-8l3ftbhcu",
+      "timestamp": "2025-08-26T01:53:42.695Z",
+      "author": "Unknown",
+      "content": "[9:53 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:wateringcan x20Autor:jack sparrow | FIXO: 75262Data:25/08/2025 - 22:53:42",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321825-6be5934r3",
+      "timestamp": "2025-08-26T01:53:35.130Z",
+      "author": "Unknown",
+      "content": "[9:53 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:planttrimmer x2Autor:jack sparrow | FIXO: 75262Data:25/08/2025 - 22:53:35",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321825-2e7tsv2pr",
+      "timestamp": "2025-08-26T01:53:31.511Z",
+      "author": "Spidey Bot",
+      "content": "Spidey BotAPP — Yesterday at 9:53 PMREGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:hoe x2Autor:jack sparrow | FIXO: 75262Data:25/08/2025 - 22:53:31",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321825-ewiqibwd6",
+      "timestamp": "2025-08-26T01:22:00.016Z",
+      "author": "Spidey Bot",
+      "content": "Spidey BotAPP — Yesterday at 9:22 PMREGISTRO - fazenda_86CAIXA ORGANIZAÇÃO - DEPÓSITOValor depositado:$160.0Ação:Boris Loubach vendeu 4 animais no matadouroSaldo após depósito:$12055.9Data:25/08/2025 - 22:21:59",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321824-lgt609caw",
+      "timestamp": "2025-08-26T01:12:17.198Z",
+      "author": "Unknown",
+      "content": "[9:12 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:common_portion x6Autor:jack sparrow | FIXO: 75262Data:25/08/2025 - 22:12:17",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321824-qq00se732",
+      "timestamp": "2025-08-26T01:12:13.734Z",
+      "author": "Unknown",
+      "content": "[9:12 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:common_portion_chicken x12Autor:jack sparrow | FIXO: 75262Data:25/08/2025 - 22:12:13",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321824-xyadlsqhz",
+      "timestamp": "2025-08-26T01:11:49.908Z",
+      "author": "Unknown",
+      "content": "[9:11 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:common_portion_chicken x12Autor:jack sparrow | FIXO: 75262Data:25/08/2025 - 22:11:49",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321824-aehryg3jv",
+      "timestamp": "2025-08-26T01:11:44.897Z",
+      "author": "Unknown",
+      "content": "[9:11 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:chicken_male x4Autor:jack sparrow | FIXO: 75262Data:25/08/2025 - 22:11:44",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321823-h5z4y2e12",
+      "timestamp": "2025-08-26T01:11:28.570Z",
+      "author": "Unknown",
+      "content": "[9:11 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:Alaskan_Ginseng_Seed x50Autor:jack sparrow | FIXO: 75262Data:25/08/2025 - 22:11:28",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321823-jx95bbvvm",
+      "timestamp": "2025-08-26T01:11:22.829Z",
+      "author": "Unknown",
+      "content": "[9:11 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:hoe x1Autor:jack sparrow | FIXO: 75262Data:25/08/2025 - 22:11:22",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321823-v6uxavct5",
+      "timestamp": "2025-08-26T01:11:20.403Z",
+      "author": "Unknown",
+      "content": "[9:11 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:planttrimmer x1Autor:jack sparrow | FIXO: 75262Data:25/08/2025 - 22:11:20",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321823-8fg1r5c7l",
+      "timestamp": "2025-08-26T01:11:14.654Z",
+      "author": "Unknown",
+      "content": "[9:11 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:Bulrush_Seed x100Autor:jack sparrow | FIXO: 75262Data:25/08/2025 - 22:11:14",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321823-1ba9bjgtx",
+      "timestamp": "2025-08-26T01:10:49.398Z",
+      "author": "Spidey Bot",
+      "content": "Spidey BotAPP — Yesterday at 9:10 PMREGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:Cigarett x3Autor:jack sparrow | FIXO: 75262Data:25/08/2025 - 22:10:49",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321822-st0gawq84",
+      "timestamp": "2025-08-26T00:58:09.420Z",
+      "author": "Unknown",
+      "content": "[8:58 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:trigo x100Autor:Impera cyrus | FIXO: 76531Data:25/08/2025 - 21:58:09",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321822-rur122n3u",
+      "timestamp": "2025-08-26T00:58:04.356Z",
+      "author": "Unknown",
+      "content": "[8:58 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:trigo x100Autor:Impera cyrus | FIXO: 76531Data:25/08/2025 - 21:58:04",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756213321822-c4x7pu7uu",
+      "timestamp": "2025-08-26T00:57:59.345Z",
+      "author": "Spidey Bot",
+      "content": "Spidey BotAPP — Yesterday at 8:57 PMREGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:trigo x100Autor:Impera cyrus | FIXO: 76531Data:25/08/2025 - 21:57:59",
+      "source": "monitor"
+    }
+  ]
+}

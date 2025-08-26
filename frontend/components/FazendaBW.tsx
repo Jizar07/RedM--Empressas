@@ -434,23 +434,25 @@ export default function FazendaBW() {
     // Set up listener for extension data
     window.addEventListener('extensionData', handleExtensionData as EventListener);
 
-    // Also check bot webhook for data
-    const checkBotData = async () => {
+    // Check frontend webhook for data
+    const checkFrontendData = async () => {
       try {
-        const response = await fetch('http://localhost:3050/api/webhook/channel-messages', {
+        const response = await fetch('/api/webhook/channel-messages', {
           method: 'GET',
           headers: { 'Content-Type': 'application/json' }
         });
         
         if (response.ok) {
           const data = await response.json();
-          console.log('📊 Bot data received:', data);
+          console.log('📊 Frontend data received:', data);
+          console.log('📊 Total messages in API response:', data.messages?.length || 0);
           
-          // Process bot messages if available
+          // Process frontend messages if available
           if (data.success && data.messages && Array.isArray(data.messages)) {
-            console.log('🔗 Processing bot messages:', data.messages.length);
+            console.log('🔗 Processing frontend messages:', data.messages.length);
+            console.log('🔗 Message details:', data.messages);
             
-            // Bot messages should be parsed by backend, ensure proper structure
+            // Frontend messages should be parsed by backend, ensure proper structure
             const processedActivities: Activity[] = data.messages.map((msg: any) => {
               // Check if already parsed
               if (msg.parseSuccess !== undefined) {
@@ -475,7 +477,7 @@ export default function FazendaBW() {
               };
             });
 
-            // AUTO-PROCESS USERS AND ITEMS from bot data (like Webbased system)
+            // AUTO-PROCESS USERS AND ITEMS from frontend data (like Webbased system)
             processedActivities.forEach(activity => {
               // Skip already processed messages
               if (processedMessageIds.has(activity.id)) {
@@ -504,25 +506,19 @@ export default function FazendaBW() {
               setProcessedMessageIds(prev => new Set([...prev, activity.id]));
             });
 
-            // Merge with existing activities (avoid duplicates by ID)
-            setRecentActivity(prevActivities => {
-              const existingIds = new Set(prevActivities.map(a => a.id));
-              const newActivities = processedActivities.filter(a => !existingIds.has(a.id));
-              const finalActivities = [...prevActivities, ...newActivities].slice(-1000); // Keep last 1000
-              
-              
-              return finalActivities;
-            });
+            // Replace with all activities from file (this ensures we show everything)
+            setRecentActivity(processedActivities.slice(-1000)); // Keep last 1000
+            console.log('✅ Loaded', processedActivities.length, 'activities from frontend JSON file');
           }
         }
       } catch (error) {
-        console.debug('Bot webhook not available:', error);
+        console.debug('Frontend webhook not available:', error);
       }
     };
 
-    // Check bot data immediately and then periodically
-    checkBotData(); // Initial check
-    const interval = setInterval(checkBotData, 10000); // Every 10 seconds
+    // Check frontend data immediately and then periodically
+    checkFrontendData(); // Initial check
+    const interval = setInterval(checkFrontendData, 10000); // Every 10 seconds
 
     return () => {
       window.removeEventListener('extensionData', handleExtensionData as EventListener);
@@ -903,7 +899,7 @@ export default function FazendaBW() {
                                 ${typeof transaction.valor === 'number' ? transaction.valor.toFixed(2) : '0.00'}
                               </span>
                               <span className="text-gray-600">
-                                {transaction.descricao || 'Transação financeira'}
+                                {transaction.displayText || transaction.descricao || 'Transação financeira'}
                               </span>
                               {transaction.confidence && transaction.confidence !== 'high' && (
                                 <span className="text-xs text-gray-400" title={`Confiança: ${transaction.confidence}`}>

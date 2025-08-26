@@ -61,10 +61,26 @@ export const serverApi = {
 };
 
 export const botApi = {
-  // Get bot statistics
+  // Get bot statistics (try internal first, fallback to authenticated)
   getStats: async (): Promise<BotStats> => {
-    const response = await api.get('/bot/stats');
-    return response.data;
+    try {
+      const response = await api.get('/internal/status');
+      // Map internal status format to BotStats format
+      const internalData = response.data;
+      return {
+        ready: internalData.online,
+        uptime: internalData.uptime,
+        guilds: 1, // We know we have at least 1 guild if connected
+        users: 0, // Not available in internal endpoint
+        channels: internalData.connectedChannels?.length || 0,
+        commands: 0, // Not available in internal endpoint
+        ping: 0, // Not available in internal endpoint
+      };
+    } catch (error) {
+      console.warn('Internal bot status failed, trying authenticated endpoint');
+      const response = await api.get('/bot/stats');
+      return response.data;
+    }
   },
 
   // Get bot guilds
@@ -318,10 +334,7 @@ export const channelParserApi = {
 
 // Health check
 export const healthCheck = async (): Promise<any> => {
-  const healthUrl = typeof window !== 'undefined' 
-    ? '/health' 
-    : 'http://localhost:3050/health';
-  const response = await axios.get(healthUrl);
+  const response = await axios.get('http://localhost:3050/health');
   return response.data;
 };
 

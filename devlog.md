@@ -1049,3 +1049,16 @@ All farm service functionality operational with complete audit trail, role-based
 
 ---
 *Note: All timestamps are recorded to the second for precise tracking*
+
+### 2025-08-26 10:09:40
+**Action**: Frontend dashboard money transaction format fix
+**Prompt**: "run a /update then push to git"
+**Context**: After extensive work fixing money transaction display format in dashboard to show [USERNAME] [DESCRIPTION] [AMOUNT] properly
+**Changes**:
+- **Fixed money transaction parsing**: Updated /api/webhook/channel-messages route to properly parse SAQUE and DEPÓSITO messages
+- **Corrected display format**: Withdrawals now show "Username sacou do caixa $X" and deposits show "Username vendeu X animais no matadouro por $Y"
+- **Enhanced regex patterns**: Created specific patterns for extracting usernames from Discord message content rather than metadata
+- **Fixed displayText generation**: Returns proper format strings for frontend display without duplicating usernames or amounts
+- **Resolved file deletion incident**: Accidentally deleted and restored discord-messages.json file containing 60 captured messages
+- **Result**: Dashboard now correctly displays financial transactions in requested format without "Unknown" or "Spidey Bot" authors
+**Status**: Parsing logic completed and file restored, money transactions should now display correctly

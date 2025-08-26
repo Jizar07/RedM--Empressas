@@ -5,7 +5,21 @@ This file is synchronized with: https://github.com/Jizar07/RedM--Empressas
 
 ## Version History
 
-### [0.017] - 2025-08-25 **[CURRENT]**
+### [0.018] - 2025-08-26 **[CURRENT]**
+- **Dashboard Money Transaction Display Fix**: Fixed formatting of financial transactions in frontend dashboard
+- **Proper Transaction Parsing**: Corrected SAQUE and DEPÓSITO message parsing to extract actual usernames from message content
+- **Display Format Standardization**: Implemented [USERNAME] [DESCRIPTION] [AMOUNT] format as requested
+- **Removed Bot Author Artifacts**: Eliminated "Unknown" and "Spidey Bot" authors, now showing actual player names
+- **Enhanced Regex Patterns**: Created specific patterns for withdrawals (sacou do caixa) and deposits (vendeu animais no matadouro)
+- **File Recovery**: Restored accidentally deleted discord-messages.json file containing 60 captured messages
+- Technical implementation:
+  - Updated /api/webhook/channel-messages/route.ts parseDiscordMessage() function
+  - Fixed displayText generation to return proper format strings
+  - Enhanced regex patterns for proper username extraction from Discord content
+  - Removed confidence fields and simplified parsing logic
+- Status: Dashboard now displays transactions correctly without duplicate usernames or amounts
+
+### [0.017] - 2025-08-25
 - **🔒 MAJOR: Complete Farm Service Role-Based Security & Comprehensive System Fixes**: Implemented comprehensive role-based security system with complete audit trail and resolved multiple critical system issues
 - **Role-Based Button Visibility**: Implemented dynamic button visibility system where Accept/Edit/Reject/Pay buttons only show for users with configured permissions
 - **Permission Validation System**: Added userHasPermission() function with comprehensive role checking against farm-service-config.json (acceptRoles, editRoles, rejectRoles)
