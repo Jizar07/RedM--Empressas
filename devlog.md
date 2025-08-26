@@ -4,6 +4,43 @@ This is a local timestamped file to track all development changes and prompts.
 
 ## Log Entries
 
+### 2025-08-26 07:11:11
+**Action**: Enhanced Discord Extension - Full Channel Scraper v4.0
+**Prompt**: "make browser extention grab all messages from channel instead of rellying on messages only."
+**Changes**:
+- **Complete Extension Overhaul**: Upgraded Discord extension from v3.0 to v4.0 with full channel scraping capabilities
+- **Full Message History Scraping**: Added automatic scrolling system that loads and processes entire channel message history
+- **Smart Scroll Logic**: Implements intelligent scrolling that detects when channel top is reached and systematically loads all messages
+- **Advanced Duplicate Prevention**: Enhanced tracking system prevents processing same messages multiple times using persistent storage
+- **Visual Progress Control Panel**: Added floating UI control panel on Discord with real-time scraping progress, statistics, and manual controls
+- **Bulk Data Export**: Added JSON export functionality for all scraped channel data with complete statistics
+- **Error Recovery System**: Implements retry logic, progress saving, and graceful error handling during scraping operations
+- **Enhanced Storage Management**: Automatic cleanup of old message IDs, persistent storage across browser sessions, and memory optimization
+- **Rate Limiting & Performance**: Proper delays between operations to respect Discord's interface without overwhelming the browser
+- **Manual Control Functions**: Exposed global functions for advanced users (startChannelScrape, stopChannelScrape, exportChannelData)
+- **Simplified Manifest**: Removed unnecessary popup clutter, kept only essential permissions for core functionality
+- **Files Modified**:
+  - `discord_extension/content.js` - Complete rewrite with full scraping capabilities
+  - `discord_extension/manifest.json` - Simplified permissions and removed popup components
+  - `discord_extension/popup.html` - Removed (unnecessary clutter)
+
+### 2025-08-26 05:18:08
+**Action**: Improved Farm Activities Message Display System
+**Prompt**: "we need to fix how the atividades de itens messages are shown, analyze the logic and tell me what would be best. this takes messages from the browser extention and log in the frontend's Fazenda BW dashboard."
+**Changes**:
+1. **Created Unified Parser**: Built FarmMessageParser service (`src/services/FarmMessageParser.ts`) as single source of truth for message parsing
+2. **Smart Fallback System**: Added confidence levels (high/medium/low/none) and clean display text for unparseable messages
+3. **Updated Webhook Receiver**: Integrated unified parser, removed duplicate parsing logic
+4. **Enhanced FazendaBW Display**: 
+   - Added parse success indicators and confidence badges
+   - Shows "Não processado" badge for failed parsing
+   - Truncates long raw messages to 150 characters
+   - No more verbose Discord metadata in display
+5. **Improved Message Structure**: Consistent Activity interface with parseSuccess, displayText, and confidence fields
+6. **Better User Experience**: Graceful degradation for unrecognized formats, visual feedback about parsing quality
+**Result**: Clean, organized display of farm activities with proper handling of unparseable messages
+**Status**: TypeScript builds successfully, frontend running on port 3051
+
 ### 2025-08-24 19:33:31
 **Action**: Fixed Discord user registration system emergency issue
 **Prompt**: User reported critical issue: "WHY IS MY FUCKING REGISTRAR BUTTON NOT FUCKING WORKING ON THE FUCKIGN REGISTRE-SE CHANNEL????"

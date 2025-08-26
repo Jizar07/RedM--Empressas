@@ -8,7 +8,8 @@ import {
   ModalBuilder,
   TextInputBuilder,
   TextInputStyle,
-  Events
+  Events,
+  MessageFlags
 } from 'discord.js';
 import OrdersService from '../../services/OrdersService';
 
@@ -61,31 +62,31 @@ export default {
 
 async function handleOrderStart(interaction: ButtonInteraction) {
   try {
+    // CRITICAL: Defer the reply IMMEDIATELY as first action to prevent timeout
+    await interaction.deferReply({ flags: MessageFlags.Ephemeral });
+    
     const config = await OrdersService.getConfig();
     if (!config) {
-      await interaction.reply({
-        content: '❌ Sistema de encomendas não configurado.',
-        ephemeral: true
+      await interaction.editReply({
+        content: '❌ Sistema de encomendas não configurado.'
       });
       return;
     }
 
     const activeFirms = config.firms.filter(f => f.active);
     if (activeFirms.length === 0) {
-      await interaction.reply({
-        content: '❌ Não há firmas disponíveis no momento.',
-        ephemeral: true
+      await interaction.editReply({
+        content: '❌ Não há firmas disponíveis no momento.'
       });
       return;
     }
 
     const activeUserOrders = await OrdersService.getUserActiveOrders(interaction.user.id);
     if (activeUserOrders.length >= config.settings.maxActiveOrdersPerUser) {
-      await interaction.reply({
+      await interaction.editReply({
         content: formatMessage(config.messages.orderLimitReached, {
           limit: config.settings.maxActiveOrdersPerUser.toString()
-        }),
-        ephemeral: true
+        })
       });
       return;
     }
@@ -116,17 +117,36 @@ async function handleOrderStart(interaction: ButtonInteraction) {
     const row = new ActionRowBuilder<StringSelectMenuBuilder>()
       .addComponents(selectMenu);
 
-    await interaction.reply({
+    await interaction.editReply({
       embeds: [embed],
-      components: [row],
-      ephemeral: true
+      components: [row]
     });
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error starting order:', error);
-    await interaction.reply({
-      content: '❌ Erro ao iniciar encomenda.',
-      ephemeral: true
-    });
+    try {
+      // Check if interaction is expired/timed out
+      if (error?.code === 10062 || error?.message?.includes('Unknown interaction')) {
+        console.log('Interaction expired - user will need to retry');
+        return;
+      }
+      
+      if (!interaction.replied && !interaction.deferred) {
+        await interaction.reply({
+          content: '❌ Erro ao iniciar encomenda.',
+          flags: MessageFlags.Ephemeral
+        });
+      } else if (interaction.deferred) {
+        await interaction.editReply({
+          content: '❌ Erro ao iniciar encomenda.'
+        });
+      }
+    } catch (replyError: any) {
+      if (replyError?.code === 10062 || replyError?.code === 40060) {
+        console.log('Interaction timeout during error handling - ignoring');
+      } else {
+        console.error('Error sending error message:', replyError);
+      }
+    }
   }
 }
 
@@ -139,7 +159,7 @@ async function handleFirmSelection(interaction: StringSelectMenuInteraction) {
     if (!session) {
       await interaction.reply({
         content: '❌ Sessão expirada. Por favor, comece novamente.',
-        ephemeral: true
+        flags: MessageFlags.Ephemeral
       });
       return;
     }
@@ -221,13 +241,25 @@ async function handleFirmSelection(interaction: StringSelectMenuInteraction) {
       embeds: [embed],
       components: [row]
     });
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error handling firm selection:', error);
-    await interaction.update({
-      content: '❌ Erro ao processar seleção da firma.',
-      embeds: [],
-      components: []
-    });
+    try {
+      if (error?.code === 10062 || error?.message?.includes('Unknown interaction')) {
+        console.log('Interaction expired during firm selection');
+        return;
+      }
+      await interaction.update({
+        content: '❌ Erro ao processar seleção da firma.',
+        embeds: [],
+        components: []
+      });
+    } catch (updateError: any) {
+      if (updateError?.code === 10062 || updateError?.code === 40060) {
+        console.log('Interaction timeout during firm selection error handling');
+      } else {
+        console.error('Error updating interaction:', updateError);
+      }
+    }
   }
 }
 
@@ -240,7 +272,7 @@ async function handleSupplierSelection(interaction: StringSelectMenuInteraction)
     if (!session || !session.firmId) {
       await interaction.reply({
         content: '❌ Sessão expirada. Por favor, comece novamente.',
-        ephemeral: true
+        flags: MessageFlags.Ephemeral
       });
       activeOrderSessions.delete(userId);
       return;
@@ -306,13 +338,25 @@ async function handleSupplierSelection(interaction: StringSelectMenuInteraction)
 
     // Show modal - this automatically dismisses the message
     await interaction.showModal(modal);
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error handling supplier selection:', error);
-    await interaction.update({
-      content: '❌ Erro ao processar seleção do fornecedor.',
-      embeds: [],
-      components: []
-    });
+    try {
+      if (error?.code === 10062 || error?.message?.includes('Unknown interaction')) {
+        console.log('Interaction expired during supplier selection');
+        return;
+      }
+      await interaction.update({
+        content: '❌ Erro ao processar seleção do fornecedor.',
+        embeds: [],
+        components: []
+      });
+    } catch (updateError: any) {
+      if (updateError?.code === 10062 || updateError?.code === 40060) {
+        console.log('Interaction timeout during supplier selection error handling');
+      } else {
+        console.error('Error updating interaction:', updateError);
+      }
+    }
   }
 }
 
@@ -325,7 +369,7 @@ async function handleOrderDetailsSubmit(interaction: ModalSubmitInteraction) {
     if (!session || !session.firmId || !session.supplierId) {
       await interaction.reply({
         content: '❌ Sessão expirada. Por favor, comece novamente.',
-        ephemeral: true
+        flags: MessageFlags.Ephemeral
       });
       activeOrderSessions.delete(userId);
       return;
@@ -342,7 +386,7 @@ async function handleOrderDetailsSubmit(interaction: ModalSubmitInteraction) {
     if (isNaN(quantity) || quantity <= 0) {
       await interaction.reply({
         content: '❌ Quantidade inválida. Por favor, insira um número válido maior que 0.',
-        ephemeral: true
+        flags: MessageFlags.Ephemeral
       });
       return;
     }
@@ -364,7 +408,7 @@ async function handleOrderDetailsSubmit(interaction: ModalSubmitInteraction) {
     if (!order) {
       await interaction.reply({
         content: '❌ Erro ao criar encomenda.',
-        ephemeral: true
+        flags: MessageFlags.Ephemeral
       });
       return;
     }
@@ -390,7 +434,7 @@ async function handleOrderDetailsSubmit(interaction: ModalSubmitInteraction) {
 
     await interaction.reply({
       embeds: [embed],
-      ephemeral: true
+      flags: MessageFlags.Ephemeral
     });
 
     activeOrderSessions.delete(userId);
@@ -414,7 +458,7 @@ async function handleOrderDetailsSubmit(interaction: ModalSubmitInteraction) {
 
     await interaction.reply({
       content: errorMessage,
-      ephemeral: true
+      flags: MessageFlags.Ephemeral
     });
     
     activeOrderSessions.delete(interaction.user.id);
@@ -434,7 +478,7 @@ async function handleOrderAccept(interaction: ButtonInteraction) {
     if (!updated) {
       await interaction.reply({
         content: '❌ Encomenda não encontrada.',
-        ephemeral: true
+        flags: MessageFlags.Ephemeral
       });
       return;
     }
@@ -461,12 +505,12 @@ async function handleOrderAccept(interaction: ButtonInteraction) {
     if (error.message === 'Unauthorized to update this order') {
       await interaction.reply({
         content: '❌ Você não tem permissão para aceitar esta encomenda.',
-        ephemeral: true
+        flags: MessageFlags.Ephemeral
       });
     } else {
       await interaction.reply({
         content: '❌ Erro ao aceitar encomenda.',
-        ephemeral: true
+        flags: MessageFlags.Ephemeral
       });
     }
   }
@@ -486,7 +530,7 @@ async function handleOrderReject(interaction: ButtonInteraction) {
     if (!updated) {
       await interaction.reply({
         content: '❌ Encomenda não encontrada.',
-        ephemeral: true
+        flags: MessageFlags.Ephemeral
       });
       return;
     }
@@ -513,12 +557,12 @@ async function handleOrderReject(interaction: ButtonInteraction) {
     if (error.message === 'Unauthorized to update this order') {
       await interaction.reply({
         content: '❌ Você não tem permissão para rejeitar esta encomenda.',
-        ephemeral: true
+        flags: MessageFlags.Ephemeral
       });
     } else {
       await interaction.reply({
         content: '❌ Erro ao rejeitar encomenda.',
-        ephemeral: true
+        flags: MessageFlags.Ephemeral
       });
     }
   }

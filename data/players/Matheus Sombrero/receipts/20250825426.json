@@ -1,0 +1,12 @@
+{
+  "receiptId": "20250825426",
+  "timestamp": "2025-08-25T22:37:44.799Z",
+  "playerName": "Matheus Sombrero",
+  "serviceType": "animal",
+  "quantity": 1,
+  "animalType": "Bovino",
+  "playerPayment": 60,
+  "status": "PENDING_APPROVAL",
+  "screenshotPath": "C:\\Users\\jizar\\OneDrive\\Documents\\DiscordBot\\uploads\\temp\\temp_1756161464068_20CFA31.JPG",
+  "approved": false
+}

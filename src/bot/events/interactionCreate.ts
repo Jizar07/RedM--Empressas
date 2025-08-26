@@ -21,8 +21,13 @@ export default {
   async execute(interaction: Interaction, client: BotClient): Promise<void> {
     // Handle button interactions
     if (interaction.isButton()) {
+      // Handle farm service buttons
       if (interaction.customId === 'farm_service_start') {
-        await handleFarmServiceStart(interaction);
+        try {
+          await handleFarmServiceStart(interaction);
+        } catch (error) {
+          console.error('Error in handleFarmServiceStart:', error);
+        }
         return;
       }
       if (interaction.customId.startsWith('receipt_accept_')) {
@@ -45,22 +50,6 @@ export default {
         await handleFinalPayment(interaction);
         return;
       }
-      
-      // Handle orders system buttons
-      if (interaction.customId === 'order_start' || 
-          interaction.customId.startsWith('order_accept_') ||
-          interaction.customId.startsWith('order_reject_')) {
-        // Dynamically import and execute the orders handler
-        try {
-          const ordersModule = await import('./ordersInteraction.handler');
-          if (ordersModule.default && ordersModule.default.execute) {
-            await ordersModule.default.execute(interaction);
-          }
-        } catch (error) {
-          console.error('Error handling order interaction:', error);
-        }
-        return;
-      }
     }
 
     // Handle farm service dropdown selections
@@ -77,20 +66,6 @@ export default {
         await handlePlantTypeSelection(interaction);
         return;
       }
-      
-      // Handle orders system select menus
-      if (interaction.customId.startsWith('order_firm_') ||
-          interaction.customId.startsWith('order_supplier_')) {
-        try {
-          const ordersModule = await import('./ordersInteraction.handler');
-          if (ordersModule.default && ordersModule.default.execute) {
-            await ordersModule.default.execute(interaction);
-          }
-        } catch (error) {
-          console.error('Error handling order interaction:', error);
-        }
-        return;
-      }
     }
 
     // Handle farm service modal submissions
@@ -101,19 +76,6 @@ export default {
       }
       if (interaction.customId.startsWith('receipt_edit_quantity_')) {
         await handleReceiptEditQuantity(interaction);
-        return;
-      }
-      
-      // Handle orders system modals
-      if (interaction.customId.startsWith('order_details_modal_')) {
-        try {
-          const ordersModule = await import('./ordersInteraction.handler');
-          if (ordersModule.default && ordersModule.default.execute) {
-            await ordersModule.default.execute(interaction);
-          }
-        } catch (error) {
-          console.error('Error handling order interaction:', error);
-        }
         return;
       }
     }

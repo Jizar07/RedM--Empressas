@@ -1,5 +1,6 @@
 import { Router, Request, Response } from 'express';
 import MessageManagerService from '../../services/MessageManagerService';
+import FarmMessageParser from '../../services/FarmMessageParser';
 
 const router = Router();
 
@@ -20,6 +21,7 @@ interface WebhookRequest extends Request {
 }
 
 let messageManager: MessageManagerService | null = null;
+let storedExtensionMessages: any[] = []; // Store extension messages for dashboard
 
 export function setMessageManager(manager: MessageManagerService): void {
   messageManager = manager;
@@ -152,6 +154,84 @@ router.delete('/clear-channel/:channelId', (req: Request, res: Response): void =
     res.status(500).json({ 
       success: false, 
       error: 'Failed to clear channel' 
+    });
+  }
+});
+
+// New endpoint specifically for browser extension messages
+router.post('/channel-messages', async (req: Request, res: Response): Promise<void> => {
+  try {
+    console.log('🔗 Browser extension message received:', {
+      channelId: req.body.channelId,
+      messageCount: req.body.messages?.length || 0,
+      source: req.body.source || 'unknown'
+    });
+
+    const { channelId, messages } = req.body;
+
+    if (!channelId || !messages || !Array.isArray(messages)) {
+      res.status(400).json({ 
+        success: false, 
+        error: 'channelId and messages array are required' 
+      });
+      return;
+    }
+
+    // Process messages using unified parser
+    const processedMessages = messages.map((msg: any) => {
+      // Use unified parser for consistent processing
+      const parsed = FarmMessageParser.parseMessage(msg);
+      
+      return {
+        ...parsed,
+        channelId: msg.channelId,
+        discordTimestamp: msg.discordTimestamp,
+        source: msg.source || 'browser_extension'
+      };
+    });
+
+    // Store messages for dashboard access (keep last 1000 messages)
+    storedExtensionMessages = [...storedExtensionMessages, ...processedMessages].slice(-1000);
+    
+    // Log to console for now - you can extend this to save to file or database
+    console.log('📝 Extension Messages:');
+    processedMessages.forEach((msg, index) => {
+      console.log(`  ${index + 1}. [${msg.autor}] ${msg.content.substring(0, 100)}...`);
+    });
+
+    res.json({ 
+      success: true, 
+      message: 'Extension messages processed successfully',
+      channelId,
+      messagesReceived: processedMessages.length,
+      totalStored: storedExtensionMessages.length
+    });
+
+  } catch (error) {
+    console.error('❌ Error processing extension messages:', error);
+    res.status(500).json({ 
+      success: false, 
+      error: 'Failed to process extension messages' 
+    });
+  }
+});
+
+// GET endpoint for dashboard to retrieve stored extension messages
+router.get('/channel-messages', (_req: Request, res: Response): void => {
+  try {
+    console.log('📊 Dashboard requesting extension messages:', storedExtensionMessages.length, 'available');
+    
+    res.json({
+      success: true,
+      messages: storedExtensionMessages,
+      count: storedExtensionMessages.length,
+      lastUpdate: new Date().toISOString()
+    });
+  } catch (error) {
+    console.error('❌ Error retrieving extension messages:', error);
+    res.status(500).json({ 
+      success: false, 
+      error: 'Failed to retrieve extension messages' 
     });
   }
 });

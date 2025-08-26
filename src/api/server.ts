@@ -27,6 +27,7 @@ import farmServiceConfigRoutes from './routes/farm-service-config';
 import farmServiceDataRoutes from './routes/farm-service-data';
 import discordRolesRoutes from './routes/discord-roles';
 import moderationRoutes from './routes/moderation';
+import localizationRoutes from './routes/localization';
 
 export async function startApiServer(bot: BotClient): Promise<void> {
   // Make bot client available globally for API routes
@@ -44,7 +45,12 @@ export async function startApiServer(bot: BotClient): Promise<void> {
   // Middleware
   app.use(helmet());
   app.use(cors({
-    origin: config.frontend.url,
+    origin: [
+      config.frontend.url,
+      'https://discord.com',
+      'https://canary.discord.com',
+      'https://ptb.discord.com'
+    ],
     credentials: true,
   }));
   app.use(express.json());
@@ -109,6 +115,9 @@ export async function startApiServer(bot: BotClient): Promise<void> {
   
   // Discord roles (use different path to avoid conflict)
   app.use('/api/discord-roles', discordRolesRoutes);
+  
+  // Localization routes
+  app.use('/api/localization', localizationRoutes);
   
   // Internal API Routes (NO AUTHENTICATION - for system-to-system communication)
   app.use('/api/internal', internalApiRoutes);

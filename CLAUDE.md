@@ -166,6 +166,37 @@ When updating .md files:
 3. Increment version in changelog.md when significant changes are made
 4. Keep detailed records for potential code reverts
 
+## Core Development Rules
+
+- **DO NOT MAKE ASSUMPTIONS** - Always verify requirements and implementation details
+- **DO NOT OVERCOMPLICATE THINGS** - Keep solutions simple and maintainable
+- **USE SIMPLE SOLUTIONS** - Prefer straightforward approaches over complex ones
+- **IF YOU DON'T KNOW, ASK** - Seek clarification rather than guessing
+
+## MANDATORY PRE-RESPONSE CHECKLIST
+
+**BEFORE RESPONDING TO ANY REQUEST:**
+1. **Read this request carefully** - What exactly is being asked?
+2. **Check: Am I making assumptions?** - Am I assuming something that wasn't explicitly stated?
+3. **Check: Should I ask clarifying questions first?** - Do I need more information before proceeding?
+4. **If yes to either check, ASK QUESTIONS BEFORE DOING ANYTHING**
+5. **Never create new files/systems when existing ones likely exist**
+6. **Never assume user needs something built from scratch**
+
+## ENFORCEMENT MECHANISMS
+
+### User Trigger Phrases
+- When user says "Following CLAUDE.md rules:" - Consciously apply all rules before responding
+- When user says "DO NOT ASSUME ANYTHING" - Ask clarifying questions first
+- When user says "ASK QUESTIONS FIRST" - Do not provide solutions, only ask questions
+- When user says "STOP - READ THE RULES" - Immediately stop and re-read this section
+
+### Assumption Prevention
+- **Default response to requests: Ask clarifying questions first**
+- **Never assume user needs new code/files/systems created**
+- **Always ask about existing implementations before suggesting new ones**
+- **When in doubt, ask "What do you have already?" or "Show me your current setup"**
+
 ## Notes
 
 - This CLAUDE.md file should be updated as the Discord bot project grows

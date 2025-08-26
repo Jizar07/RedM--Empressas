@@ -1,0 +1,19 @@
+{
+  "playerName": "Matheus Sombrero",
+  "channelId": "1409628427060777000",
+  "messageId": "1409649704739799171",
+  "totalEarnings": 7.5,
+  "totalServices": 1,
+  "services": [
+    {
+      "receiptId": "20250825042",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 50,
+      "payment": 7.5,
+      "timestamp": "2025-08-25T21:24:39.031Z",
+      "approvedBy": "jizarstoffel"
+    }
+  ],
+  "lastUpdated": "2025-08-25T21:24:39.034Z"
+}

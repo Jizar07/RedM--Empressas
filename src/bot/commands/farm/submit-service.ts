@@ -1710,8 +1710,13 @@ export async function handleFinalPayment(interaction: ButtonInteraction): Promis
         for (const message of messagesToDelete) {
           try {
             await message.delete();
-          } catch (error) {
-            console.log(`Could not delete message ${message.id}:`, error);
+          } catch (error: any) {
+            if (error.code === 10008) {
+              // Message already deleted, ignore this error
+              console.log(`Message ${message.id} already deleted, skipping`);
+            } else {
+              console.log(`Could not delete message ${message.id}:`, error);
+            }
           }
         }
         

@@ -526,5 +526,27 @@
     "invitedBy": "Jizar Stoffeliz | 4222",
     "approved": true,
     "registeredAt": "2025-08-25T13:49:51.497Z"
+  },
+  {
+    "userId": "301466382929887234",
+    "username": "razaak",
+    "ingameName": "Matheus Sombrero",
+    "mailId": "5045",
+    "functionId": "func_1755521046497",
+    "functionName": "Estagiario Fazenda BW",
+    "invitedBy": "Jane calamidade | 4288",
+    "approved": true,
+    "registeredAt": "2025-08-25T20:00:04.804Z"
+  },
+  {
+    "userId": "301466382929887234",
+    "username": "razaak",
+    "ingameName": "Matheus Sombrero",
+    "mailId": "5045",
+    "functionId": "func_1755523176717",
+    "functionName": "Estagiario Fazenda BW III",
+    "invitedBy": "Jane calamidade | 4288",
+    "approved": true,
+    "registeredAt": "2025-08-25T23:43:27.513Z"
   }
 ]

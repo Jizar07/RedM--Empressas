@@ -1,0 +1,19 @@
+{
+  "playerName": "Jizar Stoffeliz",
+  "channelId": "1409519997977628814",
+  "messageId": "1409662354920312912",
+  "totalEarnings": 60,
+  "totalServices": 1,
+  "services": [
+    {
+      "receiptId": "20250825360",
+      "serviceType": "animal",
+      "itemType": "Suino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T22:14:54.130Z",
+      "approvedBy": "jizarstoffel"
+    }
+  ],
+  "lastUpdated": "2025-08-25T22:14:54.132Z"
+}

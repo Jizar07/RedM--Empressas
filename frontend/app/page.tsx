@@ -23,6 +23,9 @@ import ModerationSettings from '@/components/ModerationSettings';
 import Recipes from '@/components/Recipes';
 import PriceList from '@/components/PriceList';
 import ServerMonitor from '@/components/ServerMonitor';
+import FazendaBW from '@/components/FazendaBW';
+import EstoqueBW from '@/components/EstoqueBW';
+import TrabalhadoresBW from '@/components/TrabalhadoresBW';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import UserMenu from '@/components/UserMenu';
 import SimpleUserMenu from '@/components/SimpleUserMenu';
@@ -47,6 +50,11 @@ export default function HomePage() {
 
   // Helper function to change tab and update URL
   const changeTab = (tabId: string) => {
+    // If clicking on main Fazenda BW tab, default to dashboard
+    if (tabId === 'fazenda-bw') {
+      tabId = 'fazenda-bw-dashboard';
+    }
+    
     setActiveTab(tabId);
     const params = new URLSearchParams(searchParams);
     if (tabId === 'dashboard') {
@@ -218,6 +226,32 @@ export default function HomePage() {
       icon: Activity,
       description: 'Server monitoring and player tracking'
     },
+    {
+      id: 'fazenda-bw',
+      name: 'Fazenda BW',
+      icon: BarChart3,
+      description: 'Farm management dashboard with extension integration',
+      submenu: [
+        {
+          id: 'fazenda-bw-dashboard',
+          name: 'Dashboard',
+          icon: BarChart3,
+          description: 'Real-time activity feeds and farm overview'
+        },
+        {
+          id: 'fazenda-bw-estoque',
+          name: 'Estoque',
+          icon: Package,
+          description: 'Inventory management and item tracking'
+        },
+        {
+          id: 'fazenda-bw-trabalhadores',
+          name: 'Trabalhadores',
+          icon: Users,
+          description: 'Worker performance and analytics'
+        }
+      ]
+    },
   ];
 
   return (
@@ -262,7 +296,8 @@ export default function HomePage() {
               const Icon = tab.icon;
               const isActive = activeTab === tab.id || 
                 (tab.id === 'admin' && (activeTab === 'registration-settings' || activeTab === 'registration-analytics' || activeTab === 'orders-settings')) ||
-                (tab.id === 'orders' && (activeTab === 'orders-dashboard' || activeTab === 'orders-management'));
+                (tab.id === 'orders' && (activeTab === 'orders-dashboard' || activeTab === 'orders-management')) ||
+                (tab.id === 'fazenda-bw' && (activeTab === 'fazenda-bw-dashboard' || activeTab === 'fazenda-bw-estoque' || activeTab === 'fazenda-bw-trabalhadores'));
               return (
                 <button
                   key={tab.id}
@@ -377,6 +412,16 @@ export default function HomePage() {
                   <Activity className="h-6 w-6 text-purple-600 mb-2" />
                   <h4 className="font-medium text-gray-900">Monitor do Servidor</h4>
                   <p className="text-sm text-gray-500">Monitoramento avançado</p>
+                </button>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
+                <button
+                  onClick={() => changeTab('fazenda-bw')}
+                  className="p-4 border border-emerald-300 rounded-lg hover:bg-emerald-50 transition-colors text-left bg-emerald-50"
+                >
+                  <BarChart3 className="h-6 w-6 text-emerald-600 mb-2" />
+                  <h4 className="font-medium text-gray-900">Fazenda BW</h4>
+                  <p className="text-sm text-gray-500">Dashboard da fazenda com extensão</p>
                 </button>
               </div>
             </div>
@@ -590,6 +635,61 @@ export default function HomePage() {
             {activeTab === 'farm-service-overview' && <FarmServiceManagement />}
             {activeTab === 'service-history' && <ServiceHistory />}
             {activeTab === 'farm-service-settings' && <FarmServiceSettings />}
+          </div>
+        )}
+
+        {/* Fazenda BW Section */}
+        {(activeTab === 'fazenda-bw' || activeTab === 'fazenda-bw-dashboard' || activeTab === 'fazenda-bw-estoque' || activeTab === 'fazenda-bw-trabalhadores') && (
+          <div className="space-y-8">
+            {/* Fazenda BW Menu */}
+            <div className="card p-6">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">🏛️ Fazenda BW - Sistema de Gestão</h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <button
+                  onClick={() => changeTab('fazenda-bw-dashboard')}
+                  className={`p-6 border-2 rounded-lg text-left transition-colors ${
+                    activeTab === 'fazenda-bw-dashboard'
+                      ? 'border-red-500 bg-red-50'
+                      : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
+                  }`}
+                >
+                  <BarChart3 className="h-8 w-8 text-gray-600 mb-3" />
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Dashboard</h3>
+                  <p className="text-gray-600">Feeds de atividade em tempo real e visão geral da fazenda</p>
+                </button>
+                
+                <button
+                  onClick={() => changeTab('fazenda-bw-estoque')}
+                  className={`p-6 border-2 rounded-lg text-left transition-colors ${
+                    activeTab === 'fazenda-bw-estoque'
+                      ? 'border-red-500 bg-red-50'
+                      : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
+                  }`}
+                >
+                  <Package className="h-8 w-8 text-gray-600 mb-3" />
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Estoque</h3>
+                  <p className="text-gray-600">Gerenciamento de inventário e rastreamento de itens</p>
+                </button>
+                
+                <button
+                  onClick={() => changeTab('fazenda-bw-trabalhadores')}
+                  className={`p-6 border-2 rounded-lg text-left transition-colors ${
+                    activeTab === 'fazenda-bw-trabalhadores'
+                      ? 'border-red-500 bg-red-50'
+                      : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
+                  }`}
+                >
+                  <Users className="h-8 w-8 text-gray-600 mb-3" />
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Trabalhadores</h3>
+                  <p className="text-gray-600">Performance dos trabalhadores e análise de atividades</p>
+                </button>
+              </div>
+            </div>
+
+            {/* Content Area */}
+            {activeTab === 'fazenda-bw-dashboard' && <FazendaBW />}
+            {activeTab === 'fazenda-bw-estoque' && <EstoqueBW />}
+            {activeTab === 'fazenda-bw-trabalhadores' && <TrabalhadoresBW />}
           </div>
         )}
 

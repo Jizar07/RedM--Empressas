@@ -1,0 +1,12 @@
+{
+  "receiptId": "20250825375",
+  "timestamp": "2025-08-25T22:22:56.229Z",
+  "playerName": "Matheus Sombrero",
+  "serviceType": "planta",
+  "quantity": 230,
+  "plantName": "Milho",
+  "playerPayment": 34.5,
+  "status": "PENDING_APPROVAL",
+  "screenshotPath": "C:\\Users\\jizar\\OneDrive\\Documents\\DiscordBot\\uploads\\temp\\temp_1756160575618_2084561.JPG",
+  "approved": false
+}

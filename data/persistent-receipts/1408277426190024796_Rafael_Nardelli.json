@@ -1,9 +1,9 @@
 {
   "playerName": "Rafael Nardelli",
   "channelId": "1408277426190024796",
-  "messageId": "1409601443782197409",
-  "totalEarnings": 1153.5,
-  "totalServices": 18,
+  "messageId": "1409627015354519712",
+  "totalEarnings": 1333.5,
+  "totalServices": 21,
   "services": [
     {
       "receiptId": "20250824632",
@@ -157,7 +157,34 @@
       "payment": 73.5,
       "timestamp": "2025-08-25T18:12:52.851Z",
       "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250825507",
+      "serviceType": "animal",
+      "itemType": "Bovino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T18:55:43.913Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250825059",
+      "serviceType": "animal",
+      "itemType": "Avino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T19:20:18.248Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250825180",
+      "serviceType": "animal",
+      "itemType": "Bovino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T19:54:29.668Z",
+      "approvedBy": "jizarstoffel"
     }
   ],
-  "lastUpdated": "2025-08-25T18:12:52.852Z"
+  "lastUpdated": "2025-08-25T19:54:29.670Z"
 }
