@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
+import { notifyClients } from '../sse/route';
 
 interface MessageData {
   id: string;
@@ -95,8 +96,45 @@ export async function POST(request: NextRequest) {
     const existingMessages = readMessages();
     const existingIds = new Set(existingMessages.map(msg => msg.id));
 
-    // Filter out duplicates
-    const newMessages = body.messages.filter(msg => !existingIds.has(msg.id));
+    // Create content-based deduplication key using exact timestamp
+    function createDedupeKey(msg: any): string {
+      const content = msg.content || '';
+      
+      // Extract username
+      const usernameMatch = content.match(/Autor:\s*([^|\n]+)/);
+      const username = usernameMatch ? usernameMatch[1].trim() : msg.author;
+      
+      // Extract exact timestamp (main pivot for duplications)
+      const timestampMatch = content.match(/(\d{2}\/\d{2}\/\d{4},\s*\d{2}:\d{2}:\d{2})/);
+      const exactTimestamp = timestampMatch ? timestampMatch[1] : '';
+      
+      // For inventory actions: extract quantity and item
+      const quantityMatch = content.match(/(\d+)x/);
+      const quantity = quantityMatch ? quantityMatch[1] : '';
+      
+      const itemMatch = content.match(/Item\s+(?:adicionado|removido):\s*([^\n]+)/);
+      const item = itemMatch ? itemMatch[1].trim() : '';
+      
+      // For money transactions: extract amount
+      const moneyMatch = content.match(/\$(\d+\.?\d*)/);
+      const amount = moneyMatch ? moneyMatch[1] : '';
+      
+      // For animal sales: extract animal count
+      const animalMatch = content.match(/(\d+)\s+animais/);
+      const animalCount = animalMatch ? animalMatch[1] : '';
+      
+      // Create unique key based on user, timestamp, and transaction details
+      return `${username}|${exactTimestamp}|${quantity}|${item}|${amount}|${animalCount}`;
+    }
+    
+    // Build deduplication sets
+    const existingContentKeys = new Set(existingMessages.map(createDedupeKey));
+    
+    // Filter out duplicates by both ID and content
+    const newMessages = body.messages.filter(msg => {
+      const contentKey = createDedupeKey(msg);
+      return !existingIds.has(msg.id) && !existingContentKeys.has(contentKey);
+    });
     
     if (newMessages.length === 0) {
       return NextResponse.json({
@@ -131,6 +169,19 @@ export async function POST(request: NextRequest) {
       };
       fs.writeFileSync(notificationFile, JSON.stringify(updateInfo));
       console.log('📡 Created update notification for frontend');
+      
+      // NOTIFY SSE CLIENTS IMMEDIATELY
+      try {
+        notifyClients({
+          type: 'new-messages',
+          count: newMessages.length,
+          total: recentMessages.length,
+          timestamp: new Date().toISOString()
+        });
+        console.log(`🚀 Notified SSE clients of ${newMessages.length} new messages`);
+      } catch (sseError) {
+        console.error('Failed to notify SSE clients:', sseError);
+      }
     } catch (error) {
       console.warn('Could not write notification file:', error);
     }

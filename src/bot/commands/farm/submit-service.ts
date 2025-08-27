@@ -16,8 +16,6 @@ import {
 } from 'discord.js';
 import { promises as fs } from 'fs';
 import path from 'path';
-// Removed OCR service - using manual approval system
-
 // Store temporary service submission data
 const serviceData = new Map<string, any>();
 
@@ -681,24 +679,79 @@ async function processServiceSubmission(
       filePath
     });
 
-    // Post to worker channel
-    await postReceiptToWorkerChannel(interaction, receipt);
+    // VERIFY THE SERVICE SUBMISSION
+    console.log('🔍 Verifying service submission...');
+    let verificationResult = null;
+    try {
+      // Call verification API endpoint
+      const axios = (await import('axios')).default;
+      const verifyResponse = await axios.post(`http://localhost:3050/api/farm-service-data/verify/${receipt.receiptId}`);
+      verificationResult = verifyResponse.data.verification;
+      
+      // Update receipt if verification modified it
+      if (verifyResponse.data.receipt) {
+        Object.assign(receipt, verifyResponse.data.receipt);
+      }
+      
+      console.log(`✅ Verification complete: ${verificationResult.verificationMessage}`);
+    } catch (error: any) {
+      console.error('⚠️ Verification failed:', error.message);
+      // Continue without verification if it fails
+    }
+    
+    // Post to worker channel with verification results
+    await postReceiptToWorkerChannel(interaction, receipt, verificationResult);
 
-    // Success response - all services now require approval
+    // Success response with verification status
     let successMessage;
     
-    if (data.serviceType === 'animal') {
-      successMessage = `✅ **Serviço Animal Submetido!**\n\n` +
-        `📋 Recibo: #${receipt.receiptId}\n` +
-        `🐄 Animais: ${result.quantity} ${data.itemType}\n` +
-        `💵 Pagamento: $${result.playerPayment.toFixed(2)}\n` +
-        `📊 Status: Aguardando Aprovação`;
+    if (verificationResult && !verificationResult.autoAccept) {
+      // VERIFICATION FAILED - SUSPICIOUS
+      if (data.serviceType === 'animal') {
+        successMessage = `❌ **SERVIÇO SUSPEITO DETECTADO!**\n\n` +
+          `📋 Recibo: #${receipt.receiptId}\n` +
+          `🐄 Declarado: ${result.quantity} ${data.itemType}\n` +
+          `💵 Valor Esperado: $${result.playerPayment.toFixed(2)}\n` +
+          `🤖 **VERIFICAÇÃO**: ${verificationResult.verificationMessage}\n` +
+          `⚠️ **NECESSÁRIA REVISÃO MANUAL**`;
+      } else {
+        successMessage = `❌ **SERVIÇO SUSPEITO DETECTADO!**\n\n` +
+          `📋 Recibo: #${receipt.receiptId}\n` +
+          `🌾 Declarado: ${data.quantity} ${data.itemType}\n` +
+          `💵 Pagamento: $${result.playerPayment.toFixed(2)}\n` +
+          `🤖 **VERIFICAÇÃO**: ${verificationResult.verificationMessage}\n` +
+          `⚠️ **NECESSÁRIA REVISÃO MANUAL**`;
+      }
+    } else if (verificationResult && verificationResult.autoAccept) {
+      // VERIFICATION PASSED
+      if (data.serviceType === 'animal') {
+        successMessage = `✅ **Serviço Verificado e Aprovado!**\n\n` +
+          `📋 Recibo: #${receipt.receiptId}\n` +
+          `🐄 Animais: ${result.quantity} ${data.itemType}\n` +
+          `💵 Pagamento: $${receipt.playerPayment.toFixed(2)}${(receipt as any).paymentAdjusted ? ` (ajustado)` : ''}\n` +
+          `🤖 Verificação: ${verificationResult.verificationMessage}`;
+      } else {
+        successMessage = `✅ **Serviço Verificado e Aprovado!**\n\n` +
+          `📋 Recibo: #${receipt.receiptId}\n` +
+          `🌾 Plantas: ${data.quantity} ${data.itemType}\n` +
+          `💵 Pagamento: $${receipt.playerPayment.toFixed(2)}\n` +
+          `🤖 Verificação: ${verificationResult.verificationMessage}`;
+      }
     } else {
-      successMessage = `✅ **Serviço de Planta Submetido!**\n\n` +
-        `📋 Recibo: #${receipt.receiptId}\n` +
-        `🌾 Plantas: ${data.quantity} ${data.itemType}\n` +
-        `💵 Pagamento: $${result.playerPayment.toFixed(2)}\n` +
-        `📊 Status: Aguardando Aprovação`;
+      // NO VERIFICATION - FALLBACK
+      if (data.serviceType === 'animal') {
+        successMessage = `✅ **Serviço Animal Submetido!**\n\n` +
+          `📋 Recibo: #${receipt.receiptId}\n` +
+          `🐄 Animais: ${result.quantity} ${data.itemType}\n` +
+          `💵 Pagamento: $${result.playerPayment.toFixed(2)}\n` +
+          `📊 Status: Aguardando Aprovação`;
+      } else {
+        successMessage = `✅ **Serviço de Planta Submetido!**\n\n` +
+          `📋 Recibo: #${receipt.receiptId}\n` +
+          `🌾 Plantas: ${data.quantity} ${data.itemType}\n` +
+          `💵 Pagamento: $${result.playerPayment.toFixed(2)}\n` +
+          `📊 Status: Aguardando Aprovação`;
+      }
     }
 
     try {
@@ -795,7 +848,7 @@ async function saveReceipt(receipt: any): Promise<void> {
   }
 }
 
-async function postReceiptToWorkerChannel(interaction: any, receipt: any): Promise<void> {
+async function postReceiptToWorkerChannel(interaction: any, receipt: any, verificationResult?: any): Promise<void> {
   try {
     const guild = interaction.guild;
     if (!guild) return;
@@ -816,11 +869,22 @@ async function postReceiptToWorkerChannel(interaction: any, receipt: any): Promi
     });
 
     if (workerChannel && workerChannel.isTextBased()) {
+      // Set color based on verification
+      let embedColor = 0x00FF00; // Default green
+      let titleSuffix = '';
+      if (verificationResult) {
+        if (verificationResult.autoAccept) {
+          embedColor = 0x00FF00;
+          titleSuffix = ' ✅ AUTO-VERIFICADO';
+        } else {
+          embedColor = 0xFF0000;
+          titleSuffix = ' ❌ FALHA NA VERIFICAÇÃO';
+        }
+      }
+      
       const embed = new EmbedBuilder()
-        .setTitle(`📋 Recibo de Serviço #${receipt.receiptId}`)
-        .setColor(receipt.serviceType === 'animal' 
-          ? (receipt.status === 'OPTIMAL' ? 0x00FF00 : receipt.status === 'SUBOPTIMAL' ? 0xFFFF00 : 0xFF0000)
-          : 0x00FF00)
+        .setTitle(`📋 Recibo de Serviço #${receipt.receiptId}${titleSuffix}`)
+        .setColor(embedColor)
         .setTimestamp(new Date(receipt.timestamp))
         .setFooter({ text: 'Sistema de Serviços da Fazenda' });
 
@@ -858,11 +922,21 @@ async function postReceiptToWorkerChannel(interaction: any, receipt: any): Promi
           { name: 'Status', value: '⚠️ **AGUARDANDO APROVAÇÃO**', inline: true }
         );
         
-        embed.addFields({
-          name: '📸 Revisão Manual Necessária',
-          value: `Usuário submeteu: **${receipt.quantity}** ${receipt.plantName}\n\nPor favor, verifique a captura de tela abaixo e aprove/rejeite adequadamente.`,
-          inline: false
-        });
+        // Add verification info if available
+        if (verificationResult) {
+          embed.addFields({
+            name: '🤖 Verificação Automática',
+            value: verificationResult.verificationMessage + 
+              (verificationResult.transactions ? `\n📊 Transações Discord encontradas: ${verificationResult.transactions.length}` : ''),
+            inline: false
+          });
+        } else {
+          embed.addFields({
+            name: '📸 Revisão Manual Necessária',
+            value: `Usuário submeteu: **${receipt.quantity}** ${receipt.plantName}\n\nPor favor, verifique a captura de tela abaixo e aprove/rejeite adequadamente.`,
+            inline: false
+          });
+        }
       }
 
       // Prepare message components
@@ -1728,10 +1802,19 @@ export async function handleFinalPayment(interaction: ButtonInteraction): Promis
     }
 
     // Update the persistent receipt message to final status (only update, don't send new)
-    await interaction.update({
-      embeds: [finalReceiptEmbed],
-      components: []
-    });
+    try {
+      await interaction.update({
+        embeds: [finalReceiptEmbed],
+        components: []
+      });
+    } catch (error: any) {
+      if (error.code === 10062) {
+        console.log('Interaction expired, cannot respond');
+      } else {
+        console.error('Error updating interaction:', error);
+        throw error;
+      }
+    }
 
     // Archive the persistent receipt
     const archivePath = path.join(process.cwd(), 'data', 'paid-receipts', `${Date.now()}_${playerName.replace(/\s+/g, '_')}.json`);

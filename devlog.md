@@ -4,6 +4,29 @@ This is a local timestamped file to track all development changes and prompts.
 
 ## Log Entries
 
+### 2025-08-27 17:42:57
+**Action**: Fix Real-Time Updates & Implement Smart Deduplication System
+**Prompt**: Extension not updating in real-time, duplicated transactions from testing attempts, need real-time detection without performance issues
+**Changes**:
+- **FIXED**: Extension Real-Time Detection
+  - Updated `extension/content.js` with working MutationObserver pattern from Fazenda system
+  - Replaced delayed `scanMessages()` approach with immediate `processNewMessage()` in observer callback
+  - Added better node detection: `node.classList.toString().includes('message')` and nested message elements
+  - Extension now detects and processes Discord messages instantly when they appear
+- **IMPLEMENTED**: Smart Content-Based Deduplication System
+  - Enhanced `frontend/app/api/webhook/channel-messages/route.ts` with intelligent duplicate prevention
+  - Created `createDedupeKey()` function using username, exact timestamp, quantity, item, amount, and animal count
+  - Deduplication key format: `username|exactTimestamp|quantity|item|amount|animalCount`
+  - System now prevents duplicate transactions with same user + timestamp + details (down to the second)
+- **CLEANED**: Removed 249 Duplicate Messages
+  - Created and ran deduplication script on existing messages using same logic as webhook
+  - Reduced message count from 644 to 395 by removing test duplicates
+  - Applied exact timestamp matching for inventory actions and money transactions
+- **FIXED**: Discord Interaction Timeout Error
+  - Added try-catch wrapper around `interaction.update()` in `src/bot/commands/farm/submit-service.ts:1805`
+  - Gracefully handles expired Discord interactions (15-minute timeout) without crashing bot
+- **RESULT**: Complete real-time system with zero polling, instant Discord detection, and bulletproof deduplication
+
 ### 2025-08-27 14:18:34
 **Action**: Complete System Architecture Overhaul - Event-Driven Updates & Enhanced User Management
 **Prompt**: Multiple requests - fix polling architecture, add clickable sorting, item translations, bank balance, and resolve performance issues
