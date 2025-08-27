@@ -4,6 +4,19 @@ This is a local timestamped file to track all development changes and prompts.
 
 ## Log Entries
 
+### 2025-08-27 12:06:24
+**Action**: Fixed Financial Transaction Display Format and Parsing
+**Prompt**: "frontend is not working as expected, please check for errors" followed by fixing display format issues
+**Changes**:
+- Fixed TypeScript compilation errors (ES2018 target, downlevelIteration, type assertions)
+- Corrected Discord message parsing for deposit transactions
+- Added separate parsing for direct deposits vs sales deposits (with "Ação:" field)
+- Fixed frontend display format to show: [username] [action] [amount] instead of redundant text
+- Sales now display as: "Zero Bala vendeu 4 animais no matadouro por $160.00"
+- Direct deposits show as: "Jizar Stoffeliz depositou $4000.00"
+- Updated regex patterns to properly differentiate transaction types
+- Improved confidence scoring and message categorization
+
 ### 2025-08-26 07:11:11
 **Action**: Enhanced Discord Extension - Full Channel Scraper v4.0
 **Prompt**: "make browser extention grab all messages from channel instead of rellying on messages only."

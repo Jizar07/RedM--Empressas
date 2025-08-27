@@ -5,7 +5,16 @@ This file is synchronized with: https://github.com/Jizar07/RedM--Empressas
 
 ## Version History
 
-### [0.018] - 2025-08-26 **[CURRENT]**
+### [0.019] - 2025-08-27 **[CURRENT]**
+- **Complete Financial Transaction Display Overhaul**: Fixed redundant display format and improved transaction categorization
+- **Proper Sales vs Direct Deposit Parsing**: Added separate parsing for sales deposits (with "Ação:" field) vs direct deposits
+- **TypeScript Compilation Fixes**: Updated target to ES2018, fixed downlevelIteration and type assertion errors
+- **Enhanced Display Format**: Implemented clean format - Sales: "Zero Bala vendeu 4 animais no matadouro por $160.00", Direct: "Jizar Stoffeliz depositou $4000.00"
+- **Improved Regex Patterns**: Added negative lookahead to prevent sales from being categorized as direct deposits
+- **Transaction Type Distinction**: Sales marked as 'venda', direct deposits as 'deposito', withdrawals as 'saque'
+- **Frontend Error Resolution**: Fixed all TypeScript compilation errors and improved display logic
+
+### [0.018] - 2025-08-26
 - **Dashboard Money Transaction Display Fix**: Fixed formatting of financial transactions in frontend dashboard
 - **Proper Transaction Parsing**: Corrected SAQUE and DEPÓSITO message parsing to extract actual usernames from message content
 - **Display Format Standardization**: Implemented [USERNAME] [DESCRIPTION] [AMOUNT] format as requested

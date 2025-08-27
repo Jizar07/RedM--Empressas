@@ -89,7 +89,7 @@ export default function TrabalhadoresBW() {
 
     extensionMessages.forEach(msg => {
       const content = msg.content || '';
-      const author = msg.author || 'Unknown';
+      const author = msg.autor || 'Unknown';
       
       // Initialize worker if not exists
       if (!workerData[author]) {

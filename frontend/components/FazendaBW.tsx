@@ -425,7 +425,7 @@ export default function FazendaBW() {
         }
 
         // Mark message as processed
-        setProcessedMessageIds(prev => new Set([...prev, activity.id]));
+        setProcessedMessageIds(prev => new Set(Array.from(prev).concat(activity.id)));
       });
 
       setRecentActivity(processedActivities);
@@ -891,16 +891,38 @@ export default function FazendaBW() {
                               <span className="font-semibold text-gray-900">
                                 {transaction.autor || 'Sistema'}
                               </span>
-                              <span className={`px-2 py-1 rounded text-xs font-medium ${
-                                transaction.tipo === 'deposito' || transaction.tipo === 'venda'
-                                  ? 'bg-green-100 text-green-800' 
-                                  : 'bg-red-100 text-red-800'
-                              }`}>
-                                ${typeof transaction.valor === 'number' ? transaction.valor.toFixed(2) : '0.00'}
-                              </span>
-                              <span className="text-gray-600">
-                                {transaction.displayText || transaction.descricao || 'Transação financeira'}
-                              </span>
+                              {transaction.descricao && transaction.descricao !== 'Depósito direto' && transaction.tipo !== 'saque' ? (
+                                // For sales/actions with description
+                                <>
+                                  <span className="text-gray-600">
+                                    {transaction.descricao}
+                                  </span>
+                                  <span className="text-gray-600">por</span>
+                                  <span className={`px-2 py-1 rounded text-xs font-medium ${
+                                    transaction.tipo === 'deposito' || transaction.tipo === 'venda'
+                                      ? 'bg-green-100 text-green-800' 
+                                      : 'bg-red-100 text-red-800'
+                                  }`}>
+                                    ${typeof transaction.valor === 'number' ? transaction.valor.toFixed(2) : '0.00'}
+                                  </span>
+                                </>
+                              ) : (
+                                // For simple deposits/withdrawals
+                                <>
+                                  <span className="text-gray-600">
+                                    {transaction.tipo === 'deposito' ? 'depositou' : 
+                                     transaction.tipo === 'saque' ? 'sacou' :
+                                     'transação'}
+                                  </span>
+                                  <span className={`px-2 py-1 rounded text-xs font-medium ${
+                                    transaction.tipo === 'deposito' || transaction.tipo === 'venda'
+                                      ? 'bg-green-100 text-green-800' 
+                                      : 'bg-red-100 text-red-800'
+                                  }`}>
+                                    ${typeof transaction.valor === 'number' ? transaction.valor.toFixed(2) : '0.00'}
+                                  </span>
+                                </>
+                              )}
                               {transaction.confidence && transaction.confidence !== 'high' && (
                                 <span className="text-xs text-gray-400" title={`Confiança: ${transaction.confidence}`}>
                                   {transaction.confidence === 'medium' ? '?' : '⚠'}

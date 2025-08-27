@@ -311,7 +311,7 @@ export default function PagamentosBWManagement({ pagamentos, usuarios, onUpdateP
           >
             <option value="">Todos os Usuários</option>
             {Object.entries(usuarios.usuarios || {}).map(([id, user]) => (
-              <option key={id} value={id}>{user.nome}</option>
+              <option key={id} value={id}>{(user as any).nome}</option>
             ))}
           </select>
         </div>
@@ -335,7 +335,7 @@ export default function PagamentosBWManagement({ pagamentos, usuarios, onUpdateP
                 >
                   <option value="">Selecionar usuário...</option>
                   {Object.entries(usuarios.usuarios || {}).map(([id, user]) => (
-                    <option key={id} value={id}>{user.nome}</option>
+                    <option key={id} value={id}>{(user as any).nome}</option>
                   ))}
                 </select>
               </div>

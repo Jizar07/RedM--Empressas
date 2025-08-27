@@ -180,12 +180,31 @@ function parseDiscordMessage(message: MessageData): any {
         };
       }
       
-      // Parse DEPÓSITO (deposit money)
-      const depositMatch = actionPart.match(/DEPÓSITO\s*Valor depositado:\s*\$([0-9,.]+)\s*Ação:(.+?)Saldo após depósito:\s*\$([0-9,.]+)/);
-      if (depositMatch) {
-        const valor = parseFloat(depositMatch[1].replace(',', ''));
-        const acao = depositMatch[2].trim();
-        const saldo = parseFloat(depositMatch[3].replace(',', ''));
+      // Parse DEPÓSITO (deposit money) - Two formats
+      // Format 1: With "Ação:" (for sales/actions)
+      const depositWithActionMatch = actionPart.match(/DEPÓSITO\s*Valor depositado:\s*\$([0-9,.]+)\s*Ação:(.+?)Saldo após depósito:\s*\$([0-9,.]+)/);
+      if (depositWithActionMatch) {
+        const valor = parseFloat(depositWithActionMatch[1].replace(',', ''));
+        const acao = depositWithActionMatch[2].trim();
+        const saldo = parseFloat(depositWithActionMatch[3].replace(',', ''));
+        
+        return {
+          ...message,
+          parseSuccess: true,
+          tipo: 'venda', // Mark as sale rather than generic deposit
+          categoria: 'financeiro',
+          valor: valor,
+          autor: autor,
+          descricao: acao,
+          displayText: `${autor} ${acao} por $${valor.toFixed(2)}`,
+          confidence: 'high'
+        };
+      }
+      
+      // Format 2: Direct deposit (no action, just Autor) - must NOT contain "Ação:"
+      const depositDirectMatch = actionPart.match(/DEPÓSITO\s*Valor depositado:\s*\$([0-9,.]+)(?!.*Ação:)/);
+      if (depositDirectMatch) {
+        const valor = parseFloat(depositDirectMatch[1].replace(',', ''));
         
         return {
           ...message,
@@ -194,8 +213,9 @@ function parseDiscordMessage(message: MessageData): any {
           categoria: 'financeiro',
           valor: valor,
           autor: autor,
-          descricao: acao,
-          displayText: `${autor} depositou $${valor.toFixed(2)} - ${acao}`,
+          descricao: `Depósito direto`,
+          displayText: `${autor} depositou $${valor.toFixed(2)}`,
+          confidence: 'high'
         };
       }
       
