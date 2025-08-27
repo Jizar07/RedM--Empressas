@@ -102,7 +102,25 @@ When you see "/update" command from the user, perform the following actions:
 3. Update changelog.md if there are version-worthy changes
 4. Update CLAUDE.md if there are architectural or command changes
 
-## Recent Major Updates (v0.017) **[CURRENT VERSION]**
+## Recent Major Updates (v0.019) **[CURRENT VERSION]**
+
+### Financial Transaction Display Fix & Enhanced Parsing (v0.019)
+- **Enhancement**: Complete overhaul of financial transaction display and parsing system
+- **Features**: 
+  - **Transaction Type Distinction**: Separate parsing for sales deposits (with "Ação:" field) vs direct deposits
+  - **Clean Display Format**: Eliminated redundant information, implemented proper Portuguese flow
+    - Sales: "Zero Bala vendeu 4 animais no matadouro por $160.00"
+    - Direct deposits: "Jizar Stoffeliz depositou $4000.00"
+    - Withdrawals: "Zero Bala sacou $1000.00"
+  - **Enhanced Regex Patterns**: Added negative lookahead `(?!.*Ação:)` to prevent misclassification
+  - **Transaction Categories**: Sales marked as 'venda', deposits as 'deposito', withdrawals as 'saque'
+  - **TypeScript Fixes**: Updated target to ES2018, fixed downlevelIteration and type assertion errors
+  - **Frontend Error Resolution**: Resolved all compilation errors and improved display logic
+- **Files Modified**: 
+  - `frontend/app/api/webhook/channel-messages/route.ts` - Enhanced parseDiscordMessage() function
+  - `frontend/components/FazendaBW.tsx` - Improved transaction display logic
+  - `frontend/tsconfig.json` - Updated TypeScript configuration
+- **Result**: Clean, non-redundant financial transaction display with proper Portuguese grammar
 
 ### Complete Farm Service Role-Based Security & System Integration (v0.017) 
 - **Enhancement**: Comprehensive role-based security system with complete audit trail
