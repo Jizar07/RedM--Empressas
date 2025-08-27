@@ -1,4 +1,4 @@
-// File: /mnt/c/Users/jizar/OneDrive/Documents/DiscordBot/frontend/app/api/webhook/channel-messages/route.ts
+// File: C:\Users\jizar\OneDrive\Documents\DiscordBot\frontend\app\api\webhook\channel-messages\route.ts
 import * as entry from '../../../../../../app/api/webhook/channel-messages/route.js'
 import type { NextRequest } from 'next/server.js'
 

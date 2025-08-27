@@ -23,7 +23,7 @@ export async function GET() {
   } catch (error) {
     console.error('Error fetching server dynamic info:', error);
     return NextResponse.json(
-      { error: 'Failed to fetch server dynamic info', details: error.message }, 
+      { error: 'Failed to fetch server dynamic info', details: error instanceof Error ? error.message : 'Unknown error' }, 
       { status: 500 }
     );
   }

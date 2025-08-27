@@ -1,0 +1,14 @@
+{
+  "receiptId": "20250826894",
+  "timestamp": "2025-08-26T18:11:30.244Z",
+  "playerName": "Olivia Cesarinni",
+  "serviceType": "animal",
+  "quantity": 1,
+  "animalType": "Cabrino",
+  "playerPayment": 60,
+  "status": "REJECTED",
+  "screenshotPath": "C:\\Users\\jizar\\OneDrive\\Documents\\DiscordBot\\uploads\\temp\\temp_1756231889408_image.png",
+  "approved": false,
+  "rejectedBy": "jizarstoffel",
+  "rejectedAt": "2025-08-26T20:22:49.094Z"
+}

@@ -5,7 +5,19 @@ This file is synchronized with: https://github.com/Jizar07/RedM--Empressas
 
 ## Version History
 
-### [0.019] - 2025-08-27 **[CURRENT]**
+### [0.020] - 2025-08-27 **[CURRENT]**
+- **MAJOR ARCHITECTURE OVERHAUL**: Replaced continuous polling with proper event-driven real-time updates
+- **Event-Driven System**: Browser extension dispatches immediate `newDiscordMessage` events when Discord activity detected
+- **Performance Revolution**: Eliminated second-by-second polling, now only 60-minute safety sync + instant event updates
+- **Enhanced User Management**: Complete overhaul of user analytics with clickable column sorting, detailed inventory breakdowns
+- **Advanced User Analytics**: Comprehensive modal with financial summaries, inventory totals by specific item types
+- **Item Translation Integration**: Fixed item name display across all components using centralized translation system
+- **Bank Balance Dashboard**: Added real-time bank balance card parsing "Saldo após depósito/saque" from Discord messages
+- **React Performance Optimization**: Added memoization to prevent infinite re-renders, fixed React Strict Mode issues
+- **Global State Management**: Implemented singleton patterns to prevent duplicate intervals and resource leaks
+- **Improved UX**: Clickable table headers, activity counters, responsive 5-card dashboard layout
+
+### [0.019] - 2025-08-27
 - **Complete Financial Transaction Display Overhaul**: Fixed redundant display format and improved transaction categorization
 - **Proper Sales vs Direct Deposit Parsing**: Added separate parsing for sales deposits (with "Ação:" field) vs direct deposits
 - **TypeScript Compilation Fixes**: Updated target to ES2018, fixed downlevelIteration and type assertion errors

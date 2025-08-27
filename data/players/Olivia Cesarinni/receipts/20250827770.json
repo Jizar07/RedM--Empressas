@@ -1,0 +1,14 @@
+{
+  "receiptId": "20250827770",
+  "timestamp": "2025-08-27T00:28:47.714Z",
+  "playerName": "Olivia Cesarinni",
+  "serviceType": "planta",
+  "quantity": 500,
+  "plantName": "Milho",
+  "playerPayment": 75,
+  "status": "APPROVED",
+  "screenshotPath": "C:\\Users\\jizar\\OneDrive\\Documents\\DiscordBot\\uploads\\temp\\temp_1756254527166_B3CD6CD1-CE07-43B2-BF69-CE74F7695218.png",
+  "approved": true,
+  "approvedBy": "jizarstoffel",
+  "approvedAt": "2025-08-27T02:08:38.621Z"
+}

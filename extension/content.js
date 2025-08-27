@@ -20,6 +20,13 @@ async function sendMessage(messageData) {
                 messages: [messageData]
             })
         });
+        
+        // Notify frontend immediately of new data
+        window.dispatchEvent(new CustomEvent('newDiscordMessage', {
+            detail: messageData
+        }));
+        console.log('📡 Dispatched newDiscordMessage event');
+        
     } catch (error) {
         console.error('Send failed:', error);
     }

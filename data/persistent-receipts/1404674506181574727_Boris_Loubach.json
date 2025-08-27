@@ -1,9 +1,9 @@
 {
   "playerName": "Boris Loubach",
   "channelId": "1404674506181574727",
-  "messageId": "1409826787734589574",
-  "totalEarnings": 180,
-  "totalServices": 3,
+  "messageId": "1410083520101089462",
+  "totalEarnings": 240,
+  "totalServices": 4,
   "services": [
     {
       "receiptId": "20250824697",
@@ -30,7 +30,16 @@
       "payment": 60,
       "timestamp": "2025-08-26T09:08:19.387Z",
       "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250827063",
+      "serviceType": "animal",
+      "itemType": "Cabrino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-27T02:08:28.757Z",
+      "approvedBy": "jizarstoffel"
     }
   ],
-  "lastUpdated": "2025-08-26T09:08:19.389Z"
+  "lastUpdated": "2025-08-27T02:08:28.759Z"
 }

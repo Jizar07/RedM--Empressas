@@ -1,0 +1,14 @@
+{
+  "receiptId": "20250826887",
+  "timestamp": "2025-08-26T23:47:23.287Z",
+  "playerName": "Vinicius Cesarinni",
+  "serviceType": "planta",
+  "quantity": 500,
+  "plantName": "Junco",
+  "playerPayment": 75,
+  "status": "APPROVED",
+  "screenshotPath": "C:\\Users\\jizar\\OneDrive\\Documents\\DiscordBot\\uploads\\temp\\temp_1756252042786_image.png",
+  "approved": true,
+  "approvedBy": "jizarstoffel",
+  "approvedAt": "2025-08-27T00:13:20.311Z"
+}

@@ -4,6 +4,34 @@ This is a local timestamped file to track all development changes and prompts.
 
 ## Log Entries
 
+### 2025-08-27 14:18:34
+**Action**: Complete System Architecture Overhaul - Event-Driven Updates & Enhanced User Management
+**Prompt**: Multiple requests - fix polling architecture, add clickable sorting, item translations, bank balance, and resolve performance issues
+**Changes**:
+- **MAJOR**: Replaced continuous polling with proper event-driven architecture
+  - Browser extension now dispatches `newDiscordMessage` events immediately when new Discord data detected
+  - Frontend listens for events and updates instantly (no more second-by-second polling)
+  - Added global singleton safety sync every 60 minutes only
+  - Fixed React Strict Mode causing multiple polling instances
+- **Enhanced User Management (TraballadoresBWManagement)**:
+  - Replaced dropdown sorting with clickable column headers with sort direction indicators
+  - Added comprehensive user analytics modal with financial and inventory breakdowns
+  - Implemented detailed inventory totals showing specific items added/removed by user
+  - Fixed item name translation system - now uses parent component's translation function
+  - Added activity column showing transaction count per user
+- **Main Dashboard Improvements**:
+  - Added bank balance box showing current farm bank amount from latest Discord messages
+  - Parses "Saldo após depósito/saque" from transaction messages
+  - Changed dashboard layout from 4 to 5 metric cards
+- **Performance Optimizations**:
+  - Added React.useMemo to expensive functions preventing infinite re-renders
+  - Implemented proper component cleanup to prevent memory leaks
+  - Added global component instance tracking for debugging
+- **System Reliability**:
+  - Fixed webhook notification system with proper timestamp handling
+  - Enhanced message parsing with better regex patterns for balance extraction
+  - Added comprehensive error handling and logging throughout
+
 ### 2025-08-27 12:06:24
 **Action**: Fixed Financial Transaction Display Format and Parsing
 **Prompt**: "frontend is not working as expected, please check for errors" followed by fixing display format issues

@@ -1,0 +1,55 @@
+{
+  "playerName": "Vinicius Cesarinni",
+  "channelId": "1409334626224308385",
+  "messageId": "1410083689160773702",
+  "totalEarnings": 330,
+  "totalServices": 5,
+  "services": [
+    {
+      "receiptId": "20250826939",
+      "serviceType": "animal",
+      "itemType": "Avino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-27T00:13:17.422Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250826887",
+      "serviceType": "planta",
+      "itemType": "Junco",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-27T00:13:20.311Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250827233",
+      "serviceType": "animal",
+      "itemType": "Avino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-27T02:09:03.642Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250827987",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-27T02:09:07.049Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250827678",
+      "serviceType": "animal",
+      "itemType": "Avino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-27T02:09:09.309Z",
+      "approvedBy": "jizarstoffel"
+    }
+  ],
+  "lastUpdated": "2025-08-27T02:09:09.310Z"
+}

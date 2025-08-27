@@ -1,14 +1,14 @@
 {
   "receiptId": "20250826577",
-  "timestamp": "2025-08-26T00:57:27.311Z",
+  "timestamp": "2025-08-26T21:44:11.868Z",
   "playerName": "Impera cyrus",
   "serviceType": "planta",
-  "quantity": 500,
+  "quantity": 495,
   "plantName": "Trigo",
-  "playerPayment": 75,
+  "playerPayment": 74.25,
   "status": "APPROVED",
-  "screenshotPath": "C:\\Users\\jizar\\OneDrive\\Documents\\DiscordBot\\uploads\\temp\\temp_1756169846736_2025084.JPG",
+  "screenshotPath": "C:\\Users\\jizar\\OneDrive\\Documents\\DiscordBot\\uploads\\temp\\temp_1756244651261_206ED01.JPG",
   "approved": true,
   "approvedBy": "jizarstoffel",
-  "approvedAt": "2025-08-26T01:01:46.492Z"
+  "approvedAt": "2025-08-27T11:59:06.457Z"
 }

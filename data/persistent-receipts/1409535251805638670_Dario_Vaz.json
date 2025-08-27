@@ -1,9 +1,9 @@
 {
   "playerName": "Dario Vaz",
   "channelId": "1409535251805638670",
-  "messageId": "1409624582360666243",
-  "totalEarnings": 60,
-  "totalServices": 1,
+  "messageId": "1410232403867340841",
+  "totalEarnings": 102,
+  "totalServices": 2,
   "services": [
     {
       "receiptId": "20250825381",
@@ -13,7 +13,16 @@
       "payment": 60,
       "timestamp": "2025-08-25T19:44:49.849Z",
       "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250826124",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 280,
+      "payment": 42,
+      "timestamp": "2025-08-27T12:00:05.071Z",
+      "approvedBy": "jizarstoffel"
     }
   ],
-  "lastUpdated": "2025-08-25T19:44:49.850Z"
+  "lastUpdated": "2025-08-27T12:00:05.073Z"
 }

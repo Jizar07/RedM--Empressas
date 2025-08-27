@@ -102,7 +102,21 @@ When you see "/update" command from the user, perform the following actions:
 3. Update changelog.md if there are version-worthy changes
 4. Update CLAUDE.md if there are architectural or command changes
 
-## Recent Major Updates (v0.019) **[CURRENT VERSION]**
+## Recent Major Updates (v0.020) **[CURRENT VERSION]**
+
+### Event-Driven Real-Time Architecture Revolution (v0.020)
+- **System Architecture**: Completely replaced continuous polling with proper event-driven updates
+- **Browser Extension Enhancement**: Added immediate `newDiscordMessage` event dispatch when Discord activity detected
+- **Performance Revolution**: Eliminated second-by-second polling, implemented 60-minute safety sync + instant notifications  
+- **React Optimization**: Fixed React Strict Mode issues, implemented global singletons, added memoization for performance
+- **Enhanced User Management**: Complete TrabalhadoresBWManagement overhaul with clickable sorting, detailed analytics
+- **Advanced User Analytics**: Comprehensive modal with financial summaries, inventory totals by specific item types
+- **Dashboard Improvements**: Added bank balance card parsing "Saldo após depósito/saque", 5-metric responsive layout
+- **Translation Integration**: Fixed item name display across all components using centralized translation system
+- **Global State Management**: Implemented singleton patterns to prevent duplicate intervals and resource leaks
+- **Result**: Near-zero resource usage with instant real-time updates, resolved all performance bottlenecks
+
+## Previous Major Updates
 
 ### Financial Transaction Display Fix & Enhanced Parsing (v0.019)
 - **Enhancement**: Complete overhaul of financial transaction display and parsing system

@@ -119,11 +119,28 @@ export async function POST(request: NextRequest) {
 
     console.log(`📝 Processed ${newMessages.length} new messages from channel ${body.channelId}`);
 
+    // Create a simple notification mechanism using a timestamp file
+    // This will allow the frontend to detect when new data is available
+    const notificationFile = path.join(process.cwd(), 'public', 'last-update.json');
+    try {
+      const updateInfo = {
+        lastUpdate: new Date().toISOString(),
+        newMessages: newMessages.length,
+        totalMessages: recentMessages.length,
+        timestamp: Date.now() // Add timestamp for easier comparison
+      };
+      fs.writeFileSync(notificationFile, JSON.stringify(updateInfo));
+      console.log('📡 Created update notification for frontend');
+    } catch (error) {
+      console.warn('Could not write notification file:', error);
+    }
+
     return withCors(NextResponse.json({
       success: true,
       message: `Processed ${newMessages.length} new messages`,
       newMessages: newMessages.length,
-      total: recentMessages.length
+      total: recentMessages.length,
+      lastUpdate: new Date().toISOString()
     }));
 
   } catch (error) {

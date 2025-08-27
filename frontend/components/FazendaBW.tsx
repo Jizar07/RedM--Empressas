@@ -127,7 +127,16 @@ const getActivityIcon = (transaction: Activity): React.ReactNode => {
   return isDeposit ? <Plus className="text-green-500" size={20} /> : <Minus className="text-red-500" size={20} />;
 };
 
+// Global singleton to ensure only ONE polling instance exists
+let globalSafetyInterval: NodeJS.Timeout | null = null;
+let globalPollingActive = false;
+
+let componentInstanceCount = 0;
+
 export default function FazendaBW() {
+  componentInstanceCount++;
+  console.log(`🏗️  FazendaBW component instance #${componentInstanceCount} mounted`);
+  
   const [recentActivity, setRecentActivity] = useState<Activity[]>([]);
   const [loading, setLoading] = useState(true);
   const [sortOrder, setSortOrder] = useState('newest');
@@ -145,6 +154,7 @@ export default function FazendaBW() {
   const [inventario, setInventario] = useState<any>({ itens: {}, historico_transacoes: [], total_itens: 0, total_quantidade: 0 });
   const [pagamentos, setPagamentos] = useState<any>({ usuarios: {} });
   const [processedMessageIds, setProcessedMessageIds] = useState<Set<string>>(new Set());
+  const [initialLoadComplete, setInitialLoadComplete] = useState(false);
   
   // Navigation state
   const [currentTab, setCurrentTab] = useState<'dashboard' | 'usuarios' | 'inventario' | 'pagamentos' | 'analytics'>('dashboard');
@@ -203,9 +213,17 @@ export default function FazendaBW() {
   // Data Management Functions (like Webbased DataManager)
   const adicionarUsuario = (id: string, userData: any): boolean => {
     try {
+      if (!initialLoadComplete) {
+        console.log('🎯 adicionarUsuario called for:', id, 'current users:', Object.keys(usuarios.usuarios));
+      }
       if (usuarios.usuarios[id]) {
+        if (!initialLoadComplete) {
+          console.log('❌ User already exists:', id);
+        }
         return false; // User already exists
       }
+      
+      console.log('✅ Adding new user:', id);
 
       const newUserData = {
         nome: userData.nome || userData.author || id,
@@ -215,23 +233,25 @@ export default function FazendaBW() {
         ...userData
       };
 
-      const newUsuarios = {
-        ...usuarios,
-        usuarios: {
-          ...usuarios.usuarios,
-          [id]: newUserData
-        },
-        funcoes: {
-          ...usuarios.funcoes,
-          [newUserData.funcao]: [...usuarios.funcoes[newUserData.funcao], id].filter((v, i, a) => a.indexOf(v) === i)
-        }
-      };
-
-      setUsuarios(newUsuarios);
+      setUsuarios(prevUsuarios => {
+        const newUsuarios = {
+          ...prevUsuarios,
+          usuarios: {
+            ...prevUsuarios.usuarios,
+            [id]: newUserData
+          },
+          funcoes: {
+            ...prevUsuarios.funcoes,
+            [newUserData.funcao]: [...(prevUsuarios.funcoes[newUserData.funcao] || []), id].filter((v, i, a) => a.indexOf(v) === i)
+          }
+        };
+        
+        // Save to localStorage as backup
+        localStorage.setItem('fazenda_usuarios', JSON.stringify(newUsuarios));
+        console.log('💾 Users now in state:', Object.keys(newUsuarios.usuarios).length);
+        return newUsuarios;
+      });
       console.log(`👤 Auto-added user: ${newUserData.nome} (${newUserData.funcao})`);
-      
-      // Save to localStorage as backup
-      localStorage.setItem('fazenda_usuarios', JSON.stringify(newUsuarios));
       return true;
     } catch (error) {
       console.error('Error adding user:', error);
@@ -400,19 +420,23 @@ export default function FazendaBW() {
       });
 
       // AUTO-PROCESS USERS AND ITEMS (like Webbased system)
+      console.log('🔄 Processing extension activities for user auto-add:', processedActivities.length);
       processedActivities.forEach(activity => {
         // Skip already processed messages
         if (processedMessageIds.has(activity.id)) {
+          console.log('⏭️ Extension: Skipping processed message:', activity.id, 'by', activity.autor);
           return;
         }
 
         // Auto-add users when they appear in activities
         if (activity.autor && activity.autor !== 'Sistema') {
-          adicionarUsuario(activity.autor, {
+          console.log('👤 Extension: Auto-adding user:', activity.autor, 'from activity:', activity.id);
+          const added = adicionarUsuario(activity.autor, {
             nome: activity.autor,
             author: activity.autor,
             funcao: 'trabalhador'
           });
+          console.log('👤 Extension: User add result:', added ? 'SUCCESS' : 'ALREADY EXISTS', 'for', activity.autor);
         }
 
         // Auto-process inventory items
@@ -436,6 +460,8 @@ export default function FazendaBW() {
 
     // Check frontend webhook for data
     const checkFrontendData = async () => {
+      console.log('🔍 checkFrontendData called - checking for trigger source');
+      console.trace('Call stack trace:');
       try {
         const response = await fetch('/api/webhook/channel-messages', {
           method: 'GET',
@@ -477,20 +503,34 @@ export default function FazendaBW() {
               };
             });
 
-            // AUTO-PROCESS USERS AND ITEMS from frontend data (like Webbased system)
+            // AUTO-PROCESS USERS AND ITEMS from frontend data (like Webbased system)  
+            if (!initialLoadComplete) {
+              console.log('🔄 INITIAL LOAD - Processing', processedActivities.length, 'activities for user auto-add');
+              
+              // Get unique authors to debug
+              const uniqueAuthors = [...new Set(processedActivities.map(a => a.autor).filter(a => a && a !== 'Sistema'))];
+              console.log('🔍 Unique authors found:', uniqueAuthors.length, '→', uniqueAuthors);
+            }
             processedActivities.forEach(activity => {
-              // Skip already processed messages
-              if (processedMessageIds.has(activity.id)) {
+              // Skip already processed messages ONLY if initial load is complete
+              if (initialLoadComplete && processedMessageIds.has(activity.id)) {
+                console.log('⏭️ Skipping already processed message:', activity.id, 'by', activity.autor);
                 return;
               }
 
               // Auto-add users when they appear in activities
               if (activity.autor && activity.autor !== 'Sistema') {
-                adicionarUsuario(activity.autor, {
+                if (!initialLoadComplete) {
+                  console.log('👤 Auto-adding user:', activity.autor, 'from activity:', activity.id);
+                }
+                const added = adicionarUsuario(activity.autor, {
                   nome: activity.autor,
                   author: activity.autor,
                   funcao: 'trabalhador'
                 });
+                if (!initialLoadComplete) {
+                  console.log('👤 User add result:', added ? 'SUCCESS' : 'ALREADY EXISTS', 'for', activity.autor);
+                }
               }
 
               // Auto-process inventory items
@@ -503,12 +543,26 @@ export default function FazendaBW() {
               }
 
               // Mark message as processed
-              setProcessedMessageIds(prev => new Set([...prev, activity.id]));
+              setProcessedMessageIds(prev => new Set(Array.from(prev).concat(activity.id)));
             });
 
             // Replace with all activities from file (this ensures we show everything)
-            setRecentActivity(processedActivities.slice(-1000)); // Keep last 1000
-            console.log('✅ Loaded', processedActivities.length, 'activities from frontend JSON file');
+            const uniqueActivities = processedActivities.reduce((acc, current) => {
+              const exists = acc.find(item => item.id === current.id);
+              if (!exists) {
+                acc.push(current);
+              }
+              return acc;
+            }, [] as any[]);
+            
+            setRecentActivity(uniqueActivities.slice(-1000)); // Keep last 1000
+            console.log('✅ Loaded', processedActivities.length, 'activities, deduplicated to', uniqueActivities.length);
+            
+            // Mark initial load as complete after first processing
+            if (!initialLoadComplete) {
+              console.log('✅ Initial load complete, future loads will check processedMessageIds');
+              setInitialLoadComplete(true);
+            }
           }
         }
       } catch (error) {
@@ -516,15 +570,90 @@ export default function FazendaBW() {
       }
     };
 
-    // Check frontend data immediately and then periodically
-    checkFrontendData(); // Initial check
-    const interval = setInterval(checkFrontendData, 10000); // Every 10 seconds
+    // Prevent multiple polling instances in development mode
+    if (globalPollingActive) {
+      console.warn('⚠️  Polling already active, skipping setup');
+      return () => {};
+    }
+    
+    globalPollingActive = true;
+    console.log('🚀 Setting up polling system');
+
+    // Initial data load
+    checkFrontendData();
+    
+    // Smart polling: check for updates only when data has actually changed
+    let lastKnownUpdate: string | null = null;
+    
+    // Event listener for immediate push notifications from browser extension
+    const handleDataUpdate = () => {
+      console.log('🔔 Received immediate data update notification');
+      checkFrontendData();
+    };
+    
+    // Listen for custom events from the browser extension
+    window.addEventListener('newDiscordMessage', handleDataUpdate);
+    
+    // Also listen for the notification file updates (fallback)
+    const checkForUpdates = async () => {
+      try {
+        const response = await fetch('/last-update.json');
+        if (response.ok) {
+          const updateInfo = await response.json();
+          if (lastKnownUpdate !== updateInfo.lastUpdate) {
+            console.log('🔔 New data detected via notification file, refreshing...');
+            lastKnownUpdate = updateInfo.lastUpdate;
+            checkFrontendData();
+          }
+        }
+      } catch (error) {
+        // Notification file doesn't exist or can't be read, fallback to safety sync
+      }
+    };
+    
+    // Set up SINGLE global safety interval (prevents React Strict Mode duplicates)
+    if (!globalSafetyInterval) {
+      globalSafetyInterval = setInterval(checkFrontendData, 60 * 60 * 1000); // Every 60 minutes ONLY
+      console.log('⏰ Set up SINGLE global safety sync (60min)');
+    } else {
+      console.log('⚠️  Safety interval already exists, skipping duplicate');
+    }
 
     return () => {
+      console.log('🛑 Cleaning up polling system');
+      globalPollingActive = false;
       window.removeEventListener('extensionData', handleExtensionData as EventListener);
-      clearInterval(interval);
+      window.removeEventListener('newDiscordMessage', handleDataUpdate);
+      
+      // Only clear the global interval if this is the last component instance
+      if (globalSafetyInterval && componentInstanceCount <= 1) {
+        clearInterval(globalSafetyInterval);
+        globalSafetyInterval = null;
+        console.log('🗑️  Cleared global safety interval');
+      }
     };
   }, []);
+
+  // Get current bank balance from latest transaction messages
+  const getCurrentBankBalance = (): number => {
+    // Look for latest transaction with "Saldo após" information
+    const financialActivities = recentActivity
+      .filter(activity => activity.categoria === 'financeiro' && activity.content)
+      .sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
+    
+    for (const activity of financialActivities) {
+      // Check for "Saldo após depósito:" or "Saldo após saque:"
+      const balanceMatch = activity.content?.match(/Saldo após (?:depósito|saque):\s*\$([0-9,.]+)/);
+      if (balanceMatch) {
+        const balance = parseFloat(balanceMatch[1].replace(',', ''));
+        if (!isNaN(balance)) {
+          return balance;
+        }
+      }
+    }
+    
+    return 0; // Default if no balance found
+  };
 
   const getSortedActivity = (): Activity[] => {
     const sorted = [...recentActivity];
@@ -640,7 +769,10 @@ export default function FazendaBW() {
           {currentTab === 'usuarios' && (
             <TrabalhadoresBWManagement 
               usuarios={usuarios} 
-              onUpdateUsuarios={handleUpdateUsuarios} 
+              onUpdateUsuarios={handleUpdateUsuarios}
+              recentActivity={recentActivity}
+              itemTranslations={itemTranslations}
+              getBestDisplayName={getBestDisplayName}
             />
           )}
           
@@ -678,7 +810,7 @@ export default function FazendaBW() {
         <h2 className="text-xl font-semibold text-gray-900">📊 Dashboard Principal</h2>
 
       {/* Metrics Cards - Enhanced like Webbased system */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
         <MetricCard
           title="Usuários Registrados"
           value={Object.keys(usuarios.usuarios).length}
@@ -713,6 +845,15 @@ export default function FazendaBW() {
           color="yellow"
           loading={loading}
           subtitle="Histórico de movimentações"
+        />
+
+        <MetricCard
+          title="Saldo do Banco"
+          value={`$${getCurrentBankBalance().toFixed(2)}`}
+          icon={<Archive size={24} />}
+          color="green"
+          loading={loading}
+          subtitle="Último saldo registrado"
         />
       </div>
 
