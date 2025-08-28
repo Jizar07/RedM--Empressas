@@ -44,11 +44,6 @@ src/
 │   ├── RedMService.ts # RedM server communication
 │   └── DatabaseService.ts # MongoDB connection
 └── config/           # Configuration files
-Webbased/              # Farm management system (Port 8086)
-├── client/            # React frontend for farm management
-├── server/            # Node.js backend with API routes
-├── data/              # JSON data storage for farm operations
-└── server.js          # Main server file
 ```
 
 ### Key Technologies
@@ -177,12 +172,6 @@ When you see "/update" command from the user, perform the following actions:
 ### System Architecture (Current)
 - **Discord Bot (Port 3050)**: Processes NEW messages only, sends proper webhook format
 - **Frontend (Port 3051)**: Clean interface without filtering, channel configuration management
-- **Webbased System (Port 8086)**: Farm management web application with inventory, payments, and analytics
-  - React frontend with comprehensive farm management components
-  - Node.js backend with API routes and data management services
-  - Socket.io for real-time updates
-  - Integrates with Discord bot via webhooks at localhost:3050
-  - JSON-based data storage for inventory, users, payments, and farm operations
 
 ## File Management
 

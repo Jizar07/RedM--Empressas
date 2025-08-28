@@ -28,6 +28,7 @@ import farmServiceDataRoutes from './routes/farm-service-data';
 import discordRolesRoutes from './routes/discord-roles';
 import moderationRoutes from './routes/moderation';
 import localizationRoutes from './routes/localization';
+import firmsConfigRoutes from './routes/firms-config';
 
 export async function startApiServer(bot: BotClient): Promise<void> {
   // Make bot client available globally for API routes
@@ -37,7 +38,11 @@ export async function startApiServer(bot: BotClient): Promise<void> {
   const httpServer = createServer(app);
   const io = new SocketIOServer(httpServer, {
     cors: {
-      origin: config.frontend.url,
+      origin: [
+        config.frontend.url,
+        'https://fazenda.stoffeltech.com',
+        'http://fazenda.stoffeltech.com'
+      ],
       credentials: true,
     },
   });
@@ -47,6 +52,8 @@ export async function startApiServer(bot: BotClient): Promise<void> {
   app.use(cors({
     origin: [
       config.frontend.url,
+      'https://fazenda.stoffeltech.com',
+      'http://fazenda.stoffeltech.com',
       'https://discord.com',
       'https://canary.discord.com',
       'https://ptb.discord.com'
@@ -118,6 +125,9 @@ export async function startApiServer(bot: BotClient): Promise<void> {
   
   // Localization routes
   app.use('/api/localization', localizationRoutes);
+  
+  // Firms configuration routes
+  app.use('/api/firms-config', firmsConfigRoutes);
   
   // Internal API Routes (NO AUTHENTICATION - for system-to-system communication)
   app.use('/api/internal', internalApiRoutes);

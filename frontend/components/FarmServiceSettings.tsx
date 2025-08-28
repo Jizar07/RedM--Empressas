@@ -89,7 +89,7 @@ export default function FarmServiceSettings() {
 
   // Helper function to discover backend URL
   const discoverBackendUrl = async (): Promise<string | null> => {
-    const possiblePorts = [3000, 3050, 8080, 8086];
+    const possiblePorts = [3000, 3050, 8080];
     
     for (const port of possiblePorts) {
       try {

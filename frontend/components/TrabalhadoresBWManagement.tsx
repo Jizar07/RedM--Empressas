@@ -57,14 +57,14 @@ export default function TrabalhadoresBWManagement({
     
     // Deduplicate by unique activity ID
     const uniqueTransactions = transactions.reduce((acc, current) => {
-      const exists = acc.find(item => item.id === current.id);
+      const exists = acc.find((item: any) => item.id === current.id);
       if (!exists) {
         acc.push(current);
       }
       return acc;
     }, [] as any[]);
     
-    return uniqueTransactions.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
+    return uniqueTransactions.sort((a: any, b: any) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
   }, [recentActivity]);
 
   // Get user analytics (memoized to prevent infinite loops)
@@ -91,7 +91,7 @@ export default function TrabalhadoresBWManagement({
     // Daily activity counter
     const dailyActivity: Record<string, number> = {};
     
-    transactions.forEach(transaction => {
+    transactions.forEach((transaction: any) => {
       const day = new Date(transaction.timestamp).toDateString();
       dailyActivity[day] = (dailyActivity[day] || 0) + 1;
       
@@ -141,10 +141,10 @@ export default function TrabalhadoresBWManagement({
 
   // Get detailed inventory breakdown by item type (memoized)
   const getUserInventoryDetails = React.useMemo(() => (username: string) => {
-    const transactions = getUserTransactions(username).filter(t => t.categoria === 'inventario');
+    const transactions = getUserTransactions(username).filter((t: any) => t.categoria === 'inventario');
     const itemTotals: Record<string, { added: number; removed: number; net: number }> = {};
     
-    transactions.forEach(transaction => {
+    transactions.forEach((transaction: any) => {
       const itemName = getBestDisplayName(transaction.item) || 'Item Desconhecido';
       
       if (!itemTotals[itemName]) {
@@ -881,7 +881,7 @@ export default function TrabalhadoresBWManagement({
                       <div className="max-h-96 overflow-y-auto">
                         {transactions.length > 0 ? (
                           <div className="divide-y">
-                            {transactions.map((transaction, index) => (
+                            {transactions.map((transaction: any, index: number) => (
                               <div key={index} className="flex items-center gap-4 p-4 hover:bg-gray-50">
                                 <div className="flex-shrink-0 text-2xl">
                                   {transaction.categoria === 'financeiro' ? (

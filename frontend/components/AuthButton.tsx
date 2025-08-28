@@ -25,7 +25,7 @@ export default function AuthButton() {
 
   const handleLogin = () => {
     const clientId = '1406799740108017674';
-    const redirectUri = encodeURIComponent('http://localhost:3051/api/auth/callback/discord');
+    const redirectUri = encodeURIComponent('https://fazenda.stoffeltech.com/api/auth/callback/discord');
     const scope = 'identify guilds guilds.members.read';
     window.location.href = `https://discord.com/api/oauth2/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=${scope}`;
   };

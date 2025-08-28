@@ -5,7 +5,7 @@ export async function GET(request: NextRequest) {
   const code = searchParams.get('code');
   
   if (!code) {
-    return NextResponse.redirect(new URL('/auth/error?error=NoCode', request.url));
+    return NextResponse.redirect(new URL('/auth/error?error=NoCode', 'https://fazenda.stoffeltech.com'));
   }
 
   try {
@@ -20,7 +20,7 @@ export async function GET(request: NextRequest) {
         client_secret: process.env.DISCORD_OAUTH_CLIENT_SECRET!,
         grant_type: 'authorization_code',
         code: code,
-        redirect_uri: 'http://localhost:3051/api/auth/callback/discord',
+        redirect_uri: 'https://fazenda.stoffeltech.com/api/auth/callback/discord',
       }),
     });
 
@@ -42,7 +42,7 @@ export async function GET(request: NextRequest) {
 
     // For now, just redirect to home with user info in URL (temporary solution)
     // In production, you'd set a session cookie here
-    const response = NextResponse.redirect(new URL('/', request.url));
+    const response = NextResponse.redirect(new URL('/', 'https://fazenda.stoffeltech.com'));
     
     // Set a simple cookie with user data (temporary - not secure for production!)
     response.cookies.set('discord_user', JSON.stringify({

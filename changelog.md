@@ -5,7 +5,21 @@ This file is synchronized with: https://github.com/Jizar07/RedM--Empressas
 
 ## Version History
 
-### [0.023] - 2025-08-28 **[CURRENT - RESTORE POINT]**
+### [0.024] - 2025-08-28 **[CURRENT - RESTORE POINT]**
+- **FIXED**: Discord OAuth callback redirect localhost issue - Complete OAuth flow restoration for remote domain access
+- **RESOLVED**: Final redirect after successful Discord authentication now goes to `https://fazenda.stoffeltech.com` instead of localhost
+- **FIXED**: Token exchange redirect_uri changed from hardcoded localhost to proper domain callback URL
+- **ENHANCED**: Error redirects now use domain instead of localhost-based `request.url` that was causing SSL errors
+- **ELIMINATED**: "This site can't provide a secure connection" SSL protocol error from localhost redirect attempts
+- **COMPLETE OAUTH FLOW**: Login → Discord authorization → fazenda.stoffeltech.com callback → successful auth → domain redirect
+- **RESULT**: Users can now successfully authenticate via Discord when accessing from fazenda.stoffeltech.com without localhost redirect issues
+- Technical implementation:
+  - Fixed `frontend/app/api/auth/callback/discord/route.ts:23` - Token exchange redirect_uri
+  - Fixed `frontend/app/api/auth/callback/discord/route.ts:45` - Final successful authentication redirect
+  - Fixed `frontend/app/api/auth/callback/discord/route.ts:31,63` - Error redirect handling for proper domain use
+- Status: ✅ Complete OAuth authentication system fully functional for remote domain access through Cloudflare Tunnel
+
+### [0.023] - 2025-08-28 **[RESTORE POINT]**
 - **FIXED**: Animal Service Completion Parsing - BotMessageForwarder now correctly extracts author from "Ação:" field
 - **ENHANCED**: Author Detection Logic - Smart field detection for animal services vs regular deposits 
 - **IMPROVED**: Message Type Intelligence - Only applies to CAIXA ORGANIZAÇÃO - DEPÓSITO messages to avoid breaking normal deposits

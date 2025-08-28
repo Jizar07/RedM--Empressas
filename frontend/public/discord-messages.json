@@ -1,7 +1,2144 @@
 {
-  "lastUpdated": "2025-08-28T15:07:47.497Z",
-  "totalMessages": 640,
+  "lastUpdated": "2025-08-28T21:08:55.528Z",
+  "totalMessages": 706,
   "messages": [
+    {
+      "id": "1410732905935798334",
+      "timestamp": "2025-08-28T21:08:54.925Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: trigo x10\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 18:08:54",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: trigo x10\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 18:08:54",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO- INSERIR ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item adicionado:`",
+              "value": "```prolog\ntrigo x10\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 18:08:54\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410732297522647040",
+      "timestamp": "2025-08-28T21:06:29.868Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: cow_female x28\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 18:06:29",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: cow_female x28\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 18:06:29",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO- INSERIR ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item adicionado:`",
+              "value": "```prolog\ncow_female x28\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 18:06:29\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410732278866251800",
+      "timestamp": "2025-08-28T21:06:25.420Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: pig_male x6\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 18:06:24",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: pig_male x6\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 18:06:24",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO- INSERIR ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item adicionado:`",
+              "value": "```prolog\npig_male x6\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 18:06:24\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410732260654845962",
+      "timestamp": "2025-08-28T21:06:21.078Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: pig_female x1\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 18:06:20",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: pig_female x1\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 18:06:20",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO- INSERIR ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item adicionado:`",
+              "value": "```prolog\npig_female x1\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 18:06:20\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410732246280700065",
+      "timestamp": "2025-08-28T21:06:17.651Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: sheep_female x21\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 18:06:17",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: sheep_female x21\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 18:06:17",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO- INSERIR ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item adicionado:`",
+              "value": "```prolog\nsheep_female x21\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 18:06:17\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410732228366962792",
+      "timestamp": "2025-08-28T21:06:13.380Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: sheep_male x12\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 18:06:13",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: sheep_male x12\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 18:06:13",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO- INSERIR ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item adicionado:`",
+              "value": "```prolog\nsheep_male x12\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 18:06:13\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410732211333894184",
+      "timestamp": "2025-08-28T21:06:09.319Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: donkey_male x62\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 18:06:08",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: donkey_male x62\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 18:06:08",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO- INSERIR ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item adicionado:`",
+              "value": "```prolog\ndonkey_male x62\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 18:06:08\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410732196456697946",
+      "timestamp": "2025-08-28T21:06:05.772Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: donkey_female x56\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 18:06:05",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: donkey_female x56\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 18:06:05",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO- INSERIR ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item adicionado:`",
+              "value": "```prolog\ndonkey_female x56\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 18:06:05\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410732175459881030",
+      "timestamp": "2025-08-28T21:06:00.766Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: cow_male x5\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 18:06:00",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: cow_male x5\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 18:06:00",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO- INSERIR ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item adicionado:`",
+              "value": "```prolog\ncow_male x5\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 18:06:00\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410732164412211301",
+      "timestamp": "2025-08-28T21:05:58.132Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: goat_male x25\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 18:05:57",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: goat_male x25\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 18:05:57",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO- INSERIR ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item adicionado:`",
+              "value": "```prolog\ngoat_male x25\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 18:05:57\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410732147530006598",
+      "timestamp": "2025-08-28T21:05:54.107Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: chicken_male x32\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 18:05:53",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: chicken_male x32\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 18:05:53",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO- INSERIR ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item adicionado:`",
+              "value": "```prolog\nchicken_male x32\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 18:05:53\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410725895458656256",
+      "timestamp": "2025-08-28T20:41:03.497Z",
+      "author": "Impera cyrus",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado: $160.0\nAção: Impera cyrus vendeu 4 animais no matadouro\nSaldo após depósito: $4081.7\nData: 28/08/2025 - 17:41:03",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado: $160.0\nAção: Impera cyrus vendeu 4 animais no matadouro\nSaldo após depósito: $4081.7\nData: 28/08/2025 - 17:41:03",
+      "rawEmbeds": [
+        {
+          "title": "CAIXA ORGANIZAÇÃO - DEPÓSITO",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Valor depositado:`",
+              "value": "```prolog\n$160.0\n```",
+              "inline": true
+            },
+            {
+              "name": "`Ação:`",
+              "value": "```prolog\nImpera cyrus vendeu 4 animais no matadouro\n```",
+              "inline": true
+            },
+            {
+              "name": "`Saldo após depósito:`",
+              "value": "```prolog\n$4081.7\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 17:41:03\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410722490422005822",
+      "timestamp": "2025-08-28T20:27:31.673Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado: $160.0\nAção: Zero Bala vendeu 4 animais no matadouro\nSaldo após depósito: $3921.7\nData: 28/08/2025 - 17:27:31",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado: $160.0\nAção: Zero Bala vendeu 4 animais no matadouro\nSaldo após depósito: $3921.7\nData: 28/08/2025 - 17:27:31",
+      "rawEmbeds": [
+        {
+          "title": "CAIXA ORGANIZAÇÃO - DEPÓSITO",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Valor depositado:`",
+              "value": "```prolog\n$160.0\n```",
+              "inline": true
+            },
+            {
+              "name": "`Ação:`",
+              "value": "```prolog\nZero Bala vendeu 4 animais no matadouro\n```",
+              "inline": true
+            },
+            {
+              "name": "`Saldo após depósito:`",
+              "value": "```prolog\n$3921.7\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 17:27:31\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410718338577072240",
+      "timestamp": "2025-08-28T20:11:01.796Z",
+      "author": "Impera cyrus",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: common_portion_pig x7\nAutor: Impera cyrus | FIXO: 76531\nData: 28/08/2025 - 17:11:01",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: common_portion_pig x7\nAutor: Impera cyrus | FIXO: 76531\nData: 28/08/2025 - 17:11:01",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\ncommon_portion_pig x7\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nImpera cyrus | FIXO: 76531\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 17:11:01\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410718302174711918",
+      "timestamp": "2025-08-28T20:10:53.117Z",
+      "author": "Impera cyrus",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: pig_female x4\nAutor: Impera cyrus | FIXO: 76531\nData: 28/08/2025 - 17:10:52",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: pig_female x4\nAutor: Impera cyrus | FIXO: 76531\nData: 28/08/2025 - 17:10:52",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\npig_female x4\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nImpera cyrus | FIXO: 76531\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 17:10:52\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410716817361735793",
+      "timestamp": "2025-08-28T20:04:59.110Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: ferro x60\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 17:04:58",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: ferro x60\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 17:04:58",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO- INSERIR ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item adicionado:`",
+              "value": "```prolog\nferro x60\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 17:04:58\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410716536682844301",
+      "timestamp": "2025-08-28T20:03:52.191Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: Carvao x200\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 17:03:51",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: Carvao x200\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 17:03:51",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\nCarvao x200\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 17:03:51\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410716358186107020",
+      "timestamp": "2025-08-28T20:03:09.634Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: Carvao x200\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 17:03:09",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: Carvao x200\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 17:03:09",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\nCarvao x200\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 17:03:09\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410715573972631613",
+      "timestamp": "2025-08-28T20:00:02.663Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: corn x50\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 17:00:02",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: corn x50\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 17:00:02",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\ncorn x50\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 17:00:02\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410715466678140968",
+      "timestamp": "2025-08-28T19:59:37.082Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: corn x50\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:59:36",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: corn x50\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:59:36",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\ncorn x50\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 16:59:36\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410714852900470825",
+      "timestamp": "2025-08-28T19:57:10.746Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: chicken_female x4\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:57:10",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: chicken_female x4\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:57:10",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\nchicken_female x4\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 16:57:10\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410714816267686000",
+      "timestamp": "2025-08-28T19:57:02.012Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: common_portion_chicken x8\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:57:01",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: common_portion_chicken x8\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:57:01",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\ncommon_portion_chicken x8\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 16:57:01\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410714680145481892",
+      "timestamp": "2025-08-28T19:56:29.558Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado: $160.0\nAção: Zero Bala vendeu 4 animais no matadouro\nSaldo após depósito: $7761.7\nData: 28/08/2025 - 16:56:29",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado: $160.0\nAção: Zero Bala vendeu 4 animais no matadouro\nSaldo após depósito: $7761.7\nData: 28/08/2025 - 16:56:29",
+      "rawEmbeds": [
+        {
+          "title": "CAIXA ORGANIZAÇÃO - DEPÓSITO",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Valor depositado:`",
+              "value": "```prolog\n$160.0\n```",
+              "inline": true
+            },
+            {
+              "name": "`Ação:`",
+              "value": "```prolog\nZero Bala vendeu 4 animais no matadouro\n```",
+              "inline": true
+            },
+            {
+              "name": "`Saldo após depósito:`",
+              "value": "```prolog\n$7761.7\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 16:56:29\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410708942476148931",
+      "timestamp": "2025-08-28T19:33:41.591Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: trigo x200\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:33:41",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: trigo x200\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:33:41",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\ntrigo x200\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 16:33:41\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410708882925293589",
+      "timestamp": "2025-08-28T19:33:27.393Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: Bulrush x200\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:33:26",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: Bulrush x200\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:33:26",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\nBulrush x200\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 16:33:26\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410708682135572571",
+      "timestamp": "2025-08-28T19:32:39.521Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: corn x100\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:32:38",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: corn x100\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:32:38",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\ncorn x100\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 16:32:38\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410708661386350738",
+      "timestamp": "2025-08-28T19:32:34.574Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: corn x200\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:32:34",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: corn x200\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:32:34",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\ncorn x200\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 16:32:34\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410708642776350720",
+      "timestamp": "2025-08-28T19:32:30.137Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: corn x200\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:32:29",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: corn x200\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:32:29",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\ncorn x200\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 16:32:29\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410708379529253077",
+      "timestamp": "2025-08-28T19:31:27.374Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: trigo x50\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:31:25",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: trigo x50\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:31:25",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\ntrigo x50\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 16:31:25\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410708340883066963",
+      "timestamp": "2025-08-28T19:31:18.160Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: trigo x200\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:31:17",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: trigo x200\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:31:17",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\ntrigo x200\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 16:31:17\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410708317478846658",
+      "timestamp": "2025-08-28T19:31:12.580Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: Bulrush x50\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:31:12",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: Bulrush x50\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:31:12",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\nBulrush x50\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 16:31:12\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410708301867384972",
+      "timestamp": "2025-08-28T19:31:08.858Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: Bulrush x200\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:31:08",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: Bulrush x200\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:31:08",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\nBulrush x200\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 16:31:08\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410708132405182475",
+      "timestamp": "2025-08-28T19:30:28.455Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: Bulrush x50\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:30:27",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: Bulrush x50\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:30:27",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\nBulrush x50\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 16:30:27\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410708114847563856",
+      "timestamp": "2025-08-28T19:30:24.269Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: Bulrush x200\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:30:23",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: Bulrush x200\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:30:23",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\nBulrush x200\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 16:30:23\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410707988896940122",
+      "timestamp": "2025-08-28T19:29:54.240Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: corn x100\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:29:53",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: corn x100\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:29:53",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\ncorn x100\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 16:29:53\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410707970110521446",
+      "timestamp": "2025-08-28T19:29:49.761Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: corn x200\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:29:49",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: corn x200\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:29:49",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\ncorn x200\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 16:29:49\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410707950401486929",
+      "timestamp": "2025-08-28T19:29:45.062Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: corn x200\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:29:44",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: corn x200\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:29:44",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\ncorn x200\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 16:29:44\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410707753416130671",
+      "timestamp": "2025-08-28T19:28:58.097Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: corn x100\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:28:57",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: corn x100\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:28:57",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\ncorn x100\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 16:28:57\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410707734080258139",
+      "timestamp": "2025-08-28T19:28:53.487Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: corn x200\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:28:53",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: corn x200\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:28:53",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\ncorn x200\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 16:28:53\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410707714207645727",
+      "timestamp": "2025-08-28T19:28:48.749Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: Bulrush x250\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:28:48",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: Bulrush x250\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:28:48",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO- INSERIR ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item adicionado:`",
+              "value": "```prolog\nBulrush x250\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 16:28:48\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410707690656891010",
+      "timestamp": "2025-08-28T19:28:43.134Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: corn x200\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:28:42",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: corn x200\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:28:42",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\ncorn x200\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 16:28:42\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410707666551967756",
+      "timestamp": "2025-08-28T19:28:37.387Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: corn x200\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:28:37",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: corn x200\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:28:37",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\ncorn x200\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 16:28:37\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410707462293688320",
+      "timestamp": "2025-08-28T19:27:48.688Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: Bulrush x50\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:27:48",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: Bulrush x50\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:27:48",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\nBulrush x50\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 16:27:48\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410707439812345930",
+      "timestamp": "2025-08-28T19:27:43.328Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: Bulrush x200\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:27:42",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: Bulrush x200\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:27:42",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\nBulrush x200\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 16:27:42\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410707412842844362",
+      "timestamp": "2025-08-28T19:27:36.898Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: trigo x50\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:27:36",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: trigo x50\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:27:36",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\ntrigo x50\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 16:27:36\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410707396430663804",
+      "timestamp": "2025-08-28T19:27:32.985Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: trigo x200\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:27:32",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: trigo x200\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:27:32",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\ntrigo x200\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 16:27:32\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410707142939250768",
+      "timestamp": "2025-08-28T19:26:32.548Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: common_portion_chicken x8\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:26:32",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: common_portion_chicken x8\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:26:32",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\ncommon_portion_chicken x8\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 16:26:32\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410707088300183646",
+      "timestamp": "2025-08-28T19:26:19.521Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: chicken_female x4\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:26:19",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: chicken_female x4\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:26:19",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\nchicken_female x4\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 16:26:19\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410706730282647553",
+      "timestamp": "2025-08-28T19:24:54.163Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: trigo x50\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:24:53",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: trigo x50\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:24:53",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\ntrigo x50\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 16:24:53\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410706707939721316",
+      "timestamp": "2025-08-28T19:24:48.836Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: trigo x200\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:24:48",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: trigo x200\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:24:48",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\ntrigo x200\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 16:24:48\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410706668370530455",
+      "timestamp": "2025-08-28T19:24:39.402Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: Bulrush x50\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:24:38",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: Bulrush x50\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:24:38",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\nBulrush x50\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 16:24:38\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410706643028541490",
+      "timestamp": "2025-08-28T19:24:33.360Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: Bulrush x200\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:24:32",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: Bulrush x200\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:24:32",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\nBulrush x200\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 16:24:32\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410706612707921981",
+      "timestamp": "2025-08-28T19:24:26.131Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: caixarustica x150\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:24:25",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: caixarustica x150\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:24:25",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\ncaixarustica x150\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 16:24:25\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410706040932012083",
+      "timestamp": "2025-08-28T19:22:09.809Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nCAIXA ORGANIZAÇÃO - SAQUE\nValor sacado: $1000\nAutor: Zero Bala | FIXO: 74829\nSaldo após saque: $7601.7\nData: 28/08/2025 - 16:22:09",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nCAIXA ORGANIZAÇÃO - SAQUE\nValor sacado: $1000\nAutor: Zero Bala | FIXO: 74829\nSaldo após saque: $7601.7\nData: 28/08/2025 - 16:22:09",
+      "rawEmbeds": [
+        {
+          "title": "CAIXA ORGANIZAÇÃO - SAQUE",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Valor sacado:`",
+              "value": "```prolog\n$1000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Saldo após saque:`",
+              "value": "```prolog\n$7601.7\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 16:22:09\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410705868059705549",
+      "timestamp": "2025-08-28T19:21:28.593Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: honey x12\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:21:27",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: honey x12\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:21:27",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO- INSERIR ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item adicionado:`",
+              "value": "```prolog\nhoney x12\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 16:21:27\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410705856642809968",
+      "timestamp": "2025-08-28T19:21:25.871Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: ferro x300\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:21:25",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: ferro x300\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:21:25",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO- INSERIR ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item adicionado:`",
+              "value": "```prolog\nferro x300\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 16:21:25\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410705787902230639",
+      "timestamp": "2025-08-28T19:21:09.482Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: ferro x200\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:21:09",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: ferro x200\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:21:09",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO- INSERIR ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item adicionado:`",
+              "value": "```prolog\nferro x200\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 16:21:09\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410705658776387835",
+      "timestamp": "2025-08-28T19:20:38.696Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: Carvao x300\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:20:38",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: Carvao x300\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:20:38",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO- INSERIR ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item adicionado:`",
+              "value": "```prolog\nCarvao x300\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 16:20:38\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410705617114370119",
+      "timestamp": "2025-08-28T19:20:28.763Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: wood x61\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:20:28",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: wood x61\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:20:28",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO- INSERIR ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item adicionado:`",
+              "value": "```prolog\nwood x61\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 16:20:28\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410705602606534767",
+      "timestamp": "2025-08-28T19:20:25.304Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: Bulrush x20\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:20:24",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: Bulrush x20\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:20:24",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO- INSERIR ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item adicionado:`",
+              "value": "```prolog\nBulrush x20\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 16:20:24\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410705588542902354",
+      "timestamp": "2025-08-28T19:20:21.951Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: embalagem x500\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:20:21",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: embalagem x500\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:20:21",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO- INSERIR ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item adicionado:`",
+              "value": "```prolog\nembalagem x500\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 16:20:21\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410705579235868682",
+      "timestamp": "2025-08-28T19:20:19.732Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: fibras x12\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:20:19",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: fibras x12\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:20:19",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO- INSERIR ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item adicionado:`",
+              "value": "```prolog\nfibras x12\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 16:20:19\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410705563330941141",
+      "timestamp": "2025-08-28T19:20:15.940Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: caixarustica x500\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:20:15",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: caixarustica x500\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 16:20:15",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO- INSERIR ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item adicionado:`",
+              "value": "```prolog\ncaixarustica x500\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 16:20:15\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410651941956096090",
+      "timestamp": "2025-08-28T15:47:11.608Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado: $160.0\nAção: Zero Bala vendeu 4 animais no matadouro\nSaldo após depósito: $8601.7\nData: 28/08/2025 - 12:47:11",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado: $160.0\nAção: Zero Bala vendeu 4 animais no matadouro\nSaldo após depósito: $8601.7\nData: 28/08/2025 - 12:47:11",
+      "rawEmbeds": [
+        {
+          "title": "CAIXA ORGANIZAÇÃO - DEPÓSITO",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Valor depositado:`",
+              "value": "```prolog\n$160.0\n```",
+              "inline": true
+            },
+            {
+              "name": "`Ação:`",
+              "value": "```prolog\nZero Bala vendeu 4 animais no matadouro\n```",
+              "inline": true
+            },
+            {
+              "name": "`Saldo após depósito:`",
+              "value": "```prolog\n$8601.7\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 12:47:11\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410651670760919143",
+      "timestamp": "2025-08-28T15:46:06.950Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: common_portion_donkey x8\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 12:46:06",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: common_portion_donkey x8\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 12:46:06",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\ncommon_portion_donkey x8\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 12:46:06\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410649199632056614",
+      "timestamp": "2025-08-28T15:36:17.787Z",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: Bulrush_Seed x100\nAutor: Jizar Stoffeliz | FIXO: 75119\nData: 28/08/2025 - 12:36:17",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: Bulrush_Seed x100\nAutor: Jizar Stoffeliz | FIXO: 75119\nData: 28/08/2025 - 12:36:17",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO- INSERIR ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item adicionado:`",
+              "value": "```prolog\nBulrush_Seed x100\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nJizar Stoffeliz | FIXO: 75119\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 12:36:17\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
     {
       "id": "1410642025711272056",
       "timestamp": "2025-08-28T15:07:47.391Z",

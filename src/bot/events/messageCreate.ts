@@ -94,6 +94,18 @@ export default {
       await forwarder.processMessage(message, message.channel.id);
     }
     
+    // NEW: Multi-Channel Forwarder for multi-firm monitoring
+    // This runs in parallel with existing functionality
+    try {
+      const client = message.client as any;
+      if (client.multiChannelForwarder && client.multiChannelForwarder.isChannelMonitored(message.channel.id)) {
+        console.log(`🏢 Multi-Firm Monitor: Processing message for configured firm`);
+        await client.multiChannelForwarder.processMessage(message, message.channel.id);
+      }
+    } catch (multiChannelError) {
+      console.error('❌ Multi-Channel Forwarder error (non-blocking):', multiChannelError);
+    }
+    
     // Update status to show processing
     BotStatusService.processingMessages();
     

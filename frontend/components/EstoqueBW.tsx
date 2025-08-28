@@ -56,7 +56,13 @@ const MetricCard = ({
   );
 };
 
-export default function EstoqueBW() {
+import { FirmConfig } from '@/types/firms';
+
+interface EstoqueBWProps {
+  firm?: FirmConfig;
+}
+
+export default function EstoqueBW({ firm }: EstoqueBWProps = {}) {
   const [inventory, setInventory] = useState<{[key: string]: InventoryItem}>({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -139,8 +145,14 @@ export default function EstoqueBW() {
   // Process extension data to create inventory
   const processExtensionData = (extensionMessages: Activity[]) => {
     const itemCounts: {[key: string]: InventoryItem} = {};
+    
+    // Filter messages by firm's channelId
+    const channelId = firm?.channelId || '1409214475403526174';
+    const filteredMessages = extensionMessages.filter((msg: any) => 
+      !msg.channelId || msg.channelId === channelId
+    );
 
-    extensionMessages.forEach(msg => {
+    filteredMessages.forEach(msg => {
       const content = msg.content || '';
       
       // Parse item additions

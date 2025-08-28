@@ -134,9 +134,15 @@ let globalPollingActive = false;
 
 let componentInstanceCount = 0;
 
-export default function FazendaBW() {
+import { FirmConfig } from '@/types/firms';
+
+interface FazendaBWProps {
+  firm?: FirmConfig;
+}
+
+export default function FazendaBW({ firm }: FazendaBWProps = {}) {
   componentInstanceCount++;
-  console.log(`🏗️  FazendaBW component instance #${componentInstanceCount} mounted`);
+  console.log(`🏗️  FazendaBW component instance #${componentInstanceCount} mounted for firm:`, firm?.name || 'Fazenda BW');
   
   const [recentActivity, setRecentActivity] = useState<Activity[]>([]);
   const [loading, setLoading] = useState(true);
@@ -156,6 +162,7 @@ export default function FazendaBW() {
   const [pagamentos, setPagamentos] = useState<any>({ usuarios: {} });
   const [processedMessageIds, setProcessedMessageIds] = useState<Set<string>>(new Set());
   const [initialLoadComplete, setInitialLoadComplete] = useState(false);
+  const [deletedUsers, setDeletedUsers] = useState<Set<string>>(new Set());
   
   // Navigation state
   const [currentTab, setCurrentTab] = useState<'dashboard' | 'usuarios' | 'inventario' | 'pagamentos' | 'analytics'>('dashboard');
@@ -214,6 +221,12 @@ export default function FazendaBW() {
   // Data Management Functions (like Webbased DataManager)
   const adicionarUsuario = (id: string, userData: any): boolean => {
     try {
+      // Don't re-add manually deleted users
+      if (deletedUsers.has(id)) {
+        console.log('🚫 Blocked re-adding deleted user:', id);
+        return false;
+      }
+      
       if (!initialLoadComplete) {
         console.log('🎯 adicionarUsuario called for:', id, 'current users:', Object.keys(usuarios.usuarios));
       }
@@ -234,7 +247,7 @@ export default function FazendaBW() {
         ...userData
       };
 
-      setUsuarios(prevUsuarios => {
+      setUsuarios((prevUsuarios: any) => {
         const newUsuarios = {
           ...prevUsuarios,
           usuarios: {
@@ -248,7 +261,13 @@ export default function FazendaBW() {
         };
         
         // Save to localStorage as backup
-        localStorage.setItem('fazenda_usuarios', JSON.stringify(newUsuarios));
+        const firmId = firm?.id || 'fazenda-bw';
+        // For Fazenda BW, keep using old keys for backward compatibility
+        if (firmId === 'fazenda-bw') {
+          localStorage.setItem('fazenda_usuarios', JSON.stringify(newUsuarios));
+        } else {
+          localStorage.setItem(`${firmId}_usuarios`, JSON.stringify(newUsuarios));
+        }
         console.log('💾 Users now in state:', Object.keys(newUsuarios.usuarios).length);
         return newUsuarios;
       });
@@ -306,7 +325,13 @@ export default function FazendaBW() {
       console.log(`📦 Auto-added item: ${quantidade}x ${nomeItem} by ${autor}`);
       
       // Save to localStorage as backup
-      localStorage.setItem('fazenda_inventario', JSON.stringify(newInventario));
+      const firmId = firm?.id || 'fazenda-bw';
+      // For Fazenda BW, keep using old keys for backward compatibility
+      if (firmId === 'fazenda-bw') {
+        localStorage.setItem('fazenda_inventario', JSON.stringify(newInventario));
+      } else {
+        localStorage.setItem(`${firmId}_inventario`, JSON.stringify(newInventario));
+      }
       return true;
     } catch (error) {
       console.error('Error adding item:', error);
@@ -353,7 +378,13 @@ export default function FazendaBW() {
       console.log(`📦 Auto-removed item: ${quantidade}x ${nomeItem} by ${autor}`);
       
       // Save to localStorage as backup
-      localStorage.setItem('fazenda_inventario', JSON.stringify(newInventario));
+      const firmId = firm?.id || 'fazenda-bw';
+      // For Fazenda BW, keep using old keys for backward compatibility
+      if (firmId === 'fazenda-bw') {
+        localStorage.setItem('fazenda_inventario', JSON.stringify(newInventario));
+      } else {
+        localStorage.setItem(`${firmId}_inventario`, JSON.stringify(newInventario));
+      }
       return true;
     } catch (error) {
       console.error('Error removing item:', error);
@@ -364,27 +395,60 @@ export default function FazendaBW() {
   // Load saved data from localStorage on component mount  
   useEffect(() => {
     try {
-      const savedUsuarios = localStorage.getItem('fazenda_usuarios');
-      if (savedUsuarios) {
-        setUsuarios(JSON.parse(savedUsuarios));
-        console.log('📂 Loaded saved users from localStorage');
-      }
+      const firmId = firm?.id || 'fazenda-bw';
+      
+      // Fazenda BW uses old keys for backward compatibility
+      // Other firms use firm-specific keys
+      if (firmId === 'fazenda-bw') {
+        const savedUsuarios = localStorage.getItem('fazenda_usuarios');
+        if (savedUsuarios) {
+          setUsuarios(JSON.parse(savedUsuarios));
+          console.log('📂 Loaded saved users from localStorage for Fazenda BW');
+        }
 
-      const savedInventario = localStorage.getItem('fazenda_inventario');
-      if (savedInventario) {
-        setInventario(JSON.parse(savedInventario));
-        console.log('📂 Loaded saved inventory from localStorage');
-      }
+        const savedInventario = localStorage.getItem('fazenda_inventario');
+        if (savedInventario) {
+          setInventario(JSON.parse(savedInventario));
+          console.log('📂 Loaded saved inventory from localStorage for Fazenda BW');
+        }
 
-      const savedPagamentos = localStorage.getItem('fazenda_pagamentos');
-      if (savedPagamentos) {
-        setPagamentos(JSON.parse(savedPagamentos));
-        console.log('📂 Loaded saved payments from localStorage');
+        const savedPagamentos = localStorage.getItem('fazenda_pagamentos');
+        if (savedPagamentos) {
+          setPagamentos(JSON.parse(savedPagamentos));
+          console.log('📂 Loaded saved payments from localStorage for Fazenda BW');
+        }
+        
+        // Load deleted users blacklist
+        const savedDeleted = localStorage.getItem('fazenda_deleted_users');
+        if (savedDeleted) {
+          setDeletedUsers(new Set(JSON.parse(savedDeleted)));
+        }
+        
+      } else {
+        // Other firms use firm-specific keys
+        const savedUsuarios = localStorage.getItem(`${firmId}_usuarios`);
+        if (savedUsuarios) {
+          setUsuarios(JSON.parse(savedUsuarios));
+          console.log(`📂 Loaded saved users from localStorage for ${firmId}`);
+        }
+
+        const savedInventario = localStorage.getItem(`${firmId}_inventario`);
+        if (savedInventario) {
+          setInventario(JSON.parse(savedInventario));
+          console.log(`📂 Loaded saved inventory from localStorage for ${firmId}`);
+        }
+
+        const savedPagamentos = localStorage.getItem(`${firmId}_pagamentos`);
+        if (savedPagamentos) {
+          setPagamentos(JSON.parse(savedPagamentos));
+          console.log(`📂 Loaded saved payments from localStorage for ${firmId}`);
+        }
+        
       }
     } catch (error) {
       console.error('Error loading saved data:', error);
     }
-  }, []);
+  }, [firm?.id]);
 
   useEffect(() => {
     // Simulate loading
@@ -395,8 +459,15 @@ export default function FazendaBW() {
       const extensionMessages = event.detail || [];
       console.log('🔗 Processing extension messages:', extensionMessages);
       
+      // Filter messages by firm's channelId
+      const channelId = firm?.channelId || '1409214475403526174';
+      const filteredMessages = extensionMessages.filter((msg: any) => 
+        !msg.channelId || msg.channelId === channelId
+      );
+      console.log(`🔗 Filtered to channel ${channelId}:`, filteredMessages.length, 'of', extensionMessages.length);
+      
       // Extension messages should already be parsed by backend, but ensure they have required fields
-      const processedActivities: Activity[] = extensionMessages.map((msg: any) => {
+      const processedActivities: Activity[] = filteredMessages.map((msg: any) => {
         // If message is already parsed with our new fields, use it directly
         if (msg.parseSuccess !== undefined) {
           return msg as Activity;
@@ -476,11 +547,17 @@ export default function FazendaBW() {
           
           // Process frontend messages if available
           if (data.success && data.messages && Array.isArray(data.messages)) {
-            console.log('🔗 Processing frontend messages:', data.messages.length);
-            console.log('🔗 Message details:', data.messages);
+            // Filter messages by firm's channelId if firm is provided
+            const channelId = firm?.channelId || '1409214475403526174'; // Default to Fazenda BW channel
+            const filteredMessages = data.messages.filter((msg: any) => 
+              msg.channelId === channelId
+            );
+            
+            console.log(`🔗 Processing frontend messages for channel ${channelId}:`, filteredMessages.length, 'of', data.messages.length);
+            console.log('🔗 Message details:', filteredMessages);
             
             // Frontend messages should be parsed by backend, ensure proper structure
-            const processedActivities: Activity[] = data.messages.map((msg: any) => {
+            const processedActivities: Activity[] = filteredMessages.map((msg: any) => {
               // Check if already parsed
               if (msg.parseSuccess !== undefined) {
                 return msg as Activity;
@@ -716,7 +793,33 @@ export default function FazendaBW() {
   };
 
   const handleUpdateUsuarios = (newUsuarios: any) => {
+    // Track deleted users
+    const oldUserIds = new Set(Object.keys(usuarios.usuarios));
+    const newUserIds = new Set(Object.keys(newUsuarios.usuarios));
+    
+    // Find deleted users and add to blacklist
+    oldUserIds.forEach(id => {
+      if (!newUserIds.has(id)) {
+        setDeletedUsers(prev => {
+          const updated = new Set(prev);
+          updated.add(id);
+          
+          // Save deleted users blacklist
+          localStorage.setItem('fazenda_deleted_users', JSON.stringify(Array.from(updated)));
+          return updated;
+        });
+      }
+    });
+    
     setUsuarios(newUsuarios);
+    
+    // Save updated users
+    const firmId = firm?.id || 'fazenda-bw';
+    if (firmId === 'fazenda-bw') {
+      localStorage.setItem('fazenda_usuarios', JSON.stringify(newUsuarios));
+    } else {
+      localStorage.setItem(`${firmId}_usuarios`, JSON.stringify(newUsuarios));
+    }
   };
 
   const handleUpdateInventario = (newInventario: any) => {
@@ -738,7 +841,7 @@ export default function FazendaBW() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-gray-900">🏛️ Fazenda BW - Sistema Completo</h1>
+        <h1 className="text-2xl font-bold text-gray-900">🏛️ {firm?.name || 'Fazenda BW'} - Sistema Completo</h1>
         <div className="flex items-center gap-2">
           <span className={`px-2 py-1 rounded text-sm ${
             recentActivity.length > 0 
@@ -824,7 +927,7 @@ export default function FazendaBW() {
 
         {/* Monitoring Mode Toggle */}
         <div className="mb-6">
-          <MonitoringModeToggle />
+          <MonitoringModeToggle firm={firm} />
         </div>
 
       {/* Metrics Cards - Enhanced like Webbased system */}

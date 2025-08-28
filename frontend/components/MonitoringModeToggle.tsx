@@ -5,7 +5,13 @@ import { Monitor, Bot, AlertCircle, CheckCircle } from 'lucide-react';
 
 type MonitoringMode = 'extension' | 'bot' | 'both';
 
-export default function MonitoringModeToggle() {
+import { FirmConfig } from '@/types/firms';
+
+interface MonitoringModeToggleProps {
+  firm?: FirmConfig;
+}
+
+export default function MonitoringModeToggle({ firm }: MonitoringModeToggleProps = {}) {
   const [mode, setMode] = useState<MonitoringMode>('bot');
   const [isChanging, setIsChanging] = useState(false);
 
@@ -131,12 +137,12 @@ export default function MonitoringModeToggle() {
           <div className="flex items-start space-x-2 p-3 bg-green-50 rounded-lg">
             <CheckCircle className="h-5 w-5 text-green-600 mt-0.5" />
             <div className="text-sm">
-              <p className="font-medium text-green-900">Bot Monitoring Active</p>
+              <p className="font-medium text-green-900">Monitoramento do Bot Ativo</p>
               <p className="text-green-700">
-                Discord bot is monitoring channel 1409214475403526174 for farm activities.
+                Bot do Discord está monitorando o canal {firm?.channelId || '1409214475403526174'} para atividades.
               </p>
               <p className="text-green-600 text-xs mt-1">
-                Browser extension can be disabled to save resources.
+                Extensão do navegador pode ser desativada para economizar recursos.
               </p>
             </div>
           </div>

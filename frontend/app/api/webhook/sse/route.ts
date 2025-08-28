@@ -1,12 +1,10 @@
 import { NextRequest } from 'next/server';
 import SSEManager from '../sse-manager';
 
-const sseManager = SSEManager.getInstance();
+// Disable static generation for SSE endpoint
+export const dynamic = 'force-dynamic';
 
-// Export function to notify all clients
-export function notifyClients(data: any) {
-  sseManager.notifyAll(data);
-}
+const sseManager = SSEManager.getInstance();
 
 export async function GET(request: NextRequest) {
   const responseStream = new ReadableStream({

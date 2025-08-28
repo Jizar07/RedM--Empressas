@@ -2,8 +2,8 @@ import axios from 'axios';
 import { ServerInfo, Player, BotStats, KnownPlayer, DiscordMember, OnlineFamilyMember } from '@/types';
 
 const API_BASE_URL = typeof window !== 'undefined' 
-  ? 'http://localhost:3050/api' 
-  : 'http://localhost:3050/api';
+  ? (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3050/api')
+  : (process.env.API_URL || 'http://localhost:3050/api');
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -334,7 +334,10 @@ export const channelParserApi = {
 
 // Health check
 export const healthCheck = async (): Promise<any> => {
-  const response = await axios.get('http://localhost:3050/health');
+  const healthUrl = typeof window !== 'undefined'
+    ? (process.env.NEXT_PUBLIC_API_URL?.replace('/api', '/health') || 'http://localhost:3050/health')
+    : (process.env.API_URL?.replace('/api', '/health') || 'http://localhost:3050/health');
+  const response = await axios.get(healthUrl);
   return response.data;
 };
 

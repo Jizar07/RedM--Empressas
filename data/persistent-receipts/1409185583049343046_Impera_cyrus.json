@@ -1,9 +1,9 @@
 {
   "playerName": "Impera cyrus",
   "channelId": "1409185583049343046",
-  "messageId": "1410232184371150969",
-  "totalEarnings": 552,
-  "totalServices": 8,
+  "messageId": "1410738196807028746",
+  "totalEarnings": 612,
+  "totalServices": 9,
   "services": [
     {
       "receiptId": "20250825487",
@@ -76,7 +76,16 @@
       "payment": 75,
       "timestamp": "2025-08-27T11:59:13.034Z",
       "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250828913",
+      "serviceType": "animal",
+      "itemType": "Suino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-28T21:29:55.860Z",
+      "approvedBy": "jizarstoffel"
     }
   ],
-  "lastUpdated": "2025-08-27T11:59:13.036Z"
+  "lastUpdated": "2025-08-28T21:29:55.862Z"
 }

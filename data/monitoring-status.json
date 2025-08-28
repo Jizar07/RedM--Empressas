@@ -1,0 +1,28 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2025-08-28T11:30:00.000Z",
+  "status": {
+    "fazenda-bw": {
+      "firmId": "fazenda-bw",
+      "isMonitoring": true,
+      "lastMessageReceived": null,
+      "messagesProcessed": 0,
+      "lastError": null,
+      "uptime": 0,
+      "connectionStatus": "disconnected",
+      "endpointHealth": "unknown",
+      "stats": {
+        "messagesThisHour": 0,
+        "messagesThisDay": 0,
+        "errorsThisHour": 0,
+        "lastRestart": "2025-08-28T11:30:00.000Z"
+      }
+    }
+  },
+  "global": {
+    "totalFirmsMonitored": 1,
+    "totalMessagesProcessed": 0,
+    "systemUptime": 0,
+    "lastSystemRestart": "2025-08-28T11:30:00.000Z"
+  }
+}

@@ -1,7 +1,10 @@
  import { NextRequest, NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
-import { notifyClients } from '../sse/route';
+import SSEManager from '../sse-manager';
+
+// Disable static generation for this API route
+export const dynamic = 'force-dynamic';
 
 interface MessageData {
   id: string;
@@ -149,7 +152,7 @@ export async function POST(request: NextRequest) {
       
       // NOTIFY SSE CLIENTS IMMEDIATELY
       try {
-        notifyClients({
+        SSEManager.getInstance().notifyAll({
           type: 'new-messages',
           count: newMessages.length,
           total: recentMessages.length,

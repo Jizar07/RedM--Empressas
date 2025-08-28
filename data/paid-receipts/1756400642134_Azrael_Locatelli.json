@@ -1,0 +1,66 @@
+{
+  "playerName": "Azrael Locatelli",
+  "channelId": "1410434573229097063",
+  "messageId": "1410445438577803424",
+  "totalEarnings": 348,
+  "totalServices": 6,
+  "services": [
+    {
+      "receiptId": "20250828125",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 700,
+      "payment": 105,
+      "timestamp": "2025-08-28T01:39:04.932Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250828423",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 20,
+      "payment": 3,
+      "timestamp": "2025-08-28T01:42:01.796Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250828793",
+      "serviceType": "animal",
+      "itemType": "Avino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-28T01:59:11.297Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250828327",
+      "serviceType": "animal",
+      "itemType": "Avino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-28T02:06:24.487Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250828723",
+      "serviceType": "animal",
+      "itemType": "Bovino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-28T02:06:31.680Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250828057",
+      "serviceType": "animal",
+      "itemType": "Bovino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-28T02:06:36.974Z",
+      "approvedBy": "jizarstoffel"
+    }
+  ],
+  "lastUpdated": "2025-08-28T02:06:36.976Z",
+  "finalizedAt": "2025-08-28T17:04:02.134Z",
+  "finalizedBy": "zerobalaa"
+}

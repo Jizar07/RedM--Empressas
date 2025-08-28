@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+// Disable static generation for this API route
+export const dynamic = 'force-dynamic';
+
 const BOT_API_URL = process.env.NEXT_PUBLIC_BOT_API_URL || 'http://localhost:3050';
 
 export async function POST(request: NextRequest) {

@@ -6,6 +6,7 @@ import RegistrationService from '../services/RegistrationService';
 import OrdersService from '../services/OrdersService';
 import MessageManagerService from '../services/MessageManagerService';
 import BotStatusService from '../services/BotStatusService';
+import { MultiChannelForwarder } from '../services/MultiChannelForwarder';
 import { createDynamicRegistrationCommand } from './dynamicCommandRegistration';
 import { initializeDynamicCommands } from '../api/routes/discord-commands';
 
@@ -21,6 +22,7 @@ export class BotClient extends Client {
   public cooldowns: Collection<string, Collection<string, number>>;
   public messageManager: MessageManagerService;
   public statusService: typeof BotStatusService;
+  public multiChannelForwarder!: MultiChannelForwarder;
   
   constructor() {
     super({
@@ -47,6 +49,7 @@ export class BotClient extends Client {
     this.cooldowns = new Collection();
     this.messageManager = new MessageManagerService(this);
     this.statusService = BotStatusService;
+    this.multiChannelForwarder = MultiChannelForwarder.getInstance();
   }
   
   public async init(): Promise<void> {

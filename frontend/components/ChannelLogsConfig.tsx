@@ -146,7 +146,7 @@ export default function ChannelLogsConfig() {
             <li>• Bot monitors configured Discord channels for new messages</li>
             <li>• Messages are sent to your specified endpoints in real-time</li>
             <li>• Frontend (3051): Real-time dashboard display & activity tracking</li>
-            <li>• Backend (8086): Farm management system integration</li>
+            <li>• Backend (3050): Discord bot API integration</li>
             <li>• Custom: Any external webhook endpoint</li>
           </ul>
         </div>
@@ -228,7 +228,7 @@ export default function ChannelLogsConfig() {
                         value={mapping.systemEndpoint}
                         onChange={(e) => updateMapping(mapping.id, { systemEndpoint: e.target.value })}
                         className="flex-1 px-3 py-1 border border-gray-300 rounded text-sm font-mono"
-                        placeholder="http://localhost:8086/api/webhook/channel-logs"
+                        placeholder="http://localhost:3050/api/webhook/channel-logs"
                       />
                       <button
                         onClick={() => testEndpoint(mapping.systemEndpoint)}
@@ -292,7 +292,7 @@ export default function ChannelLogsConfig() {
             <button
               onClick={() => {
                 setEndpointType('backend');
-                setNewMapping({ ...newMapping, systemEndpoint: 'http://localhost:8086/api/bot-data/channel-logs' });
+                setNewMapping({ ...newMapping, systemEndpoint: 'http://localhost:3050/api/bot-data/channel-logs' });
               }}
               className={`px-4 py-3 rounded-lg border-2 transition-all ${
                 endpointType === 'backend' 
@@ -302,7 +302,7 @@ export default function ChannelLogsConfig() {
             >
               <Settings className="h-5 w-5 mx-auto mb-1" />
               <div className="text-sm font-medium">Backend System</div>
-              <div className="text-xs text-gray-500">Port 8086</div>
+              <div className="text-xs text-gray-500">Port 3050</div>
             </button>
             
             <button
@@ -360,7 +360,7 @@ export default function ChannelLogsConfig() {
                   value={newMapping.systemEndpoint || ''}
                   onChange={(e) => setNewMapping({ ...newMapping, systemEndpoint: e.target.value })}
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg font-mono"
-                  placeholder="http://localhost:8086/api/webhook/channel-logs"
+                  placeholder="http://localhost:3050/api/webhook/channel-logs"
                   readOnly={endpointType !== 'custom'}
                 />
                 {endpointType !== 'custom' && (

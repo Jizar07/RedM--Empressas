@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Server, Users, Bot, Activity, MessageSquare, Settings, BarChart3, Shield, Package, Truck, Send, FileText, Gavel, ChefHat, DollarSign } from 'lucide-react';
+import { Server, Users, Bot, Activity, MessageSquare, Settings, BarChart3, Shield, Package, Truck, Send, FileText, Gavel, ChefHat, DollarSign, Building } from 'lucide-react';
 import ServerStatusCard from '@/components/ServerStatusCard';
 import EnhancedServerStatus from '@/components/EnhancedServerStatus';
 import PlayerManagement from '@/components/PlayerManagement';
@@ -22,10 +22,10 @@ import FarmServiceManagement from '@/components/FarmServiceManagement';
 import ModerationSettings from '@/components/ModerationSettings';
 import Recipes from '@/components/Recipes';
 import PriceList from '@/components/PriceList';
-import ServerMonitor from '@/components/ServerMonitor';
 import FazendaBW from '@/components/FazendaBW';
 import EstoqueBW from '@/components/EstoqueBW';
 import TrabalhadoresBW from '@/components/TrabalhadoresBW';
+import FirmManagement from '@/components/FirmManagement';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import UserMenu from '@/components/UserMenu';
 import SimpleUserMenu from '@/components/SimpleUserMenu';
@@ -34,6 +34,11 @@ import RoleGuard from '@/components/RoleGuard';
 import { useAuth } from '@/lib/auth';
 import { healthCheck, botApi, serverApi } from '@/lib/api';
 import { BotStats, ServerInfo } from '@/types';
+import { useFirmAccess } from '@/hooks/useFirmAccess';
+import { FirmConfig } from '@/types/firms';
+
+// Disable static generation for this page since it uses dynamic content
+export const dynamic = 'force-dynamic';
 
 export default function HomePage() {
   const router = useRouter();
@@ -44,6 +49,7 @@ export default function HomePage() {
   const [serverInfo, setServerInfo] = useState<ServerInfo | null>(null);
   const [mounted, setMounted] = useState(false);
   const { canAccessChannelParser, isAdmin } = useAuth();
+  const { accessibleFirms, loading: firmsLoading } = useFirmAccess();
   
   // Temporary: Always show admin tabs for testing
   const showAdminTabs = true;
@@ -53,6 +59,12 @@ export default function HomePage() {
     // If clicking on main Fazenda BW tab, default to dashboard
     if (tabId === 'fazenda-bw') {
       tabId = 'fazenda-bw-dashboard';
+    }
+    
+    // If clicking on any firm tab, default to that firm's dashboard
+    const firm = accessibleFirms.find((f: FirmConfig) => f.id === tabId);
+    if (firm) {
+      tabId = `${firm.id}-dashboard`;
     }
     
     setActiveTab(tabId);
@@ -153,29 +165,15 @@ export default function HomePage() {
           name: 'Moderation',
           icon: Gavel,
           description: 'Configure moderation and auto-reply features'
+        },
+        {
+          id: 'firm-management',
+          name: 'Firm Management',
+          icon: Building,
+          description: 'Configure multiple firms and monitoring'
         }
       ]
     }] : []),
-    {
-      id: 'orders',
-      name: 'Encomendas',
-      icon: Package,
-      description: 'Orders management and dashboard',
-      submenu: [
-        {
-          id: 'orders-dashboard',
-          name: 'Dashboard',
-          icon: BarChart3,
-          description: 'Orders overview and statistics'
-        },
-        {
-          id: 'orders-management',
-          name: 'Management',
-          icon: Package,
-          description: 'View and manage all orders'
-        }
-      ]
-    },
     {
       id: 'farm-services',
       name: 'Farm Services',
@@ -209,24 +207,6 @@ export default function HomePage() {
       description: 'Server status and player management'
     },
     {
-      id: 'recipes',
-      name: 'Receitas',
-      icon: ChefHat,
-      description: 'Recipe calculator and order management'
-    },
-    {
-      id: 'price-list',
-      name: 'Lista de Preços',
-      icon: DollarSign,
-      description: 'Item pricing management'
-    },
-    {
-      id: 'server-monitor',
-      name: 'Monitor do Servidor',
-      icon: Activity,
-      description: 'Server monitoring and player tracking'
-    },
-    {
       id: 'fazenda-bw',
       name: 'Fazenda BW',
       icon: BarChart3,
@@ -252,6 +232,38 @@ export default function HomePage() {
         }
       ]
     },
+    {
+      id: 'servicos',
+      name: 'Serviços',
+      icon: Truck,
+      description: 'Encomendas, receitas e lista de preços',
+      submenu: [
+        {
+          id: 'orders-dashboard',
+          name: 'Encomendas',
+          icon: Package,
+          description: 'Sistema de pedidos e encomendas'
+        },
+        {
+          id: 'recipes',
+          name: 'Receitas',
+          icon: ChefHat,
+          description: 'Calculadora de receitas'
+        },
+        {
+          id: 'price-list',
+          name: 'Lista de Preços',
+          icon: DollarSign,
+          description: 'Gerenciamento de preços de itens'
+        }
+      ]
+    },
+    {
+      id: 'empresas',
+      name: 'Empresas',
+      icon: Building,
+      description: 'Manage multiple firms with role-based access'
+    }
   ];
 
   return (
@@ -295,9 +307,18 @@ export default function HomePage() {
             {tabs.map((tab) => {
               const Icon = tab.icon;
               const isActive = activeTab === tab.id || 
-                (tab.id === 'admin' && (activeTab === 'registration-settings' || activeTab === 'registration-analytics' || activeTab === 'orders-settings')) ||
-                (tab.id === 'orders' && (activeTab === 'orders-dashboard' || activeTab === 'orders-management')) ||
-                (tab.id === 'fazenda-bw' && (activeTab === 'fazenda-bw-dashboard' || activeTab === 'fazenda-bw-estoque' || activeTab === 'fazenda-bw-trabalhadores'));
+                (tab.id === 'admin' && (activeTab === 'registration-settings' || activeTab === 'registration-analytics' || activeTab === 'orders-settings' || activeTab === 'channel-logs-config' || activeTab === 'discord-commands' || activeTab === 'moderation-settings' || activeTab === 'firm-management')) ||
+                (tab.id === 'servicos' && (activeTab === 'orders-dashboard' || activeTab === 'orders-management' || activeTab === 'recipes' || activeTab === 'price-list')) ||
+                (tab.id === 'farm-services' && (activeTab === 'farm-service-overview' || activeTab === 'service-history' || activeTab === 'farm-service-settings')) ||
+                (tab.id === 'fazenda-bw' && (activeTab === 'fazenda-bw-dashboard' || activeTab === 'fazenda-bw-estoque' || activeTab === 'fazenda-bw-trabalhadores')) ||
+                (tab.id === 'empresas' && (
+                  accessibleFirms.some((firm: FirmConfig) => 
+                    activeTab === `firm-${firm.id}` || 
+                    activeTab === `firm-${firm.id}-dashboard` || 
+                    activeTab === `firm-${firm.id}-estoque` || 
+                    activeTab === `firm-${firm.id}-trabalhadores`
+                  )
+                ));
               return (
                 <button
                   key={tab.id}
@@ -356,28 +377,12 @@ export default function HomePage() {
                   <p className="text-sm text-gray-500">Check server status</p>
                 </button>
                 <button
-                  onClick={() => changeTab('orders-dashboard')}
+                  onClick={() => changeTab('servicos')}
                   className="p-4 border border-green-300 rounded-lg hover:bg-green-50 transition-colors text-left bg-green-50"
                 >
-                  <Package className="h-6 w-6 text-green-600 mb-2" />
-                  <h4 className="font-medium text-gray-900">Encomendas</h4>
-                  <p className="text-sm text-gray-500">Sistema de pedidos</p>
-                </button>
-                <button
-                  onClick={() => changeTab('recipes')}
-                  className="p-4 border border-orange-300 rounded-lg hover:bg-orange-50 transition-colors text-left bg-orange-50"
-                >
-                  <ChefHat className="h-6 w-6 text-orange-600 mb-2" />
-                  <h4 className="font-medium text-gray-900">Receitas</h4>
-                  <p className="text-sm text-gray-500">Calculadora de receitas</p>
-                </button>
-                <button
-                  onClick={() => changeTab('price-list')}
-                  className="p-4 border border-blue-300 rounded-lg hover:bg-blue-50 transition-colors text-left bg-blue-50"
-                >
-                  <DollarSign className="h-6 w-6 text-blue-600 mb-2" />
-                  <h4 className="font-medium text-gray-900">Lista de Preços</h4>
-                  <p className="text-sm text-gray-500">Gerenciar preços</p>
+                  <Truck className="h-6 w-6 text-green-600 mb-2" />
+                  <h4 className="font-medium text-gray-900">Serviços</h4>
+                  <p className="text-sm text-gray-500">Encomendas, receitas e preços</p>
                 </button>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -405,14 +410,6 @@ export default function HomePage() {
                   <h4 className="font-medium text-gray-900">Analytics</h4>
                   <p className="text-sm text-gray-500">View statistics</p>
                 </button>
-                <button
-                  onClick={() => changeTab('server-monitor')}
-                  className="p-4 border border-purple-300 rounded-lg hover:bg-purple-50 transition-colors text-left bg-purple-50"
-                >
-                  <Activity className="h-6 w-6 text-purple-600 mb-2" />
-                  <h4 className="font-medium text-gray-900">Monitor do Servidor</h4>
-                  <p className="text-sm text-gray-500">Monitoramento avançado</p>
-                </button>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
                 <button
@@ -422,6 +419,14 @@ export default function HomePage() {
                   <BarChart3 className="h-6 w-6 text-emerald-600 mb-2" />
                   <h4 className="font-medium text-gray-900">Fazenda BW</h4>
                   <p className="text-sm text-gray-500">Dashboard da fazenda com extensão</p>
+                </button>
+                <button
+                  onClick={() => changeTab('empresas')}
+                  className="p-4 border border-blue-300 rounded-lg hover:bg-blue-50 transition-colors text-left bg-blue-50"
+                >
+                  <Building className="h-6 w-6 text-blue-600 mb-2" />
+                  <h4 className="font-medium text-gray-900">Empresas</h4>
+                  <p className="text-sm text-gray-500">Gerenciar múltiplas empresas</p>
                 </button>
               </div>
             </div>
@@ -452,7 +457,7 @@ export default function HomePage() {
           </div>
         )}
 
-        {(activeTab === 'admin' || activeTab === 'registration-settings' || activeTab === 'registration-analytics' || activeTab === 'orders-settings' || activeTab === 'channel-logs-config' || activeTab === 'discord-commands' || activeTab === 'moderation-settings') && (
+        {(activeTab === 'admin' || activeTab === 'registration-settings' || activeTab === 'registration-analytics' || activeTab === 'orders-settings' || activeTab === 'channel-logs-config' || activeTab === 'discord-commands' || activeTab === 'moderation-settings' || activeTab === 'firm-management') && (
           <div className="space-y-8">
             {/* Admin Menu */}
             <div className="card p-6">
@@ -530,6 +535,18 @@ export default function HomePage() {
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">Moderation Settings</h3>
                   <p className="text-gray-600">Configure clear command, auto-mod, and auto-reply features</p>
                 </button>
+                <button
+                  onClick={() => changeTab('firm-management')}
+                  className={`p-6 border-2 rounded-lg text-left transition-colors ${
+                    activeTab === 'firm-management'
+                      ? 'border-blue-500 bg-blue-50'
+                      : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
+                  }`}
+                >
+                  <Building className="h-8 w-8 text-gray-600 mb-3" />
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Firm Management</h3>
+                  <p className="text-gray-600">Configure multiple firms with role-based access and monitoring</p>
+                </button>
               </div>
             </div>
 
@@ -540,38 +557,52 @@ export default function HomePage() {
             {activeTab === 'channel-logs-config' && <ChannelLogsConfig />}
             {activeTab === 'discord-commands' && <DiscordCommands />}
             {activeTab === 'moderation-settings' && <ModerationSettings />}
+            {activeTab === 'firm-management' && <FirmManagement />}
           </div>
         )}
 
-        {(activeTab === 'orders' || activeTab === 'orders-dashboard' || activeTab === 'orders-management') && (
+        {/* Servicos Section */}
+        {(activeTab === 'servicos' || activeTab === 'orders-dashboard' || activeTab === 'orders-management' || activeTab === 'recipes' || activeTab === 'price-list') && (
           <div className="space-y-8">
-            {/* Orders Menu */}
+            {/* Servicos Menu */}
             <div className="card p-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Sistema de Encomendas</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">Serviços</h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <button
                   onClick={() => changeTab('orders-dashboard')}
                   className={`p-6 border-2 rounded-lg text-left transition-colors ${
-                    activeTab === 'orders-dashboard'
-                      ? 'border-red-500 bg-red-50'
-                      : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
-                  }`}
-                >
-                  <BarChart3 className="h-8 w-8 text-gray-600 mb-3" />
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Dashboard</h3>
-                  <p className="text-gray-600">Visão geral das encomendas, estatísticas e relatórios</p>
-                </button>
-                <button
-                  onClick={() => changeTab('orders-management')}
-                  className={`p-6 border-2 rounded-lg text-left transition-colors ${
-                    activeTab === 'orders-management'
+                    activeTab === 'orders-dashboard' || activeTab === 'orders-management'
                       ? 'border-red-500 bg-red-50'
                       : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
                   }`}
                 >
                   <Package className="h-8 w-8 text-gray-600 mb-3" />
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Gerenciamento</h3>
-                  <p className="text-gray-600">Visualizar, gerenciar e filtrar todas as encomendas</p>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Encomendas</h3>
+                  <p className="text-gray-600">Sistema de pedidos e encomendas</p>
+                </button>
+                <button
+                  onClick={() => changeTab('recipes')}
+                  className={`p-6 border-2 rounded-lg text-left transition-colors ${
+                    activeTab === 'recipes'
+                      ? 'border-red-500 bg-red-50'
+                      : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
+                  }`}
+                >
+                  <ChefHat className="h-8 w-8 text-gray-600 mb-3" />
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Receitas</h3>
+                  <p className="text-gray-600">Calculadora de receitas</p>
+                </button>
+                <button
+                  onClick={() => changeTab('price-list')}
+                  className={`p-6 border-2 rounded-lg text-left transition-colors ${
+                    activeTab === 'price-list'
+                      ? 'border-red-500 bg-red-50'
+                      : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
+                  }`}
+                >
+                  <DollarSign className="h-8 w-8 text-gray-600 mb-3" />
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Lista de Preços</h3>
+                  <p className="text-gray-600">Gerenciamento de preços de itens</p>
                 </button>
               </div>
             </div>
@@ -579,6 +610,8 @@ export default function HomePage() {
             {/* Content Area */}
             {activeTab === 'orders-dashboard' && <OrdersDashboard />}
             {activeTab === 'orders-management' && <OrdersManagement />}
+            {activeTab === 'recipes' && <Recipes />}
+            {activeTab === 'price-list' && <PriceList />}
           </div>
         )}
 
@@ -638,54 +671,88 @@ export default function HomePage() {
           </div>
         )}
 
+        {/* Empresas Section */}
+        {activeTab === 'empresas' && (
+          <div className="space-y-8">
+            <div className="card p-6">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">🏢 Empresas</h2>
+              <p className="text-gray-600 mb-6">Selecione uma empresa para acessar o sistema de gestão</p>
+              
+              
+              {firmsLoading ? (
+                <div className="text-center py-12">
+                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+                  <p className="text-gray-600">Carregando empresas...</p>
+                </div>
+              ) : (
+                <>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {accessibleFirms.map((firm: FirmConfig) => (
+                      <div key={firm.id} className="border border-gray-200 rounded-lg p-6 hover:bg-gray-50 transition-colors">
+                        <div className="flex items-center space-x-3 mb-4">
+                          <div className="p-2 bg-blue-100 rounded-lg">
+                            <Building className="h-6 w-6 text-blue-600" />
+                          </div>
+                          <div>
+                            <h3 className="text-lg font-semibold text-gray-900">{firm.name}</h3>
+                            <p className="text-sm text-gray-500">{firm.description || 'Sistema de gestão empresarial'}</p>
+                          </div>
+                        </div>
+                        
+                        <div className="space-y-2 mb-4">
+                          <div className="flex items-center justify-between text-sm">
+                            <span className="text-gray-500">Status:</span>
+                            <span className={`font-medium ${
+                              firm.enabled ? 'text-green-600' : 'text-red-600'
+                            }`}>
+                              {firm.enabled ? 'Ativo' : 'Inativo'}
+                            </span>
+                          </div>
+                          <div className="flex items-center justify-between text-sm">
+                            <span className="text-gray-500">Monitoramento:</span>
+                            <span className={`font-medium ${
+                              firm.monitoring.enabled ? 'text-green-600' : 'text-red-600'
+                            }`}>
+                              {firm.monitoring.enabled ? 'Ativo' : 'Inativo'}
+                            </span>
+                          </div>
+                          <div className="flex items-center justify-between text-sm">
+                            <span className="text-gray-500">Roles:</span>
+                            <span className="text-gray-900">{firm.allowedRoles.length}</span>
+                          </div>
+                        </div>
+                        
+                        <button 
+                          onClick={() => {
+                            // Navigate to dynamic firm dashboard
+                            changeTab(`firm-${firm.id}`);
+                          }}
+                          className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors"
+                        >
+                          Acessar {firm.name}
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  {accessibleFirms.length === 0 && (
+                    <div className="text-center py-12">
+                      <Building className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+                      <h3 className="text-lg font-medium text-gray-900 mb-2">Nenhuma empresa disponível</h3>
+                      <p className="text-gray-500">
+                        Você não tem acesso a nenhuma empresa ou nenhuma empresa foi configurada ainda.
+                      </p>
+                    </div>
+                  )}
+                </>
+              )}
+            </div>
+          </div>
+        )}
+
         {/* Fazenda BW Section */}
         {(activeTab === 'fazenda-bw' || activeTab === 'fazenda-bw-dashboard' || activeTab === 'fazenda-bw-estoque' || activeTab === 'fazenda-bw-trabalhadores') && (
           <div className="space-y-8">
-            {/* Fazenda BW Menu */}
-            <div className="card p-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">🏛️ Fazenda BW - Sistema de Gestão</h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <button
-                  onClick={() => changeTab('fazenda-bw-dashboard')}
-                  className={`p-6 border-2 rounded-lg text-left transition-colors ${
-                    activeTab === 'fazenda-bw-dashboard'
-                      ? 'border-red-500 bg-red-50'
-                      : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
-                  }`}
-                >
-                  <BarChart3 className="h-8 w-8 text-gray-600 mb-3" />
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Dashboard</h3>
-                  <p className="text-gray-600">Feeds de atividade em tempo real e visão geral da fazenda</p>
-                </button>
-                
-                <button
-                  onClick={() => changeTab('fazenda-bw-estoque')}
-                  className={`p-6 border-2 rounded-lg text-left transition-colors ${
-                    activeTab === 'fazenda-bw-estoque'
-                      ? 'border-red-500 bg-red-50'
-                      : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
-                  }`}
-                >
-                  <Package className="h-8 w-8 text-gray-600 mb-3" />
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Estoque</h3>
-                  <p className="text-gray-600">Gerenciamento de inventário e rastreamento de itens</p>
-                </button>
-                
-                <button
-                  onClick={() => changeTab('fazenda-bw-trabalhadores')}
-                  className={`p-6 border-2 rounded-lg text-left transition-colors ${
-                    activeTab === 'fazenda-bw-trabalhadores'
-                      ? 'border-red-500 bg-red-50'
-                      : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
-                  }`}
-                >
-                  <Users className="h-8 w-8 text-gray-600 mb-3" />
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Trabalhadores</h3>
-                  <p className="text-gray-600">Performance dos trabalhadores e análise de atividades</p>
-                </button>
-              </div>
-            </div>
-
             {/* Content Area */}
             {activeTab === 'fazenda-bw-dashboard' && <FazendaBW />}
             {activeTab === 'fazenda-bw-estoque' && <EstoqueBW />}
@@ -693,10 +760,28 @@ export default function HomePage() {
           </div>
         )}
 
-        {/* New Tabs from Fazenda System */}
-        {activeTab === 'recipes' && <Recipes />}
-        {activeTab === 'price-list' && <PriceList />}
-        {activeTab === 'server-monitor' && <ServerMonitor />}
+        {/* Dynamic Firm Sections */}
+        {accessibleFirms.map((firm: FirmConfig) => {
+            const firmTabPattern = `firm-${firm.id}`;
+            const isDashboard = activeTab === `${firmTabPattern}-dashboard`;
+            const isEstoque = activeTab === `${firmTabPattern}-estoque`;
+            const isTrabalhadores = activeTab === `${firmTabPattern}-trabalhadores`;
+            const isMainFirmTab = activeTab === firmTabPattern;
+            const isAnyFirmTab = isDashboard || isEstoque || isTrabalhadores || isMainFirmTab;
+            
+            if (!isAnyFirmTab) return null;
+            
+            // For ALL firms accessed through Empresas - no navigation menu, just content
+            return (
+              <div key={firm.id} className="space-y-8">
+                {/* Content Area - Pass firm data to components */}
+                {(isDashboard || isMainFirmTab) && <FazendaBW firm={firm} />}
+                {isEstoque && <EstoqueBW firm={firm} />}
+                {isTrabalhadores && <TrabalhadoresBW firm={firm} />}
+              </div>
+            );
+          })}
+
       </main>
 
       {/* Footer */}

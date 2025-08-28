@@ -67,7 +67,13 @@ const MetricCard = ({
   );
 };
 
-export default function TrabalhadoresBW() {
+import { FirmConfig } from '@/types/firms';
+
+interface TrabalhadoresBWProps {
+  firm?: FirmConfig;
+}
+
+export default function TrabalhadoresBW({ firm }: TrabalhadoresBWProps = {}) {
   const [workers, setWorkers] = useState<{[key: string]: Worker}>({});
   const [workerStats, setWorkerStats] = useState<{[key: string]: WorkerStats}>({});
   const [loading, setLoading] = useState(true);
@@ -86,8 +92,14 @@ export default function TrabalhadoresBW() {
   const processWorkerData = (extensionMessages: Activity[]) => {
     const workerData: {[key: string]: Worker} = {};
     const workerStatsData: {[key: string]: WorkerStats} = {};
+    
+    // Filter messages by firm's channelId
+    const channelId = firm?.channelId || '1409214475403526174';
+    const filteredMessages = extensionMessages.filter((msg: any) => 
+      !msg.channelId || msg.channelId === channelId
+    );
 
-    extensionMessages.forEach(msg => {
+    filteredMessages.forEach(msg => {
       const content = msg.content || '';
       const author = msg.autor || 'Unknown';
       

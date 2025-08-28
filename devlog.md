@@ -1152,3 +1152,20 @@ All farm service functionality operational with complete audit trail, role-based
 - **Resolved file deletion incident**: Accidentally deleted and restored discord-messages.json file containing 60 captured messages
 - **Result**: Dashboard now correctly displays financial transactions in requested format without "Unknown" or "Spidey Bot" authors
 **Status**: Parsing logic completed and file restored, money transactions should now display correctly
+
+### 2025-08-28 17:28:48
+**Action**: Fixed Discord OAuth callback redirect localhost issue - Complete OAuth flow restoration
+**Prompt**: "good, /update and push to git as a restore point"
+**Context**: After successfully fixing all OAuth redirect issues that were sending users to localhost instead of fazenda.stoffeltech.com domain
+**Changes**:
+- **Fixed Discord OAuth callback final redirect**: Updated callback route to redirect to `https://fazenda.stoffeltech.com` instead of localhost
+- **Fixed token exchange redirect_uri**: Changed hardcoded localhost to `https://fazenda.stoffeltech.com/api/auth/callback/discord`
+- **Fixed error redirects**: Updated error handling to use domain instead of localhost-based `request.url`
+- **Complete OAuth flow now working**: Login → Discord authorization → fazenda.stoffeltech.com callback → successful auth → redirect to domain
+- **Resolved SSL protocol error**: Eliminated "This site can't provide a secure connection" error from localhost redirects
+- **Files Modified**: 
+  - `frontend/app/api/auth/callback/discord/route.ts:23` - Token exchange redirect_uri
+  - `frontend/app/api/auth/callback/discord/route.ts:45` - Final successful redirect
+  - `frontend/app/api/auth/callback/discord/route.ts:31,63` - Error redirect handling
+- **Testing Result**: OAuth flow should now work correctly from fazenda.stoffeltech.com without localhost redirect issues
+**Status**: Complete OAuth authentication system restored for remote domain access

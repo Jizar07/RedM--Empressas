@@ -1,4 +1,6 @@
 {
   "/page": "app/page.js",
-  "/api/webhook/channel-messages/route": "app/api/webhook/channel-messages/route.js"
+  "/api/webhook/channel-messages/route": "app/api/webhook/channel-messages/route.js",
+  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
+  "/api/auth/callback/discord/route": "app/api/auth/callback/discord/route.js"
 }
