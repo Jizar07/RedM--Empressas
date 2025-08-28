@@ -1,0 +1,14 @@
+{
+  "receiptId": "20250828793",
+  "timestamp": "2025-08-28T01:46:23.858Z",
+  "playerName": "Azrael Locatelli",
+  "serviceType": "animal",
+  "quantity": 1,
+  "animalType": "Avino",
+  "playerPayment": 60,
+  "status": "APPROVED",
+  "screenshotPath": "C:\\Users\\jizar\\OneDrive\\Documents\\DiscordBot\\uploads\\temp\\temp_1756345583002_galo_macho.png",
+  "approved": true,
+  "approvedBy": "jizarstoffel",
+  "approvedAt": "2025-08-28T01:59:11.297Z"
+}

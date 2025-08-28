@@ -84,7 +84,22 @@ export class BotMessageForwarder {
                   .replace(/^:+\s*/, '') // Remove leading colons
                   .split('|')[0] // Take only part before | (removes | FIXO: 75119)
                   .trim();
-                console.log(`🔍 Bot Monitor: Found real author: "${realAuthor}" from field (cleaned from "${cleanValue}")`);
+                console.log(`🔍 Bot Monitor: Found real author: "${realAuthor}" from Autor field (cleaned from "${cleanValue}")`);
+              }
+              
+              // For animal service completions: Look for "Ação" field if no Autor field found
+              if ((cleanFieldName.toLowerCase() === 'ação' || cleanFieldName.toLowerCase() === 'acao') && realAuthor === message.author.username) {
+                // Only extract from Ação if we haven't found an Autor field yet (still using bot username)
+                // And only if this is a CAIXA DEPÓSITO message (animal service)
+                const isAnimalService = parts.some(part => part.includes('CAIXA ORGANIZAÇÃO') && part.includes('DEPÓSITO'));
+                if (isAnimalService) {
+                  // Extract author from "Jizar Stoffeliz vendeu X animais no matadouro"
+                  const animalServiceMatch = cleanValue.match(/^(.+?)\s+vendeu\s+\d+\s+animais\s+no\s+matadouro/);
+                  if (animalServiceMatch) {
+                    realAuthor = animalServiceMatch[1].trim();
+                    console.log(`🔍 Bot Monitor: Found animal service author: "${realAuthor}" from Ação field (action: "${cleanValue}")`);
+                  }
+                }
               }
               
               // Format as "FieldName: Value" but clean both sides

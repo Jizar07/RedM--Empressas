@@ -1,0 +1,17 @@
+{
+  "receiptId": "20250828958",
+  "playerName": "Olivia Cesarinni",
+  "timestamp": "2025-08-28T00:48:18.028Z",
+  "serviceType": "animal",
+  "verification": {
+    "timeWindowUsed": 300,
+    "discordTransactionsFound": 0,
+    "exactMatch": false,
+    "discrepancy": 60,
+    "lossAmount": 60,
+    "adjustedPayment": 0,
+    "decision": "rejected",
+    "adminNotified": true
+  },
+  "discordTransactions": []
+}

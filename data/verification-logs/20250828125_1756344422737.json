@@ -1,0 +1,17 @@
+{
+  "receiptId": "20250828125",
+  "playerName": "Azrael Locatelli",
+  "timestamp": "2025-08-28T01:27:02.737Z",
+  "serviceType": "planta",
+  "verification": {
+    "timeWindowUsed": 300,
+    "discordTransactionsFound": 0,
+    "exactMatch": false,
+    "discrepancy": -700,
+    "lossAmount": 0,
+    "adjustedPayment": 0,
+    "decision": "rejected",
+    "adminNotified": true
+  },
+  "discordTransactions": []
+}

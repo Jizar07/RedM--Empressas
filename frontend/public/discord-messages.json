@@ -1,7 +1,1821 @@
 {
-  "lastUpdated": "2025-08-27T17:49:31.023Z",
-  "totalMessages": 473,
+  "lastUpdated": "2025-08-28T15:07:47.497Z",
+  "totalMessages": 640,
   "messages": [
+    {
+      "id": "1410642025711272056",
+      "timestamp": "2025-08-28T15:07:47.391Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: common_portion_donkey x8\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 12:07:46",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: common_portion_donkey x8\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 12:07:46",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\ncommon_portion_donkey x8\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 12:07:46\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410641916613230743",
+      "timestamp": "2025-08-28T15:07:21.380Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: donkey_female x4\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 12:07:20",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: donkey_female x4\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 12:07:20",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\ndonkey_female x4\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 12:07:20\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410641540329771088",
+      "timestamp": "2025-08-28T15:05:51.667Z",
+      "author": "jizarstoffel",
+      "content": "o !Aranha esta passando direto pra min.",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1410640180007927818",
+      "timestamp": "2025-08-28T15:00:27.341Z",
+      "author": "montanharp_",
+      "content": "??",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1410640169144684604",
+      "timestamp": "2025-08-28T15:00:24.751Z",
+      "author": "montanharp_",
+      "content": "<@372161270176153601> como faz pra duplicar a log do bau",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1410639356028391546",
+      "timestamp": "2025-08-28T14:57:10.889Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado: $160.0\nAção: Zero Bala vendeu 4 animais no matadouro\nSaldo após depósito: $8441.7\nData: 28/08/2025 - 11:57:10",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado: $160.0\nAção: Zero Bala vendeu 4 animais no matadouro\nSaldo após depósito: $8441.7\nData: 28/08/2025 - 11:57:10",
+      "rawEmbeds": [
+        {
+          "title": "CAIXA ORGANIZAÇÃO - DEPÓSITO",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Valor depositado:`",
+              "value": "```prolog\n$160.0\n```",
+              "inline": true
+            },
+            {
+              "name": "`Ação:`",
+              "value": "```prolog\nZero Bala vendeu 4 animais no matadouro\n```",
+              "inline": true
+            },
+            {
+              "name": "`Saldo após depósito:`",
+              "value": "```prolog\n$8441.7\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 11:57:10\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410636365951012864",
+      "timestamp": "2025-08-28T14:45:17.999Z",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nCAIXA ORGANIZAÇÃO - SAQUE\nValor sacado: $1\nAutor: Jizar Stoffeliz | FIXO: 75119\nSaldo após saque: $8281.7\nData: 28/08/2025 - 11:45:17",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nCAIXA ORGANIZAÇÃO - SAQUE\nValor sacado: $1\nAutor: Jizar Stoffeliz | FIXO: 75119\nSaldo após saque: $8281.7\nData: 28/08/2025 - 11:45:17",
+      "rawEmbeds": [
+        {
+          "title": "CAIXA ORGANIZAÇÃO - SAQUE",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Valor sacado:`",
+              "value": "```prolog\n$1\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nJizar Stoffeliz | FIXO: 75119\n```",
+              "inline": true
+            },
+            {
+              "name": "`Saldo após saque:`",
+              "value": "```prolog\n$8281.7\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 11:45:17\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410636271818375251",
+      "timestamp": "2025-08-28T14:44:55.556Z",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado: $1\nAutor: Jizar Stoffeliz | FIXO: 75119\nSaldo após depósito: $8282.7\nData: 28/08/2025 - 11:44:55",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado: $1\nAutor: Jizar Stoffeliz | FIXO: 75119\nSaldo após depósito: $8282.7\nData: 28/08/2025 - 11:44:55",
+      "rawEmbeds": [
+        {
+          "title": "CAIXA ORGANIZAÇÃO - DEPÓSITO",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Valor depositado:`",
+              "value": "```prolog\n$1\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nJizar Stoffeliz | FIXO: 75119\n```",
+              "inline": true
+            },
+            {
+              "name": "`Saldo após depósito:`",
+              "value": "```prolog\n$8282.7\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 11:44:55\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410632043100110942",
+      "timestamp": "2025-08-28T14:28:07.351Z",
+      "author": "Spidey Bot",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado: $156.8\nAção: Jizar Stoffeliz vendeu 4 animais no matadouro\nSaldo após depósito: $8281.7\nData: 28/08/2025 - 11:28:06",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado: $156.8\nAção: Jizar Stoffeliz vendeu 4 animais no matadouro\nSaldo após depósito: $8281.7\nData: 28/08/2025 - 11:28:06",
+      "rawEmbeds": [
+        {
+          "title": "CAIXA ORGANIZAÇÃO - DEPÓSITO",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Valor depositado:`",
+              "value": "```prolog\n$156.8\n```",
+              "inline": true
+            },
+            {
+              "name": "`Ação:`",
+              "value": "```prolog\nJizar Stoffeliz vendeu 4 animais no matadouro\n```",
+              "inline": true
+            },
+            {
+              "name": "`Saldo após depósito:`",
+              "value": "```prolog\n$8281.7\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 11:28:06\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410631748898918562",
+      "timestamp": "2025-08-28T14:26:57.208Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: common_portion_donkey x8\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 11:26:56",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: common_portion_donkey x8\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 11:26:56",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\ncommon_portion_donkey x8\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 11:26:56\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410631727226945626",
+      "timestamp": "2025-08-28T14:26:52.041Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: donkey_male x4\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 11:26:51",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: donkey_male x4\nAutor: Zero Bala | FIXO: 74829\nData: 28/08/2025 - 11:26:51",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\ndonkey_male x4\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 11:26:51\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410631057597923502",
+      "timestamp": "2025-08-28T14:24:12.389Z",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: Bulrush_Seed x100\nAutor: Jizar Stoffeliz | FIXO: 75119\nData: 28/08/2025 - 11:24:11",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: Bulrush_Seed x100\nAutor: Jizar Stoffeliz | FIXO: 75119\nData: 28/08/2025 - 11:24:11",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\nBulrush_Seed x100\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nJizar Stoffeliz | FIXO: 75119\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 11:24:11\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410630946046083154",
+      "timestamp": "2025-08-28T14:23:45.793Z",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: Cigarett x3\nAutor: Jizar Stoffeliz | FIXO: 75119\nData: 28/08/2025 - 11:23:45",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: Cigarett x3\nAutor: Jizar Stoffeliz | FIXO: 75119\nData: 28/08/2025 - 11:23:45",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO- INSERIR ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item adicionado:`",
+              "value": "```prolog\nCigarett x3\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nJizar Stoffeliz | FIXO: 75119\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 11:23:45\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410630670161543330",
+      "timestamp": "2025-08-28T14:22:40.017Z",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: Cigarett x1\nAutor: Jizar Stoffeliz | FIXO: 75119\nData: 28/08/2025 - 11:22:38",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: Cigarett x1\nAutor: Jizar Stoffeliz | FIXO: 75119\nData: 28/08/2025 - 11:22:38",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO- INSERIR ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item adicionado:`",
+              "value": "```prolog\nCigarett x1\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nJizar Stoffeliz | FIXO: 75119\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 11:22:38\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410630563223699600",
+      "timestamp": "2025-08-28T14:22:14.521Z",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nCAIXA ORGANIZAÇÃO - SAQUE\nValor sacado: $1\nAutor: Jizar Stoffeliz | FIXO: 75119\nSaldo após saque: $8124.9\nData: 28/08/2025 - 11:22:13",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nCAIXA ORGANIZAÇÃO - SAQUE\nValor sacado: $1\nAutor: Jizar Stoffeliz | FIXO: 75119\nSaldo após saque: $8124.9\nData: 28/08/2025 - 11:22:13",
+      "rawEmbeds": [
+        {
+          "title": "CAIXA ORGANIZAÇÃO - SAQUE",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Valor sacado:`",
+              "value": "```prolog\n$1\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nJizar Stoffeliz | FIXO: 75119\n```",
+              "inline": true
+            },
+            {
+              "name": "`Saldo após saque:`",
+              "value": "```prolog\n$8124.9\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 11:22:13\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410630504138670111",
+      "timestamp": "2025-08-28T14:22:00.434Z",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado: $1\nAutor: Jizar Stoffeliz | FIXO: 75119\nSaldo após depósito: $8125.9\nData: 28/08/2025 - 11:21:59",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado: $1\nAutor: Jizar Stoffeliz | FIXO: 75119\nSaldo após depósito: $8125.9\nData: 28/08/2025 - 11:21:59",
+      "rawEmbeds": [
+        {
+          "title": "CAIXA ORGANIZAÇÃO - DEPÓSITO",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Valor depositado:`",
+              "value": "```prolog\n$1\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nJizar Stoffeliz | FIXO: 75119\n```",
+              "inline": true
+            },
+            {
+              "name": "`Saldo após depósito:`",
+              "value": "```prolog\n$8125.9\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 11:21:59\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410629898996809850",
+      "timestamp": "2025-08-28T14:19:36.157Z",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nCAIXA ORGANIZAÇÃO - SAQUE\nValor sacado: $4\nAutor: Jizar Stoffeliz | FIXO: 75119\nSaldo após saque: $8124.9\nData: 28/08/2025 - 11:19:35",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nCAIXA ORGANIZAÇÃO - SAQUE\nValor sacado: $4\nAutor: Jizar Stoffeliz | FIXO: 75119\nSaldo após saque: $8124.9\nData: 28/08/2025 - 11:19:35",
+      "rawEmbeds": [
+        {
+          "title": "CAIXA ORGANIZAÇÃO - SAQUE",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Valor sacado:`",
+              "value": "```prolog\n$4\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nJizar Stoffeliz | FIXO: 75119\n```",
+              "inline": true
+            },
+            {
+              "name": "`Saldo após saque:`",
+              "value": "```prolog\n$8124.9\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 11:19:35\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410629829186949151",
+      "timestamp": "2025-08-28T14:19:19.513Z",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado: $2\nAutor: Jizar Stoffeliz | FIXO: 75119\nSaldo após depósito: $8128.9\nData: 28/08/2025 - 11:19:19",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado: $2\nAutor: Jizar Stoffeliz | FIXO: 75119\nSaldo após depósito: $8128.9\nData: 28/08/2025 - 11:19:19",
+      "rawEmbeds": [
+        {
+          "title": "CAIXA ORGANIZAÇÃO - DEPÓSITO",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Valor depositado:`",
+              "value": "```prolog\n$2\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nJizar Stoffeliz | FIXO: 75119\n```",
+              "inline": true
+            },
+            {
+              "name": "`Saldo após depósito:`",
+              "value": "```prolog\n$8128.9\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 11:19:19\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410629351858245642",
+      "timestamp": "2025-08-28T14:17:25.709Z",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: Cigarett x2\nAutor: Jizar Stoffeliz | FIXO: 75119\nData: 28/08/2025 - 11:17:25",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: Cigarett x2\nAutor: Jizar Stoffeliz | FIXO: 75119\nData: 28/08/2025 - 11:17:25",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\nCigarett x2\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nJizar Stoffeliz | FIXO: 75119\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 11:17:25\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410629160048791593",
+      "timestamp": "2025-08-28T14:16:39.978Z",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: Cigarett x1\nAutor: Jizar Stoffeliz | FIXO: 75119\nData: 28/08/2025 - 11:16:39",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: Cigarett x1\nAutor: Jizar Stoffeliz | FIXO: 75119\nData: 28/08/2025 - 11:16:39",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO- INSERIR ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item adicionado:`",
+              "value": "```prolog\nCigarett x1\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nJizar Stoffeliz | FIXO: 75119\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 11:16:39\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410624786073391207",
+      "timestamp": "2025-08-28T13:59:17.141Z",
+      "author": "Jizar Stoffeliz | FIXO: 75119",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: Bulrush x20\nAutor: Jizar Stoffeliz | FIXO: 75119\nData: 28/08/2025 - 10:59:16",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado: Bulrush x20\nAutor: Jizar Stoffeliz | FIXO: 75119\nData: 28/08/2025 - 10:59:16",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO- INSERIR ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item adicionado:`",
+              "value": "```prolog\nBulrush x20\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nJizar Stoffeliz | FIXO: 75119\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 10:59:16\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410624756017008690",
+      "timestamp": "2025-08-28T13:59:09.975Z",
+      "author": "Jizar Stoffeliz | FIXO: 75119",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: common_portion x8\nAutor: Jizar Stoffeliz | FIXO: 75119\nData: 28/08/2025 - 10:59:09",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: common_portion x8\nAutor: Jizar Stoffeliz | FIXO: 75119\nData: 28/08/2025 - 10:59:09",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\ncommon_portion x8\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nJizar Stoffeliz | FIXO: 75119\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 10:59:09\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410624691361681579",
+      "timestamp": "2025-08-28T13:58:54.560Z",
+      "author": "Jizar Stoffeliz | FIXO: 75119",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: cow_male x4\nAutor: Jizar Stoffeliz | FIXO: 75119\nData: 28/08/2025 - 10:58:54",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido: cow_male x4\nAutor: Jizar Stoffeliz | FIXO: 75119\nData: 28/08/2025 - 10:58:54",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\ncow_male x4\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nJizar Stoffeliz | FIXO: 75119\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 10:58:54\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410621849066274846",
+      "timestamp": "2025-08-28T13:47:36.904Z",
+      "author": "Spidey Bot",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Cigarett x2\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/08/2025 - 10:47:36",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Cigarett x2\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/08/2025 - 10:47:36",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO - REMOVER ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item removido:`",
+              "value": "```prolog\nCigarett x2\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nJizar Stoffeliz | FIXO: 75119\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 10:47:36\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410621768804204665",
+      "timestamp": "2025-08-28T13:47:17.768Z",
+      "author": "Spidey Bot",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nCAIXA ORGANIZAÇÃO - SAQUE\nValor sacado:: $2\nAutor:: Jizar Stoffeliz | FIXO: 75119\nSaldo após saque:: $8126.9\nData:: 28/08/2025 - 10:47:17",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nCAIXA ORGANIZAÇÃO - SAQUE\nValor sacado:: $2\nAutor:: Jizar Stoffeliz | FIXO: 75119\nSaldo após saque:: $8126.9\nData:: 28/08/2025 - 10:47:17",
+      "rawEmbeds": [
+        {
+          "title": "CAIXA ORGANIZAÇÃO - SAQUE",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Valor sacado:`",
+              "value": "```prolog\n$2\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nJizar Stoffeliz | FIXO: 75119\n```",
+              "inline": true
+            },
+            {
+              "name": "`Saldo após saque:`",
+              "value": "```prolog\n$8126.9\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 10:47:17\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410621619788840970",
+      "timestamp": "2025-08-28T13:46:42.240Z",
+      "author": "Spidey Bot",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $1\nAutor:: Jizar Stoffeliz | FIXO: 75119\nSaldo após depósito:: $8130.9\nData:: 28/08/2025 - 10:46:41",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $1\nAutor:: Jizar Stoffeliz | FIXO: 75119\nSaldo após depósito:: $8130.9\nData:: 28/08/2025 - 10:46:41",
+      "rawEmbeds": [
+        {
+          "title": "CAIXA ORGANIZAÇÃO - DEPÓSITO",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Valor depositado:`",
+              "value": "```prolog\n$1\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nJizar Stoffeliz | FIXO: 75119\n```",
+              "inline": true
+            },
+            {
+              "name": "`Saldo após depósito:`",
+              "value": "```prolog\n$8130.9\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 10:46:41\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1410621391862239272",
+      "timestamp": "2025-08-28T13:45:47.898Z",
+      "author": "Spidey Bot",
+      "content": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: Cigarett x1\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/08/2025 - 10:45:47",
+      "source": "bot-monitor",
+      "channelId": "1409214475403526174",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_86\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: Cigarett x1\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/08/2025 - 10:45:47",
+      "rawEmbeds": [
+        {
+          "title": "BAÚ ORGANIZAÇÃO- INSERIR ITEM",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item adicionado:`",
+              "value": "```prolog\nCigarett x1\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nJizar Stoffeliz | FIXO: 75119\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n28/08/2025 - 10:45:47\n```",
+              "inline": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "msg-1756387980149-guloqu21l",
+      "timestamp": "2025-08-28T08:12:47.349Z",
+      "author": "Unknown",
+      "content": "[4:12 AM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:common_portion_donkey x8Autor:Zero Bala | FIXO: 74829Data:28/08/2025 - 05:12:47",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756387980148-pptiozw4q",
+      "timestamp": "2025-08-28T08:12:42.931Z",
+      "author": "Unknown",
+      "content": "[4:12 AM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:donkey_male x4Autor:Zero Bala | FIXO: 74829Data:28/08/2025 - 05:12:42",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756387980147-rcj7aoysg",
+      "timestamp": "2025-08-28T07:39:31.384Z",
+      "author": "Unknown",
+      "content": "[3:39 AM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:common_portion_donkey x8Autor:Zero Bala | FIXO: 74829Data:28/08/2025 - 04:39:31",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756387980147-6dtdpu47w",
+      "timestamp": "2025-08-28T07:39:24.554Z",
+      "author": "Unknown",
+      "content": "[3:39 AM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:donkey_male x4Autor:Zero Bala | FIXO: 74829Data:28/08/2025 - 04:39:24",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756387980146-thpnhsiu0",
+      "timestamp": "2025-08-28T07:24:56.608Z",
+      "author": "Unknown",
+      "content": "[3:24 AM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:pig_female x12Autor:Zero Bala | FIXO: 74829Data:28/08/2025 - 04:24:56",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756387980145-hilo8sk9x",
+      "timestamp": "2025-08-28T07:24:49.488Z",
+      "author": "Spidey Bot",
+      "content": "Spidey BotAPP — 3:24 AMREGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:goat_female x33Autor:Zero Bala | FIXO: 74829Data:28/08/2025 - 04:24:49",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756387980145-eea5b9itl",
+      "timestamp": "2025-08-28T06:28:06.649Z",
+      "author": "Unknown",
+      "content": "[2:28 AM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:common_portion_donkey x8Autor:Zero Bala | FIXO: 74829Data:28/08/2025 - 03:28:06",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756387980144-h886dp007",
+      "timestamp": "2025-08-28T06:28:02.798Z",
+      "author": "Spidey Bot",
+      "content": "Spidey BotAPP — 2:28 AMREGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:donkey_male x4Autor:Zero Bala | FIXO: 74829Data:28/08/2025 - 03:28:02",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756387980143-qhj5tanch",
+      "timestamp": "2025-08-28T04:55:05.502Z",
+      "author": "Unknown",
+      "content": "[12:55 AM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:Cigarett x1Autor:Angelique Vallence | FIXO: 104Data:28/08/2025 - 01:55:05",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756387980143-55d40ha7k",
+      "timestamp": "2025-08-28T04:55:03.620Z",
+      "author": "Unknown",
+      "content": "[12:55 AM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:Cigarett x1Autor:Angelique Vallence | FIXO: 104Data:28/08/2025 - 01:55:03",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756387980142-kka8tlx97",
+      "timestamp": "2025-08-28T04:55:00.879Z",
+      "author": "Unknown",
+      "content": "[12:55 AM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:Cigarett x1Autor:Angelique Vallence | FIXO: 104Data:28/08/2025 - 01:55:00",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756387980142-z0jc7nrsj",
+      "timestamp": "2025-08-28T04:54:57.906Z",
+      "author": "Unknown",
+      "content": "[12:54 AM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:Cigarett x1Autor:Angelique Vallence | FIXO: 104Data:28/08/2025 - 01:54:57",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756387980141-sea0yk3kd",
+      "timestamp": "2025-08-28T04:54:55.474Z",
+      "author": "Unknown",
+      "content": "[12:54 AM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:Cigarett x1Autor:Angelique Vallence | FIXO: 104Data:28/08/2025 - 01:54:55",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756387980141-223k7qa8k",
+      "timestamp": "2025-08-28T04:54:43.810Z",
+      "author": "Unknown",
+      "content": "[12:54 AM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:Cigarett x1Autor:Angelique Vallence | FIXO: 104Data:28/08/2025 - 01:54:43",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756387980140-kkpdgfo5d",
+      "timestamp": "2025-08-28T04:50:46.054Z",
+      "author": "Unknown",
+      "content": "[12:50 AM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:snaket x1Autor:Angelique Vallence | FIXO: 104Data:28/08/2025 - 01:50:45",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756387980140-490o6aim6",
+      "timestamp": "2025-08-28T04:50:43.909Z",
+      "author": "Unknown",
+      "content": "[12:50 AM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:snaket x1Autor:Angelique Vallence | FIXO: 104Data:28/08/2025 - 01:50:43",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756387980139-6r83yzwep",
+      "timestamp": "2025-08-28T04:50:40.625Z",
+      "author": "Unknown",
+      "content": "[12:50 AM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:snaket x1Autor:Angelique Vallence | FIXO: 104Data:28/08/2025 - 01:50:40",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756387980139-og6ccecvs",
+      "timestamp": "2025-08-28T04:50:36.844Z",
+      "author": "Unknown",
+      "content": "[12:50 AM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:snaket x1Autor:Angelique Vallence | FIXO: 104Data:28/08/2025 - 01:50:36",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756387980138-o1r843huh",
+      "timestamp": "2025-08-28T04:50:33.864Z",
+      "author": "Unknown",
+      "content": "[12:50 AM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:snaket x1Autor:Angelique Vallence | FIXO: 104Data:28/08/2025 - 01:50:33",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756387980137-tlwgn9f3x",
+      "timestamp": "2025-08-28T04:50:31.047Z",
+      "author": "Spidey Bot",
+      "content": "Spidey BotAPP — 12:50 AMREGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:snaket x1Autor:Angelique Vallence | FIXO: 104Data:28/08/2025 - 01:50:30",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756387980136-c2528fmwz",
+      "timestamp": "2025-08-28T04:48:24.085Z",
+      "author": "motomami",
+      "content": "motomamidead — 12:48 AMa",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756355152179-yrlm7j8ag",
+      "timestamp": "2025-08-28T04:25:51.636Z",
+      "author": "Spidey Bot",
+      "content": "Spidey BotAPP — 12:25 AMREGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:potedemel x1Autor:Pacas Olivio | FIXO: 76267Data:28/08/2025 - 01:25:51",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756353780160-ywxh0bxlc",
+      "timestamp": "2025-08-28T04:02:59.735Z",
+      "author": "Unknown",
+      "content": "[12:02 AM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:cornseed x30Autor:Pacas Olivio | FIXO: 76267Data:28/08/2025 - 01:02:59",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756353663207-tec4aucd2",
+      "timestamp": "2025-08-28T04:01:02.170Z",
+      "author": "Spidey Bot",
+      "content": "Spidey BotAPP — 12:01 AMREGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:corn x170Autor:Jizar Stoffeliz | FIXO: 75119Data:28/08/2025 - 01:01:02",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756353588187-p0l1menh3",
+      "timestamp": "2025-08-28T03:59:47.844Z",
+      "author": "Spidey Bot",
+      "content": "Spidey BotAPP — 11:59 PMREGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:corn x500Autor:Jizar Stoffeliz | FIXO: 75119Data:28/08/2025 - 00:59:47",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756352501195-vkghaah7c",
+      "timestamp": "2025-08-28T03:41:40.207Z",
+      "author": "Unknown",
+      "content": "[11:41 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:common_portion_pig x8Autor:Pacas Olivio | FIXO: 76267Data:28/08/2025 - 00:41:40",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756352477188-d9ayqxs26",
+      "timestamp": "2025-08-28T03:41:16.845Z",
+      "author": "Unknown",
+      "content": "[11:41 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:pig_female x2Autor:Pacas Olivio | FIXO: 76267Data:28/08/2025 - 00:41:16",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756352470200-sbmsv8oy0",
+      "timestamp": "2025-08-28T03:41:09.788Z",
+      "author": "Spidey Bot",
+      "content": "Spidey BotAPP — 11:41 PMREGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:pig_male x2Autor:Pacas Olivio | FIXO: 76267Data:28/08/2025 - 00:41:09",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756351720171-uyi5szhex",
+      "timestamp": "2025-08-28T03:28:39.864Z",
+      "author": "Unknown",
+      "content": "[11:28 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:corn x100Autor:Jizar Stoffeliz | FIXO: 75119Data:28/08/2025 - 00:28:39",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756351717182-4p58v6c9m",
+      "timestamp": "2025-08-28T03:28:36.236Z",
+      "author": "Unknown",
+      "content": "[11:28 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:corn x200Autor:Jizar Stoffeliz | FIXO: 75119Data:28/08/2025 - 00:28:36",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756351713178-hylpxxud7",
+      "timestamp": "2025-08-28T03:28:32.480Z",
+      "author": "Unknown",
+      "content": "[11:28 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:corn x200Autor:Jizar Stoffeliz | FIXO: 75119Data:28/08/2025 - 00:28:32",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756351677182-9me2eji7h",
+      "timestamp": "2025-08-28T03:27:56.630Z",
+      "author": "Spidey Bot",
+      "content": "Spidey BotAPP — 11:27 PMREGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:trigo x50Autor:Jizar Stoffeliz | FIXO: 75119Data:28/08/2025 - 00:27:56",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756351674174-ta7my3y63",
+      "timestamp": "2025-08-28T03:27:53.347Z",
+      "author": "Unknown",
+      "content": "[11:27 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:trigo x200Autor:Jizar Stoffeliz | FIXO: 75119Data:28/08/2025 - 00:27:53",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756351668165-sopsk36ez",
+      "timestamp": "2025-08-28T03:27:47.483Z",
+      "author": "Unknown",
+      "content": "[11:27 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:Bulrush x50Autor:Jizar Stoffeliz | FIXO: 75119Data:28/08/2025 - 00:27:47",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756351664181-zb31fdv6z",
+      "timestamp": "2025-08-28T03:27:43.644Z",
+      "author": "Unknown",
+      "content": "[11:27 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:Bulrush x200Autor:Jizar Stoffeliz | FIXO: 75119Data:28/08/2025 - 00:27:43",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756351634190-7w2vi35uu",
+      "timestamp": "2025-08-28T03:27:13.025Z",
+      "author": "Unknown",
+      "content": "[11:27 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:corn x33Autor:Jizar Stoffeliz | FIXO: 75119Data:28/08/2025 - 00:27:12",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756351600192-zwkny4d9k",
+      "timestamp": "2025-08-28T03:26:39.776Z",
+      "author": "Unknown",
+      "content": "[11:26 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:corn x15Autor:Jizar Stoffeliz | FIXO: 75119Data:28/08/2025 - 00:26:39",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756351594173-i7kmapwng",
+      "timestamp": "2025-08-28T03:26:34.026Z",
+      "author": "Unknown",
+      "content": "[11:26 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:corn x50Autor:Jizar Stoffeliz | FIXO: 75119Data:28/08/2025 - 00:26:33",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756351589246-q10582air",
+      "timestamp": "2025-08-28T03:26:28.866Z",
+      "author": "Unknown",
+      "content": "[11:26 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:corn x100Autor:Jizar Stoffeliz | FIXO: 75119Data:28/08/2025 - 00:26:28",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756351584237-3xt3cqmf4",
+      "timestamp": "2025-08-28T03:26:23.477Z",
+      "author": "Unknown",
+      "content": "[11:26 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:corn x200Autor:Jizar Stoffeliz | FIXO: 75119Data:28/08/2025 - 00:26:23",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756351579220-97v6tqzb2",
+      "timestamp": "2025-08-28T03:26:18.628Z",
+      "author": "Unknown",
+      "content": "[11:26 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:trigo x50Autor:Jizar Stoffeliz | FIXO: 75119Data:28/08/2025 - 00:26:18",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756351576257-0sjkhtbjf",
+      "timestamp": "2025-08-28T03:26:15.092Z",
+      "author": "Unknown",
+      "content": "[11:26 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:trigo x200Autor:Jizar Stoffeliz | FIXO: 75119Data:28/08/2025 - 00:26:14",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756351543179-wk1vaelm5",
+      "timestamp": "2025-08-28T03:25:42.653Z",
+      "author": "Unknown",
+      "content": "[11:25 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:trigo x100Autor:Jizar Stoffeliz | FIXO: 75119Data:28/08/2025 - 00:25:42",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756351537226-84vxauvkt",
+      "timestamp": "2025-08-28T03:25:36.414Z",
+      "author": "Unknown",
+      "content": "[11:25 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:corn x2Autor:Jizar Stoffeliz | FIXO: 75119Data:28/08/2025 - 00:25:36",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756351533251-j4jhd9ifg",
+      "timestamp": "2025-08-28T03:25:32.897Z",
+      "author": "Unknown",
+      "content": "[11:25 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:corn x200Autor:Jizar Stoffeliz | FIXO: 75119Data:28/08/2025 - 00:25:32",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756351528252-c7tcttd82",
+      "timestamp": "2025-08-28T03:25:27.729Z",
+      "author": "Unknown",
+      "content": "[11:25 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:Bulrush x50Autor:Jizar Stoffeliz | FIXO: 75119Data:28/08/2025 - 00:25:27",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756351524216-bvj2za5uq",
+      "timestamp": "2025-08-28T03:25:23.941Z",
+      "author": "Unknown",
+      "content": "[11:25 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:Bulrush x200Autor:Jizar Stoffeliz | FIXO: 75119Data:28/08/2025 - 00:25:23",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756351487189-odxr6r0xe",
+      "timestamp": "2025-08-28T03:24:46.487Z",
+      "author": "Unknown",
+      "content": "[11:24 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:corn x100Autor:Jizar Stoffeliz | FIXO: 75119Data:28/08/2025 - 00:24:46",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756351484214-rrn5xhruy",
+      "timestamp": "2025-08-28T03:24:43.203Z",
+      "author": "Unknown",
+      "content": "[11:24 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:corn x200Autor:Jizar Stoffeliz | FIXO: 75119Data:28/08/2025 - 00:24:42",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756351480169-27ts4fiq6",
+      "timestamp": "2025-08-28T03:24:39.775Z",
+      "author": "Unknown",
+      "content": "[11:24 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:corn x200Autor:Jizar Stoffeliz | FIXO: 75119Data:28/08/2025 - 00:24:39",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756351380231-c9d6erdml",
+      "timestamp": "2025-08-28T03:22:59.798Z",
+      "author": "Unknown",
+      "content": "[11:22 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:trigo x100Autor:Jizar Stoffeliz | FIXO: 75119Data:28/08/2025 - 00:22:59",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756351376196-grdhonqi2",
+      "timestamp": "2025-08-28T03:22:55.130Z",
+      "author": "Unknown",
+      "content": "[11:22 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:trigo x200Autor:Jizar Stoffeliz | FIXO: 75119Data:28/08/2025 - 00:22:54",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756351372170-dzkg3y20d",
+      "timestamp": "2025-08-28T03:22:51.094Z",
+      "author": "Unknown",
+      "content": "[11:22 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:trigo x200Autor:Jizar Stoffeliz | FIXO: 75119Data:28/08/2025 - 00:22:50",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756351343177-j1ydjwgi5",
+      "timestamp": "2025-08-28T03:22:22.197Z",
+      "author": "Unknown",
+      "content": "[11:22 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:corn x100Autor:Jizar Stoffeliz | FIXO: 75119Data:28/08/2025 - 00:22:21",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756351338190-rc4jwrxwy",
+      "timestamp": "2025-08-28T03:22:17.865Z",
+      "author": "Unknown",
+      "content": "[11:22 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:corn x200Autor:Jizar Stoffeliz | FIXO: 75119Data:28/08/2025 - 00:22:17",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756351335164-3gntqwevj",
+      "timestamp": "2025-08-28T03:22:14.212Z",
+      "author": "Unknown",
+      "content": "[11:22 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:corn x200Autor:Jizar Stoffeliz | FIXO: 75119Data:28/08/2025 - 00:22:14",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756351300146-7njc9yrch",
+      "timestamp": "2025-08-28T03:21:39.737Z",
+      "author": "Unknown",
+      "content": "[11:21 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:corn x100Autor:Jizar Stoffeliz | FIXO: 75119Data:28/08/2025 - 00:21:39",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756351292151-k1226zpl4",
+      "timestamp": "2025-08-28T03:21:31.327Z",
+      "author": "Unknown",
+      "content": "[11:21 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:Bulrush x100Autor:Jizar Stoffeliz | FIXO: 75119Data:28/08/2025 - 00:21:31",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756351288161-6aej30736",
+      "timestamp": "2025-08-28T03:21:27.072Z",
+      "author": "Unknown",
+      "content": "[11:21 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:Bulrush x200Autor:Jizar Stoffeliz | FIXO: 75119Data:28/08/2025 - 00:21:26",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756351283197-nipcwk972",
+      "timestamp": "2025-08-28T03:21:23.014Z",
+      "author": "Unknown",
+      "content": "[11:21 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:Bulrush x200Autor:Jizar Stoffeliz | FIXO: 75119Data:28/08/2025 - 00:21:22",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756351262184-8lfd0r4r3",
+      "timestamp": "2025-08-28T03:21:01.888Z",
+      "author": "Unknown",
+      "content": "[11:21 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:corn x260Autor:Jizar Stoffeliz | FIXO: 75119Data:28/08/2025 - 00:21:01",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756351260136-ujpumefxf",
+      "timestamp": "2025-08-28T03:20:58.948Z",
+      "author": "Unknown",
+      "content": "[11:20 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:wateringcan x26Autor:Jizar Stoffeliz | FIXO: 75119Data:28/08/2025 - 00:20:58",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756351255178-h4b0nexes",
+      "timestamp": "2025-08-28T03:20:54.159Z",
+      "author": "Spidey Bot",
+      "content": "Spidey BotAPP — 11:20 PMREGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:wateringcan_empty x24Autor:Jizar Stoffeliz | FIXO: 75119Data:28/08/2025 - 00:20:54",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756350784154-1j3n2wz8a",
+      "timestamp": "2025-08-28T03:13:03.117Z",
+      "author": "Spidey Bot",
+      "content": "Spidey BotAPP — 11:13 PMREGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:wateringcan_empty x50Autor:Jizar Stoffeliz | FIXO: 75119Data:28/08/2025 - 00:13:02",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756349816141-l8xf5bz6e",
+      "timestamp": "2025-08-28T02:56:55.801Z",
+      "author": "Unknown",
+      "content": "[10:56 PM] REGISTRO - fazenda_86CAIXA ORGANIZAÇÃO - SAQUEValor sacado:$100Autor:Jizar Stoffeliz | FIXO: 75119Saldo após saque:$7489.9Data:27/08/2025 - 23:56:55",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756349721148-6cy5fucop",
+      "timestamp": "2025-08-28T02:55:20.082Z",
+      "author": "Unknown",
+      "content": "[10:55 PM] REGISTRO - fazenda_86CAIXA ORGANIZAÇÃO - SAQUEValor sacado:$1085Autor:Jizar Stoffeliz | FIXO: 75119Saldo após saque:$7589.9Data:27/08/2025 - 23:55:19",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756349643136-m3aa19rt0",
+      "timestamp": "2025-08-28T02:54:02.387Z",
+      "author": "Unknown",
+      "content": "[10:54 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:corn x10Autor:Olivia Cesarinni | FIXO: 76481Data:27/08/2025 - 23:54:02",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756349638147-c22buka5n",
+      "timestamp": "2025-08-28T02:53:57.826Z",
+      "author": "Spidey Bot",
+      "content": "Spidey BotAPP — 10:53 PMREGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:corn x200Autor:Olivia Cesarinni | FIXO: 76481Data:27/08/2025 - 23:53:57",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756349386143-ysnsmefpm",
+      "timestamp": "2025-08-28T02:49:45.213Z",
+      "author": "Unknown",
+      "content": "[10:49 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:corn x100Autor:Olivia Cesarinni | FIXO: 76481Data:27/08/2025 - 23:49:45",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756349381148-qlzwzqcsp",
+      "timestamp": "2025-08-28T02:49:40.713Z",
+      "author": "Unknown",
+      "content": "[10:49 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:corn x200Autor:Olivia Cesarinni | FIXO: 76481Data:27/08/2025 - 23:49:40",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756349377161-l3zgoibul",
+      "timestamp": "2025-08-28T02:49:36.232Z",
+      "author": "Unknown",
+      "content": "[10:49 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:corn x200Autor:Olivia Cesarinni | FIXO: 76481Data:27/08/2025 - 23:49:36",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756349152127-elpukq4b2",
+      "timestamp": "2025-08-28T02:45:51.508Z",
+      "author": "Spidey Bot",
+      "content": "Spidey BotAPP — 10:45 PMREGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:Bulrush x50Autor:Jizar Stoffeliz | FIXO: 75119Data:27/08/2025 - 23:45:51",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756348946135-0139ab8qp",
+      "timestamp": "2025-08-28T02:42:25.131Z",
+      "author": "Unknown",
+      "content": "[10:42 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:cornseed x100Autor:Jizar Stoffeliz | FIXO: 75119Data:27/08/2025 - 23:42:24",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756348819120-xrgv6ub5f",
+      "timestamp": "2025-08-28T02:40:18.965Z",
+      "author": "Unknown",
+      "content": "[10:40 PM] REGISTRO - fazenda_86CAIXA ORGANIZAÇÃO - SAQUEValor sacado:$1Autor:Jizar Stoffeliz | FIXO: 75119Saldo após saque:$8514.9Data:27/08/2025 - 23:40:18",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756348697143-iwmoiam12",
+      "timestamp": "2025-08-28T02:38:16.622Z",
+      "author": "Unknown",
+      "content": "[10:38 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:Cigarett x1Autor:Jizar Stoffeliz | FIXO: 75119Data:27/08/2025 - 23:38:16",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756348683142-xuynv6lgc",
+      "timestamp": "2025-08-28T02:38:02.223Z",
+      "author": "Spidey Bot",
+      "content": "Spidey BotAPP — 10:38 PMREGISTRO - fazenda_86CAIXA ORGANIZAÇÃO - SAQUEValor sacado:$400Autor:Jizar Stoffeliz | FIXO: 75119Saldo após saque:$8515.9Data:27/08/2025 - 23:38:02",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756348171140-h5edsogct",
+      "timestamp": "2025-08-28T02:29:29.987Z",
+      "author": "Unknown",
+      "content": "[10:29 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:wateringcan_empty x50Autor:Jizar Stoffeliz | FIXO: 75119Data:27/08/2025 - 23:29:29",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756348152131-u8sf2q110",
+      "timestamp": "2025-08-28T02:29:11.614Z",
+      "author": "Unknown",
+      "content": "[10:29 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:Bulrush x500Autor:Jizar Stoffeliz | FIXO: 75119Data:27/08/2025 - 23:29:11",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756347833123-262ffva6y",
+      "timestamp": "2025-08-28T02:23:52.167Z",
+      "author": "Unknown",
+      "content": "[10:23 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:corn x70Autor:Jizar Stoffeliz | FIXO: 75119Data:27/08/2025 - 23:23:52",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756347830113-33vrgc21x",
+      "timestamp": "2025-08-28T02:23:49.653Z",
+      "author": "Spidey Bot",
+      "content": "Spidey BotAPP — 10:23 PMREGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:Bulrush x480Autor:Jizar Stoffeliz | FIXO: 75119Data:27/08/2025 - 23:23:49",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756347474125-q7y7qu0c5",
+      "timestamp": "2025-08-28T02:17:53.607Z",
+      "author": "Unknown",
+      "content": "[10:17 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:Bulrush x440Autor:Jizar Stoffeliz | FIXO: 75119Data:27/08/2025 - 23:17:53",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756347349094-515ta3bls",
+      "timestamp": "2025-08-28T02:15:48.279Z",
+      "author": "Unknown",
+      "content": "[10:15 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:corn x100Autor:Olivia Cesarinni | FIXO: 76481Data:27/08/2025 - 23:15:48",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756347344151-0x5f641qx",
+      "timestamp": "2025-08-28T02:15:43.354Z",
+      "author": "Unknown",
+      "content": "[10:15 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:corn x200Autor:Olivia Cesarinni | FIXO: 76481Data:27/08/2025 - 23:15:43",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756347339098-83ed38kk0",
+      "timestamp": "2025-08-28T02:15:38.171Z",
+      "author": "Unknown",
+      "content": "[10:15 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:corn x200Autor:Olivia Cesarinni | FIXO: 76481Data:27/08/2025 - 23:15:37",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756347308114-omrsp329k",
+      "timestamp": "2025-08-28T02:15:07.908Z",
+      "author": "Unknown",
+      "content": "[10:15 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:common_portion_goat x8Autor:Olivia Cesarinni | FIXO: 76481Data:27/08/2025 - 23:15:07",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756347302094-6k3yetuh5",
+      "timestamp": "2025-08-28T02:15:01.543Z",
+      "author": "Unknown",
+      "content": "[10:15 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:goat_female x2Autor:Olivia Cesarinni | FIXO: 76481Data:27/08/2025 - 23:15:01",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756347299089-w0zo9roa2",
+      "timestamp": "2025-08-28T02:14:58.289Z",
+      "author": "Unknown",
+      "content": "[10:14 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:goat_male x2Autor:Olivia Cesarinni | FIXO: 76481Data:27/08/2025 - 23:14:58",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756346962131-sk7yr90w5",
+      "timestamp": "2025-08-28T02:09:21.076Z",
+      "author": "Unknown",
+      "content": "[10:09 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:corn x480Autor:Jizar Stoffeliz | FIXO: 75119Data:27/08/2025 - 23:09:20",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756346938126-3jjjqwvyg",
+      "timestamp": "2025-08-28T02:08:56.891Z",
+      "author": "Unknown",
+      "content": "[10:08 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:corn x492Autor:Jizar Stoffeliz | FIXO: 75119Data:27/08/2025 - 23:08:56",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345923075-qd2714sfv",
+      "timestamp": "2025-08-28T01:52:02.826Z",
+      "author": "Unknown",
+      "content": "[9:52 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:Milk_Weed x122Autor:Jizar Stoffeliz | FIXO: 75119Data:27/08/2025 - 22:52:02",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345794087-r208l9fib",
+      "timestamp": "2025-08-28T01:49:53.288Z",
+      "author": "Unknown",
+      "content": "[9:49 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:cornseed x50Autor:Olivia Cesarinni | FIXO: 76481Data:27/08/2025 - 22:49:53",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345655077-pd89p7wtq",
+      "timestamp": "2025-08-28T01:47:34.723Z",
+      "author": "Unknown",
+      "content": "[9:47 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:hoe x2Autor:jack sparrow | FIXO: 75262Data:27/08/2025 - 22:47:34",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345652111-8nlgj1unq",
+      "timestamp": "2025-08-28T01:47:31.565Z",
+      "author": "Unknown",
+      "content": "[9:47 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:planttrimmer x1Autor:jack sparrow | FIXO: 75262Data:27/08/2025 - 22:47:31",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345642109-i6lrimkph",
+      "timestamp": "2025-08-28T01:47:21.375Z",
+      "author": "Spidey Bot",
+      "content": "Spidey BotAPP — 9:47 PMREGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:Bulrush_Seed x304Autor:jack sparrow | FIXO: 75262Data:27/08/2025 - 22:47:21",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345401129-4rfiadcne",
+      "timestamp": "2025-08-28T01:38:18.045Z",
+      "author": "Unknown",
+      "content": "[9:38 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:goat_female x2Autor:Olivia Cesarinni | FIXO: 76481Data:27/08/2025 - 22:38:17",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345401128-8pyzbjq4h",
+      "timestamp": "2025-08-28T01:38:15.527Z",
+      "author": "Unknown",
+      "content": "[9:38 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:goat_male x2Autor:Olivia Cesarinni | FIXO: 76481Data:27/08/2025 - 22:38:15",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345401128-m073153bi",
+      "timestamp": "2025-08-28T01:38:07.870Z",
+      "author": "Unknown",
+      "content": "[9:38 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:common_portion_goat x9Autor:Olivia Cesarinni | FIXO: 76481Data:27/08/2025 - 22:38:07",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345401128-a3mvov7dy",
+      "timestamp": "2025-08-28T01:32:46.018Z",
+      "author": "Unknown",
+      "content": "[9:32 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:cow_female x4Autor:Azrael Locatelli | FIXO: 3961Data:27/08/2025 - 22:32:45",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345401127-m3rzznesy",
+      "timestamp": "2025-08-28T01:32:39.860Z",
+      "author": "Spidey Bot",
+      "content": "Spidey BotAPP — 9:32 PMREGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:common_portion x8Autor:Azrael Locatelli | FIXO: 3961Data:27/08/2025 - 22:32:39",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345401127-elrel29rn",
+      "timestamp": "2025-08-28T01:25:57.338Z",
+      "author": "Unknown",
+      "content": "[9:25 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:common_portion_chicken x4Autor:jack sparrow | FIXO: 75262Data:27/08/2025 - 22:25:57",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345401127-vvuu55255",
+      "timestamp": "2025-08-28T01:25:55.556Z",
+      "author": "Unknown",
+      "content": "[9:25 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:common_portion_pig x12Autor:jack sparrow | FIXO: 75262Data:27/08/2025 - 22:25:55",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345401126-u5szb5mko",
+      "timestamp": "2025-08-28T01:25:53.284Z",
+      "author": "Unknown",
+      "content": "[9:25 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:pig_female x4Autor:jack sparrow | FIXO: 75262Data:27/08/2025 - 22:25:53",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345401126-9l5ipiv9h",
+      "timestamp": "2025-08-28T01:25:17.837Z",
+      "author": "Unknown",
+      "content": "[9:25 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:pig_female x4Autor:jack sparrow | FIXO: 75262Data:27/08/2025 - 22:25:17",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345401126-cewx0v6ih",
+      "timestamp": "2025-08-28T01:25:12.898Z",
+      "author": "Unknown",
+      "content": "[9:25 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:hoe x1Autor:jack sparrow | FIXO: 75262Data:27/08/2025 - 22:25:12",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345401125-xc3898vey",
+      "timestamp": "2025-08-28T01:25:03.995Z",
+      "author": "Unknown",
+      "content": "[9:25 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:common_portion_pig x10Autor:jack sparrow | FIXO: 75262Data:27/08/2025 - 22:25:03",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345401125-hluc5nge6",
+      "timestamp": "2025-08-28T01:24:56.211Z",
+      "author": "Unknown",
+      "content": "[9:24 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:common_portion_pig x2Autor:jack sparrow | FIXO: 75262Data:27/08/2025 - 22:24:56",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345401125-tjvvna7tz",
+      "timestamp": "2025-08-28T01:24:43.671Z",
+      "author": "Spidey Bot",
+      "content": "Spidey BotAPP — 9:24 PMREGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:Bulrush_Seed x200Autor:jack sparrow | FIXO: 75262Data:27/08/2025 - 22:24:43",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345401124-kcohb36ul",
+      "timestamp": "2025-08-28T01:20:13.216Z",
+      "author": "Unknown",
+      "content": "[9:20 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:corn x28Autor:Azrael Locatelli | FIXO: 3961Data:27/08/2025 - 22:20:13",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345401124-hahguqtm6",
+      "timestamp": "2025-08-28T01:19:59.663Z",
+      "author": "Unknown",
+      "content": "[9:19 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:corn x200Autor:Azrael Locatelli | FIXO: 3961Data:27/08/2025 - 22:19:59",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345401123-b290hzs5h",
+      "timestamp": "2025-08-28T01:18:59.096Z",
+      "author": "Unknown",
+      "content": "[9:18 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:cornseed x50Autor:Olivia Cesarinni | FIXO: 76481Data:27/08/2025 - 22:18:58",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345401123-jniwxrw82",
+      "timestamp": "2025-08-28T01:18:52.795Z",
+      "author": "Unknown",
+      "content": "[9:18 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:corn x100Autor:Olivia Cesarinni | FIXO: 76481Data:27/08/2025 - 22:18:52",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345401122-2ebw7co6q",
+      "timestamp": "2025-08-28T01:18:48.146Z",
+      "author": "Unknown",
+      "content": "[9:18 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:corn x200Autor:Olivia Cesarinni | FIXO: 76481Data:27/08/2025 - 22:18:47",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345401122-8u4uturl4",
+      "timestamp": "2025-08-28T01:18:43.488Z",
+      "author": "Unknown",
+      "content": "[9:18 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:corn x200Autor:Olivia Cesarinni | FIXO: 76481Data:27/08/2025 - 22:18:43",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345401122-8zxacfxl8",
+      "timestamp": "2025-08-28T01:16:45.538Z",
+      "author": "Unknown",
+      "content": "[9:16 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:corn x92Autor:Azrael Locatelli | FIXO: 3961Data:27/08/2025 - 22:16:45",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345401121-0a9mghvyu",
+      "timestamp": "2025-08-28T01:16:40.213Z",
+      "author": "Unknown",
+      "content": "[9:16 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:corn x200Autor:Azrael Locatelli | FIXO: 3961Data:27/08/2025 - 22:16:39",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345401121-h8nxl182a",
+      "timestamp": "2025-08-28T01:16:36.232Z",
+      "author": "Spidey Bot",
+      "content": "Spidey BotAPP — 9:16 PMREGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:corn x200Autor:Azrael Locatelli | FIXO: 3961Data:27/08/2025 - 22:16:36",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345401121-7zx12fiyo",
+      "timestamp": "2025-08-28T01:02:26.998Z",
+      "author": "Unknown",
+      "content": "[9:02 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:Bulrush_Seed x100Autor:Jizar Stoffeliz | FIXO: 75119Data:27/08/2025 - 22:02:26",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345401121-ylv2y1gqt",
+      "timestamp": "2025-08-28T01:01:14.127Z",
+      "author": "Unknown",
+      "content": "[9:01 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:common_portion_chicken x8Autor:Azrael Locatelli | FIXO: 3961Data:27/08/2025 - 22:01:13",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345401121-rhshbn566",
+      "timestamp": "2025-08-28T01:01:07.965Z",
+      "author": "Unknown",
+      "content": "[9:01 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:chicken_male x4Autor:Azrael Locatelli | FIXO: 3961Data:27/08/2025 - 22:01:07",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345401120-a4qmwaaif",
+      "timestamp": "2025-08-28T00:59:42.144Z",
+      "author": "Unknown",
+      "content": "[8:59 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:hoe x1Autor:Jizar Stoffeliz | FIXO: 75119Data:27/08/2025 - 21:59:41",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345401119-bv108t2bk",
+      "timestamp": "2025-08-28T00:59:37.843Z",
+      "author": "Spidey Bot",
+      "content": "Spidey BotAPP — 8:59 PMREGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:Bulrush_Seed x50Autor:Jizar Stoffeliz | FIXO: 75119Data:27/08/2025 - 21:59:37",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345401119-nizodz8dt",
+      "timestamp": "2025-08-28T00:52:10.287Z",
+      "author": "Unknown",
+      "content": "[8:52 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:common_portion_pig x3Autor:Impera cyrus | FIXO: 76531Data:27/08/2025 - 21:52:10",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345401119-scmgpf5y2",
+      "timestamp": "2025-08-28T00:51:58.814Z",
+      "author": "Unknown",
+      "content": "[8:51 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:pig_female x4Autor:Impera cyrus | FIXO: 76531Data:27/08/2025 - 21:51:58",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345401118-yy6sffq93",
+      "timestamp": "2025-08-28T00:49:00.085Z",
+      "author": "Unknown",
+      "content": "[8:49 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:goat_female x2Autor:Olivia Cesarinni | FIXO: 76481Data:27/08/2025 - 21:48:59",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345401118-37seyc7g2",
+      "timestamp": "2025-08-28T00:48:56.109Z",
+      "author": "Unknown",
+      "content": "[8:48 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:goat_male x2Autor:Olivia Cesarinni | FIXO: 76481Data:27/08/2025 - 21:48:55",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345401118-k9w97av4w",
+      "timestamp": "2025-08-28T00:48:48.500Z",
+      "author": "Unknown",
+      "content": "[8:48 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:common_portion_goat x8Autor:Olivia Cesarinni | FIXO: 76481Data:27/08/2025 - 21:48:48",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345401117-vjue49css",
+      "timestamp": "2025-08-28T00:43:05.535Z",
+      "author": "Unknown",
+      "content": "[8:43 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:corn x500Autor:Jizar Stoffeliz | FIXO: 75119Data:27/08/2025 - 21:43:05",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345401117-b3cbq6hre",
+      "timestamp": "2025-08-28T00:43:01.079Z",
+      "author": "Unknown",
+      "content": "[8:43 PM] REGISTRO - fazenda_86CAIXA ORGANIZAÇÃO - SAQUEValor sacado:$500Autor:Jizar Stoffeliz | FIXO: 75119Saldo após saque:$7795.9Data:27/08/2025 - 21:43:01",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345401116-p308i8d81",
+      "timestamp": "2025-08-28T00:40:37.577Z",
+      "author": "Unknown",
+      "content": "[8:40 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:cornseed x100Autor:Jizar Stoffeliz | FIXO: 75119Data:27/08/2025 - 21:40:37",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345401116-gi85ffpg9",
+      "timestamp": "2025-08-28T00:38:49.530Z",
+      "author": "Unknown",
+      "content": "[8:38 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:arado x1Autor:Jizar Stoffeliz | FIXO: 75119Data:27/08/2025 - 21:38:49",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345401115-sykwbjg9z",
+      "timestamp": "2025-08-28T00:38:13.421Z",
+      "author": "Unknown",
+      "content": "[8:38 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:arado x1Autor:Jizar Stoffeliz | FIXO: 75119Data:27/08/2025 - 21:38:13",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345401115-mf8xzfmhb",
+      "timestamp": "2025-08-28T00:38:10.762Z",
+      "author": "Unknown",
+      "content": "[8:38 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:Milk_Weed x490Autor:Jizar Stoffeliz | FIXO: 75119Data:27/08/2025 - 21:38:10",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345401115-ksk4uk28u",
+      "timestamp": "2025-08-28T00:37:16.119Z",
+      "author": "Unknown",
+      "content": "[8:37 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:Bulrush_Seed x10Autor:Jizar Stoffeliz | FIXO: 75119Data:27/08/2025 - 21:37:15",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345401114-0nwah9t1v",
+      "timestamp": "2025-08-28T00:37:13.128Z",
+      "author": "Unknown",
+      "content": "[8:37 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:Bulrush x400Autor:Jizar Stoffeliz | FIXO: 75119Data:27/08/2025 - 21:37:12",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345401114-v69ioi740",
+      "timestamp": "2025-08-28T00:37:11.012Z",
+      "author": "Spidey Bot",
+      "content": "Spidey BotAPP — 8:37 PMREGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:corn x10Autor:Jizar Stoffeliz | FIXO: 75119Data:27/08/2025 - 21:37:10",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345401114-ek9ieikjm",
+      "timestamp": "2025-08-28T00:35:05.637Z",
+      "author": "Unknown",
+      "content": "[8:35 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:cornseed x50Autor:Olivia Cesarinni | FIXO: 76481Data:27/08/2025 - 21:35:05",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345401113-l6g602v6p",
+      "timestamp": "2025-08-28T00:29:46.988Z",
+      "author": "Unknown",
+      "content": "[8:29 PM] REGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:cornseed x1Autor:Azrael Locatelli | FIXO: 3961Data:27/08/2025 - 21:29:46",
+      "source": "monitor"
+    },
+    {
+      "id": "msg-1756345401112-nxx52rv4k",
+      "timestamp": "2025-08-28T00:29:14.663Z",
+      "author": "Spidey Bot",
+      "content": "Spidey BotAPP — 8:29 PMREGISTRO - fazenda_86BAÚ ORGANIZAÇÃO - REMOVER ITEMItem removido:common_portion_chicken x8Autor:Azrael Locatelli | FIXO: 3961Data:27/08/2025 - 21:29:14",
+      "source": "monitor"
+    },
     {
       "id": "msg-1756316970641-khg81ru3u",
       "timestamp": "2025-08-27T17:38:20.264Z",
@@ -3312,6 +5126,20 @@
       "author": "Spidey Bot",
       "content": "Spidey BotAPP — Yesterday at 8:57 PMREGISTRO - fazenda_86BAÚ ORGANIZAÇÃO- INSERIR ITEMItem adicionado:trigo x100Autor:Impera cyrus | FIXO: 76531Data:25/08/2025 - 21:57:59",
       "source": "monitor"
+    },
+    {
+      "id": "test",
+      "timestamp": "2024-01-01T00:00:00Z",
+      "author": "test",
+      "content": "test",
+      "source": "test"
+    },
+    {
+      "id": "test-from-bot",
+      "timestamp": "2024-01-01T00:00:00Z",
+      "author": "TestUser",
+      "content": "CAIXA ORGANIZA��O - DEP�SITO Valor depositado: .00 Autor: TestUser",
+      "source": "bot-monitor"
     }
   ]
 }

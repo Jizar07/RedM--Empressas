@@ -1,0 +1,21 @@
+{
+  "receiptId": "20250827877",
+  "timestamp": "2025-08-27T21:35:03.308Z",
+  "playerName": "Cornelius Nardelli",
+  "serviceType": "animal",
+  "quantity": 1,
+  "animalType": "Ovino",
+  "playerPayment": 60,
+  "status": "APPROVED",
+  "screenshotPath": "C:\\Users\\jizar\\OneDrive\\Documents\\DiscordBot\\uploads\\temp\\temp_1756330502250_image.png",
+  "approved": true,
+  "verification": {
+    "status": "auto-approved",
+    "verificationMessage": "✅ PERFECT: $160.00 (Expected $60.00)",
+    "adjustedPayment": 60,
+    "discordTransactions": 1,
+    "verifiedAt": "2025-08-27T21:35:03.347Z"
+  },
+  "approvedBy": "jizarstoffel",
+  "approvedAt": "2025-08-27T21:35:36.793Z"
+}

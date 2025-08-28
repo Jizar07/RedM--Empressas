@@ -5,7 +5,14 @@ This file is synchronized with: https://github.com/Jizar07/RedM--Empressas
 
 ## Version History
 
-### [0.022] - 2025-08-28 **[CURRENT - RESTORE POINT]**
+### [0.023] - 2025-08-28 **[CURRENT - RESTORE POINT]**
+- **FIXED**: Animal Service Completion Parsing - BotMessageForwarder now correctly extracts author from "Ação:" field
+- **ENHANCED**: Author Detection Logic - Smart field detection for animal services vs regular deposits 
+- **IMPROVED**: Message Type Intelligence - Only applies to CAIXA ORGANIZAÇÃO - DEPÓSITO messages to avoid breaking normal deposits
+- **RESULT**: Animal service completions now show "Jizar Stoffeliz vendeu 4 animais no matadouro por $156.80" instead of "Spidey Bot deposited"
+- **COMPATIBILITY**: Preserves existing logic for normal deposits/withdrawals with "Autor:" field
+
+### [0.022] - 2025-08-28 **[RESTORE POINT]**
 - **IMPLEMENTED**: Complete Bot Monitoring System - BotMessageForwarder service handles Discord bot's embed format
 - **ENHANCED**: Channel Configuration UI with preset endpoints (Frontend/Backend/Custom) and quick-add buttons
 - **FIXED**: Author Extraction - Removes "| FIXO: 75119" suffix to show clean usernames  

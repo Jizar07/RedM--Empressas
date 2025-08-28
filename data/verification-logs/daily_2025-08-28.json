@@ -1,0 +1,87 @@
+[
+  {
+    "receiptId": "20250828958",
+    "playerName": "Olivia Cesarinni",
+    "timestamp": "2025-08-28T00:48:18.028Z",
+    "serviceType": "animal",
+    "verification": {
+      "timeWindowUsed": 300,
+      "discordTransactionsFound": 0,
+      "exactMatch": false,
+      "discrepancy": 60,
+      "lossAmount": 60,
+      "adjustedPayment": 0,
+      "decision": "rejected",
+      "adminNotified": true
+    },
+    "discordTransactions": []
+  },
+  {
+    "receiptId": "20250828494",
+    "playerName": "Olivia Cesarinni",
+    "timestamp": "2025-08-28T01:18:29.906Z",
+    "serviceType": "planta",
+    "verification": {
+      "timeWindowUsed": 300,
+      "discordTransactionsFound": 0,
+      "exactMatch": false,
+      "discrepancy": -500,
+      "lossAmount": 0,
+      "adjustedPayment": 0,
+      "decision": "rejected",
+      "adminNotified": true
+    },
+    "discordTransactions": []
+  },
+  {
+    "receiptId": "20250828107",
+    "playerName": "Impera cyrus",
+    "timestamp": "2025-08-28T01:19:49.506Z",
+    "serviceType": "animal",
+    "verification": {
+      "timeWindowUsed": 300,
+      "discordTransactionsFound": 0,
+      "exactMatch": false,
+      "discrepancy": 60,
+      "lossAmount": 60,
+      "adjustedPayment": 0,
+      "decision": "rejected",
+      "adminNotified": true
+    },
+    "discordTransactions": []
+  },
+  {
+    "receiptId": "20250828649",
+    "playerName": "Olivia Cesarinni",
+    "timestamp": "2025-08-28T01:22:11.398Z",
+    "serviceType": "animal",
+    "verification": {
+      "timeWindowUsed": 300,
+      "discordTransactionsFound": 0,
+      "exactMatch": false,
+      "discrepancy": 60,
+      "lossAmount": 60,
+      "adjustedPayment": 0,
+      "decision": "rejected",
+      "adminNotified": true
+    },
+    "discordTransactions": []
+  },
+  {
+    "receiptId": "20250828125",
+    "playerName": "Azrael Locatelli",
+    "timestamp": "2025-08-28T01:27:02.737Z",
+    "serviceType": "planta",
+    "verification": {
+      "timeWindowUsed": 300,
+      "discordTransactionsFound": 0,
+      "exactMatch": false,
+      "discrepancy": -700,
+      "lossAmount": 0,
+      "adjustedPayment": 0,
+      "decision": "rejected",
+      "adminNotified": true
+    },
+    "discordTransactions": []
+  }
+]

@@ -1,0 +1,28 @@
+{
+  "playerName": "Pacas Olivio",
+  "channelId": "1410467663351644310",
+  "messageId": "1410612212451508387",
+  "totalEarnings": 103.5,
+  "totalServices": 2,
+  "services": [
+    {
+      "receiptId": "20250828493",
+      "serviceType": "animal",
+      "itemType": "Suino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-28T04:27:29.853Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250828630",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 290,
+      "payment": 43.5,
+      "timestamp": "2025-08-28T13:09:19.104Z",
+      "approvedBy": "jizarstoffel"
+    }
+  ],
+  "lastUpdated": "2025-08-28T13:09:19.105Z"
+}

@@ -1,0 +1,165 @@
+{
+  "playerName": "Olivia Cesarinni",
+  "channelId": "1409334554304577627",
+  "messageId": "1410457639669862501",
+  "totalEarnings": 1085.25,
+  "totalServices": 17,
+  "services": [
+    {
+      "receiptId": "20250826065",
+      "serviceType": "animal",
+      "itemType": "Cabrino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-26T20:22:13.954Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250826301",
+      "serviceType": "animal",
+      "itemType": "Cabrino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-26T20:22:18.417Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250826119",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-26T20:23:36.664Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250826422",
+      "serviceType": "animal",
+      "itemType": "Cabrino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-26T23:24:25.429Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250826426",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 495,
+      "payment": 74.25,
+      "timestamp": "2025-08-26T23:24:29.294Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250826837",
+      "serviceType": "animal",
+      "itemType": "Cabrino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-26T23:24:33.256Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250826665",
+      "serviceType": "animal",
+      "itemType": "Cabrino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-26T23:24:37.608Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250826578",
+      "serviceType": "animal",
+      "itemType": "Cabrino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-27T00:13:10.200Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250827770",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-27T02:08:38.621Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250827052",
+      "serviceType": "animal",
+      "itemType": "Cabrino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-27T02:08:53.636Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250827482",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 490,
+      "payment": 73.5,
+      "timestamp": "2025-08-27T02:08:57.921Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250828162",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-28T02:30:35.681Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250828540",
+      "serviceType": "animal",
+      "itemType": "Cabrino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-28T02:30:38.592Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250828844",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 440,
+      "payment": 66,
+      "timestamp": "2025-08-28T02:30:42.512Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250828501",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-28T02:54:58.310Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250828112",
+      "serviceType": "animal",
+      "itemType": "Cabrino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-28T02:55:03.061Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250828337",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 210,
+      "payment": 31.5,
+      "timestamp": "2025-08-28T02:55:06.129Z",
+      "approvedBy": "jizarstoffel"
+    }
+  ],
+  "lastUpdated": "2025-08-28T02:55:06.130Z",
+  "finalizedAt": "2025-08-28T02:57:00.041Z",
+  "finalizedBy": "jizarstoffel"
+}

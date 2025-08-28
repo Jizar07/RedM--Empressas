@@ -1,0 +1,127 @@
+[
+  {
+    "receiptId": "20250827588",
+    "playerName": "Jizar Stoffeliz",
+    "timestamp": "2025-08-27T19:48:55.775Z",
+    "serviceType": "animal",
+    "verification": {
+      "timeWindowUsed": 300,
+      "discordTransactionsFound": 0,
+      "exactMatch": false,
+      "discrepancy": 60,
+      "lossAmount": 60,
+      "adjustedPayment": 0,
+      "decision": "rejected",
+      "adminNotified": true
+    },
+    "discordTransactions": []
+  },
+  {
+    "receiptId": "20250827043",
+    "playerName": "Cornelius Nardelli",
+    "timestamp": "2025-08-27T20:50:00.141Z",
+    "serviceType": "animal",
+    "verification": {
+      "timeWindowUsed": 300,
+      "discordTransactionsFound": 0,
+      "exactMatch": false,
+      "discrepancy": 60,
+      "lossAmount": 60,
+      "adjustedPayment": 0,
+      "decision": "rejected",
+      "adminNotified": true
+    },
+    "discordTransactions": []
+  },
+  {
+    "receiptId": "20250827877",
+    "playerName": "Cornelius Nardelli",
+    "timestamp": "2025-08-27T21:35:03.345Z",
+    "serviceType": "animal",
+    "verification": {
+      "timeWindowUsed": 300,
+      "discordTransactionsFound": 1,
+      "exactMatch": true,
+      "discrepancy": 0,
+      "lossAmount": 0,
+      "adjustedPayment": 60,
+      "decision": "auto-approved",
+      "adminNotified": false
+    },
+    "discordTransactions": [
+      {
+        "timestamp": "2025-08-27T21:34:29.145Z",
+        "author": "Cornelius Nardelli",
+        "value": 160
+      }
+    ]
+  },
+  {
+    "receiptId": "20250827817",
+    "playerName": "Cornelius Nardelli",
+    "timestamp": "2025-08-27T21:44:11.052Z",
+    "serviceType": "animal",
+    "verification": {
+      "timeWindowUsed": 300,
+      "discordTransactionsFound": 0,
+      "exactMatch": false,
+      "discrepancy": 60,
+      "lossAmount": 60,
+      "adjustedPayment": 0,
+      "decision": "rejected",
+      "adminNotified": true
+    },
+    "discordTransactions": []
+  },
+  {
+    "receiptId": "20250827808",
+    "playerName": "Cornelius Nardelli",
+    "timestamp": "2025-08-27T22:19:13.625Z",
+    "serviceType": "animal",
+    "verification": {
+      "timeWindowUsed": 300,
+      "discordTransactionsFound": 0,
+      "exactMatch": false,
+      "discrepancy": 60,
+      "lossAmount": 60,
+      "adjustedPayment": 0,
+      "decision": "rejected",
+      "adminNotified": true
+    },
+    "discordTransactions": []
+  },
+  {
+    "receiptId": "20250827500",
+    "playerName": "Cornelius Nardelli",
+    "timestamp": "2025-08-27T22:52:46.615Z",
+    "serviceType": "animal",
+    "verification": {
+      "timeWindowUsed": 300,
+      "discordTransactionsFound": 0,
+      "exactMatch": false,
+      "discrepancy": 60,
+      "lossAmount": 60,
+      "adjustedPayment": 0,
+      "decision": "rejected",
+      "adminNotified": true
+    },
+    "discordTransactions": []
+  },
+  {
+    "receiptId": "20250827904",
+    "playerName": "Cornelius Nardelli",
+    "timestamp": "2025-08-27T23:19:08.128Z",
+    "serviceType": "animal",
+    "verification": {
+      "timeWindowUsed": 300,
+      "discordTransactionsFound": 0,
+      "exactMatch": false,
+      "discrepancy": 60,
+      "lossAmount": 60,
+      "adjustedPayment": 0,
+      "decision": "rejected",
+      "adminNotified": true
+    },
+    "discordTransactions": []
+  }
+]

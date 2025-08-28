@@ -1,0 +1,66 @@
+{
+  "playerName": "Cornelius Nardelli",
+  "channelId": "1410360021056749639",
+  "messageId": "1410407316733300798",
+  "totalEarnings": 360,
+  "totalServices": 6,
+  "services": [
+    {
+      "receiptId": "20250827043",
+      "serviceType": "animal",
+      "itemType": "Cabrino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-27T20:50:15.593Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250827877",
+      "serviceType": "animal",
+      "itemType": "Ovino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-27T21:35:36.793Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250827817",
+      "serviceType": "animal",
+      "itemType": "Ovino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-27T23:34:51.919Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250827808",
+      "serviceType": "animal",
+      "itemType": "Ovino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-27T23:34:58.116Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250827500",
+      "serviceType": "animal",
+      "itemType": "Suino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-27T23:35:02.127Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250827904",
+      "serviceType": "animal",
+      "itemType": "Cabrino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-27T23:35:07.949Z",
+      "approvedBy": "jizarstoffel"
+    }
+  ],
+  "lastUpdated": "2025-08-27T23:35:07.951Z",
+  "finalizedAt": "2025-08-27T23:38:30.718Z",
+  "finalizedBy": "jizarstoffel"
+}

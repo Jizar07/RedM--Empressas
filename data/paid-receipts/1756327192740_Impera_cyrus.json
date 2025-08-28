@@ -1,0 +1,84 @@
+{
+  "playerName": "Impera cyrus",
+  "channelId": "1409185583049343046",
+  "messageId": "1410232184371150969",
+  "totalEarnings": 552,
+  "totalServices": 8,
+  "services": [
+    {
+      "receiptId": "20250825487",
+      "serviceType": "animal",
+      "itemType": "Suino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T21:54:26.161Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250825986",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 485,
+      "payment": 72.75,
+      "timestamp": "2025-08-25T22:09:26.949Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250825369",
+      "serviceType": "animal",
+      "itemType": "Suino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T23:04:46.796Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250826577",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-26T01:01:46.492Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250826713",
+      "serviceType": "animal",
+      "itemType": "Suino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-27T11:59:02.083Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250826577",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 495,
+      "payment": 74.25,
+      "timestamp": "2025-08-27T11:59:06.457Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250826475",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-27T11:59:09.979Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250826475",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-27T11:59:13.034Z",
+      "approvedBy": "jizarstoffel"
+    }
+  ],
+  "lastUpdated": "2025-08-27T11:59:13.036Z",
+  "finalizedAt": "2025-08-27T20:39:52.740Z",
+  "finalizedBy": "jizarstoffel"
+}

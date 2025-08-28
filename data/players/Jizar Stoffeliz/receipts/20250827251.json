@@ -1,0 +1,20 @@
+{
+  "receiptId": "20250827251",
+  "timestamp": "2025-08-27T19:22:26.274Z",
+  "playerName": "Jizar Stoffeliz",
+  "serviceType": "animal",
+  "quantity": 1,
+  "animalType": "Ovino",
+  "playerPayment": 60,
+  "status": "REJECTED",
+  "screenshotPath": "C:\\Users\\jizar\\OneDrive\\Documents\\DiscordBot\\uploads\\temp\\temp_1756322545497_Screenshot_2025-08-25_104451.png",
+  "approved": false,
+  "verification": null,
+  "approvedBy": null,
+  "approvedAt": null,
+  "originalPayment": null,
+  "paymentAdjusted": false,
+  "adjustmentReason": null,
+  "rejectedBy": "jizarstoffel",
+  "rejectedAt": "2025-08-27T19:24:06.457Z"
+}

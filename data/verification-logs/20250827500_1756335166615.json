@@ -1,0 +1,17 @@
+{
+  "receiptId": "20250827500",
+  "playerName": "Cornelius Nardelli",
+  "timestamp": "2025-08-27T22:52:46.615Z",
+  "serviceType": "animal",
+  "verification": {
+    "timeWindowUsed": 300,
+    "discordTransactionsFound": 0,
+    "exactMatch": false,
+    "discrepancy": 60,
+    "lossAmount": 60,
+    "adjustedPayment": 0,
+    "decision": "rejected",
+    "adminNotified": true
+  },
+  "discordTransactions": []
+}

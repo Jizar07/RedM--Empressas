@@ -1,0 +1,14 @@
+{
+  "receiptId": "20250828493",
+  "timestamp": "2025-08-28T04:14:48.973Z",
+  "playerName": "Pacas Olivio",
+  "serviceType": "animal",
+  "quantity": 1,
+  "animalType": "Suino",
+  "playerPayment": 60,
+  "status": "APPROVED",
+  "screenshotPath": "C:\\Users\\jizar\\OneDrive\\Documents\\DiscordBot\\uploads\\temp\\temp_1756354488548_Captura_de_Tela_293.png",
+  "approved": true,
+  "approvedBy": "jizarstoffel",
+  "approvedAt": "2025-08-28T04:27:29.853Z"
+}

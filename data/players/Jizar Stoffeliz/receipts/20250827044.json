@@ -1,0 +1,14 @@
+{
+  "receiptId": "20250827044",
+  "timestamp": "2025-08-27T19:44:27.651Z",
+  "playerName": "Jizar Stoffeliz",
+  "serviceType": "planta",
+  "quantity": 200,
+  "plantName": "Trigo",
+  "playerPayment": 30,
+  "status": "REJECTED",
+  "screenshotPath": "C:\\Users\\jizar\\OneDrive\\Documents\\DiscordBot\\uploads\\temp\\temp_1756323867012_Screenshot_2025-08-23_164038.png",
+  "approved": false,
+  "rejectedBy": "jizarstoffel",
+  "rejectedAt": "2025-08-27T19:46:25.346Z"
+}

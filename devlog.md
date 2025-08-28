@@ -1127,6 +1127,19 @@ All farm service functionality operational with complete audit trail, role-based
 ---
 *Note: All timestamps are recorded to the second for precise tracking*
 
+### 2025-08-28 11:28:10
+**Action**: Fixed animal service completion parsing - author and action display
+**Prompt**: "problem, animal service completion is not formatted properlay. it has the bot as username and it only says deposited instead of the action."
+**Context**: Animal service completions showing "Spidey Bot deposited" instead of proper author and action
+**Changes**:
+- **Fixed BotMessageForwarder author extraction**: Added logic to extract author from "Ação:" field when no "Autor:" field exists
+- **Animal service format understanding**: Animal services use "Ação: Jizar Stoffeliz vendeu 4 animais no matadouro" instead of separate "Autor:" field
+- **Smart field detection**: Only applies to CAIXA ORGANIZAÇÃO - DEPÓSITO messages to avoid breaking normal deposits
+- **Preserved existing logic**: Normal deposits/withdrawals with "Autor:" field continue working normally
+- **Enhanced logging**: Added detailed logging to track author extraction from different field types
+- **Result**: Animal service completions should now show "Jizar Stoffeliz vendeu 4 animais no matadouro por $156.80" instead of "Spidey Bot deposited"
+**Status**: BotMessageForwarder updated, ready for testing with next animal service completion
+
 ### 2025-08-26 10:09:40
 **Action**: Frontend dashboard money transaction format fix
 **Prompt**: "run a /update then push to git"

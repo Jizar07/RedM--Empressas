@@ -1,0 +1,14 @@
+{
+  "receiptId": "20250827817",
+  "timestamp": "2025-08-27T21:44:11.011Z",
+  "playerName": "Cornelius Nardelli",
+  "serviceType": "animal",
+  "quantity": 1,
+  "animalType": "Ovino",
+  "playerPayment": 60,
+  "status": "APPROVED",
+  "screenshotPath": "C:\\Users\\jizar\\OneDrive\\Documents\\DiscordBot\\uploads\\temp\\temp_1756331050009_image.png",
+  "approved": true,
+  "approvedBy": "jizarstoffel",
+  "approvedAt": "2025-08-27T23:34:51.919Z"
+}
