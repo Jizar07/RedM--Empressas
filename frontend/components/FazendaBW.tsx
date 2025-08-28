@@ -6,6 +6,7 @@ import TrabalhadoresBWManagement from './TrabalhadoresBWManagement';
 import EstoqueBWManagement from './EstoqueBWManagement';
 import PagamentosBWManagement from './PagamentosBWManagement';
 import AnalyticsBWManagement from './AnalyticsBWManagement';
+import MonitoringModeToggle from './MonitoringModeToggle';
 
 interface Activity {
   id: string;
@@ -594,6 +595,7 @@ export default function FazendaBW() {
     // Listen for custom events from the browser extension
     window.addEventListener('newDiscordMessage', handleDataUpdate);
     
+    
     // Also listen for the notification file updates (fallback)
     const checkForUpdates = async () => {
       try {
@@ -601,15 +603,24 @@ export default function FazendaBW() {
         if (response.ok) {
           const updateInfo = await response.json();
           if (lastKnownUpdate !== updateInfo.lastUpdate) {
-            console.log('🔔 New data detected via notification file, refreshing...');
+            console.log('🔔 DETECTED NEW DATA! Updating from:', lastKnownUpdate, 'to:', updateInfo.lastUpdate);
             lastKnownUpdate = updateInfo.lastUpdate;
             checkFrontendData();
+          } else {
+            console.log('📊 No new updates detected');
           }
         }
       } catch (error) {
-        // Notification file doesn't exist or can't be read, fallback to safety sync
+        console.error('Error checking for updates:', error);
       }
     };
+    
+    // Initialize with current time to establish baseline
+    checkForUpdates();
+    
+    // Check for updates every 5 seconds (real-time fallback when extension is inactive)
+    const realtimeChecker = setInterval(checkForUpdates, 5000);
+    console.log('⏰ Started checking for updates every 5 seconds');
     
     // Set up SINGLE global safety interval (prevents React Strict Mode duplicates)
     if (!globalSafetyInterval) {
@@ -624,6 +635,8 @@ export default function FazendaBW() {
       globalPollingActive = false;
       window.removeEventListener('extensionData', handleExtensionData as EventListener);
       window.removeEventListener('newDiscordMessage', handleDataUpdate);
+      clearInterval(realtimeChecker);
+      console.log('⏹️ Stopped real-time update checker');
       
       // Only clear the global interval if this is the last component instance
       if (globalSafetyInterval && componentInstanceCount <= 1) {
@@ -808,6 +821,11 @@ export default function FazendaBW() {
     return (
       <>
         <h2 className="text-xl font-semibold text-gray-900">📊 Dashboard Principal</h2>
+
+        {/* Monitoring Mode Toggle */}
+        <div className="mb-6">
+          <MonitoringModeToggle />
+        </div>
 
       {/* Metrics Cards - Enhanced like Webbased system */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">

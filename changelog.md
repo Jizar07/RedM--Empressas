@@ -5,7 +5,15 @@ This file is synchronized with: https://github.com/Jizar07/RedM--Empressas
 
 ## Version History
 
-### [0.021] - 2025-08-27 **[CURRENT]**
+### [0.022] - 2025-08-28 **[CURRENT - RESTORE POINT]**
+- **IMPLEMENTED**: Complete Bot Monitoring System - BotMessageForwarder service handles Discord bot's embed format
+- **ENHANCED**: Channel Configuration UI with preset endpoints (Frontend/Backend/Custom) and quick-add buttons
+- **FIXED**: Author Extraction - Removes "| FIXO: 75119" suffix to show clean usernames  
+- **FIXED**: Aggressive Deduplication - Replaced content-based with simple message ID + timestamp approach
+- **RESULT**: Bot monitoring works seamlessly, similar transactions (same amounts) no longer blocked
+- **COMPATIBILITY**: System supports both extension and bot monitoring simultaneously
+
+### [0.021] - 2025-08-27
 - **FIXED**: Extension Real-Time Detection - Updated MutationObserver for instant Discord message processing
 - **IMPLEMENTED**: Smart Content-Based Deduplication System using exact timestamps as pivot
 - **CLEANED**: Removed 249 duplicate messages from testing (644→395 messages)  

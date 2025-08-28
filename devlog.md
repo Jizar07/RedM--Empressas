@@ -4,6 +4,19 @@ This is a local timestamped file to track all development changes and prompts.
 
 ## Log Entries
 
+### 2025-08-28 10:23:32
+**Action**: Complete Bot Monitoring System & Fix Deduplication
+**Prompt**: Bot gets different format than webhook extension, need to disable extension and switch to bot monitoring, money activities not working, deduplication preventing similar transactions
+**Changes**:
+- Created BotMessageForwarder service to handle Discord bot's embed format differently than extension
+- Updated messageCreate.ts to use specialized forwarder for frontend endpoints
+- Enhanced channel configuration UI with preset endpoint buttons and new channel alert
+- Fixed author extraction to remove "| FIXO: 75119" suffix from usernames
+- Fixed aggressive content-based deduplication that was blocking similar transactions
+- Replaced complex deduplication logic with simple message ID + timestamp approach
+- System now works with both bot monitoring and extension, real-time updates maintained
+**Result**: Bot monitoring works seamlessly, transactions of same amounts (1 cigarette, $1) no longer blocked
+
 ### 2025-08-27 17:42:57
 **Action**: Fix Real-Time Updates & Implement Smart Deduplication System
 **Prompt**: Extension not updating in real-time, duplicated transactions from testing attempts, need real-time detection without performance issues

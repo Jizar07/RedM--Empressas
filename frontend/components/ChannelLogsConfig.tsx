@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Plus, Trash2, Save, MessageSquare, Link, Settings } from 'lucide-react';
+import { Plus, Trash2, Save, MessageSquare, Link, Settings, Monitor, AlertCircle } from 'lucide-react';
 
 interface ChannelLogMapping {
   id: string;
@@ -10,6 +10,7 @@ interface ChannelLogMapping {
   systemEndpoint: string;
   enabled: boolean;
   description?: string;
+  messageTypes?: string[];
 }
 
 export default function ChannelLogsConfig() {
@@ -18,8 +19,10 @@ export default function ChannelLogsConfig() {
     channelId: '',
     systemEndpoint: '',
     enabled: true,
-    description: ''
+    description: '',
+    messageTypes: ['ALL']
   });
+  const [endpointType, setEndpointType] = useState<'frontend' | 'backend' | 'custom'>('frontend');
   const [isLoading, setIsLoading] = useState(false);
   const [saving, setSaving] = useState(false);
 
@@ -77,7 +80,8 @@ export default function ChannelLogsConfig() {
       channelId: newMapping.channelId,
       systemEndpoint: newMapping.systemEndpoint,
       enabled: newMapping.enabled || true,
-      description: newMapping.description || ''
+      description: newMapping.description || '',
+      messageTypes: newMapping.messageTypes || ['ALL']
     };
 
     setMappings([...mappings, mapping]);
@@ -85,8 +89,10 @@ export default function ChannelLogsConfig() {
       channelId: '',
       systemEndpoint: '',
       enabled: true,
-      description: ''
+      description: '',
+      messageTypes: ['ALL']
     });
+    setEndpointType('frontend');
   };
 
   const removeMapping = (id: string) => {
@@ -138,10 +144,27 @@ export default function ChannelLogsConfig() {
           <h3 className="font-semibold text-blue-900 mb-2">How it works:</h3>
           <ul className="text-sm text-blue-800 space-y-1">
             <li>• Bot monitors configured Discord channels for new messages</li>
-            <li>• Messages are filtered by type and sent to your specified endpoints</li>
-            <li>• Replaces unreliable browser extension with direct bot-to-system communication</li>
-            <li>• Real-time processing with automatic message type detection</li>
+            <li>• Messages are sent to your specified endpoints in real-time</li>
+            <li>• Frontend (3051): Real-time dashboard display & activity tracking</li>
+            <li>• Backend (8086): Farm management system integration</li>
+            <li>• Custom: Any external webhook endpoint</li>
           </ul>
+        </div>
+        
+        {/* New Channel Alert */}
+        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mt-4">
+          <div className="flex items-start space-x-3">
+            <AlertCircle className="h-5 w-5 text-yellow-600 mt-0.5" />
+            <div>
+              <h3 className="font-semibold text-yellow-900 mb-1">New Development Channel Available!</h3>
+              <p className="text-sm text-yellow-800">
+                The devs now send logs to channel <code className="bg-yellow-100 px-1 rounded">1409214475403526174</code>
+              </p>
+              <p className="text-sm text-yellow-700 mt-1">
+                Configure this channel below to receive real-time farm activity updates directly from the game server.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -244,6 +267,62 @@ export default function ChannelLogsConfig() {
       <div className="card p-6">
         <h3 className="text-lg font-semibold text-gray-900 mb-4">Add New Channel Mapping</h3>
         
+        {/* Preset Endpoint Selection */}
+        <div className="mb-6">
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Select Endpoint Type
+          </label>
+          <div className="grid grid-cols-3 gap-3">
+            <button
+              onClick={() => {
+                setEndpointType('frontend');
+                setNewMapping({ ...newMapping, systemEndpoint: 'http://localhost:3051/api/webhook/channel-messages' });
+              }}
+              className={`px-4 py-3 rounded-lg border-2 transition-all ${
+                endpointType === 'frontend' 
+                  ? 'border-blue-500 bg-blue-50 text-blue-700' 
+                  : 'border-gray-200 hover:border-gray-300'
+              }`}
+            >
+              <Monitor className="h-5 w-5 mx-auto mb-1" />
+              <div className="text-sm font-medium">Frontend Dashboard</div>
+              <div className="text-xs text-gray-500">Port 3051</div>
+            </button>
+            
+            <button
+              onClick={() => {
+                setEndpointType('backend');
+                setNewMapping({ ...newMapping, systemEndpoint: 'http://localhost:8086/api/bot-data/channel-logs' });
+              }}
+              className={`px-4 py-3 rounded-lg border-2 transition-all ${
+                endpointType === 'backend' 
+                  ? 'border-blue-500 bg-blue-50 text-blue-700' 
+                  : 'border-gray-200 hover:border-gray-300'
+              }`}
+            >
+              <Settings className="h-5 w-5 mx-auto mb-1" />
+              <div className="text-sm font-medium">Backend System</div>
+              <div className="text-xs text-gray-500">Port 8086</div>
+            </button>
+            
+            <button
+              onClick={() => {
+                setEndpointType('custom');
+                setNewMapping({ ...newMapping, systemEndpoint: '' });
+              }}
+              className={`px-4 py-3 rounded-lg border-2 transition-all ${
+                endpointType === 'custom' 
+                  ? 'border-blue-500 bg-blue-50 text-blue-700' 
+                  : 'border-gray-200 hover:border-gray-300'
+              }`}
+            >
+              <Link className="h-5 w-5 mx-auto mb-1" />
+              <div className="text-sm font-medium">Custom URL</div>
+              <div className="text-xs text-gray-500">External System</div>
+            </button>
+          </div>
+        </div>
+        
         <div className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
@@ -257,24 +336,45 @@ export default function ChannelLogsConfig() {
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg font-mono"
                 placeholder="1404583987778949130"
               />
-              <p className="text-xs text-gray-500 mt-1">
-                Right-click channel → Copy Channel ID (Developer Mode required)
-              </p>
+              <div className="flex items-center justify-between mt-1">
+                <p className="text-xs text-gray-500">
+                  Right-click channel → Copy Channel ID
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setNewMapping({ ...newMapping, channelId: '1409214475403526174' })}
+                  className="text-xs text-blue-600 hover:text-blue-700 font-medium"
+                >
+                  Use Dev Channel
+                </button>
+              </div>
             </div>
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 System Endpoint URL
               </label>
-              <input
-                type="text"
-                value={newMapping.systemEndpoint || ''}
-                onChange={(e) => setNewMapping({ ...newMapping, systemEndpoint: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg font-mono"
-                placeholder="http://localhost:8086/api/webhook/channel-logs"
-              />
+              <div className="relative">
+                <input
+                  type="text"
+                  value={newMapping.systemEndpoint || ''}
+                  onChange={(e) => setNewMapping({ ...newMapping, systemEndpoint: e.target.value })}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg font-mono"
+                  placeholder="http://localhost:8086/api/webhook/channel-logs"
+                  readOnly={endpointType !== 'custom'}
+                />
+                {endpointType !== 'custom' && (
+                  <div className="absolute right-2 top-1/2 -translate-y-1/2">
+                    <span className="text-xs bg-gray-100 px-2 py-1 rounded">Auto-filled</span>
+                  </div>
+                )}
+              </div>
               <p className="text-xs text-gray-500 mt-1">
-                Your external system endpoint to receive channel logs
+                {endpointType === 'frontend' 
+                  ? 'Sends to frontend dashboard for real-time activity display'
+                  : endpointType === 'backend'
+                  ? 'Sends to backend farm management system'
+                  : 'Your external system endpoint to receive channel logs'}
               </p>
             </div>
           </div>

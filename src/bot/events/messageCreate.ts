@@ -1,6 +1,7 @@
 import { Events, Message } from 'discord.js';
 import { loadConfig, ChannelLogMapping } from '../../api/routes/channel-logs-config';
 import BotStatusService from '../../services/BotStatusService';
+import { BotMessageForwarder } from '../../services/BotMessageForwarder';
 
 interface WebhookData {
   raw_embeds: Array<{
@@ -82,6 +83,17 @@ export default {
     console.log(`🔍 Processing message in configured channel ${message.channel.id} from ${message.author.username}`);
     console.log(`📋 Found ${channelMappings.length} active mapping(s) for this channel`);
     
+    // Special handling for frontend endpoint (port 3051)
+    const frontendMapping = channelMappings.find(
+      mapping => mapping.systemEndpoint.includes('3051')
+    );
+    
+    if (frontendMapping) {
+      console.log(`🎯 Bot Monitor: Detected frontend endpoint, using specialized forwarder`);
+      const forwarder = BotMessageForwarder.getInstance();
+      await forwarder.processMessage(message, message.channel.id);
+    }
+    
     // Update status to show processing
     BotStatusService.processingMessages();
     
@@ -132,8 +144,14 @@ export default {
       content: extractedContent // Add extracted content
     };
     
-    // Send to all configured endpoints for this channel
-    BotStatusService.sendingData();
-    await sendToConfiguredEndpoints(webhookData, channelMappings);
+    // Send to all non-frontend endpoints (backend, custom)
+    const nonFrontendMappings = channelMappings.filter(
+      mapping => !mapping.systemEndpoint.includes('3051')
+    );
+    
+    if (nonFrontendMappings.length > 0) {
+      BotStatusService.sendingData();
+      await sendToConfiguredEndpoints(webhookData, nonFrontendMappings);
+    }
   }
 };
