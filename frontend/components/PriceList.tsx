@@ -1605,7 +1605,6 @@ const PriceList = () => {
       // Reload the data after sync
       await loadPriceData();
       
-      console.log('✅ Preços sincronizados com Google Sheets');
     } catch (error) {
       console.error('Error syncing prices:', error);
       setError('Erro ao sincronizar com Google Sheets');

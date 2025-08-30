@@ -290,7 +290,6 @@ export default function EstoqueBW({ firm }: EstoqueBWProps = {}) {
 
     // Listen for extension data updates
     const handleExtensionUpdate = (event: CustomEvent) => {
-      console.log('📦 Processing extension data for inventory:', event.detail);
       
       const messages = event.detail || [];
       const itemCounts = processExtensionData(messages);

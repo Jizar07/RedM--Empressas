@@ -551,15 +551,11 @@ export default function OrdersSettings() {
                     </label>
                     <div className="max-h-40 overflow-y-auto border border-gray-300 rounded-lg p-2">
                       {(() => {
-                        console.log('Debug - Total users loaded:', discordUsers.length);
-                        console.log('Debug - Selected role IDs:', newFirm.discordRoleIds);
                         
                         const filteredUsers = discordUsers.filter(user => 
                           newFirm.discordRoleIds?.some(roleId => user.roleIds.includes(roleId))
                         );
                         
-                        console.log('Debug - Filtered users count:', filteredUsers.length);
-                        console.log('Debug - First filtered user roles:', filteredUsers[0]?.roleIds);
                         
                         return filteredUsers;
                       })().map(user => (

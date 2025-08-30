@@ -99,11 +99,9 @@ export default function FarmServiceSettings() {
         });
         
         if (testResponse.ok) {
-          console.log(`✅ Found working backend on port ${port}`);
           return `http://localhost:${port}`;
         }
       } catch (err) {
-        console.log(`❌ Port ${port} not responding`);
       }
     }
     
@@ -163,11 +161,8 @@ export default function FarmServiceSettings() {
           guildId = configData.guildId || guildId;
         }
       } catch (err) {
-        console.log('⚠️ Could not get guild ID from server, using fallback');
       }
       
-      console.log('🎯 Using guild ID:', guildId);
-      console.log('🔍 Loading Discord roles for guild:', guildId);
       
       const response = await fetch(`${backendUrl}/api/discord-roles/roles/${guildId}`, {
         method: 'GET',
@@ -178,14 +173,12 @@ export default function FarmServiceSettings() {
       
       if (response.ok) {
         const data = await response.json();
-        console.log('✅ Successfully loaded roles:', data.roles?.length || 0);
         setAvailableRoles(data.roles || []);
       } else {
         const errorData = await response.json().catch(() => ({}));
         console.error('❌ Failed to load Discord roles:', response.status, errorData);
         
         if (retryCount < 2) {
-          console.log(`🔄 Retrying role loading (attempt ${retryCount + 1}/3)...`);
           setTimeout(() => loadDiscordRoles(retryCount + 1), 1000 * (retryCount + 1));
           return;
         }
@@ -196,7 +189,6 @@ export default function FarmServiceSettings() {
       console.error('❌ Error loading Discord roles:', err);
       
       if (retryCount < 2) {
-        console.log(`🔄 Retrying role loading after error (attempt ${retryCount + 1}/3)...`);
         setTimeout(() => loadDiscordRoles(retryCount + 1), 1000 * (retryCount + 1));
         return;
       }
@@ -218,7 +210,6 @@ export default function FarmServiceSettings() {
         return;
       }
       
-      console.log('💾 Saving configuration to:', `${backendUrl}/api/farm-service/config`);
       const response = await fetch(`${backendUrl}/api/farm-service/config`, {
         method: 'POST',
         headers: {
@@ -228,7 +219,6 @@ export default function FarmServiceSettings() {
       });
 
       if (response.ok) {
-        console.log('✅ Configuration saved successfully');
         setSuccess(true);
         setTimeout(() => setSuccess(false), 3000);
       } else {

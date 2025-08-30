@@ -15,8 +15,8 @@ export const authOptions: NextAuthOptions = {
   ],
   // Use secure cookies only in production
   useSecureCookies: process.env.NODE_ENV === 'production',
-  // Trust proxy headers (important for Cloudflare Tunnel)
-  trustHost: true,
+  // Trust proxy headers is handled differently in NextAuth v5
+  // trustHost: true,
   callbacks: {
     async redirect({ url, baseUrl }) {
       // Force redirect to use the correct domain

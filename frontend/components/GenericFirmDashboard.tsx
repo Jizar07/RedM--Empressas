@@ -12,19 +12,65 @@ export default function GenericFirmDashboard({ firm }: GenericFirmDashboardProps
   const [messages, setMessages] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [lastUpdate, setLastUpdate] = useState<string>('');
+  const [totalActivities, setTotalActivities] = useState(0);
+  const [totalRevenue, setTotalRevenue] = useState(0);
+  const [activeWorkers, setActiveWorkers] = useState(new Set<string>());
+
+  // Fetch messages from webhook API - ONLY for this firm's channel
+  const fetchMessages = async () => {
+    try {
+      const response = await fetch('/api/webhook/channel-messages', {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+      });
+      
+      if (response.ok) {
+        const data = await response.json();
+        
+        if (data.success && data.messages && Array.isArray(data.messages)) {
+          // CRITICAL: Filter messages by THIS firm's specific channelId only
+          const firmSpecificMessages = data.messages.filter((msg: any) => 
+            msg.channelId === firm.channelId
+          );
+          
+          
+          setMessages(firmSpecificMessages);
+          setTotalActivities(firmSpecificMessages.length);
+          
+          // Calculate revenue and active workers from THIS firm's messages only
+          let revenue = 0;
+          const workers = new Set<string>();
+          
+          firmSpecificMessages.forEach((msg: any) => {
+            if (msg.autor && msg.autor !== 'Sistema') {
+              workers.add(msg.autor);
+            }
+            if (msg.valor && (msg.tipo === 'deposito' || msg.tipo === 'venda')) {
+              revenue += msg.valor;
+            }
+          });
+          
+          setTotalRevenue(revenue);
+          setActiveWorkers(workers);
+          setLastUpdate(new Date().toLocaleTimeString('pt-BR'));
+        }
+      }
+    } catch (error) {
+      console.error(`Error fetching messages for firm ${firm.name}:`, error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    // Simulate loading time
-    const timer = setTimeout(() => setLoading(false), 1000);
-    return () => clearInterval(timer);
-  }, []);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setLastUpdate(new Date().toLocaleTimeString('pt-BR'));
-    }, 60000);
+    // Initial fetch
+    fetchMessages();
+    
+    // Set up polling every 5 seconds
+    const interval = setInterval(fetchMessages, 5000);
+    
     return () => clearInterval(interval);
-  }, []);
+  }, [firm.channelId, firm.name]);
 
   if (loading) {
     return (
@@ -72,8 +118,8 @@ export default function GenericFirmDashboard({ firm }: GenericFirmDashboardProps
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-gray-600">Atividades</p>
-              <p className="text-2xl font-bold text-gray-900">--</p>
-              <p className="text-xs text-gray-500 mt-1">Última hora</p>
+              <p className="text-2xl font-bold text-gray-900">{totalActivities}</p>
+              <p className="text-xs text-gray-500 mt-1">Total registrado</p>
             </div>
             <div className="p-3 bg-blue-100 rounded-full">
               <Activity className="h-6 w-6 text-blue-600" />
@@ -85,8 +131,8 @@ export default function GenericFirmDashboard({ firm }: GenericFirmDashboardProps
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-gray-600">Receita</p>
-              <p className="text-2xl font-bold text-gray-900">R$ --</p>
-              <p className="text-xs text-gray-500 mt-1">Este mês</p>
+              <p className="text-2xl font-bold text-gray-900">R$ {totalRevenue.toFixed(2)}</p>
+              <p className="text-xs text-gray-500 mt-1">Total acumulado</p>
             </div>
             <div className="p-3 bg-green-100 rounded-full">
               <DollarSign className="h-6 w-6 text-green-600" />
@@ -98,8 +144,8 @@ export default function GenericFirmDashboard({ firm }: GenericFirmDashboardProps
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-gray-600">Trabalhadores</p>
-              <p className="text-2xl font-bold text-gray-900">--</p>
-              <p className="text-xs text-gray-500 mt-1">Ativos hoje</p>
+              <p className="text-2xl font-bold text-gray-900">{activeWorkers.size}</p>
+              <p className="text-xs text-gray-500 mt-1">Ativos</p>
             </div>
             <div className="p-3 bg-purple-100 rounded-full">
               <Users className="h-6 w-6 text-purple-600" />
@@ -147,27 +193,60 @@ export default function GenericFirmDashboard({ firm }: GenericFirmDashboardProps
             </div>
           </div>
         </div>
-        <div className="p-8 text-center">
-          <Activity className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-          <h3 className="text-lg font-medium text-gray-900 mb-2">Aguardando Atividades</h3>
-          <p className="text-gray-500 mb-4">
-            As atividades do canal #{firm.channelId} aparecerão aqui em tempo real.
-          </p>
-          <div className="bg-blue-50 rounded-lg p-4 max-w-md mx-auto">
-            <div className="flex items-start space-x-3">
-              <div className="p-1 bg-blue-100 rounded-full mt-0.5">
-                <CheckCircle className="h-4 w-4 text-blue-600" />
-              </div>
-              <div className="text-left">
-                <p className="text-sm font-medium text-blue-900">Sistema Configurado</p>
-                <p className="text-xs text-blue-700 mt-1">
-                  Monitoramento: {firm.monitoring.enabled ? 'Ativo' : 'Inativo'}<br />
-                  Endpoint: {firm.monitoring.endpointType}<br />
-                  Roles: {firm.allowedRoles.length} configuradas
-                </p>
+        <div className="p-6">
+          {messages.length > 0 ? (
+            <div className="space-y-3 max-h-96 overflow-y-auto">
+              {messages.slice(-20).reverse().map((msg: any) => (
+                <div key={msg.id} className="flex items-start space-x-3 p-3 hover:bg-gray-50 rounded-lg">
+                  <div className="flex-shrink-0">
+                    {msg.categoria === 'financeiro' ? (
+                      <DollarSign className={`h-5 w-5 ${msg.tipo === 'deposito' || msg.tipo === 'venda' ? 'text-green-500' : 'text-red-500'}`} />
+                    ) : msg.categoria === 'inventario' ? (
+                      <Package className={`h-5 w-5 ${msg.tipo === 'adicionar' ? 'text-green-500' : 'text-red-500'}`} />
+                    ) : (
+                      <Activity className="h-5 w-5 text-gray-400" />
+                    )}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm text-gray-900">
+                      <span className="font-medium">{msg.autor || 'Sistema'}</span>
+                      <span className="ml-2 text-gray-600">
+                        {msg.displayText || msg.content?.substring(0, 100) || 'Atividade registrada'}
+                      </span>
+                    </p>
+                    <p className="text-xs text-gray-500 mt-1">
+                      {new Date(msg.timestamp).toLocaleString('pt-BR')}
+                      {msg.valor && ` • R$ ${msg.valor.toFixed(2)}`}
+                      {msg.quantidade && msg.item && ` • ${msg.quantidade}x ${msg.item}`}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-8">
+              <Activity className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+              <h3 className="text-lg font-medium text-gray-900 mb-2">Aguardando Atividades</h3>
+              <p className="text-gray-500 mb-4">
+                As atividades do canal #{firm.channelId} aparecerão aqui em tempo real.
+              </p>
+              <div className="bg-blue-50 rounded-lg p-4 max-w-md mx-auto">
+                <div className="flex items-start space-x-3">
+                  <div className="p-1 bg-blue-100 rounded-full mt-0.5">
+                    <CheckCircle className="h-4 w-4 text-blue-600" />
+                  </div>
+                  <div className="text-left">
+                    <p className="text-sm font-medium text-blue-900">Sistema Configurado</p>
+                    <p className="text-xs text-blue-700 mt-1">
+                      Monitoramento: {firm.monitoring.enabled ? 'Ativo' : 'Inativo'}<br />
+                      Endpoint: {firm.monitoring.endpointType}<br />
+                      Roles: {firm.allowedRoles.length} configuradas
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
 

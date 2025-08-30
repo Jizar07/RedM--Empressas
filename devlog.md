@@ -4,6 +4,18 @@ This is a local timestamped file to track all development changes and prompts.
 
 ## Log Entries
 
+### 2025-08-30 12:09:54
+**Action**: Fix User Deletion Persistence Issue with Timestamp-Based Tracking
+**Prompt**: Users deleted from frontend keep reappearing after page refresh despite being removed from localStorage - need proper deletion tracking
+**Changes**:
+- Implemented timestamp-based user deletion tracking system
+- Fixed loading order issue where auto-add functions ran before deleted timestamps were loaded from localStorage
+- Added extensive debugging logs to track delete operations and auto-add attempts
+- Modified useEffect dependencies to ensure localStorage loads before data processing
+- Users now stay deleted until NEW Discord activity (after deletion timestamp) appears
+- Cleaned up excessive console logging that was causing browser performance issues
+- System now properly respects manual user deletions while allowing legitimate re-additions
+
 ### 2025-08-28 10:23:32
 **Action**: Complete Bot Monitoring System & Fix Deduplication
 **Prompt**: Bot gets different format than webhook extension, need to disable extension and switch to bot monitoring, money activities not working, deduplication preventing similar transactions

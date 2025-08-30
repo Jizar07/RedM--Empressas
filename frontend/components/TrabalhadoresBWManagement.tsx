@@ -32,7 +32,7 @@ export default function TrabalhadoresBWManagement({
   onUpdateUsuarios, 
   recentActivity = [], 
   itemTranslations: parentItemTranslations = {}, 
-  getBestDisplayName: parentGetBestDisplayName 
+  getBestDisplayName: parentGetBestDisplayName
 }: Props) {
   const [searchTerm, setSearchTerm] = useState('');
   const [filterRole, setFilterRole] = useState<'all' | 'trabalhador' | 'gerente'>('all');

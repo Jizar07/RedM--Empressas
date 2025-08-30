@@ -101,9 +101,7 @@ export default function FirmConfigModal({ firm, onSave, onCancel }: FirmConfigMo
   };
 
   const handleAddRole = (roleName?: string) => {
-    console.log('handleAddRole called with:', roleName);
     const roleToAdd = roleName || newRole.trim();
-    console.log('Role to add:', roleToAdd);
     if (roleToAdd && !formData.allowedRoles.includes(roleToAdd)) {
       setFormData(prev => ({
         ...prev,
@@ -111,9 +109,7 @@ export default function FirmConfigModal({ firm, onSave, onCancel }: FirmConfigMo
       }));
       setNewRole('');
       setShowRoleDropdown(false);
-      console.log('Role added successfully');
     } else {
-      console.log('Role not added - either empty or already exists');
     }
   };
 
@@ -380,7 +376,6 @@ export default function FirmConfigModal({ firm, onSave, onCancel }: FirmConfigMo
                             onClick={(e) => {
                               e.preventDefault();
                               e.stopPropagation();
-                              console.log('Button clicked for role:', role.name);
                               handleAddRole(role.name);
                             }}
                             disabled={formData.allowedRoles.includes(role.name)}
