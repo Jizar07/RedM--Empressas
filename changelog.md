@@ -5,7 +5,18 @@ This file is synchronized with: https://github.com/Jizar07/RedM--Empressas
 
 ## Version History
 
-### [0.024] - 2025-08-28 **[CURRENT - RESTORE POINT]**
+### [0.026] - 2025-09-05 **[CURRENT - RESTORE POINT]**
+- **FIXED**: Discord OAuth2 localhost redirect SSL error with comprehensive authentication system overhaul
+- **IMPLEMENTED**: Custom Discord OAuth callback endpoint bypassing NextAuth localhost issues
+- **UPDATED**: Discord Client ID/Secret to correct application (1406656805500883104)
+- **ADDED**: Automatic channel monitoring setup when creating new firms
+- **RESOLVED**: All localhost SSL protocol errors in OAuth flow
+- **ENHANCED**: Firm creation now automatically configures Discord channel monitoring
+
+### [0.025] - 2025-08-30 **[RESTORE POINT]**
+- **FIXED**: User deletion persistence with timestamp-based tracking system
+
+### [0.024] - 2025-08-28 **[RESTORE POINT]**
 - **FIXED**: Discord OAuth callback redirect localhost issue - Complete OAuth flow restoration for remote domain access
 - **RESOLVED**: Final redirect after successful Discord authentication now goes to `https://fazenda.stoffeltech.com` instead of localhost
 - **FIXED**: Token exchange redirect_uri changed from hardcoded localhost to proper domain callback URL

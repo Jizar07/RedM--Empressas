@@ -2,11 +2,21 @@
 
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
+import { useEffect } from 'react';
 import { AlertCircle, ArrowLeft } from 'lucide-react';
 
 export default function AuthError() {
   const searchParams = useSearchParams();
   const error = searchParams.get('error');
+
+  useEffect(() => {
+    // If we're on localhost, redirect to the correct domain
+    if (window.location.hostname === 'localhost') {
+      const newUrl = `https://fazenda.stoffeltech.com${window.location.pathname}${window.location.search}`;
+      console.log('Redirecting from localhost to:', newUrl);
+      window.location.href = newUrl;
+    }
+  }, []);
 
   const getErrorMessage = (error: string | null) => {
     switch (error) {

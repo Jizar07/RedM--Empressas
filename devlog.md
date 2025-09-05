@@ -4,6 +4,18 @@ This is a local timestamped file to track all development changes and prompts.
 
 ## Log Entries
 
+### 2025-09-05 19:03:33
+**Action**: Fix Discord OAuth2 localhost redirect SSL error with custom callback system
+**Prompt**: Discord OAuth login giving "invalid Oauth2 redirecti_uri" error and redirecting to https://localhost:3051 causing SSL protocol errors
+**Changes**:
+- Fixed Discord Client ID mismatch (updated from 1406799740108017674 to 1406656805500883104)
+- Updated Discord Client Secret to match new application (tp4M6wgGh8poeZRSNsIZDwuB3uc4dfKS)
+- Created custom Discord OAuth callback at `/api/auth/discord/callback/route.ts` bypassing NextAuth
+- Updated AuthButton.tsx to use custom callback endpoint
+- Fixed redirect URIs in Discord Developer Portal
+- Added automatic channel monitoring setup when creating new firms in FirmManagement.tsx
+- Resolved localhost SSL errors by implementing proper domain redirects throughout OAuth flow
+
 ### 2025-08-30 12:09:54
 **Action**: Fix User Deletion Persistence Issue with Timestamp-Based Tracking
 **Prompt**: Users deleted from frontend keep reappearing after page refresh despite being removed from localStorage - need proper deletion tracking

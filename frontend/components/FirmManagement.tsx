@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Building, Plus, Settings, Trash2, Edit, Eye, EyeOff, Monitor, AlertCircle, CheckCircle, Clock } from 'lucide-react';
 import { FirmConfig, CreateFirmRequest, EndpointPreset, DEFAULT_ENDPOINT_PRESETS } from '../types/firms';
-import FirmConfigModal from './FirmConfigModal';
+import EnhancedFirmConfigModal from './EnhancedFirmConfigModal';
 import MonitoringDashboard from './MonitoringDashboard';
 
 export default function FirmManagement() {
@@ -51,6 +51,34 @@ export default function FirmManagement() {
       const data = await response.json();
       
       if (data.success) {
+        // Automatically setup channel monitoring for the new firm
+        try {
+          const channelLogConfig = {
+            id: `${firmData.id}-logs`,
+            name: `${firmData.name} Logs`,
+            sourceChannelId: firmData.channelId,
+            webhookUrl: "http://localhost:3051/api/webhook/channel-messages",
+            enabled: true,
+            messageTypes: ["ALL"],
+            includeEmbeds: true,
+            createdAt: new Date().toISOString()
+          };
+
+          const channelResponse = await fetch('http://localhost:3050/api/channel-logs', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(channelLogConfig)
+          });
+
+          const channelData = await channelResponse.json();
+          
+          if (!channelData.success) {
+            console.warn('Failed to setup automatic channel monitoring:', channelData.error);
+          }
+        } catch (channelErr) {
+          console.warn('Failed to setup automatic channel monitoring:', channelErr);
+        }
+
         await fetchFirms();
         setShowConfigModal(false);
         setError(null);
@@ -348,7 +376,7 @@ export default function FirmManagement() {
 
       {/* Create/Edit Firm Modal */}
       {(showConfigModal || editingFirm) && (
-        <FirmConfigModal
+        <EnhancedFirmConfigModal
           firm={editingFirm}
           onSave={editingFirm ? handleUpdateFirm : handleCreateFirm}
           onCancel={() => {

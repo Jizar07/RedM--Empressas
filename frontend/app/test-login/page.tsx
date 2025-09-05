@@ -3,7 +3,7 @@
 export default function TestLogin() {
   const handleLogin = () => {
     // Direct Discord OAuth2 URL
-    const clientId = '1406799740108017674';
+    const clientId = '1406656805500883104';
     const redirectUri = encodeURIComponent('http://localhost:3051/api/auth/callback/discord');
     const scope = 'identify guilds guilds.members.read';
     
