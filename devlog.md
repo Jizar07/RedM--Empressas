@@ -4,6 +4,32 @@ This is a local timestamped file to track all development changes and prompts.
 
 ## Log Entries
 
+### 2025-09-10 11:35:49
+**Action**: Fix Discord Message Processing for New Firm - v0.028
+**Prompt**: "just made a transaction, and nothing showed on activities" followed by debugging session to fix new firm Discord message processing
+**Changes**:
+- Fixed MultiChannelForwarder missing required fields (`source` and `channelId`) in webhook payload
+- Updated regex patterns to handle dynamic farm IDs (`fazenda_\d+` instead of hardcoded `fazenda_86`)
+- Fixed double colon parsing in Discord message content (author names and item names showing extra colons)
+- Enhanced webhook route parsing to clean up `::` formatting in `Autor::` and `Item removido::` fields
+- Confirmed real-time Discord message processing working for "Fazenda Cabra da Peste" firm
+- Successfully processing messages from multiple users (Bartholomeu Dias, Johnny Rocks, Jesuino Correa)
+- Individual channel log files with 100-message limits working correctly
+- System now shows clean activity display without extra colons in usernames and item names
+
+### 2025-09-10 10:14:52
+**Action**: Implement Complete Multi-Server Discord OAuth & Firm Management System - v0.027
+**Prompt**: "great push to git" (following completion of multi-server Discord role selection implementation)
+**Changes**:
+- **Multi-Server Discord OAuth Integration**: Complete NextAuth OAuth with Discord provider, guild fetching with admin permission filtering, session-based authentication with server selection, automatic server persistence across sessions
+- **Server-Scoped Firm Management**: Global ServerContext for server state management, all API calls now automatically filtered by selected server ID, firm creation restricted to pre-selected Discord servers, Discord roles fetched only from selected server
+- **Enhanced User Experience**: Streamlined server selection workflow, clear messaging when no server selected, automatic role population in firm creation, pre-selected server integration in all flows
+- **Frontend Architecture**: Created ServerContext for global server state, added axios interceptors for automatic server filtering, updated all components to use server context, enhanced EnhancedFirmConfigModal with server integration
+- **Authentication System**: NextAuth Discord OAuth with guilds scope, JWT token enhancement with guild data, session-based server selection persistence, automatic admin permission detection
+- **API Integration**: Server ID inclusion in all backend requests, updated useFirmAccess hook with server filtering, enhanced role fetching with server scoping, comprehensive error handling and fallbacks
+- **Architecture Benefits**: Truly multi-server bot deployment ready, isolated firm management per Discord server, scalable permission system, clean separation of server contexts, production-ready security model
+- Committed as: "Implement complete multi-server Discord OAuth & firm management system - v0.027"
+
 ### 2025-09-05 19:03:33
 **Action**: Fix Discord OAuth2 localhost redirect SSL error with custom callback system
 **Prompt**: Discord OAuth login giving "invalid Oauth2 redirecti_uri" error and redirecting to https://localhost:3051 causing SSL protocol errors

@@ -213,7 +213,8 @@ export class MultiChannelForwarder {
           author: data.author.username,
           content: data.content,
           timestamp: data.timestamp,
-          raw_embeds: data.raw_embeds
+          source: 'discord',
+          channelId: data.channel_id
         }]
       };
 

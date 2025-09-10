@@ -5,7 +5,34 @@ This file is synchronized with: https://github.com/Jizar07/RedM--Empressas
 
 ## Version History
 
-### [0.026] - 2025-09-05 **[CURRENT - RESTORE POINT]**
+### [0.028] - 2025-09-10 **[CURRENT - RESTORE POINT]**
+- **MAJOR FIX**: Complete Discord Message Processing System for New Firms
+- **FIXED**: MultiChannelForwarder payload format missing required `source` and `channelId` fields
+- **ENHANCED**: Dynamic farm ID regex patterns - now supports any farm ID (`fazenda_\d+`) instead of hardcoded values
+- **IMPROVED**: Discord message parsing to handle double colon formatting (`Autor::` and `Item removido::`)
+- **RESOLVED**: New firm channels not showing Discord activity despite successful message reception
+- **CONFIRMED**: Real-time message processing working across multiple users and firms
+- **VALIDATED**: Individual channel log files (100-message limit) functioning correctly
+- **CLEANED**: Display formatting now shows proper usernames and item names without extra colons
+- **ARCHITECTURE**: Robust message flow from Discord → Bot → MultiChannelForwarder → Webhook → Storage
+- **PERFORMANCE**: Efficient individual file storage system preventing cross-channel data contamination
+- **RESULT**: Fully operational Discord activity tracking for all firms with clean, professional display
+
+### [0.027] - 2025-09-10 **[RESTORE POINT]**
+- **MAJOR RELEASE**: Complete Multi-Server Discord OAuth & Firm Management System
+- **IMPLEMENTED**: NextAuth Discord OAuth with guild fetching and admin permission filtering
+- **ADDED**: Global ServerContext for server state management across entire application
+- **ENHANCED**: All API calls now automatically filtered by selected server ID via axios interceptors
+- **CREATED**: Server-scoped firm management - firms restricted to pre-selected Discord servers
+- **IMPROVED**: Role fetching now scoped to selected server only in firm creation
+- **STREAMLINED**: Server selection workflow with automatic persistence across sessions
+- **ADDED**: Clear messaging and user guidance when no server selected
+- **ARCHITECTURE**: Production-ready multi-server deployment with isolated firm management
+- **SECURITY**: Comprehensive permission system with proper Discord admin detection
+- **SCALABILITY**: Clean separation of server contexts for unlimited Discord server support
+- **RESULT**: Truly multi-server bot ready for deployment across multiple Discord communities
+
+### [0.026] - 2025-09-05 **[RESTORE POINT]**
 - **FIXED**: Discord OAuth2 localhost redirect SSL error with comprehensive authentication system overhaul
 - **IMPLEMENTED**: Custom Discord OAuth callback endpoint bypassing NextAuth localhost issues
 - **UPDATED**: Discord Client ID/Secret to correct application (1406656805500883104)

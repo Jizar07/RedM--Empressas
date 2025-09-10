@@ -14,7 +14,7 @@ export default {
     BotStatusService.setClient(client);
     
     // Test channel access
-    const testChannelId = '1413532807430541552';
+    const testChannelId = '1412325130926948362';
     try {
       const channel = await client.channels.fetch(testChannelId);
       if (channel) {

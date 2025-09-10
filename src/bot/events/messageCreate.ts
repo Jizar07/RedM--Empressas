@@ -74,14 +74,23 @@ export default {
       mapping => mapping.channelId === message.channel.id && mapping.enabled
     );
     
-    if (channelMappings.length === 0) {
-      console.log(`⏭️ Skipping - no enabled mappings for channel ${message.channel.id}`);
+    // Check if we have old-style mappings OR if MultiChannelForwarder is monitoring this channel
+    const client = message.client as any;
+    const hasMultiChannelForwarder = client.multiChannelForwarder && client.multiChannelForwarder.isChannelMonitored(message.channel.id);
+    
+    if (channelMappings.length === 0 && !hasMultiChannelForwarder) {
+      console.log(`⏭️ Skipping - no enabled mappings and not monitored by MultiChannelForwarder for channel ${message.channel.id}`);
       return;
     }
     
     // Process messages in configured channels
-    console.log(`🔍 Processing message in configured channel ${message.channel.id} from ${message.author.username}`);
-    console.log(`📋 Found ${channelMappings.length} active mapping(s) for this channel`);
+    console.log(`🔍 Processing message in channel ${message.channel.id} from ${message.author.username}`);
+    if (channelMappings.length > 0) {
+      console.log(`📋 Found ${channelMappings.length} active mapping(s) for this channel`);
+    }
+    if (hasMultiChannelForwarder) {
+      console.log(`🏢 Channel monitored by MultiChannelForwarder`);
+    }
     
     // Special handling for frontend endpoint (port 3051)
     const frontendMapping = channelMappings.find(

@@ -97,7 +97,26 @@ When you see "/update" command from the user, perform the following actions:
 3. Update changelog.md if there are version-worthy changes
 4. Update CLAUDE.md if there are architectural or command changes
 
-## Recent Major Updates (v0.020) **[CURRENT VERSION]**
+## Recent Major Updates (v0.027) **[CURRENT VERSION]**
+
+### Complete Multi-Server Discord OAuth & Firm Management System (v0.027)
+- **Multi-Server Architecture**: Complete implementation of server-scoped operations with global ServerContext
+- **NextAuth Integration**: Full Discord OAuth with guild fetching, admin permission detection, and session management
+- **Server Filtering System**: All API calls automatically include selected server ID via axios interceptors
+- **Firm Management Revolution**: Server-scoped firm creation with automatic role population from selected Discord server
+- **Enhanced User Experience**: Streamlined server selection workflow with clear messaging and persistence
+- **Production-Ready Security**: Comprehensive permission system with proper Discord admin role detection
+- **Scalable Architecture**: Clean separation of server contexts supporting unlimited Discord servers
+- **Technical Components**:
+  - `frontend/contexts/ServerContext.tsx` - Global server state management
+  - `frontend/lib/api.ts` - Axios interceptor for automatic server filtering
+  - `frontend/hooks/useFirmAccess.ts` - Server-aware firm access control
+  - `frontend/components/ServerSelector.tsx` - Enhanced server selection component
+  - `frontend/components/EnhancedFirmConfigModal.tsx` - Server-integrated firm creation
+  - `frontend/lib/auth-options.ts` - NextAuth Discord OAuth with guild fetching
+- **Result**: Truly multi-server Discord bot deployment with isolated firm management per server
+
+## Previous Major Updates
 
 ### Event-Driven Real-Time Architecture Revolution (v0.020)
 - **System Architecture**: Completely replaced continuous polling with proper event-driven updates
