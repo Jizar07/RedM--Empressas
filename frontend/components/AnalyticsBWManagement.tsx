@@ -25,6 +25,19 @@ export default function AnalyticsBWManagement({ recentActivity, usuarios, invent
     return data.filter(item => new Date(item[dateField]) >= cutoffDate);
   };
 
+  const getItemCategory = (itemName: string): string => {
+    const name = itemName.toLowerCase();
+    if (name.includes('seed') || name.includes('semente')) return 'sementes';
+    if (name.includes('plant') || name.includes('planta') || name.includes('trigo') || name.includes('milho')) return 'plantas';
+    if (name.includes('cow') || name.includes('pig') || name.includes('chicken') || name.includes('sheep')) return 'animais';
+    if (name.includes('racao') || name.includes('feed')) return 'racoes';
+    if (name.includes('food') || name.includes('comida')) return 'comidas';
+    if (name.includes('drink') || name.includes('bebida')) return 'bebidas';
+    if (name.includes('wood') || name.includes('iron') || name.includes('stone')) return 'materiais';
+    if (name.includes('tool') || name.includes('ferramenta')) return 'ferramentas';
+    return 'outros';
+  };
+
   // Calculate overview statistics
   const overviewStats = {
     totalUsers: Object.keys(usuarios.usuarios || {}).length,
@@ -103,19 +116,6 @@ export default function AnalyticsBWManagement({ recentActivity, usuarios, invent
       acc[date] = (acc[date] || 0) + 1;
       return acc;
     }, {})
-  };
-
-  const getItemCategory = (itemName: string): string => {
-    const name = itemName.toLowerCase();
-    if (name.includes('seed') || name.includes('semente')) return 'sementes';
-    if (name.includes('plant') || name.includes('planta') || name.includes('trigo') || name.includes('milho')) return 'plantas';
-    if (name.includes('cow') || name.includes('pig') || name.includes('chicken') || name.includes('sheep')) return 'animais';
-    if (name.includes('racao') || name.includes('feed')) return 'racoes';
-    if (name.includes('food') || name.includes('comida')) return 'comidas';
-    if (name.includes('drink') || name.includes('bebida')) return 'bebidas';
-    if (name.includes('wood') || name.includes('iron') || name.includes('stone')) return 'materiais';
-    if (name.includes('tool') || name.includes('ferramenta')) return 'ferramentas';
-    return 'outros';
   };
 
   const tabs = [

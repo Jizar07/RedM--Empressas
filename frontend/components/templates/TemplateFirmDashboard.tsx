@@ -10,7 +10,7 @@ interface Activity {
   timestamp: string;
   autor: string;
   content: string;
-  tipo?: 'adicionar' | 'remover' | 'deposito' | 'saque' | 'venda';
+  tipo?: 'adicionar' | 'remover' | 'deposito' | 'saque' | 'venda' | 'compra';
   categoria?: 'inventario' | 'financeiro' | 'sistema';
   item?: string;
   quantidade?: number;
@@ -141,13 +141,13 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
       }
 
       // Calculate revenue (deposits and sales)
-      if (msg.valor && (msg.tipo === 'deposito' || msg.tipo === 'venda')) {
+      if (msg.valor && (msg.tipo === 'deposito' || msg.tipo === 'venda' || msg.tipo === 'compra')) {
         revenue += msg.valor;
       }
 
       // Track bank balance (deposits minus withdrawals)
       if (msg.valor) {
-        if (msg.tipo === 'deposito' || msg.tipo === 'venda') {
+        if (msg.tipo === 'deposito' || msg.tipo === 'venda' || msg.tipo === 'compra') {
           balance += msg.valor;
         } else if (msg.tipo === 'saque') {
           balance -= msg.valor;
@@ -207,6 +207,35 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
     }).format(value);
   };
 
+  // Filter activities by type
+  const getItemActivities = (): Activity[] => {
+    return activities.filter(activity => 
+      activity.categoria === 'inventario' &&
+      (activity.tipo && ['adicionar', 'remover'].includes(activity.tipo))
+    ).slice(0, 20);
+  };
+
+  const getMoneyActivities = (): Activity[] => {
+    return activities.filter(activity => {
+      return activity.categoria === 'financeiro' &&
+             (activity.tipo && ['deposito', 'saque', 'venda', 'compra'].includes(activity.tipo) ||
+              (activity.valor !== undefined && activity.valor !== null));
+    }).slice(0, 20);
+  };
+
+  // Get unique inventory managers (people who add/remove animals)
+  const getInventoryManagers = (): Set<string> => {
+    const managers = new Set<string>();
+    activities.forEach(activity => {
+      if (activity.categoria === 'inventario' && 
+          activity.tipo && ['adicionar', 'remover'].includes(activity.tipo) &&
+          activity.autor && activity.autor !== 'Sistema') {
+        managers.add(activity.autor);
+      }
+    });
+    return managers;
+  };
+
   useEffect(() => {
     fetchActivities();
     const interval = setInterval(fetchActivities, 60000); // Update every minute
@@ -252,7 +281,7 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
               icon={<DollarSign className="h-8 w-8" />}
               color="green"
               loading={loading}
-              subtitle="Vendas + Depósitos"
+              subtitle="Vendas de animais"
             />
           )}
           
@@ -269,12 +298,12 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
           
           {metricCards.includes('workers') && (
             <MetricCard
-              title="Trabalhadores"
+              title="Clientes"
               value={activeWorkers.size}
               icon={<Users className="h-8 w-8" />}
               color="purple"
               loading={loading}
-              subtitle="Ativos no período"
+              subtitle="Compraram animais"
             />
           )}
           
@@ -285,75 +314,175 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
               icon={<Package className="h-8 w-8" />}
               color="yellow"
               loading={loading}
-              subtitle="Itens em estoque"
+              subtitle="Animais no berçário"
             />
           )}
           
-          {metricCards.includes('bankBalance') && template.features.customFields?.bankingEnabled && (
+          {metricCards.includes('bankBalance') && (
             <MetricCard
-              title="Saldo Bancário"
-              value={formatCurrency(bankBalance)}
-              icon={<Archive className="h-8 w-8" />}
+              title="Gerentes de Inventário"
+              value={getInventoryManagers().size}
+              icon={<Settings className="h-8 w-8" />}
               color="red"
               loading={loading}
-              subtitle="Depósitos - Saques"
+              subtitle="Gerenciam animais"
             />
           )}
         </div>
       )}
 
-      {/* Recent Activity Feed */}
+      {/* Separated Activities Feed */}
       {dashboardComponent?.settings?.showRecentActivity && (
-        <div className="bg-white rounded-lg shadow">
-          <div className="p-6">
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-xl font-semibold text-gray-900">Atividades Recentes</h2>
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                <span className="text-sm text-gray-600">Ao vivo</span>
-              </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Item Activities */}
+          <div className="bg-white rounded-lg shadow">
+            <div className="p-4 border-b">
+              <h3 className="text-lg font-semibold">
+                📦 Atividades de Itens ({getItemActivities().length})
+              </h3>
             </div>
             
-            <div className="space-y-3 max-h-96 overflow-y-auto">
+            <div className="p-4 max-h-96 overflow-y-auto">
               {loading ? (
                 <div className="flex justify-center py-8">
-                  <div className="animate-spin rounded-full h-8 w-8 border-b-2" style={{ borderColor: template.theme.primaryColor }}></div>
+                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
                 </div>
-              ) : activities.length === 0 ? (
-                <div className="text-center py-8 text-gray-500">
-                  Nenhuma atividade encontrada para este canal
-                </div>
+              ) : getItemActivities().length === 0 ? (
+                <p className="text-gray-500 text-center py-8">Nenhuma atividade de itens capturada</p>
               ) : (
-                activities.slice(0, 20).map((activity) => (
-                  <div key={activity.id} className="flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
-                    <div className="flex-shrink-0">
-                      {getActivityIcon(activity)}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center justify-between">
-                        <p className="text-sm font-medium text-gray-900">
-                          {activity.autor || 'Sistema'}
-                        </p>
-                        <p className="text-xs text-gray-500">
-                          {new Date(activity.timestamp).toLocaleString('pt-BR', {
-                            hour: '2-digit',
-                            minute: '2-digit',
-                            day: '2-digit',
-                            month: '2-digit'
-                          })}
+                <div className="space-y-2">
+                  {getItemActivities().map((activity) => (
+                    <div key={activity.id} className="flex items-center gap-3 p-3 hover:bg-gray-50 rounded">
+                      <div className="flex-shrink-0">{getActivityIcon(activity)}</div>
+                      <div className="flex-1 min-w-0">
+                        {activity.parseSuccess && activity.tipo && activity.item && activity.quantidade ? (
+                          <div className="flex items-center gap-2 flex-wrap">
+                            <span className="font-semibold text-gray-900">
+                              {activity.autor || 'Sistema'}
+                            </span>
+                            <span className="text-gray-600">
+                              {activity.tipo === 'adicionar' ? 'adicionou' : 'removeu'}
+                            </span>
+                            <span className={`px-2 py-1 rounded text-xs font-medium ${
+                              activity.tipo === 'adicionar' 
+                                ? 'bg-green-100 text-green-800' 
+                                : 'bg-red-100 text-red-800'
+                            }`}>
+                              {activity.quantidade}x
+                            </span>
+                            <span className="font-medium text-gray-900">
+                              {activity.item}
+                            </span>
+                          </div>
+                        ) : (
+                          <div className="text-sm text-gray-700 leading-relaxed">
+                            <div className="flex items-center gap-2">
+                              <span className="font-medium text-gray-900">
+                                {activity.autor || 'Sistema'}
+                              </span>
+                              {!activity.parseSuccess && (
+                                <span className="text-xs px-1.5 py-0.5 bg-amber-100 text-amber-700 rounded">
+                                  Não processado
+                                </span>
+                              )}
+                            </div>
+                            <div className="mt-1 text-gray-600">
+                              {activity.displayText || activity.content.substring(0, 150) + 
+                                (activity.content.length > 150 ? '...' : '')}
+                            </div>
+                          </div>
+                        )}
+                        <p className="text-xs text-gray-500 mt-1">
+                          {new Date(activity.timestamp).toLocaleString('pt-BR')}
                         </p>
                       </div>
-                      <p className="text-sm text-gray-600 truncate">
-                        {activity.displayText || activity.content}
-                      </p>
-                      {activity.valor && (
-                        <p className="text-xs font-medium" style={{ color: template.theme.primaryColor }}>
-                          {formatCurrency(activity.valor)}
-                        </p>
-                      )}
                     </div>
-                  </div>
-                ))
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Money Activities */}
+          <div className="bg-white rounded-lg shadow">
+            <div className="p-4 border-b">
+              <h3 className="text-lg font-semibold">
+                💰 Atividades de Dinheiro ({getMoneyActivities().length})
+              </h3>
+            </div>
+            
+            <div className="p-4 max-h-96 overflow-y-auto">
+              {getMoneyActivities().length === 0 ? (
+                <p className="text-gray-500 text-center py-8">Nenhuma atividade financeira capturada</p>
+              ) : (
+                <div className="space-y-2">
+                  {getMoneyActivities().map((activity) => (
+                    <div key={activity.id} className="flex items-center gap-3 p-3 hover:bg-gray-50 rounded">
+                      <div className="flex-shrink-0">{getActivityIcon(activity)}</div>
+                      <div className="flex-1 min-w-0">
+                        {activity.parseSuccess && activity.tipo && activity.valor ? (
+                          <div className="flex items-center gap-2 flex-wrap">
+                            <span className="font-semibold text-gray-900">
+                              {activity.autor || 'Sistema'}
+                            </span>
+                            {activity.descricao && activity.descricao !== 'Depósito direto' && activity.tipo !== 'saque' ? (
+                              <>
+                                <span className="text-gray-600">
+                                  {activity.descricao}
+                                </span>
+                                <span className="text-gray-600">por</span>
+                                <span className={`px-2 py-1 rounded text-xs font-medium ${
+                                  activity.tipo === 'deposito' || activity.tipo === 'venda' || activity.tipo === 'compra'
+                                    ? 'bg-green-100 text-green-800' 
+                                    : 'bg-red-100 text-red-800'
+                                }`}>
+                                  ${typeof activity.valor === 'number' ? activity.valor.toFixed(2) : '0.00'}
+                                </span>
+                              </>
+                            ) : (
+                              <>
+                                <span className="text-gray-600">
+                                  {activity.tipo === 'deposito' ? 'depositou' : 
+                                   activity.tipo === 'saque' ? 'sacou' :
+                                   activity.tipo === 'compra' ? 'gastou' :
+                                   activity.tipo === 'venda' ? 'vendeu' :
+                                   'transação'}
+                                </span>
+                                <span className={`px-2 py-1 rounded text-xs font-medium ${
+                                  activity.tipo === 'deposito' || activity.tipo === 'venda' || activity.tipo === 'compra'
+                                    ? 'bg-green-100 text-green-800' 
+                                    : 'bg-red-100 text-red-800'
+                                }`}>
+                                  ${typeof activity.valor === 'number' ? activity.valor.toFixed(2) : '0.00'}
+                                </span>
+                              </>
+                            )}
+                          </div>
+                        ) : (
+                          <div className="text-sm text-gray-700 leading-relaxed">
+                            <div className="flex items-center gap-2">
+                              <span className="font-medium text-gray-900">
+                                {activity.autor || 'Sistema'}
+                              </span>
+                              {!activity.parseSuccess && (
+                                <span className="text-xs px-1.5 py-0.5 bg-amber-100 text-amber-700 rounded">
+                                  Não processado
+                                </span>
+                              )}
+                            </div>
+                            <div className="mt-1 text-gray-600">
+                              {activity.displayText || activity.content.substring(0, 150) + 
+                                (activity.content.length > 150 ? '...' : '')}
+                            </div>
+                          </div>
+                        )}
+                        <p className="text-xs text-gray-500 mt-1">
+                          📅 {new Date(activity.timestamp).toLocaleString('pt-BR')}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               )}
             </div>
           </div>

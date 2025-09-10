@@ -1,6 +1,10 @@
 export interface FirmTheme {
   primaryColor: string;
   secondaryColor: string;
+  accentColor?: string;
+  backgroundColor?: string;
+  textColor?: string;
+  iconStyle?: 'outline' | 'filled' | 'duotone';
 }
 
 export interface FirmDisplay {
@@ -25,6 +29,13 @@ export interface FirmConfig {
   enabled: boolean;
   monitoring: FirmMonitoring;
   display: FirmDisplay;
+  template?: {
+    type: 'fazenda-bw' | 'generic' | 'custom';
+    version: string;
+    customConfig?: Record<string, any>;
+    enabledComponents?: string[];
+    componentSettings?: Record<string, any>;
+  };
   createdAt: string;
   updatedAt: string;
 }

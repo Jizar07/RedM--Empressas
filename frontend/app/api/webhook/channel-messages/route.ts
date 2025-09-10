@@ -2,6 +2,7 @@
 import fs from 'fs';
 import path from 'path';
 import SSEManager from '../sse-manager';
+import ChannelMessageManager from '../../../../lib/ChannelMessageManager';
 
 // Disable static generation for this API route
 export const dynamic = 'force-dynamic';
@@ -95,57 +96,41 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Read existing messages
-    const existingMessages = readMessages();
-    const existingIds = new Set(existingMessages.map(msg => msg.id));
+    const channelManager = new ChannelMessageManager();
+    let processedCount = 0;
 
-    // Simple deduplication based only on message ID and timestamp
-    const newMessages = body.messages.filter(msg => {
-      // Only check if we've seen this exact message ID before
-      if (existingIds.has(msg.id)) {
-        return false;
+    // Process each message individually through the channel manager
+    for (const message of body.messages) {
+      try {
+        // Convert message to the format expected by ChannelMessageManager
+        const discordMessage = {
+          ...message,
+          embedContent: message.content, // Preserve original content
+          rawEmbeds: [] // Initialize empty embeds array
+        };
+        
+        await channelManager.addMessage(discordMessage);
+        processedCount++;
+      } catch (error) {
+        console.error(`Failed to process message ${message.id}:`, error);
       }
-      
-      // Also check for same timestamp to catch rapid duplicates
-      const msgTimestamp = new Date(msg.timestamp).getTime();
-      const duplicateByTime = existingMessages.some(existing => 
-        Math.abs(new Date(existing.timestamp).getTime() - msgTimestamp) < 1000 // Within 1 second
-        && existing.author === msg.author
-      );
-      
-      return !duplicateByTime;
-    });
-    
-    if (newMessages.length === 0) {
-      return NextResponse.json({
-        success: true,
-        message: 'No new messages to process',
-        total: existingMessages.length
-      });
     }
 
-    // Merge with existing messages
-    const allMessages = [...existingMessages, ...newMessages];
-    
-    // Keep only the most recent 1000 messages to prevent file from growing too large
-    const recentMessages = allMessages
-      .sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
-      .slice(0, 1000);
+    // Get channel statistics for the response
+    const channelMessages = await channelManager.getChannelMessages(body.channelId);
+    const totalMessages = channelMessages.length;
 
-    // Write to file
-    writeMessages(recentMessages);
-
-    console.log(`📝 Processed ${newMessages.length} new messages from channel ${body.channelId}`);
+    console.log(`📝 Processed ${processedCount} messages from channel ${body.channelId}, total in channel: ${totalMessages}`);
 
     // Create a simple notification mechanism using a timestamp file
-    // This will allow the frontend to detect when new data is available
     const notificationFile = path.join(process.cwd(), 'public', 'last-update.json');
     try {
       const updateInfo = {
         lastUpdate: new Date().toISOString(),
-        newMessages: newMessages.length,
-        totalMessages: recentMessages.length,
-        timestamp: Date.now() // Add timestamp for easier comparison
+        newMessages: processedCount,
+        totalMessages: totalMessages,
+        channelId: body.channelId,
+        timestamp: Date.now()
       };
       fs.writeFileSync(notificationFile, JSON.stringify(updateInfo));
       console.log('📡 Created update notification for frontend');
@@ -154,11 +139,12 @@ export async function POST(request: NextRequest) {
       try {
         SSEManager.getInstance().notifyAll({
           type: 'new-messages',
-          count: newMessages.length,
-          total: recentMessages.length,
+          count: processedCount,
+          total: totalMessages,
+          channelId: body.channelId,
           timestamp: new Date().toISOString()
         });
-        console.log(`🚀 Notified SSE clients of ${newMessages.length} new messages`);
+        console.log(`🚀 Notified SSE clients of ${processedCount} new messages in channel ${body.channelId}`);
       } catch (sseError) {
         console.error('Failed to notify SSE clients:', sseError);
       }
@@ -168,9 +154,10 @@ export async function POST(request: NextRequest) {
 
     return withCors(NextResponse.json({
       success: true,
-      message: `Processed ${newMessages.length} new messages`,
-      newMessages: newMessages.length,
-      total: recentMessages.length,
+      message: `Processed ${processedCount} messages`,
+      newMessages: processedCount,
+      total: totalMessages,
+      channelId: body.channelId,
       lastUpdate: new Date().toISOString()
     }));
 
@@ -221,12 +208,31 @@ function parseDiscordMessage(message: MessageData): any {
             confidence: 'high'
           };
         }
+        
+        // Try direct deposit pattern (no "Ação:" field)
+        const directDepositMatch = actionPart.match(/Valor depositado:\s*\$([0-9,.]+).*?Saldo após depósito:\s*\$([0-9,.]+)/s);
+        if (directDepositMatch) {
+          const valor = parseFloat(directDepositMatch[1].replace(',', ''));
+          const saldo = parseFloat(directDepositMatch[2].replace(',', ''));
+          
+          return {
+            ...message,
+            parseSuccess: true,
+            tipo: 'deposito',
+            categoria: 'financeiro',
+            valor: valor,
+            autor: autor,
+            descricao: `Depósito direto`,
+            displayText: `${autor} depositou $${valor.toFixed(2)}`,
+            confidence: 'high'
+          };
+        }
       } else if (transactionType === 'SAQUE') {
         // Parse SAQUE (withdraw money)
         const withdrawMatch = actionPart.match(/Valor sacado:\s*\$([0-9,.]+).*?Saldo após saque:\s*\$([0-9,.]+)/s);
         if (withdrawMatch) {
           const valor = parseFloat(withdrawMatch[1].replace(',', ''));
-          const saldo = parseFloat(withdrawMatch[3].replace(',', ''));
+          const saldo = parseFloat(withdrawMatch[2].replace(',', ''));
           
           return {
             ...message,
@@ -280,9 +286,32 @@ function parseDiscordMessage(message: MessageData): any {
       }
     }
     
+    // Parse BERÇARIO BRAITHWHAITE shop purchases (Compra na Loja)
+    const shopPurchaseMatch = content.match(/REGISTRO - BERÇARIO BRAITHWHAITE(.+?)Compra na Loja\s*Item Comprado:\s*(.+?)\s*x(\d+)\s*Comprador:\s*(.+?)\s*\|\s*FIXO:\s*(\d+)\s*Preço Total:\s*\$([0-9,.]+)/s);
+    if (shopPurchaseMatch) {
+      const item = shopPurchaseMatch[2].trim();
+      const quantidade = parseInt(shopPurchaseMatch[3]);
+      const comprador = shopPurchaseMatch[4].trim();
+      const preco = parseFloat(shopPurchaseMatch[6].replace(',', ''));
+      
+      return {
+        ...message,
+        parseSuccess: true,
+        tipo: 'compra',
+        categoria: 'financeiro',
+        item: item,
+        quantidade: quantidade,
+        valor: preco,
+        autor: comprador,
+        descricao: `Comprou ${quantidade}x ${item} na loja`,
+        displayText: `${comprador} comprou ${quantidade}x ${item} por $${preco.toFixed(2)}`,
+        confidence: 'high'
+      };
+    }
+    
     // Try to parse other message formats (fallback patterns)
     const itemAddPattern = /(?:Item adicionado|adicionou):\s*(.+?)\s*x(\d+)/i;
-    const itemRemovePattern = /(?:Item removido|removeu):\s*(.+?)\s*x(\d+)/i;
+    const itemRemovePattern = /(?:Item removido|Item Retirado|removeu):\s*(.+?)\s*x(\d+)/i;
     const moneyPattern = /\$([0-9,.]+)/;
     
     const addMatch = content.match(itemAddPattern);
@@ -411,9 +440,21 @@ function parseDiscordMessage(message: MessageData): any {
 
 export async function GET(request: NextRequest) {
   try {
-    const messages = readMessages();
+    const { searchParams } = new URL(request.url);
+    const channelId = searchParams.get('channelId');
     
-    // Parse all messages and return parsed activities
+    const channelManager = new ChannelMessageManager();
+    let messages;
+    
+    if (channelId) {
+      messages = await channelManager.getChannelMessages(channelId);
+      console.log(`🔍 Found ${messages.length} messages for channel ${channelId}`);
+    } else {
+      messages = await channelManager.getAllMessages();
+      console.log(`🔍 Found ${messages.length} messages across all channels`);
+    }
+    
+    // Parse filtered messages and return parsed activities
     const parsedMessages = messages.map(parseDiscordMessage);
     
     console.log(`📊 Parsed ${parsedMessages.length} messages, ${parsedMessages.filter(m => m.parseSuccess).length} successfully parsed`);
@@ -422,6 +463,7 @@ export async function GET(request: NextRequest) {
       success: true,
       messages: parsedMessages,
       total: parsedMessages.length,
+      channelId: channelId || 'all',
       lastUpdated: messages.length > 0 ? messages[0]?.timestamp : null,
       parsed: parsedMessages.filter(m => m.parseSuccess).length
     }));

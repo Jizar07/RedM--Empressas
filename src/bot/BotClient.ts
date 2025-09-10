@@ -119,7 +119,7 @@ export class BotClient extends Client {
           const command = await import(filePath);
           
           // Handle dynamic registration command specially
-          if (file === 'register-setup.js' && command.default?.execute) {
+          if ((file === 'register-setup.js' || file === 'register-setup.ts') && command.default?.execute) {
             try {
               const dynamicData = await createDynamicRegistrationCommand();
               command.default.data = dynamicData;

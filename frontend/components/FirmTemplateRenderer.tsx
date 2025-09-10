@@ -7,6 +7,10 @@ import TemplateFirmDashboard from './templates/TemplateFirmDashboard';
 import FazendaBW from './FazendaBW'; // Legacy component
 import EstoqueBW from './EstoqueBW'; // Legacy component
 import TrabalhadoresBW from './TrabalhadoresBW'; // Legacy component
+import BercarioInventory from './BercarioInventory';
+import BercarioClients from './BercarioClients';
+import BercarioAnalytics from './BercarioAnalytics';
+import BercarioPayments from './BercarioPayments';
 
 interface FirmTemplateRendererProps {
   firm: FirmConfig;
@@ -127,19 +131,17 @@ export default function FirmTemplateRenderer({ firm, activeComponent }: FirmTemp
           </div>
         );
       }
-      // For now, use legacy component but filtered by firm
-      return <EstoqueBW />;
+      return <BercarioInventory firm={firm} />;
 
     case 'workers':
       if (!isComponentEnabled('workers')) {
         return (
           <div className="text-center py-8">
-            <p className="text-gray-500">Trabalhadores não habilitado para este template</p>
+            <p className="text-gray-500">Clientes não habilitado para este template</p>
           </div>
         );
       }
-      // For now, use legacy component but filtered by firm
-      return <TrabalhadoresBW />;
+      return <BercarioClients firm={firm} />;
 
     case 'analytics':
       if (!isComponentEnabled('analytics')) {
@@ -149,11 +151,7 @@ export default function FirmTemplateRenderer({ firm, activeComponent }: FirmTemp
           </div>
         );
       }
-      return (
-        <div className="text-center py-8">
-          <p className="text-gray-500">Analytics em desenvolvimento</p>
-        </div>
-      );
+      return <BercarioAnalytics firm={firm} />;
 
     case 'payments':
       if (!isComponentEnabled('payments')) {
@@ -163,11 +161,7 @@ export default function FirmTemplateRenderer({ firm, activeComponent }: FirmTemp
           </div>
         );
       }
-      return (
-        <div className="text-center py-8">
-          <p className="text-gray-500">Pagamentos em desenvolvimento</p>
-        </div>
-      );
+      return <BercarioPayments firm={firm} />;
 
     default:
       return <TemplateFirmDashboard firm={firm} template={templateConfig} />;

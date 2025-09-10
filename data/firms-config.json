@@ -1,48 +1,14 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2025-08-28T19:26:06.406Z",
+  "lastUpdated": "2025-09-10T14:12:06.999Z",
   "firms": {
-    "fazenda-bw": {
-      "id": "fazenda-bw",
-      "name": "Fazenda BW",
-      "description": "Primary farm management system",
-      "channelId": "1409214475403526174",
-      "allowedRoles": [
-        "Lider fazenda BW",
-        "Gerente fazenda BW"
-      ],
-      "enabled": true,
-      "monitoring": {
-        "enabled": true,
-        "endpoint": "http://localhost:3051/api/webhook/channel-messages",
-        "endpointType": "frontend",
-        "messageTypes": [
-          "ALL"
-        ]
-      },
-      "display": {
-        "itemTranslations": {
-          "cigarett": "Cigarro",
-          "wateringcan": "Regador",
-          "fertilizer": "Fertilizante"
-        },
-        "bankingEnabled": true,
-        "theme": {
-          "primaryColor": "#16a34a",
-          "secondaryColor": "#15803d"
-        }
-      },
-      "createdAt": "2025-08-28T11:30:00.000Z",
-      "updatedAt": "2025-08-28T11:30:00.000Z"
-    },
-    "hidrovia-braithwaite": {
-      "id": "hidrovia-braithwaite",
-      "name": "Hidrovia BraithWaite",
+    "fazenda-cabra-da-peste": {
+      "id": "fazenda-cabra-da-peste",
+      "name": "Fazenda Cabra da Peste",
       "description": "",
-      "channelId": "1404482307808559114",
+      "channelId": "1412325130926948362",
       "allowedRoles": [
-        "🧪​| Cientista",
-        "⛴️​| Lider Hidrovia BRAITHWAITE"
+        "1274479410107646008"
       ],
       "enabled": true,
       "monitoring": {
@@ -61,176 +27,8 @@
           "secondaryColor": "#15803d"
         }
       },
-      "createdAt": "2025-08-28T16:53:32.284Z",
-      "updatedAt": "2025-08-28T16:53:32.284Z"
-    },
-    "tabacaria-franco": {
-      "id": "tabacaria-franco",
-      "name": "Tabacaria Franco",
-      "description": "",
-      "channelId": "1398473814161231983",
-      "allowedRoles": [
-        "🚬|Lider Tabacaria"
-      ],
-      "enabled": true,
-      "monitoring": {
-        "endpoint": "http://localhost:3051/api/webhook/channel-messages",
-        "endpointType": "frontend",
-        "messageTypes": [
-          "ALL"
-        ],
-        "enabled": true
-      },
-      "display": {
-        "itemTranslations": {},
-        "bankingEnabled": true,
-        "theme": {
-          "primaryColor": "#16a34a",
-          "secondaryColor": "#15803d"
-        }
-      },
-      "createdAt": "2025-08-28T18:13:26.582Z",
-      "updatedAt": "2025-08-28T18:13:26.582Z"
-    },
-    "estabulo-braitewaite": {
-      "id": "estabulo-braitewaite",
-      "name": "Estabulo BraiteWaite",
-      "description": "",
-      "channelId": "1384692644847943782",
-      "allowedRoles": [
-        "🐎| Lider Estabulo"
-      ],
-      "enabled": true,
-      "monitoring": {
-        "endpoint": "http://localhost:3051/api/webhook/channel-messages",
-        "endpointType": "frontend",
-        "messageTypes": [
-          "ALL"
-        ],
-        "enabled": true
-      },
-      "display": {
-        "itemTranslations": {},
-        "bankingEnabled": true,
-        "theme": {
-          "primaryColor": "#16a34a",
-          "secondaryColor": "#15803d"
-        }
-      },
-      "createdAt": "2025-08-28T19:20:00.992Z",
-      "updatedAt": "2025-08-28T19:20:00.992Z"
-    },
-    "armaria-braithwaite": {
-      "id": "armaria-braithwaite",
-      "name": "Armaria BraithWaite",
-      "description": "",
-      "channelId": "1398443608083927050",
-      "allowedRoles": [
-        "🔫| Armeiro"
-      ],
-      "enabled": true,
-      "monitoring": {
-        "endpoint": "http://localhost:3051/api/webhook/channel-messages",
-        "endpointType": "frontend",
-        "messageTypes": [
-          "ALL"
-        ],
-        "enabled": true
-      },
-      "display": {
-        "itemTranslations": {},
-        "bankingEnabled": true,
-        "theme": {
-          "primaryColor": "#16a34a",
-          "secondaryColor": "#15803d"
-        }
-      },
-      "createdAt": "2025-08-28T19:22:59.625Z",
-      "updatedAt": "2025-08-28T19:22:59.625Z"
-    },
-    "hidrovia-calamidade": {
-      "id": "hidrovia-calamidade",
-      "name": "Hidrovia Calamidade",
-      "description": "",
-      "channelId": "1405912560586199060",
-      "allowedRoles": [
-        "⛵┋CAPITÃ HIDROVIA CALAMIDADE"
-      ],
-      "enabled": true,
-      "monitoring": {
-        "endpoint": "http://localhost:3051/api/webhook/channel-messages",
-        "endpointType": "frontend",
-        "messageTypes": [
-          "ALL"
-        ],
-        "enabled": true
-      },
-      "display": {
-        "itemTranslations": {},
-        "bankingEnabled": true,
-        "theme": {
-          "primaryColor": "#16a34a",
-          "secondaryColor": "#15803d"
-        }
-      },
-      "createdAt": "2025-08-28T19:24:15.110Z",
-      "updatedAt": "2025-08-28T19:24:15.110Z"
-    },
-    "ferrovia-braithwaite": {
-      "id": "ferrovia-braithwaite",
-      "name": "Ferrovia BraithWaite",
-      "description": "",
-      "channelId": "1371997377531215982",
-      "allowedRoles": [
-        "🧭 | Admiro"
-      ],
-      "enabled": true,
-      "monitoring": {
-        "endpoint": "http://localhost:3051/api/webhook/channel-messages",
-        "endpointType": "frontend",
-        "messageTypes": [
-          "ALL"
-        ],
-        "enabled": true
-      },
-      "display": {
-        "itemTranslations": {},
-        "bankingEnabled": true,
-        "theme": {
-          "primaryColor": "#16a34a",
-          "secondaryColor": "#15803d"
-        }
-      },
-      "createdAt": "2025-08-28T19:25:39.828Z",
-      "updatedAt": "2025-08-28T19:25:39.828Z"
-    },
-    "artesanato-bw": {
-      "id": "artesanato-bw",
-      "name": "Artesanato BW",
-      "description": "",
-      "channelId": "1371996251691946115",
-      "allowedRoles": [
-        "🧭 | Admiro"
-      ],
-      "enabled": true,
-      "monitoring": {
-        "endpoint": "http://localhost:3051/api/webhook/channel-messages",
-        "endpointType": "frontend",
-        "messageTypes": [
-          "ALL"
-        ],
-        "enabled": true
-      },
-      "display": {
-        "itemTranslations": {},
-        "bankingEnabled": true,
-        "theme": {
-          "primaryColor": "#16a34a",
-          "secondaryColor": "#15803d"
-        }
-      },
-      "createdAt": "2025-08-28T19:26:06.406Z",
-      "updatedAt": "2025-08-28T19:26:06.406Z"
+      "createdAt": "2025-09-10T14:12:06.999Z",
+      "updatedAt": "2025-09-10T14:12:06.999Z"
     }
   },
   "settings": {

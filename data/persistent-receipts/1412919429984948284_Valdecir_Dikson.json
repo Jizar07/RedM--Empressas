@@ -1,0 +1,28 @@
+{
+  "playerName": "Valdecir Dikson",
+  "channelId": "1412919429984948284",
+  "messageId": "1413476970318270505",
+  "totalEarnings": 150,
+  "totalServices": 2,
+  "services": [
+    {
+      "receiptId": "20250903834",
+      "serviceType": "planta",
+      "itemType": "Junco",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-09-04T01:03:56.409Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250905711",
+      "serviceType": "planta",
+      "itemType": "Junco",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-09-05T10:52:50.606Z",
+      "approvedBy": "jizarstoffel"
+    }
+  ],
+  "lastUpdated": "2025-09-05T10:52:50.607Z"
+}

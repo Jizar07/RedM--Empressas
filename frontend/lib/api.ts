@@ -5,9 +5,26 @@ const API_BASE_URL = typeof window !== 'undefined'
   ? (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3050/api')
   : (process.env.API_URL || 'http://localhost:3050/api');
 
+// Helper to get selected server ID from localStorage
+const getSelectedServerId = (): string | null => {
+  if (typeof window === 'undefined') return null;
+  return localStorage.getItem('selectedServerId');
+};
+
 const api = axios.create({
   baseURL: API_BASE_URL,
   timeout: 10000,
+});
+
+// Add request interceptor to include server ID in all requests
+api.interceptors.request.use((config) => {
+  const selectedServerId = getSelectedServerId();
+  if (selectedServerId && config.params) {
+    config.params.serverId = selectedServerId;
+  } else if (selectedServerId) {
+    config.params = { ...config.params, serverId: selectedServerId };
+  }
+  return config;
 });
 
 export const serverApi = {

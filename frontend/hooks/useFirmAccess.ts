@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { FirmConfig } from '@/types/firms';
+import { useServer } from '@/contexts/ServerContext';
 
 interface FirmAccess {
   accessibleFirms: FirmConfig[];
@@ -47,21 +48,29 @@ export function useFirmAccess(): FirmAccess {
   const [accessibleFirms, setAccessibleFirms] = useState<FirmConfig[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const { selectedServerId } = useServer();
 
   const fetchAccessibleFirms = async () => {
     try {
       setLoading(true);
       setError(null);
       
+      // Only fetch firms if a server is selected
+      if (!selectedServerId) {
+        setAccessibleFirms([]);
+        setLoading(false);
+        return;
+      }
+      
       // Get user roles (mock implementation)
       const userRoles = await getMockUserRoles();
       
-      // Call firms API with user roles to get accessible firms
+      // Call firms API with user roles to get accessible firms - server filtering will be added automatically by axios interceptor
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3050/api';
-      const response = await fetch(`${apiUrl}/firms-config/accessible`, {
+      const response = await fetch(`${apiUrl}/firms-config/accessible?serverId=${selectedServerId}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ userRoles })
+        body: JSON.stringify({ userRoles, serverId: selectedServerId })
       });
       
       const data = await response.json();
@@ -90,7 +99,7 @@ export function useFirmAccess(): FirmAccess {
 
   useEffect(() => {
     fetchAccessibleFirms();
-  }, []);
+  }, [selectedServerId]);
 
   return {
     accessibleFirms,

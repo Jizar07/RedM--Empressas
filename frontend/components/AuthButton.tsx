@@ -14,9 +14,14 @@ export default function AuthButton() {
     };
 
     const userCookie = getCookie('discord_user');
+    console.log('All cookies:', document.cookie);
+    console.log('Discord user cookie:', userCookie);
+    
     if (userCookie) {
       try {
-        setUser(JSON.parse(decodeURIComponent(userCookie)));
+        const parsedUser = JSON.parse(decodeURIComponent(userCookie));
+        console.log('Parsed user:', parsedUser);
+        setUser(parsedUser);
       } catch (e) {
         console.error('Error parsing user cookie:', e);
       }
@@ -24,10 +29,8 @@ export default function AuthButton() {
   }, []);
 
   const handleLogin = () => {
-    const clientId = '1406656805500883104';
-    const redirectUri = encodeURIComponent('https://fazenda.stoffeltech.com/api/auth/discord/callback');
-    const scope = 'identify guilds guilds.members.read';
-    window.location.href = `https://discord.com/api/oauth2/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=${scope}`;
+    // Use NextAuth sign in instead of direct Discord OAuth
+    window.location.href = '/api/auth/signin/discord';
   };
 
   const handleLogout = () => {

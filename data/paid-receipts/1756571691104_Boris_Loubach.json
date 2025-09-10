@@ -1,0 +1,56 @@
+{
+  "playerName": "Boris Loubach",
+  "channelId": "1404674506181574727",
+  "messageId": "1410998966023356537",
+  "totalEarnings": 300,
+  "totalServices": 5,
+  "services": [
+    {
+      "receiptId": "20250824697",
+      "serviceType": "animal",
+      "itemType": "Suino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-24T20:04:15.849Z"
+    },
+    {
+      "receiptId": "20250826474",
+      "serviceType": "animal",
+      "itemType": "Cabrino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-26T09:08:15.132Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250826732",
+      "serviceType": "animal",
+      "itemType": "Cabrino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-26T09:08:19.387Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250827063",
+      "serviceType": "animal",
+      "itemType": "Cabrino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-27T02:08:28.757Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250829990",
+      "serviceType": "animal",
+      "itemType": "Cabrino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-29T14:46:07.913Z",
+      "approvedBy": "jizarstoffel"
+    }
+  ],
+  "lastUpdated": "2025-08-29T14:46:07.916Z",
+  "finalizedAt": "2025-08-30T16:34:51.105Z",
+  "finalizedBy": "jizarstoffel"
+}

@@ -1,0 +1,93 @@
+{
+  "playerName": "Boris Loubach",
+  "channelId": "1404674506181574727",
+  "messageId": "1413296461294338159",
+  "totalEarnings": 566.4000000000001,
+  "totalServices": 9,
+  "services": [
+    {
+      "receiptId": "20250901444",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-09-02T08:59:56.191Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250901800",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-09-02T08:59:59.216Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250901828",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-09-02T09:00:02.307Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250901970",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-09-02T09:00:11.674Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250901928",
+      "serviceType": "planta",
+      "itemType": "Junco",
+      "quantity": 307,
+      "payment": 46.05,
+      "timestamp": "2025-09-02T09:00:18.000Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250901548",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 483,
+      "payment": 72.45,
+      "timestamp": "2025-09-02T09:02:04.908Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250901928",
+      "serviceType": "planta",
+      "itemType": "Junco",
+      "quantity": 307,
+      "payment": 46.05,
+      "timestamp": "2025-09-02T09:02:22.160Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250901430",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 179,
+      "payment": 26.849999999999998,
+      "timestamp": "2025-09-02T09:02:33.090Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250901070",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-09-04T22:55:33.711Z",
+      "approvedBy": "jizarstoffel"
+    }
+  ],
+  "lastUpdated": "2025-09-04T22:55:33.713Z",
+  "finalizedAt": "2025-09-04T23:06:16.616Z",
+  "finalizedBy": "zerobalaa"
+}

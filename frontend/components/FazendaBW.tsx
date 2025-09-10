@@ -7,13 +7,14 @@ import EstoqueBWManagement from './EstoqueBWManagement';
 import PagamentosBWManagement from './PagamentosBWManagement';
 import AnalyticsBWManagement from './AnalyticsBWManagement';
 import MonitoringModeToggle from './MonitoringModeToggle';
+import { storageManager } from '../utils/localStorage';
 
 interface Activity {
   id: string;
   timestamp: string;
   autor: string;
   content: string;
-  tipo?: 'adicionar' | 'remover' | 'deposito' | 'saque' | 'venda';
+  tipo?: 'adicionar' | 'remover' | 'deposito' | 'saque' | 'venda' | 'compra';
   categoria?: 'inventario' | 'financeiro' | 'sistema';
   item?: string;
   quantidade?: number;
@@ -128,11 +129,7 @@ const getActivityIcon = (transaction: Activity): React.ReactNode => {
   return isDeposit ? <Plus className="text-green-500" size={20} /> : <Minus className="text-red-500" size={20} />;
 };
 
-// Global singleton to ensure only ONE polling instance exists
-let globalSafetyInterval: NodeJS.Timeout | null = null;
-let globalPollingActive = false;
-
-let componentInstanceCount = 0;
+// Remove global singleton - each component instance should be independent
 
 import { FirmConfig } from '@/types/firms';
 
@@ -140,8 +137,8 @@ interface FazendaBWProps {
   firm?: FirmConfig;
 }
 
-export default function FazendaBW({ firm }: FazendaBWProps = {}) {
-  componentInstanceCount++;
+export default function FazendaBW(props: FazendaBWProps = {}) {
+  const { firm } = props;
   
   const [recentActivity, setRecentActivity] = useState<Activity[]>([]);
   const [loading, setLoading] = useState(true);
@@ -248,9 +245,9 @@ export default function FazendaBW({ firm }: FazendaBWProps = {}) {
         // Save to localStorage immediately
         const firmId = firm?.id || 'fazenda-bw';
         if (firmId === 'fazenda-bw') {
-          localStorage.setItem('fazenda_deleted_user_timestamps', JSON.stringify(newDeletedTimestamps));
+          storageManager.setItem('fazenda_deleted_user_timestamps', JSON.stringify(newDeletedTimestamps));
         } else {
-          localStorage.setItem(`${firmId}_deleted_user_timestamps`, JSON.stringify(newDeletedTimestamps));
+          storageManager.setItem(`${firmId}_deleted_user_timestamps`, JSON.stringify(newDeletedTimestamps));
         }
       }
       
@@ -287,9 +284,9 @@ export default function FazendaBW({ firm }: FazendaBWProps = {}) {
         const firmId = firm?.id || 'fazenda-bw';
         // For Fazenda BW, keep using old keys for backward compatibility
         if (firmId === 'fazenda-bw') {
-          localStorage.setItem('fazenda_usuarios', JSON.stringify(newUsuarios));
+          storageManager.setItem('fazenda_usuarios', JSON.stringify(newUsuarios));
         } else {
-          localStorage.setItem(`${firmId}_usuarios`, JSON.stringify(newUsuarios));
+          storageManager.setItem(`${firmId}_usuarios`, JSON.stringify(newUsuarios));
         }
         return newUsuarios;
       });
@@ -348,9 +345,9 @@ export default function FazendaBW({ firm }: FazendaBWProps = {}) {
       const firmId = firm?.id || 'fazenda-bw';
       // For Fazenda BW, keep using old keys for backward compatibility
       if (firmId === 'fazenda-bw') {
-        localStorage.setItem('fazenda_inventario', JSON.stringify(newInventario));
+        storageManager.setItem('fazenda_inventario', JSON.stringify(newInventario));
       } else {
-        localStorage.setItem(`${firmId}_inventario`, JSON.stringify(newInventario));
+        storageManager.setItem(`${firmId}_inventario`, JSON.stringify(newInventario));
       }
       return true;
     } catch (error) {
@@ -400,9 +397,9 @@ export default function FazendaBW({ firm }: FazendaBWProps = {}) {
       const firmId = firm?.id || 'fazenda-bw';
       // For Fazenda BW, keep using old keys for backward compatibility
       if (firmId === 'fazenda-bw') {
-        localStorage.setItem('fazenda_inventario', JSON.stringify(newInventario));
+        storageManager.setItem('fazenda_inventario', JSON.stringify(newInventario));
       } else {
-        localStorage.setItem(`${firmId}_inventario`, JSON.stringify(newInventario));
+        storageManager.setItem(`${firmId}_inventario`, JSON.stringify(newInventario));
       }
       return true;
     } catch (error) {
@@ -421,7 +418,7 @@ export default function FazendaBW({ firm }: FazendaBWProps = {}) {
       // Fazenda BW uses old keys for backward compatibility
       // Other firms use firm-specific keys
       if (firmId === 'fazenda-bw') {
-        const savedUsuarios = localStorage.getItem('fazenda_usuarios');
+        const savedUsuarios = storageManager.getItem('fazenda_usuarios');
         if (savedUsuarios) {
           const parsedUsuarios = JSON.parse(savedUsuarios);
           console.log('📂 Loaded users from localStorage:', Object.keys(parsedUsuarios.usuarios));
@@ -430,17 +427,17 @@ export default function FazendaBW({ firm }: FazendaBWProps = {}) {
           console.log('📂 No saved users found in localStorage');
         }
 
-        const savedInventario = localStorage.getItem('fazenda_inventario');
+        const savedInventario = storageManager.getItem('fazenda_inventario');
         if (savedInventario) {
           setInventario(JSON.parse(savedInventario));
         }
 
-        const savedPagamentos = localStorage.getItem('fazenda_pagamentos');
+        const savedPagamentos = storageManager.getItem('fazenda_pagamentos');
         if (savedPagamentos) {
           setPagamentos(JSON.parse(savedPagamentos));
         }
 
-        const savedDeletedTimestamps = localStorage.getItem('fazenda_deleted_user_timestamps');
+        const savedDeletedTimestamps = storageManager.getItem('fazenda_deleted_user_timestamps');
         if (savedDeletedTimestamps) {
           const parsedTimestamps = JSON.parse(savedDeletedTimestamps);
           console.log('🗑️ Loaded deleted user timestamps:', parsedTimestamps);
@@ -451,22 +448,22 @@ export default function FazendaBW({ firm }: FazendaBWProps = {}) {
         
       } else {
         // Other firms use firm-specific keys
-        const savedUsuarios = localStorage.getItem(`${firmId}_usuarios`);
+        const savedUsuarios = storageManager.getItem(`${firmId}_usuarios`);
         if (savedUsuarios) {
           setUsuarios(JSON.parse(savedUsuarios));
         }
 
-        const savedInventario = localStorage.getItem(`${firmId}_inventario`);
+        const savedInventario = storageManager.getItem(`${firmId}_inventario`);
         if (savedInventario) {
           setInventario(JSON.parse(savedInventario));
         }
 
-        const savedPagamentos = localStorage.getItem(`${firmId}_pagamentos`);
+        const savedPagamentos = storageManager.getItem(`${firmId}_pagamentos`);
         if (savedPagamentos) {
           setPagamentos(JSON.parse(savedPagamentos));
         }
 
-        const savedDeletedTimestamps = localStorage.getItem(`${firmId}_deleted_user_timestamps`);
+        const savedDeletedTimestamps = storageManager.getItem(`${firmId}_deleted_user_timestamps`);
         if (savedDeletedTimestamps) {
           setDeletedUserTimestamps(JSON.parse(savedDeletedTimestamps));
         }
@@ -478,7 +475,111 @@ export default function FazendaBW({ firm }: FazendaBWProps = {}) {
     
     console.log('✅ localStorage loading complete');
     setLocalStorageLoaded(true);
+    
+    // Fetch any pending Discord bot payments on initial load
+    setTimeout(() => {
+      fetchDiscordBotPayments();
+    }, 1000);
   }, [firm?.id]);
+
+  // Function to fetch and process Discord bot payments
+  const fetchDiscordBotPayments = async () => {
+    try {
+      const response = await fetch('/api/webhook/farm-payment');
+      if (response.ok) {
+        const data = await response.json();
+        if (data.success && data.payments && data.payments.length > 0) {
+          console.log(`📥 Found ${data.payments.length} Discord bot payments to process`);
+          const newPagamentos = { ...pagamentos };
+          
+          // Process each payment from the bot
+          data.payments.forEach((farmPayment: any) => {
+            // Check if payment already exists
+            const existingPayment = Object.values(newPagamentos.usuarios || {})
+              .flatMap(user => (user as any).pagamentos || [])
+              .find(p => p.recibo_discord === farmPayment.receiptId);
+              
+            if (!existingPayment) {
+              console.log(`💰 Processing new payment: ${farmPayment.userName} - $${farmPayment.payment}`);
+              
+              // Create new payment record
+              const payment = {
+                id: crypto.randomUUID(),
+                usuario_id: farmPayment.userId,
+                usuario_nome: farmPayment.userName,
+                valor: farmPayment.payment,
+                tipo: 'servico' as const,
+                descricao: `${farmPayment.serviceType === 'animal' ? '🐄' : '🌾'} ${farmPayment.itemType} (${farmPayment.quantity}x)`,
+                data_pagamento: farmPayment.timestamp,
+                recibo_discord: farmPayment.receiptId,
+                status: 'pago' as const,
+                autor: farmPayment.paidBy || farmPayment.approvedBy || 'Discord Bot',
+                metadados: {
+                  servico_tipo: farmPayment.serviceType,
+                  quantidade: farmPayment.quantity,
+                  valor_unitario: farmPayment.payment / farmPayment.quantity
+                }
+              };
+              
+              // Initialize user payments if doesn't exist
+              if (!newPagamentos.usuarios[farmPayment.userId]) {
+                newPagamentos.usuarios[farmPayment.userId] = {
+                  pagamentos: [],
+                  total_ganho: 0,
+                  total_pendente: 0
+                };
+              }
+              
+              // Add payment to user
+              newPagamentos.usuarios[farmPayment.userId].pagamentos.push(payment);
+              newPagamentos.usuarios[farmPayment.userId].total_ganho += payment.valor;
+              
+              // Auto-add user if they don't exist
+              if (!usuarios.usuarios[farmPayment.userId]) {
+                console.log(`👤 Auto-adding Discord user: ${farmPayment.userName}`);
+                adicionarUsuario(farmPayment.userId, {
+                  nome: farmPayment.userName,
+                  author: farmPayment.userName,
+                  funcao: 'trabalhador'
+                }, farmPayment.timestamp);
+              }
+            }
+          });
+          
+          // Update global payment stats
+          const allPayments = Object.values(newPagamentos.usuarios || {})
+            .flatMap(user => (user as any).pagamentos || []);
+          
+          newPagamentos.total_pagamentos = allPayments.length;
+          newPagamentos.total_valor = allPayments
+            .filter(p => p.status === 'pago')
+            .reduce((sum, p) => sum + p.valor, 0);
+          newPagamentos.ultima_atualizacao = new Date().toISOString();
+          
+          // Update state and save to localStorage
+          setPagamentos(newPagamentos);
+          const firmId = firm?.id || 'fazenda-bw';
+          if (firmId === 'fazenda-bw') {
+            storageManager.setItem('fazenda_pagamentos', JSON.stringify(newPagamentos));
+          } else {
+            storageManager.setItem(`${firmId}_pagamentos`, JSON.stringify(newPagamentos));
+          }
+          
+          // Clear processed payments from webhook queue
+          const receiptIds = data.payments.map((p: any) => p.receiptId);
+          await fetch('/api/webhook/farm-payment', {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ receiptIds })
+          });
+          
+          console.log(`✅ Successfully processed ${data.payments.length} Discord bot payments`);
+        }
+      }
+    } catch (error) {
+      console.error('Error fetching Discord bot payments:', error);
+    }
+  };
 
   useEffect(() => {
     // Don't process data until localStorage is loaded
@@ -495,11 +596,8 @@ export default function FazendaBW({ firm }: FazendaBWProps = {}) {
     const handleExtensionData = (event: CustomEvent) => {
       const extensionMessages = event.detail || [];
       
-      // Filter messages by firm's channelId
-      const channelId = firm?.channelId || '1409214475403526174';
-      const filteredMessages = extensionMessages.filter((msg: any) => 
-        !msg.channelId || msg.channelId === channelId
-      );
+      // LEGACY BEHAVIOR: For legacy Fazenda BW, don't filter by channel - process all messages
+      const filteredMessages = extensionMessages; // No filtering for legacy Fazenda BW
       
       // Extension messages should already be parsed by backend, but ensure they have required fields
       const processedActivities: Activity[] = filteredMessages.map((msg: any) => {
@@ -564,7 +662,11 @@ export default function FazendaBW({ firm }: FazendaBWProps = {}) {
     // Check frontend webhook for data
     const checkFrontendData = async () => {
       try {
-        const response = await fetch('/api/webhook/channel-messages', {
+        // LEGACY BEHAVIOR: For legacy Fazenda BW (no firm prop), load all messages but exclude BERCARIO
+        // For new firm-based systems, filter by channelId
+        const apiUrl = '/api/webhook/channel-messages'; // Load all messages for legacy Fazenda BW
+          
+        const response = await fetch(apiUrl, {
           method: 'GET',
           headers: { 'Content-Type': 'application/json' }
         });
@@ -574,10 +676,10 @@ export default function FazendaBW({ firm }: FazendaBWProps = {}) {
           
           // Process frontend messages if available
           if (data.success && data.messages && Array.isArray(data.messages)) {
-            // Filter messages by firm's channelId if firm is provided
-            const channelId = firm?.channelId || '1409214475403526174'; // Default to Fazenda BW channel
+            // FILTER OUT BERCARIO MESSAGES - exclude channelId "1413532807430541552"
+            const BERCARIO_CHANNEL_ID = "1413532807430541552";
             const filteredMessages = data.messages.filter((msg: any) => 
-              msg.channelId === channelId
+              msg.channelId !== BERCARIO_CHANNEL_ID
             );
             
             if (filteredMessages.length > 0) {
@@ -660,18 +762,16 @@ export default function FazendaBW({ firm }: FazendaBWProps = {}) {
             }
           }
         }
+
+        // Also check for Discord bot payments
+        await fetchDiscordBotPayments();
+        
       } catch (error) {
         console.debug('Frontend webhook not available:', error);
       }
     };
 
-    // Prevent multiple polling instances in development mode
-    if (globalPollingActive) {
-      console.warn('⚠️  Polling already active, skipping setup');
-      return () => {};
-    }
-    
-    globalPollingActive = true;
+    // Each component instance now independent
 
     // Skip initial data load - only load from localStorage to prevent re-adding deleted users
     // checkFrontendData();
@@ -711,23 +811,14 @@ export default function FazendaBW({ firm }: FazendaBWProps = {}) {
     // Check for updates every 5 seconds (real-time fallback when extension is inactive)
     const realtimeChecker = setInterval(checkForUpdates, 5000);
     
-    // Set up SINGLE global safety interval (prevents React Strict Mode duplicates)
-    if (!globalSafetyInterval) {
-      globalSafetyInterval = setInterval(checkFrontendData, 60 * 60 * 1000); // Every 60 minutes ONLY
-    } else {
-    }
+    // Set up safety interval for this component instance
+    const safetyInterval = setInterval(checkFrontendData, 60 * 60 * 1000); // Every 60 minutes
 
     return () => {
-      globalPollingActive = false;
       window.removeEventListener('extensionData', handleExtensionData as EventListener);
       window.removeEventListener('newDiscordMessage', handleDataUpdate);
       clearInterval(realtimeChecker);
-      
-      // Only clear the global interval if this is the last component instance
-      if (globalSafetyInterval && componentInstanceCount <= 1) {
-        clearInterval(globalSafetyInterval);
-        globalSafetyInterval = null;
-      }
+      clearInterval(safetyInterval);
     };
   }, [localStorageLoaded, deletedUserTimestamps]);
 
@@ -772,10 +863,9 @@ export default function FazendaBW({ firm }: FazendaBWProps = {}) {
   const getItemActivities = (): Activity[] => {
     const sorted = getSortedActivity();
     const filtered = sorted.filter(activity => 
-      activity.categoria === 'inventario' || 
+      activity.categoria === 'inventario' &&
       (activity.tipo && ['adicionar', 'remover'].includes(activity.tipo))
     ).slice(0, activityLimit);
-    
     
     return filtered;
   };
@@ -783,11 +873,10 @@ export default function FazendaBW({ firm }: FazendaBWProps = {}) {
   const getMoneyActivities = (): Activity[] => {
     const sorted = getSortedActivity();
     const filtered = sorted.filter(activity => {
-      return activity.categoria === 'financeiro' || 
-             (activity.tipo && ['deposito', 'saque', 'venda'].includes(activity.tipo)) ||
-             (activity.valor !== undefined && activity.valor !== null);
+      return activity.categoria === 'financeiro' &&
+             (activity.tipo && ['deposito', 'saque', 'venda', 'compra'].includes(activity.tipo) ||
+              (activity.valor !== undefined && activity.valor !== null));
     }).slice(0, activityLimit);
-    
     
     return filtered;
   };
@@ -850,16 +939,16 @@ export default function FazendaBW({ firm }: FazendaBWProps = {}) {
       const firmId = firm?.id || 'fazenda-bw';
       console.log('💾 Saving to localStorage for firm:', firmId);
       if (firmId === 'fazenda-bw') {
-        localStorage.setItem('fazenda_usuarios', JSON.stringify(newUsuarios));
-        localStorage.setItem('fazenda_inventario', JSON.stringify(cleanedInventario));
-        localStorage.setItem('fazenda_pagamentos', JSON.stringify(cleanedPagamentos));
-        localStorage.setItem('fazenda_deleted_user_timestamps', JSON.stringify(newDeletedTimestamps));
+        storageManager.setItem('fazenda_usuarios', JSON.stringify(newUsuarios));
+        storageManager.setItem('fazenda_inventario', JSON.stringify(cleanedInventario));
+        storageManager.setItem('fazenda_pagamentos', JSON.stringify(cleanedPagamentos));
+        storageManager.setItem('fazenda_deleted_user_timestamps', JSON.stringify(newDeletedTimestamps));
         console.log('✅ Saved to fazenda_* localStorage keys');
       } else {
-        localStorage.setItem(`${firmId}_usuarios`, JSON.stringify(newUsuarios));
-        localStorage.setItem(`${firmId}_inventario`, JSON.stringify(cleanedInventario));
-        localStorage.setItem(`${firmId}_pagamentos`, JSON.stringify(cleanedPagamentos));
-        localStorage.setItem(`${firmId}_deleted_user_timestamps`, JSON.stringify(newDeletedTimestamps));
+        storageManager.setItem(`${firmId}_usuarios`, JSON.stringify(newUsuarios));
+        storageManager.setItem(`${firmId}_inventario`, JSON.stringify(cleanedInventario));
+        storageManager.setItem(`${firmId}_pagamentos`, JSON.stringify(cleanedPagamentos));
+        storageManager.setItem(`${firmId}_deleted_user_timestamps`, JSON.stringify(newDeletedTimestamps));
         console.log(`✅ Saved to ${firmId}_* localStorage keys`);
       }
       
@@ -869,9 +958,9 @@ export default function FazendaBW({ firm }: FazendaBWProps = {}) {
       
       const firmId = firm?.id || 'fazenda-bw';
       if (firmId === 'fazenda-bw') {
-        localStorage.setItem('fazenda_usuarios', JSON.stringify(newUsuarios));
+        storageManager.setItem('fazenda_usuarios', JSON.stringify(newUsuarios));
       } else {
-        localStorage.setItem(`${firmId}_usuarios`, JSON.stringify(newUsuarios));
+        storageManager.setItem(`${firmId}_usuarios`, JSON.stringify(newUsuarios));
       }
     }
   };
@@ -882,9 +971,9 @@ export default function FazendaBW({ firm }: FazendaBWProps = {}) {
     // Save to localStorage immediately
     const firmId = firm?.id || 'fazenda-bw';
     if (firmId === 'fazenda-bw') {
-      localStorage.setItem('fazenda_inventario', JSON.stringify(newInventario));
+      storageManager.setItem('fazenda_inventario', JSON.stringify(newInventario));
     } else {
-      localStorage.setItem(`${firmId}_inventario`, JSON.stringify(newInventario));
+      storageManager.setItem(`${firmId}_inventario`, JSON.stringify(newInventario));
     }
   };
 
@@ -894,9 +983,9 @@ export default function FazendaBW({ firm }: FazendaBWProps = {}) {
     // Save to localStorage immediately
     const firmId = firm?.id || 'fazenda-bw';
     if (firmId === 'fazenda-bw') {
-      localStorage.setItem('fazenda_pagamentos', JSON.stringify(newPagamentos));
+      storageManager.setItem('fazenda_pagamentos', JSON.stringify(newPagamentos));
     } else {
-      localStorage.setItem(`${firmId}_pagamentos`, JSON.stringify(newPagamentos));
+      storageManager.setItem(`${firmId}_pagamentos`, JSON.stringify(newPagamentos));
     }
   };
 
@@ -907,88 +996,6 @@ export default function FazendaBW({ firm }: FazendaBWProps = {}) {
     { id: 'pagamentos', name: '💰 Pagamentos', icon: DollarSign },
     { id: 'analytics', name: '📊 Analytics', icon: BarChart3 }
   ];
-
-  return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-gray-900">🏛️ {firm?.name || 'Fazenda BW'} - Sistema Completo</h1>
-        <div className="flex items-center gap-2">
-          <span className={`px-2 py-1 rounded text-sm ${
-            recentActivity.length > 0 
-              ? 'bg-green-100 text-green-800' 
-              : 'bg-yellow-100 text-yellow-800'
-          }`}>
-            {recentActivity.length > 0 ? '✅ Conectado' : '⏳ Aguardando'}
-          </span>
-        </div>
-      </div>
-
-      {/* Navigation Tabs */}
-      <div className="bg-white rounded-lg shadow">
-        <div className="border-b border-gray-200">
-          <nav className="-mb-px flex space-x-8 px-6">
-            {tabs.map((tab) => {
-              const Icon = tab.icon;
-              return (
-                <button
-                  key={tab.id}
-                  onClick={() => setCurrentTab(tab.id as any)}
-                  className={`py-4 px-1 border-b-2 font-medium text-sm flex items-center gap-2 transition-colors ${
-                    currentTab === tab.id
-                      ? 'border-blue-500 text-blue-600'
-                      : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-                  }`}
-                >
-                  <Icon size={16} />
-                  {tab.name}
-                </button>
-              );
-            })}
-          </nav>
-        </div>
-        
-        <div className="p-6">
-          {currentTab === 'dashboard' && (
-            <div className="space-y-6">{renderDashboard()}</div>
-          )}
-          
-          {currentTab === 'usuarios' && (
-            <TrabalhadoresBWManagement 
-              usuarios={usuarios} 
-              onUpdateUsuarios={handleUpdateUsuarios}
-              recentActivity={recentActivity}
-              itemTranslations={itemTranslations}
-              getBestDisplayName={getBestDisplayName}
-            />
-          )}
-          
-          {currentTab === 'inventario' && (
-            <EstoqueBWManagement 
-              inventario={inventario} 
-              onUpdateInventario={handleUpdateInventario} 
-            />
-          )}
-          
-          {currentTab === 'pagamentos' && (
-            <PagamentosBWManagement 
-              pagamentos={pagamentos} 
-              usuarios={usuarios}
-              onUpdatePagamentos={handleUpdatePagamentos} 
-            />
-          )}
-          
-          {currentTab === 'analytics' && (
-            <AnalyticsBWManagement 
-              recentActivity={recentActivity}
-              usuarios={usuarios}
-              inventario={inventario}
-              pagamentos={pagamentos}
-            />
-          )}
-        </div>
-      </div>
-    </div>
-  );
 
   function renderDashboard() {
     return (
@@ -1099,20 +1106,13 @@ export default function FazendaBW({ firm }: FazendaBWProps = {}) {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Item Activities */}
         <div className="bg-white rounded-lg shadow">
-          <div className="p-4 border-b flex items-center justify-between">
+          <div className="p-4 border-b">
             <h3 className="text-lg font-semibold">
               📦 Atividades de Itens ({getItemActivities().length})
             </h3>
-            <button 
-              onClick={() => toggleSection('itemActivity')}
-              className="p-1 hover:bg-gray-100 rounded"
-            >
-              {expandedSections.itemActivity ? <ChevronUp /> : <ChevronDown />}
-            </button>
           </div>
           
-          {expandedSections.itemActivity && (
-            <div className="p-4 max-h-96 overflow-y-auto">
+          <div className="p-4 max-h-96 overflow-y-auto">
               {loading ? (
                 <div className="flex justify-center py-8">
                   <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
@@ -1192,20 +1192,13 @@ export default function FazendaBW({ firm }: FazendaBWProps = {}) {
 
         {/* Money Activities */}
         <div className="bg-white rounded-lg shadow">
-          <div className="p-4 border-b flex items-center justify-between">
+          <div className="p-4 border-b">
             <h3 className="text-lg font-semibold">
               💰 Atividades de Dinheiro ({getMoneyActivities().length})
             </h3>
-            <button 
-              onClick={() => toggleSection('moneyActivity')}
-              className="p-1 hover:bg-gray-100 rounded"
-            >
-              {expandedSections.moneyActivity ? <ChevronUp /> : <ChevronDown />}
-            </button>
           </div>
           
-          {expandedSections.moneyActivity && (
-            <div className="p-4 max-h-96 overflow-y-auto">
+          <div className="p-4 max-h-96 overflow-y-auto">
               {getMoneyActivities().length === 0 ? (
                 <p className="text-gray-500 text-center py-8">Nenhuma atividade financeira capturada</p>
               ) : (
@@ -1231,7 +1224,7 @@ export default function FazendaBW({ firm }: FazendaBWProps = {}) {
                                   </span>
                                   <span className="text-gray-600">por</span>
                                   <span className={`px-2 py-1 rounded text-xs font-medium ${
-                                    transaction.tipo === 'deposito' || transaction.tipo === 'venda'
+                                    transaction.tipo === 'deposito' || transaction.tipo === 'venda' || transaction.tipo === 'compra'
                                       ? 'bg-green-100 text-green-800' 
                                       : 'bg-red-100 text-red-800'
                                   }`}>
@@ -1244,10 +1237,12 @@ export default function FazendaBW({ firm }: FazendaBWProps = {}) {
                                   <span className="text-gray-600">
                                     {transaction.tipo === 'deposito' ? 'depositou' : 
                                      transaction.tipo === 'saque' ? 'sacou' :
+                                     transaction.tipo === 'compra' ? 'gastou' :
+                                     transaction.tipo === 'venda' ? 'vendeu' :
                                      'transação'}
                                   </span>
                                   <span className={`px-2 py-1 rounded text-xs font-medium ${
-                                    transaction.tipo === 'deposito' || transaction.tipo === 'venda'
+                                    transaction.tipo === 'deposito' || transaction.tipo === 'venda' || transaction.tipo === 'compra'
                                       ? 'bg-green-100 text-green-800' 
                                       : 'bg-red-100 text-red-800'
                                   }`}>
@@ -1290,10 +1285,15 @@ export default function FazendaBW({ firm }: FazendaBWProps = {}) {
                 </div>
               )}
             </div>
-          )}
         </div>
       </div>
       </>
     );
   }
+
+  return (
+    <div className="space-y-6">
+      {renderDashboard()}
+    </div>
+  );
 }

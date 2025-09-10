@@ -1,0 +1,192 @@
+{
+  "playerName": "Rafael Nardelli",
+  "channelId": "1408277426190024796",
+  "messageId": "1409627015354519712",
+  "totalEarnings": 1333.5,
+  "totalServices": 21,
+  "services": [
+    {
+      "receiptId": "20250824632",
+      "serviceType": "animal",
+      "itemType": "Bovino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T13:41:43.575Z",
+      "paid": true
+    },
+    {
+      "receiptId": "20250825490",
+      "serviceType": "animal",
+      "itemType": "Bovino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T13:41:40.985Z",
+      "paid": true
+    },
+    {
+      "receiptId": "20250825649",
+      "serviceType": "animal",
+      "itemType": "Bovino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T13:41:38.549Z",
+      "paid": true
+    },
+    {
+      "receiptId": "20250825257",
+      "serviceType": "animal",
+      "itemType": "Ovino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T13:41:36.238Z",
+      "paid": true
+    },
+    {
+      "receiptId": "20250825782",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-25T13:41:34.066Z",
+      "paid": true
+    },
+    {
+      "receiptId": "20250825822",
+      "serviceType": "animal",
+      "itemType": "Bovino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T13:41:31.903Z",
+      "paid": true
+    },
+    {
+      "receiptId": "20250825694",
+      "serviceType": "animal",
+      "itemType": "Ovino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T13:41:21.338Z",
+      "paid": true
+    },
+    {
+      "receiptId": "20250825196",
+      "serviceType": "animal",
+      "itemType": "Bovino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T14:21:17.766Z"
+    },
+    {
+      "receiptId": "20250825203",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-25T14:21:21.851Z"
+    },
+    {
+      "receiptId": "20250825397",
+      "serviceType": "animal",
+      "itemType": "Bovino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T14:51:44.451Z"
+    },
+    {
+      "receiptId": "20250825801",
+      "serviceType": "animal",
+      "itemType": "Equino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T15:54:16.133Z"
+    },
+    {
+      "receiptId": "20250825359",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-25T15:54:20.252Z"
+    },
+    {
+      "receiptId": "20250825769",
+      "serviceType": "animal",
+      "itemType": "Ovino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T16:21:24.951Z"
+    },
+    {
+      "receiptId": "20250825527",
+      "serviceType": "animal",
+      "itemType": "Ovino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T17:19:20.882Z"
+    },
+    {
+      "receiptId": "20250825463",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-25T17:19:26.289Z"
+    },
+    {
+      "receiptId": "20250825372",
+      "serviceType": "animal",
+      "itemType": "Ovino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T17:48:58.433Z"
+    },
+    {
+      "receiptId": "20250825008",
+      "serviceType": "animal",
+      "itemType": "Ovino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T18:09:37.889Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250825479",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 490,
+      "payment": 73.5,
+      "timestamp": "2025-08-25T18:12:52.851Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250825507",
+      "serviceType": "animal",
+      "itemType": "Bovino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T18:55:43.913Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250825059",
+      "serviceType": "animal",
+      "itemType": "Avino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T19:20:18.248Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250825180",
+      "serviceType": "animal",
+      "itemType": "Bovino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-25T19:54:29.668Z",
+      "approvedBy": "jizarstoffel"
+    }
+  ],
+  "lastUpdated": "2025-08-25T19:54:29.670Z",
+  "finalizedAt": "2025-08-30T16:58:43.723Z",
+  "finalizedBy": "jizarstoffel"
+}

@@ -1,0 +1,14 @@
+{
+  "receiptId": "20250831122",
+  "timestamp": "2025-08-31T17:17:45.926Z",
+  "playerName": "Impera cyrus",
+  "serviceType": "planta",
+  "quantity": 500,
+  "plantName": "Milho",
+  "playerPayment": 75,
+  "status": "APPROVED",
+  "screenshotPath": "C:\\Users\\jizar\\OneDrive\\Documents\\DiscordBot\\uploads\\temp\\temp_1756660665426_20B5DF1.JPG",
+  "approved": true,
+  "approvedBy": "jizarstoffel",
+  "approvedAt": "2025-08-31T20:10:55.844Z"
+}

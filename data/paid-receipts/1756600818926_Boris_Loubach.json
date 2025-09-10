@@ -1,0 +1,372 @@
+{
+  "playerName": "Boris Loubach",
+  "channelId": "1404674506181574727",
+  "messageId": "1411510667055468606",
+  "totalEarnings": 2937,
+  "totalServices": 40,
+  "services": [
+    {
+      "receiptId": "20250830271",
+      "serviceType": "animal",
+      "itemType": "Suino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-31T00:37:41.741Z",
+      "approvedBy": "zerobalaa"
+    },
+    {
+      "receiptId": "20250830460",
+      "serviceType": "planta",
+      "itemType": "Junco",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T00:37:49.424Z",
+      "approvedBy": "zerobalaa"
+    },
+    {
+      "receiptId": "20250830566",
+      "serviceType": "planta",
+      "itemType": "Junco",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T00:37:53.784Z",
+      "approvedBy": "zerobalaa"
+    },
+    {
+      "receiptId": "20250830117",
+      "serviceType": "planta",
+      "itemType": "Junco",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T00:37:57.272Z",
+      "approvedBy": "zerobalaa"
+    },
+    {
+      "receiptId": "20250830808",
+      "serviceType": "planta",
+      "itemType": "Junco",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T00:38:00.011Z",
+      "approvedBy": "zerobalaa"
+    },
+    {
+      "receiptId": "20250830363",
+      "serviceType": "planta",
+      "itemType": "Junco",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T00:38:02.426Z",
+      "approvedBy": "zerobalaa"
+    },
+    {
+      "receiptId": "20250830079",
+      "serviceType": "planta",
+      "itemType": "Junco",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T00:38:04.987Z",
+      "approvedBy": "zerobalaa"
+    },
+    {
+      "receiptId": "20250830265",
+      "serviceType": "planta",
+      "itemType": "Junco",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T00:38:06.977Z",
+      "approvedBy": "zerobalaa"
+    },
+    {
+      "receiptId": "20250830426",
+      "serviceType": "planta",
+      "itemType": "Junco",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T00:38:09.321Z",
+      "approvedBy": "zerobalaa"
+    },
+    {
+      "receiptId": "20250830327",
+      "serviceType": "planta",
+      "itemType": "Junco",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T00:38:11.596Z",
+      "approvedBy": "zerobalaa"
+    },
+    {
+      "receiptId": "20250830057",
+      "serviceType": "planta",
+      "itemType": "Junco",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T00:38:13.928Z",
+      "approvedBy": "zerobalaa"
+    },
+    {
+      "receiptId": "20250830142",
+      "serviceType": "animal",
+      "itemType": "Avino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-31T00:38:16.504Z",
+      "approvedBy": "zerobalaa"
+    },
+    {
+      "receiptId": "20250830240",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T00:38:18.888Z",
+      "approvedBy": "zerobalaa"
+    },
+    {
+      "receiptId": "20250830217",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T00:38:21.163Z",
+      "approvedBy": "zerobalaa"
+    },
+    {
+      "receiptId": "20250830701",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T00:38:23.549Z",
+      "approvedBy": "zerobalaa"
+    },
+    {
+      "receiptId": "20250830288",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T00:38:25.524Z",
+      "approvedBy": "zerobalaa"
+    },
+    {
+      "receiptId": "20250830309",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T00:38:27.664Z",
+      "approvedBy": "zerobalaa"
+    },
+    {
+      "receiptId": "20250830445",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T00:38:29.978Z",
+      "approvedBy": "zerobalaa"
+    },
+    {
+      "receiptId": "20250830245",
+      "serviceType": "planta",
+      "itemType": "Junco",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T00:38:32.267Z",
+      "approvedBy": "zerobalaa"
+    },
+    {
+      "receiptId": "20250830040",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T00:38:34.305Z",
+      "approvedBy": "zerobalaa"
+    },
+    {
+      "receiptId": "20250830019",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T00:38:36.717Z",
+      "approvedBy": "zerobalaa"
+    },
+    {
+      "receiptId": "20250830254",
+      "serviceType": "planta",
+      "itemType": "Junco",
+      "quantity": 400,
+      "payment": 60,
+      "timestamp": "2025-08-31T00:38:39.504Z",
+      "approvedBy": "zerobalaa"
+    },
+    {
+      "receiptId": "20250830644",
+      "serviceType": "planta",
+      "itemType": "Junco",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T00:38:41.514Z",
+      "approvedBy": "zerobalaa"
+    },
+    {
+      "receiptId": "20250830148",
+      "serviceType": "planta",
+      "itemType": "Junco",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T00:38:44.725Z",
+      "approvedBy": "zerobalaa"
+    },
+    {
+      "receiptId": "20250830743",
+      "serviceType": "planta",
+      "itemType": "Junco",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T00:38:47.450Z",
+      "approvedBy": "zerobalaa"
+    },
+    {
+      "receiptId": "20250830439",
+      "serviceType": "planta",
+      "itemType": "Junco",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T00:38:50.720Z",
+      "approvedBy": "zerobalaa"
+    },
+    {
+      "receiptId": "20250830407",
+      "serviceType": "planta",
+      "itemType": "Junco",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T00:38:53.988Z",
+      "approvedBy": "zerobalaa"
+    },
+    {
+      "receiptId": "20250830253",
+      "serviceType": "planta",
+      "itemType": "Junco",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T00:38:58.062Z",
+      "approvedBy": "zerobalaa"
+    },
+    {
+      "receiptId": "20250830196",
+      "serviceType": "planta",
+      "itemType": "Junco",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T00:39:01.035Z",
+      "approvedBy": "zerobalaa"
+    },
+    {
+      "receiptId": "20250830474",
+      "serviceType": "planta",
+      "itemType": "Junco",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T00:39:03.234Z",
+      "approvedBy": "zerobalaa"
+    },
+    {
+      "receiptId": "20250830883",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T00:39:05.488Z",
+      "approvedBy": "zerobalaa"
+    },
+    {
+      "receiptId": "20250830494",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T00:39:08.243Z",
+      "approvedBy": "zerobalaa"
+    },
+    {
+      "receiptId": "20250830714",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T00:39:10.356Z",
+      "approvedBy": "zerobalaa"
+    },
+    {
+      "receiptId": "20250830015",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T00:39:12.924Z",
+      "approvedBy": "zerobalaa"
+    },
+    {
+      "receiptId": "20250830270",
+      "serviceType": "animal",
+      "itemType": "Avino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-31T00:39:15.515Z",
+      "approvedBy": "zerobalaa"
+    },
+    {
+      "receiptId": "20250831352",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T00:39:17.570Z",
+      "approvedBy": "zerobalaa"
+    },
+    {
+      "receiptId": "20250831798",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T00:39:19.881Z",
+      "approvedBy": "zerobalaa"
+    },
+    {
+      "receiptId": "20250831816",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T00:39:22.270Z",
+      "approvedBy": "zerobalaa"
+    },
+    {
+      "receiptId": "20250831034",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T00:39:24.533Z",
+      "approvedBy": "zerobalaa"
+    },
+    {
+      "receiptId": "20250831015",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 480,
+      "payment": 72,
+      "timestamp": "2025-08-31T00:39:26.983Z",
+      "approvedBy": "zerobalaa"
+    }
+  ],
+  "lastUpdated": "2025-08-31T00:39:26.984Z",
+  "finalizedAt": "2025-08-31T00:40:18.926Z",
+  "finalizedBy": "zerobalaa"
+}

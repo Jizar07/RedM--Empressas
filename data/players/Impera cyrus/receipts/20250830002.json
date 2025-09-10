@@ -1,0 +1,14 @@
+{
+  "receiptId": "20250830002",
+  "timestamp": "2025-08-30T15:41:59.675Z",
+  "playerName": "Impera cyrus",
+  "serviceType": "animal",
+  "quantity": 1,
+  "animalType": "Suino",
+  "playerPayment": 60,
+  "status": "APPROVED",
+  "screenshotPath": "C:\\Users\\jizar\\OneDrive\\Documents\\DiscordBot\\uploads\\temp\\temp_1756568518816_200D041.JPG",
+  "approved": true,
+  "approvedBy": "jizarstoffel",
+  "approvedAt": "2025-08-30T16:28:30.079Z"
+}

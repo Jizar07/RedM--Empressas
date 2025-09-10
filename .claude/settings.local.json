@@ -40,7 +40,14 @@
       "Read(//mnt/c/Users/jizar/OneDrive/Documents/Fazenda/Webbased/**)",
       "Bash(npm uninstall:*)",
       "Read(//mnt/c/Users/jizar/OneDrive/Documents/Fazenda/Webbased/**)",
-      "Read(//mnt/c/Users/jizar/OneDrive/Documents/Fazenda/Webbased/**)"
+      "Read(//mnt/c/Users/jizar/OneDrive/Documents/Fazenda/Webbased/**)",
+      "Bash(taskkill:*)",
+      "Bash(pm2 start:*)",
+      "Bash(pm2 logs:*)",
+      "Bash(pm2 delete:*)",
+      "Bash(pm2 status:*)",
+      "Read(//c/Users/jizar/OneDrive/Documents/Cabra da Peste/**)",
+      "Read(//c/Users/jizar/OneDrive/Documents/Stoffel Bot/**)"
     ],
     "deny": [],
     "ask": []

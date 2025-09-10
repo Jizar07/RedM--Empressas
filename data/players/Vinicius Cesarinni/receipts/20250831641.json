@@ -1,0 +1,14 @@
+{
+  "receiptId": "20250831641",
+  "timestamp": "2025-08-31T20:18:02.987Z",
+  "playerName": "Vinicius Cesarinni",
+  "serviceType": "animal",
+  "quantity": 1,
+  "animalType": "Avino",
+  "playerPayment": 60,
+  "status": "APPROVED",
+  "screenshotPath": "C:\\Users\\jizar\\OneDrive\\Documents\\DiscordBot\\uploads\\temp\\temp_1756671482252_image.png",
+  "approved": true,
+  "approvedBy": "jizarstoffel",
+  "approvedAt": "2025-09-01T20:16:32.028Z"
+}

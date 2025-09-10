@@ -1,0 +1,30 @@
+{
+  "playerName": "Boris Loubach",
+  "channelId": "1404674506181574727",
+  "messageId": "1411919667907268639",
+  "totalEarnings": 150,
+  "totalServices": 2,
+  "services": [
+    {
+      "receiptId": "20250901085",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-09-01T03:44:37.378Z",
+      "approvedBy": "zerobalaa"
+    },
+    {
+      "receiptId": "20250901655",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-09-01T03:44:40.731Z",
+      "approvedBy": "zerobalaa"
+    }
+  ],
+  "lastUpdated": "2025-09-01T03:44:40.732Z",
+  "finalizedAt": "2025-09-01T03:46:56.064Z",
+  "finalizedBy": "zerobalaa"
+}

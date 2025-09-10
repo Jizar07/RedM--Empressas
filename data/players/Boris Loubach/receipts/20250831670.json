@@ -1,0 +1,14 @@
+{
+  "receiptId": "20250831670",
+  "timestamp": "2025-08-31T01:59:37.654Z",
+  "playerName": "Boris Loubach",
+  "serviceType": "animal",
+  "quantity": 1,
+  "animalType": "Cabrino",
+  "playerPayment": 60,
+  "status": "APPROVED",
+  "screenshotPath": "C:\\Users\\jizar\\OneDrive\\Documents\\DiscordBot\\uploads\\temp\\temp_1756605576541_image.png",
+  "approved": true,
+  "approvedBy": "jizarstoffel",
+  "approvedAt": "2025-08-31T03:36:56.270Z"
+}

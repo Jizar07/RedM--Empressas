@@ -1,0 +1,19 @@
+{
+  "playerName": "Olivia Cesarinni",
+  "channelId": "1409334626224308385",
+  "messageId": "1411806172893151262",
+  "totalEarnings": 75,
+  "totalServices": 1,
+  "services": [
+    {
+      "receiptId": "20250831191",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T20:13:41.566Z",
+      "approvedBy": "jizarstoffel"
+    }
+  ],
+  "lastUpdated": "2025-08-31T20:13:41.569Z"
+}

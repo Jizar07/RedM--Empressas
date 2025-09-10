@@ -19,7 +19,7 @@ export default function GenericFirmDashboard({ firm }: GenericFirmDashboardProps
   // Fetch messages from webhook API - ONLY for this firm's channel
   const fetchMessages = async () => {
     try {
-      const response = await fetch('/api/webhook/channel-messages', {
+      const response = await fetch(`/api/webhook/channel-messages?channelId=${firm.channelId}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' }
       });
@@ -28,10 +28,8 @@ export default function GenericFirmDashboard({ firm }: GenericFirmDashboardProps
         const data = await response.json();
         
         if (data.success && data.messages && Array.isArray(data.messages)) {
-          // CRITICAL: Filter messages by THIS firm's specific channelId only
-          const firmSpecificMessages = data.messages.filter((msg: any) => 
-            msg.channelId === firm.channelId
-          );
+          // Messages are already filtered by channel ID on the server
+          const firmSpecificMessages = data.messages;
           
           
           setMessages(firmSpecificMessages);

@@ -1,0 +1,14 @@
+{
+  "receiptId": "20250831679",
+  "timestamp": "2025-08-31T04:35:23.835Z",
+  "playerName": "Boris Loubach",
+  "serviceType": "planta",
+  "quantity": 500,
+  "plantName": "Milho",
+  "playerPayment": 75,
+  "status": "APPROVED",
+  "screenshotPath": "C:\\Users\\jizar\\OneDrive\\Documents\\DiscordBot\\uploads\\temp\\temp_1756614923021_image.png",
+  "approved": true,
+  "approvedBy": "jizarstoffel",
+  "approvedAt": "2025-08-31T04:52:42.868Z"
+}

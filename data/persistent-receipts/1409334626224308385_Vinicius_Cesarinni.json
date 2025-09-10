@@ -1,9 +1,9 @@
 {
   "playerName": "Vinicius Cesarinni",
   "channelId": "1409334626224308385",
-  "messageId": "1410083689160773702",
-  "totalEarnings": 330,
-  "totalServices": 5,
+  "messageId": "1412169276177256613",
+  "totalEarnings": 1632,
+  "totalServices": 24,
   "services": [
     {
       "receiptId": "20250826939",
@@ -49,7 +49,178 @@
       "payment": 60,
       "timestamp": "2025-08-27T02:09:09.309Z",
       "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250831062",
+      "serviceType": "animal",
+      "itemType": "Avino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-31T20:13:18.350Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250831414",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T20:13:21.695Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250831660",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T20:13:24.010Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250831588",
+      "serviceType": "animal",
+      "itemType": "Avino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-31T20:13:26.979Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250831893",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T20:13:32.087Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250831025",
+      "serviceType": "animal",
+      "itemType": "Avino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-31T20:13:45.058Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250831442",
+      "serviceType": "animal",
+      "itemType": "Avino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-31T20:13:48.050Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250831222",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T20:13:50.981Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250831091",
+      "serviceType": "animal",
+      "itemType": "Avino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-31T20:13:53.216Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250831129",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T20:13:56.057Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250831403",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T20:13:59.069Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250831638",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T20:14:03.013Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250831864",
+      "serviceType": "animal",
+      "itemType": "Avino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-31T20:14:05.619Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250831463",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T20:14:08.597Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250831894",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T20:14:19.093Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250831241",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T20:14:22.463Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250831254",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 480,
+      "payment": 72,
+      "timestamp": "2025-08-31T20:14:25.035Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250831097",
+      "serviceType": "animal",
+      "itemType": "Avino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-31T20:14:27.932Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250831641",
+      "serviceType": "animal",
+      "itemType": "Avino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-09-01T20:16:32.028Z",
+      "approvedBy": "jizarstoffel"
     }
   ],
-  "lastUpdated": "2025-08-27T02:09:09.310Z"
+  "lastUpdated": "2025-09-01T20:16:32.030Z"
 }

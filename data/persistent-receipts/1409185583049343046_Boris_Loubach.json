@@ -1,0 +1,28 @@
+{
+  "playerName": "Boris Loubach",
+  "channelId": "1409185583049343046",
+  "messageId": "1411805619396153394",
+  "totalEarnings": 99,
+  "totalServices": 2,
+  "services": [
+    {
+      "receiptId": "20250831926",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 160,
+      "payment": 24,
+      "timestamp": "2025-08-31T20:11:15.334Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250831400",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T20:11:29.379Z",
+      "approvedBy": "jizarstoffel"
+    }
+  ],
+  "lastUpdated": "2025-08-31T20:11:29.380Z"
+}

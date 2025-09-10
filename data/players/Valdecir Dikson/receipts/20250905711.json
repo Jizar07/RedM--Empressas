@@ -1,0 +1,14 @@
+{
+  "receiptId": "20250905711",
+  "timestamp": "2025-09-05T03:02:23.625Z",
+  "playerName": "Valdecir Dikson",
+  "serviceType": "planta",
+  "quantity": 500,
+  "plantName": "Junco",
+  "playerPayment": 75,
+  "status": "APPROVED",
+  "screenshotPath": "C:\\Users\\jizar\\OneDrive\\Documents\\DiscordBot\\uploads\\temp\\temp_1757041343064_IMG_20250905_000139.jpg",
+  "approved": true,
+  "approvedBy": "jizarstoffel",
+  "approvedAt": "2025-09-05T10:52:50.606Z"
+}

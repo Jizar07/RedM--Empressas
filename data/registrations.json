@@ -559,5 +559,104 @@
     "invitedBy": "Jizar Stoffeliz | 4222",
     "approved": true,
     "registeredAt": "2025-08-28T03:34:53.914Z"
+  },
+  {
+    "userId": "1229972741416026152",
+    "username": "haridade0045",
+    "ingameName": "jose silva",
+    "mailId": "5179",
+    "functionId": "func_1755521046497",
+    "functionName": "Estagiario Fazenda BW",
+    "invitedBy": "Zero Bala | 4035",
+    "approved": true,
+    "registeredAt": "2025-09-02T22:11:21.321Z"
+  },
+  {
+    "userId": "618215832815927307",
+    "username": "akkadxmon",
+    "ingameName": "Valdecir Dikson",
+    "mailId": "5228",
+    "functionId": "func_1755521046497",
+    "functionName": "Estagiario Fazenda BW",
+    "invitedBy": "Zero Bala | 4035",
+    "approved": true,
+    "registeredAt": "2025-09-03T21:57:21.746Z"
+  },
+  {
+    "userId": "311623719300759553",
+    "username": "failnot",
+    "ingameName": "FailNot Stoffeliz",
+    "mailId": "5237",
+    "functionId": "func_1755523224551",
+    "functionName": "Familia",
+    "invitedBy": "Jizar Stoffeliz | 4222",
+    "approved": true,
+    "registeredAt": "2025-09-04T01:52:53.775Z"
+  },
+  {
+    "userId": "435413069082918912",
+    "username": "mors.sad",
+    "ingameName": "Caleb Wayne",
+    "mailId": "5249",
+    "functionId": "func_1755523176717",
+    "functionName": "Estagiario Fazenda BW III",
+    "invitedBy": "Maria da paz | 4393",
+    "approved": true,
+    "registeredAt": "2025-09-04T02:41:20.453Z"
+  },
+  {
+    "userId": "1295927410126094399",
+    "username": "hyan.almeida",
+    "ingameName": "Jack Trigger",
+    "mailId": "5067",
+    "functionId": "func_1755523224551",
+    "functionName": "Familia",
+    "invitedBy": "Jade Belline 🌷",
+    "approved": true,
+    "registeredAt": "2025-09-04T19:35:37.565Z"
+  },
+  {
+    "userId": "1046573583830368339",
+    "username": "catghost01",
+    "ingameName": "Dan Wayne",
+    "mailId": "5252",
+    "functionId": "func_1755523176717",
+    "functionName": "Estagiario Fazenda BW III",
+    "invitedBy": "Maria da paz | 4393",
+    "approved": true,
+    "registeredAt": "2025-09-04T21:25:26.164Z"
+  },
+  {
+    "userId": "875515908385296446",
+    "username": "christiansoares_",
+    "ingameName": "Jasse James",
+    "mailId": "5248",
+    "functionId": "func_1755521046497",
+    "functionName": "Estagiario Fazenda BW",
+    "invitedBy": "Maria da paz | 4393",
+    "approved": true,
+    "registeredAt": "2025-09-05T02:06:25.245Z"
+  },
+  {
+    "userId": "372161270176153601",
+    "username": "jizarstoffel",
+    "ingameName": "Jizar Stoffeliz",
+    "mailId": "4222",
+    "functionId": "func_1757092427161",
+    "functionName": "Trabalhador",
+    "invitedBy": "GM Stoffel",
+    "approved": true,
+    "registeredAt": "2025-09-05T17:23:49.993Z"
+  },
+  {
+    "userId": "159183277674987520",
+    "username": "zerobalaa",
+    "ingameName": "zero bala",
+    "mailId": "4035",
+    "functionId": "func_1757092427161",
+    "functionName": "Trabalhador",
+    "invitedBy": "GM Stoffel",
+    "approved": true,
+    "registeredAt": "2025-09-05T17:51:50.342Z"
   }
 ]

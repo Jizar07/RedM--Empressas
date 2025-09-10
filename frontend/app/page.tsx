@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { useSession } from 'next-auth/react';
+import { useServer } from '@/contexts/ServerContext';
 import { Server, Users, Bot, Activity, MessageSquare, Settings, BarChart3, Shield, Package, Truck, Send, FileText, Gavel, ChefHat, DollarSign, Building } from 'lucide-react';
 import ServerStatusCard from '@/components/ServerStatusCard';
 import EnhancedServerStatus from '@/components/EnhancedServerStatus';
@@ -15,10 +17,6 @@ import OrdersManagement from '@/components/OrdersManagement';
 import OrdersDashboard from '@/components/OrdersDashboard';
 import ChannelLogsConfig from '@/components/ChannelLogsConfig';
 import DiscordCommands from '@/components/DiscordCommands';
-import ServiceHistory from '@/components/ServiceHistory';
-import FarmServiceSettings from '@/components/FarmServiceSettings';
-import FarmServiceOverview from '@/components/FarmServiceOverview';
-import FarmServiceManagement from '@/components/FarmServiceManagement';
 import ModerationSettings from '@/components/ModerationSettings';
 import Recipes from '@/components/Recipes';
 import PriceList from '@/components/PriceList';
@@ -26,10 +24,14 @@ import FazendaBW from '@/components/FazendaBW';
 import EstoqueBW from '@/components/EstoqueBW';
 import TrabalhadoresBW from '@/components/TrabalhadoresBW';
 import FirmManagement from '@/components/FirmManagement';
+import GenericFirmDashboard from '@/components/GenericFirmDashboard';
+import FirmTemplateRenderer, { getAvailableComponents } from '@/components/FirmTemplateRenderer';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import UserMenu from '@/components/UserMenu';
 import SimpleUserMenu from '@/components/SimpleUserMenu';
 import AuthButton from '@/components/AuthButton';
+import ServerSelector from '@/components/ServerSelector';
+import SplashPage from '@/components/SplashPage';
 import RoleGuard from '@/components/RoleGuard';
 import { useAuth } from '@/lib/auth';
 import { healthCheck, botApi, serverApi } from '@/lib/api';
@@ -43,11 +45,16 @@ export const dynamic = 'force-dynamic';
 export default function HomePage() {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const { data: session, status } = useSession();
+  
+  // Debug logging
+  console.log('NextAuth session debug:', { session, status });
   const [activeTab, setActiveTab] = useState('dashboard');
   const [botStats, setBotStats] = useState<BotStats | null>(null);
   const [healthStatus, setHealthStatus] = useState<any>(null);
   const [serverInfo, setServerInfo] = useState<ServerInfo | null>(null);
   const [mounted, setMounted] = useState(false);
+  const { selectedServerId, selectedServerName, setSelectedServer } = useServer();
   const { canAccessChannelParser, isAdmin } = useAuth();
   const { accessibleFirms, loading: firmsLoading } = useFirmAccess();
   
@@ -56,11 +63,6 @@ export default function HomePage() {
 
   // Helper function to change tab and update URL
   const changeTab = (tabId: string) => {
-    // If clicking on main Fazenda BW tab, default to dashboard
-    if (tabId === 'fazenda-bw') {
-      tabId = 'fazenda-bw-dashboard';
-    }
-    
     // If clicking on any firm tab, default to that firm's dashboard
     const firm = accessibleFirms.find((f: FirmConfig) => f.id === tabId);
     if (firm) {
@@ -78,8 +80,14 @@ export default function HomePage() {
     router.replace(newUrl, { scroll: false });
   };
 
+  // Handle server selection
+  const handleServerSelect = (serverId: string, serverName: string) => {
+    setSelectedServer(serverId, serverName);
+  };
+
   useEffect(() => {
     setMounted(true);
+    
     // Get tab from URL parameter on page load
     const tabFromUrl = searchParams.get('tab');
     if (tabFromUrl) {
@@ -111,160 +119,154 @@ export default function HomePage() {
     return () => clearInterval(interval);
   }, [mounted]);
 
-  const tabs = [
-    {
-      id: 'dashboard',
-      name: 'Dashboard',
-      icon: BarChart3,
-      description: 'Main dashboard overview'
-    },
-    ...(canAccessChannelParser() ? [{
-      id: 'channel-parser',
-      name: 'Channel Parser',
-      icon: MessageSquare,
-      description: 'Parse Discord channels and send to webhooks'
-    }] : []),
-    ...(showAdminTabs ? [{
-      id: 'admin',
-      name: 'Admin',
-      icon: Shield,
-      description: 'Administrative tools and settings',
-      submenu: [
-        {
-          id: 'registration-settings',
-          name: 'Registration Settings',
-          icon: Settings,
-          description: 'Configure registration form and roles'
-        },
-        {
-          id: 'registration-analytics', 
-          name: 'Registration Analytics',
-          icon: BarChart3,
-          description: 'View and manage registrations'
-        },
-        {
-          id: 'orders-settings',
-          name: 'Orders Settings',
-          icon: Package,
-          description: 'Configure orders system and firms'
-        },
-        {
-          id: 'channel-logs-config',
-          name: 'Channel Logs Config',
-          icon: MessageSquare,
-          description: 'Configure automatic channel log forwarding'
-        },
-        {
-          id: 'discord-commands',
-          name: 'Discord Commands',
-          icon: Users,
-          description: 'Manage Discord slash commands'
-        },
-        {
-          id: 'moderation-settings',
-          name: 'Moderation',
-          icon: Gavel,
-          description: 'Configure moderation and auto-reply features'
-        },
-        {
-          id: 'firm-management',
-          name: 'Firm Management',
+  // Generate dynamic tabs including firm tabs
+  const generateTabs = () => {
+    const baseTabs = [
+      {
+        id: 'dashboard',
+        name: 'Dashboard',
+        icon: BarChart3,
+        description: 'Main dashboard overview'
+      },
+      ...(canAccessChannelParser() ? [{
+        id: 'channel-parser',
+        name: 'Channel Parser',
+        icon: MessageSquare,
+        description: 'Parse Discord channels and send to webhooks'
+      }] : []),
+      ...(showAdminTabs ? [{
+        id: 'admin',
+        name: 'Admin',
+        icon: Shield,
+        description: 'Administrative tools and settings',
+        submenu: [
+          {
+            id: 'registration-settings',
+            name: 'Registration Settings',
+            icon: Settings,
+            description: 'Configure registration form and roles'
+          },
+          {
+            id: 'registration-analytics', 
+            name: 'Registration Analytics',
+            icon: BarChart3,
+            description: 'View and manage registrations'
+          },
+          {
+            id: 'orders-settings',
+            name: 'Orders Settings',
+            icon: Package,
+            description: 'Configure orders system and firms'
+          },
+          {
+            id: 'channel-logs-config',
+            name: 'Channel Logs Config',
+            icon: MessageSquare,
+            description: 'Configure automatic channel log forwarding'
+          },
+          {
+            id: 'discord-commands',
+            name: 'Discord Commands',
+            icon: Users,
+            description: 'Manage Discord slash commands'
+          },
+          {
+            id: 'moderation-settings',
+            name: 'Moderation',
+            icon: Gavel,
+            description: 'Configure moderation and auto-reply features'
+          },
+          {
+            id: 'firm-management',
+            name: 'Firm Management',
+            icon: Building,
+            description: 'Configure multiple firms and monitoring'
+          }
+        ]
+      }] : []),
+      {
+        id: 'atlanta-server',
+        name: 'Atlanta Server',
+        icon: Server,
+        description: 'Server status and player management'
+      },
+      {
+        id: 'servicos',
+        name: 'Serviços',
+        icon: Truck,
+        description: 'Encomendas, receitas e lista de preços',
+        submenu: [
+          {
+            id: 'orders-dashboard',
+            name: 'Encomendas',
+            icon: Package,
+            description: 'Sistema de pedidos e encomendas'
+          },
+          {
+            id: 'recipes',
+            name: 'Receitas',
+            icon: ChefHat,
+            description: 'Calculadora de receitas'
+          },
+          {
+            id: 'price-list',
+            name: 'Lista de Preços',
+            icon: DollarSign,
+            description: 'Gerenciamento de preços de itens'
+          }
+        ]
+      }
+    ];
+
+    // Add dynamic firm tabs
+    if (!firmsLoading && accessibleFirms.length > 0) {
+      accessibleFirms.forEach((firm: FirmConfig) => {
+        const availableComponents = getAvailableComponents(firm);
+        const iconMap: Record<string, any> = {
+          BarChart3, Package, Users, DollarSign, Settings, Activity
+        };
+        
+        const submenu = availableComponents
+          .filter(comp => comp.enabled)
+          .map(comp => ({
+            id: `${firm.id}-${comp.id}`,
+            name: comp.name,
+            icon: iconMap[comp.icon] || BarChart3,
+            description: `${comp.name} para ${firm.name}`
+          }));
+
+        baseTabs.push({
+          id: firm.id,
+          name: firm.name,
           icon: Building,
-          description: 'Configure multiple firms and monitoring'
-        }
-      ]
-    }] : []),
-    {
-      id: 'farm-services',
-      name: 'Farm Services',
-      icon: Truck,
-      description: 'Farm service submissions and receipts',
-      submenu: [
-        {
-          id: 'farm-service-overview',
-          name: 'System Overview',
-          icon: BarChart3,
-          description: 'Live submissions and system monitoring'
-        },
-        {
-          id: 'service-history',
-          name: 'Service History',
-          icon: FileText,
-          description: 'View service receipts and earnings'
-        },
-        {
-          id: 'farm-service-settings',
-          name: 'Service Settings',
-          icon: Settings,
-          description: 'Configure farm service system'
-        }
-      ]
-    },
-    {
-      id: 'atlanta-server',
-      name: 'Atlanta Server',
-      icon: Server,
-      description: 'Server status and player management'
-    },
-    {
-      id: 'fazenda-bw',
-      name: 'Fazenda BW',
-      icon: BarChart3,
-      description: 'Farm management dashboard with extension integration',
-      submenu: [
-        {
-          id: 'fazenda-bw-dashboard',
-          name: 'Dashboard',
-          icon: BarChart3,
-          description: 'Real-time activity feeds and farm overview'
-        },
-        {
-          id: 'fazenda-bw-estoque',
-          name: 'Estoque',
-          icon: Package,
-          description: 'Inventory management and item tracking'
-        },
-        {
-          id: 'fazenda-bw-trabalhadores',
-          name: 'Trabalhadores',
-          icon: Users,
-          description: 'Worker performance and analytics'
-        }
-      ]
-    },
-    {
-      id: 'servicos',
-      name: 'Serviços',
-      icon: Truck,
-      description: 'Encomendas, receitas e lista de preços',
-      submenu: [
-        {
-          id: 'orders-dashboard',
-          name: 'Encomendas',
-          icon: Package,
-          description: 'Sistema de pedidos e encomendas'
-        },
-        {
-          id: 'recipes',
-          name: 'Receitas',
-          icon: ChefHat,
-          description: 'Calculadora de receitas'
-        },
-        {
-          id: 'price-list',
-          name: 'Lista de Preços',
-          icon: DollarSign,
-          description: 'Gerenciamento de preços de itens'
-        }
-      ]
-    },
-    {
-      id: 'empresas',
-      name: 'Empresas',
-      icon: Building,
-      description: 'Manage multiple firms with role-based access'
+          description: firm.description || `Gestão da empresa ${firm.name}`,
+          submenu: submenu.length > 0 ? submenu : [
+            {
+              id: `${firm.id}-dashboard`,
+              name: 'Dashboard',
+              icon: BarChart3,
+              description: `Dashboard da ${firm.name}`
+            }
+          ]
+        });
+      });
     }
-  ];
+
+    return baseTabs;
+  };
+
+  const tabs = generateTabs();
+
+  // Show splash page for unauthenticated users
+  if (!mounted || status === 'loading') {
+    return <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-indigo-600"></div>
+    </div>;
+  }
+
+  if (status === 'unauthenticated' || !session) {
+    return <SplashPage botStats={botStats} />;
+  }
 
   return (
     // <ProtectedRoute>
@@ -278,8 +280,8 @@ export default function HomePage() {
                 <Server className="h-6 w-6 text-white" />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-gray-900">Black Golden Dashboard</h1>
-                <p className="text-sm text-gray-500">Familia BlackGolden Management</p>
+                <h1 className="text-xl font-bold text-gray-900">Stoffel's RedM Empresas</h1>
+                <p className="text-sm text-gray-500">Gerenciador de Empresas</p>
               </div>
             </div>
 
@@ -309,16 +311,7 @@ export default function HomePage() {
               const isActive = activeTab === tab.id || 
                 (tab.id === 'admin' && (activeTab === 'registration-settings' || activeTab === 'registration-analytics' || activeTab === 'orders-settings' || activeTab === 'channel-logs-config' || activeTab === 'discord-commands' || activeTab === 'moderation-settings' || activeTab === 'firm-management')) ||
                 (tab.id === 'servicos' && (activeTab === 'orders-dashboard' || activeTab === 'orders-management' || activeTab === 'recipes' || activeTab === 'price-list')) ||
-                (tab.id === 'farm-services' && (activeTab === 'farm-service-overview' || activeTab === 'service-history' || activeTab === 'farm-service-settings')) ||
-                (tab.id === 'fazenda-bw' && (activeTab === 'fazenda-bw-dashboard' || activeTab === 'fazenda-bw-estoque' || activeTab === 'fazenda-bw-trabalhadores')) ||
-                (tab.id === 'empresas' && (
-                  accessibleFirms.some((firm: FirmConfig) => 
-                    activeTab === `firm-${firm.id}` || 
-                    activeTab === `firm-${firm.id}-dashboard` || 
-                    activeTab === `firm-${firm.id}-estoque` || 
-                    activeTab === `firm-${firm.id}-trabalhadores`
-                  )
-                ));
+                (tab.submenu && tab.submenu.some((subitem: any) => subitem.id === activeTab));
               return (
                 <button
                   key={tab.id}
@@ -338,13 +331,23 @@ export default function HomePage() {
         </div>
       </div>
 
+      {/* Server Selection */}
+      <div className="bg-gray-50 border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <ServerSelector 
+            onServerSelect={handleServerSelect}
+            selectedServerId={selectedServerId}
+          />
+        </div>
+      </div>
+
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {activeTab === 'dashboard' && (
           <div className="space-y-8">
             {/* Dashboard Overview */}
             <div className="card p-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Familia BlackGolden Dashboard</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">Stoffel's RedM Empresas Dashboard</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="bg-gradient-to-r from-red-500 to-red-600 p-6 rounded-lg text-white">
                   <h3 className="text-lg font-semibold mb-2">Total Players</h3>
@@ -413,14 +416,6 @@ export default function HomePage() {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
                 <button
-                  onClick={() => changeTab('fazenda-bw')}
-                  className="p-4 border border-emerald-300 rounded-lg hover:bg-emerald-50 transition-colors text-left bg-emerald-50"
-                >
-                  <BarChart3 className="h-6 w-6 text-emerald-600 mb-2" />
-                  <h4 className="font-medium text-gray-900">Fazenda BW</h4>
-                  <p className="text-sm text-gray-500">Dashboard da fazenda com extensão</p>
-                </button>
-                <button
                   onClick={() => changeTab('empresas')}
                   className="p-4 border border-blue-300 rounded-lg hover:bg-blue-50 transition-colors text-left bg-blue-50"
                 >
@@ -456,6 +451,7 @@ export default function HomePage() {
             </RoleGuard>
           </div>
         )}
+
 
         {(activeTab === 'admin' || activeTab === 'registration-settings' || activeTab === 'registration-analytics' || activeTab === 'orders-settings' || activeTab === 'channel-logs-config' || activeTab === 'discord-commands' || activeTab === 'moderation-settings' || activeTab === 'firm-management') && (
           <div className="space-y-8">
@@ -615,61 +611,6 @@ export default function HomePage() {
           </div>
         )}
 
-        {/* Farm Services Section */}
-        {(activeTab === 'farm-services' || activeTab === 'farm-service-overview' || activeTab === 'service-history' || activeTab === 'farm-service-settings') && (
-          <div className="space-y-8">
-            {/* Service Submenu */}
-            <div className="card p-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Farm Services</h2>
-              
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <button
-                  onClick={() => changeTab('farm-service-overview')}
-                  className={`p-6 border-2 rounded-lg text-left transition-colors ${
-                    activeTab === 'farm-service-overview'
-                      ? 'border-red-500 bg-red-50'
-                      : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
-                  }`}
-                >
-                  <BarChart3 className="h-8 w-8 text-gray-600 mb-3" />
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">System Overview</h3>
-                  <p className="text-gray-600">Live submissions, Discord integration, and system monitoring</p>
-                </button>
-                
-                <button
-                  onClick={() => changeTab('service-history')}
-                  className={`p-6 border-2 rounded-lg text-left transition-colors ${
-                    activeTab === 'service-history'
-                      ? 'border-red-500 bg-red-50'
-                      : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
-                  }`}
-                >
-                  <FileText className="h-8 w-8 text-gray-600 mb-3" />
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Service History</h3>
-                  <p className="text-gray-600">View receipts, earnings history, and service records</p>
-                </button>
-                
-                <button
-                  onClick={() => changeTab('farm-service-settings')}
-                  className={`p-6 border-2 rounded-lg text-left transition-colors ${
-                    activeTab === 'farm-service-settings'
-                      ? 'border-red-500 bg-red-50'
-                      : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
-                  }`}
-                >
-                  <Settings className="h-8 w-8 text-gray-600 mb-3" />
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Service Settings</h3>
-                  <p className="text-gray-600">Configure farm service system parameters</p>
-                </button>
-              </div>
-            </div>
-
-            {/* Content Area */}
-            {activeTab === 'farm-service-overview' && <FarmServiceManagement />}
-            {activeTab === 'service-history' && <ServiceHistory />}
-            {activeTab === 'farm-service-settings' && <FarmServiceSettings />}
-          </div>
-        )}
 
         {/* Empresas Section */}
         {activeTab === 'empresas' && (
@@ -750,34 +691,62 @@ export default function HomePage() {
           </div>
         )}
 
-        {/* Fazenda BW Section */}
-        {(activeTab === 'fazenda-bw' || activeTab === 'fazenda-bw-dashboard' || activeTab === 'fazenda-bw-estoque' || activeTab === 'fazenda-bw-trabalhadores') && (
-          <div className="space-y-8">
-            {/* Content Area */}
-            {activeTab === 'fazenda-bw-dashboard' && <FazendaBW />}
-            {activeTab === 'fazenda-bw-estoque' && <EstoqueBW />}
-            {activeTab === 'fazenda-bw-trabalhadores' && <TrabalhadoresBW />}
-          </div>
-        )}
-
         {/* Dynamic Firm Sections */}
         {accessibleFirms.map((firm: FirmConfig) => {
-            const firmTabPattern = `firm-${firm.id}`;
-            const isDashboard = activeTab === `${firmTabPattern}-dashboard`;
-            const isEstoque = activeTab === `${firmTabPattern}-estoque`;
-            const isTrabalhadores = activeTab === `${firmTabPattern}-trabalhadores`;
-            const isMainFirmTab = activeTab === firmTabPattern;
-            const isAnyFirmTab = isDashboard || isEstoque || isTrabalhadores || isMainFirmTab;
+            const firmActiveComponents = getAvailableComponents(firm);
+            const isAnyFirmTab = firmActiveComponents.some(comp => 
+              activeTab === `${firm.id}-${comp.id}` || activeTab === firm.id
+            );
             
             if (!isAnyFirmTab) return null;
             
-            // For ALL firms accessed through Empresas - no navigation menu, just content
+            // Determine which component to show based on activeTab
+            let activeComponent = 'dashboard'; // default
+            if (activeTab.startsWith(`${firm.id}-`)) {
+              activeComponent = activeTab.replace(`${firm.id}-`, '');
+            }
+
+            // Icon mapping for components
+            const iconMap: Record<string, any> = {
+              BarChart3, Package, Users, DollarSign, Settings, Activity
+            };
+            
             return (
               <div key={firm.id} className="space-y-8">
-                {/* Content Area - Pass firm data to components */}
-                {(isDashboard || isMainFirmTab) && <FazendaBW firm={firm} />}
-                {isEstoque && <EstoqueBW firm={firm} />}
-                {isTrabalhadores && <TrabalhadoresBW firm={firm} />}
+                {/* Firm Navigation Menu */}
+                <div className="card p-4">
+                  <div className="flex items-center justify-between mb-4">
+                    <h2 className="text-xl font-bold text-gray-900">{firm.name}</h2>
+                    <span className="text-sm text-gray-500">{firm.description || 'Sistema de gestão'}</span>
+                  </div>
+                  
+                  <nav className="flex space-x-1 bg-gray-100 p-1 rounded-lg">
+                    {firmActiveComponents
+                      .filter(comp => comp.enabled)
+                      .map((comp) => {
+                        const Icon = iconMap[comp.icon] || BarChart3;
+                        const isActive = activeTab === `${firm.id}-${comp.id}`;
+                        
+                        return (
+                          <button
+                            key={comp.id}
+                            onClick={() => changeTab(`${firm.id}-${comp.id}`)}
+                            className={`flex items-center space-x-2 px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                              isActive
+                                ? 'bg-white text-red-600 shadow-sm'
+                                : 'text-gray-600 hover:text-gray-900 hover:bg-white/50'
+                            }`}
+                          >
+                            <Icon className="h-4 w-4" />
+                            <span>{comp.name}</span>
+                          </button>
+                        );
+                      })}
+                  </nav>
+                </div>
+
+                {/* Content Area */}
+                <FirmTemplateRenderer firm={firm} activeComponent={activeComponent} />
               </div>
             );
           })}
@@ -789,7 +758,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex items-center justify-between text-sm text-gray-500">
             <div>
-              Black Golden Dashboard v0.002 - Familia BlackGolden Management
+              Empresas Black Golden Dashboard v0.024 - Business Management System
             </div>
             <div className="flex items-center space-x-4">
               {mounted && healthStatus && (

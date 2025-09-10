@@ -1465,6 +1465,40 @@ export async function handleReceiptPayNow(interaction: ButtonInteraction): Promi
 
     console.log(`💰 Receipt ${receiptId} paid by ${interaction.user.username}`);
 
+    // Send payment data to frontend
+    try {
+      const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3051';
+      const paymentData = {
+        userId: receiptData.userId,
+        userName: receiptData.playerName,
+        payment: receiptData.playerPayment,
+        serviceType: receiptData.serviceType === 'animal' ? 'animal' : 'plant',
+        itemType: receiptData.serviceType === 'animal' ? receiptData.animalType : receiptData.plantName,
+        quantity: receiptData.quantity,
+        receiptId: receiptData.receiptId,
+        approvedBy: receiptData.approvedBy,
+        paidBy: interaction.user.username,
+        timestamp: new Date().toISOString(),
+        description: `Serviço de ${receiptData.serviceType === 'animal' ? 'animais' : 'plantas'}`
+      };
+
+      const response = await fetch(`${frontendUrl}/api/webhook/farm-payment`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(paymentData)
+      });
+
+      if (response.ok) {
+        console.log('✅ Payment synced with frontend');
+      } else {
+        console.error('❌ Failed to sync payment with frontend:', await response.text());
+      }
+    } catch (error) {
+      console.error('❌ Error syncing payment with frontend:', error);
+    }
+
   } catch (error: any) {
     console.error('Error handling receipt payment:', error);
     
@@ -1540,12 +1574,16 @@ async function updatePersistentReceiptPaidStatus(interaction: ButtonInteraction,
       });
     }
 
-    // "Pay All" button for final payment
+    // Check if all services are paid
+    const allServicesPaid = persistentReceipt.services.every((service: any) => service.paid);
+    
+    // "Pay All" button for final payment - change if all services are paid
     const finalPayButton = new ButtonBuilder()
       .setCustomId(`final_payment_${channelId}_${playerName.replace(/\s+/g, '_')}`)
-      .setLabel('Pagar Tudo')
-      .setStyle(ButtonStyle.Success)
-      .setEmoji('💰');
+      .setLabel(allServicesPaid ? 'Tudo Pago' : 'Pagar Tudo')
+      .setStyle(allServicesPaid ? ButtonStyle.Secondary : ButtonStyle.Success)
+      .setEmoji(allServicesPaid ? '✅' : '💰')
+      .setDisabled(allServicesPaid);
 
     const finalPayRow = new ActionRowBuilder<ButtonBuilder>()
       .addComponents(finalPayButton);
@@ -1833,6 +1871,58 @@ export async function handleFinalPayment(interaction: ButtonInteraction): Promis
       await fs.unlink(persistentReceiptPath);
     } catch {
       // File might not exist
+    }
+
+    // Send payment data to frontend
+    try {
+      const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3051';
+      
+      // Try to find the actual Discord user ID by searching guild members
+      const guild = interaction.guild;
+      let actualUserId = channelId; // fallback to channel ID
+      
+      if (guild) {
+        const member = guild.members.cache.find(m => 
+          m.displayName.toLowerCase() === playerName.toLowerCase() ||
+          m.user.username.toLowerCase() === playerName.toLowerCase()
+        );
+        if (member) {
+          actualUserId = member.id;
+          console.log(`Found Discord user ID for ${playerName}: ${actualUserId}`);
+        } else {
+          console.log(`Could not find Discord user for ${playerName}, using channel ID`);
+        }
+      }
+      
+      const paymentData = {
+        userId: actualUserId,
+        userName: playerName,
+        payment: persistentReceipt.totalEarnings,
+        serviceType: persistentReceipt.services[0]?.serviceType || 'mixed',
+        itemType: `${persistentReceipt.totalServices} services`,
+        quantity: persistentReceipt.totalServices,
+        receiptId: `final_${channelId}_${Date.now()}`,
+        approvedBy: 'System',
+        paidBy: interaction.user.username,
+        timestamp: new Date().toISOString(),
+        description: `Final payment for ${persistentReceipt.totalServices} services`
+      };
+
+      const response = await fetch(`${frontendUrl}/api/webhook/farm-payment`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(paymentData)
+      });
+
+      if (response.ok) {
+        console.log('✅ Payment synced with frontend');
+      } else {
+        console.error('❌ Failed to sync payment with frontend:', response.status);
+      }
+    } catch (error) {
+      console.error('❌ Error syncing payment with frontend:', error);
     }
 
     console.log(`💰 Final payment processed for ${playerName}: $${persistentReceipt.totalEarnings.toFixed(2)}`);

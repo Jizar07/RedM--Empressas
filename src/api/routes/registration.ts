@@ -4,14 +4,50 @@ import { authenticateUser, requireAdmin } from '../middleware/auth';
 
 const router = Router();
 
-// Get all Discord roles (temporarily bypass auth for testing)
-router.get('/discord/roles', async (_req: any, res: Response): Promise<any> => {
+// Get Discord roles from user's accessible guilds
+router.get('/discord/roles', async (req: any, res: Response): Promise<any> => {
   try {
-    const guildId = process.env.DISCORD_GUILD_ID;
+    const guildId = req.query.guildId;
     if (!guildId) {
-      return res.status(500).json({ error: 'Guild ID not configured' });
+      return res.status(400).json({ error: 'Guild ID is required' });
     }
 
+    // Try to get roles using the user's access token first
+    const discordToken = req.cookies.discord_token;
+    if (discordToken) {
+      try {
+        // Fetch roles using Discord API with user's token
+        const rolesResponse = await fetch(`https://discord.com/api/guilds/${guildId}/roles`, {
+          headers: {
+            'Authorization': `Bearer ${discordToken}`,
+            'Content-Type': 'application/json'
+          }
+        });
+
+        if (rolesResponse.ok) {
+          const roles = await rolesResponse.json();
+          
+          // Format roles for frontend
+          const formattedRoles = (roles as any[])
+            .filter((role: any) => role.name !== '@everyone') // Filter out @everyone role
+            .map((role: any) => ({
+              id: role.id,
+              name: role.name,
+              color: `#${role.color.toString(16).padStart(6, '0')}`,
+              position: role.position,
+              mentionable: role.mentionable,
+              hoisted: role.hoist
+            }))
+            .sort((a: any, b: any) => b.position - a.position); // Sort by position (highest first)
+
+          return res.json(formattedRoles);
+        }
+      } catch (apiError) {
+        console.warn('Failed to fetch roles via Discord API, falling back to bot:', apiError);
+      }
+    }
+
+    // Fallback to using bot client (existing functionality)
     const roles = await RegistrationService.getDiscordRoles(guildId);
     
     // Format roles for frontend

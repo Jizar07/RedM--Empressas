@@ -1,0 +1,237 @@
+{
+  "playerName": "Boris Loubach",
+  "channelId": "1404674506181574727",
+  "messageId": "1411806677870710834",
+  "totalEarnings": 1725,
+  "totalServices": 25,
+  "services": [
+    {
+      "receiptId": "20250831713",
+      "serviceType": "animal",
+      "itemType": "Avino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-31T01:32:09.669Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250831670",
+      "serviceType": "animal",
+      "itemType": "Cabrino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-31T03:36:56.270Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250831041",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T04:15:26.982Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250831679",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T04:52:42.868Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250831897",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 480,
+      "payment": 72,
+      "timestamp": "2025-08-31T20:14:39.398Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250831809",
+      "serviceType": "animal",
+      "itemType": "Bovino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-31T20:14:42.772Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250831408",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T20:14:45.773Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250831237",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T20:14:49.352Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250831616",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T20:14:52.130Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250831166",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T20:14:55.112Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250831127",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T20:14:57.759Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250831512",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T20:15:01.886Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250831109",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T20:15:05.132Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250831723",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T20:15:08.236Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250831969",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T20:15:11.679Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250831926",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 160,
+      "payment": 24,
+      "timestamp": "2025-08-31T20:15:15.094Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250831049",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T20:15:17.673Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250831202",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T20:15:20.477Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250831400",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T20:15:23.783Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250831644",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T20:15:26.894Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250831977",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T20:15:30.202Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250831388",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T20:15:32.855Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250831642",
+      "serviceType": "animal",
+      "itemType": "Suino",
+      "quantity": 1,
+      "payment": 60,
+      "timestamp": "2025-08-31T20:15:35.575Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250831429",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-08-31T20:15:38.580Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250831714",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 260,
+      "payment": 39,
+      "timestamp": "2025-08-31T20:15:41.863Z",
+      "approvedBy": "jizarstoffel"
+    }
+  ],
+  "lastUpdated": "2025-08-31T20:15:41.866Z",
+  "finalizedAt": "2025-09-01T03:44:27.581Z",
+  "finalizedBy": "zerobalaa"
+}

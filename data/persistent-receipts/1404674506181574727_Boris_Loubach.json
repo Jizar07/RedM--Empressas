@@ -1,45 +1,82 @@
 {
   "playerName": "Boris Loubach",
   "channelId": "1404674506181574727",
-  "messageId": "1410083520101089462",
-  "totalEarnings": 240,
-  "totalServices": 4,
+  "messageId": "1413476790093086781",
+  "totalEarnings": 441.15,
+  "totalServices": 8,
   "services": [
     {
-      "receiptId": "20250824697",
-      "serviceType": "animal",
-      "itemType": "Suino",
-      "quantity": 1,
-      "payment": 60,
-      "timestamp": "2025-08-24T20:04:15.849Z"
-    },
-    {
-      "receiptId": "20250826474",
+      "receiptId": "20250904289",
       "serviceType": "animal",
       "itemType": "Cabrino",
       "quantity": 1,
       "payment": 60,
-      "timestamp": "2025-08-26T09:08:15.132Z",
+      "timestamp": "2025-09-04T23:09:33.037Z",
+      "approvedBy": "zerobalaa"
+    },
+    {
+      "receiptId": "20250904519",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 160,
+      "payment": 24,
+      "timestamp": "2025-09-05T10:51:27.514Z",
       "approvedBy": "jizarstoffel"
     },
     {
-      "receiptId": "20250826732",
-      "serviceType": "animal",
-      "itemType": "Cabrino",
-      "quantity": 1,
-      "payment": 60,
-      "timestamp": "2025-08-26T09:08:19.387Z",
+      "receiptId": "20250905918",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 491,
+      "payment": 73.64999999999999,
+      "timestamp": "2025-09-05T10:51:34.941Z",
       "approvedBy": "jizarstoffel"
     },
     {
-      "receiptId": "20250827063",
+      "receiptId": "20250905301",
+      "serviceType": "planta",
+      "itemType": "Milho",
+      "quantity": 160,
+      "payment": 24,
+      "timestamp": "2025-09-05T10:51:40.096Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250905141",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-09-05T10:51:50.829Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250905776",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 500,
+      "payment": 75,
+      "timestamp": "2025-09-05T10:51:55.112Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250905377",
+      "serviceType": "planta",
+      "itemType": "Trigo",
+      "quantity": 330,
+      "payment": 49.5,
+      "timestamp": "2025-09-05T10:52:01.938Z",
+      "approvedBy": "jizarstoffel"
+    },
+    {
+      "receiptId": "20250905770",
       "serviceType": "animal",
       "itemType": "Cabrino",
       "quantity": 1,
       "payment": 60,
-      "timestamp": "2025-08-27T02:08:28.757Z",
+      "timestamp": "2025-09-05T10:52:07.495Z",
       "approvedBy": "jizarstoffel"
     }
   ],
-  "lastUpdated": "2025-08-27T02:08:28.759Z"
+  "lastUpdated": "2025-09-05T10:52:07.496Z"
 }

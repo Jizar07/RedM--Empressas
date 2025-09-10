@@ -1,0 +1,14 @@
+{
+  "receiptId": "20250901214",
+  "timestamp": "2025-09-01T19:35:55.823Z",
+  "playerName": "Olivia Cesarinni",
+  "serviceType": "animal",
+  "quantity": 1,
+  "animalType": "Cabrino",
+  "playerPayment": 60,
+  "status": "APPROVED",
+  "screenshotPath": "C:\\Users\\jizar\\OneDrive\\Documents\\DiscordBot\\uploads\\temp\\temp_1756755355128_image.png",
+  "approved": true,
+  "approvedBy": "jizarstoffel",
+  "approvedAt": "2025-09-01T20:13:38.019Z"
+}
