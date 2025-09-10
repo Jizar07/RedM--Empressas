@@ -8,7 +8,7 @@ export interface FirmTheme {
 }
 
 export interface FirmDisplay {
-  itemTranslations: Record<string, string>;
+  itemTranslations: Record<string, string> | "global";
   bankingEnabled: boolean;
   theme: FirmTheme;
 }

@@ -24,7 +24,7 @@ export default function FirmConfigModal({ firm, onSave, onCancel }: FirmConfigMo
       messageTypes: ['ALL']
     },
     display: {
-      itemTranslations: {},
+      itemTranslations: "global",
       bankingEnabled: true,
       theme: {
         primaryColor: '#16a34a',

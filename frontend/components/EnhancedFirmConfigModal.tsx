@@ -40,7 +40,7 @@ export default function EnhancedFirmConfigModal({ firm, onSave, onCancel }: Enha
       messageTypes: ['ALL']
     },
     display: {
-      itemTranslations: {},
+      itemTranslations: "global",
       bankingEnabled: true,
       theme: {
         primaryColor: '#16a34a',

@@ -97,7 +97,18 @@ When you see "/update" command from the user, perform the following actions:
 3. Update changelog.md if there are version-worthy changes
 4. Update CLAUDE.md if there are architectural or command changes
 
-## Recent Major Updates (v0.027) **[CURRENT VERSION]**
+## Recent Major Updates (v0.029) **[CURRENT VERSION]**
+
+### Complete Global Naming/Translation System Implementation (v0.029)
+- **Global Translation System**: Implemented comprehensive global naming system for Fazenda Cabra da Peste firm
+- **Worker Name Extraction**: Fixed animal delivery transactions to extract actual worker names from Discord message content
+- **Translation Integration**: Connected global localization service with 121+ Portuguese translations (bulrush → junco, common_portion_chicken → Racao Avino)
+- **Backend Parsing Enhancement**: Added regex pattern matching to extract worker names from "Ação:" field in Discord messages
+- **Frontend Display Fix**: Updated TemplateFirmDashboard to match FazendaBW formatting exactly for animal deliveries
+- **Type System Update**: Enhanced TypeScript interfaces to support both custom translations and "global" setting
+- **Result**: Animal deliveries now display correctly as "BONNIE BENNETT vendeu 4 animais no matadouro por $160.00" instead of "Spidey Bot depositou $160.00"
+
+## Previous Major Updates (v0.027)
 
 ### Complete Multi-Server Discord OAuth & Firm Management System (v0.027)
 - **Multi-Server Architecture**: Complete implementation of server-scoped operations with global ServerContext
@@ -212,6 +223,7 @@ When updating .md files:
 - **DO NOT OVERCOMPLICATE THINGS** - Keep solutions simple and maintainable
 - **USE SIMPLE SOLUTIONS** - Prefer straightforward approaches over complex ones
 - **IF YOU DON'T KNOW, ASK** - Seek clarification rather than guessing
+- **🚨 CRITICAL: DO NOT FUCKING MAKE CHANGES OR RUN PROGRAMS WITHOUT EXPLICIT PERMISSION** - NEVER delete files, kill processes, modify code, or execute commands without the user's direct approval
 
 ## MANDATORY PRE-RESPONSE CHECKLIST
 

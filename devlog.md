@@ -4,6 +4,23 @@ This is a local timestamped file to track all development changes and prompts.
 
 ## Log Entries
 
+### 2025-09-10 15:21:16
+**Action**: Implement global naming system and fix animal delivery worker name extraction - v0.029
+**Prompt**: "implement the global naming system to fazenda cabra da peste" followed by "really????? that is not the same fucking format, spidey bot is not the fuckign worker's name"
+**Changes**:
+- **Global Translation System**: Implemented complete global naming/translation system for Fazenda Cabra da Peste firm
+  - Updated `firms-config.json`: Set `itemTranslations: "global"` for Fazenda Cabra da Peste
+  - Enhanced `TemplateFirmDashboard.tsx`: Added translation loading logic with `getBestDisplayName()` function
+  - Updated TypeScript interfaces to support both custom translations and "global" setting
+- **Worker Name Extraction Fix**: Fixed animal delivery transactions to show actual worker names instead of "Spidey Bot"
+  - Updated backend parsing in `route.ts`: Added regex extraction for worker names from "Ação:" field
+  - Pattern: "BONNIE BENNETT vendeu 4 animais no matadouro" → extracts "BONNIE BENNETT" as author
+  - Fixed frontend display in `TemplateFirmDashboard.tsx`: Now shows raw `descricao` to match FazendaBW format
+- **Translation Integration**: Connected global localization service (121+ translations) to Fazenda Cabra da Peste
+  - Items like "bulrush" → "junco", "common_portion_chicken" → "Racao Avino"
+  - Consistent translation system across all firm components
+**Result**: Animal deliveries now display correctly as "BONNIE BENNETT vendeu 4 animais no matadouro por $160.00" with proper Portuguese translations
+
 ### 2025-09-10 11:35:49
 **Action**: Fix Discord Message Processing for New Firm - v0.028
 **Prompt**: "just made a transaction, and nothing showed on activities" followed by debugging session to fix new firm Discord message processing

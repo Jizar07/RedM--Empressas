@@ -20,7 +20,7 @@
         "enabled": true
       },
       "display": {
-        "itemTranslations": {},
+        "itemTranslations": "global",
         "bankingEnabled": true,
         "theme": {
           "primaryColor": "#16a34a",

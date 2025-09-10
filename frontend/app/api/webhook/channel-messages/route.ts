@@ -200,6 +200,25 @@ function parseDiscordMessage(message: MessageData): any {
           const acao = depositWithActionMatch[2].trim();
           const saldo = parseFloat(depositWithActionMatch[3].replace(',', ''));
           
+          // Extract worker name from action like "BONNIE BENNETT vendeu 4 animais no matadouro"
+          const vendeuMatch = acao.match(/^(.+?)\s+vendeu\s+(\d+)\s+animais\s+no\s+matadouro/);
+          if (vendeuMatch) {
+            const workerName = vendeuMatch[1].trim();
+            const quantidade = vendeuMatch[2];
+            
+            return {
+              ...message,
+              parseSuccess: true,
+              tipo: 'venda',
+              categoria: 'financeiro',
+              valor: valor,
+              autor: workerName,
+              descricao: `vendeu ${quantidade} animais no matadouro`,
+              displayText: `${workerName} vendeu ${quantidade} animais no matadouro por $${valor.toFixed(2)}`,
+              confidence: 'high'
+            };
+          }
+          
           return {
             ...message,
             parseSuccess: true,

@@ -5,7 +5,17 @@ This file is synchronized with: https://github.com/Jizar07/RedM--Empressas
 
 ## Version History
 
-### [0.028] - 2025-09-10 **[CURRENT - RESTORE POINT]**
+### [0.029] - 2025-09-10 **[CURRENT - RESTORE POINT]**
+- **MAJOR FEATURE**: Complete Global Naming/Translation System Implementation
+- **NEW**: Global translation system for Fazenda Cabra da Peste firm with 121+ item translations
+- **ENHANCED**: Backend message parsing to extract actual worker names from animal delivery transactions
+- **FIXED**: Animal delivery format now shows "BONNIE BENNETT vendeu 4 animais no matadouro por $160.00" instead of "Spidey Bot depositou $160.00"
+- **IMPROVED**: TemplateFirmDashboard translation integration matching FazendaBW formatting exactly
+- **ADDED**: Support for "global" itemTranslations setting in firm configurations
+- **RESOLVED**: Worker name extraction from "Ação:" field in Discord messages using regex pattern matching
+- **VALIDATED**: Portuguese translations working across all firm components (bulrush → junco, etc.)
+
+### [0.028] - 2025-09-10
 - **MAJOR FIX**: Complete Discord Message Processing System for New Firms
 - **FIXED**: MultiChannelForwarder payload format missing required `source` and `channelId` fields
 - **ENHANCED**: Dynamic farm ID regex patterns - now supports any farm ID (`fazenda_\d+`) instead of hardcoded values

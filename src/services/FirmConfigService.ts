@@ -7,7 +7,7 @@ interface FirmTheme {
 }
 
 interface FirmDisplay {
-  itemTranslations: Record<string, string>;
+  itemTranslations: Record<string, string> | "global";
   bankingEnabled: boolean;
   theme: FirmTheme;
 }
@@ -187,7 +187,7 @@ export class FirmConfigService {
     };
 
     const defaultDisplay: FirmDisplay = {
-      itemTranslations: {},
+      itemTranslations: "global",
       bankingEnabled: true,
       theme: defaultTheme,
       ...request.display

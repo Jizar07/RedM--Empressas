@@ -78,12 +78,86 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
   const [lastUpdate, setLastUpdate] = useState<string>('');
   const [expandedActivity, setExpandedActivity] = useState<string | null>(null);
   
+  // Translation state
+  const [itemTranslations, setItemTranslations] = useState<Record<string, string>>({});
+  
   // Calculated metrics
   const [totalRevenue, setTotalRevenue] = useState(0);
   const [totalActivities, setTotalActivities] = useState(0);
   const [activeWorkers, setActiveWorkers] = useState(new Set<string>());
   const [bankBalance, setBankBalance] = useState(0);
   const [inventoryCount, setInventoryCount] = useState(0);
+
+  // Load translations on component mount - check if firm uses global or custom translations
+  useEffect(() => {
+    const loadTranslations = async () => {
+      try {
+        // Check if this firm uses global translations
+        if (firm?.display?.itemTranslations === "global") {
+          console.log('🌍 Loading global translations for', firm.name);
+          const response = await fetch('http://localhost:3050/api/localization/translations');
+          if (response.ok) {
+            const data = await response.json();
+            if (data.success && data.data?.custom_overrides) {
+              setItemTranslations(data.data.custom_overrides);
+              console.log('✅ Loaded', Object.keys(data.data.custom_overrides).length, 'global translations');
+            }
+          }
+        } else if (firm?.display?.itemTranslations && typeof firm.display.itemTranslations === 'object') {
+          // Use firm-specific translations
+          console.log('🏢 Using firm-specific translations for', firm.name);
+          setItemTranslations(firm.display.itemTranslations);
+        } else {
+          // Fallback to global if no firm specified
+          console.log('🔄 Fallback to global translations');
+          const response = await fetch('http://localhost:3050/api/localization/translations');
+          if (response.ok) {
+            const data = await response.json();
+            if (data.success && data.data?.custom_overrides) {
+              setItemTranslations(data.data.custom_overrides);
+            }
+          }
+        }
+      } catch (error) {
+        console.debug('Localization service not available:', error);
+      }
+    };
+    
+    loadTranslations();
+  }, [firm]);
+
+  // Get best display name using the same logic as FazendaBW
+  const getBestDisplayName = (itemId?: string): string => {
+    if (!itemId) return 'Item';
+    
+    // 1. Try custom translation first (highest priority)
+    const customTranslation = itemTranslations[itemId] || itemTranslations[itemId.toLowerCase()];
+    if (customTranslation && customTranslation.trim() !== '') {
+      return customTranslation;
+    }
+
+    // 2. Try variations
+    const variations = [
+      itemId.replace(/_/g, ' '),
+      itemId.replace(/_/g, ' ').toLowerCase()
+    ];
+    
+    for (const variation of variations) {
+      const translation = itemTranslations[variation];
+      if (translation && translation.trim() !== '') {
+        return translation;
+      }
+    }
+
+    // 3. Fallback to normalized formatting
+    return itemId
+      .replace(/_/g, ' ')
+      .replace(/([a-z])([A-Z])/g, '$1 $2')
+      .split(' ')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+      .join(' ');
+  };
+
 
   // Fetch activities from the API - filtered by firm's channel
   const fetchActivities = async () => {
@@ -371,7 +445,7 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
                               {activity.quantidade}x
                             </span>
                             <span className="font-medium text-gray-900">
-                              {activity.item}
+                              {getBestDisplayName(activity.item)}
                             </span>
                           </div>
                         ) : (
@@ -420,12 +494,12 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
                     <div key={activity.id} className="flex items-center gap-3 p-3 hover:bg-gray-50 rounded">
                       <div className="flex-shrink-0">{getActivityIcon(activity)}</div>
                       <div className="flex-1 min-w-0">
-                        {activity.parseSuccess && activity.tipo && activity.valor ? (
+                        {activity.parseSuccess && activity.categoria === 'financeiro' && (activity.tipo || activity.valor) ? (
                           <div className="flex items-center gap-2 flex-wrap">
                             <span className="font-semibold text-gray-900">
                               {activity.autor || 'Sistema'}
                             </span>
-                            {activity.descricao && activity.descricao !== 'Depósito direto' && activity.tipo !== 'saque' ? (
+                            {activity.descricao && activity.descricao !== 'Depósito direto' && activity.tipo !== 'saque' && activity.descricao.trim() !== '' ? (
                               <>
                                 <span className="text-gray-600">
                                   {activity.descricao}
@@ -456,6 +530,11 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
                                   ${typeof activity.valor === 'number' ? activity.valor.toFixed(2) : '0.00'}
                                 </span>
                               </>
+                            )}
+                            {activity.confidence && activity.confidence !== 'high' && (
+                              <span className="text-xs text-gray-400" title={`Confiança: ${activity.confidence}`}>
+                                {activity.confidence === 'medium' ? '?' : '⚠'}
+                              </span>
                             )}
                           </div>
                         ) : (
