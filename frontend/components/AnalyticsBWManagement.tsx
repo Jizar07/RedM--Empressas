@@ -118,6 +118,7 @@ export default function AnalyticsBWManagement({ recentActivity, usuarios, invent
     }, {})
   };
 
+
   const tabs = [
     { id: 'overview', name: '📊 Visão Geral', icon: BarChart3 },
     { id: 'users', name: '👥 Usuários', icon: Users },

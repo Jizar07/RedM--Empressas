@@ -13,6 +13,7 @@ import BercarioAnalytics from './BercarioAnalytics';
 import BercarioPayments from './BercarioPayments';
 import EstoqueCDP from './EstoqueCDP';
 import FazendaWorkers from './FazendaWorkers';
+import FazendaCDPAnalytics from './FazendaCDPAnalytics';
 
 interface FirmTemplateRendererProps {
   firm: FirmConfig;
@@ -126,9 +127,7 @@ export default function FirmTemplateRenderer({ firm, activeComponent }: FirmTemp
       case 'workers':
         return <FazendaWorkers firm={firm} />;
       case 'analytics':
-        return <div className="text-center py-8">
-          <p className="text-gray-500">Analytics component coming soon for Fazenda Cabra da Peste</p>
-        </div>;
+        return <FazendaCDPAnalytics firm={firm} />;
       default:
         return <TemplateFirmDashboard firm={firm} template={templateConfig} />;
     }
@@ -160,11 +159,11 @@ export default function FirmTemplateRenderer({ firm, activeComponent }: FirmTemp
       if (!isComponentEnabled('workers')) {
         return (
           <div className="text-center py-8">
-            <p className="text-gray-500">Clientes não habilitado para este template</p>
+            <p className="text-gray-500">Trabalhadores não habilitado para este template</p>
           </div>
         );
       }
-      return <BercarioClients firm={firm} />;
+      return <FazendaWorkers firm={firm} />;
 
     case 'analytics':
       if (!isComponentEnabled('analytics')) {

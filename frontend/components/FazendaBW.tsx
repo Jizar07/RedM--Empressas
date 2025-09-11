@@ -1187,7 +1187,6 @@ export default function FazendaBW(props: FazendaBWProps = {}) {
                 </div>
               )}
             </div>
-          )}
         </div>
 
         {/* Money Activities */}
