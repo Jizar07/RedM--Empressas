@@ -186,15 +186,14 @@ function parseDiscordMessage(message: MessageData): any {
     
     // Parse Spidey Bot messages for farm activities
     // Try CAIXA messages first (deposits/withdrawals) - they don't have "Autor:" field
-    const caixaMatch = content.match(/REGISTRO - fazenda_\d+\s*CAIXA ORGANIZAÇÃO\s*-\s*(DEPÓSITO|SAQUE)(.+?)Autor:+(.+?)\s*\|\s*FIXO:\s*(\d+)/s);
+    const caixaMatch = content.match(/REGISTRO - REGISTRO - fazenda_\d+\s*CAIXA ORGANIZAÇÃO - (DEPÓSITO|SAQUE)\s*(.+?)Data::/s);
     if (caixaMatch) {
       const transactionType = caixaMatch[1].trim();
       const actionPart = caixaMatch[2].trim();
-      const autor = caixaMatch[3].replace(/^:+\s*/, '').trim();
       
       if (transactionType === 'DEPÓSITO') {
-        // Parse DEPÓSITO (deposit money) - with "Ação:" (for sales/actions)
-        const depositWithActionMatch = actionPart.match(/Valor depositado:\s*\$([0-9,.]+)\s*Ação:(.+?)Saldo após depósito:\s*\$([0-9,.]+)/);
+        // Parse DEPÓSITO (deposit money) - with "Ação::" (for sales/actions)
+        const depositWithActionMatch = actionPart.match(/Valor depositado::\s*\$([0-9,.]+)\s*Ação::\s*(.+?)\s*Saldo após depósito::\s*\$([0-9,.]+)/s);
         if (depositWithActionMatch) {
           const valor = parseFloat(depositWithActionMatch[1].replace(',', ''));
           const acao = depositWithActionMatch[2].trim();
@@ -225,18 +224,19 @@ function parseDiscordMessage(message: MessageData): any {
             tipo: 'venda',
             categoria: 'financeiro',
             valor: valor,
-            autor: autor,
-            descricao: acao,
-            displayText: `${autor} ${acao} por $${valor.toFixed(2)}`,
+            autor: workerName,
+            descricao: `vendeu ${quantidade} animais no matadouro`,
+            displayText: `${workerName} vendeu ${quantidade} animais no matadouro por $${valor.toFixed(2)}`,
             confidence: 'high'
           };
         }
         
         // Try direct deposit pattern (no "Ação:" field)
-        const directDepositMatch = actionPart.match(/Valor depositado:+\s*\$([0-9,.]+).*?Saldo após depósito:+\s*\$([0-9,.]+)/s);
+        const directDepositMatch = actionPart.match(/Valor depositado::\s*\$([0-9,.]+)\s*Autor::\s*(.+?)\s*\|\s*FIXO:\s*\d+\s*Saldo após depósito::\s*\$([0-9,.]+)/s);
         if (directDepositMatch) {
           const valor = parseFloat(directDepositMatch[1].replace(',', ''));
-          const saldo = parseFloat(directDepositMatch[2].replace(',', ''));
+          const autor = directDepositMatch[2].trim();
+          const saldo = parseFloat(directDepositMatch[3].replace(',', ''));
           
           return {
             ...message,
@@ -252,10 +252,11 @@ function parseDiscordMessage(message: MessageData): any {
         }
       } else if (transactionType === 'SAQUE') {
         // Parse SAQUE (withdraw money)
-        const withdrawMatch = actionPart.match(/Valor sacado:+\s*\$([0-9,.]+).*?Saldo após saque:+\s*\$([0-9,.]+)/s);
+        const withdrawMatch = actionPart.match(/Valor sacado::\s*\$([0-9,.]+)\s*Autor::\s*(.+?)\s*\|\s*FIXO:\s*\d+\s*Saldo após saque::\s*\$([0-9,.]+)/s);
         if (withdrawMatch) {
           const valor = parseFloat(withdrawMatch[1].replace(',', ''));
-          const saldo = parseFloat(withdrawMatch[2].replace(',', ''));
+          const autor = withdrawMatch[2].trim();
+          const saldo = parseFloat(withdrawMatch[3].replace(',', ''));
           
           return {
             ...message,
@@ -264,24 +265,24 @@ function parseDiscordMessage(message: MessageData): any {
             categoria: 'financeiro',
             valor: valor,
             autor: autor,
-            descricao: `Saque de $${valor.toFixed(2)}`,
-            displayText: `${autor} sacou $${valor.toFixed(2)} do caixa`,
+            descricao: `Saque direto`,
+            displayText: `${autor} sacou $${valor.toFixed(2)}`,
             confidence: 'high'
           };
         }
       }
     }
     
-    // Then try BAÚ messages (inventory) - they have "Autor:" field
-    const spideyBotMatch = content.match(/REGISTRO - fazenda_\d+(.+?)Autor:+(.+?)\s*\|\s*FIXO:\s*(\d+)/s);
+    // Then try BAÚ messages (inventory) - they have "Autor::" field
+    const spideyBotMatch = content.match(/REGISTRO - REGISTRO - fazenda_\d+(.+?)Autor::\s*(.+?)\s*\|\s*FIXO:\s*(\d+)/s);
     if (spideyBotMatch) {
       const actionPart = spideyBotMatch[1].trim();
-      const autor = spideyBotMatch[2].replace(/^:+\s*/, '').trim();
+      const autor = spideyBotMatch[2].trim();
       
       // Parse INSERIR ITEM (add item)
-      const addMatch = actionPart.match(/INSERIR ITEM\s*Item adicionado:+\s*(.+?)\s*x(\d+)/);
+      const addMatch = actionPart.match(/INSERIR ITEM\s*Item adicionado::\s*(.+?)\s*x(\d+)/);
       if (addMatch) {
-        const cleanItem = addMatch[1].replace(/^:+\s*/, '').trim();
+        const cleanItem = addMatch[1].trim();
         return {
           ...message,
           parseSuccess: true,
@@ -295,9 +296,9 @@ function parseDiscordMessage(message: MessageData): any {
       }
       
       // Parse REMOVER ITEM (remove item)  
-      const removeMatch = actionPart.match(/REMOVER ITEM\s*Item removido:+\s*(.+?)\s*x(\d+)/);
+      const removeMatch = actionPart.match(/REMOVER ITEM\s*Item removido::\s*(.+?)\s*x(\d+)/);
       if (removeMatch) {
-        const cleanItem = removeMatch[1].replace(/^:+\s*/, '').trim();
+        const cleanItem = removeMatch[1].trim();
         return {
           ...message,
           parseSuccess: true,
