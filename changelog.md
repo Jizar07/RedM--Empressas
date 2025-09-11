@@ -5,7 +5,16 @@ This file is synchronized with: https://github.com/Jizar07/RedM--Empressas
 
 ## Version History
 
-### [0.029] - 2025-09-10 **[CURRENT - RESTORE POINT]**
+### [0.030] - 2025-09-11 **[CURRENT - RESTORE POINT]**
+- **ENHANCED**: Fazenda Cabra da Peste dashboard improvements and bank balance implementation
+- **IMPROVED**: Activity display limits increased from 20 to 100 for both item and money activities
+- **FIXED**: Bank balance display now shows actual farm balance instead of cumulative revenue total
+- **ADDED**: getCurrentBankBalance() function to extract real balance from Discord messages
+- **CHANGED**: "Receita Total" metric card replaced with "Saldo do Banco" showing current farm balance
+- **RESOLVED**: Bank balance parsing with proper regex patterns for multiline Discord message formats
+- **UI**: Removed icon from balance metric card to resolve positioning issues
+
+### [0.029] - 2025-09-10 **[RESTORE POINT]**
 - **MAJOR FEATURE**: Complete Global Naming/Translation System Implementation
 - **NEW**: Global translation system for Fazenda Cabra da Peste firm with 121+ item translations
 - **ENHANCED**: Backend message parsing to extract actual worker names from animal delivery transactions

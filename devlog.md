@@ -4,6 +4,19 @@ This is a local timestamped file to track all development changes and prompts.
 
 ## Log Entries
 
+### 2025-09-11 09:10:23
+**Action**: Fix Fazenda Cabra da Peste dashboard display and bank balance implementation
+**Prompt**: "fix these types of log from the frontend dashboard for fazenda cabra da peste" and subsequent formatting fixes
+**Changes**:
+- Attempted to fix animal delivery formatting by comparing FazendaBW vs TemplateFirmDashboard logic
+- Added specific animal delivery detection in TemplateFirmDashboard conditional logic
+- Increased activity display limits from 20 to 100 for both item and money activities
+- Implemented getCurrentBankBalance() function from FazendaBW to show actual bank balance instead of cumulative revenue
+- Changed "Receita Total" metric card to "Saldo do Banco" displaying real farm balance from Discord messages
+- Fixed bank balance parsing with proper regex patterns for multiline Discord messages
+- Resolved icon positioning issues by removing icon from balance metric card
+- **Result**: Dashboard now shows proper bank balance and increased activity history
+
 ### 2025-09-10 15:21:16
 **Action**: Implement global naming system and fix animal delivery worker name extraction - v0.029
 **Prompt**: "implement the global naming system to fazenda cabra da peste" followed by "really????? that is not the same fucking format, spidey bot is not the fuckign worker's name"

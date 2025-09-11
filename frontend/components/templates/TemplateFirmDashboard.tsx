@@ -66,7 +66,7 @@ const MetricCard: React.FC<MetricCardProps> = ({
           </p>
           {subtitle && <p className="text-sm text-white/70 mt-1">{subtitle}</p>}
         </div>
-        <div className="text-white/80">{icon}</div>
+        <div className="text-white/80 flex items-center justify-center w-12 h-12">{icon}</div>
       </div>
     </div>
   );
@@ -281,20 +281,50 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
     }).format(value);
   };
 
-  // Filter activities by type
+  // Get current bank balance from latest transaction messages (adapted for your message format)
+  const getCurrentBankBalance = (): number => {
+    // Look for latest transaction with "Saldo após" information
+    const financialActivities = activities
+      .filter(activity => activity.categoria === 'financeiro' && activity.content)
+      .sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
+    
+    for (const activity of financialActivities) {
+      // Check for "Saldo após depósito:" or "Saldo após saque:" (handle multiline)
+      const balanceMatch = activity.content?.match(/Saldo após (?:depósito|saque):\s*\$?([0-9,.]+)/s) || 
+                          activity.content?.match(/Saldo após (?:depósito|saque):[^\$]*\$([0-9,.]+)/s);
+      if (balanceMatch) {
+        const balance = parseFloat(balanceMatch[1].replace(',', ''));
+        if (!isNaN(balance)) {
+          console.log('🏦 Found bank balance:', balance, 'from message:', activity.content.substring(0, 100));
+          return balance;
+        }
+      }
+    }
+    
+    console.log('🏦 No bank balance found in', financialActivities.length, 'financial activities');
+    return 0; // Default if no balance found
+  };
+
+  // Filter activities by type - get last 100 of each type separately
   const getItemActivities = (): Activity[] => {
-    return activities.filter(activity => 
+    // Filter all item activities from the entire activities array (already sorted newest first)
+    const itemActivities = activities.filter(activity => 
       activity.categoria === 'inventario' &&
       (activity.tipo && ['adicionar', 'remover'].includes(activity.tipo))
-    ).slice(0, 20);
+    );
+    // Take the first 100 (newest) since activities are already sorted
+    return itemActivities.slice(0, 100);
   };
 
   const getMoneyActivities = (): Activity[] => {
-    return activities.filter(activity => {
+    // Filter all money activities from the entire activities array (already sorted newest first)  
+    const moneyActivities = activities.filter(activity => {
       return activity.categoria === 'financeiro' &&
              (activity.tipo && ['deposito', 'saque', 'venda', 'compra'].includes(activity.tipo) ||
               (activity.valor !== undefined && activity.valor !== null));
-    }).slice(0, 20);
+    });
+    // Take the first 100 (newest) since activities are already sorted
+    return moneyActivities.slice(0, 100);
   };
 
   // Get unique inventory managers (people who add/remove animals)
@@ -350,12 +380,12 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
           {metricCards.includes('revenue') && (
             <MetricCard
-              title="Receita Total"
-              value={formatCurrency(totalRevenue)}
-              icon={<DollarSign className="h-8 w-8" />}
+              title="Saldo do Banco"
+              value={formatCurrency(getCurrentBankBalance())}
+              icon={null}
               color="green"
               loading={loading}
-              subtitle="Vendas de animais"
+              subtitle="Último saldo registrado"
             />
           )}
           
@@ -499,7 +529,7 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
                             <span className="font-semibold text-gray-900">
                               {activity.autor || 'Sistema'}
                             </span>
-                            {activity.descricao && activity.descricao !== 'Depósito direto' && activity.tipo !== 'saque' && activity.descricao.trim() !== '' ? (
+                            {activity.descricao && activity.descricao !== 'Depósito direto' && activity.tipo !== 'saque' && (activity.descricao.trim() !== '' || (activity.tipo === 'venda' && activity.descricao.includes('animais'))) ? (
                               <>
                                 <span className="text-gray-600">
                                   {activity.descricao}
