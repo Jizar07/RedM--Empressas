@@ -11,6 +11,7 @@ import BercarioInventory from './BercarioInventory';
 import BercarioClients from './BercarioClients';
 import BercarioAnalytics from './BercarioAnalytics';
 import BercarioPayments from './BercarioPayments';
+import EstoqueCDP from './EstoqueCDP';
 
 interface FirmTemplateRendererProps {
   firm: FirmConfig;
@@ -90,6 +91,9 @@ export default function FirmTemplateRenderer({ firm, activeComponent }: FirmTemp
   // For backward compatibility, if firm doesn't have template config but is the original Fazenda BW,
   // render the legacy components
   const isLegacyFazendaBW = !firm.template && firm.id === 'fazenda-bw';
+  
+  // Special handling for Fazenda Cabra da Peste
+  const isFazendaCabraDaPeste = firm.id === 'fazenda-cabra-da-peste';
 
   // Check if component is enabled in template
   const isComponentEnabled = (componentId: string): boolean => {
@@ -108,6 +112,26 @@ export default function FirmTemplateRenderer({ firm, activeComponent }: FirmTemp
         return <TrabalhadoresBW />;
       default:
         return <FazendaBW />;
+    }
+  }
+
+  // Special rendering for Fazenda Cabra da Peste
+  if (isFazendaCabraDaPeste) {
+    switch (activeComponent) {
+      case 'dashboard':
+        return <TemplateFirmDashboard firm={firm} template={templateConfig} />;
+      case 'inventory':
+        return <EstoqueCDP firm={firm} />;
+      case 'workers':
+        return <div className="text-center py-8">
+          <p className="text-gray-500">Workers component coming soon for Fazenda Cabra da Peste</p>
+        </div>;
+      case 'analytics':
+        return <div className="text-center py-8">
+          <p className="text-gray-500">Analytics component coming soon for Fazenda Cabra da Peste</p>
+        </div>;
+      default:
+        return <TemplateFirmDashboard firm={firm} template={templateConfig} />;
     }
   }
 
