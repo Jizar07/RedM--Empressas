@@ -1,7 +1,15 @@
 {
-  "lastUpdated": "2025-09-08T10:28:53.379Z",
-  "messageCount": 12,
+  "lastUpdated": "2025-09-11T14:24:00.553Z",
+  "messageCount": 13,
   "messages": [
+    {
+      "content": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZA��O - DEP�SITO\nValor depositado:: $160.0\nA��o:: Silas Moreau vendeu 4 animais no matadouro\nSaldo ap�s dep�sito:: $6567.71\nData:: 11/09/2025 - 11:00:04",
+      "author": "Test",
+      "timestamp": "2025-09-11T14:00:04.000Z",
+      "id": "test123",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZA��O - DEP�SITO\nValor depositado:: $160.0\nA��o:: Silas Moreau vendeu 4 animais no matadouro\nSaldo ap�s dep�sito:: $6567.71\nData:: 11/09/2025 - 11:00:04",
+      "rawEmbeds": []
+    },
     {
       "id": "msg-1757327333336-eid69sxqv",
       "timestamp": "2025-09-08T10:28:53.069Z",

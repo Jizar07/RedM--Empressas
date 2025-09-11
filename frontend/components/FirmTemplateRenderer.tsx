@@ -12,6 +12,7 @@ import BercarioClients from './BercarioClients';
 import BercarioAnalytics from './BercarioAnalytics';
 import BercarioPayments from './BercarioPayments';
 import EstoqueCDP from './EstoqueCDP';
+import FazendaWorkers from './FazendaWorkers';
 
 interface FirmTemplateRendererProps {
   firm: FirmConfig;
@@ -123,9 +124,7 @@ export default function FirmTemplateRenderer({ firm, activeComponent }: FirmTemp
       case 'inventory':
         return <EstoqueCDP firm={firm} />;
       case 'workers':
-        return <div className="text-center py-8">
-          <p className="text-gray-500">Workers component coming soon for Fazenda Cabra da Peste</p>
-        </div>;
+        return <FazendaWorkers firm={firm} />;
       case 'analytics':
         return <div className="text-center py-8">
           <p className="text-gray-500">Analytics component coming soon for Fazenda Cabra da Peste</p>

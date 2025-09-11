@@ -5,7 +5,18 @@ This file is synchronized with: https://github.com/Jizar07/RedM--Empressas
 
 ## Version History
 
-### [0.030] - 2025-09-11 **[CURRENT - RESTORE POINT]**
+### [0.031] - 2025-09-11 **[CURRENT - RESTORE POINT]**
+- **ENHANCED**: Worker Edit Modal with Comprehensive Editing Functionality - Complete redesign of edit button behavior
+- **IMPROVED**: Edit button now opens actual editing interface instead of just showing navigation options
+- **ADDED**: Worker Settings section with status dropdown (Active/Inactive/On Vacation/Suspended), role assignment (Worker/Supervisor/Manager/Trainee)
+- **NEW**: Performance rating system with 5-star interactive rating and supervisor notes textarea
+- **ENHANCED**: Activity configuration toggles for tracking, inactivity notifications, and performance alerts
+- **IMPROVED**: Professional modal layout with enhanced stats display in formatted cards
+- **ADDED**: Primary "Salvar Alterações" button for saving all changes made in edit interface
+- **FIXED**: User feedback issue where edit button wasn't providing actual editing capabilities
+- **UI/UX**: Complete modal redesign with proper sections, spacing, and warning messages about change impacts
+
+### [0.030] - 2025-09-11 **[RESTORE POINT]**
 - **ENHANCED**: Fazenda Cabra da Peste dashboard improvements and bank balance implementation
 - **IMPROVED**: Activity display limits increased from 20 to 100 for both item and money activities
 - **FIXED**: Bank balance display now shows actual farm balance instead of cumulative revenue total

@@ -192,10 +192,11 @@ export function useInventoryManager({
     return null;
   }, [priceList]);
 
-  // Process Discord activities into inventory items
+  // Process Discord activities into inventory items and worker analytics
   const processActivities = useCallback((activities: ParsedActivity[]) => {
     const itemCounts: Record<string, InventoryItem> = {};
     const transactions: InventoryTransaction[] = [];
+    const financialTransactions: InventoryTransaction[] = [];
     
     console.log('📦 Processing', activities.length, 'activities with', Object.keys(itemTranslations).length, 'translations');
     
@@ -295,13 +296,37 @@ export function useInventoryManager({
           });
         }
       }
+      
+      // Process financial transactions (deposits, withdrawals, sales)
+      if (activity.parseSuccess && activity.tipo && ['deposito', 'saque', 'venda'].includes(activity.tipo)) {
+        // Create financial transaction record
+        const financialTransaction: InventoryTransaction = {
+          id: `${activity.id}-financial-${index}`,
+          itemId: activity.tipo === 'venda' ? 'animais' : 'dinheiro',
+          tipo: activity.tipo === 'deposito' ? 'adicionar' : 'remover',
+          quantidade_anterior: 0, // Not tracking balance history yet
+          quantidade_posterior: 0, // Not tracking balance history yet
+          quantidade_mudanca: activity.valor || 0,
+          autor: activity.autor || 'Sistema',
+          timestamp: activity.timestamp,
+          origem: 'discord',
+          detalhes: activity.descricao || activity.displayText || 'Transação financeira',
+          metadata: {
+            tipo_transacao: activity.tipo,
+            valor: activity.valor,
+            categoria: activity.categoria
+          }
+        };
+        
+        financialTransactions.push(financialTransaction);
+      }
     });
 
-    return { itemCounts, transactions };
+    return { itemCounts, transactions, financialTransactions };
   }, [itemTranslations, getBestDisplayName, getCategoryForItem, matchPrice]);
 
-  // Calculate analytics
-  const calculateAnalytics = useCallback((items: Record<string, InventoryItem>, transactions: InventoryTransaction[]) => {
+  // Calculate analytics including worker statistics
+  const calculateAnalytics = useCallback((items: Record<string, InventoryItem>, transactions: InventoryTransaction[], financialTransactions: InventoryTransaction[] = []) => {
     const totalItems = Object.keys(items).length;
     const totalQuantity = Object.values(items).reduce((sum, item) => sum + item.quantidade, 0);
     const totalValue = Object.values(items).reduce((sum, item) => sum + (item.quantidade * (item.preco_medio || 0)), 0);
@@ -317,12 +342,19 @@ export function useInventoryManager({
       categorias[item.categoria].value += item.quantidade * (item.preco_medio || 0);
     });
 
-    // Worker analysis
+    // Worker analysis - combine inventory and financial transactions
     const workerStats: Record<string, Partial<WorkerInventoryStats>> = {};
-    transactions.forEach(transaction => {
+    const allTransactions = [...transactions, ...financialTransactions];
+    
+    allTransactions.forEach(transaction => {
+      // Skip system/bot transactions, focus on actual workers
+      if (!transaction.autor || transaction.autor === 'Sistema' || transaction.autor.toLowerCase().includes('bot')) {
+        return;
+      }
+      
       if (!workerStats[transaction.autor]) {
         workerStats[transaction.autor] = {
-          userId: transaction.autor,
+          userId: transaction.autor.toLowerCase().replace(/\s+/g, '_'),
           userName: transaction.autor,
           totalTransactions: 0,
           itemsAdded: 0,
@@ -330,7 +362,9 @@ export function useInventoryManager({
           netItems: 0,
           categorias: {},
           firstActivity: transaction.timestamp,
-          lastActivity: transaction.timestamp
+          lastActivity: transaction.timestamp,
+          mostActiveDay: transaction.timestamp,
+          averagePerDay: 0
         };
       }
       
@@ -338,12 +372,67 @@ export function useInventoryManager({
       stats.totalTransactions!++;
       stats.lastActivity = transaction.timestamp;
       
-      if (transaction.tipo === 'adicionar') {
-        stats.itemsAdded! += transaction.quantidade_mudanca;
-        stats.netItems! += transaction.quantidade_mudanca;
-      } else if (transaction.tipo === 'remover') {
-        stats.itemsRemoved! += Math.abs(transaction.quantidade_mudanca);
-        stats.netItems! += transaction.quantidade_mudanca; // Already negative
+      // Update first activity if this is older
+      if (new Date(transaction.timestamp) < new Date(stats.firstActivity!)) {
+        stats.firstActivity = transaction.timestamp;
+      }
+      
+      // Handle inventory transactions
+      if (transaction.origem === 'discord' && ['adicionar', 'remover'].includes(transaction.tipo)) {
+        if (transaction.tipo === 'adicionar') {
+          stats.itemsAdded! += Math.abs(transaction.quantidade_mudanca);
+          stats.netItems! += transaction.quantidade_mudanca;
+        } else if (transaction.tipo === 'remover') {
+          stats.itemsRemoved! += Math.abs(transaction.quantidade_mudanca);
+          stats.netItems! += transaction.quantidade_mudanca; // Already negative
+        }
+        
+        // Category tracking for inventory
+        const itemId = transaction.itemId;
+        const item = items[itemId];
+        const categoria = item?.categoria || 'outros';
+        
+        if (!stats.categorias![categoria]) {
+          stats.categorias![categoria] = { added: 0, removed: 0, net: 0 };
+        }
+        
+        if (transaction.tipo === 'adicionar') {
+          stats.categorias![categoria].added += Math.abs(transaction.quantidade_mudanca);
+          stats.categorias![categoria].net += transaction.quantidade_mudanca;
+        } else {
+          stats.categorias![categoria].removed += Math.abs(transaction.quantidade_mudanca);
+          stats.categorias![categoria].net += transaction.quantidade_mudanca;
+        }
+      }
+      
+      // Handle financial transactions (sales, deposits, withdrawals)
+      if (transaction.metadata?.tipo_transacao) {
+        const tipoFinanceiro = transaction.metadata.tipo_transacao as string;
+        const categoria = tipoFinanceiro === 'venda' ? 'vendas' : 'financeiro';
+        
+        if (!stats.categorias![categoria]) {
+          stats.categorias![categoria] = { added: 0, removed: 0, net: 0 };
+        }
+        
+        if (tipoFinanceiro === 'venda' || tipoFinanceiro === 'deposito') {
+          stats.categorias![categoria].added += Math.abs(transaction.quantidade_mudanca);
+          stats.categorias![categoria].net += transaction.quantidade_mudanca;
+        } else if (tipoFinanceiro === 'saque') {
+          stats.categorias![categoria].removed += Math.abs(transaction.quantidade_mudanca);
+          stats.categorias![categoria].net -= Math.abs(transaction.quantidade_mudanca);
+        }
+      }
+    });
+    
+    // Calculate averagePerDay for each worker
+    Object.values(workerStats).forEach(stats => {
+      if (stats.firstActivity && stats.lastActivity) {
+        const startDate = new Date(stats.firstActivity);
+        const endDate = new Date(stats.lastActivity);
+        const daysDiff = Math.max(1, Math.ceil((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)));
+        stats.averagePerDay = stats.totalTransactions! / daysDiff;
+      } else {
+        stats.averagePerDay = 0;
       }
     });
 
@@ -389,12 +478,12 @@ export function useInventoryManager({
           
           console.log('📨 Found', activities.length, 'activities for', firm.name);
           
-          const { itemCounts, transactions } = processActivities(activities);
-          const analytics = calculateAnalytics(itemCounts, transactions);
+          const { itemCounts, transactions, financialTransactions } = processActivities(activities);
+          const analytics = calculateAnalytics(itemCounts, transactions, financialTransactions);
           
           const newInventoryData: InventoryData = {
             items: itemCounts,
-            transactions,
+            transactions: [...transactions, ...financialTransactions],
             analytics,
             settings: inventoryData.settings,
             lastUpdate: new Date().toISOString(),
@@ -404,7 +493,7 @@ export function useInventoryManager({
           };
           
           setInventoryData(newInventoryData);
-          console.log('📦 Updated inventory:', analytics.totalItems, 'items,', analytics.totalQuantity, 'total quantity');
+          console.log('📦 Updated inventory:', analytics.totalItems, 'items,', analytics.totalQuantity, 'total quantity,', analytics.workers.length, 'workers with activities');
         }
       }
     } catch (error) {
@@ -454,13 +543,15 @@ export function useInventoryManager({
 
       setInventoryData(prev => {
         const newItems = { ...prev.items, [newItem.id]: newItem };
-        const newTransactions = [...prev.transactions, newTransaction];
-        const newAnalytics = calculateAnalytics(newItems, newTransactions);
+        const inventoryTransactions = prev.transactions.filter(t => t.origem !== 'financial');
+        const financialTransactions = prev.transactions.filter(t => t.origem === 'financial' || t.metadata?.tipo_transacao);
+        const newTransactions = [...inventoryTransactions, newTransaction];
+        const newAnalytics = calculateAnalytics(newItems, newTransactions, financialTransactions);
         
         return {
           ...prev,
           items: newItems,
-          transactions: newTransactions,
+          transactions: [...newTransactions, ...financialTransactions],
           analytics: newAnalytics,
           lastUpdate: new Date().toISOString(),
           totalItems: newAnalytics.totalItems,
@@ -502,13 +593,15 @@ export function useInventoryManager({
 
       setInventoryData(prev => {
         const newItems = { ...prev.items, [itemId]: updatedItem };
-        const newTransactions = [...prev.transactions, newTransaction];
-        const newAnalytics = calculateAnalytics(newItems, newTransactions);
+        const inventoryTransactions = prev.transactions.filter(t => t.origem !== 'financial');
+        const financialTransactions = prev.transactions.filter(t => t.origem === 'financial' || t.metadata?.tipo_transacao);
+        const newTransactions = [...inventoryTransactions, newTransaction];
+        const newAnalytics = calculateAnalytics(newItems, newTransactions, financialTransactions);
         
         return {
           ...prev,
           items: newItems,
-          transactions: newTransactions,
+          transactions: [...newTransactions, ...financialTransactions],
           analytics: newAnalytics,
           lastUpdate: new Date().toISOString(),
           totalItems: newAnalytics.totalItems,
@@ -544,13 +637,15 @@ export function useInventoryManager({
       setInventoryData(prev => {
         const newItems = { ...prev.items };
         delete newItems[itemId];
-        const newTransactions = [...prev.transactions, newTransaction];
-        const newAnalytics = calculateAnalytics(newItems, newTransactions);
+        const inventoryTransactions = prev.transactions.filter(t => t.origem !== 'financial');
+        const financialTransactions = prev.transactions.filter(t => t.origem === 'financial' || t.metadata?.tipo_transacao);
+        const newTransactions = [...inventoryTransactions, newTransaction];
+        const newAnalytics = calculateAnalytics(newItems, newTransactions, financialTransactions);
         
         return {
           ...prev,
           items: newItems,
-          transactions: newTransactions,
+          transactions: [...newTransactions, ...financialTransactions],
           analytics: newAnalytics,
           lastUpdate: new Date().toISOString(),
           totalItems: newAnalytics.totalItems,

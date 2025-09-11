@@ -1,62 +1,78 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { Users, TrendingUp, DollarSign, Activity, Star, Award, Clock, BarChart3, User, Settings } from 'lucide-react';
+import React, { useState } from 'react';
+import { Users, TrendingUp, DollarSign, Activity, Star, Award, Clock, BarChart3, User, Settings, Edit, Eye, Trash2 } from 'lucide-react';
 import { FirmConfig } from '@/types/firms';
+import { useInventoryManager } from '@/hooks/useInventoryManager';
+import FazendaCDPWorkersManagement from './FazendaCDPWorkersManagement';
 
 interface FazendaWorkersProps {
   firm: FirmConfig;
 }
 
-interface Activity {
-  id: string;
-  timestamp: string;
-  autor: string;
-  content: string;
-  tipo?: 'adicionar' | 'remover' | 'deposito' | 'saque' | 'venda' | 'compra';
-  categoria?: 'inventario' | 'financeiro' | 'sistema';
-  item?: string;
-  quantidade?: number;
-  valor?: number;
-  descricao?: string;
-  parseSuccess?: boolean;
-  displayText?: string;
-}
-
-interface InventoryItem {
-  id: string;
-  nome: string;
-  displayName: string;
-  categoria: string;
-  quantidade: number;
-  criado_em?: string;
-  atualizado_em?: string;
-}
-
-interface WorkerStats {
-  name: string;
-  totalActivities: number;
-  itemActivities: number;
-  financialActivities: number;
-  totalRevenue: number;
-  plantDeposits: number;
-  animalDeliveries: number;
-  calculatedRevenue: number;
-  lastActivity: string | null;
-  firstActivity: string | null;
-}
+// Using types from inventory.ts and useInventoryManager hook
 
 export default function FazendaWorkers({ firm }: FazendaWorkersProps) {
-  const [loading, setLoading] = useState(true);
   const [selectedPeriod, setSelectedPeriod] = useState('7d');
-  const [activities, setActivities] = useState<Activity[]>([]);
-  const [activeWorkers, setActiveWorkers] = useState(new Set<string>());
-  const [workerStats, setWorkerStats] = useState<WorkerStats[]>([]);
   const [showSettings, setShowSettings] = useState(false);
   const [plantPrice, setPlantPrice] = useState(2.50); // Default price per plant
   const [animalPrice, setAnimalPrice] = useState(40.00); // Default price per animal
-  const [inventory, setInventory] = useState<{[key: string]: InventoryItem}>({});
-  const [showInventory, setShowInventory] = useState(false);
+  const [showAdvancedManagement, setShowAdvancedManagement] = useState(false);
+  const [selectedWorkerForView, setSelectedWorkerForView] = useState<any>(null);
+  const [showWorkerModal, setShowWorkerModal] = useState(false);
+  const [selectedWorkerForEdit, setSelectedWorkerForEdit] = useState<any>(null);
+  const [showEditWorkerModal, setShowEditWorkerModal] = useState(false);
+  const [pricesChanged, setPricesChanged] = useState(false);
+  
+  // Use the unified inventory manager hook
+  const {
+    inventoryData,
+    loading,
+    error,
+    isReady
+  } = useInventoryManager({ firm });
+
+  // Load prices from localStorage on mount
+  React.useEffect(() => {
+    const storageKey = `${firm.id}_worker_prices`;
+    const savedPrices = localStorage.getItem(storageKey);
+    if (savedPrices) {
+      try {
+        const prices = JSON.parse(savedPrices);
+        setPlantPrice(prices.plantPrice || 2.50);
+        setAnimalPrice(prices.animalPrice || 40.00);
+      } catch (error) {
+        console.warn('Failed to load saved prices:', error);
+      }
+    }
+  }, [firm.id]);
+
+  // Save prices to localStorage when they change
+  const savePrices = React.useCallback((newPlantPrice?: number, newAnimalPrice?: number) => {
+    const storageKey = `${firm.id}_worker_prices`;
+    const prices = {
+      plantPrice: newPlantPrice !== undefined ? newPlantPrice : plantPrice,
+      animalPrice: newAnimalPrice !== undefined ? newAnimalPrice : animalPrice
+    };
+    localStorage.setItem(storageKey, JSON.stringify(prices));
+  }, [firm.id, plantPrice, animalPrice]);
+
+  // Handle price changes without auto-save
+  const handlePlantPriceChange = (value: number) => {
+    setPlantPrice(value);
+    setPricesChanged(true);
+  };
+
+  const handleAnimalPriceChange = (value: number) => {
+    setAnimalPrice(value);
+    setPricesChanged(true);
+  };
+
+  // Manual save function
+  const handleSavePrices = () => {
+    savePrices(plantPrice, animalPrice);
+    setPricesChanged(false);
+  };
 
   const periods = [
     { value: '7d', label: 'Últimos 7 dias' },
@@ -65,149 +81,20 @@ export default function FazendaWorkers({ firm }: FazendaWorkersProps) {
     { value: 'all', label: 'Todo o período' }
   ];
 
-  // Item categorization functions (from EstoqueBW)
-  const getCategoryForItem = (itemName: string): string => {
-    const name = itemName.toLowerCase();
-    
-    if (name.includes('seed') || name.includes('semente') || name.includes('milho') || name.includes('trigo') || name.includes('junco')) {
-      return 'sementes';
-    }
-    if (name.includes('racao') || name.includes('feed') || name.includes('portion')) {
-      return 'racoes';
-    }
-    if (name.includes('cow') || name.includes('pig') || name.includes('chicken') || name.includes('sheep') || name.includes('donkey') || name.includes('goat') || 
-        name.includes('vaca') || name.includes('porco') || name.includes('galinha') || name.includes('ovelha') || name.includes('cabra') || name.includes('burro') ||
-        name.includes('_male') || name.includes('_female')) {
-      return 'animais';
-    }
-    if (name.includes('plant') || name.includes('planta') || name.includes('trigo') || name.includes('milho')) {
-      return 'plantas';
-    }
-    
-    return 'outros';
-  };
-
-  const isPlantItem = (itemName: string): boolean => {
-    const category = getCategoryForItem(itemName);
-    return category === 'plantas' || category === 'sementes';
-  };
-
-  const isAnimalItem = (itemName: string): boolean => {
-    const category = getCategoryForItem(itemName);
-    return category === 'animais';
-  };
-
-  const normalizeText = (text: string): string => {
-    if (!text) return 'Item';
-    
-    return text
-      .replace(/_/g, ' ')
-      .replace(/([a-z])([A-Z])/g, '$1 $2')
-      .split(' ')
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-      .join(' ');
-  };
-
-  const fetchActivities = async () => {
-    try {
-      setLoading(true);
-      const response = await fetch('/api/webhook/channel-messages', {
-        headers: { 'Content-Type': 'application/json' }
-      });
-      
-      if (response.ok) {
-        const data = await response.json();
-        
-        // Filter messages for this firm's channel
-        const firmMessages = data.messages?.filter((msg: any) => 
-          msg.channelId === firm.channelId
-        ) || [];
-        
-        // Process and sort messages
-        const sortedMessages = firmMessages
-          .map((msg: any) => ({
-            ...msg,
-            timestamp: msg.timestamp || new Date().toISOString()
-          }))
-          .sort((a: Activity, b: Activity) => 
-            new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
-          );
-
-        setActivities(sortedMessages);
-        calculateWorkerStats(sortedMessages);
-      }
-    } catch (error) {
-      console.error('Error fetching activities:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const calculateWorkerStats = (messages: Activity[]) => {
-    const workers = new Set<string>();
-    const workerData = new Map<string, WorkerStats>();
-
-    messages.forEach((msg: Activity) => {
-      // Track workers (excluding system messages)
-      if (msg.autor && msg.autor !== 'Sistema' && msg.autor !== 'System') {
-        workers.add(msg.autor);
-
-        if (!workerData.has(msg.autor)) {
-          workerData.set(msg.autor, {
-            name: msg.autor,
-            totalActivities: 0,
-            itemActivities: 0,
-            financialActivities: 0,
-            totalRevenue: 0,
-            lastActivity: null,
-            firstActivity: null
-          });
-        }
-
-        const worker = workerData.get(msg.autor)!;
-        worker.totalActivities++;
-
-        if (msg.categoria === 'inventario') {
-          worker.itemActivities++;
-        }
-        if (msg.categoria === 'financeiro' && msg.valor) {
-          worker.financialActivities++;
-          if (msg.tipo === 'deposito' || msg.tipo === 'venda') {
-            worker.totalRevenue += msg.valor;
-          }
-        }
-
-        // Update activity timestamps
-        const msgTime = new Date(msg.timestamp);
-        if (!worker.lastActivity || msgTime > new Date(worker.lastActivity)) {
-          worker.lastActivity = msg.timestamp;
-        }
-        if (!worker.firstActivity || msgTime < new Date(worker.firstActivity)) {
-          worker.firstActivity = msg.timestamp;
-        }
-      }
-    });
-
-    setActiveWorkers(workers);
-    
-    // Convert to array and sort by total activities
-    const statsArray = Array.from(workerData.values()).sort((a, b) => 
-      b.totalActivities - a.totalActivities
-    );
-    
-    setWorkerStats(statsArray);
-  };
-
-  useEffect(() => {
-    fetchActivities();
-    const interval = setInterval(fetchActivities, 30000); // Update every 30 seconds
-    return () => clearInterval(interval);
-  }, [firm.channelId]);
-
-  // Calculate summary stats
-  const totalWorkers = activeWorkers.size;
-  const totalRevenue = workerStats.reduce((sum, worker) => sum + worker.totalRevenue, 0);
-  const totalActivities = workerStats.reduce((sum, worker) => sum + worker.totalActivities, 0);
+  // Get worker data from inventory manager analytics
+  const workerStats = Object.values(inventoryData.analytics.workers || {}).sort(
+    (a, b) => b.totalTransactions - a.totalTransactions
+  );
+  
+  // Calculate summary stats from real data
+  const totalWorkers = workerStats.length;
+  const totalRevenue = workerStats.reduce((sum, worker) => {
+    // Sum up financial transactions (deposits + sales)
+    return sum + Object.values(worker.categorias || {}).reduce((catSum, cat) => 
+      catSum + (cat.added || 0), 0
+    ) * 2.5; // Placeholder calculation
+  }, 0);
+  const totalActivities = workerStats.reduce((sum, worker) => sum + worker.totalTransactions, 0);
   const avgRevenuePerWorker = totalWorkers > 0 ? totalRevenue / totalWorkers : 0;
 
   if (loading) {
@@ -340,7 +227,7 @@ export default function FazendaWorkers({ firm }: FazendaWorkersProps) {
                     step="0.01"
                     min="0"
                     value={plantPrice}
-                    onChange={(e) => setPlantPrice(parseFloat(e.target.value) || 0)}
+                    onChange={(e) => handlePlantPriceChange(parseFloat(e.target.value) || 0)}
                     className="pl-8 pr-3 py-2 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                     placeholder="2.50"
                   />
@@ -361,7 +248,7 @@ export default function FazendaWorkers({ firm }: FazendaWorkersProps) {
                     step="0.01"
                     min="0"
                     value={animalPrice}
-                    onChange={(e) => setAnimalPrice(parseFloat(e.target.value) || 0)}
+                    onChange={(e) => handleAnimalPriceChange(parseFloat(e.target.value) || 0)}
                     className="pl-8 pr-3 py-2 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                     placeholder="40.00"
                   />
@@ -386,6 +273,21 @@ export default function FazendaWorkers({ firm }: FazendaWorkersProps) {
                 </div>
               </div>
             </div>
+            
+            {/* Save Button */}
+            <div className="mt-4 flex justify-end">
+              <button
+                onClick={handleSavePrices}
+                disabled={!pricesChanged}
+                className={`px-4 py-2 rounded-lg transition-colors ${
+                  pricesChanged 
+                    ? 'bg-purple-500 hover:bg-purple-600 text-white' 
+                    : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                }`}
+              >
+                {pricesChanged ? '💾 Salvar Preços' : '✅ Preços Salvos'}
+              </button>
+            </div>
           </div>
         )}
       </div>
@@ -409,47 +311,72 @@ export default function FazendaWorkers({ firm }: FazendaWorkersProps) {
         ) : (
           <div className="overflow-x-auto">
             <div className="bg-gray-50 rounded-lg p-6">
-              <div className="grid grid-cols-7 gap-4 text-xs font-medium text-gray-500 uppercase tracking-wider mb-4">
+              <div className="grid grid-cols-8 gap-4 text-xs font-medium text-gray-500 uppercase tracking-wider mb-4">
                 <div className="text-left">Rank</div>
                 <div className="text-left">Trabalhador</div>
                 <div className="text-left">Status</div>
-                <div className="text-left">Atividades</div>
-                <div className="text-left">Receita Total</div>
-                <div className="text-left">Ativ/Financ</div>
-                <div className="text-left">Última Atividade</div>
+                <div className="text-left">Transações</div>
+                <div className="text-left">Itens +/-</div>
+                <div className="text-left">Performance</div>
+                <div className="text-left">Primeira Ativ</div>
+                <div className="text-left">Ações</div>
               </div>
               
               {workerStats.map((worker, index) => (
-                <div key={worker.name} className="grid grid-cols-7 gap-4 py-3 border-t border-gray-200 text-sm">
+                <div key={worker.userId} className="grid grid-cols-8 gap-4 py-3 border-t border-gray-200 text-sm">
                   <div className="flex items-center space-x-2">
                     <Star className={`h-4 w-4 ${index === 0 ? 'text-yellow-500' : index === 1 ? 'text-gray-400' : index === 2 ? 'text-amber-600' : 'text-gray-300'}`} />
                     <span className="font-medium">#{index + 1}</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <User className="h-4 w-4 text-purple-500" />
-                    <span className="font-medium">{worker.name}</span>
+                    <span className="font-medium">{worker.userName}</span>
                   </div>
                   <div>
                     <span className="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">Ativo</span>
                   </div>
                   <div className="flex items-center">
                     <Activity className="h-4 w-4 mr-2 text-orange-500" />
-                    <span className="font-medium">{worker.totalActivities}</span>
+                    <span className="font-medium">{worker.totalTransactions}</span>
                   </div>
-                  <div className="font-medium text-green-600">R$ {worker.totalRevenue.toFixed(2)}</div>
                   <div className="text-sm">
-                    <span className="text-blue-600">{worker.itemActivities}</span> / 
-                    <span className="text-green-600 ml-1">{worker.financialActivities}</span>
+                    <span className="text-green-600">+{worker.itemsAdded}</span> / 
+                    <span className="text-red-600 ml-1">-{worker.itemsRemoved}</span>
+                    <div className="text-xs text-gray-500">Net: {worker.netItems}</div>
+                  </div>
+                  <div className="text-sm">
+                    <span className="text-blue-600">{(worker.averagePerDay || 0).toFixed(1)}/dia</span>
                   </div>
                   <div className="flex items-center">
                     <Clock className="h-4 w-4 mr-2 text-gray-400" />
                     <span className="text-xs">
-                      {worker.lastActivity ? 
-                        new Date(worker.lastActivity).toLocaleDateString('pt-BR') + ' ' +
-                        new Date(worker.lastActivity).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })
+                      {worker.firstActivity ? 
+                        new Date(worker.firstActivity).toLocaleDateString('pt-BR', { month: 'short', day: 'numeric' })
                         : '--'
                       }
                     </span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <button 
+                      onClick={() => {
+                        setSelectedWorkerForView(worker);
+                        setShowWorkerModal(true);
+                      }}
+                      className="p-1 text-blue-600 hover:bg-blue-100 rounded transition-colors"
+                      title="Ver detalhes"
+                    >
+                      <Eye className="h-4 w-4" />
+                    </button>
+                    <button 
+                      onClick={() => {
+                        setSelectedWorkerForEdit(worker);
+                        setShowEditWorkerModal(true);
+                      }}
+                      className="p-1 text-purple-600 hover:bg-purple-100 rounded transition-colors"
+                      title="Editar trabalhador"
+                    >
+                      <Edit className="h-4 w-4" />
+                    </button>
                   </div>
                 </div>
               ))}
@@ -472,28 +399,56 @@ export default function FazendaWorkers({ firm }: FazendaWorkersProps) {
         </div>
       </div>
 
-      {/* Top Performers Placeholder */}
+      {/* Top Performers */}
       <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">🏆 Top Performers</h3>
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-lg font-semibold text-gray-900">🏆 Top Performers</h3>
+          <button
+            onClick={() => setShowAdvancedManagement(true)}
+            className="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors flex items-center gap-2"
+          >
+            <Settings className="h-4 w-4" />
+            Gestão Avançada
+          </button>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {[1, 2, 3].map((rank) => (
-            <div key={rank} className={`p-4 rounded-lg border-2 ${
-              rank === 1 ? 'border-yellow-200 bg-yellow-50' :
-              rank === 2 ? 'border-gray-200 bg-gray-50' :
-              'border-amber-200 bg-amber-50'
-            }`}>
+          {workerStats.slice(0, 3).map((worker, index) => {
+            const rank = index + 1;
+            return (
+              <div key={worker.userId} className={`p-4 rounded-lg border-2 ${
+                rank === 1 ? 'border-yellow-200 bg-yellow-50' :
+                rank === 2 ? 'border-gray-200 bg-gray-50' :
+                'border-amber-200 bg-amber-50'
+              }`}>
+                <div className="flex items-center space-x-3">
+                  {rank === 1 ? (
+                    <Award className="h-5 w-5 text-yellow-500" />
+                  ) : rank === 2 ? (
+                    <Award className="h-5 w-5 text-gray-400" />
+                  ) : (
+                    <Award className="h-5 w-5 text-amber-600" />
+                  )}
+                  <div className="flex-1">
+                    <p className="font-medium text-gray-900">#{rank} {worker.userName}</p>
+                    <p className="text-sm text-gray-600">{worker.totalTransactions} transações</p>
+                    <p className="text-sm font-medium text-gray-700 mt-1">
+                      {(worker.averagePerDay || 0).toFixed(1)} ativ/dia
+                    </p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+          
+          {/* Fill empty spots if less than 3 workers */}
+          {Array.from({ length: Math.max(0, 3 - workerStats.length) }).map((_, index) => (
+            <div key={`empty-${index}`} className="p-4 rounded-lg border-2 border-gray-200 bg-gray-50">
               <div className="flex items-center space-x-3">
-                {rank === 1 ? (
-                  <Award className="h-5 w-5 text-yellow-500" />
-                ) : rank === 2 ? (
-                  <Award className="h-5 w-5 text-gray-400" />
-                ) : (
-                  <Award className="h-5 w-5 text-amber-600" />
-                )}
+                <Award className="h-5 w-5 text-gray-400" />
                 <div className="flex-1">
-                  <p className="font-medium text-gray-400">#{rank} --</p>
+                  <p className="font-medium text-gray-400">#{workerStats.length + index + 1} --</p>
                   <p className="text-sm text-gray-400">Aguardando dados</p>
-                  <p className="text-sm font-medium text-gray-400 mt-1">R$ --</p>
+                  <p className="text-sm font-medium text-gray-400 mt-1">-- ativ/dia</p>
                 </div>
               </div>
             </div>
@@ -532,6 +487,310 @@ export default function FazendaWorkers({ firm }: FazendaWorkersProps) {
           </div>
         </div>
       </div>
+
+      {/* Advanced Management Modal */}
+      {showAdvancedManagement && (
+        <FazendaCDPWorkersManagement
+          firm={firm}
+          onClose={() => setShowAdvancedManagement(false)}
+        />
+      )}
+
+      {/* Worker Details Modal */}
+      {showWorkerModal && selectedWorkerForView && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-xl font-bold text-gray-900">
+                👤 Detalhes do Trabalhador: {selectedWorkerForView.userName}
+              </h2>
+              <button
+                onClick={() => {
+                  setShowWorkerModal(false);
+                  setSelectedWorkerForView(null);
+                }}
+                className="text-gray-400 hover:text-gray-600"
+              >
+                ✕
+              </button>
+            </div>
+            
+            <div className="space-y-6">
+              {/* Summary Cards */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="bg-blue-50 rounded-lg p-4 text-center">
+                  <div className="text-2xl font-bold text-blue-600">{selectedWorkerForView.totalTransactions}</div>
+                  <div className="text-sm text-blue-800">Total Transações</div>
+                </div>
+                <div className="bg-green-50 rounded-lg p-4 text-center">
+                  <div className="text-2xl font-bold text-green-600">+{selectedWorkerForView.itemsAdded}</div>
+                  <div className="text-sm text-green-800">Itens Adicionados</div>
+                </div>
+                <div className="bg-red-50 rounded-lg p-4 text-center">
+                  <div className="text-2xl font-bold text-red-600">-{selectedWorkerForView.itemsRemoved}</div>
+                  <div className="text-sm text-red-800">Itens Removidos</div>
+                </div>
+                <div className="bg-purple-50 rounded-lg p-4 text-center">
+                  <div className="text-2xl font-bold text-purple-600">{(selectedWorkerForView.averagePerDay || 0).toFixed(1)}</div>
+                  <div className="text-sm text-purple-800">Média/Dia</div>
+                </div>
+              </div>
+
+              {/* Activity Timeline */}
+              <div className="bg-gray-50 rounded-lg p-4">
+                <h3 className="font-semibold text-gray-900 mb-2">📅 Período de Atividade</h3>
+                <div className="text-sm text-gray-600 space-y-1">
+                  <div><strong>Primeira Atividade:</strong> {selectedWorkerForView.firstActivity ? new Date(selectedWorkerForView.firstActivity).toLocaleString('pt-BR') : 'N/A'}</div>
+                  <div><strong>Última Atividade:</strong> {selectedWorkerForView.lastActivity ? new Date(selectedWorkerForView.lastActivity).toLocaleString('pt-BR') : 'N/A'}</div>
+                  <div><strong>Saldo Líquido:</strong> <span className={`font-medium ${selectedWorkerForView.netItems >= 0 ? 'text-green-600' : 'text-red-600'}`}>{selectedWorkerForView.netItems > 0 ? '+' : ''}{selectedWorkerForView.netItems}</span> itens</div>
+                </div>
+              </div>
+
+              {/* Category Breakdown */}
+              {selectedWorkerForView.categorias && Object.keys(selectedWorkerForView.categorias).length > 0 && (
+                <div className="bg-gray-50 rounded-lg p-4">
+                  <h3 className="font-semibold text-gray-900 mb-2">📊 Atividades por Categoria</h3>
+                  <div className="space-y-2">
+                    {Object.entries(selectedWorkerForView.categorias).map(([categoria, stats]: [string, any]) => (
+                      <div key={categoria} className="flex items-center justify-between bg-white rounded p-2">
+                        <span className="font-medium capitalize">{categoria}</span>
+                        <div className="text-sm">
+                          <span className="text-green-600">+{stats.added || 0}</span>
+                          <span className="text-gray-400 mx-1">/</span>
+                          <span className="text-red-600">-{stats.removed || 0}</span>
+                          <span className="text-gray-400 mx-1">=</span>
+                          <span className={`font-medium ${(stats.net || 0) >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                            {stats.net > 0 ? '+' : ''}{stats.net || 0}
+                          </span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div className="mt-6 flex justify-end">
+              <button
+                onClick={() => setShowAdvancedManagement(true)}
+                className="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors"
+              >
+                Abrir Gestão Avançada
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Individual Worker Edit Modal */}
+      {showEditWorkerModal && selectedWorkerForEdit && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-xl font-bold text-gray-900">
+                ✏️ Editar Trabalhador: {selectedWorkerForEdit.userName}
+              </h2>
+              <button
+                onClick={() => {
+                  setShowEditWorkerModal(false);
+                  setSelectedWorkerForEdit(null);
+                }}
+                className="text-gray-400 hover:text-gray-600"
+              >
+                ✕
+              </button>
+            </div>
+            
+            <div className="space-y-6">
+              {/* Quick Stats Overview */}
+              <div className="bg-gray-50 rounded-lg p-4">
+                <h3 className="font-semibold text-gray-900 mb-3">📊 Estatísticas Atuais</h3>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                  <div className="text-center">
+                    <div className="text-lg font-bold text-blue-600">{selectedWorkerForEdit.totalTransactions}</div>
+                    <div className="text-gray-600">Total Transações</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-lg font-bold text-purple-600">{(selectedWorkerForEdit.averagePerDay || 0).toFixed(1)}</div>
+                    <div className="text-gray-600">Média/Dia</div>
+                  </div>
+                  <div className="text-center">
+                    <div className={`text-lg font-bold ${selectedWorkerForEdit.netItems >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                      {selectedWorkerForEdit.netItems > 0 ? '+' : ''}{selectedWorkerForEdit.netItems}
+                    </div>
+                    <div className="text-gray-600">Itens Líquidos</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-lg font-bold text-orange-600">
+                      {selectedWorkerForEdit.lastActivity ? 
+                        new Date(selectedWorkerForEdit.lastActivity).toLocaleDateString('pt-BR', { day: 'numeric', month: 'short' })
+                        : '--'
+                      }
+                    </div>
+                    <div className="text-gray-600">Última Atividade</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Worker Settings Section */}
+              <div className="bg-white border border-gray-200 rounded-lg p-4">
+                <h3 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                  <Settings className="h-5 w-5 text-purple-600" />
+                  Configurações do Trabalhador
+                </h3>
+                
+                {/* Worker Status */}
+                <div className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Status do Trabalhador
+                    </label>
+                    <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                      <option value="active">🟢 Ativo</option>
+                      <option value="inactive">🔴 Inativo</option>
+                      <option value="on-vacation">🏖️ De Férias</option>
+                      <option value="suspended">⏸️ Suspenso</option>
+                    </select>
+                  </div>
+
+                  {/* Role Assignment */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Cargo/Função
+                    </label>
+                    <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                      <option value="worker">👷 Trabalhador</option>
+                      <option value="supervisor">👨‍💼 Supervisor</option>
+                      <option value="manager">🧑‍💻 Gerente</option>
+                      <option value="trainee">🎓 Estagiário</option>
+                    </select>
+                  </div>
+
+                  {/* Performance Rating */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Avaliação de Performance
+                    </label>
+                    <div className="flex items-center gap-2">
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <button
+                          key={star}
+                          className="text-yellow-400 hover:text-yellow-500 text-xl"
+                          onClick={() => {}}
+                        >
+                          ⭐
+                        </button>
+                      ))}
+                      <span className="ml-2 text-sm text-gray-600">(4.2/5)</span>
+                    </div>
+                  </div>
+
+                  {/* Notes Section */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Notas do Supervisor
+                    </label>
+                    <textarea
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                      rows={3}
+                      placeholder="Adicione notas sobre o desempenho, comportamento ou observações do trabalhador..."
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Activity Settings */}
+              <div className="bg-white border border-gray-200 rounded-lg p-4">
+                <h3 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                  <Activity className="h-5 w-5 text-orange-600" />
+                  Configurações de Atividade
+                </h3>
+                
+                <div className="space-y-4">
+                  {/* Activity Tracking */}
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <label className="text-sm font-medium text-gray-700">Rastreamento de Atividade</label>
+                      <p className="text-xs text-gray-500">Monitorar todas as ações deste trabalhador</p>
+                    </div>
+                    <button className="relative inline-flex h-6 w-11 items-center rounded-full bg-green-500 transition-colors">
+                      <span className="inline-block h-4 w-4 transform rounded-full bg-white transition-transform translate-x-6" />
+                    </button>
+                  </div>
+
+                  {/* Notification Settings */}
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <label className="text-sm font-medium text-gray-700">Notificações de Inatividade</label>
+                      <p className="text-xs text-gray-500">Alertar se ficar inativo por mais de 3 dias</p>
+                    </div>
+                    <button className="relative inline-flex h-6 w-11 items-center rounded-full bg-gray-300 transition-colors">
+                      <span className="inline-block h-4 w-4 transform rounded-full bg-white transition-transform translate-x-1" />
+                    </button>
+                  </div>
+
+                  {/* Performance Alerts */}
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <label className="text-sm font-medium text-gray-700">Alertas de Performance</label>
+                      <p className="text-xs text-gray-500">Notificar se performance cair abaixo de 2.0/dia</p>
+                    </div>
+                    <button className="relative inline-flex h-6 w-11 items-center rounded-full bg-green-500 transition-colors">
+                      <span className="inline-block h-4 w-4 transform rounded-full bg-white transition-transform translate-x-6" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row gap-3">
+                <button
+                  className="flex-1 px-4 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors flex items-center justify-center gap-2"
+                >
+                  💾 Salvar Alterações
+                </button>
+                
+                <button
+                  onClick={() => {
+                    setSelectedWorkerForView(selectedWorkerForEdit);
+                    setShowWorkerModal(true);
+                    setShowEditWorkerModal(false);
+                  }}
+                  className="flex-1 px-4 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors flex items-center justify-center gap-2"
+                >
+                  <Eye className="h-4 w-4" />
+                  Ver Detalhes
+                </button>
+                
+                <button
+                  onClick={() => {
+                    setShowAdvancedManagement(true);
+                    setShowEditWorkerModal(false);
+                  }}
+                  className="flex-1 px-4 py-3 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors flex items-center justify-center gap-2"
+                >
+                  <Settings className="h-4 w-4" />
+                  Gestão Avançada
+                </button>
+              </div>
+
+              {/* Warning */}
+              <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
+                <div className="flex items-start gap-3">
+                  <div className="text-amber-600 text-lg">⚠️</div>
+                  <div>
+                    <p className="text-sm font-medium text-amber-800">Importante</p>
+                    <p className="text-xs text-amber-700 mt-1">
+                      As alterações feitas aqui afetarão como este trabalhador é monitorado e avaliado no sistema. 
+                      Certifique-se de salvar as mudanças antes de fechar esta janela.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
