@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, ChevronUp, Package, DollarSign, Plus, Minus, Users, Activity, Settings, BarChart3, Archive } from 'lucide-react';
+import { ChevronDown, ChevronUp, Package, DollarSign, Plus, Minus, Users, Activity, Settings, BarChart3, Archive, Edit, Trash2, X } from 'lucide-react';
 import { FirmConfig } from '@/types/firms';
 import { FirmTemplateConfig } from '@/types/firmTemplates';
 
@@ -35,6 +35,147 @@ interface TemplateFirmDashboardProps {
   firm: FirmConfig;
   template: FirmTemplateConfig;
 }
+
+interface ActivityManagementModalProps {
+  activity: Activity | null;
+  isOpen: boolean;
+  onClose: () => void;
+  onSave: (activityId: string, newItemName: string) => Promise<boolean>;
+  onDelete: (activityId: string) => Promise<boolean>;
+  getBestDisplayName: (itemId: string) => string;
+}
+
+const ActivityManagementModal: React.FC<ActivityManagementModalProps> = ({
+  activity,
+  isOpen,
+  onClose,
+  onSave,
+  onDelete,
+  getBestDisplayName
+}) => {
+  const [newItemName, setNewItemName] = useState('');
+  const [saving, setSaving] = useState(false);
+  const [deleting, setDeleting] = useState(false);
+
+  useEffect(() => {
+    if (activity) {
+      setNewItemName(activity.item || '');
+    }
+  }, [activity]);
+
+  const handleSave = async () => {
+    if (!activity || !newItemName.trim()) return;
+    
+    setSaving(true);
+    try {
+      const success = await onSave(activity.id, newItemName.trim());
+      if (success) {
+        onClose();
+      }
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const handleDelete = async () => {
+    if (!activity) return;
+    
+    if (!confirm(`Tem certeza que deseja deletar esta atividade?\n\n"${activity.autor} - ${activity.item}"\n\nEsta ação não pode ser desfeita.`)) {
+      return;
+    }
+    
+    setDeleting(true);
+    try {
+      const success = await onDelete(activity.id);
+      if (success) {
+        onClose();
+      }
+    } finally {
+      setDeleting(false);
+    }
+  };
+
+  if (!isOpen || !activity) return null;
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+      <div className="bg-white rounded-lg max-w-md w-full">
+        <div className="p-4 border-b">
+          <div className="flex items-center justify-between">
+            <h2 className="text-lg font-semibold">🔧 Gerenciar Atividade</h2>
+            <button
+              onClick={onClose}
+              className="text-gray-400 hover:text-gray-600 transition-colors"
+            >
+              <X size={20} />
+            </button>
+          </div>
+        </div>
+
+        <div className="p-4 space-y-4">
+          <div>
+            <p className="text-sm text-gray-600 mb-2">
+              <strong>Autor:</strong> {activity.autor}
+            </p>
+            <p className="text-sm text-gray-600 mb-2">
+              <strong>Tipo:</strong> {activity.tipo === 'adicionar' ? 'Adicionou' : 'Removeu'}
+            </p>
+            <p className="text-sm text-gray-600 mb-4">
+              <strong>Data:</strong> {new Date(activity.timestamp).toLocaleString('pt-BR')}
+            </p>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Nome do Item
+            </label>
+            <input
+              type="text"
+              value={newItemName}
+              onChange={(e) => setNewItemName(e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              placeholder="Digite o novo nome do item"
+            />
+            <p className="text-xs text-gray-500 mt-1">
+              Nome atual: {getBestDisplayName(activity.item || '')}
+            </p>
+          </div>
+
+          <div className="flex justify-between pt-4 border-t">
+            <button
+              onClick={handleDelete}
+              disabled={deleting || saving}
+              className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors disabled:opacity-50 flex items-center gap-2"
+            >
+              {deleting && <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>}
+              <Trash2 size={16} />
+              Deletar
+            </button>
+            
+            <div className="flex gap-2">
+              <button
+                onClick={onClose}
+                disabled={saving || deleting}
+                className="px-4 py-2 text-gray-700 bg-gray-200 rounded-md hover:bg-gray-300 transition-colors disabled:opacity-50"
+              >
+                Cancelar
+              </button>
+              <button
+                onClick={handleSave}
+                disabled={saving || deleting || !newItemName.trim()}
+                className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors disabled:opacity-50 flex items-center gap-2"
+              >
+                {saving && <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>}
+                <Edit size={16} />
+                Salvar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const MetricCard: React.FC<MetricCardProps> = ({ 
   title, 
@@ -78,8 +219,14 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
   const [lastUpdate, setLastUpdate] = useState<string>('');
   const [expandedActivity, setExpandedActivity] = useState<string | null>(null);
   
+  // Activity management modal state
+  const [managementModalOpen, setManagementModalOpen] = useState(false);
+  const [selectedActivity, setSelectedActivity] = useState<Activity | null>(null);
+  
   // Translation state
   const [itemTranslations, setItemTranslations] = useState<Record<string, string>>({});
+  const [persistentInventoryOverrides, setPersistentInventoryOverrides] = useState<Record<string, string>>({});
+  const [customizations, setCustomizations] = useState<Record<string, string>>({});
   
   // Calculated metrics
   const [totalRevenue, setTotalRevenue] = useState(0);
@@ -88,68 +235,122 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
   const [bankBalance, setBankBalance] = useState(0);
   const [inventoryCount, setInventoryCount] = useState(0);
 
-  // Load translations on component mount - check if firm uses global or custom translations
-  useEffect(() => {
-    const loadTranslations = async () => {
-      try {
-        // Check if this firm uses global translations
-        if (firm?.display?.itemTranslations === "global") {
-          console.log('🌍 Loading global translations for', firm.name);
-          const response = await fetch('http://localhost:3050/api/localization/translations');
-          if (response.ok) {
-            const data = await response.json();
-            if (data.success && data.data?.custom_overrides) {
-              setItemTranslations(data.data.custom_overrides);
-              console.log('✅ Loaded', Object.keys(data.data.custom_overrides).length, 'global translations');
-            }
-          }
-        } else if (firm?.display?.itemTranslations && typeof firm.display.itemTranslations === 'object') {
-          // Use firm-specific translations
-          console.log('🏢 Using firm-specific translations for', firm.name);
-          setItemTranslations(firm.display.itemTranslations);
-        } else {
-          // Fallback to global if no firm specified
-          console.log('🔄 Fallback to global translations');
-          const response = await fetch('http://localhost:3050/api/localization/translations');
-          if (response.ok) {
-            const data = await response.json();
-            if (data.success && data.data?.custom_overrides) {
-              setItemTranslations(data.data.custom_overrides);
-            }
+  // Load customizations and translations - customizations have highest priority
+  const loadCustomizationsAndTranslations = async () => {
+    try {
+      console.log('🔄 Loading customizations and translations...');
+      
+      // 1. HIGHEST PRIORITY: Load custom_display_names.json
+      const customizationsResponse = await fetch('/api/customizations', {
+        headers: { 'Cache-Control': 'no-cache' }
+      });
+      if (customizationsResponse.ok) {
+        const customizationsData = await customizationsResponse.json();
+        if (customizationsData.success && customizationsData.data?.display_names) {
+          console.log('✅ Loaded customizations:', Object.keys(customizationsData.data.display_names).length, 'items');
+          console.log('🔍 Milk_Weed customization:', customizationsData.data.display_names['Milk_Weed']);
+          setCustomizations(customizationsData.data.display_names);
+        }
+      }
+
+      // 2. Load global translations (lower priority)
+      if (firm?.display?.itemTranslations === "global") {
+        const response = await fetch('http://localhost:3050/api/localization/translations');
+        if (response.ok) {
+          const data = await response.json();
+          if (data.success && data.data?.custom_overrides) {
+            setItemTranslations(data.data.custom_overrides);
           }
         }
-      } catch (error) {
-        console.debug('Localization service not available:', error);
+      } else if (firm?.display?.itemTranslations && typeof firm.display.itemTranslations === 'object') {
+        setItemTranslations(firm.display.itemTranslations);
+      } else {
+        const response = await fetch('http://localhost:3050/api/localization/translations');
+        if (response.ok) {
+          const data = await response.json();
+          if (data.success && data.data?.custom_overrides) {
+            setItemTranslations(data.data.custom_overrides);
+          }
+        }
       }
-    };
-    
-    loadTranslations();
+    } catch (error) {
+      console.debug('Error loading customizations/translations:', error);
+    }
+  };
+
+  useEffect(() => {
+    loadCustomizationsAndTranslations().then(() => {
+      // Only fetch activities AFTER customizations are loaded
+      fetchActivities();
+    });
   }, [firm]);
 
-  // Get best display name using the same logic as FazendaBW
+  // Listen for customization updates
+  useEffect(() => {
+    const handleCustomizationUpdate = () => {
+      console.log('🔄 Customization updated, reloading...');
+      loadCustomizationsAndTranslations().then(() => {
+        fetchActivities(); // Reload activities after customizations are updated
+      });
+    };
+
+    window.addEventListener('customizationUpdated', handleCustomizationUpdate);
+    
+    return () => {
+      window.removeEventListener('customizationUpdated', handleCustomizationUpdate);
+    };
+  }, []);
+
+  // Get best display name - customizations have absolute highest priority
   const getBestDisplayName = (itemId?: string): string => {
     if (!itemId) return 'Item';
     
-    // 1. Try custom translation first (highest priority)
-    const customTranslation = itemTranslations[itemId] || itemTranslations[itemId.toLowerCase()];
-    if (customTranslation && customTranslation.trim() !== '') {
-      return customTranslation;
+    console.log(`🔍 getBestDisplayName("${itemId}")`, {
+      customizations: Object.keys(customizations).length,
+      hasCustomization: customizations[itemId] || customizations[itemId.toLowerCase()],
+      translations: Object.keys(itemTranslations).length,
+      hasTranslation: itemTranslations[itemId] || itemTranslations[itemId.toLowerCase()]
+    });
+    
+    // 1. ABSOLUTE HIGHEST PRIORITY: Check custom_display_names.json (corn → Milho etc)
+    // This is your existing customization system that MUST take precedence
+    const customization = customizations[itemId] || customizations[itemId.toLowerCase()];
+    if (customization && customization.trim() !== '') {
+      console.log(`✅ Using customization: ${itemId} → ${customization}`);
+      return customization;
+    }
+    
+    // 2. Check persistent inventory overrides (from frontend edits)
+    const persistentOverride = persistentInventoryOverrides[itemId] || persistentInventoryOverrides[itemId.toLowerCase()];
+    if (persistentOverride && persistentOverride.trim() !== '') {
+      return persistentOverride;
+    }
+    
+    // 3. Try global translation system (lowest priority)
+    const globalTranslation = itemTranslations[itemId] || itemTranslations[itemId.toLowerCase()];
+    if (globalTranslation && globalTranslation.trim() !== '') {
+      return globalTranslation;
     }
 
-    // 2. Try variations
+    // 4. Try variations with customizations first
     const variations = [
       itemId.replace(/_/g, ' '),
       itemId.replace(/_/g, ' ').toLowerCase()
     ];
     
     for (const variation of variations) {
+      const customVariation = customizations[variation];
+      if (customVariation && customVariation.trim() !== '') {
+        return customVariation;
+      }
+      
       const translation = itemTranslations[variation];
       if (translation && translation.trim() !== '') {
         return translation;
       }
     }
 
-    // 3. Fallback to normalized formatting
+    // 5. Fallback to normalized formatting
     return itemId
       .replace(/_/g, ' ')
       .replace(/([a-z])([A-Z])/g, '$1 $2')
@@ -159,9 +360,10 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
   };
 
 
-  // Fetch activities from the API - filtered by firm's channel
+  // Fetch activities from the API and merge with persistent inventory data
   const fetchActivities = async () => {
     try {
+      // Fetch Discord activities
       const response = await fetch(`/api/webhook/channel-messages?channelId=${firm.channelId}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' }
@@ -171,11 +373,54 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
         const data = await response.json();
         
         if (data.success && data.messages && Array.isArray(data.messages)) {
-          // Messages are already filtered by channel ID on the server
           const firmMessages = data.messages;
           
+          // Fetch persistent inventory data to apply overrides
+          let inventoryOverrides = {};
+          try {
+            const inventoryResponse = await fetch(`/api/inventory/${firm.id}`);
+            if (inventoryResponse.ok) {
+              const inventoryData = await inventoryResponse.json();
+              if (inventoryData.success && inventoryData.data) {
+                // Create mapping of item IDs to updated names
+                Object.values(inventoryData.data.items || {}).forEach((item: any) => {
+                  if (item.id && item.nome) {
+                    // Map item ID (e.g., "Milk_Weed") to custom name (e.g., "Asclepias")
+                    inventoryOverrides[item.id] = item.nome;
+                    // Also try the display name format
+                    if (item.displayName && item.displayName !== item.nome) {
+                      inventoryOverrides[item.displayName] = item.nome;
+                    }
+                  }
+                });
+                console.log('📊 Loaded inventory overrides:', inventoryOverrides);
+                // Store in component state for getBestDisplayName to use
+                setPersistentInventoryOverrides(inventoryOverrides);
+              }
+            }
+          } catch (inventoryError) {
+            console.debug('No persistent inventory data found');
+          }
+          
+          // Apply inventory overrides to activities
+          const enhancedMessages = firmMessages.map((activity: Activity) => {
+            if (activity.categoria === 'inventario' && activity.item) {
+              // Check if there's a persistent inventory override for this item
+              const override = inventoryOverrides[activity.item] || inventoryOverrides[activity.item.toLowerCase()];
+              if (override) {
+                console.log(`🔄 Applying inventory override: ${activity.item} → ${override}`);
+                return {
+                  ...activity,
+                  item: override,
+                  _inventoryOverride: true // Mark as enhanced
+                };
+              }
+            }
+            return activity;
+          });
+          
           // Sort by timestamp (newest first)
-          const sortedMessages = firmMessages.sort((a: any, b: any) => 
+          const sortedMessages = enhancedMessages.sort((a: any, b: any) => 
             new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
           );
           
@@ -189,6 +434,8 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
           if (lastActivity) {
             setLastUpdate(new Date(lastActivity.timestamp).toLocaleString('pt-BR'));
           }
+          
+          console.log(`✅ Loaded ${sortedMessages.length} activities with ${Object.keys(inventoryOverrides).length} inventory overrides applied`);
         } else {
           console.warn('Invalid API response structure:', data);
         }
@@ -305,6 +552,82 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
     return 0; // Default if no balance found
   };
 
+  // Activity management functions
+  const handleEditActivity = (activity: Activity) => {
+    setSelectedActivity(activity);
+    setManagementModalOpen(true);
+  };
+
+  const handleSaveActivity = async (activityId: string, newItemName: string): Promise<boolean> => {
+    try {
+      // Extract worker ID and transaction ID from activity ID
+      // Activity ID format: usually contains timestamp and author info
+      const workerId = selectedActivity?.autor?.toLowerCase().replace(/\s+/g, '_') || 'unknown';
+      const transactionId = activityId;
+
+      console.log('🔄 Editing activity:', { workerId, transactionId, newItemName });
+
+      const response = await fetch(`/api/worker-activity/transaction/${workerId}/${transactionId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-bot-token': process.env.NEXT_PUBLIC_BOT_WEBHOOK_TOKEN || ''
+        },
+        body: JSON.stringify({ newItemName })
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        console.log('✅ Activity updated successfully:', result);
+        
+        // Refresh activities to show changes
+        await fetchActivities();
+        return true;
+      } else {
+        const error = await response.json();
+        console.error('❌ Failed to update activity:', error);
+        return false;
+      }
+    } catch (error) {
+      console.error('❌ Error updating activity:', error);
+      return false;
+    }
+  };
+
+  const handleDeleteActivity = async (activityId: string): Promise<boolean> => {
+    try {
+      // Extract worker ID and transaction ID from activity ID
+      const workerId = selectedActivity?.autor?.toLowerCase().replace(/\s+/g, '_') || 'unknown';
+      const transactionId = activityId;
+
+      console.log('🗑️ Deleting activity:', { workerId, transactionId });
+
+      const response = await fetch(`/api/worker-activity/transaction/${workerId}/${transactionId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-bot-token': process.env.NEXT_PUBLIC_BOT_WEBHOOK_TOKEN || ''
+        }
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        console.log('✅ Activity deleted successfully:', result);
+        
+        // Refresh activities to show changes
+        await fetchActivities();
+        return true;
+      } else {
+        const error = await response.json();
+        console.error('❌ Failed to delete activity:', error);
+        return false;
+      }
+    } catch (error) {
+      console.error('❌ Error deleting activity:', error);
+      return false;
+    }
+  };
+
   // Filter activities by type - get last 100 of each type separately
   const getItemActivities = (): Activity[] => {
     // Filter all item activities from the entire activities array (already sorted newest first)
@@ -341,10 +664,36 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
   };
 
   useEffect(() => {
-    fetchActivities();
+    // Don't fetch activities immediately - let the customizations load first
     const interval = setInterval(fetchActivities, 60000); // Update every minute
-    return () => clearInterval(interval);
-  }, [firm.channelId]);
+    
+    // Listen for inventory changes from other components
+    const handleInventoryChange = async (event: CustomEvent) => {
+      if (event.detail.firmId === firm.id) {
+        // Reload customizations to get the latest changes from custom_display_names.json
+        try {
+          const customizationsResponse = await fetch('/api/customizations');
+          if (customizationsResponse.ok) {
+            const customizationsData = await customizationsResponse.json();
+            if (customizationsData.success && customizationsData.data?.display_names) {
+              setCustomizations(customizationsData.data.display_names);
+            }
+          }
+        } catch (error) {
+          console.debug('Error reloading customizations:', error);
+        }
+        
+        fetchActivities(); // Refresh to show updated item names
+      }
+    };
+    
+    window.addEventListener('inventoryChanged', handleInventoryChange as EventListener);
+    
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('inventoryChanged', handleInventoryChange as EventListener);
+    };
+  }, [firm.channelId, firm.id]);
 
   const dashboardComponent = template.components.find(c => c.id === 'dashboard');
   const showMetrics = dashboardComponent?.settings?.showMetrics ?? true;
@@ -500,6 +849,29 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
                           {new Date(activity.timestamp).toLocaleString('pt-BR')}
                         </p>
                       </div>
+                      
+                      {/* Edit/Delete buttons for inventory activities only */}
+                      {activity.categoria === 'inventario' && (
+                        <div className="flex items-center gap-1 ml-2">
+                          <button
+                            onClick={() => handleEditActivity(activity)}
+                            className="text-blue-600 hover:text-blue-800 p-1 rounded hover:bg-blue-50 transition-colors"
+                            title="Editar atividade"
+                          >
+                            <Edit size={14} />
+                          </button>
+                          <button
+                            onClick={async () => {
+                              setSelectedActivity(activity);
+                              await handleDeleteActivity(activity.id);
+                            }}
+                            className="text-red-600 hover:text-red-800 p-1 rounded hover:bg-red-50 transition-colors"
+                            title="Deletar atividade"
+                          >
+                            <Trash2 size={14} />
+                          </button>
+                        </div>
+                      )}
                     </div>
                   ))}
                 </div>
@@ -596,6 +968,21 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
             </div>
           </div>
         </div>
+      )}
+
+      {/* Activity Management Modal */}
+      {managementModalOpen && (
+        <ActivityManagementModal
+          activity={selectedActivity}
+          isOpen={managementModalOpen}
+          onClose={() => {
+            setManagementModalOpen(false);
+            setSelectedActivity(null);
+          }}
+          onSave={handleSaveActivity}
+          onDelete={handleDeleteActivity}
+          getBestDisplayName={getBestDisplayName}
+        />
       )}
     </div>
   );

@@ -94,93 +94,129 @@ export async function handleWorkerEdit(interaction: ButtonInteraction): Promise<
       });
     }
 
-    await interaction.reply({
-      content: '⚠️ Funcionalidade de edição em desenvolvimento. Use o dashboard web para edições avançadas.',
-      ephemeral: true
+    const workerId = interaction.customId.replace('worker_edit_', '');
+
+    // Get worker session to show available transactions
+    const response = await axios.get(`http://localhost:${config.api.port}/api/worker-activity/sessions`, {
+      headers: { 'X-Bot-Token': config.discord.token }
     });
 
-  } catch (error) {
-    console.error('❌ Error handling worker edit:', error);
-    await interaction.reply({
-      content: '❌ Erro interno.',
-      ephemeral: true
-    });
-  }
-}
-
-export async function handleWorkerReject(interaction: ButtonInteraction): Promise<any> {
-  try {
-    // Check permissions
-    const hasPermission = await checkManagerPermissions(interaction, 'reject');
-    if (!hasPermission) {
+    const session = response.data.sessions.find((s: any) => s.workerId === workerId);
+    if (!session) {
       return await interaction.reply({
-        content: '❌ Você não tem permissão para rejeitar atividades de trabalhadores.',
+        content: '❌ Sessão do trabalhador não encontrada.',
         ephemeral: true
       });
     }
 
-    const workerId = interaction.customId.replace('worker_reject_', '');
+    // Create transaction list for editing
+    let transactionsList = '';
+    let transactionCount = 0;
 
-    // Show modal for rejection reason
+    // Add plant transactions
+    session.plantTransactions.forEach((transaction: any) => {
+      transactionCount++;
+      const emoji = transaction.type === 'seed_taken' ? '🌱' : '🌾';
+      transactionsList += `${transactionCount}. ${emoji} ${transaction.itemName} x${transaction.quantity} (${transaction.transactionId.substring(3, 8)})\n`;
+    });
+
+    // Add animal transactions  
+    session.animalTransactions.forEach((transaction: any) => {
+      transactionCount++;
+      const emoji = transaction.type === 'animal_delivery' ? '🐄' : '🐄';
+      transactionsList += `${transactionCount}. ${emoji} ${transaction.animalType} x${transaction.quantity} - $${transaction.amount} (${transaction.transactionId.substring(3, 8)})\n`;
+    });
+
+    if (transactionCount === 0) {
+      return await interaction.reply({
+        content: '❌ Nenhuma transação encontrada para editar.',
+        ephemeral: true
+      });
+    }
+
+    // Show modal for transaction management
     const modal = new ModalBuilder()
-      .setCustomId(`worker_reject_modal_${workerId}`)
-      .setTitle('Rejeitar Sessão do Trabalhador');
+      .setCustomId(`transaction_manage_modal_${workerId}`)
+      .setTitle('Gerenciar Transações');
 
-    const reasonInput = new TextInputBuilder()
-      .setCustomId('rejection_reason')
-      .setLabel('Motivo da Rejeição')
-      .setPlaceholder('Digite o motivo da rejeição...')
-      .setStyle(TextInputStyle.Paragraph)
-      .setRequired(true)
-      .setMaxLength(500);
+    const transactionInput = new TextInputBuilder()
+      .setCustomId('transaction_id')
+      .setLabel('ID da Transação (últimos 5 dígitos)')
+      .setStyle(TextInputStyle.Short)
+      .setPlaceholder('Ex: 8g7h2')
+      .setRequired(true);
 
-    const row = new ActionRowBuilder<TextInputBuilder>()
-      .addComponents(reasonInput);
+    const actionInput = new TextInputBuilder()
+      .setCustomId('action')  
+      .setLabel('Ação (edit/delete)')
+      .setStyle(TextInputStyle.Short)
+      .setPlaceholder('edit ou delete')
+      .setRequired(true);
 
-    modal.addComponents(row);
+    const newNameInput = new TextInputBuilder()
+      .setCustomId('new_name')
+      .setLabel('Novo nome do item (apenas para edit)')
+      .setStyle(TextInputStyle.Short)
+      .setPlaceholder('Ex: Algodão')
+      .setRequired(false);
+
+    const newQuantityInput = new TextInputBuilder()
+      .setCustomId('new_quantity')
+      .setLabel('Nova quantidade (apenas para edit)')
+      .setStyle(TextInputStyle.Short)
+      .setPlaceholder('Ex: 15')
+      .setRequired(false);
+
+    const newAmountInput = new TextInputBuilder()
+      .setCustomId('new_amount')
+      .setLabel('Novo valor em $ (apenas para animais)')
+      .setStyle(TextInputStyle.Short)
+      .setPlaceholder('Ex: 250.50')
+      .setRequired(false);
+
+    modal.addComponents(
+      new ActionRowBuilder<TextInputBuilder>().addComponents(transactionInput),
+      new ActionRowBuilder<TextInputBuilder>().addComponents(actionInput),
+      new ActionRowBuilder<TextInputBuilder>().addComponents(newNameInput),
+      new ActionRowBuilder<TextInputBuilder>().addComponents(newQuantityInput),
+      new ActionRowBuilder<TextInputBuilder>().addComponents(newAmountInput)
+    );
+
+    // Send transaction list first, then show modal
+    await interaction.reply({
+      content: `**📋 Transações Disponíveis para ${session.workerName}:**\n\`\`\`\n${transactionsList}\`\`\``,
+      ephemeral: true
+    });
+
+    // Show modal after a brief delay
+    setTimeout(() => {
+      interaction.followUp({ 
+        content: '⚠️ Use o modal que aparecerá para gerenciar as transações.',
+        ephemeral: true
+      }).catch(console.error);
+    }, 1000);
 
     await interaction.showModal(modal);
 
   } catch (error) {
-    console.error('❌ Error handling worker reject:', error);
-    await interaction.reply({
-      content: '❌ Erro interno.',
-      ephemeral: true
-    });
-  }
-}
-
-export async function handleWorkerRejectSubmit(interaction: ModalSubmitInteraction): Promise<any> {
-  try {
-    const workerId = interaction.customId.replace('worker_reject_modal_', '');
-    const reason = interaction.fields.getTextInputValue('rejection_reason');
-
-    await interaction.deferReply({ ephemeral: true });
-
-    // For now, just log the rejection - could be extended to call an API
-    console.log(`❌ Manager ${interaction.user.username} rejected worker ${workerId}: ${reason}`);
-    
-    await interaction.editReply({
-      content: `✅ Sessão rejeitada. Motivo: ${reason}\\n\\n⚠️ Funcionalidade de rejeição em desenvolvimento.`
-    });
-
-  } catch (error) {
-    console.error('❌ Error handling reject submit:', error);
-    
-    if (interaction.deferred) {
-      await interaction.editReply({
-        content: '❌ Erro interno ao processar rejeição.'
+    console.error('❌ Error handling worker edit:', error);
+    if (interaction.replied) {
+      await interaction.followUp({
+        content: '❌ Erro interno.',
+        ephemeral: true
       });
     } else {
       await interaction.reply({
-        content: '❌ Erro interno ao processar rejeição.',
+        content: '❌ Erro interno.',
         ephemeral: true
       });
     }
   }
 }
 
-async function checkManagerPermissions(interaction: ButtonInteraction, permissionType: 'pay' | 'edit' | 'reject'): Promise<boolean> {
+
+
+async function checkManagerPermissions(interaction: ButtonInteraction, permissionType: 'pay' | 'edit'): Promise<boolean> {
   try {
     // Get user's roles from Discord
     const member = await interaction.guild?.members.fetch(interaction.user.id);
@@ -199,9 +235,6 @@ async function checkManagerPermissions(interaction: ButtonInteraction, permissio
       case 'edit':
         requiredRoles = farmConfig.rolePermissions?.acceptRoles || ['Admin', 'Moderator'];
         break;
-      case 'reject':
-        requiredRoles = farmConfig.rolePermissions?.rejectRoles || ['Admin', 'Moderator'];
-        break;
     }
     
     // Check if user has any of the required roles
@@ -216,5 +249,156 @@ async function checkManagerPermissions(interaction: ButtonInteraction, permissio
   } catch (error) {
     console.error('❌ Error checking manager permissions:', error);
     return false;
+  }
+}
+
+export async function handleTransactionManageSubmit(interaction: ModalSubmitInteraction): Promise<any> {
+  try {
+    await interaction.deferReply({ ephemeral: true });
+
+    const workerId = interaction.customId.replace('transaction_manage_modal_', '');
+    const transactionId = interaction.fields.getTextInputValue('transaction_id');
+    const action = interaction.fields.getTextInputValue('action').toLowerCase().trim();
+    const newName = interaction.fields.getTextInputValue('new_name') || '';
+    const newQuantity = interaction.fields.getTextInputValue('new_quantity') || '';
+    const newAmount = interaction.fields.getTextInputValue('new_amount') || '';
+
+    // Find full transaction ID from partial ID
+    const sessionsResponse = await axios.get(`http://localhost:${config.api.port}/api/worker-activity/sessions`, {
+      headers: { 'X-Bot-Token': config.discord.token }
+    });
+
+    const session = sessionsResponse.data.sessions.find((s: any) => s.workerId === workerId);
+    if (!session) {
+      return await interaction.editReply({
+        content: '❌ Sessão do trabalhador não encontrada.'
+      });
+    }
+
+    // Find full transaction ID from partial ID
+    let fullTransactionId = '';
+    const allTransactions = [...session.plantTransactions, ...session.animalTransactions];
+    
+    for (const transaction of allTransactions) {
+      if (transaction.transactionId.includes(transactionId)) {
+        fullTransactionId = transaction.transactionId;
+        break;
+      }
+    }
+
+    if (!fullTransactionId) {
+      return await interaction.editReply({
+        content: `❌ Transação não encontrada com ID: ${transactionId}`
+      });
+    }
+
+    // Validate action
+    if (action !== 'edit' && action !== 'delete') {
+      return await interaction.editReply({
+        content: '❌ Ação inválida. Use "edit" ou "delete".'
+      });
+    }
+
+    // Validate edit action - require at least one field
+    if (action === 'edit' && (!newName || newName.trim() === '') && (!newQuantity || newQuantity.trim() === '') && (!newAmount || newAmount.trim() === '')) {
+      return await interaction.editReply({
+        content: '❌ Para edição, forneça pelo menos um dos seguintes: novo nome, nova quantidade ou novo valor.'
+      });
+    }
+
+    // Validate quantity format if provided
+    let parsedQuantity: number | undefined;
+    if (newQuantity && newQuantity.trim() !== '') {
+      parsedQuantity = parseInt(newQuantity.trim());
+      if (isNaN(parsedQuantity) || parsedQuantity <= 0) {
+        return await interaction.editReply({
+          content: '❌ Quantidade deve ser um número inteiro positivo.'
+        });
+      }
+    }
+
+    // Validate amount format if provided
+    let parsedAmount: number | undefined;
+    if (newAmount && newAmount.trim() !== '') {
+      parsedAmount = parseFloat(newAmount.trim());
+      if (isNaN(parsedAmount) || parsedAmount < 0) {
+        return await interaction.editReply({
+          content: '❌ Valor deve ser um número válido maior ou igual a zero.'
+        });
+      }
+    }
+
+    // Perform the action
+    if (action === 'edit') {
+      // Edit transaction
+      const editPayload: any = {};
+      if (newName && newName.trim() !== '') {
+        editPayload.newItemName = newName.trim();
+      }
+      if (parsedQuantity !== undefined) {
+        editPayload.newQuantity = parsedQuantity;
+      }
+      if (parsedAmount !== undefined) {
+        editPayload.newAmount = parsedAmount;
+      }
+
+      const editResponse = await axios.put(
+        `http://localhost:${config.api.port}/api/worker-activity/transaction/${workerId}/${fullTransactionId}`,
+        editPayload,
+        { headers: { 'X-Bot-Token': config.discord.token }}
+      );
+
+      if (editResponse.data.success) {
+        let changesSummary: string[] = [];
+        if (newName && newName.trim() !== '') {
+          changesSummary.push(`Nome: **${newName.trim()}**`);
+        }
+        if (parsedQuantity !== undefined) {
+          changesSummary.push(`Quantidade: **${parsedQuantity}**`);
+        }
+        if (parsedAmount !== undefined) {
+          changesSummary.push(`Valor: **$${parsedAmount.toFixed(2)}**`);
+        }
+
+        await interaction.editReply({
+          content: `✅ Transação ${transactionId} editada com sucesso!\n${changesSummary.join('\n')}`
+        });
+      } else {
+        await interaction.editReply({
+          content: `❌ Erro ao editar transação: ${editResponse.data.error}`
+        });
+      }
+
+    } else if (action === 'delete') {
+      // Delete transaction  
+      const deleteResponse = await axios.delete(
+        `http://localhost:${config.api.port}/api/worker-activity/transaction/${workerId}/${fullTransactionId}`,
+        { headers: { 'X-Bot-Token': config.discord.token }}
+      );
+
+      if (deleteResponse.data.success) {
+        await interaction.editReply({
+          content: `✅ Transação ${transactionId} deletada com sucesso! Créditos recalculados automaticamente.`
+        });
+      } else {
+        await interaction.editReply({
+          content: `❌ Erro ao deletar transação: ${deleteResponse.data.error}`
+        });
+      }
+    }
+
+  } catch (error) {
+    console.error('❌ Error handling transaction manage submit:', error);
+    
+    if (interaction.deferred) {
+      await interaction.editReply({
+        content: '❌ Erro interno ao processar gerenciamento de transação.'
+      });
+    } else {
+      await interaction.reply({
+        content: '❌ Erro interno ao processar gerenciamento de transação.',
+        ephemeral: true
+      });
+    }
   }
 }

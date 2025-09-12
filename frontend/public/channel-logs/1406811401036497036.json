@@ -1,8 +1,68 @@
 {
   "channelId": "1406811401036497036",
-  "lastUpdated": "2025-09-12T15:14:15.111Z",
-  "messageCount": 10,
+  "lastUpdated": "2025-09-12T22:41:50.443Z",
+  "messageCount": 16,
   "messages": [
+    {
+      "id": "1416192108951371817",
+      "author": "Thony Gustav",
+      "content": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nMover Item para Loja\nItem adicionado:: goat_female x2\nAutor:: Thony Gustav | FIXO: 72363\nData:: 12/09/2025 - 19:41:50",
+      "timestamp": "2025-09-12T22:41:50.351Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nMover Item para Loja\nItem adicionado:: goat_female x2\nAutor:: Thony Gustav | FIXO: 72363\nData:: 12/09/2025 - 19:41:50",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1416128084033147041",
+      "author": "Atlanta",
+      "content": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nRetirar item da Loja\nItem Retirado:: donkey_male x2\nFuncionario:: Cherokee Bill | FIXO: 77562\nData:: 12/09/2025 -  15:27:25",
+      "timestamp": "2025-09-12T18:27:25.621Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nRetirar item da Loja\nItem Retirado:: donkey_male x2\nFuncionario:: Cherokee Bill | FIXO: 77562\nData:: 12/09/2025 -  15:27:25",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1416113487863877835",
+      "author": "Atlanta",
+      "content": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nRetirar item da Loja\nItem Retirado:: donkey_male x8\nFuncionario:: Silas Moreau | FIXO: 77340\nData:: 12/09/2025 -  14:29:25",
+      "timestamp": "2025-09-12T17:29:25.623Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nRetirar item da Loja\nItem Retirado:: donkey_male x8\nFuncionario:: Silas Moreau | FIXO: 77340\nData:: 12/09/2025 -  14:29:25",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1416108539709231175",
+      "author": "Atlanta",
+      "content": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nRetirar item da Loja\nItem Retirado:: donkey_male x4\nFuncionario:: Bartholomeu Dias | FIXO: 76312\nData:: 12/09/2025 -  14:09:45",
+      "timestamp": "2025-09-12T17:09:45.891Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nRetirar item da Loja\nItem Retirado:: donkey_male x4\nFuncionario:: Bartholomeu Dias | FIXO: 76312\nData:: 12/09/2025 -  14:09:45",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1416085746934218874",
+      "author": "Atlanta",
+      "content": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nRetirar item da Loja\nItem Retirado:: sheep_male x1\nFuncionario:: Polly Lima | FIXO: 2009\nData:: 12/09/2025 -  12:39:11",
+      "timestamp": "2025-09-12T15:39:11.670Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nRetirar item da Loja\nItem Retirado:: sheep_male x1\nFuncionario:: Polly Lima | FIXO: 2009\nData:: 12/09/2025 -  12:39:11",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1416085733734875208",
+      "author": "Atlanta",
+      "content": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nRetirar item da Loja\nItem Retirado:: sheep_female x1\nFuncionario:: Polly Lima | FIXO: 2009\nData:: 12/09/2025 -  12:39:08",
+      "timestamp": "2025-09-12T15:39:08.523Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nRetirar item da Loja\nItem Retirado:: sheep_female x1\nFuncionario:: Polly Lima | FIXO: 2009\nData:: 12/09/2025 -  12:39:08",
+      "rawEmbeds": []
+    },
     {
       "id": "1416079469353111582",
       "author": "Atlanta",

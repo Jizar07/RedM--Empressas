@@ -13,12 +13,20 @@ import {
   WorkerInventoryStats 
 } from '@/types/inventory';
 import { FirmConfig } from '@/types/firms';
+import { storageManager } from '@/utils/localStorage';
 
 interface UseInventoryManagerProps {
   firm: FirmConfig;
   autoRefresh?: boolean;
   refreshInterval?: number;
 }
+
+// Storage keys for localStorage backup
+const getStorageKeys = (firmId: string) => ({
+  inventoryData: `${firmId}_inventory_data`,
+  lastSyncTime: `${firmId}_last_sync`,
+  pendingChanges: `${firmId}_pending_changes`
+});
 
 export function useInventoryManager({ 
   firm, 
@@ -123,6 +131,11 @@ export function useInventoryManager({
   // Auto-categorize items based on name patterns
   const getCategoryForItem = useCallback((itemName: string): string => {
     const name = itemName.toLowerCase();
+    
+    // Special cases - items that should not be auto-categorized by their name
+    if (name === 'milk_weed') {
+      return 'plantas'; // Milk_Weed is a plant, not a beverage
+    }
     
     if (name.includes('seed') || name.includes('semente') || name.includes('bulrush') || name.includes('cornseed')) {
       return 'sementes';
@@ -458,6 +471,34 @@ export function useInventoryManager({
     };
   }, [inventoryData.settings.lowStockThreshold]);
 
+  // localStorage backup functions
+  const backupToLocalStorage = useCallback((data: InventoryData) => {
+    const storageKeys = getStorageKeys(firm.id);
+    const backupData = {
+      ...data,
+      backupTimestamp: new Date().toISOString()
+    };
+    storageManager.setItem(storageKeys.inventoryData, JSON.stringify(backupData));
+    storageManager.setItem(storageKeys.lastSyncTime, new Date().toISOString());
+    console.log('💾 Backed up inventory data to localStorage for', firm.name);
+  }, [firm.id, firm.name]);
+
+  const loadFromLocalStorage = useCallback((): InventoryData | null => {
+    try {
+      const storageKeys = getStorageKeys(firm.id);
+      const backupData = storageManager.getItem(storageKeys.inventoryData);
+      if (backupData) {
+        const parsed = JSON.parse(backupData);
+        console.log('📂 Loaded inventory backup from localStorage for', firm.name);
+        return parsed;
+      }
+    } catch (error) {
+      console.error('❌ Error loading from localStorage:', error);
+    }
+    return null;
+  }, [firm.id, firm.name]);
+
+
   // Fetch inventory data from API
   const fetchInventoryData = useCallback(async () => {
     try {
@@ -493,172 +534,319 @@ export function useInventoryManager({
           };
           
           setInventoryData(newInventoryData);
+          
+          // Backup to localStorage after successful fetch
+          backupToLocalStorage(newInventoryData);
+          
           console.log('📦 Updated inventory:', analytics.totalItems, 'items,', analytics.totalQuantity, 'total quantity,', analytics.workers.length, 'workers with activities');
+        }
+      } else {
+        // If API fails, try loading from localStorage backup
+        const backupData = loadFromLocalStorage();
+        if (backupData) {
+          setInventoryData(backupData);
+          setError('Carregado do backup local - alguns dados podem estar desatualizados');
+          console.log('📂 Loaded from localStorage backup due to API failure');
+        } else {
+          setError('Erro ao carregar dados do inventário');
         }
       }
     } catch (error) {
       console.error('Error fetching inventory data:', error);
-      setError('Erro ao carregar dados do inventário');
+      
+      // Try loading from localStorage backup on error
+      const backupData = loadFromLocalStorage();
+      if (backupData) {
+        setInventoryData(backupData);
+        setError('Carregado do backup local - verifique sua conexão');
+        console.log('📂 Loaded from localStorage backup due to network error');
+      } else {
+        setError('Erro ao carregar dados do inventário');
+      }
     } finally {
       setLoading(false);
     }
-  }, [firm.channelId, firm.name, processActivities, calculateAnalytics, inventoryData.settings]);
+  }, [firm.channelId, firm.name, processActivities, calculateAnalytics, inventoryData.settings, backupToLocalStorage, loadFromLocalStorage]);
 
   // CRUD operations
   const addItem = useCallback(async (itemData: Partial<InventoryItem>): Promise<boolean> => {
     try {
-      const newItem: InventoryItem = {
+      console.log('🔄 Adding item to persistent storage:', itemData.nome);
+      console.log('🔍 Using firm ID:', firm.id);
+      console.log('🔍 Full API URL:', `/api/inventory/${firm.id}`);
+      
+      // Prepare item data with auto-filled properties
+      const enrichedItemData = {
+        ...itemData,
         id: itemData.id || itemData.nome || crypto.randomUUID(),
-        nome: itemData.nome || '',
         displayName: itemData.displayName || getBestDisplayName(itemData.nome),
         categoria: itemData.categoria || getCategoryForItem(itemData.nome || ''),
-        quantidade: itemData.quantidade || 0,
-        criado_em: new Date().toISOString(),
-        atualizado_em: new Date().toISOString(),
-        ultimo_autor: 'Manual',
-        ativo: true,
-        ...itemData
       };
 
       // Add price matching if available
-      const pricing = matchPrice(newItem.id);
+      const pricing = matchPrice(enrichedItemData.id);
       if (pricing) {
-        newItem.preco_min = pricing.min;
-        newItem.preco_max = pricing.max;
-        newItem.preco_medio = pricing.average;
+        enrichedItemData.preco_min = pricing.min;
+        enrichedItemData.preco_max = pricing.max;
+        enrichedItemData.preco_medio = pricing.average;
       }
 
-      const newTransaction: InventoryTransaction = {
-        id: crypto.randomUUID(),
-        itemId: newItem.id,
-        tipo: 'criar',
-        quantidade_anterior: 0,
-        quantidade_posterior: newItem.quantidade,
-        quantidade_mudanca: newItem.quantidade,
-        autor: 'Manual',
-        timestamp: new Date().toISOString(),
-        origem: 'manual',
-        detalhes: `Criou item ${newItem.displayName}`
-      };
-
-      setInventoryData(prev => {
-        const newItems = { ...prev.items, [newItem.id]: newItem };
-        const inventoryTransactions = prev.transactions.filter(t => t.origem !== 'financial');
-        const financialTransactions = prev.transactions.filter(t => t.origem === 'financial' || t.metadata?.tipo_transacao);
-        const newTransactions = [...inventoryTransactions, newTransaction];
-        const newAnalytics = calculateAnalytics(newItems, newTransactions, financialTransactions);
-        
-        return {
-          ...prev,
-          items: newItems,
-          transactions: [...newTransactions, ...financialTransactions],
-          analytics: newAnalytics,
-          lastUpdate: new Date().toISOString(),
-          totalItems: newAnalytics.totalItems,
-          totalQuantity: newAnalytics.totalQuantity
-        };
+      // Call API to add item with persistence
+      const response = await fetch(`/api/inventory/${firm.id}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ item: enrichedItemData })
       });
 
-      return true;
+      if (!response.ok) {
+        console.error('❌ API request failed with status:', response.status, response.statusText);
+        try {
+          const errorData = await response.json();
+          console.error('❌ API error details:', errorData);
+        } catch (e) {
+          console.error('❌ Could not parse error response');
+        }
+        return false;
+      }
+
+      const result = await response.json();
+      
+      if (result.success) {
+        console.log('✅ Item added successfully to persistent storage:', result.item.displayName);
+        
+        // Refresh inventory data to reflect changes
+        await fetchInventoryData();
+        return true;
+      } else {
+        console.error('❌ Failed to add item:', result.error);
+        return false;
+      }
     } catch (error) {
-      console.error('Error adding item:', error);
+      console.error('❌ Error adding item:', error);
+      
+      // Check if it's a network error (API server not available)
+      if (error instanceof Error && (error.message.includes('Failed to fetch') || error.message.includes('NetworkError'))) {
+        console.log('🔄 API server unavailable, saving to localStorage backup only');
+        
+        // Add to pending changes for offline sync
+        const storageKeys = getStorageKeys(firm.id);
+        const pendingChanges = JSON.parse(storageManager.getItem(storageKeys.pendingChanges) || '[]');
+        pendingChanges.push({
+          type: 'add',
+          data: itemData,
+          timestamp: new Date().toISOString()
+        });
+        storageManager.setItem(storageKeys.pendingChanges, JSON.stringify(pendingChanges));
+        
+        // Update local state immediately for better UX
+        const newItem: InventoryItem = {
+          id: itemData.id || itemData.nome || crypto.randomUUID(),
+          nome: itemData.nome || '',
+          displayName: itemData.displayName || getBestDisplayName(itemData.nome),
+          categoria: itemData.categoria || getCategoryForItem(itemData.nome || ''),
+          quantidade: itemData.quantidade || 0,
+          criado_em: new Date().toISOString(),
+          atualizado_em: new Date().toISOString(),
+          ultimo_autor: 'Local',
+          ativo: itemData.ativo ?? true,
+          preco_min: itemData.preco_min,
+          preco_max: itemData.preco_max,
+          preco_medio: itemData.preco_medio,
+          notas: itemData.notas
+        };
+        
+        // Update local inventory state
+        setInventoryData(prev => ({
+          ...prev,
+          items: { ...prev.items, [newItem.id]: newItem },
+          totalItems: prev.totalItems + 1,
+          totalQuantity: prev.totalQuantity + (newItem.quantidade || 0)
+        }));
+        
+        console.log('💾 Item saved to local state and queued for sync');
+        return true;
+      }
+      
       return false;
     }
-  }, [getBestDisplayName, getCategoryForItem, matchPrice, calculateAnalytics]);
+  }, [firm.id, getBestDisplayName, getCategoryForItem, matchPrice, fetchInventoryData]);
 
   const updateItem = useCallback(async (itemId: string, updates: Partial<InventoryItem>): Promise<boolean> => {
     try {
-      const currentItem = inventoryData.items[itemId];
-      if (!currentItem) return false;
-
-      const updatedItem: InventoryItem = {
-        ...currentItem,
-        ...updates,
-        atualizado_em: new Date().toISOString(),
-        ultimo_autor: 'Manual'
-      };
-
-      const newTransaction: InventoryTransaction = {
-        id: crypto.randomUUID(),
-        itemId: itemId,
-        tipo: 'editar',
-        quantidade_anterior: currentItem.quantidade,
-        quantidade_posterior: updatedItem.quantidade,
-        quantidade_mudanca: updatedItem.quantidade - currentItem.quantidade,
-        autor: 'Manual',
-        timestamp: new Date().toISOString(),
-        origem: 'manual',
-        detalhes: `Editou ${updatedItem.displayName}`
-      };
-
-      setInventoryData(prev => {
-        const newItems = { ...prev.items, [itemId]: updatedItem };
-        const inventoryTransactions = prev.transactions.filter(t => t.origem !== 'financial');
-        const financialTransactions = prev.transactions.filter(t => t.origem === 'financial' || t.metadata?.tipo_transacao);
-        const newTransactions = [...inventoryTransactions, newTransaction];
-        const newAnalytics = calculateAnalytics(newItems, newTransactions, financialTransactions);
-        
-        return {
-          ...prev,
-          items: newItems,
-          transactions: [...newTransactions, ...financialTransactions],
-          analytics: newAnalytics,
-          lastUpdate: new Date().toISOString(),
-          totalItems: newAnalytics.totalItems,
-          totalQuantity: newAnalytics.totalQuantity
-        };
+      console.log('🔄 Updating item in persistent storage:', itemId, updates);
+      console.log('🔍 Using firm ID:', firm.id);
+      console.log('🔍 Full API URL:', `/api/inventory/${firm.id}`);
+      
+      // Call API to update item with persistence
+      const response = await fetch(`/api/inventory/${firm.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ itemId, updates })
       });
 
-      return true;
+      if (!response.ok) {
+        console.error('❌ Update API request failed with status:', response.status, response.statusText);
+        try {
+          const errorData = await response.json();
+          console.error('❌ Update API error details:', errorData);
+          
+          // If item not found (404), try to create it instead
+          if (response.status === 404 && errorData.error === 'Item not found') {
+            console.log('🔄 Item not found in backend, attempting to create it...');
+            
+            const currentItem = inventoryData.items[itemId];
+            if (currentItem) {
+              // Merge current item with updates and create new item
+              const itemToCreate = { ...currentItem, ...updates };
+              console.log('🔄 Creating item with data:', itemToCreate);
+              
+              const createResponse = await fetch(`/api/inventory/${firm.id}`, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ item: itemToCreate })
+              });
+
+              if (createResponse.ok) {
+                const createResult = await createResponse.json();
+                console.log('✅ Item created successfully:', createResult);
+                await fetchInventoryData();
+                return true;
+              } else {
+                console.error('❌ Failed to create item as fallback');
+              }
+            }
+          }
+        } catch (e) {
+          console.error('❌ Could not parse update error response');
+        }
+        return false;
+      }
+
+      const result = await response.json();
+      
+      if (result.success) {
+        console.log('✅ Item updated successfully in persistent storage:', result.item.displayName);
+        
+        // Update local state directly instead of refreshing from Discord (which would overwrite changes)
+        setInventoryData(prev => ({
+          ...prev,
+          items: { ...prev.items, [itemId]: result.item }
+        }));
+        
+        // SAVE TO CUSTOMIZATION FILE: If displayName was changed, update custom_display_names.json
+        if (updates.nome && updates.nome.trim() !== '') {
+          try {
+            const customizationResponse = await fetch('/api/customizations', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                itemId: itemId,
+                displayName: updates.nome.trim()
+              })
+            });
+            
+            if (customizationResponse.ok) {
+              console.log('✅ Added to customization file:', itemId, '→', updates.nome);
+            }
+          } catch (customizationError) {
+            console.warn('Failed to update customization file:', customizationError);
+          }
+        }
+        
+        // Trigger global refresh for dashboard activities (notify other components)
+        window.dispatchEvent(new CustomEvent('inventoryChanged', { 
+          detail: { firmId: firm.id, itemId, updates, updatedItem: result.item } 
+        }));
+        console.log('📡 Dispatched inventory change event for dashboard refresh');
+        
+        return true;
+      } else {
+        console.error('❌ Failed to update item:', result.error);
+        return false;
+      }
     } catch (error) {
-      console.error('Error updating item:', error);
+      console.error('❌ Error updating item:', error);
+      
+      // Check if it's a network error (API server not available)
+      if (error instanceof Error && (error.message.includes('Failed to fetch') || error.message.includes('NetworkError'))) {
+        console.log('🔄 API server unavailable for update, saving to localStorage backup');
+        
+        // Add to pending changes for offline sync
+        const storageKeys = getStorageKeys(firm.id);
+        const pendingChanges = JSON.parse(storageManager.getItem(storageKeys.pendingChanges) || '[]');
+        pendingChanges.push({
+          type: 'update',
+          itemId,
+          updates,
+          timestamp: new Date().toISOString()
+        });
+        storageManager.setItem(storageKeys.pendingChanges, JSON.stringify(pendingChanges));
+        
+        // Update local state immediately
+        const currentItem = inventoryData.items[itemId];
+        if (currentItem) {
+          const updatedItem = {
+            ...currentItem,
+            ...updates,
+            atualizado_em: new Date().toISOString(),
+            ultimo_autor: 'Local'
+          };
+          
+          setInventoryData(prev => ({
+            ...prev,
+            items: { ...prev.items, [itemId]: updatedItem }
+          }));
+          
+          console.log('💾 Item update saved to local state and queued for sync');
+          return true;
+        }
+      }
+      
       return false;
     }
-  }, [inventoryData.items, calculateAnalytics]);
+  }, [firm.id, fetchInventoryData]);
 
   const deleteItem = useCallback(async (itemId: string): Promise<boolean> => {
     try {
-      const currentItem = inventoryData.items[itemId];
-      if (!currentItem) return false;
-
-      const newTransaction: InventoryTransaction = {
-        id: crypto.randomUUID(),
-        itemId: itemId,
-        tipo: 'deletar',
-        quantidade_anterior: currentItem.quantidade,
-        quantidade_posterior: 0,
-        quantidade_mudanca: -currentItem.quantidade,
-        autor: 'Manual',
-        timestamp: new Date().toISOString(),
-        origem: 'manual',
-        detalhes: `Deletou ${currentItem.displayName}`
-      };
-
-      setInventoryData(prev => {
-        const newItems = { ...prev.items };
-        delete newItems[itemId];
-        const inventoryTransactions = prev.transactions.filter(t => t.origem !== 'financial');
-        const financialTransactions = prev.transactions.filter(t => t.origem === 'financial' || t.metadata?.tipo_transacao);
-        const newTransactions = [...inventoryTransactions, newTransaction];
-        const newAnalytics = calculateAnalytics(newItems, newTransactions, financialTransactions);
-        
-        return {
-          ...prev,
-          items: newItems,
-          transactions: [...newTransactions, ...financialTransactions],
-          analytics: newAnalytics,
-          lastUpdate: new Date().toISOString(),
-          totalItems: newAnalytics.totalItems,
-          totalQuantity: newAnalytics.totalQuantity
-        };
+      console.log('🔄 Deleting item from persistent storage:', itemId);
+      
+      // Call API to delete item with persistence
+      const response = await fetch(`/api/inventory/${firm.id}?itemId=${itemId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        }
       });
 
-      return true;
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error('❌ API error deleting item:', errorData.error);
+        return false;
+      }
+
+      const result = await response.json();
+      
+      if (result.success) {
+        console.log('✅ Item deleted successfully from persistent storage:', result.deletedItem.displayName);
+        
+        // Refresh inventory data to reflect changes
+        await fetchInventoryData();
+        return true;
+      } else {
+        console.error('❌ Failed to delete item:', result.error);
+        return false;
+      }
     } catch (error) {
-      console.error('Error deleting item:', error);
+      console.error('❌ Error deleting item:', error);
       return false;
     }
-  }, [inventoryData.items, calculateAnalytics]);
+  }, [firm.id, fetchInventoryData]);
 
   const updateSettings = useCallback((newSettings: Partial<InventorySettings>) => {
     setInventoryData(prev => ({
@@ -667,27 +855,119 @@ export function useInventoryManager({
     }));
   }, []);
 
+  // Handle offline changes - defined after CRUD operations
+  const handleOfflineChanges = useCallback(async () => {
+    try {
+      const storageKeys = getStorageKeys(firm.id);
+      const pendingChanges = storageManager.getItem(storageKeys.pendingChanges);
+      
+      if (pendingChanges) {
+        const changes = JSON.parse(pendingChanges);
+        console.log('🔄 Processing', changes.length, 'offline changes...');
+        
+        // Process each pending change when back online
+        for (const change of changes) {
+          if (change.type === 'add') {
+            await addItem(change.data);
+          } else if (change.type === 'update') {
+            await updateItem(change.itemId, change.updates);
+          } else if (change.type === 'delete') {
+            await deleteItem(change.itemId);
+          }
+        }
+        
+        // Clear pending changes after successful sync
+        storageManager.setItem(storageKeys.pendingChanges, JSON.stringify([]));
+        console.log('✅ Processed all offline changes');
+      }
+    } catch (error) {
+      console.error('❌ Error processing offline changes:', error);
+    }
+  }, [firm.id, addItem, updateItem, deleteItem]);
+
   // Initialize and set up auto-refresh
   useEffect(() => {
     loadTranslations();
     loadPriceList();
-  }, [loadTranslations, loadPriceList]);
+    
+    // Try loading from backup first for instant load
+    const backupData = loadFromLocalStorage();
+    if (backupData) {
+      setInventoryData(backupData);
+      setLoading(false);
+      console.log('📂 Loaded initial data from localStorage backup');
+    }
+  }, [loadTranslations, loadPriceList, loadFromLocalStorage]);
 
   useEffect(() => {
     if (itemTranslations && Object.keys(itemTranslations).length > 0) {
       fetchInventoryData();
+      
+      // Process any offline changes when coming back online
+      handleOfflineChanges();
     }
-  }, [itemTranslations, fetchInventoryData]);
+  }, [itemTranslations, fetchInventoryData, handleOfflineChanges]);
 
+  // Online/offline detection
+  useEffect(() => {
+    const handleOnline = () => {
+      console.log('🌐 Back online - syncing data...');
+      fetchInventoryData();
+      handleOfflineChanges();
+    };
+
+    const handleOffline = () => {
+      console.log('📱 Gone offline - changes will be queued');
+    };
+
+    window.addEventListener('online', handleOnline);
+    window.addEventListener('offline', handleOffline);
+
+    return () => {
+      window.removeEventListener('online', handleOnline);
+      window.removeEventListener('offline', handleOffline);
+    };
+  }, [fetchInventoryData, handleOfflineChanges]);
+
+  // Smart background sync - only sync when needed, not on a timer
   useEffect(() => {
     if (!autoRefresh || !inventoryData.settings.autoRefresh) return;
 
-    const interval = setInterval(() => {
-      fetchInventoryData();
-    }, inventoryData.settings.refreshInterval * 1000);
+    let backgroundSyncInterval: NodeJS.Timeout;
+    let lastActivity = Date.now();
+    
+    // Track user activity to avoid refreshing during active use
+    const updateActivity = () => {
+      lastActivity = Date.now();
+    };
+    
+    // Listen for user activity
+    window.addEventListener('mousemove', updateActivity);
+    window.addEventListener('keypress', updateActivity);
+    window.addEventListener('click', updateActivity);
+    
+    // Only sync in background when user is inactive for 30+ seconds
+    backgroundSyncInterval = setInterval(() => {
+      const timeSinceActivity = Date.now() - lastActivity;
+      const timeSinceLastUpdate = Date.now() - new Date(inventoryData.lastUpdate).getTime();
+      
+      // Sync conditions:
+      // 1. User has been inactive for 30+ seconds
+      // 2. Last update was more than 5 minutes ago
+      // 3. No pending API calls
+      if (timeSinceActivity > 30000 && timeSinceLastUpdate > 300000 && !loading) {
+        console.log('🔄 Background sync: Refreshing inventory data due to inactivity');
+        fetchInventoryData();
+      }
+    }, 60000); // Check every minute instead of every 30 seconds
 
-    return () => clearInterval(interval);
-  }, [autoRefresh, inventoryData.settings.autoRefresh, inventoryData.settings.refreshInterval, fetchInventoryData]);
+    return () => {
+      clearInterval(backgroundSyncInterval);
+      window.removeEventListener('mousemove', updateActivity);
+      window.removeEventListener('keypress', updateActivity);
+      window.removeEventListener('click', updateActivity);
+    };
+  }, [autoRefresh, inventoryData.settings.autoRefresh, inventoryData.lastUpdate, loading, fetchInventoryData]);
 
   // Memoized filtered data for performance
   const filteredData = useMemo(() => ({

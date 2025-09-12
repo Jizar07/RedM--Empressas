@@ -97,7 +97,18 @@ When you see "/update" command from the user, perform the following actions:
 3. Update changelog.md if there are version-worthy changes
 4. Update CLAUDE.md if there are architectural or command changes
 
-## Recent Major Updates (v0.029) **[CURRENT VERSION]**
+## Recent Major Updates (v0.034) **[CURRENT VERSION]**
+
+### Backend Workers Channel Modifications - Complete UI/UX Enhancement (v0.034)
+- **Streamlined Worker Management**: Removed reject button functionality completely, simplified workflow to Pay and Edit only
+- **Enhanced Edit Capabilities**: Added comprehensive editing for transaction amounts (animal deliveries) and quantities (plant transactions)
+- **Smart Edit Validation**: Requires at least one field (name, quantity, or amount) with proper number format validation
+- **Automatic Recalculation**: Credits automatically recalculated after transaction edits to maintain system accuracy
+- **Payment Status Enhancement**: Payment button now updates session to 'paid' status with blue embed, "Total Pago" display
+- **Button Management**: All buttons automatically removed after payment completion (clean paid status)
+- **API Enhancement**: Worker-activity endpoints updated with comprehensive validation for new editing parameters
+- **Import Cleanup**: Removed all reject-related imports fixing TypeScript compilation errors
+- **Result**: Clean, efficient worker management with comprehensive editing and clear payment completion workflow
 
 ### Complete Global Naming/Translation System Implementation (v0.029)
 - **Global Translation System**: Implemented comprehensive global naming system for Fazenda Cabra da Peste firm

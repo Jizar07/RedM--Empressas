@@ -13,7 +13,7 @@ export function initializeWorkerChannelService(client: any) {
 }
 
 // Middleware to check bot token
-function authenticateBot(req: Request, res: Response, next: any): void {
+function authenticateBot(req: Request, res: Response, next: any) {
   const botToken = Array.isArray(req.headers['x-bot-token']) ? req.headers['x-bot-token'][0] : req.headers['x-bot-token'];
   const expectedToken = process.env.BOT_WEBHOOK_TOKEN || process.env.DISCORD_TOKEN;
   
@@ -218,6 +218,98 @@ router.post('/pay/:workerId', authenticateBot, async (req: Request, res: Respons
 
   } catch (error) {
     console.error('❌ Error paying worker:', error);
+    return res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Edit transaction (global save)
+router.put('/transaction/:workerId/:transactionId', authenticateBot, async (req: Request, res: Response) => {
+  try {
+    if (!workerChannelService) {
+      return res.status(503).json({ error: 'Service not initialized' });
+    }
+
+    const { workerId, transactionId } = req.params;
+    const { newItemName, newQuantity, newAmount } = req.body;
+    
+    // Validate that at least one field is provided
+    if ((!newItemName || newItemName.trim() === '') && newQuantity === undefined && newAmount === undefined) {
+      return res.status(400).json({ error: 'At least one of newItemName, newQuantity, or newAmount is required' });
+    }
+
+    // Parse and validate optional numeric fields
+    let parsedQuantity: number | undefined;
+    let parsedAmount: number | undefined;
+
+    if (newQuantity !== undefined) {
+      parsedQuantity = parseInt(newQuantity);
+      if (isNaN(parsedQuantity) || parsedQuantity <= 0) {
+        return res.status(400).json({ error: 'newQuantity must be a positive integer' });
+      }
+    }
+
+    if (newAmount !== undefined) {
+      parsedAmount = parseFloat(newAmount);
+      if (isNaN(parsedAmount) || parsedAmount < 0) {
+        return res.status(400).json({ error: 'newAmount must be a valid number >= 0' });
+      }
+    }
+
+    const activityService = workerChannelService.getActivityService();
+    const success = await activityService.editTransaction(
+      workerId, 
+      transactionId, 
+      newItemName ? newItemName.trim() : undefined,
+      parsedQuantity,
+      parsedAmount
+    );
+    
+    if (success) {
+      console.log(`✏️ Transaction ${transactionId} edited for worker ${workerId}`);
+      return res.json({ 
+        success: true, 
+        message: 'Transaction edited successfully' 
+      });
+    } else {
+      return res.status(404).json({ 
+        success: false, 
+        error: 'Transaction not found or edit failed' 
+      });
+    }
+
+  } catch (error) {
+    console.error('❌ Error editing transaction:', error);
+    return res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Delete transaction (global save)
+router.delete('/transaction/:workerId/:transactionId', authenticateBot, async (req: Request, res: Response) => {
+  try {
+    if (!workerChannelService) {
+      return res.status(503).json({ error: 'Service not initialized' });
+    }
+
+    const { workerId, transactionId } = req.params;
+
+    const activityService = workerChannelService.getActivityService();
+    const success = await activityService.deleteTransaction(workerId, transactionId);
+    
+    if (success) {
+      console.log(`🗑️ Transaction ${transactionId} deleted for worker ${workerId}`);
+      return res.json({ 
+        success: true, 
+        message: 'Transaction deleted successfully' 
+      });
+    } else {
+      return res.status(404).json({ 
+        success: false, 
+        error: 'Transaction not found or delete failed' 
+      });
+    }
+
+  } catch (error) {
+    console.error('❌ Error deleting transaction:', error);
     return res.status(500).json({ error: 'Internal server error' });
   }
 });

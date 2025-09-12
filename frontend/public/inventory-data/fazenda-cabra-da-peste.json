@@ -1,0 +1,407 @@
+{
+  "items": {
+    "Milk_Weed": {
+      "id": "Milk_Weed",
+      "nome": "Asclepias",
+      "displayName": "Asclepias",
+      "categoria": "plantas",
+      "quantidade": 0,
+      "criado_em": "2025-09-12T18:59:43.297Z",
+      "atualizado_em": "2025-09-12T19:57:24.160Z",
+      "ultimo_autor": "API",
+      "ativo": true
+    }
+  },
+  "transactions": [
+    {
+      "id": "3f9ae82f-fe6a-476b-9ad1-d5a6aa0eb457",
+      "itemId": "Milk_Weed",
+      "tipo": "editar",
+      "quantidade_anterior": 0,
+      "quantidade_posterior": 0,
+      "quantidade_mudanca": 0,
+      "autor": "API",
+      "timestamp": "2025-09-12T19:57:24.160Z",
+      "origem": "manual",
+      "detalhes": "Updated item Asclepias"
+    },
+    {
+      "id": "c66c4097-3e20-43d7-a54f-77c69e6073ac",
+      "itemId": "Milk_Weed",
+      "tipo": "criar",
+      "quantidade_anterior": 0,
+      "quantidade_posterior": 0,
+      "quantidade_mudanca": 0,
+      "autor": "API",
+      "timestamp": "2025-09-12T19:50:32.176Z",
+      "origem": "manual",
+      "detalhes": "Created item Asclepias"
+    },
+    {
+      "id": "2f52cf19-b5b6-4d7f-98f8-c89605ea9d15",
+      "itemId": "Milk_Weed",
+      "tipo": "deletar",
+      "quantidade_anterior": 0,
+      "quantidade_posterior": 0,
+      "quantidade_mudanca": 0,
+      "autor": "API",
+      "timestamp": "2025-09-12T19:29:56.851Z",
+      "origem": "manual",
+      "detalhes": "Deleted item Asclepias"
+    },
+    {
+      "id": "f162dea6-690c-47b7-8f14-3dcae24bee7e",
+      "itemId": "Milk_Weed",
+      "tipo": "editar",
+      "quantidade_anterior": 0,
+      "quantidade_posterior": 0,
+      "quantidade_mudanca": 0,
+      "autor": "API",
+      "timestamp": "2025-09-12T19:29:20.362Z",
+      "origem": "manual",
+      "detalhes": "Updated item Asclepias"
+    },
+    {
+      "id": "ccfae39b-d060-424b-bd02-7c9304edfe76",
+      "itemId": "Milk_Weed",
+      "tipo": "editar",
+      "quantidade_anterior": 0,
+      "quantidade_posterior": 0,
+      "quantidade_mudanca": 0,
+      "autor": "API",
+      "timestamp": "2025-09-12T19:24:05.271Z",
+      "origem": "manual",
+      "detalhes": "Updated item Asclepias"
+    },
+    {
+      "id": "cc89a8ef-6990-4523-a927-c5249175c51b",
+      "itemId": "Milk_Weed",
+      "tipo": "editar",
+      "quantidade_anterior": 0,
+      "quantidade_posterior": 0,
+      "quantidade_mudanca": 0,
+      "autor": "API",
+      "timestamp": "2025-09-12T19:18:19.454Z",
+      "origem": "manual",
+      "detalhes": "Updated item Asclepias"
+    },
+    {
+      "id": "3c7c22bd-adb2-49b7-9898-e4197e6a4d42",
+      "itemId": "Milk_Weed",
+      "tipo": "editar",
+      "quantidade_anterior": 0,
+      "quantidade_posterior": 0,
+      "quantidade_mudanca": 0,
+      "autor": "API",
+      "timestamp": "2025-09-12T18:57:14.051Z",
+      "origem": "manual",
+      "detalhes": "Updated item Asclepias"
+    },
+    {
+      "id": "d8ff6443-d8ca-437e-8179-f916b19c12ec",
+      "itemId": "Milk_Weed",
+      "tipo": "editar",
+      "quantidade_anterior": 0,
+      "quantidade_posterior": 0,
+      "quantidade_mudanca": 0,
+      "autor": "API",
+      "timestamp": "2025-09-12T18:45:08.346Z",
+      "origem": "manual",
+      "detalhes": "Updated item Asclepias"
+    },
+    {
+      "id": "624eb60c-b657-4615-9b84-5af33fe890d9",
+      "itemId": "Milk_Weed",
+      "tipo": "editar",
+      "quantidade_anterior": 0,
+      "quantidade_posterior": 0,
+      "quantidade_mudanca": 0,
+      "autor": "API",
+      "timestamp": "2025-09-12T18:42:27.159Z",
+      "origem": "manual",
+      "detalhes": "Updated item Asclespia"
+    },
+    {
+      "id": "a030f54c-9b05-470c-b361-69d7a8de73c1",
+      "itemId": "Milk_Weed",
+      "tipo": "editar",
+      "quantidade_anterior": 0,
+      "quantidade_posterior": 0,
+      "quantidade_mudanca": 0,
+      "autor": "API",
+      "timestamp": "2025-09-12T18:29:17.756Z",
+      "origem": "manual",
+      "detalhes": "Updated item Asclepis"
+    },
+    {
+      "id": "1cc91d2e-9b52-4d2b-b4b5-c7e51602a018",
+      "itemId": "Milk_Weed",
+      "tipo": "editar",
+      "quantidade_anterior": 0,
+      "quantidade_posterior": 0,
+      "quantidade_mudanca": 0,
+      "autor": "API",
+      "timestamp": "2025-09-12T18:28:59.288Z",
+      "origem": "manual",
+      "detalhes": "Updated item Milk Weed"
+    },
+    {
+      "id": "9d4f44a2-e2dd-409c-bd92-30974b5e9a24",
+      "itemId": "Milk_Weed",
+      "tipo": "editar",
+      "quantidade_anterior": 0,
+      "quantidade_posterior": 0,
+      "quantidade_mudanca": 0,
+      "autor": "API",
+      "timestamp": "2025-09-12T18:23:00.799Z",
+      "origem": "manual",
+      "detalhes": "Updated item Milk Weed"
+    },
+    {
+      "id": "c8783c84-d233-42de-a084-570768a47e8c",
+      "itemId": "Milk_Weed",
+      "tipo": "editar",
+      "quantidade_anterior": 0,
+      "quantidade_posterior": 0,
+      "quantidade_mudanca": 0,
+      "autor": "API",
+      "timestamp": "2025-09-12T18:21:12.755Z",
+      "origem": "manual",
+      "detalhes": "Updated item Milk Weed"
+    },
+    {
+      "id": "6348c5d0-0329-414b-8738-cc6b1005299b",
+      "itemId": "Milk_Weed",
+      "tipo": "criar",
+      "quantidade_anterior": 0,
+      "quantidade_posterior": 0,
+      "quantidade_mudanca": 0,
+      "autor": "API",
+      "timestamp": "2025-09-12T18:18:48.956Z",
+      "origem": "manual",
+      "detalhes": "Created item Milk Weed"
+    }
+  ],
+  "analytics": {
+    "totalItems": 1,
+    "totalQuantity": 0,
+    "totalValue": 0,
+    "categorias": {},
+    "workers": [
+      {
+        "nome": "API",
+        "totalTransactions": 14,
+        "lastActivity": "2025-09-12T19:57:24.160Z",
+        "averagePerDay": 0
+      }
+    ],
+    "recentTransactions": [
+      {
+        "id": "3f9ae82f-fe6a-476b-9ad1-d5a6aa0eb457",
+        "itemId": "Milk_Weed",
+        "tipo": "editar",
+        "quantidade_anterior": 0,
+        "quantidade_posterior": 0,
+        "quantidade_mudanca": 0,
+        "autor": "API",
+        "timestamp": "2025-09-12T19:57:24.160Z",
+        "origem": "manual",
+        "detalhes": "Updated item Asclepias"
+      },
+      {
+        "id": "c66c4097-3e20-43d7-a54f-77c69e6073ac",
+        "itemId": "Milk_Weed",
+        "tipo": "criar",
+        "quantidade_anterior": 0,
+        "quantidade_posterior": 0,
+        "quantidade_mudanca": 0,
+        "autor": "API",
+        "timestamp": "2025-09-12T19:50:32.176Z",
+        "origem": "manual",
+        "detalhes": "Created item Asclepias"
+      },
+      {
+        "id": "2f52cf19-b5b6-4d7f-98f8-c89605ea9d15",
+        "itemId": "Milk_Weed",
+        "tipo": "deletar",
+        "quantidade_anterior": 0,
+        "quantidade_posterior": 0,
+        "quantidade_mudanca": 0,
+        "autor": "API",
+        "timestamp": "2025-09-12T19:29:56.851Z",
+        "origem": "manual",
+        "detalhes": "Deleted item Asclepias"
+      },
+      {
+        "id": "f162dea6-690c-47b7-8f14-3dcae24bee7e",
+        "itemId": "Milk_Weed",
+        "tipo": "editar",
+        "quantidade_anterior": 0,
+        "quantidade_posterior": 0,
+        "quantidade_mudanca": 0,
+        "autor": "API",
+        "timestamp": "2025-09-12T19:29:20.362Z",
+        "origem": "manual",
+        "detalhes": "Updated item Asclepias"
+      },
+      {
+        "id": "ccfae39b-d060-424b-bd02-7c9304edfe76",
+        "itemId": "Milk_Weed",
+        "tipo": "editar",
+        "quantidade_anterior": 0,
+        "quantidade_posterior": 0,
+        "quantidade_mudanca": 0,
+        "autor": "API",
+        "timestamp": "2025-09-12T19:24:05.271Z",
+        "origem": "manual",
+        "detalhes": "Updated item Asclepias"
+      },
+      {
+        "id": "cc89a8ef-6990-4523-a927-c5249175c51b",
+        "itemId": "Milk_Weed",
+        "tipo": "editar",
+        "quantidade_anterior": 0,
+        "quantidade_posterior": 0,
+        "quantidade_mudanca": 0,
+        "autor": "API",
+        "timestamp": "2025-09-12T19:18:19.454Z",
+        "origem": "manual",
+        "detalhes": "Updated item Asclepias"
+      },
+      {
+        "id": "3c7c22bd-adb2-49b7-9898-e4197e6a4d42",
+        "itemId": "Milk_Weed",
+        "tipo": "editar",
+        "quantidade_anterior": 0,
+        "quantidade_posterior": 0,
+        "quantidade_mudanca": 0,
+        "autor": "API",
+        "timestamp": "2025-09-12T18:57:14.051Z",
+        "origem": "manual",
+        "detalhes": "Updated item Asclepias"
+      },
+      {
+        "id": "d8ff6443-d8ca-437e-8179-f916b19c12ec",
+        "itemId": "Milk_Weed",
+        "tipo": "editar",
+        "quantidade_anterior": 0,
+        "quantidade_posterior": 0,
+        "quantidade_mudanca": 0,
+        "autor": "API",
+        "timestamp": "2025-09-12T18:45:08.346Z",
+        "origem": "manual",
+        "detalhes": "Updated item Asclepias"
+      },
+      {
+        "id": "624eb60c-b657-4615-9b84-5af33fe890d9",
+        "itemId": "Milk_Weed",
+        "tipo": "editar",
+        "quantidade_anterior": 0,
+        "quantidade_posterior": 0,
+        "quantidade_mudanca": 0,
+        "autor": "API",
+        "timestamp": "2025-09-12T18:42:27.159Z",
+        "origem": "manual",
+        "detalhes": "Updated item Asclespia"
+      },
+      {
+        "id": "a030f54c-9b05-470c-b361-69d7a8de73c1",
+        "itemId": "Milk_Weed",
+        "tipo": "editar",
+        "quantidade_anterior": 0,
+        "quantidade_posterior": 0,
+        "quantidade_mudanca": 0,
+        "autor": "API",
+        "timestamp": "2025-09-12T18:29:17.756Z",
+        "origem": "manual",
+        "detalhes": "Updated item Asclepis"
+      },
+      {
+        "id": "1cc91d2e-9b52-4d2b-b4b5-c7e51602a018",
+        "itemId": "Milk_Weed",
+        "tipo": "editar",
+        "quantidade_anterior": 0,
+        "quantidade_posterior": 0,
+        "quantidade_mudanca": 0,
+        "autor": "API",
+        "timestamp": "2025-09-12T18:28:59.288Z",
+        "origem": "manual",
+        "detalhes": "Updated item Milk Weed"
+      },
+      {
+        "id": "9d4f44a2-e2dd-409c-bd92-30974b5e9a24",
+        "itemId": "Milk_Weed",
+        "tipo": "editar",
+        "quantidade_anterior": 0,
+        "quantidade_posterior": 0,
+        "quantidade_mudanca": 0,
+        "autor": "API",
+        "timestamp": "2025-09-12T18:23:00.799Z",
+        "origem": "manual",
+        "detalhes": "Updated item Milk Weed"
+      },
+      {
+        "id": "c8783c84-d233-42de-a084-570768a47e8c",
+        "itemId": "Milk_Weed",
+        "tipo": "editar",
+        "quantidade_anterior": 0,
+        "quantidade_posterior": 0,
+        "quantidade_mudanca": 0,
+        "autor": "API",
+        "timestamp": "2025-09-12T18:21:12.755Z",
+        "origem": "manual",
+        "detalhes": "Updated item Milk Weed"
+      },
+      {
+        "id": "6348c5d0-0329-414b-8738-cc6b1005299b",
+        "itemId": "Milk_Weed",
+        "tipo": "criar",
+        "quantidade_anterior": 0,
+        "quantidade_posterior": 0,
+        "quantidade_mudanca": 0,
+        "autor": "API",
+        "timestamp": "2025-09-12T18:18:48.956Z",
+        "origem": "manual",
+        "detalhes": "Created item Milk Weed"
+      }
+    ],
+    "lowStockAlerts": [
+      {
+        "id": "Milk_Weed",
+        "nome": "Asclepias",
+        "displayName": "Asclepias",
+        "categoria": "plantas",
+        "quantidade": 0,
+        "criado_em": "2025-09-12T18:59:43.297Z",
+        "atualizado_em": "2025-09-12T19:57:24.160Z",
+        "ultimo_autor": "API",
+        "ativo": true
+      }
+    ],
+    "priceMatches": 0,
+    "unmatchedItems": [
+      "Milk_Weed"
+    ]
+  },
+  "settings": {
+    "autoRefresh": true,
+    "refreshInterval": 30,
+    "showZeroQuantity": true,
+    "defaultCategory": "outros",
+    "autoCategorizationEnabled": true,
+    "priceMatchingEnabled": true,
+    "lowStockThreshold": 5,
+    "notificationsEnabled": true,
+    "exportFormat": "csv",
+    "workerTrackingEnabled": true,
+    "globalTranslationsEnabled": true,
+    "backupEnabled": true,
+    "backupInterval": 24
+  },
+  "lastUpdate": "2025-09-12T19:57:24.162Z",
+  "totalItems": 1,
+  "totalQuantity": 0,
+  "activeWorkers": [],
+  "version": "1.0.0",
+  "firmId": "fazenda-cabra-da-peste"
+}

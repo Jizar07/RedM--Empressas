@@ -411,8 +411,9 @@ export class WorkerActivityService {
 
     // Add totals section
     if (session.totalCredits > 0) {
+      const isSessionPaid = session.status === 'paid';
       embed.addFields({
-        name: '💰 Total a Receber',
+        name: isSessionPaid ? '💰 Total Pago' : '💰 Total a Receber',
         value: `**$${session.totalCredits.toFixed(2)}**`,
         inline: true
       });
@@ -489,11 +490,7 @@ export class WorkerActivityService {
         new ButtonBuilder()
           .setCustomId(`worker_edit_${session.workerId}`)
           .setLabel('✏️ Editar')
-          .setStyle(ButtonStyle.Secondary),
-        new ButtonBuilder()
-          .setCustomId(`worker_reject_${session.workerId}`)
-          .setLabel('❌ Rejeitar')
-          .setStyle(ButtonStyle.Danger)
+          .setStyle(ButtonStyle.Secondary)
       );
     }
 
@@ -505,6 +502,10 @@ export class WorkerActivityService {
     if (!session || session.status !== 'active') {
       return false;
     }
+
+    // Update session status to paid and update embed
+    session.status = 'paid';
+    await this.updateWorkerEmbed(session);
 
     // Archive the session
     await this.archiveSession(session, 'paid', `Pago por ${managerName} (${managerId})`);
@@ -566,6 +567,160 @@ export class WorkerActivityService {
 
   public getWorkerSession(workerId: string): WorkerSession | undefined {
     return this.activeSessions.get(workerId);
+  }
+
+  /**
+   * Edit a transaction item name (global save)
+   */
+  public async editTransaction(workerId: string, transactionId: string, newItemName?: string, newQuantity?: number, newAmount?: number): Promise<boolean> {
+    try {
+      const session = this.activeSessions.get(workerId);
+      if (!session) {
+        console.error(`❌ Worker session not found: ${workerId}`);
+        return false;
+      }
+
+      let transactionFound = false;
+      
+      // Search plant transactions
+      for (const transaction of session.plantTransactions) {
+        if (transaction.transactionId === transactionId) {
+          let changes: string[] = [];
+          
+          if (newItemName) {
+            const oldItemName = transaction.itemName;
+            transaction.itemName = newItemName;
+            changes.push(`name: "${oldItemName}" → "${newItemName}"`);
+          }
+          
+          if (newQuantity !== undefined) {
+            const oldQuantity = transaction.quantity;
+            transaction.quantity = newQuantity;
+            changes.push(`quantity: ${oldQuantity} → ${newQuantity}`);
+          }
+          
+          console.log(`✏️ Edited plant transaction ${transactionId}: ${changes.join(', ')}`);
+          transactionFound = true;
+          break;
+        }
+      }
+
+      // Search animal transactions if not found in plants
+      if (!transactionFound) {
+        for (const transaction of session.animalTransactions) {
+          if (transaction.transactionId === transactionId) {
+            let changes: string[] = [];
+            
+            if (newItemName) {
+              const oldAnimalType = transaction.animalType;
+              transaction.animalType = newItemName;
+              changes.push(`type: "${oldAnimalType}" → "${newItemName}"`);
+            }
+            
+            if (newQuantity !== undefined) {
+              const oldQuantity = transaction.quantity;
+              transaction.quantity = newQuantity;
+              changes.push(`quantity: ${oldQuantity} → ${newQuantity}`);
+            }
+            
+            if (newAmount !== undefined) {
+              const oldAmount = transaction.amount;
+              transaction.amount = newAmount;
+              changes.push(`amount: $${oldAmount} → $${newAmount}`);
+            }
+            
+            console.log(`✏️ Edited animal transaction ${transactionId}: ${changes.join(', ')}`);
+            transactionFound = true;
+            break;
+          }
+        }
+      }
+
+      if (!transactionFound) {
+        console.error(`❌ Transaction not found: ${transactionId}`);
+        return false;
+      }
+
+      // Recalculate session totals after editing
+      await this.recalculateSessionCredits(session);
+      
+      // Save globally to file
+      this.saveActiveSessions();
+      
+      // Update Discord embed
+      await this.updateWorkerEmbed(session);
+      
+      console.log(`💾 Transaction ${transactionId} edited and saved globally`);
+      return true;
+
+    } catch (error) {
+      console.error('❌ Error editing transaction:', error);
+      return false;
+    }
+  }
+
+  /**
+   * Delete a transaction (global save)
+   */
+  public async deleteTransaction(workerId: string, transactionId: string): Promise<boolean> {
+    try {
+      const session = this.activeSessions.get(workerId);
+      if (!session) {
+        console.error(`❌ Worker session not found: ${workerId}`);
+        return false;
+      }
+
+      let transactionFound = false;
+      let deletedValue = 0;
+      
+      // Search and delete from plant transactions
+      const plantIndex = session.plantTransactions.findIndex(t => t.transactionId === transactionId);
+      if (plantIndex !== -1) {
+        const transaction = session.plantTransactions[plantIndex];
+        
+        // Calculate value to subtract from credits
+        const prices = await this.getWorkerPrices('fazenda-cabra-da-peste');
+        deletedValue = transaction.quantity * prices.plantPrice;
+        
+        session.plantTransactions.splice(plantIndex, 1);
+        console.log(`🗑️ Deleted plant transaction ${transactionId}: ${transaction.itemName} x${transaction.quantity}`);
+        transactionFound = true;
+      }
+
+      // Search and delete from animal transactions if not found in plants
+      if (!transactionFound) {
+        const animalIndex = session.animalTransactions.findIndex(t => t.transactionId === transactionId);
+        if (animalIndex !== -1) {
+          const transaction = session.animalTransactions[animalIndex];
+          deletedValue = transaction.amount || 0;
+          
+          session.animalTransactions.splice(animalIndex, 1);
+          console.log(`🗑️ Deleted animal transaction ${transactionId}: ${transaction.animalType} x${transaction.quantity}`);
+          transactionFound = true;
+        }
+      }
+
+      if (!transactionFound) {
+        console.error(`❌ Transaction not found: ${transactionId}`);
+        return false;
+      }
+
+      // Recalculate total credits globally
+      session.totalCredits = Math.max(0, session.totalCredits - deletedValue);
+      
+      // Save globally to file
+      this.saveActiveSessions();
+      
+      // Update Discord embed
+      await this.updateWorkerEmbed(session);
+      
+      console.log(`💾 Transaction ${transactionId} deleted and credits recalculated globally (${deletedValue} subtracted)`);
+      return true;
+
+    } catch (error) {
+      console.error('❌ Error deleting transaction:', error);
+      return false;
+    }
   }
 }
 

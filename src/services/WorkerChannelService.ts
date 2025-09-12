@@ -15,11 +15,12 @@ interface WorkerChannelMapping {
 
 interface TransactionData {
   workerName: string;
-  type: 'seed_taken' | 'plant_deposited' | 'animal_delivery';
+  type: 'seed_taken' | 'plant_deposited' | 'animals_taken' | 'delivery_completed';
   itemName?: string;
   animalType?: string;
   quantity: number;
   amount?: number;
+  cost?: number;
   timestamp: Date;
   originalMessage: any;
 }
@@ -160,7 +161,7 @@ export class WorkerChannelService {
             return false;
           }
           
-          this.activityService.addPlantTransaction(
+          await this.activityService.addPlantTransaction(
             workerMapping.workerId,
             workerMapping.workerName,
             workerMapping.channelId,
@@ -178,7 +179,7 @@ export class WorkerChannelService {
             return false;
           }
           
-          this.activityService.addPlantTransaction(
+          await this.activityService.addPlantTransaction(
             workerMapping.workerId,
             workerMapping.workerName,
             workerMapping.channelId,
@@ -190,19 +191,33 @@ export class WorkerChannelService {
           );
           break;
 
-        case 'animal_delivery':
-          if (!transaction.amount) {
-            console.error('❌ Animal transaction missing amount');
-            return false;
-          }
-          
-          this.activityService.addAnimalTransaction(
+        case 'animals_taken':
+          await this.activityService.addAnimalTransaction(
             workerMapping.workerId,
             workerMapping.workerName,
             workerMapping.channelId,
             {
-              type: 'animal_delivery',
+              type: 'animals_taken',
               animalType: transaction.animalType,
+              quantity: transaction.quantity,
+              cost: transaction.cost || (transaction.quantity * 20), // $20 per animal cost
+              amount: 0 // No payment yet
+            }
+          );
+          break;
+          
+        case 'delivery_completed':
+          if (!transaction.amount) {
+            console.error('❌ Delivery transaction missing amount');
+            return false;
+          }
+          
+          await this.activityService.addAnimalTransaction(
+            workerMapping.workerId,
+            workerMapping.workerName,
+            workerMapping.channelId,
+            {
+              type: 'delivery_completed',
               quantity: transaction.quantity,
               amount: transaction.amount
             }
@@ -225,7 +240,7 @@ export class WorkerChannelService {
 
   public parseWorkerTransactionFromMessage(parsedMessage: any): TransactionData | null {
     try {
-      // Handle animal deliveries: "BONNIE BENNETT vendeu 4 animais no matadouro por $160"
+      // Handle delivery completions: "BONNIE BENNETT vendeu 4 animais no matadouro por $160"
       if (parsedMessage.parseSuccess && parsedMessage.tipo === 'venda' && 
           parsedMessage.descricao && parsedMessage.descricao.includes('vendeu') && 
           parsedMessage.descricao.includes('animais') && parsedMessage.descricao.includes('matadouro')) {
@@ -235,9 +250,10 @@ export class WorkerChannelService {
         const quantity = quantityMatch ? parseInt(quantityMatch[1]) : 4; // Default to 4 if not found
         const amount = parsedMessage.valor || 0;
 
+        console.log(`💰 WorkerChannelService: Found delivery completion - ${workerName} sold ${quantity} animals for $${amount}`);
         return {
           workerName,
-          type: 'animal_delivery',
+          type: 'delivery_completed',
           quantity,
           amount,
           timestamp: new Date(parsedMessage.timestamp || Date.now()),
@@ -271,11 +287,35 @@ export class WorkerChannelService {
         }
       }
 
-      // Handle seed withdrawals: Look for "Item removido" and "retirou sementes" patterns  
+      // Handle plant deposits: Look for "Item adicionado" pattern
       if (parsedMessage.parseSuccess && (parsedMessage.categoria === 'estoque' || parsedMessage.categoria === 'inventario')) {
         const content = parsedMessage.content || '';
         
-        // NEW PATTERN: "Item removido:: Bulrush_Seed x1"
+        // PATTERN: "Item adicionado:: Bulrush x500"
+        const itemAdicionadoPattern = /Item adicionado::\s*([^x]+)\s*x(\d+)/i;
+        const itemAdicionadoMatch = content.match(itemAdicionadoPattern);
+        
+        if (itemAdicionadoMatch) {
+          const itemName = itemAdicionadoMatch[1].trim();
+          const quantity = parseInt(itemAdicionadoMatch[2]);
+          const workerName = parsedMessage.autor;
+          
+          // Check if it's a plant item using translation service
+          if (this.translationService.isPlant(itemName)) {
+            const portugueseName = this.translationService.getPortugueseName(itemName);
+            console.log(`🌾 WorkerChannelService: Found plant deposit - ${workerName} deposited ${quantity} ${itemName} (${portugueseName})`);
+            return {
+              workerName,
+              type: 'plant_deposited',
+              itemName: portugueseName,
+              quantity,
+              timestamp: new Date(parsedMessage.timestamp || Date.now()),
+              originalMessage: parsedMessage
+            };
+          }
+        }
+        
+        // PATTERN: "Item removido:: Bulrush_Seed x1"
         const itemRemovidoPattern = /Item removido::\s*([^x]+)\s*x(\d+)/i;
         const itemRemovidoMatch = content.match(itemRemovidoPattern);
         
@@ -293,6 +333,22 @@ export class WorkerChannelService {
               type: 'seed_taken',
               itemName: portugueseName, // Use Portuguese name for display
               quantity,
+              timestamp: new Date(parsedMessage.timestamp || Date.now()),
+              originalMessage: parsedMessage
+            };
+          }
+          
+          // Check if it's an animal item using translation service
+          if (this.translationService.isAnimal(itemName)) {
+            const portugueseName = this.translationService.getPortugueseName(itemName);
+            console.log(`🐄 WorkerChannelService: Found animal withdrawal - ${workerName} removed ${quantity} ${itemName} (${portugueseName})`);
+            return {
+              workerName,
+              type: 'animals_taken',
+              animalType: portugueseName, // Use Portuguese name for display
+              quantity,
+              cost: quantity * 20, // Animal cost: $20 per animal
+              amount: 0, // No payment yet, only after delivery
               timestamp: new Date(parsedMessage.timestamp || Date.now()),
               originalMessage: parsedMessage
             };

@@ -724,5 +724,27 @@
     "invitedBy": "Notorius Bowdin",
     "approved": true,
     "registeredAt": "2025-09-12T15:14:42.550Z"
+  },
+  {
+    "userId": "141250620593012736",
+    "username": "r3dley",
+    "ingameName": "Santiago Bowdin",
+    "mailId": "2512",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "Santiago Bowdin",
+    "approved": true,
+    "registeredAt": "2025-09-12T22:23:44.539Z"
+  },
+  {
+    "userId": "584129725052747798",
+    "username": "sckill",
+    "ingameName": "Cliff Dillimore",
+    "mailId": "198",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "Santiago Bowdin",
+    "approved": true,
+    "registeredAt": "2025-09-12T23:03:56.004Z"
   }
 ]

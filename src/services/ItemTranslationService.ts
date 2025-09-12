@@ -31,6 +31,8 @@ export class ItemTranslationService {
     ['corn', { internal: 'Corn', portuguese: 'Milho', category: 'plantas', isBasicPlant: true }],
     ['Wheat', { internal: 'Wheat', portuguese: 'Trigo', category: 'plantas', isBasicPlant: true }],
     ['wheat', { internal: 'Wheat', portuguese: 'Trigo', category: 'plantas', isBasicPlant: true }],
+    ['Milk_Weed', { internal: 'Milk_Weed', portuguese: 'Algodão', category: 'plantas', isBasicPlant: true }],
+    ['milk_weed', { internal: 'Milk_Weed', portuguese: 'Algodão', category: 'plantas', isBasicPlant: true }],
     
     // Tools
     ['wateringcan', { internal: 'wateringcan', portuguese: 'Regador', category: 'ferramentas' }],
@@ -44,8 +46,12 @@ export class ItemTranslationService {
     ['chicken_female', { internal: 'chicken_female', portuguese: 'Galinha', category: 'animais' }],
     ['chicken_male', { internal: 'chicken_male', portuguese: 'Galo', category: 'animais' }],
     ['sheep', { internal: 'sheep', portuguese: 'Ovelha', category: 'animais' }],
+    ['sheep_male', { internal: 'sheep_male', portuguese: 'Ovelha Macho', category: 'animais' }],
+    ['sheep_female', { internal: 'sheep_female', portuguese: 'Ovelha Femea', category: 'animais' }],
     ['donkey_male', { internal: 'donkey_male', portuguese: 'Burro', category: 'animais' }],
     ['donkey_female', { internal: 'donkey_female', portuguese: 'Mula', category: 'animais' }],
+    ['goat_male', { internal: 'goat_male', portuguese: 'Bode', category: 'animais' }],
+    ['goat_female', { internal: 'goat_female', portuguese: 'Cabra', category: 'animais' }],
     
     // Animal Feed
     ['common_portion_chicken', { internal: 'common_portion_chicken', portuguese: 'Ração Avino', category: 'racoes' }],
@@ -143,6 +149,20 @@ export class ItemTranslationService {
   }
 
   /**
+   * Check if an item is an animal
+   */
+  public isAnimal(itemName: string): boolean {
+    return this.getCategory(itemName) === 'animais';
+  }
+
+  /**
+   * Check if an item is a plant (harvested crops)
+   */
+  public isPlant(itemName: string): boolean {
+    return this.getCategory(itemName) === 'plantas';
+  }
+
+  /**
    * Normalize item name for consistent lookup
    */
   private normalizeItemName(itemName: string): string {
@@ -183,7 +203,9 @@ export class ItemTranslationService {
       return 'racoes';
     }
     if (name.includes('cow') || name.includes('pig') || name.includes('chicken') || name.includes('sheep') || 
-        name.includes('vaca') || name.includes('porco') || name.includes('galinha') || name.includes('ovelha')) {
+        name.includes('donkey') || name.includes('goat') ||
+        name.includes('vaca') || name.includes('porco') || name.includes('galinha') || name.includes('ovelha') ||
+        name.includes('burro') || name.includes('cabra') || name.includes('bode')) {
       return 'animais';
     }
     if (name.includes('wood') || name.includes('iron') || name.includes('coal') || name.includes('cascalho') || 

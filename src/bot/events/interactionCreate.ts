@@ -17,8 +17,7 @@ import {
 import {
   handleWorkerPayment,
   handleWorkerEdit,
-  handleWorkerReject,
-  handleWorkerRejectSubmit
+  handleTransactionManageSubmit
 } from '../../handlers/workerActivityHandlers';
 
 
@@ -66,10 +65,6 @@ export default {
         await handleWorkerEdit(interaction);
         return;
       }
-      if (interaction.customId.startsWith('worker_reject_')) {
-        await handleWorkerReject(interaction);
-        return;
-      }
     }
 
     // Handle farm service dropdown selections
@@ -99,9 +94,9 @@ export default {
         return;
       }
       
-      // Handle worker activity modal submissions
-      if (interaction.customId.startsWith('worker_reject_modal_')) {
-        await handleWorkerRejectSubmit(interaction);
+      // Handle transaction management modal submissions
+      if (interaction.customId.startsWith('transaction_manage_modal_')) {
+        await handleTransactionManageSubmit(interaction);
         return;
       }
     }

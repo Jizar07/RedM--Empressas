@@ -30,6 +30,7 @@ import moderationRoutes from './routes/moderation';
 import localizationRoutes from './routes/localization';
 import firmsConfigRoutes from './routes/firms-config';
 import workerActivityRoutes, { initializeWorkerChannelService } from './routes/worker-activity';
+import workerPricesRoutes from './routes/worker-prices';
 
 export async function startApiServer(bot: BotClient): Promise<void> {
   // Make bot client available globally for API routes
@@ -135,6 +136,9 @@ export async function startApiServer(bot: BotClient): Promise<void> {
   
   // Worker activity tracking routes
   app.use('/api/worker-activity', workerActivityRoutes);
+  
+  // Worker prices management routes
+  app.use('/api', workerPricesRoutes);
   
   // Internal API Routes (NO AUTHENTICATION - for system-to-system communication)
   app.use('/api/internal', internalApiRoutes);
