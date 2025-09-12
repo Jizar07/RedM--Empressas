@@ -366,17 +366,41 @@ class RegistrationService {
     functionData: any,
     guildId?: string
   ): Promise<{ success: boolean; channelId?: string; error?: string }> {
-    if (!this.client) throw new Error('Discord client not initialized');
+    console.log(`🔧 createChannelForUser called with:`);
+    console.log(`  - userId: ${userId}`);
+    console.log(`  - channelName: ${channelName}`);
+    console.log(`  - categoryId: ${categoryId}`);
+    console.log(`  - guildId: ${guildId}`);
+    console.log(`  - client initialized: ${!!this.client}`);
+    
+    if (!this.client) {
+      const error = 'Discord client not initialized';
+      console.error(`❌ ${error}`);
+      throw new Error(error);
+    }
     
     const targetGuildId = guildId || process.env.DISCORD_GUILD_ID;
-    if (!targetGuildId) throw new Error('Guild ID not configured');
+    console.log(`🎯 Target guild ID: ${targetGuildId}`);
+    
+    if (!targetGuildId) {
+      const error = 'Guild ID not configured';
+      console.error(`❌ ${error}`);
+      throw new Error(error);
+    }
     
     try {
       const guild = this.client.guilds.cache.get(targetGuildId);
-      if (!guild) throw new Error('Guild not found');
+      console.log(`🏰 Guild found: ${guild?.name} (${guild?.id}) - Members: ${guild?.memberCount}`);
+      
+      if (!guild) {
+        const error = `Guild not found for ID: ${targetGuildId}`;
+        console.error(`❌ ${error}`);
+        return { success: false, error };
+      }
       
       // Apply emoji prefix if configured
       const emojiPrefix = functionData?.channelEmojiPrefix || '';
+      console.log(`📝 Emoji prefix: "${emojiPrefix}"`);
       
       // Sanitize channel name - keep more characters that Discord allows
       const sanitizedName = channelName
@@ -390,18 +414,37 @@ class RegistrationService {
       let finalChannelName = emojiPrefix ? `${emojiPrefix}${sanitizedName}` : sanitizedName;
       finalChannelName = finalChannelName || 'user-channel';
       
+      console.log(`🏷️ Channel name processing: "${channelName}" → "${sanitizedName}" → "${finalChannelName}"`);
+      
       // Ensure channel name is within Discord limits (100 characters)
       if (finalChannelName.length > 100) {
+        console.log(`✂️ Trimming channel name from ${finalChannelName.length} to 100 characters`);
         finalChannelName = finalChannelName.substring(0, 100);
       }
       
       // Check if category exists
+      console.log(`🔍 Looking for category ID: ${categoryId}`);
       const category = guild.channels.cache.get(categoryId) as CategoryChannel;
-      if (!category || category.type !== 4) {
-        return { success: false, error: 'Category not found or invalid' };
+      console.log(`📂 Category found: ${category?.name} (type: ${category?.type})`);
+      
+      if (!category) {
+        const error = `Category not found for ID: ${categoryId}`;
+        console.error(`❌ ${error}`);
+        console.log(`📋 Available categories in guild:`);
+        guild.channels.cache
+          .filter(channel => channel.type === 4)
+          .forEach(cat => console.log(`  - ${cat.name} (${cat.id})`));
+        return { success: false, error };
+      }
+      
+      if (category.type !== 4) {
+        const error = `Channel ${categoryId} is not a category (type: ${category.type})`;
+        console.error(`❌ ${error}`);
+        return { success: false, error };
       }
       
       // Build permission overwrites
+      console.log(`🔐 Setting up permissions for channel`);
       const permissionOverwrites = [
         // Deny everyone by default (private channel)
         {
@@ -415,21 +458,59 @@ class RegistrationService {
         }
       ];
 
+      console.log(`👤 User permission set for: ${userId}`);
+
       // Add access for specific allowed roles
       if (functionData?.channelPermissions?.allowedRoles?.length) {
+        console.log(`🎭 Adding role permissions for ${functionData.channelPermissions.allowedRoles.length} roles:`);
         for (const roleId of functionData.channelPermissions.allowedRoles) {
+          const role = guild.roles.cache.get(roleId);
+          console.log(`  - Role: ${role?.name || 'Unknown'} (${roleId})`);
+          
           permissionOverwrites.push({
             id: roleId,
             allow: [PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.SendMessages, PermissionsBitField.Flags.ReadMessageHistory, PermissionsBitField.Flags.AttachFiles]
           });
         }
+      } else {
+        console.log(`👥 No additional roles to add permissions for`);
       }
 
       // Create channel topic from template
       let channelTopic = functionData?.channelPermissions?.channelTopic || 
         `Personal channel for {functionName} member`;
+      console.log(`📝 Channel topic: "${channelTopic}"`);
+      
+      // Check bot permissions before creating channel
+      const botMember = guild.members.me;
+      if (!botMember) {
+        const error = 'Bot member not found in guild';
+        console.error(`❌ ${error}`);
+        return { success: false, error };
+      }
+      
+      const botPermissions = botMember.permissions;
+      const hasManageChannels = botPermissions.has(PermissionsBitField.Flags.ManageChannels);
+      const hasManageRoles = botPermissions.has(PermissionsBitField.Flags.ManageRoles);
+      
+      console.log(`🤖 Bot permissions check:`);
+      console.log(`  - Manage Channels: ${hasManageChannels}`);
+      console.log(`  - Manage Roles: ${hasManageRoles}`);
+      console.log(`  - Administrator: ${botPermissions.has(PermissionsBitField.Flags.Administrator)}`);
+      
+      if (!hasManageChannels) {
+        const error = 'Bot lacks Manage Channels permission';
+        console.error(`❌ ${error}`);
+        return { success: false, error };
+      }
       
       // Create the text channel in the category
+      console.log(`🚀 Creating channel with settings:`);
+      console.log(`  - Name: ${finalChannelName}`);
+      console.log(`  - Parent: ${category.name} (${categoryId})`);
+      console.log(`  - Topic: ${channelTopic}`);
+      console.log(`  - Permissions: ${permissionOverwrites.length} overwrites`);
+      
       const channel = await guild.channels.create({
         name: finalChannelName,
         type: 0, // Text channel
@@ -439,7 +520,7 @@ class RegistrationService {
         reason: `Registration channel for user ${userId}`
       });
       
-      console.log(`Created channel ${channel.name} (${channel.id}) for user ${userId} in category ${category.name}`);
+      console.log(`✅ Successfully created channel ${channel.name} (${channel.id}) for user ${userId} in category ${category.name}`);
       
       return { success: true, channelId: channel.id };
     } catch (error: any) {

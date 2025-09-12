@@ -4,6 +4,183 @@ import path from 'path';
 import SSEManager from '../sse-manager';
 import ChannelMessageManager from '../../../../lib/ChannelMessageManager';
 
+// Process worker activity by sending to bot via HTTP
+async function processWorkerActivity(parsedMessage: any) {
+  try {
+    // Extract worker transaction data
+    const transactionData = extractWorkerTransactionData(parsedMessage);
+    if (!transactionData) {
+      return;
+    }
+
+    console.log(`🔄 Sending worker activity to bot: ${transactionData.workerName} - ${transactionData.type}`);
+    
+    const authToken = process.env.BOT_WEBHOOK_TOKEN || process.env.DISCORD_TOKEN || 'default-token';
+    console.log(`🔐 Frontend Auth Debug - Sending token: "${authToken.substring(0, 10)}..."`);
+    console.log(`🔐 Frontend Auth Debug - BOT_WEBHOOK_TOKEN exists: ${!!process.env.BOT_WEBHOOK_TOKEN}`);
+    console.log(`🔐 Frontend Auth Debug - DISCORD_TOKEN exists: ${!!process.env.DISCORD_TOKEN}`);
+
+    // Send to bot's worker activity endpoint
+    const response = await fetch('http://localhost:3050/api/worker-activity', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Bot-Token': authToken
+      },
+      body: JSON.stringify(transactionData)
+    });
+
+    if (response.ok) {
+      console.log(`✅ Worker activity processed successfully for ${transactionData.workerName}`);
+    } else {
+      console.error(`❌ Failed to process worker activity: ${response.status}`);
+    }
+
+  } catch (error) {
+    console.error('❌ Error processing worker activity:', error);
+  }
+}
+
+// Extract worker transaction data from parsed message
+function extractWorkerTransactionData(parsedMessage: any): any {
+  try {
+    console.log(`🔍 Checking message for worker activity:`, {
+      parseSuccess: parsedMessage.parseSuccess,
+      categoria: parsedMessage.categoria,
+      tipo: parsedMessage.tipo,
+      autor: parsedMessage.autor,
+      item: parsedMessage.item,
+      quantidade: parsedMessage.quantidade,
+      content: parsedMessage.content?.substring(0, 100) + '...'
+    });
+    // Handle animal deliveries
+    if (parsedMessage.parseSuccess && parsedMessage.tipo === 'venda' && 
+        parsedMessage.descricao && parsedMessage.descricao.includes('vendeu') && 
+        parsedMessage.descricao.includes('animais') && parsedMessage.descricao.includes('matadouro')) {
+      
+      const workerName = parsedMessage.autor;
+      const quantityMatch = parsedMessage.descricao.match(/vendeu\s+(\d+)\s+animais/);
+      const quantity = quantityMatch ? parseInt(quantityMatch[1]) : 4;
+      const amount = parsedMessage.valor || 0;
+
+      return {
+        workerName,
+        type: 'animal_delivery',
+        quantity,
+        amount,
+        timestamp: parsedMessage.timestamp || new Date().toISOString(),
+        originalMessage: parsedMessage
+      };
+    }
+
+    // Handle plant deposits
+    if (parsedMessage.parseSuccess && parsedMessage.categoria === 'financeiro' && 
+        parsedMessage.tipo === 'deposito') {
+      
+      const content = parsedMessage.content || '';
+      const plantDepositPattern = /(.+?)\s+depositou\s+(\d+)\s+(.+?)\s+no\s+inventário|(.+?)\s+depositou\s+(\d+)\s+(milho|trigo|junco|milhos|trigos|juncos)/i;
+      const match = content.match(plantDepositPattern);
+      
+      if (match) {
+        const workerName = match[1] || match[4] || parsedMessage.autor;
+        const quantity = parseInt(match[2] || match[5]);
+        const itemName = match[3] || match[6];
+
+        return {
+          workerName,
+          type: 'plant_deposited',
+          itemName: normalizeItemName(itemName),
+          quantity,
+          timestamp: parsedMessage.timestamp || new Date().toISOString(),
+          originalMessage: parsedMessage
+        };
+      }
+    }
+
+    // Handle seed withdrawals - check both inventario and estoque categories
+    if (parsedMessage.parseSuccess && (parsedMessage.categoria === 'estoque' || parsedMessage.categoria === 'inventario')) {
+      console.log(`✅ Message qualifies for seed withdrawal check - categoria: ${parsedMessage.categoria}`);
+      
+      // First try to use the parsed message fields directly (for "REMOVER ITEM" messages)
+      if (parsedMessage.tipo === 'remover' && parsedMessage.autor && parsedMessage.item && parsedMessage.quantidade) {
+        const itemName = parsedMessage.item;
+        console.log(`🔍 Checking parsed fields - item: "${itemName}"`);
+        
+        // Check if the item is a seed type
+        if (itemName && (itemName.toLowerCase().includes('semente') || itemName.toLowerCase().includes('seed'))) {
+          console.log(`🌱 SEED WITHDRAWAL DETECTED via parsed fields: ${parsedMessage.autor} took ${parsedMessage.quantidade}x ${itemName}`);
+          return {
+            workerName: parsedMessage.autor,
+            type: 'seed_taken',
+            itemName: normalizeItemName(itemName),
+            quantity: parsedMessage.quantidade,
+            timestamp: parsedMessage.timestamp || new Date().toISOString(),
+            originalMessage: parsedMessage
+          };
+        } else {
+          console.log(`❌ Item "${itemName}" is not a seed type`);
+        }
+      } else {
+        console.log(`❌ Parsed fields incomplete - tipo: ${parsedMessage.tipo}, autor: ${parsedMessage.autor}, item: ${parsedMessage.item}, quantidade: ${parsedMessage.quantidade}`);
+      }
+
+      // Fallback to content pattern matching
+      const content = parsedMessage.content || '';
+      console.log(`🔍 Trying pattern matching on content: "${content.substring(0, 150)}"`);
+      
+      const seedWithdrawPatterns = [
+        // Pattern 1: "Jizar Stoffeliz removeu 100x Semente de Trigo"
+        /(.+?)\s+removeu\s+(\d+)x?\s+(semente[^,]*|seed[^,]*)/i,
+        // Pattern 2: Original pattern
+        /(.+?)\s+retirou\s+(\d+)\s+(sementes?\s+de\s+\w+|\w+\s+sementes?)/i,
+        // Pattern 3: "Jizar Stoffeliz retirou 100 Sementes de Trigo"
+        /(.+?)\s+retirou\s+(\d+)\s+(semente[^,]*|seed[^,]*)/i
+      ];
+      
+      for (let i = 0; i < seedWithdrawPatterns.length; i++) {
+        const pattern = seedWithdrawPatterns[i];
+        const match = content.match(pattern);
+        console.log(`🔍 Pattern ${i + 1} test:`, match ? `MATCH - ${match[0]}` : 'NO MATCH');
+        
+        if (match) {
+          const workerName = match[1].trim();
+          const quantity = parseInt(match[2]);
+          const itemName = match[3];
+          console.log(`🌱 SEED WITHDRAWAL DETECTED via pattern ${i + 1}: ${workerName} took ${quantity}x ${itemName}`);
+
+          return {
+            workerName,
+            type: 'seed_taken',
+            itemName: normalizeItemName(itemName),
+            quantity,
+            timestamp: parsedMessage.timestamp || new Date().toISOString(),
+            originalMessage: parsedMessage
+          };
+        }
+      }
+      console.log(`❌ No seed withdrawal patterns matched`);
+    } else {
+      console.log(`❌ Message doesn't qualify for seed withdrawal check - parseSuccess: ${parsedMessage.parseSuccess}, categoria: ${parsedMessage.categoria}`);
+    }
+
+    return null;
+  } catch (error) {
+    console.error('❌ Error extracting worker transaction data:', error);
+    return null;
+  }
+}
+
+// Normalize item names
+function normalizeItemName(itemName: string): string {
+  return itemName
+    .replace(/sementes?\s+de\s+/gi, '')
+    .replace(/\s+sementes?/gi, '')
+    .replace(/s$/, '') // Remove plural 's'
+    .trim()
+    .toLowerCase()
+    .replace(/^./, c => c.toUpperCase()); // Capitalize first letter
+}
+
 // Disable static generation for this API route
 export const dynamic = 'force-dynamic';
 
@@ -113,6 +290,16 @@ export async function POST(request: NextRequest) {
         };
         
         await channelManager.addMessage(discordMessage);
+        
+        // Parse message for worker activities
+        const parsedMessage = parseDiscordMessage(message);
+        if (parsedMessage.parseSuccess) {
+          console.log(`📊 Parsed message: ${parsedMessage.tipo} - ${parsedMessage.displayText}`);
+          
+          // Check if this is a worker activity that should be tracked
+          await processWorkerActivity(parsedMessage);
+        }
+        
         console.log(`✅ Successfully saved message ${message.id}`);
         processedCount++;
       } catch (error) {
@@ -283,6 +470,12 @@ function parseDiscordMessage(message: MessageData): any {
       const addMatch = actionPart.match(/INSERIR ITEM\s*Item adicionado::\s*(.+?)\s*x(\d+)/);
       if (addMatch) {
         const cleanItem = addMatch[1].trim();
+        
+        // Check if this is a box item for supply chain tracking
+        const isBoxItem = cleanItem.toLowerCase().includes('caixa');
+        const boxType = cleanItem.toLowerCase().includes('verdura') ? 'verduras' : 
+                       cleanItem.toLowerCase().includes('agro') || cleanItem.toLowerCase().includes('animal') ? 'agro' : null;
+        
         return {
           ...message,
           parseSuccess: true,
@@ -291,7 +484,11 @@ function parseDiscordMessage(message: MessageData): any {
           item: cleanItem,
           quantidade: parseInt(addMatch[2]),
           autor: autor,
-          displayText: `${autor} adicionou ${addMatch[2]}x ${cleanItem}`
+          displayText: `${autor} adicionou ${addMatch[2]}x ${cleanItem}`,
+          // Box tracking fields
+          isBoxItem: isBoxItem,
+          boxType: boxType,
+          isBoxAddition: isBoxItem
         };
       }
       
@@ -299,6 +496,12 @@ function parseDiscordMessage(message: MessageData): any {
       const removeMatch = actionPart.match(/REMOVER ITEM\s*Item removido::\s*(.+?)\s*x(\d+)/);
       if (removeMatch) {
         const cleanItem = removeMatch[1].trim();
+        
+        // Check if this is a box item for supply chain tracking
+        const isBoxItem = cleanItem.toLowerCase().includes('caixa');
+        const boxType = cleanItem.toLowerCase().includes('verdura') ? 'verduras' : 
+                       cleanItem.toLowerCase().includes('agro') || cleanItem.toLowerCase().includes('animal') ? 'agro' : null;
+        
         return {
           ...message,
           parseSuccess: true,
@@ -307,7 +510,11 @@ function parseDiscordMessage(message: MessageData): any {
           item: cleanItem,
           quantidade: parseInt(removeMatch[2]),
           autor: autor,
-          displayText: `${autor} removeu ${removeMatch[2]}x ${cleanItem}`
+          displayText: `${autor} removeu ${removeMatch[2]}x ${cleanItem}`,
+          // Box tracking fields
+          isBoxItem: isBoxItem,
+          boxType: boxType,
+          isBoxRemoval: isBoxItem
         };
       }
     }
@@ -332,6 +539,66 @@ function parseDiscordMessage(message: MessageData): any {
         descricao: `Comprou ${quantidade}x ${item} na loja`,
         displayText: `${comprador} comprou ${quantidade}x ${item} por $${preco.toFixed(2)}`,
         confidence: 'high'
+      };
+    }
+    
+    // Parse FERROVIA ATLANTA TREM messages
+    // Pattern 1: COOPERATIVA - SACOU (Money Withdrawal)
+    const ferroviaWithdrawMatch = content.match(/ATLANTA TREM\s*COOPERATIVA - SACOU\s*Empresa::\s*(.+?)\s*Ação::\s*(.+?)\s*Quantia::\s*([0-9,.]+)\s*Autor::\s*(.+?)\s*\|\s*FIXO:\s*(\d+)/s);
+    if (ferroviaWithdrawMatch) {
+      const empresa = ferroviaWithdrawMatch[1].trim();
+      const acao = ferroviaWithdrawMatch[2].trim();
+      const quantia = parseFloat(ferroviaWithdrawMatch[3].replace(',', ''));
+      const autorCompleto = ferroviaWithdrawMatch[4].trim();
+      
+      return {
+        ...message,
+        parseSuccess: true,
+        tipo: 'saque',
+        categoria: 'financeiro',
+        valor: quantia,
+        autor: autorCompleto,
+        empresa: empresa,
+        descricao: `Saque da cooperativa`,
+        displayText: `${autorCompleto} sacou $${quantia.toFixed(2)}`,
+        confidence: 'high'
+      };
+    }
+    
+    // Pattern 2: ENTREGA COMPLETA - ROTAS (Route Completion)
+    const ferroviaRouteMatch = content.match(/ATLANTA TREM\s*ENTREGA COMPLETA - \d+ ROTAS\s*Empresa::\s*(.+?)\s*Missão::\s*(\d+)\s*Entregas Completadas::\s*(\d+)\s*Recompensa::\s*([0-9,.]+)\s*Autor::\s*(.+?)\s*\|\s*FIXO:\s*(\d+)/s);
+    if (ferroviaRouteMatch) {
+      const empresa = ferroviaRouteMatch[1].trim();
+      const missao = parseInt(ferroviaRouteMatch[2]);
+      const entregas = parseInt(ferroviaRouteMatch[3]);
+      const recompensa = parseFloat(ferroviaRouteMatch[4].replace(',', ''));
+      const autorCompleto = ferroviaRouteMatch[5].trim();
+      
+      // Calculate boxes from payment - Recompensa is the payment amount, not box count
+      const boxesDelivered = recompensa / 4; // $4 per box, so payment ÷ 4 = boxes delivered
+      const expectedPayment = Math.floor(boxesDelivered / 250) * 1000; // Every 250 boxes = $1000
+      const workerEarnings = boxesDelivered * 1; // $1 per box delivered
+      
+      return {
+        ...message,
+        parseSuccess: true,
+        tipo: 'entrega',
+        categoria: 'inventario', // Change to inventario to show in items activities
+        valor: recompensa,
+        quantidade: boxesDelivered, // Use calculated boxes for display
+        item: `Entrega de ${boxesDelivered} caixas`,
+        autor: autorCompleto,
+        empresa: empresa,
+        missao: missao,
+        descricao: `Completou missão ${missao} (${boxesDelivered} caixas entregues)`,
+        displayText: `${autorCompleto} completou missão ${missao} (${boxesDelivered} caixas entregues)`,
+        confidence: 'high',
+        // Supply chain tracking fields - use calculated boxes from Recompensa payment
+        isDeliveryCompletion: true,
+        deliveryCount: boxesDelivered, // Use calculated boxes
+        boxesDelivered: boxesDelivered,
+        workerEarnings: workerEarnings,
+        expectedPayment: expectedPayment
       };
     }
     

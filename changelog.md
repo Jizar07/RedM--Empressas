@@ -5,7 +5,19 @@ This file is synchronized with: https://github.com/Jizar07/RedM--Empressas
 
 ## Version History
 
-### [0.031] - 2025-09-11 **[CURRENT - RESTORE POINT]**
+### [0.032] - 2025-09-12 **[CURRENT - RESTORE POINT]**
+- **MAJOR**: Complete Worker Activity Tracking System with Portuguese Translation Support
+- **NEW**: ItemTranslationService with 50+ item mappings (internal names ↔ Portuguese display names)
+- **ENHANCED**: WorkerChannelService integrated with translation service for Portuguese embeds
+- **FIXED**: Registration system authentication issues preventing worker mapping creation
+- **IMPROVED**: Direct worker activity processing in bot (eliminated frontend roundtrip inefficiency)
+- **ADDED**: Comprehensive seed withdrawal detection (Bulrush_Seed → "Semente de Junco" in embeds)
+- **INTEGRATED**: Worker activity system with existing registration flow for automatic mapping
+- **RESOLVED**: Discord category 50-channel limit issue blocking new worker registrations
+- **RESULT**: Complete worker activity tracking with Portuguese naming, flexible payments, and seamless registration
+- **TECHNICAL**: Seeds → Plants → Animals tracking with real work metrics instead of rigid ratios
+
+### [0.031] - 2025-09-11 **[RESTORE POINT]**
 - **ENHANCED**: Worker Edit Modal with Comprehensive Editing Functionality - Complete redesign of edit button behavior
 - **IMPROVED**: Edit button now opens actual editing interface instead of just showing navigation options
 - **ADDED**: Worker Settings section with status dropdown (Active/Inactive/On Vacation/Suspended), role assignment (Worker/Supervisor/Manager/Trainee)

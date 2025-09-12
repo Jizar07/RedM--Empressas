@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2025-09-10T14:12:06.999Z",
+  "lastUpdated": "2025-09-11T16:22:34.716Z",
   "firms": {
     "fazenda-cabra-da-peste": {
       "id": "fazenda-cabra-da-peste",
@@ -29,6 +29,67 @@
       },
       "createdAt": "2025-09-10T14:12:06.999Z",
       "updatedAt": "2025-09-10T14:12:06.999Z"
+    },
+    "ferrovia": {
+      "id": "ferrovia",
+      "name": "Ferrovia",
+      "description": "",
+      "channelId": "1414735729082499072",
+      "allowedRoles": [
+        "1274479410107646009",
+        "1274479410107646008"
+      ],
+      "enabled": true,
+      "monitoring": {
+        "endpoint": "http://localhost:3051/api/webhook/channel-messages",
+        "endpointType": "frontend",
+        "messageTypes": [
+          "ALL"
+        ],
+        "enabled": true
+      },
+      "display": {
+        "itemTranslations": "global",
+        "bankingEnabled": true,
+        "theme": {
+          "primaryColor": "#059669",
+          "secondaryColor": "#065f46",
+          "accentColor": "#10b981",
+          "backgroundColor": "#f0fdf4",
+          "textColor": "#1f2937",
+          "iconStyle": "outline"
+        }
+      },
+      "createdAt": "2025-09-11T16:20:10.718Z",
+      "updatedAt": "2025-09-11T16:20:10.718Z"
+    },
+    "bercario": {
+      "id": "bercario",
+      "name": "Bercario",
+      "description": "",
+      "channelId": "1406811401036497036",
+      "allowedRoles": [
+        "1274479410107646008"
+      ],
+      "enabled": true,
+      "monitoring": {
+        "endpoint": "http://localhost:3051/api/webhook/channel-messages",
+        "endpointType": "frontend",
+        "messageTypes": [
+          "ALL"
+        ],
+        "enabled": true
+      },
+      "display": {
+        "itemTranslations": "global",
+        "bankingEnabled": true,
+        "theme": {
+          "primaryColor": "#16a34a",
+          "secondaryColor": "#15803d"
+        }
+      },
+      "createdAt": "2025-09-11T16:22:34.716Z",
+      "updatedAt": "2025-09-11T16:22:34.716Z"
     }
   },
   "settings": {

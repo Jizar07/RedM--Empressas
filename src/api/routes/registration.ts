@@ -69,11 +69,11 @@ router.get('/discord/roles', async (req: any, res: Response): Promise<any> => {
 });
 
 // Get all Discord categories (temporarily bypass auth for testing)
-router.get('/discord/categories', async (_req: any, res: Response): Promise<any> => {
+router.get('/discord/categories', async (req: any, res: Response): Promise<any> => {
   try {
-    const guildId = process.env.DISCORD_GUILD_ID;
+    const guildId = req.query.guildId || process.env.DISCORD_GUILD_ID;
     if (!guildId) {
-      return res.status(500).json({ error: 'Guild ID not configured' });
+      return res.status(400).json({ error: 'Guild ID is required' });
     }
 
     const categories = await RegistrationService.getDiscordCategories(guildId);

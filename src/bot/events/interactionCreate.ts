@@ -14,6 +14,12 @@ import {
   handleReceiptPayNow,
   handleFinalPayment
 } from '../commands/farm/submit-service';
+import {
+  handleWorkerPayment,
+  handleWorkerEdit,
+  handleWorkerReject,
+  handleWorkerRejectSubmit
+} from '../../handlers/workerActivityHandlers';
 
 
 export default {
@@ -50,6 +56,20 @@ export default {
         await handleFinalPayment(interaction);
         return;
       }
+      
+      // Handle worker activity buttons
+      if (interaction.customId.startsWith('worker_pay_')) {
+        await handleWorkerPayment(interaction);
+        return;
+      }
+      if (interaction.customId.startsWith('worker_edit_')) {
+        await handleWorkerEdit(interaction);
+        return;
+      }
+      if (interaction.customId.startsWith('worker_reject_')) {
+        await handleWorkerReject(interaction);
+        return;
+      }
     }
 
     // Handle farm service dropdown selections
@@ -76,6 +96,12 @@ export default {
       }
       if (interaction.customId.startsWith('receipt_edit_quantity_')) {
         await handleReceiptEditQuantity(interaction);
+        return;
+      }
+      
+      // Handle worker activity modal submissions
+      if (interaction.customId.startsWith('worker_reject_modal_')) {
+        await handleWorkerRejectSubmit(interaction);
         return;
       }
     }

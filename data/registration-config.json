@@ -2,19 +2,19 @@
   "formId": "registration_form",
   "functions": [
     {
-      "id": "func_1757092427161",
-      "displayName": "Trabalhador",
-      "discordRoleId": "1413531395485204530",
-      "discordRoleName": "🌾・Fazendeiro(a)",
-      "description": "Trabalhador da Fazenda",
-      "order": 9,
+      "id": "func_1757681433033",
+      "displayName": "Funcionario",
+      "discordRoleId": "1274479410107646009",
+      "discordRoleName": "👨🏻‍🌾│Funcionários",
+      "description": "",
+      "order": 0,
       "active": true,
-      "categoryId": "1413532110844854373",
-      "categoryName": "Fazendeiros",
+      "categoryId": "1415217611939119125",
+      "categoryName": "FUNCIONARIOS 2.0",
       "channelEmojiPrefix": "🌾・",
       "channelPermissions": {
         "allowedRoles": [
-          "1413531395485204530"
+          "1274479410107646008"
         ],
         "channelTopic": ""
       }
@@ -23,9 +23,9 @@
   "settings": {
     "oneTimeOnly": true,
     "requiresVerification": false,
-    "welcomeMessage": "Bem-vindo à Familia Black Golden! Seu registro foi processado.",
+    "welcomeMessage": "Bem-vindo à Fazenda Cabra da Peste! Seu registro foi processado.",
     "embedColor": "#FF0000",
-    "channelId": "1413570988775309332",
+    "channelId": "1415645926009077841",
     "serverIP": "",
     "serverPort": ""
   },
@@ -35,8 +35,8 @@
     "permissions": "Administrator"
   },
   "formDisplay": {
-    "title": "🎮 Registro da Fazenda Braithwaite",
-    "description": "**Bem-vindo a Fazenda Braithwaite**\n\nPara ter acesso ao servidor, você precisa completar o processo de registro.\n\n**Informações Necessárias:**\n• Seu nome completo no condado\n• Seu Pombo\n• Sua função\n• Quem te convidou para a Familia\n\nClique no botão **Registrar** abaixo para começar.",
+    "title": "🎮 Registro da Fazenda Cabra da Peste",
+    "description": "**Bem-vindo a Fazenda Cabra da Peste**\n\nPara ter acesso ao servidor, você precisa completar o processo de registro.\n\n**Informações Necessárias:**\n• Seu nome completo no condado\n• Seu Pombo\n• Sua função\n• Quem te convidou para a Familia\n\nClique no botão **Registrar** abaixo para começar.",
     "footerText": "stoffeltech • Sistema de Registro",
     "embedColor": "#00b3ff",
     "button": {
@@ -47,7 +47,7 @@
   },
   "steps": {
     "step1": {
-      "modalTitle": "Fazenda Braithwaite - Passo 1/3",
+      "modalTitle": "Fazenda Cabra da Peste - Passo 1/3",
       "nameLabel": "Nome completo no Condado",
       "namePlaceholder": "Digite seu nome completo no condado",
       "pomboLabel": "Pombo",
@@ -60,15 +60,15 @@
     },
     "step3": {
       "embedTitle": "Passo 3/3 - Quem te convidou?",
-      "embedDescription": "Selecione quem te convidou para a Familia Black Golden:\n\n✨ **Digite para buscar** - Você pode digitar o nome da pessoa para encontrá-la rapidamente!",
+      "embedDescription": "Selecione quem te convidou para a Fazenda Cabra da Peste:\n\n✨ **Digite para buscar** - Você pode digitar o nome da pessoa para encontrá-la rapidamente!",
       "dropdownPlaceholder": "Selecione quem te convidou para a Familia"
     }
   },
   "postRegistration": {
     "nicknameFormat": "{ingameName} | {pombo}",
     "sendDM": false,
-    "dmTitle": "Bem-vindo à Fazenda Braithwaite!",
-    "dmMessage": "Olá {ingameName},\n\nSeu registro como **{functionName}** foi aprovado!\n\nAgora você tem acesso aos canais específicos da sua função.\n\nAproveite seu tempo na Fazenda Braithwaite!",
+    "dmTitle": "Bem-vindo à Fazenda Cabra da Peste!",
+    "dmMessage": "Olá {ingameName},\n\nSeu registro como **{functionName}** foi aprovado!\n\nAgora você tem acesso aos canais específicos da sua função.\n\nAproveite seu tempo na Fazenda Cabra da Peste!",
     "assignRoles": true,
     "welcomeChannelMessage": true,
     "createChannel": true,

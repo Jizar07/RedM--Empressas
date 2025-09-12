@@ -1,45 +1,30 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useSession, signIn, signOut } from 'next-auth/react';
 
 export default function AuthButton() {
-  const [user, setUser] = useState<any>(null);
-
-  useEffect(() => {
-    // Read user from cookie
-    const getCookie = (name: string) => {
-      const value = `; ${document.cookie}`;
-      const parts = value.split(`; ${name}=`);
-      if (parts.length === 2) return parts.pop()?.split(';').shift();
-    };
-
-    const userCookie = getCookie('discord_user');
-    console.log('All cookies:', document.cookie);
-    console.log('Discord user cookie:', userCookie);
-    
-    if (userCookie) {
-      try {
-        const parsedUser = JSON.parse(decodeURIComponent(userCookie));
-        console.log('Parsed user:', parsedUser);
-        setUser(parsedUser);
-      } catch (e) {
-        console.error('Error parsing user cookie:', e);
-      }
-    }
-  }, []);
+  const { data: session, status } = useSession();
 
   const handleLogin = () => {
-    // Use NextAuth sign in instead of direct Discord OAuth
-    window.location.href = '/api/auth/signin/discord';
+    signIn('discord');
   };
 
   const handleLogout = () => {
-    document.cookie = 'discord_user=; Max-Age=0; path=/';
-    setUser(null);
-    window.location.reload();
+    signOut();
   };
 
-  if (user) {
+  if (status === 'loading') {
+    return (
+      <button
+        disabled
+        className="px-4 py-2 bg-gray-400 text-white rounded-md text-sm font-medium cursor-not-allowed"
+      >
+        Loading...
+      </button>
+    );
+  }
+
+  if (session) {
     return (
       <button
         onClick={handleLogout}

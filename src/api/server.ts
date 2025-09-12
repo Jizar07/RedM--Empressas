@@ -29,6 +29,7 @@ import discordRolesRoutes from './routes/discord-roles';
 import moderationRoutes from './routes/moderation';
 import localizationRoutes from './routes/localization';
 import firmsConfigRoutes from './routes/firms-config';
+import workerActivityRoutes, { initializeWorkerChannelService } from './routes/worker-activity';
 
 export async function startApiServer(bot: BotClient): Promise<void> {
   // Make bot client available globally for API routes
@@ -75,6 +76,9 @@ export async function startApiServer(bot: BotClient): Promise<void> {
   
   // Initialize message manager for webhook receiver
   setMessageManager(bot.messageManager);
+  
+  // Initialize worker channel service
+  initializeWorkerChannelService(bot);
   
   // Static file serving for uploads
   app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
@@ -128,6 +132,9 @@ export async function startApiServer(bot: BotClient): Promise<void> {
   
   // Firms configuration routes
   app.use('/api/firms-config', firmsConfigRoutes);
+  
+  // Worker activity tracking routes
+  app.use('/api/worker-activity', workerActivityRoutes);
   
   // Internal API Routes (NO AUTHENTICATION - for system-to-system communication)
   app.use('/api/internal', internalApiRoutes);

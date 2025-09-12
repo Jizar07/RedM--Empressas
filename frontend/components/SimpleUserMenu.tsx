@@ -1,45 +1,30 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { User, LogOut, ChevronDown } from 'lucide-react';
+import { useSession, signOut } from 'next-auth/react';
 import UserProfile from './UserProfile';
 
 export default function SimpleUserMenu() {
-  const [user, setUser] = useState<any>(null);
+  const { data: session } = useSession();
   const [showProfile, setShowProfile] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
 
-  useEffect(() => {
-    // Read user from cookie
-    const getCookie = (name: string) => {
-      const value = `; ${document.cookie}`;
-      const parts = value.split(`; ${name}=`);
-      if (parts.length === 2) return parts.pop()?.split(';').shift();
-    };
-
-    const userCookie = getCookie('discord_user');
-    if (userCookie) {
-      try {
-        setUser(JSON.parse(decodeURIComponent(userCookie)));
-      } catch (e) {
-        console.error('Error parsing user cookie:', e);
-      }
-    }
-  }, []);
-
   const handleLogout = () => {
-    document.cookie = 'discord_user=; Max-Age=0; path=/';
-    setUser(null);
-    window.location.reload();
+    signOut();
   };
 
-  if (!user) {
+  if (!session?.user) {
     return null;
   }
 
-  const avatarUrl = user.avatar 
-    ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`
-    : `https://cdn.discordapp.com/embed/avatars/${parseInt(user.discriminator) % 5}.png`;
+  const user = session.user;
+
+  // Handle NextAuth user format - use image from session or build from user data
+  const avatarUrl = user.image || 
+    (user.id && user.avatar 
+      ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`
+      : `https://cdn.discordapp.com/embed/avatars/${user.discriminator ? parseInt(user.discriminator) % 5 : 0}.png`);
 
   return (
     <>
@@ -54,7 +39,7 @@ export default function SimpleUserMenu() {
             className="w-8 h-8 rounded-full"
           />
           <span className="text-sm font-medium text-gray-700">
-            {user.username}
+            {user.name || user.username}
           </span>
           <ChevronDown className="h-4 w-4 text-gray-500" />
         </button>

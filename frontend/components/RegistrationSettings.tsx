@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Settings, Plus, Trash2, Save, RefreshCw, ChevronUp, ChevronDown, ToggleLeft, ToggleRight } from 'lucide-react';
+import { useServer } from '../contexts/ServerContext';
 
 interface RegistrationFunction {
   id: string;
@@ -102,11 +103,14 @@ interface DiscordCategory {
 }
 
 export default function RegistrationSettings() {
+  const { selectedServerId } = useServer();
   const [config, setConfig] = useState<RegistrationConfig | null>(null);
   const [discordRoles, setDiscordRoles] = useState<DiscordRole[]>([]);
   const [discordCategories, setDiscordCategories] = useState<DiscordCategory[]>([]);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [loadingRoles, setLoadingRoles] = useState(false);
+  const [rolesError, setRolesError] = useState<string | null>(null);
   const [showAddFunction, setShowAddFunction] = useState(false);
   const [editingFunction, setEditingFunction] = useState<RegistrationFunction | null>(null);
   const [activeTab, setActiveTab] = useState<'command' | 'display' | 'steps' | 'post' | 'functions'>('command');
@@ -125,9 +129,19 @@ export default function RegistrationSettings() {
 
   useEffect(() => {
     fetchConfig();
-    fetchDiscordRoles();
-    fetchDiscordCategories();
   }, []);
+
+  useEffect(() => {
+    if (selectedServerId) {
+      fetchDiscordRoles();
+      fetchDiscordCategories();
+    } else {
+      // Clear roles and categories when no server is selected
+      setDiscordRoles([]);
+      setDiscordCategories([]);
+      setRolesError(null);
+    }
+  }, [selectedServerId]);
 
   const fetchConfig = async () => {
     try {
@@ -142,25 +156,50 @@ export default function RegistrationSettings() {
   };
 
   const fetchDiscordRoles = async () => {
+    if (!selectedServerId) {
+      setRolesError('No server selected');
+      return;
+    }
+
+    setLoadingRoles(true);
+    setRolesError(null);
+
     try {
-      const response = await fetch('http://localhost:3050/api/registration/discord/roles');
+      const response = await fetch(`http://localhost:3050/api/registration/discord/roles?guildId=${selectedServerId}`);
 
       if (response.ok) {
         const roles = await response.json();
         setDiscordRoles(roles);
+        console.log(`Loaded ${roles.length} roles from server ${selectedServerId}`);
+      } else {
+        const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
+        setRolesError(errorData.error || `HTTP ${response.status}`);
+        console.error('Failed to fetch Discord roles:', response.status, errorData);
       }
     } catch (error) {
       console.error('Error fetching Discord roles:', error);
+      setRolesError('Network error - check if backend is running');
+    } finally {
+      setLoadingRoles(false);
     }
   };
 
   const fetchDiscordCategories = async () => {
+    if (!selectedServerId) {
+      console.log('No server selected, skipping categories fetch');
+      return;
+    }
+
     try {
-      const response = await fetch('http://localhost:3050/api/registration/discord/categories');
+      const response = await fetch(`http://localhost:3050/api/registration/discord/categories?guildId=${selectedServerId}`);
 
       if (response.ok) {
         const categories = await response.json();
         setDiscordCategories(categories);
+        console.log(`Loaded ${categories.length} categories from server ${selectedServerId}`);
+      } else {
+        const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
+        console.error('Failed to fetch Discord categories:', response.status, errorData);
       }
     } catch (error) {
       console.error('Error fetching Discord categories:', error);
@@ -420,6 +459,17 @@ export default function RegistrationSettings() {
     }
   };
 
+  if (!selectedServerId) {
+    return (
+      <div className="flex items-center justify-center h-64">
+        <div className="text-center">
+          <div className="text-gray-500 mb-2">Please select a Discord server to configure registration settings.</div>
+          <div className="text-sm text-gray-400">Use the server dropdown in the top navigation.</div>
+        </div>
+      </div>
+    );
+  }
+
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
@@ -448,10 +498,11 @@ export default function RegistrationSettings() {
           <div className="flex space-x-2">
             <button
               onClick={() => { fetchDiscordRoles(); fetchDiscordCategories(); }}
-              className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors flex items-center space-x-2"
+              disabled={loadingRoles || !selectedServerId}
+              className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors flex items-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <RefreshCw className="h-4 w-4" />
-              <span>Refresh Discord Data</span>
+              <RefreshCw className={`h-4 w-4 ${loadingRoles ? 'animate-spin' : ''}`} />
+              <span>{loadingRoles ? 'Loading...' : 'Refresh Discord Data'}</span>
             </button>
             <button
               onClick={saveConfig}
@@ -1316,15 +1367,24 @@ export default function RegistrationSettings() {
                 <select
                   value={newFunction.discordRoleId}
                   onChange={(e) => setNewFunction({ ...newFunction, discordRoleId: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                  disabled={loadingRoles || !selectedServerId}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <option value="">Select a role...</option>
+                  <option value="">
+                    {loadingRoles ? 'Loading roles...' : !selectedServerId ? 'Select a server first' : discordRoles.length === 0 ? 'No roles found' : 'Select a role...'}
+                  </option>
                   {discordRoles.map(role => (
                     <option key={role.id} value={role.id}>
                       @{role.name} ({role.memberCount} members)
                     </option>
                   ))}
                 </select>
+                {rolesError && (
+                  <div className="mt-1 text-sm text-red-600 flex items-center space-x-1">
+                    <span>⚠️</span>
+                    <span>{rolesError}</span>
+                  </div>
+                )}
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -1474,15 +1534,24 @@ export default function RegistrationSettings() {
                 <select
                   value={editingFunction.discordRoleId}
                   onChange={(e) => setEditingFunction({ ...editingFunction, discordRoleId: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                  disabled={loadingRoles || !selectedServerId}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <option value="">Select a role...</option>
+                  <option value="">
+                    {loadingRoles ? 'Loading roles...' : !selectedServerId ? 'Select a server first' : discordRoles.length === 0 ? 'No roles found' : 'Select a role...'}
+                  </option>
                   {discordRoles.map(role => (
                     <option key={role.id} value={role.id}>
                       @{role.name} ({role.memberCount} members)
                     </option>
                   ))}
                 </select>
+                {rolesError && (
+                  <div className="mt-1 text-sm text-red-600 flex items-center space-x-1">
+                    <span>⚠️</span>
+                    <span>{rolesError}</span>
+                  </div>
+                )}
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">

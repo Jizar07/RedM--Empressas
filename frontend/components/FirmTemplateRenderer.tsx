@@ -14,6 +14,9 @@ import BercarioPayments from './BercarioPayments';
 import EstoqueCDP from './EstoqueCDP';
 import FazendaWorkers from './FazendaWorkers';
 import FazendaCDPAnalytics from './FazendaCDPAnalytics';
+import FerroviaDashboard from './FerroviaDashboard';
+import FerroviaPayments from './FerroviaPayments';
+import FerroviaWorkers from './FerroviaWorkers';
 
 interface FirmTemplateRendererProps {
   firm: FirmConfig;
@@ -133,6 +136,23 @@ export default function FirmTemplateRenderer({ firm, activeComponent }: FirmTemp
     }
   }
 
+  // Special rendering for Ferrovia
+  const isFerrovia = firm.id === 'ferrovia';
+  if (isFerrovia) {
+    switch (activeComponent) {
+      case 'dashboard':
+        return <FerroviaDashboard firm={firm} />;
+      case 'workers':
+        return <FerroviaWorkers firm={firm} />;
+      case 'analytics':
+        return <BercarioAnalytics firm={firm} />;
+      case 'payments':
+        return <FerroviaPayments firm={firm} />;
+      default:
+        return <FerroviaDashboard firm={firm} />;
+    }
+  }
+
   // Template-based rendering
   switch (activeComponent) {
     case 'dashboard':
@@ -209,12 +229,19 @@ export function getAvailableComponents(firm: FirmConfig): Array<{id: string, nam
       baseComponents = DEFAULT_FAZENDA_BW_TEMPLATE.components;
   }
 
-  return baseComponents.map(comp => ({
+  let availableComponents = baseComponents.map(comp => ({
     id: comp.id,
     name: comp.name,
     icon: getComponentIcon(comp.id),
     enabled: firm.template?.enabledComponents?.includes(comp.id) ?? comp.enabled
   }));
+
+  // Special handling for Ferrovia - remove inventory component
+  if (firm.id === 'ferrovia') {
+    availableComponents = availableComponents.filter(comp => comp.id !== 'inventory');
+  }
+
+  return availableComponents;
 }
 
 function getComponentIcon(componentId: string): string {

@@ -86,16 +86,38 @@ export default function FazendaWorkers({ firm }: FazendaWorkersProps) {
     (a, b) => b.totalTransactions - a.totalTransactions
   );
   
+  // Helper function to identify category types
+  const isPlantCategory = (categoria: string): boolean => {
+    const plantCategories = ['seed', 'plant', 'corn', 'bulrush', 'semente', 'milho', 'junco'];
+    return plantCategories.some(plant => categoria.toLowerCase().includes(plant.toLowerCase()));
+  };
+
+  const isAnimalCategory = (categoria: string): boolean => {
+    const animalCategories = ['animal', 'cow', 'pig', 'sheep', 'horse', 'bovino', 'ovino', 'suino'];
+    return animalCategories.some(animal => categoria.toLowerCase().includes(animal.toLowerCase()));
+  };
+
   // Calculate summary stats from real data
   const totalWorkers = workerStats.length;
-  const totalRevenue = workerStats.reduce((sum, worker) => {
-    // Sum up financial transactions (deposits + sales)
-    return sum + Object.values(worker.categorias || {}).reduce((catSum, cat) => 
-      catSum + (cat.added || 0), 0
-    ) * 2.5; // Placeholder calculation
+  const totalPayment = workerStats.reduce((sum, worker) => {
+    // Calculate payments owed based on work completion tracking
+    return sum + Object.entries(worker.categorias || {}).reduce((catSum, [categoria, cat]) => {
+      const itemsWithdrawn = cat.removed || 0; // Items taken from inventory
+      
+      if (isPlantCategory(categoria)) {
+        // Plant logic: 1 seed taken = 10 plants expected = 10 × plantPrice payment
+        return catSum + (itemsWithdrawn * 10 * plantPrice);
+      } else if (isAnimalCategory(categoria)) {
+        // Animal logic: 4 animals taken = 1 delivery service = animalPrice payment
+        return catSum + ((itemsWithdrawn / 4) * animalPrice);
+      } else {
+        // Other categories: use plant price as fallback
+        return catSum + (itemsWithdrawn * plantPrice);
+      }
+    }, 0);
   }, 0);
   const totalActivities = workerStats.reduce((sum, worker) => sum + worker.totalTransactions, 0);
-  const avgRevenuePerWorker = totalWorkers > 0 ? totalRevenue / totalWorkers : 0;
+  const avgPaymentPerWorker = totalWorkers > 0 ? totalPayment / totalWorkers : 0;
 
   if (loading) {
     return (
@@ -146,8 +168,8 @@ export default function FazendaWorkers({ firm }: FazendaWorkersProps) {
         <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">Receita Total</p>
-              <p className="text-2xl font-bold text-gray-900">R$ {totalRevenue.toFixed(2)}</p>
+              <p className="text-sm font-medium text-gray-600">Total a Pagar</p>
+              <p className="text-2xl font-bold text-gray-900">R$ {totalPayment.toFixed(2)}</p>
             </div>
             <div className="p-3 bg-blue-100 rounded-full">
               <DollarSign className="h-6 w-6 text-blue-600" />
@@ -171,7 +193,7 @@ export default function FazendaWorkers({ firm }: FazendaWorkersProps) {
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-gray-600">Média por Trabalhador</p>
-              <p className="text-2xl font-bold text-gray-900">R$ {avgRevenuePerWorker.toFixed(2)}</p>
+              <p className="text-2xl font-bold text-gray-900">R$ {avgPaymentPerWorker.toFixed(2)}</p>
             </div>
             <div className="p-3 bg-purple-100 rounded-full">
               <BarChart3 className="h-6 w-6 text-purple-600" />

@@ -402,12 +402,12 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
           
           {metricCards.includes('workers') && (
             <MetricCard
-              title="Clientes"
+              title="Trabalhadores"
               value={activeWorkers.size}
               icon={<Users className="h-8 w-8" />}
               color="purple"
               loading={loading}
-              subtitle="Compraram animais"
+              subtitle="Ativos"
             />
           )}
           
@@ -418,18 +418,18 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
               icon={<Package className="h-8 w-8" />}
               color="yellow"
               loading={loading}
-              subtitle="Animais no berçário"
+              subtitle="Itens no Inventario"
             />
           )}
           
           {metricCards.includes('bankBalance') && (
             <MetricCard
-              title="Gerentes de Inventário"
+              title="Gerentes"
               value={getInventoryManagers().size}
               icon={<Settings className="h-8 w-8" />}
               color="red"
               loading={loading}
-              subtitle="Gerenciam animais"
+              subtitle="Ativos"
             />
           )}
         </div>

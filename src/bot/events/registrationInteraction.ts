@@ -355,9 +355,14 @@ async function handleInviterSelection(interaction: UserSelectMenuInteraction): P
 
       // Create personal channel if enabled and function has category configured
       if (formConfig?.postRegistration?.createChannel && selectedFunctionData?.categoryId) {
+        console.log(`🏗️ Channel creation enabled for user ${interaction.user.username} (${interaction.user.id})`);
+        console.log(`📂 Target category: ${selectedFunctionData.categoryName} (${selectedFunctionData.categoryId})`);
+        console.log(`📋 Function data:`, JSON.stringify(selectedFunctionData, null, 2));
+        
         try {
           const channelNameTemplate = formConfig.postRegistration.channelNameFormat || '{ingameName}';
           const channelName = substituteTemplateVariables(channelNameTemplate, templateVars);
+          console.log(`🏷️ Channel name template: "${channelNameTemplate}" → final name: "${channelName}"`);
           
           BotStatusService.creatingChannel();
           const channelResult = await RegistrationService.createChannelForUser(
@@ -369,16 +374,56 @@ async function handleInviterSelection(interaction: UserSelectMenuInteraction): P
           );
           
           if (channelResult.success) {
-            console.log(`Created channel for ${interaction.user.username}: ${channelName} in category ${selectedFunctionData.categoryName}`);
+            console.log(`✅ Successfully created channel for ${interaction.user.username}: ${channelName} in category ${selectedFunctionData.categoryName}`);
+            console.log(`🔗 Channel ID: ${channelResult.channelId}`);
             
             // Add channel ID to template variables for potential use in DM
             templateVars.channelId = channelResult.channelId || '';
+            
+            // Register worker channel for activity tracking
+            if (channelResult.channelId) {
+              try {
+                console.log(`📝 Registering worker channel for activity tracking...`);
+                const mappingResponse = await axios.post(
+                  `http://localhost:${config.api.port}/api/worker-activity/mapping`,
+                  {
+                    workerId: interaction.user.id,
+                    workerName: tempData.ingameName,
+                    channelId: channelResult.channelId,
+                    registrationId: undefined // Will be set later if needed
+                  },
+                  {
+                    headers: {
+                      'x-bot-token': process.env.DISCORD_TOKEN || config.discord.token
+                    }
+                  }
+                );
+                
+                if (mappingResponse.data?.success) {
+                  console.log(`✅ Worker channel registered for activity tracking: ${tempData.ingameName} → ${channelResult.channelId}`);
+                } else {
+                  console.warn(`⚠️ Worker channel mapping response: ${mappingResponse.status}`);
+                }
+              } catch (mappingError) {
+                console.error('❌ Failed to register worker channel mapping:', mappingError);
+              }
+            }
           } else {
-            console.error(`Failed to create channel for ${interaction.user.username}: ${channelResult.error}`);
+            console.error(`❌ Failed to create channel for ${interaction.user.username}: ${channelResult.error}`);
+            console.error(`🔍 Category ID: ${selectedFunctionData.categoryId}`);
+            console.error(`🔍 Guild ID: ${interaction.guild?.id}`);
           }
         } catch (channelError) {
-          console.error('Error creating channel:', channelError);
+          console.error('💥 Exception during channel creation:', channelError);
+          console.error('📊 Stack trace:', (channelError as Error).stack);
         }
+      } else {
+        // Debug why channel creation is being skipped
+        console.log(`⚠️ Channel creation skipped for user ${interaction.user.username}:`);
+        console.log(`  - Create channel enabled: ${formConfig?.postRegistration?.createChannel}`);
+        console.log(`  - Function has category: ${!!selectedFunctionData?.categoryId}`);
+        console.log(`  - Category ID: ${selectedFunctionData?.categoryId || 'NOT SET'}`);
+        console.log(`  - Function data:`, selectedFunctionData ? JSON.stringify(selectedFunctionData, null, 2) : 'NOT FOUND');
       }
 
       // Create success embed

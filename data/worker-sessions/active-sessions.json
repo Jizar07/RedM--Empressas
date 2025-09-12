@@ -1,0 +1,50 @@
+{
+  "placeholder_user_id": {
+    "workerId": "placeholder_user_id",
+    "workerName": "Jizar Stoffeliz",
+    "channelId": "placeholder_channel_id",
+    "sessionId": "session_1757688463971_lodvt",
+    "startTime": "2025-09-12T14:47:43.971Z",
+    "lastActivity": "2025-09-12T14:49:42.307Z",
+    "status": "active",
+    "plantTransactions": [
+      {
+        "type": "seed_taken",
+        "itemName": "Semente de Junco",
+        "quantity": 1,
+        "transactionId": "tx_1757688463972_kbyag",
+        "timestamp": "2025-09-12T14:47:43.972Z"
+      },
+      {
+        "type": "seed_taken",
+        "itemName": "Semente de Junco",
+        "quantity": 1,
+        "transactionId": "tx_1757688582307_ylhqn",
+        "timestamp": "2025-09-12T14:49:42.307Z"
+      }
+    ],
+    "animalTransactions": [],
+    "totalCredits": 0
+  },
+  "372161270176153601": {
+    "workerId": "372161270176153601",
+    "workerName": "Jizar Stoffeliz",
+    "channelId": "1416079586571190404",
+    "sessionId": "session_1757690308908_5gkm5",
+    "startTime": "2025-09-12T15:18:28.908Z",
+    "lastActivity": "2025-09-12T15:18:28.909Z",
+    "status": "active",
+    "plantTransactions": [
+      {
+        "type": "seed_taken",
+        "itemName": "Semente de Junco",
+        "quantity": 1,
+        "transactionId": "tx_1757690308909_vpfbp",
+        "timestamp": "2025-09-12T15:18:28.909Z"
+      }
+    ],
+    "animalTransactions": [],
+    "totalCredits": 0,
+    "embedMessageId": "1416080534869905498"
+  }
+}

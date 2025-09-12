@@ -1,5 +1,6 @@
 import { Message } from 'discord.js';
 import { FirmConfigService } from './FirmConfigService';
+import WorkerChannelService from './WorkerChannelService';
 
 interface WebhookData {
   raw_embeds: Array<{
@@ -36,6 +37,7 @@ export class MultiChannelForwarder {
   private firmConfigService: FirmConfigService;
   private monitoringStats: Map<string, FirmMonitoringStats>;
   private isInitialized: boolean = false;
+  private workerChannelService: WorkerChannelService | null = null;
 
   private constructor() {
     this.firmConfigService = FirmConfigService.getInstance();
@@ -75,6 +77,13 @@ export class MultiChannelForwarder {
       console.log(`✅ Multi-Channel Forwarder initialized for ${this.monitoringStats.size} firms`);
     } catch (error) {
       console.error('❌ Failed to initialize Multi-Channel Forwarder:', error);
+    }
+  }
+
+  public initializeWorkerChannelService(client: any): void {
+    if (!this.workerChannelService) {
+      this.workerChannelService = new WorkerChannelService(client);
+      console.log('🔧 MultiChannelForwarder: WorkerChannelService initialized');
     }
   }
 
@@ -187,7 +196,57 @@ export class MultiChannelForwarder {
         content: extractedContent
       };
 
-      // Send to firm's configured endpoint
+      // NEW: Direct worker activity processing (no roundtrip to frontend)
+      if (this.workerChannelService && firm.name === 'Fazenda Cabra da Peste') {
+        try {
+          console.log(`🔄 MultiChannelForwarder: Processing worker activity directly for ${realAuthor}`);
+          console.log(`🔍 MultiChannelForwarder: Message content: "${extractedContent}"`);
+          console.log(`🆔 MultiChannelForwarder: Debug - Message author ID: ${message.author.id}, Username: ${message.author.username}`);
+          
+          // Try to find the worker channel by searching for channel names containing the worker name
+          const guild = message.guild;
+          if (guild) {
+            const workerChannels = guild.channels.cache.filter(channel => 
+              channel.name.toLowerCase().includes('jizar') && channel.name.toLowerCase().includes('stoffeliz')
+            );
+            console.log(`🔍 MultiChannelForwarder: Found potential worker channels:`, 
+              Array.from(workerChannels.values()).map(c => `${c.name} (${c.id})`));
+          }
+          
+          // Create a mock parsed message object for WorkerChannelService
+          const mockParsedMessage = {
+            parseSuccess: true,
+            autor: realAuthor,
+            content: extractedContent,
+            timestamp: message.createdAt.toISOString(),
+            categoria: 'inventario' // For seed withdrawals
+          };
+          
+          console.log(`🔍 MultiChannelForwarder: Mock parsed message:`, JSON.stringify(mockParsedMessage, null, 2));
+          
+          // Try to extract worker transaction from the message
+          const workerTransaction = this.workerChannelService.parseWorkerTransactionFromMessage(mockParsedMessage);
+          
+          if (workerTransaction) {
+            console.log(`✅ MultiChannelForwarder: Found worker transaction - ${workerTransaction.type} for ${workerTransaction.workerName}`);
+            
+            // Process the transaction directly
+            const success = await this.workerChannelService.processWorkerTransaction(workerTransaction);
+            
+            if (success) {
+              console.log(`🎉 MultiChannelForwarder: Successfully processed worker activity directly!`);
+            } else {
+              console.log(`⚠️ MultiChannelForwarder: Worker transaction processing failed`);
+            }
+          } else {
+            console.log(`💭 MultiChannelForwarder: No worker transaction detected in this message`);
+          }
+        } catch (workerError) {
+          console.error('❌ MultiChannelForwarder: Worker activity processing error:', workerError);
+        }
+      }
+
+      // Send to firm's configured endpoint (keep existing functionality)
       await this.sendToFirmEndpoint(firm.id, firm.monitoring.endpoint, webhookData);
       
       console.log(`✅ Multi-Channel Forwarder: Successfully processed message for firm ${firm.name}`);

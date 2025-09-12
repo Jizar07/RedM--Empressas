@@ -13,6 +13,12 @@ export default {
     // Initialize dynamic status system
     BotStatusService.setClient(client);
     
+    // Initialize WorkerChannelService in MultiChannelForwarder
+    const botClient = client as any;
+    if (botClient.multiChannelForwarder) {
+      botClient.multiChannelForwarder.initializeWorkerChannelService(client);
+    }
+    
     // Test channel access
     const testChannelId = '1412325130926948362';
     try {
