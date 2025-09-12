@@ -12,10 +12,11 @@ interface PlantTransaction {
 }
 
 interface AnimalTransaction {
-  type: 'animal_delivery';
+  type: 'animals_taken' | 'delivery_completed';
   animalType?: string;
   quantity: number;
-  amount: number;
+  amount?: number;
+  cost?: number;
   timestamp: Date;
   transactionId: string;
 }
@@ -45,12 +46,19 @@ interface ServiceConfig {
   animalTypes: string[];
 }
 
+interface WorkerPrices {
+  plantPrice: number;
+  animalPrice: number;
+  animalCost: number;
+}
+
 export class WorkerActivityService {
   private client: Client;
   private activeSessions: Map<string, WorkerSession> = new Map();
   private dataDir: string;
   private serviceConfig!: ServiceConfig;
   private translationService: ItemTranslationService;
+  private workerPricesCache: Map<string, { prices: WorkerPrices; fetchedAt: Date }> = new Map();
 
   constructor(client: Client) {
     this.client = client;
@@ -78,7 +86,7 @@ export class WorkerActivityService {
       console.error('❌ Error loading service config:', error);
       // Default configuration
       this.serviceConfig = {
-        plantPrices: { basic: 0.15, other: 0.2 },
+        plantPrices: { basic: 0.25, other: 0.25 }, // Will be overridden by dynamic pricing
         basicPlants: ['Milho', 'Trigo', 'Junco'],
         optimalAnimalIncome: 60,
         animalTypes: ['Bovino', 'Ovino', 'Suino', 'Caprino', 'Equino', 'Avino']
@@ -135,6 +143,45 @@ export class WorkerActivityService {
     return `tx_${Date.now()}_${Math.random().toString(36).substring(7)}`;
   }
 
+  private async getWorkerPrices(firmId: string = 'fazenda-cabra-da-peste'): Promise<WorkerPrices> {
+    // Check cache first (5 minute cache)
+    const cached = this.workerPricesCache.get(firmId);
+    if (cached && (Date.now() - cached.fetchedAt.getTime()) < 5 * 60 * 1000) {
+      return cached.prices;
+    }
+
+    try {
+      // Try to read from file first (backend sync)
+      const pricesPath = path.join(process.cwd(), 'data', 'worker-prices', `${firmId}.json`);
+      if (fs.existsSync(pricesPath)) {
+        const data = fs.readFileSync(pricesPath, 'utf8');
+        const prices = JSON.parse(data);
+        const workerPrices: WorkerPrices = {
+          plantPrice: prices.plantPrice || 2.50,
+          animalPrice: prices.animalPrice || 40.00,
+          animalCost: prices.animalCost || 20.00
+        };
+        
+        // Update cache
+        this.workerPricesCache.set(firmId, { prices: workerPrices, fetchedAt: new Date() });
+        console.log(`💰 Loaded worker prices for ${firmId}:`, workerPrices);
+        return workerPrices;
+      }
+    } catch (error) {
+      console.error('❌ Error loading worker prices:', error);
+    }
+
+    // Return defaults if file doesn't exist
+    const defaultPrices: WorkerPrices = {
+      plantPrice: 2.50,
+      animalPrice: 40.00,
+      animalCost: 20.00
+    };
+    
+    console.log(`💰 Using default worker prices for ${firmId}`);
+    return defaultPrices;
+  }
+
   private calculatePlantPrice(plantName: string): number {
     // Use translation service to check if it's a basic plant
     const isBasicPlant = this.translationService.isBasicPlant(plantName);
@@ -148,23 +195,44 @@ export class WorkerActivityService {
     return quantity * (this.serviceConfig.optimalAnimalIncome / 4); // Assuming 4 animals per optimal income
   }
 
-  private recalculateSessionCredits(session: WorkerSession): void {
+  private async recalculateSessionCredits(session: WorkerSession): Promise<void> {
+    const prices = await this.getWorkerPrices();
     let totalCredits = 0;
+    let totalCosts = 0;
 
-    // Calculate plant credits
+    // Calculate plant credits (plants deposited × price per plant)
     session.plantTransactions
       .filter(t => t.type === 'plant_deposited')
       .forEach(transaction => {
-        const price = this.calculatePlantPrice(transaction.itemName);
-        totalCredits += transaction.quantity * price;
+        // Use configured price per plant
+        totalCredits += transaction.quantity * prices.plantPrice;
       });
 
-    // Calculate animal credits
-    session.animalTransactions.forEach(transaction => {
-      totalCredits += transaction.amount;
-    });
+    // Calculate animal deliveries
+    const animalsTaken = session.animalTransactions
+      .filter(t => t.type === 'animals_taken')
+      .reduce((sum, t) => sum + t.quantity, 0);
+    
+    const totalAnimalCost = animalsTaken * prices.animalCost;
+    
+    // Find completed deliveries
+    const deliveryAmount = session.animalTransactions
+      .filter(t => t.type === 'delivery_completed')
+      .reduce((sum, t) => sum + (t.amount || 0), 0);
+    
+    // Apply payment logic:
+    // If delivery >= cost, worker gets full delivery amount
+    // If delivery < cost, worker gets $0 and owes the difference
+    if (deliveryAmount > 0) {
+      if (deliveryAmount >= totalAnimalCost) {
+        totalCredits += deliveryAmount; // Full payment
+      } else {
+        // Worker owes money
+        totalCosts = totalAnimalCost - deliveryAmount;
+      }
+    }
 
-    session.totalCredits = totalCredits;
+    session.totalCredits = Math.max(0, totalCredits - totalCosts);
   }
 
   public getOrCreateSession(workerId: string, workerName: string, channelId: string): WorkerSession {
@@ -192,7 +260,7 @@ export class WorkerActivityService {
     return session;
   }
 
-  public addPlantTransaction(workerId: string, workerName: string, channelId: string, transaction: Omit<PlantTransaction, 'transactionId' | 'timestamp'>): void {
+  public async addPlantTransaction(workerId: string, workerName: string, channelId: string, transaction: Omit<PlantTransaction, 'transactionId' | 'timestamp'>): Promise<void> {
     const session = this.getOrCreateSession(workerId, workerName, channelId);
     
     const plantTransaction: PlantTransaction = {
@@ -204,7 +272,7 @@ export class WorkerActivityService {
     session.plantTransactions.push(plantTransaction);
     session.lastActivity = new Date();
     
-    this.recalculateSessionCredits(session);
+    await this.recalculateSessionCredits(session);
     this.saveActiveSessions();
     
     console.log(`🌱 Added plant transaction for ${workerName}: ${transaction.type} - ${transaction.quantity} ${transaction.itemName}`);
@@ -213,7 +281,7 @@ export class WorkerActivityService {
     this.updateWorkerEmbed(session);
   }
 
-  public addAnimalTransaction(workerId: string, workerName: string, channelId: string, transaction: Omit<AnimalTransaction, 'transactionId' | 'timestamp'>): void {
+  public async addAnimalTransaction(workerId: string, workerName: string, channelId: string, transaction: Omit<AnimalTransaction, 'transactionId' | 'timestamp'>): Promise<void> {
     const session = this.getOrCreateSession(workerId, workerName, channelId);
     
     const animalTransaction: AnimalTransaction = {
@@ -225,10 +293,14 @@ export class WorkerActivityService {
     session.animalTransactions.push(animalTransaction);
     session.lastActivity = new Date();
     
-    this.recalculateSessionCredits(session);
+    await this.recalculateSessionCredits(session);
     this.saveActiveSessions();
     
-    console.log(`🐄 Added animal transaction for ${workerName}: ${transaction.quantity} animals - $${transaction.amount}`);
+    const logMessage = transaction.type === 'animals_taken' 
+      ? `🐄 Added animals taken for ${workerName}: ${transaction.quantity} ${transaction.animalType || 'animals'} - Cost: $${transaction.cost || 0}`
+      : `💰 Added delivery completion for ${workerName}: ${transaction.quantity} animals - Earned: $${transaction.amount || 0}`;
+    
+    console.log(logMessage);
     
     // Update the embed
     this.updateWorkerEmbed(session);
@@ -327,7 +399,7 @@ export class WorkerActivityService {
       const animalSummary = session.animalTransactions.map(t => {
         const timeStr = `<t:${Math.floor(t.timestamp.getTime() / 1000)}:t>`;
         const typeStr = t.animalType ? ` ${t.animalType}` : '';
-        return `• ${timeStr} - ${t.quantity}${typeStr} Animais → $${t.amount.toFixed(2)}`;
+        return `• ${timeStr} - ${t.quantity}${typeStr} Animais → $${(t.amount || 0).toFixed(2)}`;
       });
 
       embed.addFields({

@@ -47,14 +47,41 @@ export default function FazendaWorkers({ firm }: FazendaWorkersProps) {
     }
   }, [firm.id]);
 
-  // Save prices to localStorage when they change
-  const savePrices = React.useCallback((newPlantPrice?: number, newAnimalPrice?: number) => {
+  // Save prices to localStorage and backend when they change
+  const savePrices = React.useCallback(async (newPlantPrice?: number, newAnimalPrice?: number) => {
     const storageKey = `${firm.id}_worker_prices`;
     const prices = {
       plantPrice: newPlantPrice !== undefined ? newPlantPrice : plantPrice,
       animalPrice: newAnimalPrice !== undefined ? newAnimalPrice : animalPrice
     };
+    
+    // Save to localStorage
     localStorage.setItem(storageKey, JSON.stringify(prices));
+    
+    // Save to backend API
+    try {
+      const response = await fetch(`http://localhost:3050/api/firms/${firm.id}/worker-prices`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Bot-Token': process.env.NEXT_PUBLIC_BOT_WEBHOOK_TOKEN || process.env.NEXT_PUBLIC_DISCORD_TOKEN || 'your-bot-token'
+        },
+        body: JSON.stringify({
+          plantPrice: prices.plantPrice,
+          animalPrice: prices.animalPrice,
+          animalCost: 20.00, // Default animal cost
+          updatedBy: 'FazendaWorkers UI'
+        })
+      });
+      
+      if (response.ok) {
+        console.log('✅ Worker prices synced to backend');
+      } else {
+        console.error('❌ Failed to sync prices to backend');
+      }
+    } catch (error) {
+      console.error('❌ Error syncing prices to backend:', error);
+    }
   }, [firm.id, plantPrice, animalPrice]);
 
   // Handle price changes without auto-save

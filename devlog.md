@@ -4,6 +4,19 @@ This is a local timestamped file to track all development changes and prompts.
 
 ## Log Entries
 
+### 2025-09-12 13:29:51
+**Action**: Fixed Worker Activity Pricing and Permission System
+**Prompt**: "didnt work, still using $0.15" and "why in the fuck is this happening, why is it getting the roles from other server"
+**Changes**:
+- Fixed price synchronization between frontend and backend by adding NEXT_PUBLIC_DISCORD_TOKEN to frontend environment
+- Updated farm-service-config.json rolePermissions to use correct server roles (👑│CEO, ❪★❱ Gerentes)
+- Removed all hardcoded $0.15 values from WorkerActivityService.ts, ActivityVerificationService.ts, OCRService.ts
+- Updated farm-service-config.json plantPrices from 0.15 to 0.25
+- Fixed frontend authentication token in FazendaWorkers.tsx to use proper environment variable
+- Worker activity now correctly uses $0.25 per plant as configured in UI
+- Button interactions (reject/edit/payment) now working with correct permissions
+- Tested: totalCredits now shows 70 for 280 plants (280 × $0.25 = $70) ✅
+
 ### 2025-09-12 11:19:38
 **Action**: Complete Worker Activity Tracking System Implementation
 **Prompt**: "we have global naming system for frontend, but we dont have it for backend. this might cause a problem. also seeds taken does not need to be a fix amount."

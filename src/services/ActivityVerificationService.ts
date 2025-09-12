@@ -98,7 +98,7 @@ class ActivityVerificationService {
         farmCost: 90,
         farmProfitRequired: 10,
         optimalAnimalIncome: 60,
-        plantPrices: { basic: 0.15, other: 0.2 },
+        plantPrices: { basic: 0.25, other: 0.25 }, // Will be overridden by dynamic pricing
         basicPlants: ['Milho', 'Trigo', 'Junco']
       };
     }

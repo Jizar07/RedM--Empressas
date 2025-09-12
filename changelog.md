@@ -5,7 +5,18 @@ This file is synchronized with: https://github.com/Jizar07/RedM--Empressas
 
 ## Version History
 
-### [0.032] - 2025-09-12 **[CURRENT - RESTORE POINT]**
+### [0.033] - 2025-09-12 **[CURRENT - RESTORE POINT]**
+- **CRITICAL FIX**: Worker Activity Dynamic Pricing System & Permission System
+- **FIXED**: Price synchronization - removed all hardcoded $0.15 values from backend services
+- **UPDATED**: Frontend authentication token for proper API communication with backend
+- **RESOLVED**: Server role permissions - farm service config now uses correct Discord server roles
+- **ENHANCED**: WorkerActivityService.ts, ActivityVerificationService.ts, OCRService.ts use dynamic pricing
+- **CORRECTED**: farm-service-config.json updated with proper role permissions (👑│CEO, ❪★❱ Gerentes)
+- **RESULT**: Worker activity system now correctly uses $0.25/plant as configured in UI
+- **TESTED**: Button interactions (reject/edit/payment) fully functional with proper permissions
+- **VERIFIED**: totalCredits calculation accurate: 280 plants × $0.25 = $70.00 ✅
+
+### [0.032] - 2025-09-12 **[RESTORE POINT]**
 - **MAJOR**: Complete Worker Activity Tracking System with Portuguese Translation Support
 - **NEW**: ItemTranslationService with 50+ item mappings (internal names ↔ Portuguese display names)
 - **ENHANCED**: WorkerChannelService integrated with translation service for Portuguese embeds

@@ -4,8 +4,8 @@
   "farmProfitRequired": 10,
   "optimalAnimalIncome": 60,
   "plantPrices": {
-    "basic": 0.15,
-    "other": 0.2
+    "basic": 0.25,
+    "other": 0.25
   },
   "basicPlants": [
     "Milho",
@@ -44,16 +44,16 @@
   },
   "rolePermissions": {
     "acceptRoles": [
-      "🌾 | Gerente Fazenda BW I",
-      "🌾| Líder Fazenda BW I"
+      "👑│CEO",
+      "❪★❱ Gerentes"
     ],
     "editRoles": [
-      "🌾 | Gerente Fazenda BW I",
-      "🌾| Líder Fazenda BW I"
+      "👑│CEO",
+      "❪★❱ Gerentes"
     ],
     "rejectRoles": [
-      "🌾| Líder Fazenda BW I",
-      "🌾 | Gerente Fazenda BW I"
+      "👑│CEO",
+      "❪★❱ Gerentes"
     ]
   }
 }

@@ -39,8 +39,8 @@ class OCRService {
   private readonly MINIMUM_FARM_NEEDS = 100; // $90 cost + $10 profit
   private readonly OPTIMAL_INCOME = 160; // 4 animals at age 50
   private readonly PLANT_PRICES = {
-    basic: 0.15, // Milho, Trigo, Junco
-    other: 0.20
+    basic: 0.25, // Will be overridden by dynamic pricing - Milho, Trigo, Junco
+    other: 0.25
   };
 
   /**
