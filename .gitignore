@@ -11,6 +11,8 @@ yarn.lock
 # Build output
 dist/
 build/
+frontend/.next/
+.next/
 
 # Logs
 logs/

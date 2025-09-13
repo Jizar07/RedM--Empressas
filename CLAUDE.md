@@ -97,7 +97,21 @@ When you see "/update" command from the user, perform the following actions:
 3. Update changelog.md if there are version-worthy changes
 4. Update CLAUDE.md if there are architectural or command changes
 
-## Recent Major Updates (v0.034) **[CURRENT VERSION]**
+## Recent Major Updates (v0.035) **[CURRENT VERSION]**
+
+### Complete Ferrovia Button System with Manager-Only Permissions (v0.035)
+- **Manager-Only Button System**: Implemented comprehensive permission checking for both Farm and Ferrovia embed buttons
+- **Button Replacement**: Replaced non-functional Analytics/Responsibilities buttons with Verified (green) and Reset (red) buttons
+- **Ferrovia Handlers**: Created complete handler system in `src/handlers/ferroviaHandlers.ts` with permission validation
+- **Receipt System**: Verified button creates receipts identical to farm payall functionality with session summaries
+- **Reset Functionality**: Reset button clears all session data and immediately updates embed display
+- **Critical Bug Fix**: Resolved session lookup issue by using shared SupplyChainService instance instead of creating new instances
+- **Portuguese Integration**: Enhanced Ferrovia embeds with ItemTranslationService for proper Portuguese item names
+- **Net Plant Tracking**: Implemented context-aware plant tracking distinguishing Farm deposits from Ferrovia returns
+- **Permission System**: All buttons now manager-only using farm service configuration roles (acceptRoles)
+- **Result**: Complete manager-controlled Ferrovia system with proper receipts, data management, and Portuguese display
+
+## Previous Major Updates (v0.034)
 
 ### Backend Workers Channel Modifications - Complete UI/UX Enhancement (v0.034)
 - **Streamlined Worker Management**: Removed reject button functionality completely, simplified workflow to Pay and Edit only

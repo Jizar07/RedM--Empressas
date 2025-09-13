@@ -143,6 +143,63 @@ export class WorkerActivityService {
     return `tx_${Date.now()}_${Math.random().toString(36).substring(7)}`;
   }
 
+  // Enhanced session state validation methods
+  private isSessionActive(session: WorkerSession): boolean {
+    return session.status === 'active';
+  }
+
+  private async validateEmbedState(session: WorkerSession): Promise<boolean> {
+    try {
+      // If no embed message ID, it's valid (will create new one)
+      if (!session.embedMessageId) {
+        return true;
+      }
+
+      // Check if the Discord message still exists
+      const channel = await this.client.channels.fetch(session.channelId);
+      if (!channel || !channel.isTextBased()) {
+        console.log(`⚠️ Channel ${session.channelId} not found or not text-based for ${session.workerName}`);
+        return false;
+      }
+
+      try {
+        await channel.messages.fetch(session.embedMessageId);
+        // Message exists, check if session is active
+        return this.isSessionActive(session);
+      } catch (error) {
+        // Message doesn't exist anymore
+        console.log(`⚠️ Embed message ${session.embedMessageId} no longer exists for ${session.workerName}`);
+        return false;
+      }
+    } catch (error) {
+      console.error(`❌ Error validating embed state for ${session.workerName}:`, error);
+      return false;
+    }
+  }
+
+  private async cleanupPaidSession(workerId: string): Promise<void> {
+    try {
+      console.log(`🧹 Cleaning up paid session for worker: ${workerId}`);
+      
+      // Remove any stale session from active sessions
+      const existingSession = this.activeSessions.get(workerId);
+      if (existingSession) {
+        console.log(`🗑️ Removing stale session (status: ${existingSession.status}) for worker: ${workerId}`);
+        
+        // Clear the embed message ID to force creation of new embed
+        existingSession.embedMessageId = undefined;
+        
+        // If session is not active, remove it completely
+        if (!this.isSessionActive(existingSession)) {
+          this.activeSessions.delete(workerId);
+          this.saveActiveSessions();
+        }
+      }
+    } catch (error) {
+      console.error(`❌ Error cleaning up paid session for ${workerId}:`, error);
+    }
+  }
+
   private async getWorkerPrices(firmId: string = 'fazenda-cabra-da-peste'): Promise<WorkerPrices> {
     // Check cache first (5 minute cache)
     const cached = this.workerPricesCache.get(firmId);
@@ -238,7 +295,19 @@ export class WorkerActivityService {
   public getOrCreateSession(workerId: string, workerName: string, channelId: string): WorkerSession {
     let session = this.activeSessions.get(workerId);
     
+    // Enhanced: Validate existing session state
+    if (session) {
+      // If session is not active, treat it as if it doesn't exist
+      if (!this.isSessionActive(session)) {
+        console.log(`⚠️ Found non-active session (${session.status}) for ${workerName}, creating new session instead`);
+        session = undefined;
+      }
+    }
+    
     if (!session) {
+      // Enhanced: Ensure completely clean session creation
+      console.log(`🆕 Creating fresh session for worker ${workerName} (${workerId})`);
+      
       session = {
         workerId,
         workerName,
@@ -249,18 +318,27 @@ export class WorkerActivityService {
         status: 'active',
         plantTransactions: [],
         animalTransactions: [],
-        totalCredits: 0
+        totalCredits: 0,
+        // Explicitly set embedMessageId to undefined to force new embed creation
+        embedMessageId: undefined
       };
       
       this.activeSessions.set(workerId, session);
       this.saveActiveSessions();
-      console.log(`🆕 Created new session for worker ${workerName} (${workerId})`);
+      console.log(`✅ Created new active session for worker ${workerName} (${workerId})`);
     }
 
     return session;
   }
 
   public async addPlantTransaction(workerId: string, workerName: string, channelId: string, transaction: Omit<PlantTransaction, 'transactionId' | 'timestamp'>): Promise<void> {
+    // Enhanced: Check for paid session and cleanup if needed
+    const existingSession = this.activeSessions.get(workerId);
+    if (existingSession && !this.isSessionActive(existingSession)) {
+      console.log(`⚠️ Attempting to add plant transaction to non-active session (${existingSession.status}) for ${workerName}, cleaning up...`);
+      await this.cleanupPaidSession(workerId);
+    }
+
     const session = this.getOrCreateSession(workerId, workerName, channelId);
     
     const plantTransaction: PlantTransaction = {
@@ -282,6 +360,13 @@ export class WorkerActivityService {
   }
 
   public async addAnimalTransaction(workerId: string, workerName: string, channelId: string, transaction: Omit<AnimalTransaction, 'transactionId' | 'timestamp'>): Promise<void> {
+    // Enhanced: Check for paid session and cleanup if needed
+    const existingSession = this.activeSessions.get(workerId);
+    if (existingSession && !this.isSessionActive(existingSession)) {
+      console.log(`⚠️ Attempting to add animal transaction to non-active session (${existingSession.status}) for ${workerName}, cleaning up...`);
+      await this.cleanupPaidSession(workerId);
+    }
+
     const session = this.getOrCreateSession(workerId, workerName, channelId);
     
     const animalTransaction: AnimalTransaction = {
@@ -308,6 +393,19 @@ export class WorkerActivityService {
 
   private async updateWorkerEmbed(session: WorkerSession): Promise<void> {
     try {
+      // Enhanced: Validate embed state before updating
+      const embedIsValid = await this.validateEmbedState(session);
+      if (!embedIsValid) {
+        console.log(`⚠️ Invalid embed state for ${session.workerName}, clearing embedMessageId to force new embed creation`);
+        session.embedMessageId = undefined;
+      }
+
+      // Enhanced: Don't update embeds for non-active sessions
+      if (!this.isSessionActive(session)) {
+        console.log(`⚠️ Skipping embed update for non-active session (${session.status}) for ${session.workerName}`);
+        return;
+      }
+
       const channel = await this.client.channels.fetch(session.channelId) as TextChannel;
       if (!channel) {
         console.error(`❌ Channel ${session.channelId} not found for worker ${session.workerName}`);
@@ -500,12 +598,18 @@ export class WorkerActivityService {
   public async payWorker(workerId: string, managerId: string, managerName: string): Promise<boolean> {
     const session = this.activeSessions.get(workerId);
     if (!session || session.status !== 'active') {
+      console.log(`⚠️ Cannot pay worker ${workerId}: session not found or not active (${session?.status})`);
       return false;
     }
 
-    // Update session status to paid and update embed
+    console.log(`💰 Processing payment for ${session.workerName} - $${session.totalCredits.toFixed(2)}`);
+
+    // Enhanced: Update session status to paid and update embed (this will show "Pago" status)
     session.status = 'paid';
     await this.updateWorkerEmbed(session);
+
+    // Enhanced: Wait a moment to ensure embed is updated before archiving
+    await new Promise(resolve => setTimeout(resolve, 500));
 
     // Archive the session
     await this.archiveSession(session, 'paid', `Pago por ${managerName} (${managerId})`);
@@ -532,11 +636,13 @@ export class WorkerActivityService {
     const paymentFile = path.join(paymentsDir, `${session.sessionId}.json`);
     fs.writeFileSync(paymentFile, JSON.stringify(paymentRecord, null, 2));
 
-    // Remove from active sessions
+    // Enhanced: Remove from active sessions with comprehensive cleanup
     this.activeSessions.delete(workerId);
     this.saveActiveSessions();
 
-    console.log(`💰 Paid worker ${session.workerName} $${session.totalCredits.toFixed(2)} - Session archived`);
+    console.log(`✅ Successfully paid worker ${session.workerName} $${session.totalCredits.toFixed(2)} - Session archived and cleaned up`);
+    console.log(`📋 Payment completed by ${managerName} (${managerId}) - Receipt saved as ${session.sessionId}`);
+    
     return true;
   }
 

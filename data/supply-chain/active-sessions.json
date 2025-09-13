@@ -1,0 +1,182 @@
+[
+  {
+    "sessionId": "40f28ba9-6be4-43a0-ac43-5254b88ca9bb",
+    "workerId": "372161270176153601",
+    "workerName": "Jizar Stoffeliz",
+    "role": "worker",
+    "status": "active",
+    "startTime": "2025-09-13T16:43:38.597Z",
+    "lastActivity": "2025-09-13T18:27:33.921Z",
+    "transactions": [
+      {
+        "transactionId": "tx_1757781818598_eh4w95v9v",
+        "type": "BOXES_WITHDRAWN",
+        "itemName": "caixadelegumes",
+        "quantity": 1,
+        "timestamp": "2025-09-13T16:43:38.598Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadelegumes x1\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 13/09/2025 - 13:43:38"
+      },
+      {
+        "transactionId": "tx_1757781862283_uaj961lne",
+        "type": "BOXES_CREATED",
+        "itemName": "caixadelegumes",
+        "quantity": 3,
+        "timestamp": "2025-09-13T16:44:22.283Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixadelegumes x3\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 13/09/2025 - 13:44:21"
+      },
+      {
+        "transactionId": "tx_1757781918827_injpgm523",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 200,
+        "timestamp": "2025-09-13T16:45:18.827Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 13/09/2025 - 13:45:18"
+      },
+      {
+        "transactionId": "tx_1757781922168_cgqqqyut3",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 50,
+        "timestamp": "2025-09-13T16:45:22.168Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x50\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 13/09/2025 - 13:45:21"
+      },
+      {
+        "transactionId": "tx_1757783286544_aryso8cq9",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "Bulrush",
+        "quantity": 1,
+        "timestamp": "2025-09-13T17:08:06.544Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x1\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 13/09/2025 - 14:08:06"
+      },
+      {
+        "transactionId": "tx_1757783305162_4r7t0dbnx",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 1,
+        "timestamp": "2025-09-13T17:08:25.162Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x1\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 13/09/2025 - 14:08:24"
+      },
+      {
+        "transactionId": "tx_1757783313457_iyk9wmb2x",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 1,
+        "timestamp": "2025-09-13T17:08:33.457Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x1\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 13/09/2025 - 14:08:32"
+      },
+      {
+        "transactionId": "tx_1757783994244_jrrrq7sh2",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 200,
+        "timestamp": "2025-09-13T17:19:54.244Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 13/09/2025 - 14:19:53"
+      },
+      {
+        "transactionId": "tx_1757787019026_lsaisja36",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 200,
+        "timestamp": "2025-09-13T18:10:19.026Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 13/09/2025 - 15:10:18"
+      },
+      {
+        "transactionId": "tx_1757787027613_ogm1iv44a",
+        "type": "PLANTS_DEPOSITED",
+        "itemName": "trigo",
+        "quantity": 200,
+        "timestamp": "2025-09-13T18:10:27.613Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: trigo x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 13/09/2025 - 15:10:26"
+      },
+      {
+        "transactionId": "tx_1757787463144_ujk4u2853",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 200,
+        "timestamp": "2025-09-13T18:17:43.144Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 13/09/2025 - 15:17:42"
+      },
+      {
+        "transactionId": "tx_1757787930250_u5y2iahqn",
+        "type": "PLANTS_DEPOSITED",
+        "itemName": "trigo",
+        "quantity": 200,
+        "timestamp": "2025-09-13T18:25:30.250Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: trigo x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 13/09/2025 - 15:25:29"
+      },
+      {
+        "transactionId": "tx_1757787945826_kp90gf6dt",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 200,
+        "timestamp": "2025-09-13T18:25:45.826Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 13/09/2025 - 15:25:45"
+      },
+      {
+        "transactionId": "tx_1757787955691_bdti27ksd",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 50,
+        "timestamp": "2025-09-13T18:25:55.691Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x50\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 13/09/2025 - 15:25:55"
+      },
+      {
+        "transactionId": "tx_1757788002270_1eda6m3zq",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-09-13T18:26:42.270Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 13/09/2025 - 15:26:41"
+      },
+      {
+        "transactionId": "tx_1757788009569_gktcf01jc",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 50,
+        "timestamp": "2025-09-13T18:26:49.569Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x50\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 13/09/2025 - 15:26:48"
+      },
+      {
+        "transactionId": "tx_1757788043073_kkox9zbuv",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "Bulrush",
+        "quantity": 200,
+        "timestamp": "2025-09-13T18:27:23.073Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 13/09/2025 - 15:27:22"
+      },
+      {
+        "transactionId": "tx_1757788046683_ilpqf3bm7",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "Bulrush",
+        "quantity": 50,
+        "timestamp": "2025-09-13T18:27:26.683Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x50\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 13/09/2025 - 15:27:26"
+      },
+      {
+        "transactionId": "tx_1757788050699_eb2j6lnwf",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-09-13T18:27:30.699Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 13/09/2025 - 15:27:30"
+      },
+      {
+        "transactionId": "tx_1757788053920_n8xiticj8",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 50,
+        "timestamp": "2025-09-13T18:27:33.921Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x50\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 13/09/2025 - 15:27:33"
+      }
+    ],
+    "openResponsibilities": {
+      "boxesTaken": 1,
+      "moneyOwed": 4,
+      "dueDate": "2025-09-14T16:43:38.597Z",
+      "startDate": "2025-09-13T16:43:38.597Z"
+    },
+    "totalBoxesProcessed": 0,
+    "totalRevenueGenerated": 0,
+    "totalRevenueReturned": 0
+  }
+]

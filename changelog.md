@@ -5,7 +5,22 @@ This file is synchronized with: https://github.com/Jizar07/RedM--Empressas
 
 ## Version History
 
-### [0.034] - 2025-09-12 **[CURRENT - RESTORE POINT]**
+### [0.035] - 2025-09-13 **[CURRENT - RESTORE POINT]**
+- **MAJOR**: Complete Ferrovia Button System Implementation with Manager-Only Permissions
+- **REPLACED**: Non-working Analytics and Responsibilities buttons with Verified (green) and Reset (red) buttons
+- **IMPLEMENTED**: Manager-only button visibility and interaction system for both Farm and Ferrovia embeds
+- **ADDED**: Comprehensive permission checking using farm service configuration (acceptRoles)
+- **CREATED**: ferroviaHandlers.ts with handleFerroviaVerified and handleFerroviaReset functions
+- **ENHANCED**: Verified button creates receipts like farm payall functionality with session summary
+- **ADDED**: Reset button clears all session data and updates embed immediately
+- **FIXED**: Critical session lookup bug by using shared SupplyChainService instance
+- **IMPROVED**: Portuguese translations in Ferrovia embeds via ItemTranslationService integration
+- **IMPLEMENTED**: Net plant tracking system distinguishing Farm service deposits vs Ferrovia returns
+- **ENHANCED**: Context-based activity classification (withdrawals - deposits) for accurate net usage display
+- **TECHNICAL**: Updated FerroviaSessionService, created handler system, fixed shared service instance access
+- **RESULT**: Complete manager-only button system with proper receipts, reset functionality, and Portuguese display
+
+### [0.034] - 2025-09-12 **[RESTORE POINT]**
 - **MAJOR**: Backend Workers Channel Modifications - Complete UI/UX Enhancement
 - **REMOVED**: Reject button functionality completely from worker management system
 - **ENHANCED**: Edit modal with comprehensive amount/quantity editing capabilities

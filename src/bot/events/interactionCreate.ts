@@ -19,6 +19,15 @@ import {
   handleWorkerEdit,
   handleTransactionManageSubmit
 } from '../../handlers/workerActivityHandlers';
+import {
+  handleSupplyChainRefresh,
+  handleSupplyChainResponsibilities,
+  handleSupplyChainAnalytics
+} from '../../handlers/supplyChainHandlers';
+import {
+  handleFerroviaVerified,
+  handleFerroviaReset
+} from '../../handlers/ferroviaHandlers';
 
 
 export default {
@@ -65,6 +74,30 @@ export default {
         await handleWorkerEdit(interaction);
         return;
       }
+
+      // Handle supply chain buttons
+      if (interaction.customId === 'supply_chain_refresh') {
+        await handleSupplyChainRefresh(interaction);
+        return;
+      }
+      if (interaction.customId === 'supply_chain_responsibilities') {
+        await handleSupplyChainResponsibilities(interaction);
+        return;
+      }
+      if (interaction.customId === 'supply_chain_analytics') {
+        await handleSupplyChainAnalytics(interaction);
+        return;
+      }
+
+      // Handle Ferrovia buttons
+      if (interaction.customId.startsWith('ferrovia_verified_')) {
+        await handleFerroviaVerified(interaction);
+        return;
+      }
+      if (interaction.customId.startsWith('ferrovia_reset_')) {
+        await handleFerroviaReset(interaction);
+        return;
+      }
     }
 
     // Handle farm service dropdown selections
@@ -93,6 +126,7 @@ export default {
         await handleReceiptEditQuantity(interaction);
         return;
       }
+      
       
       // Handle transaction management modal submissions
       if (interaction.customId.startsWith('transaction_manage_modal_')) {

@@ -83,6 +83,20 @@ export class WorkerChannelService {
     }
   }
 
+  // Enhanced: Channel name normalization function
+  private normalizeToChannelName(name: string): string {
+    // Convert name to Discord channel naming convention:
+    // - Lowercase
+    // - Spaces to hyphens
+    // - Remove special characters that Discord doesn't allow
+    return name
+      .toLowerCase()
+      .replace(/\s+/g, '-')           // Spaces to hyphens
+      .replace(/[^a-z0-9\-_]/g, '')   // Remove special chars except hyphens and underscores
+      .replace(/-+/g, '-')            // Multiple hyphens to single hyphen
+      .replace(/^-|-$/g, '');         // Remove leading/trailing hyphens
+  }
+
   public registerWorkerChannel(workerId: string, workerName: string, channelId: string, registrationId?: string): void {
     const mapping: WorkerChannelMapping = {
       workerId,
@@ -115,6 +129,19 @@ export class WorkerChannelService {
       }
     }
 
+    // Enhanced: Try channel-normalized matching
+    const normalizedSearchName = this.normalizeToChannelName(workerName);
+    console.log(`🔍 WorkerChannelService: Trying channel-normalized search: "${workerName}" → "${normalizedSearchName}"`);
+    
+    for (const mapping of this.workerMappings.values()) {
+      const normalizedMappingName = this.normalizeToChannelName(mapping.workerName);
+      console.log(`🔍 WorkerChannelService: Comparing normalized "${normalizedMappingName}" === "${normalizedSearchName}"`);
+      if (normalizedMappingName === normalizedSearchName) {
+        console.log(`✅ WorkerChannelService: Found channel-normalized match!`);
+        return mapping;
+      }
+    }
+
     // Try partial match (for variations in naming)
     for (const mapping of this.workerMappings.values()) {
       const mappingParts = mapping.workerName.toLowerCase().split(' ');
@@ -128,10 +155,12 @@ export class WorkerChannelService {
       );
       
       if (allPartsMatch) {
+        console.log(`✅ WorkerChannelService: Found partial match!`);
         return mapping;
       }
     }
 
+    console.log(`❌ WorkerChannelService: No match found for "${workerName}"`);
     return undefined;
   }
 

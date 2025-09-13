@@ -15,7 +15,7 @@ import channelParserRoutes from './routes/channel-parser';
 import authRoutes from './routes/auth';
 import registrationRoutes from './routes/registration';
 import ordersRoutes from './routes/orders';
-import webhookReceiverRoutes, { setMessageManager } from './routes/webhook-receiver';
+import webhookReceiverRoutes, { setMessageManager, setFerroviaSessionService } from './routes/webhook-receiver';
 import channelLogsConfigRoutes from './routes/channel-logs-config';
 import botApiRoutes from './routes/bot-api';
 import internalApiRoutes from './routes/internal-api';
@@ -31,6 +31,8 @@ import localizationRoutes from './routes/localization';
 import firmsConfigRoutes from './routes/firms-config';
 import workerActivityRoutes, { initializeWorkerChannelService } from './routes/worker-activity';
 import workerPricesRoutes from './routes/worker-prices';
+import supplyChainRoutes, { initializeSupplyChainService } from './routes/supply-chain';
+import FerroviaSessionService from '../services/FerroviaSessionService';
 
 export async function startApiServer(bot: BotClient): Promise<void> {
   // Make bot client available globally for API routes
@@ -80,6 +82,14 @@ export async function startApiServer(bot: BotClient): Promise<void> {
   
   // Initialize worker channel service
   initializeWorkerChannelService(bot);
+  
+  // Initialize supply chain service
+  initializeSupplyChainService();
+  
+  // Initialize Ferrovia session service
+  const ferroviaSessionService = new FerroviaSessionService(bot);
+  setFerroviaSessionService(ferroviaSessionService);
+  console.log('🚂 FerroviaSessionService initialized');
   
   // Static file serving for uploads
   app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
@@ -136,6 +146,9 @@ export async function startApiServer(bot: BotClient): Promise<void> {
   
   // Worker activity tracking routes
   app.use('/api/worker-activity', workerActivityRoutes);
+  
+  // Supply chain management routes
+  app.use('/api/supply-chain', supplyChainRoutes);
   
   // Worker prices management routes
   app.use('/api', workerPricesRoutes);

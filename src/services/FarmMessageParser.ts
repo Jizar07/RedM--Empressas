@@ -8,8 +8,8 @@ export interface ParsedActivity {
   timestamp: string;
   autor: string;
   content: string;
-  tipo?: 'adicionar' | 'remover' | 'deposito' | 'saque' | 'venda';
-  categoria?: 'inventario' | 'financeiro' | 'sistema';
+  tipo?: 'adicionar' | 'remover' | 'deposito' | 'saque' | 'venda' | 'supply_chain';
+  categoria?: 'inventario' | 'financeiro' | 'sistema' | 'supply_chain';
   item?: string;
   quantidade?: number;
   valor?: number;
@@ -17,6 +17,9 @@ export interface ParsedActivity {
   parseSuccess: boolean;
   displayText?: string; // Formatted text for display when parsing fails
   confidence: 'high' | 'medium' | 'low' | 'none';
+  // Supply chain specific fields
+  supplyChainType?: 'PLANTS_WITHDRAWN' | 'BOXES_CREATED' | 'BOXES_WITHDRAWN' | 'FERROVIA_MISSION_COMPLETED' | 'REVENUE_COLLECTED' | 'REVENUE_DISTRIBUTED';
+  workerRole?: 'manager' | 'worker';
 }
 
 export class FarmMessageParser {
@@ -77,7 +80,10 @@ export class FarmMessageParser {
     };
 
     // Try different parsing strategies in order of specificity
-    let parsed = this.parseInventoryMessage(content, base);
+    let parsed = this.parseSupplyChainMessage(content, base);
+    if (parsed.parseSuccess) return parsed;
+
+    parsed = this.parseInventoryMessage(content, base);
     if (parsed.parseSuccess) return parsed;
 
     parsed = this.parseFinancialMessage(content, base);
@@ -88,6 +94,138 @@ export class FarmMessageParser {
 
     // Fallback - create clean display text
     return this.createFallbackActivity(content, base);
+  }
+
+  /**
+   * Parse supply chain related messages (Ferrovia operations)
+   */
+  private parseSupplyChainMessage(content: string, base: ParsedActivity): ParsedActivity {
+    // Pattern 1: Plants withdrawn for box making
+    const plantsWithdrawnPattern = /retirou\s+(\d+)x?\s*(.+?)\s+do\s+estoque\s+para\s+fazer\s+caixas/i;
+    let match = content.match(plantsWithdrawnPattern);
+    if (match) {
+      const quantity = parseInt(match[1]);
+      const itemName = match[2].trim();
+      
+      return {
+        ...base,
+        tipo: 'supply_chain',
+        categoria: 'supply_chain',
+        item: itemName,
+        quantidade: quantity,
+        supplyChainType: 'PLANTS_WITHDRAWN',
+        parseSuccess: true,
+        confidence: 'high',
+        displayText: `${base.autor} retirou ${quantity}x ${itemName} para fazer caixas`
+      };
+    }
+
+    // Pattern 2: Boxes created and added to inventory
+    const boxesCreatedPattern = /criou\s+(\d+)x?\s*caixas?\s+e\s+adicionou\s+ao\s+estoque/i;
+    match = content.match(boxesCreatedPattern);
+    if (match) {
+      const quantity = parseInt(match[1]);
+      
+      return {
+        ...base,
+        tipo: 'supply_chain',
+        categoria: 'supply_chain',
+        item: 'Caixa',
+        quantidade: quantity,
+        supplyChainType: 'BOXES_CREATED',
+        parseSuccess: true,
+        confidence: 'high',
+        displayText: `${base.autor} criou ${quantity}x caixas`
+      };
+    }
+
+    // Pattern 3: Boxes withdrawn for Ferrovia mission
+    const boxesWithdrawnPattern = /retirou\s+(\d+)x?\s*caixas?\s+para\s+missão\s+ferrovia/i;
+    match = content.match(boxesWithdrawnPattern);
+    if (match) {
+      const quantity = parseInt(match[1]);
+      
+      return {
+        ...base,
+        tipo: 'supply_chain',
+        categoria: 'supply_chain',
+        item: 'Caixa',
+        quantidade: quantity,
+        supplyChainType: 'BOXES_WITHDRAWN',
+        parseSuccess: true,
+        confidence: 'high',
+        displayText: `${base.autor} retirou ${quantity}x caixas para Ferrovia`
+      };
+    }
+
+    // Pattern 4: Ferrovia mission completed
+    const missionCompletedPattern = /completou\s+missão\s+ferrovia\s+com\s+(\d+)x?\s*caixas?/i;
+    match = content.match(missionCompletedPattern);
+    if (match) {
+      const quantity = parseInt(match[1]);
+      
+      return {
+        ...base,
+        tipo: 'supply_chain',
+        categoria: 'supply_chain',
+        item: 'Caixa',
+        quantidade: quantity,
+        supplyChainType: 'FERROVIA_MISSION_COMPLETED',
+        parseSuccess: true,
+        confidence: 'high',
+        displayText: `${base.autor} completou missão Ferrovia com ${quantity}x caixas`
+      };
+    }
+
+    // Pattern 5: Revenue collected from Ferrovia
+    const revenueCollectedPattern = /coletou\s+\$?([\d,\.]+)\s+da\s+ferrovia/i;
+    match = content.match(revenueCollectedPattern);
+    if (match) {
+      const amount = parseFloat(match[1].replace(',', '.'));
+      
+      return {
+        ...base,
+        tipo: 'supply_chain',
+        categoria: 'supply_chain',
+        valor: amount,
+        supplyChainType: 'REVENUE_COLLECTED',
+        parseSuccess: true,
+        confidence: 'high',
+        displayText: `${base.autor} coletou $${match[1]} da Ferrovia`
+      };
+    }
+
+    // Pattern 6: Revenue distributed to farm bank
+    const revenueDistributedPattern = /distribuiu\s+\$?([\d,\.]+)\s+para\s+o\s+banco\s+da\s+fazenda/i;
+    match = content.match(revenueDistributedPattern);
+    if (match) {
+      const amount = parseFloat(match[1].replace(',', '.'));
+      
+      return {
+        ...base,
+        tipo: 'supply_chain',
+        categoria: 'supply_chain',
+        valor: amount,
+        supplyChainType: 'REVENUE_DISTRIBUTED',
+        parseSuccess: true,
+        confidence: 'high',
+        displayText: `${base.autor} distribuiu $${match[1]} para o banco da fazenda`
+      };
+    }
+
+    // Pattern 7: Generic supply chain activity mentions
+    if (content.match(/ferrovia|supply.chain|cadeia.de.suprimentos|caixas?.*missão/i)) {
+      return {
+        ...base,
+        tipo: 'supply_chain',
+        categoria: 'supply_chain',
+        parseSuccess: false,
+        confidence: 'low',
+        displayText: `${base.autor}: ${content.substring(0, 100)}...`
+      };
+    }
+
+    return base;
   }
 
   /**
@@ -326,6 +464,17 @@ export class FarmMessageParser {
       // Tools
       if (itemLower.includes('regador') || itemLower.includes('watering')) return '🪣';
       if (itemLower.includes('balde') || itemLower.includes('bucket')) return '🪣';
+    }
+
+    // Supply chain specific icons
+    if (activity.categoria === 'supply_chain') {
+      if (activity.supplyChainType === 'PLANTS_WITHDRAWN') return '🌱';
+      if (activity.supplyChainType === 'BOXES_CREATED') return '📦';
+      if (activity.supplyChainType === 'BOXES_WITHDRAWN') return '🚚';
+      if (activity.supplyChainType === 'FERROVIA_MISSION_COMPLETED') return '🚂';
+      if (activity.supplyChainType === 'REVENUE_COLLECTED') return '💰';
+      if (activity.supplyChainType === 'REVENUE_DISTRIBUTED') return '🏦';
+      return '🔗';
     }
 
     // Default icons based on action

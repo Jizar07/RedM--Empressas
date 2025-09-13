@@ -1,6 +1,8 @@
 import { Router, Request, Response } from 'express';
 import MessageManagerService from '../../services/MessageManagerService';
 import FarmMessageParser from '../../services/FarmMessageParser';
+import SupplyChainService from '../../services/SupplyChainService';
+import FerroviaSessionService from '../../services/FerroviaSessionService';
 
 const router = Router();
 
@@ -22,9 +24,25 @@ interface WebhookRequest extends Request {
 
 let messageManager: MessageManagerService | null = null;
 let storedExtensionMessages: any[] = []; // Store extension messages for dashboard
+let supplyChainService: SupplyChainService | null = null;
+let ferroviaSessionService: FerroviaSessionService | null = null;
 
 export function setMessageManager(manager: MessageManagerService): void {
   messageManager = manager;
+}
+
+export function setFerroviaSessionService(service: FerroviaSessionService): void {
+  ferroviaSessionService = service;
+}
+
+export function getFerroviaSessionService(): FerroviaSessionService | null {
+  return ferroviaSessionService;
+}
+
+// Initialize supply chain service when module loads
+if (!supplyChainService) {
+  supplyChainService = new SupplyChainService();
+  console.log('🔧 SupplyChainService initialized in webhook receiver');
 }
 
 router.post('/update-message', async (req: WebhookRequest, res: Response): Promise<void> => {
@@ -189,6 +207,46 @@ router.post('/channel-messages', async (req: Request, res: Response): Promise<vo
         source: msg.source || 'browser_extension'
       };
     });
+
+    // Process supply chain activities
+    for (const parsedMsg of processedMessages) {
+      if (parsedMsg.categoria === 'supply_chain' && parsedMsg.parseSuccess && supplyChainService) {
+        try {
+          // Extract worker ID from message - for now use author name as worker ID
+          const workerId = parsedMsg.autor.replace(/\s+/g, '_').toLowerCase();
+          const workerName = parsedMsg.autor;
+          
+          // For now, assume worker role (you might want to determine this based on permissions or config)
+          const role = 'worker'; // TODO: Determine role from user permissions or configuration
+          
+          // Create or get worker session
+          await supplyChainService.createOrGetSession(workerId, workerName, role);
+          
+          // Add transaction if it's a valid supply chain transaction type
+          if (parsedMsg.supplyChainType && parsedMsg.supplyChainType !== 'REVENUE_DISTRIBUTED') {
+            const transactionData = {
+              type: parsedMsg.supplyChainType,
+              itemName: parsedMsg.item || 'Unknown Item',
+              quantity: parsedMsg.quantidade || 0,
+              amount: parsedMsg.valor,
+              discordMessageId: parsedMsg.id,
+              originalMessage: parsedMsg.content
+            };
+            
+            await supplyChainService.addTransaction(workerId, transactionData);
+            console.log(`📦 Supply chain transaction added: ${parsedMsg.supplyChainType} by ${workerName}`);
+            
+            // Update Ferrovia session embed if available
+            if (ferroviaSessionService) {
+              await ferroviaSessionService.onFerroviaActivity(workerId, workerName, parsedMsg.channelId);
+              console.log(`🚂 Ferrovia session embed updated for ${workerName}`);
+            }
+          }
+        } catch (error) {
+          console.error('❌ Error processing supply chain activity:', error);
+        }
+      }
+    }
 
     // Store messages for dashboard access (keep last 1000 messages)
     storedExtensionMessages = [...storedExtensionMessages, ...processedMessages].slice(-1000);

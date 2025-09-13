@@ -13,7 +13,7 @@ export function initializeWorkerChannelService(client: any) {
 }
 
 // Middleware to check bot token
-function authenticateBot(req: Request, res: Response, next: any) {
+function authenticateBot(req: Request, res: Response, next: any): void {
   const botToken = Array.isArray(req.headers['x-bot-token']) ? req.headers['x-bot-token'][0] : req.headers['x-bot-token'];
   const expectedToken = process.env.BOT_WEBHOOK_TOKEN || process.env.DISCORD_TOKEN;
   

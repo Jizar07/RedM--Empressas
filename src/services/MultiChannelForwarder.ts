@@ -1,6 +1,7 @@
 import { Message } from 'discord.js';
 import { FirmConfigService } from './FirmConfigService';
 import WorkerChannelService from './WorkerChannelService';
+import FerroviaSessionService from './FerroviaSessionService';
 
 interface WebhookData {
   raw_embeds: Array<{
@@ -38,6 +39,7 @@ export class MultiChannelForwarder {
   private monitoringStats: Map<string, FirmMonitoringStats>;
   private isInitialized: boolean = false;
   private workerChannelService: WorkerChannelService | null = null;
+  private ferroviaSessionService: FerroviaSessionService | null = null;
 
   private constructor() {
     this.firmConfigService = FirmConfigService.getInstance();
@@ -84,6 +86,11 @@ export class MultiChannelForwarder {
     if (!this.workerChannelService) {
       this.workerChannelService = new WorkerChannelService(client);
       console.log('🔧 MultiChannelForwarder: WorkerChannelService initialized');
+    }
+    
+    if (!this.ferroviaSessionService) {
+      this.ferroviaSessionService = new FerroviaSessionService(client);
+      console.log('🚂 MultiChannelForwarder: FerroviaSessionService initialized');
     }
   }
 
@@ -243,6 +250,139 @@ export class MultiChannelForwarder {
           }
         } catch (workerError) {
           console.error('❌ MultiChannelForwarder: Worker activity processing error:', workerError);
+        }
+      }
+
+      // NEW: Separate Ferrovia supply chain tracking (alongside farm logic)
+      if (this.workerChannelService && this.ferroviaSessionService) {
+        try {
+          console.log(`🚂 MultiChannelForwarder: Checking for Ferrovia supply chain activities by ${realAuthor}`);
+          console.log(`🔍 MultiChannelForwarder: Message content: "${extractedContent}"`);
+          
+          // Detect Ferrovia supply chain activities
+          let ferroviaActivityDetected = false;
+          let activityType = '';
+          
+          // 1. Plants taken from inventory (for making boxes) - ALL plants from global translations
+          const plantsWithdrawnPattern = /Item removido::\s*(junco|trigo|milho|corn|wheat|bulrush|milk_weed)\s*x(\d+)/i;
+          const plantsMatch = extractedContent.match(plantsWithdrawnPattern);
+          
+          // 2. Boxes deposited to inventory (made from plants) - ALL box types except caixarustica
+          const boxesDepositedPattern = /Item adicionado::\s*(caixadeverduras|caixadelegumes|caixa_agro|caixa_verduras)\s*x(\d+)/i;
+          const boxesDepositedMatch = extractedContent.match(boxesDepositedPattern);
+          
+          // 3. Boxes taken from inventory (for missions) - ALL box types except caixarustica
+          const boxesWithdrawnPattern = /Item removido::\s*(caixadeverduras|caixadelegumes|caixa_agro|caixa_verduras)\s*x(\d+)/i;
+          const boxesWithdrawnMatch = extractedContent.match(boxesWithdrawnPattern);
+          
+          // 4. Mission completion (using boxes)
+          const missionCompletedPattern = /completou\s+missão\s+ferrovia/i;
+          const missionMatch = extractedContent.match(missionCompletedPattern);
+          
+          // 5. Money taken from Ferrovia (from completed missions)
+          const ferroviaMoneyPattern = /coletou\s+\$?([\d,\.]+)\s+da\s+ferrovia/i;
+          const ferroviaMoneyMatch = extractedContent.match(ferroviaMoneyPattern);
+          
+          // 6. Money deposited to farm bank (final step)
+          const bankDepositPattern = /depositou\s+\$?([\d,\.]+)/i;
+          const bankDepositMatch = extractedContent.match(bankDepositPattern);
+          
+          // 7. Plants deposited back to inventory (potential Ferrovia returns)
+          const plantsDepositedPattern = /Item adicionado::\s*(junco|trigo|milho|corn|wheat|bulrush|milk_weed)\s*x(\d+)/i;
+          const plantsDepositedMatch = extractedContent.match(plantsDepositedPattern);
+          
+          // 8. Seeds withdrawn (for farm service detection)
+          const seedsWithdrawnPattern = /Item removido::\s*(.*seed.*|.*semente.*)\s*x(\d+)/i;
+          const seedsWithdrawnMatch = extractedContent.match(seedsWithdrawnPattern);
+          
+          if (plantsMatch) {
+            ferroviaActivityDetected = true;
+            activityType = `Plants withdrawn: ${plantsMatch[2]} ${plantsMatch[1]}`;
+          } else if (boxesDepositedMatch) {
+            ferroviaActivityDetected = true;
+            activityType = `Boxes deposited: ${boxesDepositedMatch[2]} ${boxesDepositedMatch[1]}`;
+          } else if (boxesWithdrawnMatch) {
+            ferroviaActivityDetected = true;
+            activityType = `Boxes withdrawn: ${boxesWithdrawnMatch[2]} ${boxesWithdrawnMatch[1]}`;
+          } else if (missionMatch) {
+            ferroviaActivityDetected = true;
+            activityType = 'Mission completed';
+          } else if (ferroviaMoneyMatch) {
+            ferroviaActivityDetected = true;
+            activityType = `Money collected: $${ferroviaMoneyMatch[1]}`;
+          } else if (bankDepositMatch) {
+            ferroviaActivityDetected = true;
+            activityType = `Bank deposit: $${bankDepositMatch[1]}`;
+          }
+          
+          if (ferroviaActivityDetected) {
+            console.log(`✅ MultiChannelForwarder: Found Ferrovia supply chain activity by ${realAuthor}: ${activityType}`);
+            
+            // Find worker by name to get their channel
+            const workerMapping = this.workerChannelService.findWorkerByName(realAuthor);
+            
+            if (workerMapping) {
+              console.log(`🔗 MultiChannelForwarder: Found worker mapping for ${realAuthor} → ${workerMapping.channelId}`);
+              
+              // Create separate Ferrovia embed in worker's channel
+              await this.ferroviaSessionService.trackSupplyChainActivity(
+                workerMapping.workerId,
+                workerMapping.workerName,
+                workerMapping.channelId,
+                activityType,
+                extractedContent
+              );
+              
+              console.log(`🎉 MultiChannelForwarder: Successfully created Ferrovia supply chain embed for ${realAuthor}`);
+            } else {
+              console.log(`⚠️ MultiChannelForwarder: No worker mapping found for ${realAuthor}`);
+            }
+          }
+          
+          // Handle plant deposits (potential Ferrovia returns) - separate from main Ferrovia logic
+          if (plantsDepositedMatch && this.ferroviaSessionService) {
+            const plantName = plantsDepositedMatch[1];
+            const quantity = parseInt(plantsDepositedMatch[2]);
+            
+            console.log(`🌱 MultiChannelForwarder: Found plant deposit by ${realAuthor}: ${quantity} ${plantName}`);
+            
+            const workerMapping = this.workerChannelService.findWorkerByName(realAuthor);
+            if (workerMapping) {
+              await this.ferroviaSessionService.handlePlantDeposit(
+                workerMapping.workerId,
+                workerMapping.workerName,
+                workerMapping.channelId,
+                plantName,
+                quantity,
+                extractedContent
+              );
+            }
+          }
+          
+          // Handle seed withdrawals (for farm service context tracking)
+          if (seedsWithdrawnMatch && this.ferroviaSessionService) {
+            const seedName = seedsWithdrawnMatch[1];
+            const quantity = parseInt(seedsWithdrawnMatch[2]);
+            
+            console.log(`🌱 MultiChannelForwarder: Found seed withdrawal by ${realAuthor}: ${quantity} ${seedName}`);
+            
+            const workerMapping = this.workerChannelService.findWorkerByName(realAuthor);
+            if (workerMapping) {
+              await this.ferroviaSessionService.trackSupplyChainActivity(
+                workerMapping.workerId,
+                workerMapping.workerName,
+                workerMapping.channelId,
+                `Seeds withdrawn: ${quantity} ${seedName}`,
+                extractedContent
+              );
+            }
+          }
+          
+          if (!ferroviaActivityDetected && !plantsDepositedMatch && !seedsWithdrawnMatch) {
+            console.log(`💭 MultiChannelForwarder: No Ferrovia supply chain activity detected in this message`);
+          }
+        } catch (ferroviaError) {
+          console.error('❌ MultiChannelForwarder: Ferrovia supply chain processing error:', ferroviaError);
         }
       }
 

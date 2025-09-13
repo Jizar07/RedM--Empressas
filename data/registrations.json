@@ -746,5 +746,137 @@
     "invitedBy": "Santiago Bowdin",
     "approved": true,
     "registeredAt": "2025-09-12T23:03:56.004Z"
+  },
+  {
+    "userId": "614876929266417672",
+    "username": "puddingbach",
+    "ingameName": "Notorius Bowdin",
+    "mailId": "2527",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "Notorius Bowdin",
+    "approved": true,
+    "registeredAt": "2025-09-13T10:44:02.386Z"
+  },
+  {
+    "userId": "614876929266417672",
+    "username": "puddingbach",
+    "ingameName": "Notorius Bowdin",
+    "mailId": "2527",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "Notorius Bowdin",
+    "approved": true,
+    "registeredAt": "2025-09-13T10:48:47.060Z"
+  },
+  {
+    "userId": "774273635414048800",
+    "username": "eneias2",
+    "ingameName": "josefh bowdin",
+    "mailId": "maconheiro",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "Notorius Bowdin | 2527",
+    "approved": true,
+    "registeredAt": "2025-09-13T11:31:51.218Z"
+  },
+  {
+    "userId": "774273635414048800",
+    "username": "eneias2",
+    "ingameName": "josefh bowdin",
+    "mailId": "2527",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "Notorius Bowdin | 2527",
+    "approved": true,
+    "registeredAt": "2025-09-13T13:45:19.211Z"
+  },
+  {
+    "userId": "141250620593012736",
+    "username": "r3dley",
+    "ingameName": "Santiago Bowdin",
+    "mailId": "2512",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "Santiago Bowdin",
+    "approved": true,
+    "registeredAt": "2025-09-13T15:06:54.353Z"
+  },
+  {
+    "userId": "1190841069127077918",
+    "username": "fromemma_",
+    "ingameName": "Grace Abbey",
+    "mailId": "5510",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "Lenore Bowdin",
+    "approved": true,
+    "registeredAt": "2025-09-13T15:13:57.009Z"
+  },
+  {
+    "userId": "141250620593012736",
+    "username": "r3dley",
+    "ingameName": "Santiago Bowdin",
+    "mailId": "2512",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "Santiago Bowdin",
+    "approved": true,
+    "registeredAt": "2025-09-13T15:16:21.996Z"
+  },
+  {
+    "userId": "141250620593012736",
+    "username": "r3dley",
+    "ingameName": "Santiago Bowdin",
+    "mailId": "2512",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "GM Stoffel",
+    "approved": true,
+    "registeredAt": "2025-09-13T15:20:14.874Z"
+  },
+  {
+    "userId": "141250620593012736",
+    "username": "r3dley",
+    "ingameName": "Santiago Bowdin",
+    "mailId": "2512",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "Santiago Bowdin",
+    "approved": true,
+    "registeredAt": "2025-09-13T15:23:34.611Z"
+  },
+  {
+    "userId": "266262427329495041",
+    "username": "lgsdsl",
+    "ingameName": "Senna",
+    "mailId": "4622",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "Senna",
+    "approved": true,
+    "registeredAt": "2025-09-13T15:33:21.617Z"
+  },
+  {
+    "userId": "266262427329495041",
+    "username": "lgsdsl",
+    "ingameName": "Guilherme Senna",
+    "mailId": "4622",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "Senna | 4622",
+    "approved": true,
+    "registeredAt": "2025-09-13T15:35:19.464Z"
+  },
+  {
+    "userId": "1235055429260935321",
+    "username": "fazenderoo_55082_17138",
+    "ingameName": "smith ramirez",
+    "mailId": "1025",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "Notorius Bowdin | 2527",
+    "approved": true,
+    "registeredAt": "2025-09-13T15:35:26.665Z"
   }
 ]
