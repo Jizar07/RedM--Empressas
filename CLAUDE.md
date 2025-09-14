@@ -97,7 +97,14 @@ When you see "/update" command from the user, perform the following actions:
 3. Update changelog.md if there are version-worthy changes
 4. Update CLAUDE.md if there are architectural or command changes
 
-## Recent Major Updates (v0.036) **[CURRENT VERSION]**
+## Recent Major Updates (v0.037) **[CURRENT VERSION]**
+
+### Critical Worker Channel Mapping System Fix (v0.037)
+- **Issue**: Registered workers missing from worker-mappings.json, preventing embed delivery
+- **Root Cause**: Worker mapping API calls (registrationInteraction.ts:384-410) failing silently during registration
+- **Resolution**: Manual worker mapping creation and API registration system
+- **Impact**: All 65 registered workers can now receive embeds in their Discord channels
+- **Prevention**: Added comprehensive error handling and logging for future registrations
 
 ### Worker Payment Transparency & Smart Embed Display (v0.036)
 - **Fixed Payment Logic**: Workers now get paid for ALL plants deposited, not just those matching seed expectations

@@ -157,14 +157,14 @@ class RegistrationService {
     invitedBy: string;
   }): Promise<IUserRegistration> {
     console.log('Submitting registration for user:', data.userId);
-    
+
     // Get function details from config
     const config = await this.getFormConfig();
     if (!config) throw new Error('Registration form not configured');
-    
+
     const selectedFunction = config.functions.find(f => f.id === data.functionId);
     if (!selectedFunction) throw new Error('Invalid function selected');
-    
+
     // Create registration object
     const registration = {
       userId: data.userId,
@@ -178,14 +178,16 @@ class RegistrationService {
       registeredAt: new Date()
     } as IUserRegistration;
 
-    // Save to file-based storage only
+    // Save to file-based storage
     const registrations = this.loadRegistrationsFromFile();
     registrations.push(registration);
     this.saveRegistrationsToFile(registrations);
 
     console.log('Registration saved successfully for:', data.username);
+
     return registration;
   }
+
 
   // Assign Discord role to user
   async assignRole(userId: string, roleId: string, guildId?: string): Promise<boolean> {

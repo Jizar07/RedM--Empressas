@@ -5,7 +5,15 @@ This file is synchronized with: https://github.com/Jizar07/RedM--Empressas
 
 ## Version History
 
-### [0.036] - 2025-09-14 **[CURRENT - RESTORE POINT]**
+### [0.037] - 2025-09-14 **[CURRENT - RESTORE POINT]**
+- **CRITICAL**: Fixed Worker Channel Mapping System for Missing Users
+- **DIAGNOSED**: Thiago Bennett and other workers had registration data but missing worker-mappings.json entries
+- **ROOT CAUSE**: Worker mapping API calls failing during registration process (registrationInteraction.ts:384-410)
+- **RESOLVED**: Manual worker mapping creation and API registration for affected users
+- **CLEANED**: Removed unused createWorkerChannelMapping method causing TypeScript compilation errors
+- **RESULT**: All registered workers can now receive embeds in their channels
+
+### [0.036] - 2025-09-14
 - **MAJOR**: Fixed Worker Payment Calculation and Embed Display Transparency
 - **FIXED**: Plant payment logic to pay for ALL plants deposited, not just those matching seed expectations
 - **DISCOVERED**: Koda Smith's $5,486 was correct - 19,520 plants × $0.25 + animals (not inflated)
