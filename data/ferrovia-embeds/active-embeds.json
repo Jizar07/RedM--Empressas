@@ -4,7 +4,7 @@
     "workerId": "372161270176153601",
     "workerName": "Jizar Stoffeliz",
     "channelId": "1416079586571190404",
-    "lastUpdated": "2025-09-13T21:15:18.847Z",
+    "lastUpdated": "2025-09-14T16:48:07.803Z",
     "embedMessageId": "1416510176428687461"
   },
   "584129725052747798": {
@@ -36,15 +36,55 @@
     "workerId": "1195169284847050786",
     "workerName": "Koda Smith",
     "channelId": "1416562932442988615",
-    "lastUpdated": "2025-09-14T00:05:50.480Z",
+    "lastUpdated": "2025-09-14T15:36:35.565Z",
     "embedMessageId": "1416574281969569793"
   },
+  "976320273601146973": {
+    "sessionId": "1a61b234-650d-4267-b53d-14d6cbea2e76",
+    "workerId": "976320273601146973",
+    "workerName": "Nina Vatore",
+    "channelId": "1416556550453198878",
+    "lastUpdated": "2025-09-14T03:21:25.215Z",
+    "embedMessageId": "1416590218232070246"
+  },
+  "1204772480305209384": {
+    "sessionId": "78841f78-89aa-42f8-81e4-bbdd577f2a53",
+    "workerId": "1204772480305209384",
+    "workerName": "BONNIE BENNETT",
+    "channelId": "1416502543990915132",
+    "lastUpdated": "2025-09-14T01:09:16.546Z",
+    "embedMessageId": "1416591599806447768"
+  },
+  "333664599549411329": {
+    "sessionId": "fd95ed43-6f3b-4777-8f59-3074375e35ee",
+    "workerId": "333664599549411329",
+    "workerName": "Johnny Rocks",
+    "channelId": "1416535914196504787",
+    "lastUpdated": "2025-09-14T02:34:20.613Z",
+    "embedMessageId": "1416613007743778848"
+  },
+  "614876929266417672": {
+    "sessionId": "ffd316a5-17e9-4365-abfa-801fa39eea6d",
+    "workerId": "614876929266417672",
+    "workerName": "Notorius Bowdin",
+    "channelId": "1416375054211481731",
+    "lastUpdated": "2025-09-14T12:12:25.510Z",
+    "embedMessageId": "1416758487165304832"
+  },
   "141250620593012736": {
-    "sessionId": "2c6bdb9a-70f8-4653-a687-59d4deeb5061",
+    "sessionId": "e514ab47-53ec-4ad5-8474-05f2141ef0c3",
     "workerId": "141250620593012736",
     "workerName": "Santiago Bowdin",
     "channelId": "1416444206033145897",
-    "lastUpdated": "2025-09-14T00:06:40.340Z",
-    "embedMessageId": "1416575845329273024"
+    "lastUpdated": "2025-09-14T12:19:08.037Z",
+    "embedMessageId": "1416760175603482838"
+  },
+  "273987353456934913": {
+    "sessionId": "6d498276-cec3-4cf6-8625-0460f257e828",
+    "workerId": "273987353456934913",
+    "workerName": "Souzz Ramirez",
+    "channelId": "1416760197329719306",
+    "lastUpdated": "2025-09-14T12:21:37.872Z",
+    "embedMessageId": "1416760803788329072"
   }
 }

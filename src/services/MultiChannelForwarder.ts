@@ -2,6 +2,7 @@ import { Message } from 'discord.js';
 import { FirmConfigService } from './FirmConfigService';
 import WorkerChannelService from './WorkerChannelService';
 import FerroviaSessionService from './FerroviaSessionService';
+import PaymentAuditService from './PaymentAuditService';
 
 interface WebhookData {
   raw_embeds: Array<{
@@ -40,9 +41,11 @@ export class MultiChannelForwarder {
   private isInitialized: boolean = false;
   private workerChannelService: WorkerChannelService | null = null;
   private ferroviaSessionService: FerroviaSessionService | null = null;
+  private paymentAuditService: PaymentAuditService;
 
   private constructor() {
     this.firmConfigService = FirmConfigService.getInstance();
+    this.paymentAuditService = PaymentAuditService.getInstance();
     this.monitoringStats = new Map();
     this.initialize();
   }
@@ -127,11 +130,21 @@ export class MultiChannelForwarder {
               
               // Look for "Autor" field first
               if (cleanFieldName === 'autor' || cleanFieldName.includes('autor')) {
-                realAuthor = cleanValue
+                const rawAuthor = cleanValue
                   .replace(/^:+\s*/, '')
                   .split('|')[0]
                   .trim();
-                console.log(`🔍 Multi-Channel Forwarder: Found author from Autor field: "${realAuthor}"`);
+
+                // Enhanced debug logging with character inspection
+                console.log(`🔍 Multi-Channel Forwarder: Found author from Autor field: "${rawAuthor}"`);
+                console.log(`🔍 Debug - Raw field value: "${cleanValue}"`);
+                console.log(`🔍 Debug - Author length: ${rawAuthor.length} chars`);
+                console.log(`🔍 Debug - Author char codes: [${rawAuthor.split('').map(c => c.charCodeAt(0)).join(', ')}]`);
+
+                // Comprehensive string sanitization
+                realAuthor = this.sanitizeAuthorName(rawAuthor);
+                console.log(`🔍 Multi-Channel Forwarder: Sanitized author: "${realAuthor}"`);
+                console.log(`🔍 Debug - Sanitized length: ${realAuthor.length} chars`);
                 break;
               }
               
@@ -220,14 +233,56 @@ export class MultiChannelForwarder {
               Array.from(workerChannels.values()).map(c => `${c.name} (${c.id})`));
           }
           
-          // Create a mock parsed message object for WorkerChannelService
-          const mockParsedMessage = {
-            parseSuccess: true,
-            autor: realAuthor,
-            content: extractedContent,
-            timestamp: message.createdAt.toISOString(),
-            categoria: 'inventario' // For seed withdrawals
-          };
+          // Check if this is an animal delivery deposit
+          const isAnimalDelivery = extractedContent.includes('CAIXA ORGANIZAÇÃO - DEPÓSITO') &&
+                                   extractedContent.includes('vendeu') &&
+                                   extractedContent.includes('animais no matadouro');
+
+          let mockParsedMessage: any;
+
+          if (isAnimalDelivery) {
+            // Extract details from animal delivery message
+            const acaoMatch = extractedContent.match(/Ação::\s*(.+?)\s+vendeu\s+(\d+)\s+animais\s+no\s+matadouro/);
+            const valorMatch = extractedContent.match(/Valor depositado::\s*\$?([\d.]+)/);
+
+            if (acaoMatch && valorMatch) {
+              const workerName = acaoMatch[1].trim();
+              const quantity = parseInt(acaoMatch[2]);
+              const amount = parseFloat(valorMatch[1]);
+
+              console.log(`🐄 MultiChannelForwarder: Detected animal delivery - ${workerName} sold ${quantity} animals for $${amount}`);
+
+              // Create mock parsed message for animal delivery
+              mockParsedMessage = {
+                parseSuccess: true,
+                autor: workerName,
+                tipo: 'venda',
+                categoria: 'financeiro',
+                descricao: `${workerName} vendeu ${quantity} animais no matadouro`,
+                valor: amount,
+                content: extractedContent,
+                timestamp: message.createdAt.toISOString()
+              };
+            } else {
+              // Fallback if pattern doesn't match
+              mockParsedMessage = {
+                parseSuccess: true,
+                autor: realAuthor,
+                content: extractedContent,
+                timestamp: message.createdAt.toISOString(),
+                categoria: 'inventario'
+              };
+            }
+          } else {
+            // Default mock message for non-animal deliveries
+            mockParsedMessage = {
+              parseSuccess: true,
+              autor: realAuthor,
+              content: extractedContent,
+              timestamp: message.createdAt.toISOString(),
+              categoria: 'inventario' // For seed withdrawals
+            };
+          }
           
           console.log(`🔍 MultiChannelForwarder: Mock parsed message:`, JSON.stringify(mockParsedMessage, null, 2));
           
@@ -252,6 +307,9 @@ export class MultiChannelForwarder {
           console.error('❌ MultiChannelForwarder: Worker activity processing error:', workerError);
         }
       }
+
+      // NEW: Manager withdrawal detection for payment audit
+      await this.detectManagerWithdrawal(message, realAuthor, extractedContent);
 
       // NEW: Separate Ferrovia supply chain tracking (alongside farm logic)
       if (this.workerChannelService && this.ferroviaSessionService) {
@@ -554,5 +612,118 @@ export class MultiChannelForwarder {
         averageUptime
       }
     };
+  }
+
+  // Detect manager withdrawal messages for payment audit
+  private async detectManagerWithdrawal(message: Message, authorName: string, content: string): Promise<void> {
+    try {
+      console.log(`💰 MultiChannelForwarder: Checking for manager withdrawal by ${authorName}`);
+
+      // Pattern to match withdrawal messages like "João sacou $350.00" or "JOÃO STOFFELIZ sacou $1,200.50"
+      const withdrawalPatterns = [
+        // Standard withdrawal format: "Name sacou $amount"
+        /^(.+?)\s+sacou\s+\$?([\d,]+\.?\d*)/i,
+        // Alternative format in embeds: "Valor sacado:: $amount"
+        /Valor\s+sacado::\s*\$?([\d,]+\.?\d*)/i,
+        // Bank message format: "withdrew $amount"
+        /(\w+\s*\w*)\s+withdrew\s+\$?([\d,]+\.?\d*)/i
+      ];
+
+      let withdrawalMatch = null;
+      let detectedAmount = 0;
+      let detectedName = authorName;
+
+      // Try each pattern
+      for (const pattern of withdrawalPatterns) {
+        withdrawalMatch = content.match(pattern);
+        if (withdrawalMatch) {
+          if (pattern.source.includes('Valor sacado')) {
+            // For "Valor sacado" pattern, use the authorName
+            detectedAmount = parseFloat(withdrawalMatch[1].replace(',', ''));
+          } else {
+            // For name-based patterns
+            detectedName = withdrawalMatch[1].trim();
+            detectedAmount = parseFloat(withdrawalMatch[2].replace(',', ''));
+          }
+          break;
+        }
+      }
+
+      // Also check embeds for withdrawal information
+      if (!withdrawalMatch && message.embeds.length > 0) {
+        for (const embed of message.embeds) {
+          // Check embed description
+          if (embed.description) {
+            for (const pattern of withdrawalPatterns) {
+              withdrawalMatch = embed.description.match(pattern);
+              if (withdrawalMatch) {
+                detectedAmount = parseFloat(withdrawalMatch[2]?.replace(',', '') || withdrawalMatch[1]?.replace(',', ''));
+                break;
+              }
+            }
+          }
+
+          // Check embed fields
+          if (!withdrawalMatch && embed.fields) {
+            for (const field of embed.fields) {
+              const fieldContent = `${field.name}: ${field.value}`;
+              for (const pattern of withdrawalPatterns) {
+                withdrawalMatch = fieldContent.match(pattern);
+                if (withdrawalMatch) {
+                  detectedAmount = parseFloat(withdrawalMatch[2]?.replace(',', '') || withdrawalMatch[1]?.replace(',', ''));
+                  break;
+                }
+              }
+              if (withdrawalMatch) break;
+            }
+          }
+
+          if (withdrawalMatch) break;
+        }
+      }
+
+      if (withdrawalMatch && detectedAmount > 0) {
+        console.log(`💸 MultiChannelForwarder: Detected withdrawal - ${detectedName} withdrew $${detectedAmount}`);
+
+        // Record the withdrawal in the payment audit system
+        await this.paymentAuditService.recordManagerWithdrawal(
+          message.author.id,
+          detectedName,
+          detectedAmount,
+          message.channelId,
+          message.id,
+          content
+        );
+
+        console.log(`✅ MultiChannelForwarder: Recorded withdrawal for payment audit tracking`);
+      } else {
+        console.log(`💭 MultiChannelForwarder: No withdrawal detected in this message`);
+      }
+
+    } catch (error) {
+      console.error('❌ MultiChannelForwarder: Error detecting manager withdrawal:', error);
+    }
+  }
+
+  // Comprehensive author name sanitization
+  private sanitizeAuthorName(name: string): string {
+    if (!name) return name;
+
+    return name
+      // Remove invisible characters (zero-width spaces, non-breaking spaces, etc.)
+      .replace(/[\u200B-\u200D\uFEFF]/g, '') // Zero-width characters
+      .replace(/[\u00A0]/g, ' ')             // Non-breaking space to regular space
+      .replace(/[\u2000-\u200A]/g, ' ')      // En quad, em quad, en space, etc.
+
+      // Normalize Unicode characters (composite to decomposed, then remove diacritics)
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')       // Remove diacritical marks
+
+      // Clean up whitespace
+      .replace(/\s+/g, ' ')                  // Multiple spaces to single space
+      .trim()                                // Remove leading/trailing spaces
+
+      // Remove any remaining control characters
+      .replace(/[\x00-\x1F\x7F]/g, '');
   }
 }

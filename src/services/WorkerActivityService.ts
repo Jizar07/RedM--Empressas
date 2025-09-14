@@ -1,7 +1,7 @@
 import { Client, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, TextChannel } from 'discord.js';
 import fs from 'fs';
 import path from 'path';
-import ItemTranslationService from './ItemTranslationService';
+import PaymentAuditService from './PaymentAuditService';
 
 interface PlantTransaction {
   type: 'seed_taken' | 'plant_deposited';
@@ -21,6 +21,16 @@ interface AnimalTransaction {
   transactionId: string;
 }
 
+interface SeedExpectation {
+  seedType: string;
+  seedQuantity: number;
+  expectedPlantType: string;
+  expectedPlantQuantity: number;
+  plantsFulfilled: number;
+  isComplete: boolean;
+  transactionId: string;
+}
+
 interface WorkerSession {
   workerId: string;
   workerName: string;
@@ -31,6 +41,7 @@ interface WorkerSession {
   status: 'active' | 'pending_payment' | 'paid' | 'rejected';
   plantTransactions: PlantTransaction[];
   animalTransactions: AnimalTransaction[];
+  seedExpectations?: SeedExpectation[]; // Track seed-to-plant expectations
   totalCredits: number;
   embedMessageId?: string;
   notes?: string;
@@ -57,16 +68,16 @@ export class WorkerActivityService {
   private activeSessions: Map<string, WorkerSession> = new Map();
   private dataDir: string;
   private serviceConfig!: ServiceConfig;
-  private translationService: ItemTranslationService;
   private workerPricesCache: Map<string, { prices: WorkerPrices; fetchedAt: Date }> = new Map();
+  private paymentAuditService: PaymentAuditService;
 
   constructor(client: Client) {
     this.client = client;
     this.dataDir = path.join(process.cwd(), 'data', 'worker-sessions');
+    this.paymentAuditService = PaymentAuditService.getInstance();
     this.ensureDataDirectory();
     this.loadServiceConfig();
     this.loadActiveSessions();
-    this.translationService = ItemTranslationService.getInstance();
   }
 
   private ensureDataDirectory(): void {
@@ -143,6 +154,138 @@ export class WorkerActivityService {
     return `tx_${Date.now()}_${Math.random().toString(36).substring(7)}`;
   }
 
+  // Convert seed name to expected plant name and calculate expected quantity
+  private createSeedExpectation(seedType: string, seedQuantity: number, transactionId: string): SeedExpectation {
+    // Seed to plant conversion mapping (1 seed typically produces 10 plants)
+    const seedToPlantMap: { [key: string]: { plantType: string; multiplier: number } } = {
+      'Semente de Milho': { plantType: 'Milho', multiplier: 10 },
+      'Semente de Trigo': { plantType: 'Trigo', multiplier: 10 },
+      'Semente Trigo': { plantType: 'Trigo', multiplier: 10 }, // Alternative name
+      'Semente de Junco': { plantType: 'Junco', multiplier: 10 },
+      'Semente Junco': { plantType: 'Junco', multiplier: 10 } // Alternative name
+    };
+
+    const mapping = seedToPlantMap[seedType] || { plantType: seedType.replace('Semente de ', '').replace('Semente ', ''), multiplier: 10 };
+
+    return {
+      seedType,
+      seedQuantity,
+      expectedPlantType: mapping.plantType,
+      expectedPlantQuantity: seedQuantity * mapping.multiplier,
+      plantsFulfilled: 0,
+      isComplete: false,
+      transactionId
+    };
+  }
+
+  // Update seed expectations when plants are deposited
+  private updateSeedExpectations(session: WorkerSession, plantType: string, plantQuantity: number): number {
+    if (!session.seedExpectations) {
+      session.seedExpectations = [];
+    }
+
+    let validPlantCredits = 0;
+
+    // Find matching incomplete seed expectations for this plant type
+    const matchingExpectations = session.seedExpectations.filter(
+      exp => exp.expectedPlantType === plantType && !exp.isComplete
+    ).sort((a, b) => new Date(a.transactionId).getTime() - new Date(b.transactionId).getTime()); // FIFO
+
+    let remainingPlants = plantQuantity;
+
+    for (const expectation of matchingExpectations) {
+      if (remainingPlants <= 0) break;
+
+      const needed = expectation.expectedPlantQuantity - expectation.plantsFulfilled;
+      const canFulfill = Math.min(needed, remainingPlants);
+
+      expectation.plantsFulfilled += canFulfill;
+      validPlantCredits += canFulfill;
+      remainingPlants -= canFulfill;
+
+      if (expectation.plantsFulfilled >= expectation.expectedPlantQuantity) {
+        expectation.isComplete = true;
+      }
+
+      console.log(`🌱 Applied ${canFulfill} ${plantType} to seed expectation (${expectation.plantsFulfilled}/${expectation.expectedPlantQuantity})`);
+    }
+
+    // Log any excess plants (Ferrovia returns)
+    if (remainingPlants > 0) {
+      console.log(`🚂 ${remainingPlants} ${plantType} treated as Ferrovia return (no seed expectation)`);
+    }
+
+    return validPlantCredits;
+  }
+
+  // Smart formatting with summarization when hitting character limits
+  private formatTransactionsWithSummarization(
+    transactions: PlantTransaction[],
+    _title: string, // Prefixed with _ to indicate intentionally unused
+    formatItem: (t: PlantTransaction) => string,
+    maxChars: number = 800
+  ): string {
+    if (transactions.length === 0) return 'Nenhuma transação';
+
+    const lines: string[] = [];
+    let currentLength = 0;
+    let summarizeRemaining = false;
+    let cutoffIndex = transactions.length;
+
+    // Try to add individual transactions first
+    for (let i = 0; i < transactions.length; i++) {
+      const transaction = transactions[i];
+      const timeStr = new Date(transaction.timestamp).toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true
+      });
+      const line = `• ${timeStr} - ${formatItem(transaction)}`;
+
+      // Check if adding this line would exceed limit
+      if (currentLength + line.length + 2 > maxChars) {
+        summarizeRemaining = true;
+        cutoffIndex = i;
+        break;
+      }
+
+      lines.push(line);
+      currentLength += line.length + 1; // +1 for newline
+    }
+
+    // If we need to summarize, group remaining by hour
+    if (summarizeRemaining && cutoffIndex < transactions.length) {
+      const remaining = transactions.slice(cutoffIndex);
+      const hourlyGroups: { [hour: string]: { items: { [name: string]: number }, count: number } } = {};
+
+      // Group remaining transactions by hour
+      remaining.forEach(t => {
+        const hour = new Date(t.timestamp).getHours();
+        const hourKey = `${hour}:00`;
+
+        if (!hourlyGroups[hourKey]) {
+          hourlyGroups[hourKey] = { items: {}, count: 0 };
+        }
+
+        hourlyGroups[hourKey].items[t.itemName] = (hourlyGroups[hourKey].items[t.itemName] || 0) + t.quantity;
+        hourlyGroups[hourKey].count++;
+      });
+
+      // Add summary lines
+      lines.push('---');
+      Object.entries(hourlyGroups).forEach(([hour, data]) => {
+        const itemsSummary = Object.entries(data.items)
+          .map(([name, qty]) => `${qty} ${name}`)
+          .join(', ');
+        lines.push(`• ${hour} - ${hour.split(':')[0]}:59: ${itemsSummary} (${data.count} transações)`);
+      });
+    }
+
+    return lines.join('\n');
+  }
+
+  // Removed old seed expectation display methods - now using new transparent format with timestamps
+
   // Enhanced session state validation methods
   private isSessionActive(session: WorkerSession): boolean {
     return session.status === 'active';
@@ -201,28 +344,42 @@ export class WorkerActivityService {
   }
 
   private async getWorkerPrices(firmId: string = 'fazenda-cabra-da-peste'): Promise<WorkerPrices> {
+    console.log(`🔍 getWorkerPrices called for firmId: ${firmId}`);
+
     // Check cache first (5 minute cache)
     const cached = this.workerPricesCache.get(firmId);
     if (cached && (Date.now() - cached.fetchedAt.getTime()) < 5 * 60 * 1000) {
+      console.log(`📦 Using cached prices for ${firmId}:`, cached.prices);
       return cached.prices;
     }
 
     try {
       // Try to read from file first (backend sync)
       const pricesPath = path.join(process.cwd(), 'data', 'worker-prices', `${firmId}.json`);
+      console.log(`📁 Checking file path: ${pricesPath}`);
+
       if (fs.existsSync(pricesPath)) {
+        console.log(`✅ File exists, reading content...`);
         const data = fs.readFileSync(pricesPath, 'utf8');
+        console.log(`📄 Raw file content:`, data);
+
         const prices = JSON.parse(data);
+        console.log(`🔧 Parsed prices:`, prices);
+
         const workerPrices: WorkerPrices = {
           plantPrice: prices.plantPrice || 2.50,
           animalPrice: prices.animalPrice || 40.00,
           animalCost: prices.animalCost || 20.00
         };
-        
+
+        console.log(`💰 Final worker prices:`, workerPrices);
+
         // Update cache
         this.workerPricesCache.set(firmId, { prices: workerPrices, fetchedAt: new Date() });
         console.log(`💰 Loaded worker prices for ${firmId}:`, workerPrices);
         return workerPrices;
+      } else {
+        console.log(`❌ File does not exist: ${pricesPath}`);
       }
     } catch (error) {
       console.error('❌ Error loading worker prices:', error);
@@ -234,15 +391,18 @@ export class WorkerActivityService {
       animalPrice: 40.00,
       animalCost: 20.00
     };
-    
-    console.log(`💰 Using default worker prices for ${firmId}`);
+
+    console.log(`💰 Using default worker prices for ${firmId}:`, defaultPrices);
     return defaultPrices;
   }
 
-  private calculatePlantPrice(plantName: string): number {
-    // Use translation service to check if it's a basic plant
-    const isBasicPlant = this.translationService.isBasicPlant(plantName);
-    return isBasicPlant ? this.serviceConfig.plantPrices.basic : this.serviceConfig.plantPrices.other;
+  // Debug method to clear cache and force price reload
+  public async clearPriceCacheAndReload(firmId: string = 'fazenda-cabra-da-peste'): Promise<WorkerPrices> {
+    console.log(`🧹 Clearing price cache for ${firmId}`);
+    this.workerPricesCache.delete(firmId);
+    const prices = await this.getWorkerPrices(firmId);
+    console.log(`🔄 Forced reload result:`, prices);
+    return prices;
   }
 
   // @ts-ignore - Reserved for future use
@@ -257,12 +417,19 @@ export class WorkerActivityService {
     let totalCredits = 0;
     let totalCosts = 0;
 
-    // Calculate plant credits (plants deposited × price per plant)
+    // Calculate plant credits - pay for ALL plants, not just those matching expectations
     session.plantTransactions
       .filter(t => t.type === 'plant_deposited')
       .forEach(transaction => {
-        // Use configured price per plant
-        totalCredits += transaction.quantity * prices.plantPrice;
+        // Update seed expectations for visual tracking (strikethrough display)
+        // This only updates the display, NOT the payment calculation
+        this.updateSeedExpectations(session, transaction.itemName, transaction.quantity);
+
+        // Pay workers for ALL plants deposited, regardless of seed expectations
+        const plantCredit = transaction.quantity * prices.plantPrice;
+        totalCredits += plantCredit;
+
+        console.log(`💰 Plant payment: ${transaction.quantity} ${transaction.itemName} = $${plantCredit.toFixed(2)}`);
       });
 
     // Calculate animal deliveries
@@ -349,12 +516,27 @@ export class WorkerActivityService {
 
     session.plantTransactions.push(plantTransaction);
     session.lastActivity = new Date();
-    
+
+    // Handle seed expectation tracking
+    if (plantTransaction.type === 'seed_taken') {
+      // Create new seed expectation
+      if (!session.seedExpectations) {
+        session.seedExpectations = [];
+      }
+      const seedExpectation = this.createSeedExpectation(
+        plantTransaction.itemName,
+        plantTransaction.quantity,
+        plantTransaction.transactionId
+      );
+      session.seedExpectations.push(seedExpectation);
+      console.log(`🌱 Created seed expectation: ${seedExpectation.seedQuantity} ${seedExpectation.seedType} → expecting ${seedExpectation.expectedPlantQuantity} ${seedExpectation.expectedPlantType}`);
+    }
+
     await this.recalculateSessionCredits(session);
     this.saveActiveSessions();
-    
+
     console.log(`🌱 Added plant transaction for ${workerName}: ${transaction.type} - ${transaction.quantity} ${transaction.itemName}`);
-    
+
     // Update the embed
     this.updateWorkerEmbed(session);
   }
@@ -453,7 +635,7 @@ export class WorkerActivityService {
         embed.setColor(0x00FF00); // Green
         break;
       case 'pending_payment':
-        embed.setColor(0xFFAA00); // Orange  
+        embed.setColor(0xFFAA00); // Orange
         break;
       case 'paid':
         embed.setColor(0x0088FF); // Blue
@@ -470,27 +652,52 @@ export class WorkerActivityService {
       inline: false
     });
 
-    // Add plant transactions section
-    if (session.plantTransactions.length > 0) {
-      const seedsTaken = this.getSeedsTokenSummary(session);
-      const plantsDeposited = this.getPlantsDepositedSummary(session);
-      
-      let plantSection = '';
-      if (seedsTaken.length > 0) {
-        plantSection += `**🌱 SEMENTES RETIRADAS:**\n${seedsTaken.join('\n')}\n\n`;
-      }
-      if (plantsDeposited.length > 0) {
-        plantSection += `**🌾 PLANTAS DEPOSITADAS:**\n${plantsDeposited.join('\n')}`;
-      }
+    // Add seeds taken section with timestamps (like animals)
+    const seedsTaken = session.plantTransactions.filter(t => t.type === 'seed_taken');
+    if (seedsTaken.length > 0) {
+      const seedsDisplay = this.formatTransactionsWithSummarization(
+        seedsTaken,
+        '🌱 Sementes Retiradas',
+        (t) => `${t.quantity} ${t.itemName}`,
+        800 // Character limit for field
+      );
 
-      if (plantSection) {
-        embed.addFields({
-          name: '🌾 Atividade de Plantas',
-          value: plantSection,
-          inline: false
-        });
-      }
+      // Calculate total expected plants
+      const totalSeeds = seedsTaken.reduce((sum, t) => sum + t.quantity, 0);
+      const expectedPlants = totalSeeds * 10;
+      const seedsSummary = `${seedsDisplay}\n**Total: ${totalSeeds} sementes → Esperado: ${expectedPlants} plantas**`;
+
+      embed.addFields({
+        name: '🌱 Sementes Retiradas',
+        value: this.truncateFieldValue(seedsSummary),
+        inline: false
+      });
     }
+
+    // Add plants deposited section with timestamps
+    const plantsDeposited = session.plantTransactions.filter(t => t.type === 'plant_deposited');
+    if (plantsDeposited.length > 0) {
+      const plantsDisplay = this.formatTransactionsWithSummarization(
+        plantsDeposited,
+        '🌾 Plantas Depositadas',
+        (t) => `${t.quantity} ${t.itemName}`,
+        800 // Character limit for field
+      );
+
+      // Calculate total plants and credits
+      const totalPlants = plantsDeposited.reduce((sum, t) => sum + t.quantity, 0);
+      const plantCredits = totalPlants * 0.25; // Using correct price
+      const plantsSummary = `${plantsDisplay}\n**Total: ${totalPlants} plantas (${plantsDeposited.length} depósitos) = $${plantCredits.toFixed(2)}**`;
+
+      embed.addFields({
+        name: '🌾 Plantas Depositadas',
+        value: this.truncateFieldValue(plantsSummary),
+        inline: false
+      });
+    }
+
+    // Optionally show seed expectations in a compact format (only if space permits)
+    // Removed the old confusing seed expectations display - now showing actual seeds/plants instead
 
     // Add animal transactions section
     if (session.animalTransactions.length > 0) {
@@ -502,7 +709,7 @@ export class WorkerActivityService {
 
       embed.addFields({
         name: '🐄 Entregas de Animais',
-        value: animalSummary.join('\n'),
+        value: this.truncateFieldValue(animalSummary.join('\n')),
         inline: false
       });
     }
@@ -520,41 +727,6 @@ export class WorkerActivityService {
     return embed;
   }
 
-  private getSeedsTokenSummary(session: WorkerSession): string[] {
-    const seedsMap = new Map<string, number>();
-    
-    session.plantTransactions
-      .filter(t => t.type === 'seed_taken')
-      .forEach(t => {
-        const current = seedsMap.get(t.itemName) || 0;
-        seedsMap.set(t.itemName, current + t.quantity);
-      });
-
-    return Array.from(seedsMap.entries()).map(([item, quantity]) => 
-      `• ${quantity} ${item}`
-    );
-  }
-
-  private getPlantsDepositedSummary(session: WorkerSession): string[] {
-    const plantsMap = new Map<string, { quantity: number, credits: number }>();
-    
-    session.plantTransactions
-      .filter(t => t.type === 'plant_deposited')
-      .forEach(t => {
-        const current = plantsMap.get(t.itemName) || { quantity: 0, credits: 0 };
-        const price = this.calculatePlantPrice(t.itemName);
-        const credits = t.quantity * price;
-        
-        plantsMap.set(t.itemName, {
-          quantity: current.quantity + t.quantity,
-          credits: current.credits + credits
-        });
-      });
-
-    return Array.from(plantsMap.entries()).map(([item, data]) => 
-      `• ${data.quantity} ${item} → $${data.credits.toFixed(2)}`
-    );
-  }
 
   private getSessionIcon(session: WorkerSession): string {
     if (session.animalTransactions.length > 0 && session.plantTransactions.length > 0) {
@@ -597,6 +769,18 @@ export class WorkerActivityService {
 
   public async payWorker(workerId: string, managerId: string, managerName: string): Promise<boolean> {
     const session = this.activeSessions.get(workerId);
+
+    // Enhanced debugging for payment issues
+    console.log(`🔍 Payment attempt for worker ${workerId}:`);
+    console.log(`   📊 Total active sessions: ${this.activeSessions.size}`);
+    console.log(`   🆔 Available worker IDs: [${Array.from(this.activeSessions.keys()).join(', ')}]`);
+    if (session) {
+      console.log(`   ✅ Session found: ${session.workerName} - Status: ${session.status}`);
+      console.log(`   💰 Credits: $${session.totalCredits.toFixed(2)}`);
+    } else {
+      console.log(`   ❌ No session found for worker ID: ${workerId}`);
+    }
+
     if (!session || session.status !== 'active') {
       console.log(`⚠️ Cannot pay worker ${workerId}: session not found or not active (${session?.status})`);
       return false;
@@ -604,9 +788,12 @@ export class WorkerActivityService {
 
     console.log(`💰 Processing payment for ${session.workerName} - $${session.totalCredits.toFixed(2)}`);
 
-    // Enhanced: Update session status to paid and update embed (this will show "Pago" status)
+    // Enhanced: Update session status to paid and update embed (this will show "Pago" status without buttons)
     session.status = 'paid';
     await this.updateWorkerEmbed(session);
+
+    // Ensure the embed was properly updated to remove buttons
+    console.log(`📋 Payment processed - embed updated to show paid status without buttons for ${session.workerName}`);
 
     // Enhanced: Wait a moment to ensure embed is updated before archiving
     await new Promise(resolve => setTimeout(resolve, 500));
@@ -635,6 +822,22 @@ export class WorkerActivityService {
     
     const paymentFile = path.join(paymentsDir, `${session.sessionId}.json`);
     fs.writeFileSync(paymentFile, JSON.stringify(paymentRecord, null, 2));
+
+    // NEW: Create payment audit for verification tracking
+    try {
+      await this.paymentAuditService.createPaymentAudit(
+        session.sessionId,
+        managerId,
+        managerName,
+        session.workerId,
+        session.workerName,
+        session.totalCredits
+      );
+      console.log(`📊 Created payment audit for verification tracking`);
+    } catch (auditError) {
+      console.error('❌ Failed to create payment audit:', auditError);
+      // Don't fail the payment if audit creation fails
+    }
 
     // Enhanced: Remove from active sessions with comprehensive cleanup
     this.activeSessions.delete(workerId);
@@ -827,6 +1030,35 @@ export class WorkerActivityService {
       console.error('❌ Error deleting transaction:', error);
       return false;
     }
+  }
+
+  // Helper method to truncate field values that exceed Discord's 1024 character limit
+  private truncateFieldValue(content: string, maxLength: number = 1020): string {
+    if (content.length <= maxLength) {
+      return content;
+    }
+
+    // Find a good breaking point (preferably at a newline)
+    const lines = content.split('\n');
+    let truncatedContent = '';
+    let remainingCount = 0;
+
+    for (let i = 0; i < lines.length; i++) {
+      const lineToAdd = (i === 0 ? '' : '\n') + lines[i];
+
+      if ((truncatedContent + lineToAdd).length <= maxLength - 50) { // Leave room for "... (mais X entradas)"
+        truncatedContent += lineToAdd;
+      } else {
+        remainingCount = lines.length - i;
+        break;
+      }
+    }
+
+    if (remainingCount > 0) {
+      truncatedContent += `\n... (mais ${remainingCount} entradas)`;
+    }
+
+    return truncatedContent;
   }
 }
 

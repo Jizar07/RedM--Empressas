@@ -118,23 +118,34 @@ export class WorkerChannelService {
 
   public findWorkerByName(workerName: string): WorkerChannelMapping | undefined {
     console.log(`🔍 WorkerChannelService: Searching for worker: "${workerName}"`);
+    console.log(`🔍 Debug - Worker name length: ${workerName.length} chars`);
+    console.log(`🔍 Debug - Worker char codes: [${workerName.split('').map(c => c.charCodeAt(0)).join(', ')}]`);
     console.log(`🗂️ WorkerChannelService: Available mappings:`, Array.from(this.workerMappings.values()).map(m => `${m.workerName} → ${m.channelId}`));
-    
+
+    // Apply sanitization to search name
+    const sanitizedWorkerName = this.sanitizeWorkerName(workerName);
+    console.log(`🔍 WorkerChannelService: Sanitized search name: "${sanitizedWorkerName}"`);
+
     // Try exact match first
     for (const mapping of this.workerMappings.values()) {
-      console.log(`🔍 WorkerChannelService: Comparing "${mapping.workerName.toLowerCase()}" === "${workerName.toLowerCase()}"`);
-      if (mapping.workerName.toLowerCase() === workerName.toLowerCase()) {
+      const sanitizedMappingName = this.sanitizeWorkerName(mapping.workerName);
+
+      console.log(`🔍 WorkerChannelService: Comparing "${sanitizedMappingName.toLowerCase()}" === "${sanitizedWorkerName.toLowerCase()}"`);
+      console.log(`🔍 Debug - Mapping char codes: [${sanitizedMappingName.split('').map(c => c.charCodeAt(0)).join(', ')}]`);
+
+      if (sanitizedMappingName.toLowerCase() === sanitizedWorkerName.toLowerCase()) {
         console.log(`✅ WorkerChannelService: Found exact match!`);
         return mapping;
       }
     }
 
     // Enhanced: Try channel-normalized matching
-    const normalizedSearchName = this.normalizeToChannelName(workerName);
-    console.log(`🔍 WorkerChannelService: Trying channel-normalized search: "${workerName}" → "${normalizedSearchName}"`);
-    
+    const normalizedSearchName = this.normalizeToChannelName(sanitizedWorkerName);
+    console.log(`🔍 WorkerChannelService: Trying channel-normalized search: "${sanitizedWorkerName}" → "${normalizedSearchName}"`);
+
     for (const mapping of this.workerMappings.values()) {
-      const normalizedMappingName = this.normalizeToChannelName(mapping.workerName);
+      const sanitizedMappingName = this.sanitizeWorkerName(mapping.workerName);
+      const normalizedMappingName = this.normalizeToChannelName(sanitizedMappingName);
       console.log(`🔍 WorkerChannelService: Comparing normalized "${normalizedMappingName}" === "${normalizedSearchName}"`);
       if (normalizedMappingName === normalizedSearchName) {
         console.log(`✅ WorkerChannelService: Found channel-normalized match!`);
@@ -144,16 +155,19 @@ export class WorkerChannelService {
 
     // Try partial match (for variations in naming)
     for (const mapping of this.workerMappings.values()) {
-      const mappingParts = mapping.workerName.toLowerCase().split(' ');
-      const searchParts = workerName.toLowerCase().split(' ');
-      
+      const sanitizedMappingName = this.sanitizeWorkerName(mapping.workerName);
+      const mappingParts = sanitizedMappingName.toLowerCase().split(' ');
+      const searchParts = sanitizedWorkerName.toLowerCase().split(' ');
+
+      console.log(`🔍 WorkerChannelService: Trying partial match - "${sanitizedMappingName}" vs "${sanitizedWorkerName}"`);
+
       // Check if all search parts match any part of the mapping name
       const allPartsMatch = searchParts.every(searchPart =>
-        mappingParts.some(mappingPart => 
+        mappingParts.some(mappingPart =>
           mappingPart.includes(searchPart) || searchPart.includes(mappingPart)
         )
       );
-      
+
       if (allPartsMatch) {
         console.log(`✅ WorkerChannelService: Found partial match!`);
         return mapping;
@@ -423,6 +437,28 @@ export class WorkerChannelService {
 
   public getActivityService(): WorkerActivityService {
     return this.activityService;
+  }
+
+  // Enhanced: Worker name sanitization (similar to MultiChannelForwarder)
+  private sanitizeWorkerName(name: string): string {
+    if (!name) return name;
+
+    return name
+      // Remove invisible characters (zero-width spaces, non-breaking spaces, etc.)
+      .replace(/[\u200B-\u200D\uFEFF]/g, '') // Zero-width characters
+      .replace(/[\u00A0]/g, ' ')             // Non-breaking space to regular space
+      .replace(/[\u2000-\u200A]/g, ' ')      // En quad, em quad, en space, etc.
+
+      // Normalize Unicode characters (composite to decomposed, then remove diacritics)
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')       // Remove diacritical marks
+
+      // Clean up whitespace
+      .replace(/\s+/g, ' ')                  // Multiple spaces to single space
+      .trim()                                // Remove leading/trailing spaces
+
+      // Remove any remaining control characters
+      .replace(/[\x00-\x1F\x7F]/g, '');
   }
 }
 

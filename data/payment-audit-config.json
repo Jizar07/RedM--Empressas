@@ -1,0 +1,11 @@
+{
+  "verificationWindowMinutes": 10,
+  "allowedDiscrepancy": 0.01,
+  "autoExpireHours": 24,
+  "enablePrePaymentValidation": false,
+  "requiredManagerRoles": [
+    "Admin",
+    "Moderator",
+    "Manager"
+  ]
+}

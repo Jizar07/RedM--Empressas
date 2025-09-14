@@ -45,15 +45,7 @@ export async function handleFerroviaVerified(interaction: ButtonInteraction): Pr
         return;
       }
 
-      // Create receipt embed similar to farm payall
-      const receiptEmbed = new EmbedBuilder()
-        .setTitle(`✅ Recibo de Ferrovia Verificado - ${session.workerName}`)
-        .setDescription(`**Sessão verificada por:** ${interaction.user.displayName || interaction.user.username}`)
-        .setColor(0x00FF00)
-        .setTimestamp()
-        .setFooter({ text: 'Sessão de Ferrovia Verificada' });
-
-      // Add session summary
+      // Prepare session summary for the verified embed
       const summary = [];
       if (session.totalBoxesProcessed > 0) {
         summary.push(`📦 **Caixas Processadas:** ${session.totalBoxesProcessed}`);
@@ -76,29 +68,122 @@ export async function handleFerroviaVerified(interaction: ButtonInteraction): Pr
         }
       }
 
+      // Note: Session verification metadata would be stored separately if needed
+      // as the SupplyChainSession interface doesn't include verification fields
+
+      // Update the existing embed to show as verified (remove buttons)
+      const verifiedEmbed = new EmbedBuilder()
+        .setTitle(`✅ ${session.workerName} - Sessão Ferrovia Verificada`)
+        .setDescription(`**Verificado por:** ${interaction.user.displayName || interaction.user.username}`)
+        .setColor(0x00FF00)
+        .setTimestamp()
+        .setFooter({ text: `Sessão Verificada: ${session.sessionId.substring(0, 8)}` });
+
+      // Add the same session data as the receipt
       if (summary.length > 0) {
-        receiptEmbed.addFields({
-          name: '📊 Resumo da Sessão',
+        verifiedEmbed.addFields({
+          name: '📊 Resumo da Sessão Verificada',
           value: summary.join('\n') || 'Nenhuma atividade registrada',
           inline: false
         });
       }
 
-      // Note: Session verification metadata would be stored separately if needed
-      // as the SupplyChainSession interface doesn't include verification fields
+      // Add plant transactions if any
+      const plantWithdrawals = session.transactions.filter(t => t.type === 'PLANTS_WITHDRAWN');
+      const plantDeposits = session.transactions.filter(t => t.type === 'PLANTS_DEPOSITED');
 
-      // Send receipt in the channel
-      const channel = interaction.channel;
-      if (channel && 'send' in channel) {
-        await channel.send({ embeds: [receiptEmbed] });
+      if (plantWithdrawals.length > 0 || plantDeposits.length > 0) {
+        const plantDetails: string[] = [];
+
+        // Calculate NET plants
+        const plantBalance: { [key: string]: number } = {};
+        plantWithdrawals.forEach(t => {
+          plantBalance[t.itemName] = (plantBalance[t.itemName] || 0) + t.quantity;
+        });
+        plantDeposits.forEach(t => {
+          plantBalance[t.itemName] = (plantBalance[t.itemName] || 0) - t.quantity;
+        });
+
+        Object.entries(plantBalance).forEach(([plant, net]) => {
+          if (net > 0) {
+            plantDetails.push(`🌿 ${plant}: ${net} (ainda deve)`);
+          } else if (net < 0) {
+            plantDetails.push(`✅ ${plant}: ${Math.abs(net)} (devolvido extra)`);
+          } else {
+            plantDetails.push(`✅ ${plant}: 0 (totalmente devolvido)`);
+          }
+        });
+
+        if (plantDetails.length > 0) {
+          verifiedEmbed.addFields({
+            name: '🌿 Plantas Processadas',
+            value: plantDetails.join('\n'),
+            inline: false
+          });
+        }
       }
 
-      // Update the Ferrovia embed to reflect verification
+      // Add box transactions if any
+      const boxesCreated = session.transactions.filter(t => t.type === 'BOXES_CREATED');
+      const boxesWithdrawn = session.transactions.filter(t => t.type === 'BOXES_WITHDRAWN');
+
+      if (boxesCreated.length > 0 || boxesWithdrawn.length > 0) {
+        const boxDetails: string[] = [];
+
+        if (boxesCreated.length > 0) {
+          const boxesMap = new Map<string, number>();
+          boxesCreated.forEach(t => {
+            const current = boxesMap.get(t.itemName) || 0;
+            boxesMap.set(t.itemName, current + t.quantity);
+          });
+          boxesMap.forEach((quantity, item) => {
+            boxDetails.push(`📦 Criadas: ${quantity} ${item}`);
+          });
+        }
+
+        if (boxesWithdrawn.length > 0) {
+          const boxesMap = new Map<string, number>();
+          boxesWithdrawn.forEach(t => {
+            const current = boxesMap.get(t.itemName) || 0;
+            boxesMap.set(t.itemName, current + t.quantity);
+          });
+          boxesMap.forEach((quantity, item) => {
+            boxDetails.push(`📤 Retiradas: ${quantity} ${item}`);
+          });
+        }
+
+        if (boxDetails.length > 0) {
+          verifiedEmbed.addFields({
+            name: '📦 Caixas Processadas',
+            value: boxDetails.join('\n'),
+            inline: false
+          });
+        }
+      }
+
+      // Update the existing message to remove buttons (creates the receipt)
+      if (interaction.message) {
+        await interaction.message.edit({ embeds: [verifiedEmbed], components: [] });
+      }
+
+      // AFTER creating the receipt, remove embedData completely so new session gets fresh embed
+      ferroviaService['activeEmbeds'].delete(workerId);
+      await ferroviaService['saveActiveEmbeds']();
+
+      // Clear the current session data and start a new one
+      console.log(`🔄 Clearing session data for worker ${workerId} after verification`);
+      ferroviaService['supplyChainService'].clearSessionData(workerId);
+
+      // Create a new session for the worker
+      const newSession = await ferroviaService['supplyChainService'].createOrGetSession(workerId, session.workerName, 'worker');
+      console.log(`✨ Created new session for worker ${workerId} with ID: ${newSession.sessionId}`);
+
+      // Create a new embed for the new session (will be a new message)
       await ferroviaService.createOrUpdateEmbed(workerId, session.workerName, interaction.channelId);
-      console.log(`🔄 Ferrovia embed updated after verification for worker ${workerId}`);
+      console.log(`🔄 New Ferrovia embed created for fresh session of worker ${workerId}`);
 
       await interaction.editReply({
-        content: `✅ Sessão de Ferrovia de **${session.workerName}** foi verificada com sucesso! Um recibo foi gerado no canal.`
+        content: `✅ Sessão de Ferrovia de **${session.workerName}** foi verificada com sucesso! Um recibo foi gerado e uma nova sessão foi iniciada.`
       });
       
       console.log(`✅ Ferrovia session for worker ${workerId} verified successfully by ${interaction.user.username}`);

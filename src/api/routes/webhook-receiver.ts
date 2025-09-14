@@ -431,4 +431,52 @@ router.post('/channel-logs', async (req: Request, res: Response): Promise<void> 
   }
 });
 
+// Test endpoint for animal delivery detection
+router.post('/test-animal-delivery', async (req: Request, res: Response): Promise<void> => {
+  try {
+    const testMessage = req.body.message || `REGISTRO - REGISTRO - fazenda_143
+CAIXA ORGANIZAÇÃO - DEPÓSITO
+Valor depositado:: $160.0
+Ação:: Thiago Bennett vendeu 4 animais no matadouro
+Saldo após depósito:: $7032.81
+Data:: 14/09/2025 - 08:37:32`;
+
+    console.log('🧪 Testing animal delivery detection with message:', testMessage);
+
+    // Simulate the detection logic
+    const isAnimalDelivery = testMessage.includes('CAIXA ORGANIZAÇÃO - DEPÓSITO') &&
+                             testMessage.includes('vendeu') &&
+                             testMessage.includes('animais no matadouro');
+
+    if (isAnimalDelivery) {
+      const acaoMatch = testMessage.match(/Ação::\s*(.+?)\s+vendeu\s+(\d+)\s+animais/);
+      const valorMatch = testMessage.match(/Valor depositado::\s*\$?([\d.]+)/);
+
+      if (acaoMatch && valorMatch) {
+        const workerName = acaoMatch[1].trim();
+        const quantity = parseInt(acaoMatch[2]);
+        const amount = parseFloat(valorMatch[1]);
+
+        res.json({
+          detected: true,
+          type: 'animal_delivery',
+          workerName,
+          quantity,
+          amount,
+          message: `Successfully detected: ${workerName} sold ${quantity} animals for $${amount}`
+        });
+        return;
+      }
+    }
+
+    res.json({
+      detected: false,
+      message: 'Not detected as animal delivery'
+    });
+  } catch (error) {
+    console.error('Test error:', error);
+    res.status(500).json({ error: 'Test failed' });
+  }
+});
+
 export default router;

@@ -43,6 +43,26 @@ export interface ResponsibilityTracking {
   lastCalculated: Date;
 }
 
+export interface PlantExpectation {
+  plantTypes: string[];
+  plantQuantities: { [plantName: string]: number };
+  expectedBoxType: string;
+  expectedBoxQuantity: number;
+  boxesFulfilled: number;
+  isComplete: boolean;
+  transactionId: string;
+}
+
+export interface RevenueExpectation {
+  boxType: string;
+  boxQuantity: number;
+  expectedRevenue: number;
+  revenueFulfilled: number;
+  isComplete: boolean;
+  role: WorkerRole;
+  transactionId: string;
+}
+
 export interface OpenResponsibility {
   boxesTaken: number;
   moneyOwed: number;
@@ -62,6 +82,8 @@ export interface SupplyChainSession {
   lastActivity: Date;
   transactions: SupplyChainTransaction[];
   openResponsibilities: OpenResponsibility;
+  plantExpectations?: PlantExpectation[]; // Track plant-to-box expectations
+  revenueExpectations?: RevenueExpectation[]; // Track box-to-revenue expectations
   totalBoxesProcessed: number;
   totalRevenueGenerated: number;
   totalRevenueReturned: number;
@@ -229,8 +251,20 @@ export class SupplyChainService {
 
   private async updateSessionMetrics(session: SupplyChainSession, transaction: SupplyChainTransaction): Promise<void> {
     switch (transaction.type) {
+      case 'PLANTS_WITHDRAWN':
+        // Plants taken for box making - create plant expectation
+        const plantWithdrawals = { [transaction.itemName]: transaction.quantity };
+        this.createPlantExpectation(session, plantWithdrawals, transaction.transactionId);
+        break;
+
+      case 'BOXES_CREATED':
+        // Boxes made - update plant expectations
+        this.updatePlantExpectations(session, transaction.itemName, transaction.quantity);
+        break;
+
       case 'BOXES_WITHDRAWN':
-        // Worker took boxes - add to their responsibility
+        // Worker took boxes - create revenue expectation and add to their responsibility
+        this.createRevenueExpectation(session, transaction.itemName, transaction.quantity, transaction.transactionId);
         session.openResponsibilities.boxesTaken += transaction.quantity;
         const revenue = this.calculateRevenueDistribution(transaction.quantity, session.role);
         session.openResponsibilities.moneyOwed += revenue.totalRevenue;
@@ -238,9 +272,15 @@ export class SupplyChainService {
         break;
 
       case 'REVENUE_COLLECTED':
-        // Money collected from Ferrovia
+        // Money collected from Ferrovia - update revenue expectations
         if (transaction.amount) {
-          session.totalRevenueGenerated += transaction.amount;
+          const validRevenue = this.updateRevenueExpectations(session, transaction.amount);
+          session.totalRevenueGenerated += validRevenue;
+
+          // Any excess revenue (without expectation) should be logged
+          if (validRevenue < transaction.amount) {
+            console.log(`⚠️ Excess revenue of $${transaction.amount - validRevenue} without box expectation`);
+          }
         }
         break;
 
@@ -249,7 +289,7 @@ export class SupplyChainService {
         if (transaction.amount) {
           session.totalRevenueReturned += transaction.amount;
           session.openResponsibilities.moneyOwed -= transaction.amount;
-          
+
           // If no more money owed, clear box responsibility
           if (session.openResponsibilities.moneyOwed <= 0) {
             session.openResponsibilities.boxesTaken = 0;
@@ -502,6 +542,119 @@ export class SupplyChainService {
       console.error('❌ Error saving active sessions:', error);
       throw error;
     }
+  }
+
+  // Create plant expectation when plants are withdrawn for box making
+  public createPlantExpectation(session: SupplyChainSession, plantWithdrawals: { [plantName: string]: number }, transactionId: string): void {
+    // Use RecipeService to determine what boxes can be made
+    const RecipeService = require('./RecipeService').default;
+    const recipeService = new RecipeService();
+
+    const calculation = recipeService.calculateExpectedProduction(plantWithdrawals);
+
+    if (calculation.expectedProductions.length > 0) {
+      if (!session.plantExpectations) {
+        session.plantExpectations = [];
+      }
+
+      // Create expectation for the optimal production
+      const expectedProduction = calculation.expectedProductions[0]; // Take first/best option
+
+      const plantExpectation: PlantExpectation = {
+        plantTypes: Object.keys(plantWithdrawals),
+        plantQuantities: plantWithdrawals,
+        expectedBoxType: expectedProduction.boxType,
+        expectedBoxQuantity: expectedProduction.expectedQuantity,
+        boxesFulfilled: 0,
+        isComplete: false,
+        transactionId
+      };
+
+      session.plantExpectations.push(plantExpectation);
+      console.log(`📦 Created plant expectation: ${Object.entries(plantWithdrawals).map(([p, q]) => `${q} ${p}`).join(', ')} → ${expectedProduction.expectedQuantity} ${expectedProduction.portugueseName}`);
+    }
+  }
+
+  // Update plant expectations when boxes are created
+  public updatePlantExpectations(session: SupplyChainSession, boxType: string, boxQuantity: number): void {
+    if (!session.plantExpectations) return;
+
+    // Find matching incomplete plant expectations for this box type
+    const matchingExpectations = session.plantExpectations.filter(
+      exp => exp.expectedBoxType === boxType && !exp.isComplete
+    ).sort((a, b) => new Date(a.transactionId).getTime() - new Date(b.transactionId).getTime()); // FIFO
+
+    let remainingBoxes = boxQuantity;
+
+    for (const expectation of matchingExpectations) {
+      if (remainingBoxes <= 0) break;
+
+      const needed = expectation.expectedBoxQuantity - expectation.boxesFulfilled;
+      const canFulfill = Math.min(needed, remainingBoxes);
+
+      expectation.boxesFulfilled += canFulfill;
+      remainingBoxes -= canFulfill;
+
+      if (expectation.boxesFulfilled >= expectation.expectedBoxQuantity) {
+        expectation.isComplete = true;
+      }
+
+      console.log(`📦 Applied ${canFulfill} ${boxType} to plant expectation (${expectation.boxesFulfilled}/${expectation.expectedBoxQuantity})`);
+    }
+  }
+
+  // Create revenue expectation when boxes are withdrawn
+  public createRevenueExpectation(session: SupplyChainSession, boxType: string, boxQuantity: number, transactionId: string): void {
+    const revenuePerBox = 4; // $4 per box
+    const totalRevenue = boxQuantity * revenuePerBox;
+
+    if (!session.revenueExpectations) {
+      session.revenueExpectations = [];
+    }
+
+    const revenueExpectation: RevenueExpectation = {
+      boxType,
+      boxQuantity,
+      expectedRevenue: totalRevenue,
+      revenueFulfilled: 0,
+      isComplete: false,
+      role: session.role,
+      transactionId
+    };
+
+    session.revenueExpectations.push(revenueExpectation);
+    console.log(`💰 Created revenue expectation: ${boxQuantity} ${boxType} → $${totalRevenue} expected`);
+  }
+
+  // Update revenue expectations when money is deposited
+  public updateRevenueExpectations(session: SupplyChainSession, amount: number): number {
+    if (!session.revenueExpectations) return 0;
+
+    let validRevenue = 0;
+    let remainingAmount = amount;
+
+    // Find incomplete revenue expectations (FIFO)
+    const incompleteExpectations = session.revenueExpectations.filter(exp => !exp.isComplete)
+      .sort((a, b) => new Date(a.transactionId).getTime() - new Date(b.transactionId).getTime());
+
+    for (const expectation of incompleteExpectations) {
+      if (remainingAmount <= 0) break;
+
+      const needed = expectation.expectedRevenue - expectation.revenueFulfilled;
+      const canFulfill = Math.min(needed, remainingAmount);
+
+      expectation.revenueFulfilled += canFulfill;
+      validRevenue += canFulfill;
+      remainingAmount -= canFulfill;
+
+      if (expectation.revenueFulfilled >= expectation.expectedRevenue) {
+        expectation.isComplete = true;
+      }
+
+      console.log(`💰 Applied $${canFulfill} to revenue expectation (${expectation.revenueFulfilled}/${expectation.expectedRevenue})`);
+    }
+
+    return validRevenue;
   }
 
   // Clear all session data for reset functionality

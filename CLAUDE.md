@@ -97,7 +97,20 @@ When you see "/update" command from the user, perform the following actions:
 3. Update changelog.md if there are version-worthy changes
 4. Update CLAUDE.md if there are architectural or command changes
 
-## Recent Major Updates (v0.035) **[CURRENT VERSION]**
+## Recent Major Updates (v0.036) **[CURRENT VERSION]**
+
+### Worker Payment Transparency & Smart Embed Display (v0.036)
+- **Fixed Payment Logic**: Workers now get paid for ALL plants deposited, not just those matching seed expectations
+- **Smart Embed Summarization**: New formatTransactionsWithSummarization() handles Discord's character limits intelligently
+  - Shows individual transactions with timestamps until approaching limit
+  - Automatically switches to hourly summaries (e.g., "3:00-3:59: 2000 Trigo, 1500 Junco (6 transações)")
+- **Separated Display Sections**:
+  - 🌱 Sementes Retiradas - Seeds taken with timestamps and totals
+  - 🌾 Plantas Depositadas - Plants deposited with timestamps and payment calculation
+- **Transparent Math**: Clear display shows complete calculation path:
+  - Seeds taken (e.g., 2,005) → Expected plants (20,050) → Actual deposits (19,520) → Payment ($4,880)
+- **Removed Confusion**: Eliminated old seed expectation strikethrough display that was incomplete
+- **Result**: Workers see exactly where their payment comes from with full transaction history
 
 ### Complete Ferrovia Button System with Manager-Only Permissions (v0.035)
 - **Manager-Only Button System**: Implemented comprehensive permission checking for both Farm and Ferrovia embed buttons

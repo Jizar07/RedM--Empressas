@@ -1,0 +1,47 @@
+{
+  "sessionId": "session_1757846816307_mwp1m",
+  "workerId": "614876929266417672",
+  "workerName": "Notorius Bowdin",
+  "amount": 275.25,
+  "paidBy": "614876929266417672",
+  "paidByName": "puddingbach",
+  "paidAt": "2025-09-14T12:12:57.238Z",
+  "plantTransactions": [
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1757846816308_59yrkw",
+      "timestamp": "2025-09-14T10:46:56.308Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 200,
+      "transactionId": "tx_1757847888884_sf3cxg",
+      "timestamp": "2025-09-14T11:04:48.884Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 200,
+      "transactionId": "tx_1757848367860_7mde5q",
+      "timestamp": "2025-09-14T11:12:47.860Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 200,
+      "transactionId": "tx_1757848369430_8ak2ca",
+      "timestamp": "2025-09-14T11:12:49.430Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 1,
+      "transactionId": "tx_1757848371347_5a7x",
+      "timestamp": "2025-09-14T11:12:51.347Z"
+    }
+  ],
+  "animalTransactions": []
+}

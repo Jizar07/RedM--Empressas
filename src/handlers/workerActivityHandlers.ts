@@ -1,4 +1,4 @@
-import { 
+import {
   ButtonInteraction,
   ModalBuilder,
   TextInputBuilder,
@@ -8,6 +8,7 @@ import {
 } from 'discord.js';
 import axios from 'axios';
 import config from '../config/config';
+import PaymentAuditService from '../services/PaymentAuditService';
 
 export async function handleWorkerPayment(interaction: ButtonInteraction): Promise<any> {
   try {
@@ -26,6 +27,49 @@ export async function handleWorkerPayment(interaction: ButtonInteraction): Promi
     }
 
     await interaction.deferReply({ ephemeral: true });
+
+    // NEW: Pre-payment validation - Check if manager has sufficient funds
+    try {
+      const paymentAuditService = PaymentAuditService.getInstance();
+
+      // First get the worker session to know the payment amount
+      const sessionsResponse = await axios.get(`http://localhost:${config.api.port}/api/worker-activity/sessions`, {
+        headers: { 'X-Bot-Token': config.discord.token }
+      });
+
+      const session = sessionsResponse.data.sessions.find((s: any) => s.workerId === workerId);
+      if (!session) {
+        return await interaction.editReply({
+          content: '❌ Sessão do trabalhador não encontrada.'
+        });
+      }
+
+      // Validate manager balance
+      const balanceValidation = await paymentAuditService.validateManagerBalance(
+        interaction.user.id,
+        session.totalCredits
+      );
+
+      if (!balanceValidation.canPay) {
+        console.log(`❌ Pre-payment validation failed for ${interaction.user.username}: ${balanceValidation.reason}`);
+
+        let errorMessage = `❌ ${balanceValidation.reason}`;
+        if (balanceValidation.lastKnownBalance !== undefined) {
+          errorMessage += `\n💰 Seu saldo conhecido: $${balanceValidation.lastKnownBalance.toFixed(2)}`;
+          errorMessage += `\n💸 Valor necessário: $${session.totalCredits.toFixed(2)}`;
+        }
+
+        return await interaction.editReply({
+          content: errorMessage
+        });
+      }
+
+      console.log(`✅ Pre-payment validation passed for ${interaction.user.username} - Can pay $${session.totalCredits}`);
+
+    } catch (validationError) {
+      console.error('❌ Error in pre-payment validation:', validationError);
+      // Continue with payment if validation fails (non-blocking)
+    }
 
     try {
       // Call the payment API
@@ -46,7 +90,7 @@ export async function handleWorkerPayment(interaction: ButtonInteraction): Promi
         await interaction.editReply({
           content: `✅ Trabalhador pago com sucesso! Uma nova sessão foi iniciada.`
         });
-        
+
         console.log(`✅ Worker ${workerId} paid successfully by ${interaction.user.username}`);
       } else {
         await interaction.editReply({
@@ -56,12 +100,39 @@ export async function handleWorkerPayment(interaction: ButtonInteraction): Promi
 
     } catch (apiError: any) {
       console.error('❌ API error during payment:', apiError);
-      
+
       let errorMessage = 'Erro interno ao processar pagamento.';
       if (apiError.response?.data?.error) {
         errorMessage = apiError.response.data.error;
       }
-      
+
+      // Enhanced error handling for stale embeds
+      if (apiError.response?.status === 404 && apiError.response?.data?.error?.includes('Worker session not found')) {
+        errorMessage = 'Este trabalhador já foi pago ou não possui sessão ativa. Este embed está desatualizado.';
+
+        // Try to disable the buttons on this stale embed
+        try {
+          if (interaction.message && interaction.message.embeds.length > 0) {
+            const originalEmbed = interaction.message.embeds[0];
+            const updatedEmbed = {
+              ...originalEmbed.toJSON(),
+              color: 0x0088FF, // Blue for paid status
+              title: originalEmbed.title?.replace('📊', '✅') || '✅ Trabalhador - Sessão Paga',
+              footer: { text: 'Esta sessão já foi paga e arquivada' }
+            };
+
+            await interaction.message.edit({
+              embeds: [updatedEmbed],
+              components: [] // Remove all buttons
+            });
+
+            console.log(`🔧 Updated stale embed for worker ${workerId} to show paid status without buttons`);
+          }
+        } catch (embedError) {
+          console.error('❌ Failed to update stale embed:', embedError);
+        }
+      }
+
       await interaction.editReply({
         content: `❌ ${errorMessage}`
       });

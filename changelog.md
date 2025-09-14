@@ -5,7 +5,20 @@ This file is synchronized with: https://github.com/Jizar07/RedM--Empressas
 
 ## Version History
 
-### [0.035] - 2025-09-13 **[CURRENT - RESTORE POINT]**
+### [0.036] - 2025-09-14 **[CURRENT - RESTORE POINT]**
+- **MAJOR**: Fixed Worker Payment Calculation and Embed Display Transparency
+- **FIXED**: Plant payment logic to pay for ALL plants deposited, not just those matching seed expectations
+- **DISCOVERED**: Koda Smith's $5,486 was correct - 19,520 plants × $0.25 + animals (not inflated)
+- **IMPLEMENTED**: Smart embed summarization with formatTransactionsWithSummarization() for Discord character limits
+- **ADDED**: Individual transaction display with timestamps until limit, then hourly grouping
+- **SEPARATED**: Seeds taken and plants deposited into distinct embed sections with timestamps
+- **ENHANCED**: Transparent math display: seeds taken → expected plants → actual deposits → payment calculation
+- **REMOVED**: Confusing seed expectation strikethrough display (only showed 8/21 expectations)
+- **FIXED**: TypeScript compilation errors by removing unused methods
+- **TECHNICAL**: Character limit handling with progressive summarization (individual → hourly groups)
+- **RESULT**: Clear, transparent worker payment display showing complete transaction history and calculations
+
+### [0.035] - 2025-09-13 **[RESTORE POINT]**
 - **MAJOR**: Complete Ferrovia Button System Implementation with Manager-Only Permissions
 - **REPLACED**: Non-working Analytics and Responsibilities buttons with Verified (green) and Reset (red) buttons
 - **IMPLEMENTED**: Manager-only button visibility and interaction system for both Farm and Ferrovia embeds
