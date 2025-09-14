@@ -27,11 +27,29 @@ export interface SupplyChainTransaction {
   originalMessage?: string;
 }
 
+export interface ExpectedProduction {
+  boxType: string;
+  portugueseName: string;
+  expectedQuantity: number;
+  status: 'pending' | 'complete' | 'partial' | 'overdelivered';
+  deliveredQuantity: number;
+}
+
+export interface ResponsibilityTracking {
+  plantsWithdrawn: { [plantName: string]: number };
+  expectedProductions: ExpectedProduction[];
+  plantsReturned: { [plantName: string]: number };
+  boxesDelivered: { [boxType: string]: number };
+  lastCalculated: Date;
+}
+
 export interface OpenResponsibility {
   boxesTaken: number;
   moneyOwed: number;
   dueDate: Date;
   startDate: Date;
+  // Add new responsibility tracking fields
+  responsibilityTracking?: ResponsibilityTracking;
 }
 
 export interface SupplyChainSession {
@@ -105,14 +123,6 @@ export class SupplyChainService {
     }
   }
 
-  private async saveActiveSessions(): Promise<void> {
-    try {
-      const sessions = Array.from(this.activeSessions.values());
-      await fs.writeFile(this.sessionsFilePath, JSON.stringify(sessions, null, 2));
-    } catch (error) {
-      console.error('Error saving supply chain sessions:', error);
-    }
-  }
 
   // Calculate revenue distribution based on role
   public calculateRevenueDistribution(boxCount: number, role: WorkerRole): RevenueDistribution {
@@ -142,8 +152,9 @@ export class SupplyChainService {
     let session = this.activeSessions.get(workerId);
     
     if (!session) {
+      const newSessionId = uuidv4();
       session = {
-        sessionId: uuidv4(),
+        sessionId: newSessionId,
         workerId,
         workerName,
         role,
@@ -165,7 +176,23 @@ export class SupplyChainService {
       this.activeSessions.set(workerId, session);
       await this.saveActiveSessions();
       
-      console.log(`📊 Created new supply chain session for ${workerName} (${role})`);
+      console.log(`📊 CREATED NEW SESSION for ${workerName} (${role}):`);
+      console.log(`   🆔 Session ID: ${newSessionId.substring(0, 8)}`);
+      console.log(`   ⏰ Start time: ${session.startTime.toISOString()}`);
+      console.log(`   📊 Initial state: 0 transactions, 0 responsibilities, clean slate`);
+    } else {
+      // Update last activity timestamp for existing session
+      session.lastActivity = new Date();
+      console.log(`🔄 REUSING EXISTING SESSION for ${workerName}:`);
+      console.log(`   🆔 Session ID: ${session.sessionId.substring(0, 8)}`);
+      console.log(`   ⏰ Started: ${session.startTime.toISOString()}`);
+      console.log(`   🔢 Current state: ${session.transactions.length} transactions, ${session.totalBoxesProcessed} boxes processed`);
+      console.log(`   ⚠️ Responsibilities: ${session.openResponsibilities.boxesTaken} boxes, $${session.openResponsibilities.moneyOwed.toFixed(2)} owed`);
+      
+      // Extra verification for post-reset scenarios
+      if (session.transactions.length === 0 && session.totalBoxesProcessed === 0) {
+        console.log(`   ✅ Session appears to be freshly reset or new - ready for first transaction`);
+      }
     }
     
     return session;
@@ -375,6 +402,240 @@ export class SupplyChainService {
       averageCompletionTime: 0 // TODO: Calculate from archived sessions
     };
   }
+
+  // Update responsibility tracking for a session
+  public async updateResponsibilityTracking(workerId: string, tracking: ResponsibilityTracking): Promise<void> {
+    const session = this.activeSessions.get(workerId);
+    if (!session) return;
+
+    // Initialize responsibility tracking if it doesn't exist
+    if (!session.openResponsibilities.responsibilityTracking) {
+      session.openResponsibilities.responsibilityTracking = tracking;
+    } else {
+      // Update existing tracking
+      session.openResponsibilities.responsibilityTracking = {
+        ...session.openResponsibilities.responsibilityTracking,
+        ...tracking,
+        lastCalculated: new Date()
+      };
+    }
+
+    await this.saveSession(session);
+    console.log(`📊 Updated responsibility tracking for ${session.workerName}`);
+  }
+
+  // Get responsibility tracking for a session
+  public getResponsibilityTracking(workerId: string): ResponsibilityTracking | null {
+    const session = this.activeSessions.get(workerId);
+    return session?.openResponsibilities.responsibilityTracking || null;
+  }
+
+  // Calculate NET plants (withdrawn - deposited) from transactions
+  public getPlantsWithdrawnFromSession(session: SupplyChainSession): { [plantName: string]: number } {
+    const plantBalance: { [plantName: string]: number } = {};
+    
+    // Add withdrawn plants (positive)
+    session.transactions
+      .filter(t => t.type === 'PLANTS_WITHDRAWN')
+      .forEach(t => {
+        plantBalance[t.itemName] = (plantBalance[t.itemName] || 0) + t.quantity;
+      });
+    
+    // Subtract deposited plants (negative)
+    session.transactions
+      .filter(t => t.type === 'PLANTS_DEPOSITED')
+      .forEach(t => {
+        plantBalance[t.itemName] = (plantBalance[t.itemName] || 0) - t.quantity;
+      });
+    
+    // Only return plants with positive balance (net withdrawn)
+    const netWithdrawn: { [plantName: string]: number } = {};
+    Object.entries(plantBalance).forEach(([plant, balance]) => {
+      if (balance > 0) {
+        netWithdrawn[plant] = balance;
+      }
+    });
+    
+    return netWithdrawn;
+  }
+
+  // Calculate plants returned from transactions  
+  public getPlantsReturnedFromSession(session: SupplyChainSession): { [plantName: string]: number } {
+    const plantsReturned: { [plantName: string]: number } = {};
+    
+    session.transactions
+      .filter(t => t.type === 'PLANTS_DEPOSITED')
+      .forEach(t => {
+        plantsReturned[t.itemName] = (plantsReturned[t.itemName] || 0) + t.quantity;
+      });
+    
+    return plantsReturned;
+  }
+
+  // Calculate boxes created/delivered from transactions
+  public getBoxesFromSession(session: SupplyChainSession): { [boxType: string]: number } {
+    const boxes: { [boxType: string]: number } = {};
+    
+    session.transactions
+      .filter(t => t.type === 'BOXES_CREATED')
+      .forEach(t => {
+        boxes[t.itemName] = (boxes[t.itemName] || 0) + t.quantity;
+      });
+    
+    return boxes;
+  }
+
+  // Enhanced saveActiveSessions with better error handling and file locking
+  private async saveActiveSessions(): Promise<void> {
+    try {
+      const sessions = Array.from(this.activeSessions.values());
+      const tempFile = this.sessionsFilePath + '.tmp';
+      
+      // Write to temporary file first
+      await fs.writeFile(tempFile, JSON.stringify(sessions, null, 2));
+      
+      // Atomic rename to avoid corruption
+      await fs.rename(tempFile, this.sessionsFilePath);
+      
+      console.log(`💾 Saved ${sessions.length} active supply chain sessions`);
+    } catch (error) {
+      console.error('❌ Error saving active sessions:', error);
+      throw error;
+    }
+  }
+
+  // Clear all session data for reset functionality
+  public async clearSessionData(workerId: string): Promise<boolean> {
+    try {
+      const oldSession = this.activeSessions.get(workerId);
+      if (!oldSession) {
+        console.log(`🔍 Reset attempt for worker ${workerId} - no existing session found`);
+        return false;
+      }
+
+      // Store worker info for fresh session creation
+      const workerName = oldSession.workerName;
+      const role = oldSession.role;
+
+      // Pre-reset state logging for complete audit trail
+      console.log(`🔄 RESET INITIATED for ${workerName} (${workerId}):`);
+      console.log(`   📊 Pre-reset state - Session ID: ${oldSession.sessionId.substring(0, 8)}`);
+      console.log(`   📦 Pre-reset boxes processed: ${oldSession.totalBoxesProcessed}`);
+      console.log(`   💰 Pre-reset revenue generated: $${oldSession.totalRevenueGenerated.toFixed(2)}`);
+      console.log(`   🔢 Pre-reset transactions: ${oldSession.transactions.length}`);
+      console.log(`   ⚠️ Pre-reset responsibilities: ${oldSession.openResponsibilities.boxesTaken} boxes, $${oldSession.openResponsibilities.moneyOwed.toFixed(2)}`);
+
+      // Backup old session data before deletion for potential recovery
+      const sessionBackup = JSON.parse(JSON.stringify(oldSession));
+      
+      // Remove the old session completely from memory
+      this.activeSessions.delete(workerId);
+      console.log(`✅ Old session ${oldSession.sessionId.substring(0, 8)} removed from memory`);
+      
+      // Create a completely fresh session with new UUID and timestamps
+      const freshSessionId = uuidv4();
+      const freshSession = {
+        sessionId: freshSessionId,
+        workerId,
+        workerName,
+        role,
+        status: 'active' as const,
+        startTime: new Date(),
+        lastActivity: new Date(),
+        transactions: [],
+        openResponsibilities: {
+          boxesTaken: 0,
+          moneyOwed: 0,
+          dueDate: new Date(Date.now() + 24 * 60 * 60 * 1000),
+          startDate: new Date()
+        },
+        totalBoxesProcessed: 0,
+        totalRevenueGenerated: 0,
+        totalRevenueReturned: 0
+      };
+
+      // Add fresh session to memory and save to disk
+      await this.saveSession(freshSession);
+      console.log(`✅ Fresh session ${freshSessionId.substring(0, 8)} created and saved`);
+      
+      // Comprehensive reset verification
+      await this.verifyCompleteReset(workerId, sessionBackup, freshSession);
+      
+      console.log(`🗑️ RESET COMPLETED for ${workerName}:`);
+      console.log(`   🔄 Session transition: ${sessionBackup.sessionId.substring(0, 8)} → ${freshSessionId.substring(0, 8)}`);
+      console.log(`   📊 Data cleared: ${sessionBackup.transactions.length} transactions, ${sessionBackup.totalBoxesProcessed} boxes`);
+      console.log(`   ✅ Fresh session ready for new transactions`);
+      return true;
+    } catch (error) {
+      console.error('❌ Error clearing session data:', error);
+      return false;
+    }
+  }
+
+  // Comprehensive reset verification with detailed logging
+  private async verifyCompleteReset(workerId: string, oldSession: SupplyChainSession, newSession: SupplyChainSession): Promise<void> {
+    try {
+      console.log(`🔍 RESET VERIFICATION for worker ${workerId}:`);
+
+      // Verify memory state
+      const memorySession = this.activeSessions.get(workerId);
+      if (memorySession) {
+        const sessionIdMatch = memorySession.sessionId === newSession.sessionId;
+        const transactionsCleared = memorySession.transactions.length === 0;
+        const responsibilitiesCleared = memorySession.openResponsibilities.boxesTaken === 0 && memorySession.openResponsibilities.moneyOwed === 0;
+        const countersReset = memorySession.totalBoxesProcessed === 0 && memorySession.totalRevenueGenerated === 0 && memorySession.totalRevenueReturned === 0;
+        
+        console.log(`   ✅ Memory verification:`);
+        console.log(`      🆔 New session ID: ${sessionIdMatch ? 'VALID' : 'INVALID'} (${memorySession.sessionId.substring(0, 8)})`);
+        console.log(`      🔢 Transactions cleared: ${transactionsCleared ? 'YES' : 'NO'} (${memorySession.transactions.length} transactions)`);
+        console.log(`      ⚠️ Responsibilities cleared: ${responsibilitiesCleared ? 'YES' : 'NO'} (${memorySession.openResponsibilities.boxesTaken} boxes, $${memorySession.openResponsibilities.moneyOwed.toFixed(2)})`);
+        console.log(`      📊 Counters reset: ${countersReset ? 'YES' : 'NO'} (${memorySession.totalBoxesProcessed} boxes, $${memorySession.totalRevenueGenerated.toFixed(2)})`);
+
+        if (!sessionIdMatch || !transactionsCleared || !responsibilitiesCleared || !countersReset) {
+          console.error(`❌ Memory reset verification FAILED for worker ${workerId}`);
+        }
+      } else {
+        console.error(`❌ No session found in memory after reset for worker ${workerId}`);
+        return;
+      }
+
+      // Verify file persistence
+      const fileData = await fs.readFile(this.sessionsFilePath, 'utf-8');
+      const fileSessions: SupplyChainSession[] = JSON.parse(fileData);
+      const fileSession = fileSessions.find(s => s.workerId === workerId);
+      
+      if (fileSession) {
+        const fileSessionIdMatch = fileSession.sessionId === newSession.sessionId;
+        const fileTransactionsCleared = fileSession.transactions.length === 0;
+        const fileResponsibilitiesCleared = fileSession.openResponsibilities.boxesTaken === 0 && fileSession.openResponsibilities.moneyOwed === 0;
+        const fileCountersReset = fileSession.totalBoxesProcessed === 0 && fileSession.totalRevenueGenerated === 0 && fileSession.totalRevenueReturned === 0;
+        
+        console.log(`   ✅ File verification:`);
+        console.log(`      🆔 New session ID: ${fileSessionIdMatch ? 'VALID' : 'INVALID'} (${fileSession.sessionId.substring(0, 8)})`);
+        console.log(`      🔢 Transactions cleared: ${fileTransactionsCleared ? 'YES' : 'NO'} (${fileSession.transactions.length} transactions)`);
+        console.log(`      ⚠️ Responsibilities cleared: ${fileResponsibilitiesCleared ? 'YES' : 'NO'} (${fileSession.openResponsibilities.boxesTaken} boxes, $${fileSession.openResponsibilities.moneyOwed.toFixed(2)})`);
+        console.log(`      📊 Counters reset: ${fileCountersReset ? 'YES' : 'NO'} (${fileSession.totalBoxesProcessed} boxes, $${fileSession.totalRevenueGenerated.toFixed(2)})`);
+
+        if (fileSessionIdMatch && fileTransactionsCleared && fileResponsibilitiesCleared && fileCountersReset) {
+          console.log(`✅ RESET VERIFICATION SUCCESSFUL for ${oldSession.workerName} - Clean session ready for new activity`);
+        } else {
+          console.error(`❌ File reset verification FAILED for worker ${workerId}`);
+        }
+      } else {
+        console.error(`❌ Session not found in file after reset for worker ${workerId}`);
+      }
+
+      // Log session transition details
+      console.log(`   📋 Session transition summary:`);
+      console.log(`      🔄 Old → New Session ID: ${oldSession.sessionId.substring(0, 8)} → ${newSession.sessionId.substring(0, 8)}`);
+      console.log(`      ⏰ Session start time: ${newSession.startTime.toISOString()}`);
+      console.log(`      🆔 Worker: ${newSession.workerName} (${newSession.workerId})`);
+      
+    } catch (error) {
+      console.error('❌ Error during reset verification:', error);
+    }
+  }
+
 }
 
 export default SupplyChainService;

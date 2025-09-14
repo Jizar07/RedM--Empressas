@@ -1,0 +1,61 @@
+{
+  "sessionId": "session_1757771195552_1l2fg6",
+  "workerId": "614876929266417672",
+  "workerName": "Notorius Bowdin",
+  "amount": 350,
+  "paidBy": "614876929266417672",
+  "paidByName": "puddingbach",
+  "paidAt": "2025-09-13T19:16:13.490Z",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 200,
+      "transactionId": "tx_1757771195553_5eqrer",
+      "timestamp": "2025-09-13T13:46:35.553Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 200,
+      "transactionId": "tx_1757774184386_x3yoni",
+      "timestamp": "2025-09-13T14:36:24.386Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 110,
+      "transactionId": "tx_1757776359455_el87ps",
+      "timestamp": "2025-09-13T15:12:39.455Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 30,
+      "transactionId": "tx_1757776401394_imyia",
+      "timestamp": "2025-09-13T15:13:21.394Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 300,
+      "transactionId": "tx_1757776617708_ky5uwc",
+      "timestamp": "2025-09-13T15:16:57.708Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1757777367255_amxdq",
+      "timestamp": "2025-09-13T15:29:27.255Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 460,
+      "transactionId": "tx_1757778178395_y2zo9u",
+      "timestamp": "2025-09-13T15:42:58.395Z"
+    }
+  ],
+  "animalTransactions": []
+}

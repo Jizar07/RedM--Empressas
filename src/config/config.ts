@@ -53,7 +53,7 @@ const config: Config = {
     uri: process.env.MONGODB_URI || 'mongodb://localhost:27017/redm-bot',
   },
   redm: {
-    serverIp: process.env.REDM_SERVER_IP || '',
+    serverIp: process.env.REDM_SERVER_IP || '131.196.197.140',
     serverPort: parseInt(process.env.REDM_SERVER_PORT || '30120', 10),
     apiKey: process.env.REDM_SERVER_API_KEY || '',
     rconPassword: process.env.REDM_RCON_PASSWORD || '',

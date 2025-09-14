@@ -1,8 +1,28 @@
 {
   "channelId": "1406811401036497036",
-  "lastUpdated": "2025-09-13T12:30:51.350Z",
-  "messageCount": 43,
+  "lastUpdated": "2025-09-13T23:52:59.206Z",
+  "messageCount": 45,
   "messages": [
+    {
+      "id": "1416572401067626507",
+      "author": "Atlanta",
+      "content": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nRetirar item da Loja\nItem Retirado:: sheep_male x4\nFuncionario:: Johnny Rocks | FIXO: 77228\nData:: 13/09/2025 -  20:52:58",
+      "timestamp": "2025-09-13T23:52:59.057Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nRetirar item da Loja\nItem Retirado:: sheep_male x4\nFuncionario:: Johnny Rocks | FIXO: 77228\nData:: 13/09/2025 -  20:52:58",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1416553533045477559",
+      "author": "Atlanta",
+      "content": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nRetirar item da Loja\nItem Retirado:: pig_female x4\nFuncionario:: Guilherme Senna | FIXO: 75910\nData:: 13/09/2025 -  19:38:00",
+      "timestamp": "2025-09-13T22:38:00.570Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nRetirar item da Loja\nItem Retirado:: pig_female x4\nFuncionario:: Guilherme Senna | FIXO: 75910\nData:: 13/09/2025 -  19:38:00",
+      "rawEmbeds": []
+    },
     {
       "id": "1416400737474187324",
       "author": "Santiago Bowdin",

@@ -3,6 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import SupplyChainService, { SupplyChainSession } from './SupplyChainService';
 import ItemTranslationService from './ItemTranslationService';
+import RecipeService from './RecipeService';
 
 interface FerroviaSessionEmbed {
   sessionId: string;
@@ -17,6 +18,7 @@ export class FerroviaSessionService {
   private client: Client;
   private supplyChainService: SupplyChainService;
   private itemTranslationService: ItemTranslationService;
+  private recipeService: RecipeService;
   private activeEmbeds: Map<string, FerroviaSessionEmbed> = new Map();
   private dataDir: string;
 
@@ -24,6 +26,7 @@ export class FerroviaSessionService {
     this.client = client;
     this.supplyChainService = new SupplyChainService();
     this.itemTranslationService = ItemTranslationService.getInstance();
+    this.recipeService = new RecipeService();
     this.dataDir = path.join(process.cwd(), 'data', 'ferrovia-embeds');
     this.ensureDataDirectory();
     this.loadActiveEmbeds();
@@ -73,6 +76,17 @@ export class FerroviaSessionService {
     
     let embedData = this.activeEmbeds.get(workerId);
     
+    // Check if embed metadata is stale (session was reset)
+    if (embedData && embedData.sessionId !== session.sessionId) {
+      console.log(`🔄 RESET DETECTED: Session ID changed from ${embedData.sessionId.substring(0, 8)} → ${session.sessionId.substring(0, 8)}`);
+      console.log(`   🔄 Updating embed metadata to new session (preserving message ID for update)`);
+      
+      // Update embed metadata with new session but preserve message ID to update existing message
+      embedData.sessionId = session.sessionId;
+      embedData.lastUpdated = new Date();
+      await this.saveActiveEmbeds();
+    }
+    
     if (!embedData) {
       embedData = {
         sessionId: session.sessionId,
@@ -83,11 +97,36 @@ export class FerroviaSessionService {
       };
       
       this.activeEmbeds.set(workerId, embedData);
-      this.saveActiveEmbeds();
-      console.log(`🆕 Created new Ferrovia embed for worker ${workerName} (${workerId})`);
+      await this.saveActiveEmbeds();
+      
+      if (session.transactions.length === 0) {
+        console.log(`🆕 Created fresh Ferrovia embed for worker ${workerName} (${workerId}) - clean slate after reset`);
+      } else {
+        console.log(`🆕 Created new Ferrovia embed for worker ${workerName} (${workerId}) - ${session.transactions.length} transactions`);
+      }
+    } else {
+      // Update existing embed metadata with current session
+      embedData.sessionId = session.sessionId;
+      embedData.lastUpdated = new Date();
+      await this.saveActiveEmbeds();
     }
 
     await this.updateFerroviaEmbed(embedData, session);
+  }
+
+  // Update embed metadata to new session after reset (preserves message ID for update)
+  public async updateEmbedSessionId(workerId: string, newSessionId: string): Promise<void> {
+    const embedData = this.activeEmbeds.get(workerId);
+    if (embedData && embedData.sessionId !== newSessionId) {
+      console.log(`🔄 Updating embed session ID for worker ${workerId}: ${embedData.sessionId.substring(0, 8)} → ${newSessionId.substring(0, 8)}`);
+      embedData.sessionId = newSessionId;
+      embedData.lastUpdated = new Date();
+      await this.saveActiveEmbeds();
+    } else if (embedData) {
+      console.log(`ℹ️ Embed for worker ${workerId} already has correct session ID`);
+    } else {
+      console.log(`ℹ️ No embed metadata found for worker ${workerId} - will create fresh`);
+    }
   }
 
   private async updateFerroviaEmbed(embedData: FerroviaSessionEmbed, session: SupplyChainSession): Promise<void> {
@@ -109,8 +148,9 @@ export class FerroviaSessionService {
           await message.edit({ embeds: [embed], components });
           console.log(`📝 Updated Ferrovia embed for ${embedData.workerName} in channel ${embedData.channelId}`);
         } catch (error) {
-          console.error('❌ Failed to update existing Ferrovia embed, creating new one:', error);
+          console.log(`ℹ️ Previous embed message not found (likely deleted), creating new one for ${embedData.workerName}`);
           embedData.embedMessageId = undefined;
+          await this.saveActiveEmbeds(); // Save the cleared message ID
         }
       }
 
@@ -154,14 +194,57 @@ export class FerroviaSessionService {
       inline: false
     });
 
-    // Add plant net usage section
-    const plantTransactions = session.transactions.filter(t => t.type === 'PLANTS_WITHDRAWN' || t.type === 'PLANTS_DEPOSITED');
-    if (plantTransactions.length > 0) {
-      const plantSummary = this.getPlantsWithdrawnSummary(plantTransactions);
-      if (plantSummary.length > 0) {
+    // Add recipe-based responsibility tracking section
+    const plantsWithdrawn = this.supplyChainService.getPlantsWithdrawnFromSession(session);
+    
+    // Check if there are any plant transactions (withdrawn or deposited)
+    const hasPlantTransactions = session.transactions.some(t => 
+      t.type === 'PLANTS_WITHDRAWN' || t.type === 'PLANTS_DEPOSITED'
+    );
+    
+    if (hasPlantTransactions || Object.keys(plantsWithdrawn).length > 0) {
+      const responsibilityCalculation = this.recipeService.calculateExpectedProduction(plantsWithdrawn);
+      
+      // Always show plants section when there are plant transactions
+      let plantsValue = '';
+      if (Object.keys(plantsWithdrawn).length > 0) {
+        // Show plants that are still owed (NET > 0)
+        const display = this.recipeService.formatResponsibilityDisplay({
+          ...responsibilityCalculation,
+          expectedProductions: []
+        });
+        plantsValue = display.plantsWithdrawn.join('\n');
+      }
+      
+      if (!plantsValue && hasPlantTransactions) {
+        // Show when there have been plant transactions but NET is 0
+        plantsValue = '✅ Todas as plantas foram devolvidas';
+      } else if (!plantsValue) {
+        plantsValue = 'Nenhuma planta retirada';
+      }
+      
+      embed.addFields({
+        name: '🌿 PLANTAS RETIRADAS',
+        value: plantsValue,
+        inline: false
+      });
+      
+      // Only show production section if there are expected productions
+      if (responsibilityCalculation.expectedProductions.length > 0) {
+        // Update expected production status based on boxes delivered
+        const boxesDelivered = this.supplyChainService.getBoxesFromSession(session);
+        const updatedProductions = this.recipeService.updateProductionStatus(responsibilityCalculation.expectedProductions, boxesDelivered);
+        
+        // Format for display
+        const display = this.recipeService.formatResponsibilityDisplay({
+          ...responsibilityCalculation,
+          expectedProductions: updatedProductions
+        });
+        
+        // Add expected production section with status indicators
         embed.addFields({
-          name: '🌾 PLANTAS EM USO PARA CAIXAS',
-          value: plantSummary.join('\n'),
+          name: '📦 PRODUÇÃO ESPERADA',
+          value: display.expectedProduction.join('\n') || 'Nenhuma produção calculada',
           inline: false
         });
       }
@@ -234,17 +317,57 @@ export class FerroviaSessionService {
       }
     }
 
-    // Add accountability section
+    // Add comprehensive responsibility status section (only if not already added above)
+    const sessionPlantsWithdrawn = this.supplyChainService.getPlantsWithdrawnFromSession(session);
+    if (Object.keys(sessionPlantsWithdrawn).length > 0) {
+      const responsibilityCalculation = this.recipeService.calculateExpectedProduction(sessionPlantsWithdrawn);
+      
+      if (responsibilityCalculation.expectedProductions.length > 0) {
+        const boxesDelivered = this.supplyChainService.getBoxesFromSession(session);
+        const updatedProductions = this.recipeService.updateProductionStatus(responsibilityCalculation.expectedProductions, boxesDelivered);
+        
+        const display = this.recipeService.formatResponsibilityDisplay({
+          ...responsibilityCalculation,
+          expectedProductions: updatedProductions
+        });
+        
+        // Only add status section if not already present (check if we already added responsibility tracking above)
+        const existingFields = embed.data.fields || [];
+        const hasResponsibilityStatus = existingFields.some(field => field.name === '📋 STATUS DAS RESPONSABILIDADES');
+        
+        if (!hasResponsibilityStatus) {
+          // Show overall responsibility status
+          embed.addFields({
+            name: '📋 STATUS DAS RESPONSABILIDADES',
+            value: display.responsibilityStatus,
+            inline: false
+          });
+          
+          // Show remaining obligations if any
+          const remainingObligations = this.calculateRemainingObligations(updatedProductions, sessionPlantsWithdrawn);
+          if (remainingObligations) {
+            embed.addFields({
+              name: '⚠️ AINDA DEVE ENTREGAR',
+              value: remainingObligations,
+              inline: false
+            });
+          }
+        }
+      }
+    }
+
+    // Add traditional accountability section if there are old-style responsibilities
     if (session.openResponsibilities.boxesTaken > 0 || session.openResponsibilities.moneyOwed > 0) {
       const daysUntilDue = Math.ceil((session.openResponsibilities.dueDate.getTime() - Date.now()) / (1000 * 60 * 60 * 24));
       const dueDateStr = daysUntilDue > 0 ? `${daysUntilDue} dias restantes` : '⚠️ VENCIDO';
       
       embed.addFields({
-        name: '⚠️ RESPONSABILIDADES PENDENTES',
+        name: '⚠️ RESPONSABILIDADES ANTIGAS',
         value: `**📦 Caixas em Trânsito:** ${session.openResponsibilities.boxesTaken}\n**💰 Dinheiro a Devolver:** $${session.openResponsibilities.moneyOwed.toFixed(2)}\n**📅 Prazo:** ${dueDateStr}`,
         inline: false
       });
     }
+
 
     // Add totals section
     embed.addFields({
@@ -256,30 +379,6 @@ export class FerroviaSessionService {
     return embed;
   }
 
-  private getPlantsWithdrawnSummary(transactions: any[]): string[] {
-    const plantsMap = new Map<string, { withdrawn: number, deposited: number }>();
-    
-    // Count withdrawals and deposits separately
-    transactions.forEach(t => {
-      if (t.type === 'PLANTS_WITHDRAWN') {
-        const current = plantsMap.get(t.itemName) || { withdrawn: 0, deposited: 0 };
-        plantsMap.set(t.itemName, { ...current, withdrawn: current.withdrawn + t.quantity });
-      } else if (t.type === 'PLANTS_DEPOSITED') {
-        const current = plantsMap.get(t.itemName) || { withdrawn: 0, deposited: 0 };
-        plantsMap.set(t.itemName, { ...current, deposited: current.deposited + t.quantity });
-      }
-    });
-
-    return Array.from(plantsMap.entries())
-      .map(([item, counts]) => {
-        const netAmount = counts.withdrawn - counts.deposited;
-        if (netAmount <= 0) return null; // Don't show plants with zero or negative net usage
-        
-        const translatedName = this.itemTranslationService.getPortugueseName(item);
-        return `• ${netAmount} ${translatedName}`;
-      })
-      .filter(entry => entry !== null);
-  }
 
   private getBoxesCreatedSummary(transactions: any[]): string[] {
     const boxesMap = new Map<string, number>();
@@ -322,12 +421,15 @@ export class FerroviaSessionService {
       );
 
       // Add reset button (red) - manager only
+      // TEMPORARILY DISABLED FOR TESTING
+      /*
       row.addComponents(
         new ButtonBuilder()
           .setCustomId(`ferrovia_reset_${session.workerId}`)
           .setLabel('🗑️ Resetar')
           .setStyle(ButtonStyle.Danger)
       );
+      */
     }
 
     return row;
@@ -539,6 +641,40 @@ export class FerroviaSessionService {
 
     this.activeEmbeds.delete(workerId);
     this.saveActiveEmbeds();
+  }
+
+  // Calculate what the worker still owes based on expected vs delivered production
+  private calculateRemainingObligations(expectedProductions: any[], plantsWithdrawn: { [plantName: string]: number }): string | null {
+    const obligations = [];
+    
+    for (const production of expectedProductions) {
+      const remaining = production.expectedQuantity - production.deliveredQuantity;
+      
+      if (remaining > 0) {
+        if (production.status === 'pending') {
+          obligations.push(`• ${remaining} ${production.portugueseName} ⏳`);
+        } else if (production.status === 'partial') {
+          obligations.push(`• ${remaining} ${production.portugueseName} 🔄 (Parcial)`);
+        }
+      }
+    }
+    
+    // If no specific box obligations, show plant return option
+    if (obligations.length === 0 && Object.keys(plantsWithdrawn).length > 0) {
+      const plantOptions = Object.entries(plantsWithdrawn).map(([plant, quantity]) => {
+        const translatedName = this.itemTranslationService.getPortugueseName(plant);
+        return `${quantity} ${translatedName}`;
+      }).join(', ');
+      
+      return `Alternativa: Pode devolver as plantas (${plantOptions})`;
+    }
+    
+    if (obligations.length > 0) {
+      obligations.push('\n💡 **Alternativa:** Pode devolver as plantas equivalentes');
+      return obligations.join('\n');
+    }
+    
+    return null;
   }
 }
 

@@ -187,29 +187,19 @@ export async function handleFerroviaReset(interaction: ButtonInteraction): Promi
         revenueGenerated: session.totalRevenueGenerated
       };
 
-      // Reset all session data
-      session.totalBoxesProcessed = 0;
-      session.totalRevenueGenerated = 0;
-      session.totalRevenueReturned = 0;
-      session.openResponsibilities = {
-        boxesTaken: 0,
-        moneyOwed: 0,
-        dueDate: new Date(),
-        startDate: new Date()
-      };
+      // Use the enhanced clearSessionData method for proper persistence
+      const resetSuccess = await ferroviaService['supplyChainService'].clearSessionData(workerId);
       
-      // Clear all transactions
-      session.transactions = [];
-      
-      // Note: Session reset metadata would be stored separately if needed
-      // as the SupplyChainSession interface doesn't include reset fields
+      if (!resetSuccess) {
+        await interaction.editReply({
+          content: '❌ Falha ao resetar sessão. Tente novamente.'
+        });
+        return;
+      }
 
-      // Save the updated session using the same service instance
-      await ferroviaService['supplyChainService'].saveSession(session);
-
-      // Update the Ferrovia embed to show the reset state
+      // Update the Ferrovia embed to show the reset state (will update existing message)
       await ferroviaService.createOrUpdateEmbed(workerId, session.workerName, interaction.channelId);
-      console.log(`🔄 Ferrovia embed updated after reset for worker ${workerId}`);
+      console.log(`🔄 Ferrovia embed updated to show clean state after reset for worker ${workerId}`);
 
       await interaction.editReply({
         content: `🗑️ Sessão de Ferrovia de **${sessionInfo.workerName}** foi resetada com sucesso!\n` +

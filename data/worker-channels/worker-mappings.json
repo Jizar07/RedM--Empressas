@@ -4,7 +4,7 @@
     "workerName": "Jizar Stoffeliz",
     "channelId": "1416079586571190404",
     "createdAt": "2025-09-12T15:14:43.042Z",
-    "lastActive": "2025-09-13T18:25:30.241Z"
+    "lastActive": "2025-09-13T21:13:44.123Z"
   },
   "584129725052747798": {
     "workerId": "584129725052747798",
@@ -30,7 +30,7 @@
     "workerName": "Santiago Bowdin",
     "channelId": "1416444206033145897",
     "createdAt": "2025-09-13T15:23:35.079Z",
-    "lastActive": "2025-09-13T17:02:22.867Z"
+    "lastActive": "2025-09-14T00:06:40.194Z"
   },
   "1190841069127077918": {
     "workerId": "1190841069127077918",
@@ -49,5 +49,61 @@
     "workerName": "smith ramirez",
     "channelId": "1416447193685950595",
     "createdAt": "2025-09-13T15:35:28.840Z"
+  },
+  "807953013603172352": {
+    "workerId": "807953013603172352",
+    "workerName": "Adhine Kenway",
+    "channelId": "1416502413321568296",
+    "createdAt": "2025-09-13T19:14:52.778Z"
+  },
+  "1204772480305209384": {
+    "workerId": "1204772480305209384",
+    "workerName": "BONNIE BENNETT",
+    "channelId": "1416502543990915132",
+    "createdAt": "2025-09-13T19:15:23.917Z"
+  },
+  "831906964786511903": {
+    "workerId": "831906964786511903",
+    "workerName": "habbi Bianchi Bowdin",
+    "channelId": "1416510141909700650",
+    "createdAt": "2025-09-13T19:45:35.479Z"
+  },
+  "1245794457161564201": {
+    "workerId": "1245794457161564201",
+    "workerName": "juca rabicho",
+    "channelId": "1416510577768923190",
+    "createdAt": "2025-09-13T19:47:19.359Z",
+    "lastActive": "2025-09-13T23:58:34.144Z"
+  },
+  "390569796195975179": {
+    "workerId": "390569796195975179",
+    "workerName": "Harald Fergus",
+    "channelId": "1416511598524108941",
+    "createdAt": "2025-09-13T19:51:22.697Z"
+  },
+  "333664599549411329": {
+    "workerId": "333664599549411329",
+    "workerName": "Johnny Rocks",
+    "channelId": "1416535914196504787",
+    "createdAt": "2025-09-13T21:28:00.018Z"
+  },
+  "1199469210842189954": {
+    "workerId": "1199469210842189954",
+    "workerName": "Silas Moreau",
+    "channelId": "1416555920065822761",
+    "createdAt": "2025-09-13T22:47:29.786Z"
+  },
+  "976320273601146973": {
+    "workerId": "976320273601146973",
+    "workerName": "Nina Vatore",
+    "channelId": "1416556550453198878",
+    "createdAt": "2025-09-13T22:50:00.105Z"
+  },
+  "1195169284847050786": {
+    "workerId": "1195169284847050786",
+    "workerName": "Koda Smith",
+    "channelId": "1416562932442988615",
+    "createdAt": "2025-09-13T23:15:21.663Z",
+    "lastActive": "2025-09-14T00:05:50.474Z"
   }
 }

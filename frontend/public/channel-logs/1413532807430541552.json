@@ -1,8 +1,318 @@
 {
   "channelId": "1413532807430541552",
-  "lastUpdated": "2025-09-08T07:54:24.456Z",
-  "messageCount": 15,
+  "lastUpdated": "2025-09-13T19:51:27.558Z",
+  "messageCount": 46,
   "messages": [
+    {
+      "id": "1416511618900164698",
+      "timestamp": "2025-09-13T19:51:27.459Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: cow_female x10\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 16:51:27",
+      "source": "bot-monitor",
+      "channelId": "1413532807430541552",
+      "embedContent": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: cow_female x10\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 16:51:27",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1416511453837525122",
+      "timestamp": "2025-09-13T19:50:48.105Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: sheep_female x10\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 16:50:47",
+      "source": "bot-monitor",
+      "channelId": "1413532807430541552",
+      "embedContent": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: sheep_female x10\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 16:50:47",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1416511416885841940",
+      "timestamp": "2025-09-13T19:50:39.295Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: chicken_male x40\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 16:50:39",
+      "source": "bot-monitor",
+      "channelId": "1413532807430541552",
+      "embedContent": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: chicken_male x40\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 16:50:39",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1416511383650173191",
+      "timestamp": "2025-09-13T19:50:31.371Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: chicken_female x40\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 16:50:31",
+      "source": "bot-monitor",
+      "channelId": "1413532807430541552",
+      "embedContent": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: chicken_female x40\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 16:50:31",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1416511338330722486",
+      "timestamp": "2025-09-13T19:50:20.566Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: goat_female x40\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 16:50:20",
+      "source": "bot-monitor",
+      "channelId": "1413532807430541552",
+      "embedContent": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: goat_female x40\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 16:50:20",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1416511247674769468",
+      "timestamp": "2025-09-13T19:49:58.952Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: donkey_male x10\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 16:49:58",
+      "source": "bot-monitor",
+      "channelId": "1413532807430541552",
+      "embedContent": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: donkey_male x10\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 16:49:58",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1416511211448565893",
+      "timestamp": "2025-09-13T19:49:50.315Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: sheep_male x10\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 16:49:50",
+      "source": "bot-monitor",
+      "channelId": "1413532807430541552",
+      "embedContent": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: sheep_male x10\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 16:49:50",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1416511165357363260",
+      "timestamp": "2025-09-13T19:49:39.326Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: pig_female x10\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 16:49:39",
+      "source": "bot-monitor",
+      "channelId": "1413532807430541552",
+      "embedContent": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: pig_female x10\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 16:49:39",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1416511132650180619",
+      "timestamp": "2025-09-13T19:49:31.528Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: pig_male x10\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 16:49:31",
+      "source": "bot-monitor",
+      "channelId": "1413532807430541552",
+      "embedContent": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: pig_male x10\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 16:49:31",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1416511057333063681",
+      "timestamp": "2025-09-13T19:49:13.571Z",
+      "author": "Bercario",
+      "content": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nRetirar item da Loja\nItem Retirado: chicken_male x40\nFuncionario: Zero Bala | FIXO: 74829\nData: 13/09/2025 -  16:49:13",
+      "source": "bot-monitor",
+      "channelId": "1413532807430541552",
+      "embedContent": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nRetirar item da Loja\nItem Retirado: chicken_male x40\nFuncionario: Zero Bala | FIXO: 74829\nData: 13/09/2025 -  16:49:13",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1416511039402541147",
+      "timestamp": "2025-09-13T19:49:09.296Z",
+      "author": "Bercario",
+      "content": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nRetirar item da Loja\nItem Retirado: chicken_female x40\nFuncionario: Zero Bala | FIXO: 74829\nData: 13/09/2025 -  16:49:09",
+      "source": "bot-monitor",
+      "channelId": "1413532807430541552",
+      "embedContent": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nRetirar item da Loja\nItem Retirado: chicken_female x40\nFuncionario: Zero Bala | FIXO: 74829\nData: 13/09/2025 -  16:49:09",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1416511010927415307",
+      "timestamp": "2025-09-13T19:49:02.507Z",
+      "author": "Bercario",
+      "content": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nRetirar item da Loja\nItem Retirado: goat_female x40\nFuncionario: Zero Bala | FIXO: 74829\nData: 13/09/2025 -  16:49:02",
+      "source": "bot-monitor",
+      "channelId": "1413532807430541552",
+      "embedContent": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nRetirar item da Loja\nItem Retirado: goat_female x40\nFuncionario: Zero Bala | FIXO: 74829\nData: 13/09/2025 -  16:49:02",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1416510986264903891",
+      "timestamp": "2025-09-13T19:48:56.627Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: donkey_female x10\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 16:48:56",
+      "source": "bot-monitor",
+      "channelId": "1413532807430541552",
+      "embedContent": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: donkey_female x10\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 16:48:56",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1416510931088834571",
+      "timestamp": "2025-09-13T19:48:43.472Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: chicken_male x10\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 16:48:43",
+      "source": "bot-monitor",
+      "channelId": "1413532807430541552",
+      "embedContent": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: chicken_male x10\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 16:48:43",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1416510880882884725",
+      "timestamp": "2025-09-13T19:48:31.502Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: chicken_female x10\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 16:48:31",
+      "source": "bot-monitor",
+      "channelId": "1413532807430541552",
+      "embedContent": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: chicken_female x10\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 16:48:31",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1416510851162177667",
+      "timestamp": "2025-09-13T19:48:24.416Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: goat_female x10\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 16:48:24",
+      "source": "bot-monitor",
+      "channelId": "1413532807430541552",
+      "embedContent": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: goat_female x10\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 16:48:24",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1416510820933832724",
+      "timestamp": "2025-09-13T19:48:17.209Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: cow_male x10\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 16:48:17",
+      "source": "bot-monitor",
+      "channelId": "1413532807430541552",
+      "embedContent": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: cow_male x10\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 16:48:17",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1416510786045476984",
+      "timestamp": "2025-09-13T19:48:08.891Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: goat_male x10\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 16:48:08",
+      "source": "bot-monitor",
+      "channelId": "1413532807430541552",
+      "embedContent": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: goat_male x10\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 16:48:08",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1416510099752751214",
+      "timestamp": "2025-09-13T19:45:25.266Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: pig_male x1\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 16:45:25",
+      "source": "bot-monitor",
+      "channelId": "1413532807430541552",
+      "embedContent": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: pig_male x1\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 16:45:25",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1416509821628186634",
+      "timestamp": "2025-09-13T19:44:18.956Z",
+      "author": "Bercario",
+      "content": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nRetirar item da Loja\nItem Retirado: donkey_male x5\nFuncionario: Zero Bala | FIXO: 74829\nData: 13/09/2025 -  16:44:18",
+      "source": "bot-monitor",
+      "channelId": "1413532807430541552",
+      "embedContent": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nRetirar item da Loja\nItem Retirado: donkey_male x5\nFuncionario: Zero Bala | FIXO: 74829\nData: 13/09/2025 -  16:44:18",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1416509787583021188",
+      "timestamp": "2025-09-13T19:44:10.839Z",
+      "author": "Bercario",
+      "content": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nRetirar item da Loja\nItem Retirado: donkey_female x5\nFuncionario: Zero Bala | FIXO: 74829\nData: 13/09/2025 -  16:44:10",
+      "source": "bot-monitor",
+      "channelId": "1413532807430541552",
+      "embedContent": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nRetirar item da Loja\nItem Retirado: donkey_female x5\nFuncionario: Zero Bala | FIXO: 74829\nData: 13/09/2025 -  16:44:10",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1416509751659069553",
+      "timestamp": "2025-09-13T19:44:02.274Z",
+      "author": "Bercario",
+      "content": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nRetirar item da Loja\nItem Retirado: cow_female x2\nFuncionario: Zero Bala | FIXO: 74829\nData: 13/09/2025 -  16:44:02",
+      "source": "bot-monitor",
+      "channelId": "1413532807430541552",
+      "embedContent": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nRetirar item da Loja\nItem Retirado: cow_female x2\nFuncionario: Zero Bala | FIXO: 74829\nData: 13/09/2025 -  16:44:02",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1416497546561454130",
+      "timestamp": "2025-09-13T18:55:32.352Z",
+      "author": "Bercario",
+      "content": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nRetirar item da Loja\nItem Retirado: pig_female x30\nFuncionario: Zero Bala | FIXO: 74829\nData: 13/09/2025 -  15:55:32",
+      "source": "bot-monitor",
+      "channelId": "1413532807430541552",
+      "embedContent": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nRetirar item da Loja\nItem Retirado: pig_female x30\nFuncionario: Zero Bala | FIXO: 74829\nData: 13/09/2025 -  15:55:32",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1416497508921901226",
+      "timestamp": "2025-09-13T18:55:23.378Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: pig_female x10\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 15:55:23",
+      "source": "bot-monitor",
+      "channelId": "1413532807430541552",
+      "embedContent": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: pig_female x10\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 15:55:23",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1416497424641560617",
+      "timestamp": "2025-09-13T18:55:03.284Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: sheep_male x10\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 15:55:03",
+      "source": "bot-monitor",
+      "channelId": "1413532807430541552",
+      "embedContent": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: sheep_male x10\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 15:55:03",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1416497390227296381",
+      "timestamp": "2025-09-13T18:54:55.079Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: sheep_female x10\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 15:54:54",
+      "source": "bot-monitor",
+      "channelId": "1413532807430541552",
+      "embedContent": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: sheep_female x10\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 15:54:54",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1416497295343620309",
+      "timestamp": "2025-09-13T18:54:32.457Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: chicken_female x10\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 15:54:32",
+      "source": "bot-monitor",
+      "channelId": "1413532807430541552",
+      "embedContent": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: chicken_female x10\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 15:54:32",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1416497240884908055",
+      "timestamp": "2025-09-13T18:54:19.473Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: chicken_male x10\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 15:54:19",
+      "source": "bot-monitor",
+      "channelId": "1413532807430541552",
+      "embedContent": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: chicken_male x10\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 15:54:19",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1416497205237383239",
+      "timestamp": "2025-09-13T18:54:10.974Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: goat_female x10\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 15:54:10",
+      "source": "bot-monitor",
+      "channelId": "1413532807430541552",
+      "embedContent": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: goat_female x10\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 15:54:10",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1416497155794927790",
+      "timestamp": "2025-09-13T18:53:59.186Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: cow_male x10\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 15:53:59",
+      "source": "bot-monitor",
+      "channelId": "1413532807430541552",
+      "embedContent": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: cow_male x10\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 15:53:59",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1416497122223718450",
+      "timestamp": "2025-09-13T18:53:51.182Z",
+      "author": "Zero Bala",
+      "content": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: goat_male x10\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 15:53:51",
+      "source": "bot-monitor",
+      "channelId": "1413532807430541552",
+      "embedContent": "REGISTRO - REGISTRO - BERÇARIO BRAITHWHAITE ||| | 4035 | 4222 | TEMOS ANIMAIS!\nMover Item para Loja\nItem adicionado: goat_male x10\nAutor: Zero Bala | FIXO: 74829\nData: 13/09/2025 - 15:53:51",
+      "rawEmbeds": []
+    },
     {
       "id": "1414519227628523521",
       "timestamp": "2025-09-08T07:54:24.363Z",

@@ -294,6 +294,60 @@ router.get('/channel-messages', (_req: Request, res: Response): void => {
   }
 });
 
+// Force refresh Ferrovia embed based on existing session data
+router.post('/refresh-ferrovia-embed', async (req: Request, res: Response): Promise<void> => {
+  try {
+    if (!ferroviaSessionService || !supplyChainService) {
+      res.status(503).json({ 
+        success: false, 
+        error: 'Services not initialized' 
+      });
+      return;
+    }
+
+    const { workerId, channelId } = req.body;
+
+    if (!workerId || !channelId) {
+      res.status(400).json({ 
+        success: false, 
+        error: 'workerId and channelId are required' 
+      });
+      return;
+    }
+
+    // Get the existing session to get worker name
+    const session = supplyChainService.getSession(workerId);
+    
+    if (!session) {
+      res.status(404).json({ 
+        success: false, 
+        error: 'Worker session not found' 
+      });
+      return;
+    }
+
+    // Force refresh the Ferrovia embed
+    console.log(`🔄 Force refreshing Ferrovia embed for worker ${session.workerName} (${workerId})`);
+    await ferroviaSessionService.createOrUpdateEmbed(workerId, session.workerName, channelId);
+    console.log(`✅ Ferrovia embed refreshed for ${session.workerName}`);
+
+    res.json({ 
+      success: true, 
+      message: `Ferrovia embed refreshed for ${session.workerName}`,
+      workerId,
+      workerName: session.workerName,
+      channelId
+    });
+
+  } catch (error) {
+    console.error('❌ Error refreshing Ferrovia embed:', error);
+    res.status(500).json({ 
+      success: false, 
+      error: 'Failed to refresh Ferrovia embed' 
+    });
+  }
+});
+
 router.post('/channel-logs', async (req: Request, res: Response): Promise<void> => {
   try {
     console.log('📨 Received channel logs request:', JSON.stringify(req.body, null, 2));
