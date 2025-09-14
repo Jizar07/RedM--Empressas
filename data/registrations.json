@@ -1043,5 +1043,27 @@
     "invitedBy": "Miranda ✦",
     "approved": true,
     "registeredAt": "2025-09-14T15:53:45.139Z"
+  },
+  {
+    "userId": "388494830483013638",
+    "username": "kidrobotlima",
+    "ingameName": "Anisio Lima",
+    "mailId": "0000",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "Barth",
+    "approved": true,
+    "registeredAt": "2025-09-14T18:06:20.207Z"
+  },
+  {
+    "userId": "398270963969425408",
+    "username": "fabianooliveira0333",
+    "ingameName": "john Weslley",
+    "mailId": "553",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "smith ramirez | 1025",
+    "approved": true,
+    "registeredAt": "2025-09-14T20:17:19.502Z"
   }
 ]

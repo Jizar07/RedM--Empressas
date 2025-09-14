@@ -97,7 +97,19 @@ When you see "/update" command from the user, perform the following actions:
 3. Update changelog.md if there are version-worthy changes
 4. Update CLAUDE.md if there are architectural or command changes
 
-## Recent Major Updates (v0.037) **[CURRENT VERSION]**
+## Recent Major Updates (v0.038) **[CURRENT VERSION]**
+
+### Complete Worker Channel Mapping Resolution (v0.038)
+- **Critical Fix**: Resolved missing worker channel mappings for all registered users
+- **Identified**: 4 registered workers with 🌾 channels missing from worker-mappings.json
+- **Added Mappings**:
+  - Thiago Bennett (924392622552916028) → Channel 1416785592989257878
+  - Bartholomeu Dias (198538680686608384) → Channel 1416530771283546274
+  - Anisio Lima (388494830483013638) → Channel 1416847554544668815
+  - john Weslley (398270963969425408) → Channel 1416880519165120542
+- **System Status**: Bot now tracking 23 worker channel mappings (up from 19)
+- **Root Cause**: Worker mapping API calls failing during registration since September 12th
+- **Result**: All registered workers with 🌾 channels now receive embeds properly
 
 ### Critical Worker Channel Mapping System Fix (v0.037)
 - **Issue**: Registered workers missing from worker-mappings.json, preventing embed delivery
@@ -269,6 +281,30 @@ When updating .md files:
 - **USE SIMPLE SOLUTIONS** - Prefer straightforward approaches over complex ones
 - **IF YOU DON'T KNOW, ASK** - Seek clarification rather than guessing
 - **🚨 CRITICAL: DO NOT FUCKING MAKE CHANGES OR RUN PROGRAMS WITHOUT EXPLICIT PERMISSION** - NEVER delete files, kill processes, modify code, or execute commands without the user's direct approval
+
+## MANDATORY PRE-RESPONSE CHECKLIST
+
+**BEFORE RESPONDING TO ANY REQUEST:**
+1. **Read this request carefully** - What exactly is being asked?
+2. **Check: Am I making assumptions?** - Am I assuming something that wasn't explicitly stated?
+3. **Check: Should I ask clarifying questions first?** - Do I need more information before proceeding?
+4. **If yes to either check, ASK QUESTIONS BEFORE DOING ANYTHING**
+5. **Never create new files/systems when existing ones likely exist**
+6. **Never assume user needs something built from scratch**
+
+## ENFORCEMENT MECHANISMS
+
+### User Trigger Phrases
+- When user says "Following CLAUDE.md rules:" - Consciously apply all rules before responding
+- When user says "DO NOT ASSUME ANYTHING" - Ask clarifying questions first
+- When user says "ASK QUESTIONS FIRST" - Do not provide solutions, only ask questions
+- When user says "STOP - READ THE RULES" - Immediately stop and re-read this section
+
+### Assumption Prevention
+- **Default response to requests: Ask clarifying questions first**
+- **Never assume user needs new code/files/systems created**
+- **Always ask about existing implementations before suggesting new ones**
+- **When in doubt, ask "What do you have already?" or "Show me your current setup"**
 
 ## MANDATORY PRE-RESPONSE CHECKLIST
 

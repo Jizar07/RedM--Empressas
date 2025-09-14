@@ -1,0 +1,19 @@
+{
+  "sessionId": "session_1757852497443_b19knk",
+  "workerId": "273987353456934913",
+  "workerName": "Souzz Ramirez",
+  "amount": 25,
+  "paidBy": "372161270176153601",
+  "paidByName": "GM Stoffel",
+  "paidAt": "2025-09-14T21:03:44.908Z",
+  "plantTransactions": [
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 100,
+      "transactionId": "tx_1757852497445_k6yac7",
+      "timestamp": "2025-09-14T12:21:37.445Z"
+    }
+  ],
+  "animalTransactions": []
+}

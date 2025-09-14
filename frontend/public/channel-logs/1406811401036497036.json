@@ -1,8 +1,78 @@
 {
   "channelId": "1406811401036497036",
-  "lastUpdated": "2025-09-14T15:33:26.094Z",
-  "messageCount": 65,
+  "lastUpdated": "2025-09-14T20:37:00.428Z",
+  "messageCount": 72,
   "messages": [
+    {
+      "id": "1416885469307867278",
+      "author": "Atlanta",
+      "content": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nRetirar item da Loja\nItem Retirado:: cow_male x4\nFuncionario:: Thiago Bennett | FIXO: 75408\nData:: 14/09/2025 -  17:37:00",
+      "timestamp": "2025-09-14T20:37:00.342Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nRetirar item da Loja\nItem Retirado:: cow_male x4\nFuncionario:: Thiago Bennett | FIXO: 75408\nData:: 14/09/2025 -  17:37:00",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1416878327314120704",
+      "author": "Atlanta",
+      "content": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nRetirar item da Loja\nItem Retirado:: goat_male x1\nFuncionario:: Koda Smith | FIXO: 76977\nData:: 14/09/2025 -  17:08:37",
+      "timestamp": "2025-09-14T20:08:37.558Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nRetirar item da Loja\nItem Retirado:: goat_male x1\nFuncionario:: Koda Smith | FIXO: 76977\nData:: 14/09/2025 -  17:08:37",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1416873283638268106",
+      "author": "Atlanta",
+      "content": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nRetirar item da Loja\nItem Retirado:: cow_female x4\nFuncionario:: Thiago Bennett | FIXO: 75408\nData:: 14/09/2025 -  16:48:34",
+      "timestamp": "2025-09-14T19:48:35.052Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nRetirar item da Loja\nItem Retirado:: cow_female x4\nFuncionario:: Thiago Bennett | FIXO: 75408\nData:: 14/09/2025 -  16:48:34",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1416869800264728717",
+      "author": "Atlanta",
+      "content": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nRetirar item da Loja\nItem Retirado:: donkey_male x4\nFuncionario:: BONNIE BENNETT | FIXO: 74490\nData:: 14/09/2025 -  16:34:44",
+      "timestamp": "2025-09-14T19:34:44.551Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nRetirar item da Loja\nItem Retirado:: donkey_male x4\nFuncionario:: BONNIE BENNETT | FIXO: 74490\nData:: 14/09/2025 -  16:34:44",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1416863782877139005",
+      "author": "Atlanta",
+      "content": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nRetirar item da Loja\nItem Retirado:: goat_male x4\nFuncionario:: Koda Smith | FIXO: 76977\nData:: 14/09/2025 -  16:10:49",
+      "timestamp": "2025-09-14T19:10:49.894Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nRetirar item da Loja\nItem Retirado:: goat_male x4\nFuncionario:: Koda Smith | FIXO: 76977\nData:: 14/09/2025 -  16:10:49",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1416863618905149440",
+      "author": "Atlanta",
+      "content": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nRetirar item da Loja\nItem Retirado:: chicken_male x4\nFuncionario:: Thiago Bennett | FIXO: 75408\nData:: 14/09/2025 -  16:10:10",
+      "timestamp": "2025-09-14T19:10:10.800Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nRetirar item da Loja\nItem Retirado:: chicken_male x4\nFuncionario:: Thiago Bennett | FIXO: 75408\nData:: 14/09/2025 -  16:10:10",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1416852052788903957",
+      "author": "Atlanta",
+      "content": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nRetirar item da Loja\nItem Retirado:: goat_female x4\nFuncionario:: BONNIE BENNETT | FIXO: 74490\nData:: 14/09/2025 -  15:24:13",
+      "timestamp": "2025-09-14T18:24:13.223Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nRetirar item da Loja\nItem Retirado:: goat_female x4\nFuncionario:: BONNIE BENNETT | FIXO: 74490\nData:: 14/09/2025 -  15:24:13",
+      "rawEmbeds": []
+    },
     {
       "id": "1416809072774353037",
       "author": "Atlanta",

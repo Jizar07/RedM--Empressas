@@ -17,7 +17,7 @@
     "workerName": "Notorius Bowdin",
     "channelId": "1416375054211481731",
     "createdAt": "2025-09-13T10:48:47.987Z",
-    "lastActive": "2025-09-14T11:12:51.347Z"
+    "lastActive": "2025-09-14T19:13:02.764Z"
   },
   "774273635414048800": {
     "workerId": "774273635414048800",
@@ -61,7 +61,7 @@
     "workerName": "BONNIE BENNETT",
     "channelId": "1416502543990915132",
     "createdAt": "2025-09-13T19:15:23.917Z",
-    "lastActive": "2025-09-14T01:44:43.829Z"
+    "lastActive": "2025-09-14T19:07:49.282Z"
   },
   "831906964786511903": {
     "workerId": "831906964786511903",
@@ -107,7 +107,7 @@
     "workerName": "Koda Smith",
     "channelId": "1416562932442988615",
     "createdAt": "2025-09-13T23:15:21.663Z",
-    "lastActive": "2025-09-14T16:26:34.950Z"
+    "lastActive": "2025-09-14T20:53:15.602Z"
   },
   "273987353456934913": {
     "workerId": "273987353456934913",
@@ -126,6 +126,25 @@
     "workerId": "924392622552916028",
     "workerName": "Thiago Bennett",
     "channelId": "1416785592989257878",
-    "createdAt": "2025-09-14T17:33:35.815Z"
+    "createdAt": "2025-09-14T21:00:00.000Z",
+    "lastActive": "2025-09-14T21:12:35.414Z"
+  },
+  "198538680686608384": {
+    "workerId": "198538680686608384",
+    "workerName": "Bartholomeu Dias",
+    "channelId": "1416530771283546274",
+    "createdAt": "2025-09-14T21:15:00.000Z"
+  },
+  "388494830483013638": {
+    "workerId": "388494830483013638",
+    "workerName": "Anisio Lima",
+    "channelId": "1416847554544668815",
+    "createdAt": "2025-09-14T21:15:00.000Z"
+  },
+  "398270963969425408": {
+    "workerId": "398270963969425408",
+    "workerName": "john Weslley",
+    "channelId": "1416880519165120542",
+    "createdAt": "2025-09-14T21:15:00.000Z"
   }
 }

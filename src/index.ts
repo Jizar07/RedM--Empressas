@@ -5,7 +5,7 @@ import { connectDatabase } from './services/DatabaseService';
 
 async function main() {
   try {
-    console.log('🚀 Starting RedM Discord Bot...');
+    console.log('🚀 Starting RedM Discord Bot...'); // Reload mappings
     console.log('📝 Version: 0.001');
     console.log('🌍 Environment:', config.environment.nodeEnv);
     

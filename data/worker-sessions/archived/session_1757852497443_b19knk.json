@@ -1,0 +1,22 @@
+{
+  "workerId": "273987353456934913",
+  "workerName": "Souzz Ramirez",
+  "channelId": "1416760197329719306",
+  "sessionId": "session_1757852497443_b19knk",
+  "startTime": "2025-09-14T12:21:37.443Z",
+  "lastActivity": "2025-09-14T12:21:37.445Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 100,
+      "transactionId": "tx_1757852497445_k6yac7",
+      "timestamp": "2025-09-14T12:21:37.445Z"
+    }
+  ],
+  "animalTransactions": [],
+  "totalCredits": 25,
+  "completedAt": "2025-09-14T21:03:44.907Z",
+  "notes": "Pago por GM Stoffel (372161270176153601)"
+}

@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1757883824909_oveo8s",
+  "sessionId": "session_1757852497443_b19knk",
+  "managerId": "372161270176153601",
+  "managerName": "GM Stoffel",
+  "workerId": "273987353456934913",
+  "workerName": "Souzz Ramirez",
+  "amountPaid": 25,
+  "paidAt": "2025-09-14T21:03:44.909Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-09-14T20:58:44.909Z",
+    "endTime": "2025-09-14T21:13:44.909Z"
+  }
+}

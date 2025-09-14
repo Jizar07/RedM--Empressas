@@ -12,7 +12,7 @@
     "workerId": "584129725052747798",
     "workerName": "Cliff Dillimore",
     "channelId": "1416197670632161451",
-    "lastUpdated": "2025-09-13T21:55:56.599Z",
+    "lastUpdated": "2025-09-14T21:11:41.925Z",
     "embedMessageId": "1416542372971417702"
   },
   "266262427329495041": {
@@ -36,7 +36,7 @@
     "workerId": "1195169284847050786",
     "workerName": "Koda Smith",
     "channelId": "1416562932442988615",
-    "lastUpdated": "2025-09-14T15:36:35.565Z",
+    "lastUpdated": "2025-09-14T19:08:57.398Z",
     "embedMessageId": "1416574281969569793"
   },
   "976320273601146973": {
@@ -52,7 +52,7 @@
     "workerId": "1204772480305209384",
     "workerName": "BONNIE BENNETT",
     "channelId": "1416502543990915132",
-    "lastUpdated": "2025-09-14T01:09:16.546Z",
+    "lastUpdated": "2025-09-14T18:03:03.205Z",
     "embedMessageId": "1416591599806447768"
   },
   "333664599549411329": {
@@ -68,7 +68,7 @@
     "workerId": "614876929266417672",
     "workerName": "Notorius Bowdin",
     "channelId": "1416375054211481731",
-    "lastUpdated": "2025-09-14T12:12:25.510Z",
+    "lastUpdated": "2025-09-14T19:13:02.772Z",
     "embedMessageId": "1416758487165304832"
   },
   "141250620593012736": {
@@ -79,12 +79,28 @@
     "lastUpdated": "2025-09-14T12:19:08.037Z",
     "embedMessageId": "1416760175603482838"
   },
+  "1235055429260935321": {
+    "sessionId": "1fa9ee54-1671-4952-823c-d0233485f2e6",
+    "workerId": "1235055429260935321",
+    "workerName": "smith ramirez",
+    "channelId": "1416447193685950595",
+    "lastUpdated": "2025-09-14T18:21:50.115Z",
+    "embedMessageId": "1416851273889747035"
+  },
   "273987353456934913": {
-    "sessionId": "6d498276-cec3-4cf6-8625-0460f257e828",
+    "sessionId": "bdfc7368-6a79-4d29-824e-a8123fa798d1",
     "workerId": "273987353456934913",
     "workerName": "Souzz Ramirez",
     "channelId": "1416760197329719306",
-    "lastUpdated": "2025-09-14T12:21:37.872Z",
-    "embedMessageId": "1416760803788329072"
+    "lastUpdated": "2025-09-14T21:00:55.468Z",
+    "embedMessageId": "1416891487932776470"
+  },
+  "924392622552916028": {
+    "sessionId": "c6ca5c7c-63d6-40a1-b136-90b24e9160f5",
+    "workerId": "924392622552916028",
+    "workerName": "Thiago Bennett",
+    "channelId": "1416785592989257878",
+    "lastUpdated": "2025-09-14T21:12:35.425Z",
+    "embedMessageId": "1416893604114202867"
   }
 }

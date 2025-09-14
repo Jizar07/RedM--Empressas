@@ -46,7 +46,7 @@ const config: Config = {
     guildId: process.env.DISCORD_GUILD_ID || '',
   },
   api: {
-    port: parseInt(process.env.API_PORT || '3000', 10),
+    port: parseInt(process.env.API_PORT!, 10),
     host: process.env.API_HOST || 'localhost',
   },
   database: {
