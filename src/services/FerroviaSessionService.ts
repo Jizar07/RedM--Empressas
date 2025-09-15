@@ -4,6 +4,7 @@ import path from 'path';
 import SupplyChainService, { SupplyChainSession } from './SupplyChainService';
 import ItemTranslationService from './ItemTranslationService';
 import RecipeService from './RecipeService';
+import { WorkerChannelService } from './WorkerChannelService';
 
 interface FerroviaSessionEmbed {
   sessionId: string;
@@ -19,6 +20,7 @@ export class FerroviaSessionService {
   private supplyChainService: SupplyChainService;
   private itemTranslationService: ItemTranslationService;
   private recipeService: RecipeService;
+  private workerChannelService: WorkerChannelService;
   private activeEmbeds: Map<string, FerroviaSessionEmbed> = new Map();
   private dataDir: string;
 
@@ -27,6 +29,7 @@ export class FerroviaSessionService {
     this.supplyChainService = new SupplyChainService();
     this.itemTranslationService = ItemTranslationService.getInstance();
     this.recipeService = new RecipeService();
+    this.workerChannelService = new WorkerChannelService(client);
     this.dataDir = path.join(process.cwd(), 'data', 'ferrovia-embeds');
     this.ensureDataDirectory();
     this.loadActiveEmbeds();
@@ -131,7 +134,18 @@ export class FerroviaSessionService {
 
   private async updateFerroviaEmbed(embedData: FerroviaSessionEmbed, session: SupplyChainSession): Promise<void> {
     try {
-      const channel = await this.client.channels.fetch(embedData.channelId) as TextChannel;
+      // Get current channel ID from WorkerChannelService (source of truth)
+      const currentWorkerMapping = this.workerChannelService.getWorkerChannel(embedData.workerId);
+      let channelId = embedData.channelId;
+
+      if (currentWorkerMapping && currentWorkerMapping.channelId !== embedData.channelId) {
+        console.log(`🔄 Updating cached channel ID for ${embedData.workerName}: ${embedData.channelId} → ${currentWorkerMapping.channelId}`);
+        channelId = currentWorkerMapping.channelId;
+        embedData.channelId = channelId;
+        await this.saveActiveEmbeds(); // Save updated channel ID
+      }
+
+      const channel = await this.client.channels.fetch(channelId) as TextChannel;
       if (!channel) {
         console.error(`❌ Channel ${embedData.channelId} not found for worker ${embedData.workerName}`);
         return;

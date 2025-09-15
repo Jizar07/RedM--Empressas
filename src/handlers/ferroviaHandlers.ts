@@ -71,18 +71,17 @@ export async function handleFerroviaVerified(interaction: ButtonInteraction): Pr
       // Note: Session verification metadata would be stored separately if needed
       // as the SupplyChainSession interface doesn't include verification fields
 
-      // Update the existing embed to show as verified (remove buttons)
-      const verifiedEmbed = new EmbedBuilder()
-        .setTitle(`✅ ${session.workerName} - Sessão Ferrovia Verificada`)
-        .setDescription(`**Verificado por:** ${interaction.user.displayName || interaction.user.username}`)
-        .setColor(0x00FF00)
+      // Create receipt embed (transform existing embed)
+      const receiptEmbed = new EmbedBuilder()
+        .setTitle(`🚂 ${session.workerName} - Verificado`)
+        .setColor(0x0088FF) // Blue for receipt
         .setTimestamp()
-        .setFooter({ text: `Sessão Verificada: ${session.sessionId.substring(0, 8)}` });
+        .setFooter({ text: `Verificado por ${interaction.user.displayName || interaction.user.username} • Sessão: ${session.sessionId.substring(0, 8)}` });
 
       // Add the same session data as the receipt
       if (summary.length > 0) {
-        verifiedEmbed.addFields({
-          name: '📊 Resumo da Sessão Verificada',
+        receiptEmbed.addFields({
+          name: '📊 Resumo da Sessão',
           value: summary.join('\n') || 'Nenhuma atividade registrada',
           inline: false
         });
@@ -115,7 +114,7 @@ export async function handleFerroviaVerified(interaction: ButtonInteraction): Pr
         });
 
         if (plantDetails.length > 0) {
-          verifiedEmbed.addFields({
+          receiptEmbed.addFields({
             name: '🌿 Plantas Processadas',
             value: plantDetails.join('\n'),
             inline: false
@@ -153,7 +152,7 @@ export async function handleFerroviaVerified(interaction: ButtonInteraction): Pr
         }
 
         if (boxDetails.length > 0) {
-          verifiedEmbed.addFields({
+          receiptEmbed.addFields({
             name: '📦 Caixas Processadas',
             value: boxDetails.join('\n'),
             inline: false
@@ -161,29 +160,22 @@ export async function handleFerroviaVerified(interaction: ButtonInteraction): Pr
         }
       }
 
-      // Update the existing message to remove buttons (creates the receipt)
+      // Transform the existing embed into a permanent receipt (remove buttons)
       if (interaction.message) {
-        await interaction.message.edit({ embeds: [verifiedEmbed], components: [] });
+        await interaction.message.edit({ embeds: [receiptEmbed], components: [] });
+        console.log(`✅ Transformed Ferrovia embed to receipt for ${session.workerName} - verified by ${interaction.user.displayName || interaction.user.username}`);
       }
 
-      // AFTER creating the receipt, remove embedData completely so new session gets fresh embed
+      // Remove the session and embed data (DON'T create new session until worker activity)
       ferroviaService['activeEmbeds'].delete(workerId);
       await ferroviaService['saveActiveEmbeds']();
-
-      // Clear the current session data and start a new one
-      console.log(`🔄 Clearing session data for worker ${workerId} after verification`);
       ferroviaService['supplyChainService'].clearSessionData(workerId);
 
-      // Create a new session for the worker
-      const newSession = await ferroviaService['supplyChainService'].createOrGetSession(workerId, session.workerName, 'worker');
-      console.log(`✨ Created new session for worker ${workerId} with ID: ${newSession.sessionId}`);
+      console.log(`🗂️ Cleared session data for worker ${workerId} after verification - no new session created`);
 
-      // Create a new embed for the new session (will be a new message)
-      await ferroviaService.createOrUpdateEmbed(workerId, session.workerName, interaction.channelId);
-      console.log(`🔄 New Ferrovia embed created for fresh session of worker ${workerId}`);
-
+      // Reply with simple confirmation (no detailed message needed)
       await interaction.editReply({
-        content: `✅ Sessão de Ferrovia de **${session.workerName}** foi verificada com sucesso! Um recibo foi gerado e uma nova sessão foi iniciada.`
+        content: `✅ Sessão verificada com sucesso.`
       });
       
       console.log(`✅ Ferrovia session for worker ${workerId} verified successfully by ${interaction.user.username}`);

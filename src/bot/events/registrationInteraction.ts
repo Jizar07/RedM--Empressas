@@ -384,6 +384,14 @@ async function handleInviterSelection(interaction: UserSelectMenuInteraction): P
             if (channelResult.channelId) {
               try {
                 console.log(`📝 Registering worker channel for activity tracking...`);
+                console.log(`   Worker ID: ${interaction.user.id}`);
+                console.log(`   Worker Name: ${tempData.ingameName}`);
+                console.log(`   Channel ID: ${channelResult.channelId}`);
+
+                // Get auth token from config or client
+                const authToken = config.discord.token || interaction.client.token;
+                console.log(`🔑 Using auth token: ${authToken ? authToken.substring(0, 10) + '...' : 'NOT FOUND'}`);
+
                 const mappingResponse = await axios.post(
                   `http://localhost:${config.api.port}/api/worker-activity/mapping`,
                   {
@@ -394,7 +402,7 @@ async function handleInviterSelection(interaction: UserSelectMenuInteraction): P
                   },
                   {
                     headers: {
-                      'x-bot-token': process.env.DISCORD_TOKEN || config.discord.token
+                      'x-bot-token': authToken
                     }
                   }
                 );
@@ -404,8 +412,12 @@ async function handleInviterSelection(interaction: UserSelectMenuInteraction): P
                 } else {
                   console.warn(`⚠️ Worker channel mapping response: ${mappingResponse.status}`);
                 }
-              } catch (mappingError) {
-                console.error('❌ Failed to register worker channel mapping:', mappingError);
+              } catch (mappingError: any) {
+                console.error('❌ Failed to register worker channel mapping:', mappingError.message);
+                if (mappingError.response) {
+                  console.error('   Response status:', mappingError.response.status);
+                  console.error('   Response data:', mappingError.response.data);
+                }
               }
             }
           } else {

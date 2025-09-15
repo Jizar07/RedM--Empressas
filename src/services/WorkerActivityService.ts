@@ -31,6 +31,14 @@ interface SeedExpectation {
   transactionId: string;
 }
 
+interface AnimalExpectation {
+  animalsTaken: number;
+  animalsDelivered: number;
+  isComplete: boolean;
+  transactionId: string;
+  takenTimestamp: Date;
+}
+
 interface WorkerSession {
   workerId: string;
   workerName: string;
@@ -42,6 +50,7 @@ interface WorkerSession {
   plantTransactions: PlantTransaction[];
   animalTransactions: AnimalTransaction[];
   seedExpectations?: SeedExpectation[]; // Track seed-to-plant expectations
+  animalExpectations?: AnimalExpectation[]; // Track animal-taking expectations
   totalCredits: number;
   embedMessageId?: string;
   notes?: string;
@@ -124,7 +133,15 @@ export class WorkerActivityService {
             ...t,
             timestamp: new Date(t.timestamp)
           }));
-          
+
+          // Restore animal expectations with Date objects
+          if (session.animalExpectations) {
+            session.animalExpectations = session.animalExpectations.map((exp: any) => ({
+              ...exp,
+              takenTimestamp: new Date(exp.takenTimestamp)
+            }));
+          }
+
           this.activeSessions.set(workerId, session);
         });
         
@@ -218,6 +235,57 @@ export class WorkerActivityService {
     return validPlantCredits;
   }
 
+  // Create animal expectation when animals are taken
+  private createAnimalExpectation(animalsTaken: number, transactionId: string): AnimalExpectation {
+    return {
+      animalsTaken,
+      animalsDelivered: 0,
+      isComplete: false,
+      transactionId,
+      takenTimestamp: new Date()
+    };
+  }
+
+  // Update animal expectations when animals are delivered
+  private updateAnimalExpectations(session: WorkerSession, animalsDelivered: number): number {
+    if (!session.animalExpectations) {
+      session.animalExpectations = [];
+    }
+
+    let validAnimalCredits = 0;
+
+    // Find matching incomplete animal expectations
+    const matchingExpectations = session.animalExpectations.filter(
+      exp => !exp.isComplete
+    ).sort((a, b) => a.takenTimestamp.getTime() - b.takenTimestamp.getTime()); // FIFO
+
+    let remainingAnimals = animalsDelivered;
+
+    for (const expectation of matchingExpectations) {
+      if (remainingAnimals <= 0) break;
+
+      const needed = expectation.animalsTaken - expectation.animalsDelivered;
+      const canFulfill = Math.min(needed, remainingAnimals);
+
+      expectation.animalsDelivered += canFulfill;
+      validAnimalCredits += canFulfill;
+      remainingAnimals -= canFulfill;
+
+      if (expectation.animalsDelivered >= expectation.animalsTaken) {
+        expectation.isComplete = true;
+      }
+
+      console.log(`🐄 Applied ${canFulfill} animals to expectation (${expectation.animalsDelivered}/${expectation.animalsTaken})`);
+    }
+
+    // Log any excess animals (unexpected deliveries)
+    if (remainingAnimals > 0) {
+      console.log(`❓ ${remainingAnimals} animals delivered without taking expectation`);
+    }
+
+    return validAnimalCredits;
+  }
+
   // Smart formatting with summarization when hitting character limits
   private formatTransactionsWithSummarization(
     transactions: PlantTransaction[],
@@ -282,6 +350,41 @@ export class WorkerActivityService {
     }
 
     return lines.join('\n');
+  }
+
+  // Group plant transactions by type and time period for cleaner display
+  private async groupPlantTransactionsByTypeAsync(transactions: PlantTransaction[]): Promise<{ [itemName: string]: { quantity: number; count: number; credits: number; firstTimestamp: Date; lastTimestamp: Date } }> {
+    const grouped: { [itemName: string]: { quantity: number; count: number; credits: number; firstTimestamp: Date; lastTimestamp: Date } } = {};
+    const prices = await this.getWorkerPrices();
+
+    transactions.forEach(transaction => {
+      const itemName = transaction.itemName;
+      const credits = transaction.quantity * prices.plantPrice;
+
+      if (!grouped[itemName]) {
+        grouped[itemName] = {
+          quantity: 0,
+          count: 0,
+          credits: 0,
+          firstTimestamp: transaction.timestamp,
+          lastTimestamp: transaction.timestamp
+        };
+      }
+
+      grouped[itemName].quantity += transaction.quantity;
+      grouped[itemName].count += 1;
+      grouped[itemName].credits += credits;
+
+      // Track time range
+      if (transaction.timestamp < grouped[itemName].firstTimestamp) {
+        grouped[itemName].firstTimestamp = transaction.timestamp;
+      }
+      if (transaction.timestamp > grouped[itemName].lastTimestamp) {
+        grouped[itemName].lastTimestamp = transaction.timestamp;
+      }
+    });
+
+    return grouped;
   }
 
   // Removed old seed expectation display methods - now using new transparent format with timestamps
@@ -559,7 +662,24 @@ export class WorkerActivityService {
 
     session.animalTransactions.push(animalTransaction);
     session.lastActivity = new Date();
-    
+
+    // Handle animal expectation tracking
+    if (animalTransaction.type === 'animals_taken') {
+      // Create new animal expectation
+      if (!session.animalExpectations) {
+        session.animalExpectations = [];
+      }
+      const animalExpectation = this.createAnimalExpectation(
+        animalTransaction.quantity,
+        animalTransaction.transactionId
+      );
+      session.animalExpectations.push(animalExpectation);
+      console.log(`🐄 Created animal expectation: ${animalExpectation.animalsTaken} animals taken → expecting delivery`);
+    } else if (animalTransaction.type === 'delivery_completed') {
+      // Update animal expectations
+      this.updateAnimalExpectations(session, animalTransaction.quantity);
+    }
+
     await this.recalculateSessionCredits(session);
     this.saveActiveSessions();
     
@@ -594,7 +714,7 @@ export class WorkerActivityService {
         return;
       }
 
-      const embed = this.createSessionEmbed(session);
+      const embed = await this.createSessionEmbed(session);
       const buttons = this.createSessionButtons(session);
       const components = buttons.components.length > 0 ? [buttons] : [];
 
@@ -623,7 +743,7 @@ export class WorkerActivityService {
     }
   }
 
-  private createSessionEmbed(session: WorkerSession): EmbedBuilder {
+  private async createSessionEmbed(session: WorkerSession): Promise<EmbedBuilder> {
     const embed = new EmbedBuilder()
       .setTitle(`${this.getSessionIcon(session)} ${session.workerName} - ${this.getStatusText(session.status)}`)
       .setTimestamp(session.lastActivity)
@@ -652,17 +772,16 @@ export class WorkerActivityService {
       inline: false
     });
 
-    // Add seeds taken section with timestamps (like animals)
+    // Add seeds taken section with timestamps
     const seedsTaken = session.plantTransactions.filter(t => t.type === 'seed_taken');
     if (seedsTaken.length > 0) {
       const seedsDisplay = this.formatTransactionsWithSummarization(
         seedsTaken,
         '🌱 Sementes Retiradas',
         (t) => `${t.quantity} ${t.itemName}`,
-        800 // Character limit for field
+        800
       );
 
-      // Calculate total expected plants
       const totalSeeds = seedsTaken.reduce((sum, t) => sum + t.quantity, 0);
       const expectedPlants = totalSeeds * 10;
       const seedsSummary = `${seedsDisplay}\n**Total: ${totalSeeds} sementes → Esperado: ${expectedPlants} plantas**`;
@@ -674,37 +793,88 @@ export class WorkerActivityService {
       });
     }
 
-    // Add plants deposited section with timestamps
+    // Add seed expectations with strikethrough for completed
+    if (session.seedExpectations && session.seedExpectations.length > 0) {
+      const expectationLines: string[] = [];
+
+      session.seedExpectations.forEach(exp => {
+        const progress = `${exp.plantsFulfilled}/${exp.expectedPlantQuantity}`;
+        const statusIcon = exp.isComplete ? '✅' : '⏳';
+        const seedLine = `${exp.seedQuantity} ${exp.seedType} → ${exp.expectedPlantQuantity} ${exp.expectedPlantType}`;
+
+        if (exp.isComplete) {
+          expectationLines.push(`~~${seedLine}~~ ${statusIcon}`);
+        } else {
+          expectationLines.push(`${seedLine} (${progress}) ${statusIcon}`);
+        }
+      });
+
+      if (expectationLines.length > 0) {
+        embed.addFields({
+          name: '🔄 Expectativas de Sementes',
+          value: this.truncateFieldValue(expectationLines.join('\n')),
+          inline: false
+        });
+      }
+    }
+
+    // Add plants deposited section with grouping by type
     const plantsDeposited = session.plantTransactions.filter(t => t.type === 'plant_deposited');
     if (plantsDeposited.length > 0) {
-      const plantsDisplay = this.formatTransactionsWithSummarization(
-        plantsDeposited,
-        '🌾 Plantas Depositadas',
-        (t) => `${t.quantity} ${t.itemName}`,
-        800 // Character limit for field
-      );
+      const groupedPlants = await this.groupPlantTransactionsByTypeAsync(plantsDeposited);
+      const plantLines: string[] = [];
+      let totalPlantCredits = 0;
 
-      // Calculate total plants and credits
+      Object.entries(groupedPlants).forEach(([itemName, data]) => {
+        totalPlantCredits += data.credits;
+        if (data.count === 1) {
+          plantLines.push(`• ${data.quantity} ${itemName} ($${data.credits.toFixed(2)})`);
+        } else {
+          plantLines.push(`• ${data.quantity} ${itemName} (${data.count} depósitos) ($${data.credits.toFixed(2)})`);
+        }
+      });
+
       const totalPlants = plantsDeposited.reduce((sum, t) => sum + t.quantity, 0);
-      const plantCredits = totalPlants * 0.25; // Using correct price
-      const plantsSummary = `${plantsDisplay}\n**Total: ${totalPlants} plantas (${plantsDeposited.length} depósitos) = $${plantCredits.toFixed(2)}**`;
+      plantLines.push(`**Total: ${totalPlants} plantas = $${totalPlantCredits.toFixed(2)}**`);
 
       embed.addFields({
         name: '🌾 Plantas Depositadas',
-        value: this.truncateFieldValue(plantsSummary),
+        value: this.truncateFieldValue(plantLines.join('\n')),
         inline: false
       });
     }
 
-    // Optionally show seed expectations in a compact format (only if space permits)
-    // Removed the old confusing seed expectations display - now showing actual seeds/plants instead
+    // Add animal expectations with strikethrough for completed
+    if (session.animalExpectations && session.animalExpectations.length > 0) {
+      const animalExpectationLines: string[] = [];
 
-    // Add animal transactions section
-    if (session.animalTransactions.length > 0) {
-      const animalSummary = session.animalTransactions.map(t => {
+      session.animalExpectations.forEach(exp => {
+        const progress = `${exp.animalsDelivered}/${exp.animalsTaken}`;
+        const statusIcon = exp.isComplete ? '✅' : '⏳';
+        const animalLine = `${exp.animalsTaken} Animais Retirados → Aguardando Entrega`;
+
+        if (exp.isComplete) {
+          animalExpectationLines.push(`~~${animalLine}~~ ${statusIcon}`);
+        } else {
+          animalExpectationLines.push(`${animalLine} (${progress}) ${statusIcon}`);
+        }
+      });
+
+      if (animalExpectationLines.length > 0) {
+        embed.addFields({
+          name: '🐄 Expectativas de Animais',
+          value: this.truncateFieldValue(animalExpectationLines.join('\n')),
+          inline: false
+        });
+      }
+    }
+
+    // Add animal deliveries section
+    const animalDeliveries = session.animalTransactions.filter(t => t.type === 'delivery_completed');
+    if (animalDeliveries.length > 0) {
+      const animalSummary = animalDeliveries.map(t => {
         const timeStr = `<t:${Math.floor(t.timestamp.getTime() / 1000)}:t>`;
-        const typeStr = t.animalType ? ` ${t.animalType}` : '';
-        return `• ${timeStr} - ${t.quantity}${typeStr} Animais → $${(t.amount || 0).toFixed(2)}`;
+        return `• ${timeStr} - ${t.quantity} Animais → $${(t.amount || 0).toFixed(2)}`;
       });
 
       embed.addFields({
@@ -727,6 +897,164 @@ export class WorkerActivityService {
     return embed;
   }
 
+  // Transform existing embed into permanent receipt
+  private async transformEmbedToReceipt(session: WorkerSession, status: 'paid' | 'verified', managerName: string): Promise<void> {
+    try {
+      if (!session.embedMessageId) {
+        console.log(`⚠️ No embed message ID found for ${session.workerName}, cannot transform to receipt`);
+        return;
+      }
+
+      const channel = await this.client.channels.fetch(session.channelId) as TextChannel;
+      if (!channel) {
+        console.error(`❌ Channel ${session.channelId} not found for worker ${session.workerName}`);
+        return;
+      }
+
+      // Create the receipt embed (similar to active embed but with receipt formatting)
+      const receiptEmbed = await this.createReceiptEmbed(session, status, managerName);
+
+      try {
+        const message = await channel.messages.fetch(session.embedMessageId);
+        // Transform the existing embed into a receipt with no buttons
+        await message.edit({
+          embeds: [receiptEmbed],
+          components: [] // Remove all buttons
+        });
+        console.log(`✅ Transformed embed to receipt for ${session.workerName} - ${status} by ${managerName}`);
+      } catch (error) {
+        console.error('❌ Failed to transform embed to receipt:', error);
+      }
+
+    } catch (error) {
+      console.error(`❌ Error transforming embed to receipt for ${session.workerName}:`, error);
+    }
+  }
+
+  // Create receipt embed (permanent record)
+  private async createReceiptEmbed(session: WorkerSession, status: 'paid' | 'verified', managerName: string): Promise<EmbedBuilder> {
+    const embed = new EmbedBuilder()
+      .setTitle(`${this.getSessionIcon(session)} ${session.workerName} - ${status === 'paid' ? 'Pago' : 'Verificado'}`)
+      .setTimestamp(new Date())
+      .setFooter({ text: `${status === 'paid' ? 'Pago' : 'Verificado'} por ${managerName} • Sessão: ${session.sessionId.split('_')[1]}` })
+      .setColor(0x0088FF); // Blue for receipt
+
+    // Add session info
+    embed.addFields({
+      name: '📅 Informações da Sessão',
+      value: `**Iniciado:** <t:${Math.floor(session.startTime.getTime() / 1000)}:R>\n**Finalizado:** <t:${Math.floor(Date.now() / 1000)}:t>`,
+      inline: false
+    });
+
+    // Add seeds taken section (same as active embed)
+    const seedsTaken = session.plantTransactions.filter(t => t.type === 'seed_taken');
+    if (seedsTaken.length > 0) {
+      const seedsDisplay = this.formatTransactionsWithSummarization(
+        seedsTaken,
+        '🌱 Sementes Retiradas',
+        (t) => `${t.quantity} ${t.itemName}`,
+        800
+      );
+
+      const totalSeeds = seedsTaken.reduce((sum, t) => sum + t.quantity, 0);
+      const expectedPlants = totalSeeds * 10;
+      const seedsSummary = `${seedsDisplay}\n**Total: ${totalSeeds} sementes → Esperado: ${expectedPlants} plantas**`;
+
+      embed.addFields({
+        name: '🌱 Sementes Retiradas',
+        value: this.truncateFieldValue(seedsSummary),
+        inline: false
+      });
+    }
+
+    // Add completed seed expectations (all as strikethrough since it's a receipt)
+    if (session.seedExpectations && session.seedExpectations.length > 0) {
+      const expectationLines: string[] = [];
+
+      session.seedExpectations.forEach(exp => {
+        const seedLine = `${exp.seedQuantity} ${exp.seedType} → ${exp.expectedPlantQuantity} ${exp.expectedPlantType}`;
+        expectationLines.push(`~~${seedLine}~~ ✅`);
+      });
+
+      if (expectationLines.length > 0) {
+        embed.addFields({
+          name: '🔄 Expectativas de Sementes (Finalizadas)',
+          value: this.truncateFieldValue(expectationLines.join('\n')),
+          inline: false
+        });
+      }
+    }
+
+    // Add plants deposited section (same as active embed)
+    const plantsDeposited = session.plantTransactions.filter(t => t.type === 'plant_deposited');
+    if (plantsDeposited.length > 0) {
+      const groupedPlants = await this.groupPlantTransactionsByTypeAsync(plantsDeposited);
+      const plantLines: string[] = [];
+      let totalPlantCredits = 0;
+
+      Object.entries(groupedPlants).forEach(([itemName, data]) => {
+        totalPlantCredits += data.credits;
+        if (data.count === 1) {
+          plantLines.push(`• ${data.quantity} ${itemName} ($${data.credits.toFixed(2)})`);
+        } else {
+          plantLines.push(`• ${data.quantity} ${itemName} (${data.count} depósitos) ($${data.credits.toFixed(2)})`);
+        }
+      });
+
+      const totalPlants = plantsDeposited.reduce((sum, t) => sum + t.quantity, 0);
+      plantLines.push(`**Total: ${totalPlants} plantas = $${totalPlantCredits.toFixed(2)}**`);
+
+      embed.addFields({
+        name: '🌾 Plantas Depositadas',
+        value: this.truncateFieldValue(plantLines.join('\n')),
+        inline: false
+      });
+    }
+
+    // Add completed animal expectations (all as strikethrough since it's a receipt)
+    if (session.animalExpectations && session.animalExpectations.length > 0) {
+      const animalExpectationLines: string[] = [];
+
+      session.animalExpectations.forEach(exp => {
+        const animalLine = `${exp.animalsTaken} Animais Retirados → Entrega Completa`;
+        animalExpectationLines.push(`~~${animalLine}~~ ✅`);
+      });
+
+      if (animalExpectationLines.length > 0) {
+        embed.addFields({
+          name: '🐄 Expectativas de Animais (Finalizadas)',
+          value: this.truncateFieldValue(animalExpectationLines.join('\n')),
+          inline: false
+        });
+      }
+    }
+
+    // Add animal deliveries section (same as active embed)
+    const animalDeliveries = session.animalTransactions.filter(t => t.type === 'delivery_completed');
+    if (animalDeliveries.length > 0) {
+      const animalSummary = animalDeliveries.map(t => {
+        const timeStr = `<t:${Math.floor(t.timestamp.getTime() / 1000)}:t>`;
+        return `• ${timeStr} - ${t.quantity} Animais → $${(t.amount || 0).toFixed(2)}`;
+      });
+
+      embed.addFields({
+        name: '🐄 Entregas de Animais',
+        value: this.truncateFieldValue(animalSummary.join('\n')),
+        inline: false
+      });
+    }
+
+    // Add final total section
+    if (session.totalCredits > 0) {
+      embed.addFields({
+        name: status === 'paid' ? '💰 Total Pago' : '💰 Total Verificado',
+        value: `**$${session.totalCredits.toFixed(2)}**`,
+        inline: true
+      });
+    }
+
+    return embed;
+  }
 
   private getSessionIcon(session: WorkerSession): string {
     if (session.animalTransactions.length > 0 && session.plantTransactions.length > 0) {
@@ -788,14 +1116,12 @@ export class WorkerActivityService {
 
     console.log(`💰 Processing payment for ${session.workerName} - $${session.totalCredits.toFixed(2)}`);
 
-    // Enhanced: Update session status to paid and update embed (this will show "Pago" status without buttons)
-    session.status = 'paid';
-    await this.updateWorkerEmbed(session);
+    // Transform embed into permanent receipt
+    await this.transformEmbedToReceipt(session, 'paid', managerName);
 
-    // Ensure the embed was properly updated to remove buttons
-    console.log(`📋 Payment processed - embed updated to show paid status without buttons for ${session.workerName}`);
+    console.log(`📋 Payment processed - embed transformed into permanent receipt for ${session.workerName}`);
 
-    // Enhanced: Wait a moment to ensure embed is updated before archiving
+    // Wait a moment to ensure embed is updated before archiving
     await new Promise(resolve => setTimeout(resolve, 500));
 
     // Archive the session

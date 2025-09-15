@@ -1,0 +1,34 @@
+{
+  "workerId": "398270963969425408",
+  "workerName": "john Weslley",
+  "channelId": "1416880519165120542",
+  "sessionId": "session_1757884962409_fx7kz7",
+  "startTime": "2025-09-14T21:22:42.409Z",
+  "lastActivity": "2025-09-14T21:22:42.410Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 100,
+      "transactionId": "tx_1757884962410_29j3b",
+      "timestamp": "2025-09-14T21:22:42.410Z"
+    }
+  ],
+  "animalTransactions": [],
+  "totalCredits": 0,
+  "embedMessageId": "1416896970806530119",
+  "seedExpectations": [
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 100,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1757884962410_29j3b"
+    }
+  ],
+  "completedAt": "2025-09-15T04:47:14.200Z",
+  "notes": "Pago por AnDuRiNhaa (1235055429260935321)"
+}

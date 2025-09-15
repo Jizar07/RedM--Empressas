@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1757891437171_4ihscp",
+  "sessionId": "session_1757817260250_lbhvca",
+  "managerId": "372161270176153601",
+  "managerName": "GM Stoffel",
+  "workerId": "333664599549411329",
+  "workerName": "Johnny Rocks",
+  "amountPaid": 112.5,
+  "paidAt": "2025-09-14T23:10:37.171Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-09-14T23:05:37.171Z",
+    "endTime": "2025-09-14T23:20:37.171Z"
+  }
+}

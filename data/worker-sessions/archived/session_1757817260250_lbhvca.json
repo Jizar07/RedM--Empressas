@@ -1,0 +1,23 @@
+{
+  "workerId": "333664599549411329",
+  "workerName": "Johnny Rocks",
+  "channelId": "1416535914196504787",
+  "sessionId": "session_1757817260250_lbhvca",
+  "startTime": "2025-09-14T02:34:20.250Z",
+  "lastActivity": "2025-09-14T02:34:20.251Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 450,
+      "transactionId": "tx_1757817260251_pb1c6q",
+      "timestamp": "2025-09-14T02:34:20.251Z"
+    }
+  ],
+  "animalTransactions": [],
+  "totalCredits": 112.5,
+  "embedMessageId": "1416613007286341783",
+  "completedAt": "2025-09-14T23:10:37.170Z",
+  "notes": "Pago por GM Stoffel (372161270176153601)"
+}

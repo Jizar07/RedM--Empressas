@@ -41,35 +41,36 @@ class PlantIconDetection {
         targetPath: path.join(this.templatesDir, 'milho.png')
       },
       {
-        sourcePath: '/mnt/c/Users/jizar/OneDrive/Pictures/Screenshots/Screenshot 2025-08-23 211740.png', 
+        sourcePath: '/mnt/c/Users/jizar/OneDrive/Pictures/Screenshots/Screenshot 2025-08-23 211740.png',
         plantType: 'Trigo',
         targetPath: path.join(this.templatesDir, 'trigo.png')
       },
       {
         sourcePath: '/mnt/c/Users/jizar/OneDrive/Pictures/Screenshots/Screenshot 2025-08-23 211651.png',
-        plantType: 'Junco', 
+        plantType: 'Junco',
         targetPath: path.join(this.templatesDir, 'junco.png')
       }
     ];
 
     for (const template of templates) {
       try {
-        // Check if source exists and target doesn't exist
-        await fs.access(template.sourcePath);
-        
+        // First check if target template already exists
+        await fs.access(template.targetPath);
+        // Template exists, no need to copy from source
+        continue;
+      } catch {
+        // Target doesn't exist, try to copy from source
         try {
-          await fs.access(template.targetPath);
-          console.log(`Template already exists: ${template.plantType}`);
-        } catch {
-          // Target doesn't exist, copy it
+          await fs.access(template.sourcePath);
           await sharp(template.sourcePath)
             .resize(64, 64)
             .png()
             .toFile(template.targetPath);
           console.log(`✅ Created template for ${template.plantType}`);
+        } catch (error) {
+          // Source not found, but only warn if template also doesn't exist
+          console.warn(`⚠️ Template for ${template.plantType} not found and source unavailable`);
         }
-      } catch (error) {
-        console.warn(`Source template not found: ${template.sourcePath}`);
       }
     }
   }

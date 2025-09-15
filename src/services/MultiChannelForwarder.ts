@@ -223,14 +223,12 @@ export class MultiChannelForwarder {
           console.log(`🔍 MultiChannelForwarder: Message content: "${extractedContent}"`);
           console.log(`🆔 MultiChannelForwarder: Debug - Message author ID: ${message.author.id}, Username: ${message.author.username}`);
           
-          // Try to find the worker channel by searching for channel names containing the worker name
-          const guild = message.guild;
-          if (guild) {
-            const workerChannels = guild.channels.cache.filter(channel => 
-              channel.name.toLowerCase().includes('jizar') && channel.name.toLowerCase().includes('stoffeliz')
-            );
-            console.log(`🔍 MultiChannelForwarder: Found potential worker channels:`, 
-              Array.from(workerChannels.values()).map(c => `${c.name} (${c.id})`));
+          // Debug: Log the actual worker being processed
+          const workerMapping = this.workerChannelService?.findWorkerByName(realAuthor);
+          if (workerMapping) {
+            console.log(`🔍 MultiChannelForwarder: Found worker mapping for ${realAuthor}: Channel ${workerMapping.channelId}`);
+          } else {
+            console.log(`⚠️ MultiChannelForwarder: No worker mapping found for ${realAuthor}`);
           }
           
           // Check if this is an animal delivery deposit
@@ -639,11 +637,11 @@ export class MultiChannelForwarder {
         if (withdrawalMatch) {
           if (pattern.source.includes('Valor sacado')) {
             // For "Valor sacado" pattern, use the authorName
-            detectedAmount = parseFloat(withdrawalMatch[1].replace(',', ''));
+            detectedAmount = parseFloat((withdrawalMatch[1] || '0').replace(',', ''));
           } else {
             // For name-based patterns
             detectedName = withdrawalMatch[1].trim();
-            detectedAmount = parseFloat(withdrawalMatch[2].replace(',', ''));
+            detectedAmount = parseFloat((withdrawalMatch[2] || '0').replace(',', ''));
           }
           break;
         }
@@ -657,7 +655,7 @@ export class MultiChannelForwarder {
             for (const pattern of withdrawalPatterns) {
               withdrawalMatch = embed.description.match(pattern);
               if (withdrawalMatch) {
-                detectedAmount = parseFloat(withdrawalMatch[2]?.replace(',', '') || withdrawalMatch[1]?.replace(',', ''));
+                detectedAmount = parseFloat((withdrawalMatch[2] || withdrawalMatch[1] || '0').replace(',', ''));
                 break;
               }
             }
@@ -670,7 +668,7 @@ export class MultiChannelForwarder {
               for (const pattern of withdrawalPatterns) {
                 withdrawalMatch = fieldContent.match(pattern);
                 if (withdrawalMatch) {
-                  detectedAmount = parseFloat(withdrawalMatch[2]?.replace(',', '') || withdrawalMatch[1]?.replace(',', ''));
+                  detectedAmount = parseFloat((withdrawalMatch[2] || withdrawalMatch[1] || '0').replace(',', ''));
                   break;
                 }
               }

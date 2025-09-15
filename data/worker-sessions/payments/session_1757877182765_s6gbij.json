@@ -1,0 +1,19 @@
+{
+  "sessionId": "session_1757877182765_s6gbij",
+  "workerId": "614876929266417672",
+  "workerName": "Notorius Bowdin",
+  "amount": 2.5,
+  "paidBy": "614876929266417672",
+  "paidByName": "puddingbach",
+  "paidAt": "2025-09-15T09:45:59.574Z",
+  "plantTransactions": [
+    {
+      "type": "plant_deposited",
+      "itemName": "Algodão",
+      "quantity": 10,
+      "transactionId": "tx_1757877182765_9wsi",
+      "timestamp": "2025-09-14T19:13:02.765Z"
+    }
+  ],
+  "animalTransactions": []
+}

@@ -1,0 +1,19 @@
+{
+  "sessionId": "session_1757884962409_fx7kz7",
+  "workerId": "398270963969425408",
+  "workerName": "john Weslley",
+  "amount": 0,
+  "paidBy": "1235055429260935321",
+  "paidByName": "AnDuRiNhaa",
+  "paidAt": "2025-09-15T04:47:14.201Z",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 100,
+      "transactionId": "tx_1757884962410_29j3b",
+      "timestamp": "2025-09-14T21:22:42.410Z"
+    }
+  ],
+  "animalTransactions": []
+}

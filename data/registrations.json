@@ -1065,5 +1065,60 @@
     "invitedBy": "smith ramirez | 1025",
     "approved": true,
     "registeredAt": "2025-09-14T20:17:19.502Z"
+  },
+  {
+    "userId": "515729025788936202",
+    "username": "vitinh9",
+    "ingameName": "Vitorn Stoffeliz",
+    "mailId": "5531",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "Jizar Stoffeliz | 4222",
+    "approved": true,
+    "registeredAt": "2025-09-14T21:57:54.344Z"
+  },
+  {
+    "userId": "739598072707022918",
+    "username": "1gbzin",
+    "ingameName": "Robinho Makhachev",
+    "mailId": "344",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "Barth",
+    "approved": true,
+    "registeredAt": "2025-09-14T23:17:26.779Z"
+  },
+  {
+    "userId": "792736778372907038",
+    "username": "n3lyotavares",
+    "ingameName": "Nélio Tavares",
+    "mailId": "1285",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "Barth",
+    "approved": true,
+    "registeredAt": "2025-09-15T01:59:24.576Z"
+  },
+  {
+    "userId": "1195169284847050786",
+    "username": "cleydersilva",
+    "ingameName": "Koda Smith",
+    "mailId": "5234",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "Notorius Bowdin | 2527",
+    "approved": true,
+    "registeredAt": "2025-09-15T12:03:33.650Z"
+  },
+  {
+    "userId": "372161270176153601",
+    "username": "jizarstoffel",
+    "ingameName": "Jizar Stoffeliz",
+    "mailId": "4222",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "Notorius Bowdin | 2527",
+    "approved": true,
+    "registeredAt": "2025-09-15T12:27:10.260Z"
   }
 ]

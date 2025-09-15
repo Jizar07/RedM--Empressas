@@ -1,0 +1,24 @@
+{
+  "workerId": "614876929266417672",
+  "workerName": "Notorius Bowdin",
+  "channelId": "1416375054211481731",
+  "sessionId": "session_1757877182765_s6gbij",
+  "startTime": "2025-09-14T19:13:02.765Z",
+  "lastActivity": "2025-09-14T19:13:02.765Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "plant_deposited",
+      "itemName": "Algodão",
+      "quantity": 10,
+      "transactionId": "tx_1757877182765_9wsi",
+      "timestamp": "2025-09-14T19:13:02.765Z"
+    }
+  ],
+  "animalTransactions": [],
+  "totalCredits": 2.5,
+  "embedMessageId": "1416864340547731606",
+  "seedExpectations": [],
+  "completedAt": "2025-09-15T09:45:59.573Z",
+  "notes": "Pago por puddingbach (614876929266417672)"
+}

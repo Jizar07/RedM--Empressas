@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1757900147943_xcprhk",
+  "sessionId": "session_1757808027220_a6s7b",
+  "managerId": "614876929266417672",
+  "managerName": "puddingbach",
+  "workerId": "1195169284847050786",
+  "workerName": "Koda Smith",
+  "amountPaid": 7813.9,
+  "paidAt": "2025-09-15T01:35:47.943Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-09-15T01:30:47.943Z",
+    "endTime": "2025-09-15T01:45:47.943Z"
+  }
+}

@@ -40,7 +40,7 @@ export async function handleWorkerPayment(interaction: ButtonInteraction): Promi
       const session = sessionsResponse.data.sessions.find((s: any) => s.workerId === workerId);
       if (!session) {
         return await interaction.editReply({
-          content: '❌ Sessão do trabalhador não encontrada.'
+          content: '❌ Este trabalhador não possui sessão ativa ou já foi pago. Verifique se há atividades recentes para pagar.'
         });
       }
 
@@ -342,7 +342,7 @@ export async function handleTransactionManageSubmit(interaction: ModalSubmitInte
     const session = sessionsResponse.data.sessions.find((s: any) => s.workerId === workerId);
     if (!session) {
       return await interaction.editReply({
-        content: '❌ Sessão do trabalhador não encontrada.'
+        content: '❌ Este trabalhador não possui sessão ativa ou já foi pago. Verifique se há atividades recentes para editar.'
       });
     }
 
