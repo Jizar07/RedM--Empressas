@@ -5,7 +5,20 @@ This file is synchronized with: https://github.com/Jizar07/RedM--Empressas
 
 ## Version History
 
-### [0.039] - 2025-09-15 **[CURRENT VERSION]**
+### [0.040] - 2025-09-15 **[CURRENT VERSION]**
+- **CRITICAL FIX**: Resolved Worker Receipt Reactivation Issue - Sessions No Longer Revert from Paid Status
+- **ROOT CAUSE**: Race condition between payment completion and new worker activity causing paid sessions to be reused
+- **ENHANCED SESSION FILTERING**: WorkerActivityService now properly filters paid/rejected sessions during loading and saving
+- **IMPROVED loadActiveSessions()**: Only loads sessions with "active" status, preventing paid sessions from being reloaded
+- **IMPROVED saveActiveSessions()**: Only saves sessions with "active" status to prevent stale data persistence
+- **RECEIPT INTEGRITY**: Paid worker receipts now remain permanent and cannot be reactivated by new transactions
+- **SESSION ISOLATION**: New worker activity after payment creates fresh sessions instead of reusing paid ones
+- **VERIFIED FIX**: Bot logs confirm proper session filtering with "skipped non-active sessions" messages
+- **FILES MODIFIED**:
+  - `src/services/WorkerActivityService.ts` - Enhanced session filtering logic in load/save methods
+  - `data/worker-sessions/active-sessions.json` - Corrected session status for affected workers
+
+### [0.039] - 2025-09-15
 - **MAJOR ENHANCEMENT**: Implemented Self-Healing Worker Channel Mapping System
 - **ROOT CAUSE FIX**: Resolved FerroviaSessionService caching stale channel IDs that overrode manual fixes
 - **SELF-HEALING LOGIC**: FerroviaSessionService now automatically gets current channel IDs from WorkerChannelService

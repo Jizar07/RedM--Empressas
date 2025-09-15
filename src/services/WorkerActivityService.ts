@@ -120,9 +120,19 @@ export class WorkerActivityService {
       if (fs.existsSync(sessionsFile)) {
         const data = fs.readFileSync(sessionsFile, 'utf8');
         const sessions = JSON.parse(data);
-        
-        // Convert to Map and restore Date objects
+
+        let loadedCount = 0;
+        let skippedCount = 0;
+
+        // Convert to Map and restore Date objects - ONLY for active sessions
         Object.entries(sessions).forEach(([workerId, session]: [string, any]) => {
+          // CRITICAL FIX: Only load sessions with 'active' status
+          if (session.status !== 'active') {
+            console.log(`⏭️ Skipping non-active session for ${session.workerName} (status: ${session.status})`);
+            skippedCount++;
+            return;
+          }
+
           session.startTime = new Date(session.startTime);
           session.lastActivity = new Date(session.lastActivity);
           session.plantTransactions = session.plantTransactions.map((t: any) => ({
@@ -143,9 +153,10 @@ export class WorkerActivityService {
           }
 
           this.activeSessions.set(workerId, session);
+          loadedCount++;
         });
-        
-        console.log(`📊 Loaded ${this.activeSessions.size} active worker sessions`);
+
+        console.log(`📊 Loaded ${loadedCount} active worker sessions (skipped ${skippedCount} non-active sessions)`);
       }
     } catch (error) {
       console.error('❌ Error loading active sessions:', error);
@@ -155,9 +166,20 @@ export class WorkerActivityService {
   private saveActiveSessions(): void {
     try {
       const sessionsFile = path.join(this.dataDir, 'active-sessions.json');
-      const sessions = Object.fromEntries(this.activeSessions);
+
+      // CRITICAL FIX: Only save sessions with 'active' status
+      const activeSessionsOnly = new Map();
+      this.activeSessions.forEach((session, workerId) => {
+        if (session.status === 'active') {
+          activeSessionsOnly.set(workerId, session);
+        } else {
+          console.log(`⏭️ Excluding non-active session from save: ${session.workerName} (status: ${session.status})`);
+        }
+      });
+
+      const sessions = Object.fromEntries(activeSessionsOnly);
       fs.writeFileSync(sessionsFile, JSON.stringify(sessions, null, 2));
-      console.log('💾 Saved active sessions to file');
+      console.log(`💾 Saved ${activeSessionsOnly.size} active sessions to file (excluded ${this.activeSessions.size - activeSessionsOnly.size} non-active)`);
     } catch (error) {
       console.error('❌ Error saving active sessions:', error);
     }
