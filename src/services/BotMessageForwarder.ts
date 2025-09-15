@@ -14,7 +14,7 @@ interface ProcessedMessage {
 
 export class BotMessageForwarder {
   private static instance: BotMessageForwarder;
-  private frontendEndpoint: string = 'http://localhost:3051/api/webhook/channel-messages';
+  private frontendEndpoint: string = 'https://fazenda.stoffeltech.com/api/webhook/channel-messages';
   private processedMessageIds = new Set<string>();
 
   private constructor() {}

@@ -12,7 +12,7 @@
       ],
       "enabled": true,
       "monitoring": {
-        "endpoint": "http://localhost:3051/api/webhook/channel-messages",
+        "endpoint": "https://fazenda.stoffeltech.com/api/webhook/channel-messages",
         "endpointType": "frontend",
         "messageTypes": [
           "ALL"
@@ -41,7 +41,7 @@
       ],
       "enabled": true,
       "monitoring": {
-        "endpoint": "http://localhost:3051/api/webhook/channel-messages",
+        "endpoint": "https://fazenda.stoffeltech.com/api/webhook/channel-messages",
         "endpointType": "frontend",
         "messageTypes": [
           "ALL"
@@ -73,7 +73,7 @@
       ],
       "enabled": true,
       "monitoring": {
-        "endpoint": "http://localhost:3051/api/webhook/channel-messages",
+        "endpoint": "https://fazenda.stoffeltech.com/api/webhook/channel-messages",
         "endpointType": "frontend",
         "messageTypes": [
           "ALL"

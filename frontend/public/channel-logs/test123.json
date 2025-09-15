@@ -1,0 +1,15 @@
+{
+  "channelId": "test123",
+  "lastUpdated": "2025-09-15T17:52:06.351Z",
+  "messageCount": 1,
+  "messages": [
+    {
+      "id": "msg1",
+      "timestamp": "2025-01-15T10:00:00Z",
+      "author": "testuser",
+      "content": "test message",
+      "channelId": "test123",
+      "source": "test"
+    }
+  ]
+}

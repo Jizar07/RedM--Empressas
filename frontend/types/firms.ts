@@ -120,7 +120,7 @@ export const DEFAULT_ENDPOINT_PRESETS: EndpointPreset[] = [
   {
     type: 'frontend',
     name: 'Frontend Dashboard',
-    url: 'http://localhost:3051/api/webhook/channel-messages',
+    url: 'https://fazenda.stoffeltech.com/api/webhook/channel-messages',
     description: 'Send to frontend dashboard for real-time display',
     icon: 'Monitor'
   },

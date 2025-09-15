@@ -4,7 +4,7 @@
       "id": "bercario-braithwaite-logs",
       "name": "Bercario Braithwaite Farm Logs",
       "channelId": "1413532807430541552",
-      "systemEndpoint": "http://localhost:3051/api/webhook/channel-messages",
+      "systemEndpoint": "https://fazenda.stoffeltech.com/api/webhook/channel-messages",
       "enabled": true,
       "messageTypes": ["ALL"],
       "includeEmbeds": true,

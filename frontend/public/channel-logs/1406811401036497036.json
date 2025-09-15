@@ -1,8 +1,28 @@
 {
   "channelId": "1406811401036497036",
-  "lastUpdated": "2025-09-15T11:39:53.985Z",
-  "messageCount": 99,
+  "lastUpdated": "2025-09-15T18:30:21.473Z",
+  "messageCount": 100,
   "messages": [
+    {
+      "id": "1417215984082751528",
+      "author": "Atlanta",
+      "content": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nRetirar item da Loja\nItem Retirado:: donkey_female x1\nFuncionario:: BONNIE BENNETT | FIXO: 74490\nData:: 15/09/2025 -  15:30:20",
+      "timestamp": "2025-09-15T18:30:21.205Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nRetirar item da Loja\nItem Retirado:: donkey_female x1\nFuncionario:: BONNIE BENNETT | FIXO: 74490\nData:: 15/09/2025 -  15:30:20",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417208081820946495",
+      "author": "Atlanta",
+      "content": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nRetirar item da Loja\nItem Retirado:: sheep_male x4\nFuncionario:: John Weslley | FIXO: 550\nData:: 15/09/2025 -  14:58:57",
+      "timestamp": "2025-09-15T17:58:57.159Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nRetirar item da Loja\nItem Retirado:: sheep_male x4\nFuncionario:: John Weslley | FIXO: 550\nData:: 15/09/2025 -  14:58:57",
+      "rawEmbeds": []
+    },
     {
       "id": "1417112689733275788",
       "author": "Atlanta",
@@ -981,16 +1001,6 @@
       "source": "discord",
       "channelId": "1406811401036497036",
       "embedContent": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nRetirar item da Loja\nItem Retirado:: chicken_female x4\nFuncionario:: Bartholomeu Dias | FIXO: 76312\nData:: 11/09/2025 -  13:32:17",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1415736165943742515",
-      "author": "Atlanta",
-      "content": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nRetirar item da Loja\nItem Retirado:: goat_male x4\nFuncionario:: Bartholomeu Dias | FIXO: 76312\nData:: 11/09/2025 -  13:30:04",
-      "timestamp": "2025-09-11T16:30:05.067Z",
-      "source": "discord",
-      "channelId": "1406811401036497036",
-      "embedContent": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nRetirar item da Loja\nItem Retirado:: goat_male x4\nFuncionario:: Bartholomeu Dias | FIXO: 76312\nData:: 11/09/2025 -  13:30:04",
       "rawEmbeds": []
     }
   ]

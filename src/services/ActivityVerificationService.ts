@@ -148,7 +148,7 @@ class ActivityVerificationService {
   async getPlayerDiscordActivities(playerName: string, timestamp: string, windowMinutes: number = 5): Promise<Activity[]> {
     try {
       // Fetch from the frontend webhook API
-      const response = await fetch('http://localhost:3051/api/webhook/channel-messages', {
+      const response = await fetch('https://fazenda.stoffeltech.com/api/webhook/channel-messages', {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' }
       });

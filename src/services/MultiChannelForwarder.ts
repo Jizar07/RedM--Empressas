@@ -350,7 +350,15 @@ export class MultiChannelForwarder {
           // 8. Seeds withdrawn (for farm service detection)
           const seedsWithdrawnPattern = /Item removido::\s*(.*seed.*|.*semente.*)\s*x(\d+)/i;
           const seedsWithdrawnMatch = extractedContent.match(seedsWithdrawnPattern);
-          
+
+          // 9. Company withdrawal (COOPERATIVA - SACOU) - Revenue collected activity
+          const cooperativaSacouPattern = /COOPERATIVA - SACOU[\s\S]*?Quantia::\s*(\d+)/i;
+          const cooperativaSacouMatch = extractedContent.match(cooperativaSacouPattern);
+
+          // 10. Company deposit (COOPERATIVA - DEPOSITOU) - Revenue distributed activity
+          const cooperativaDepositouPattern = /COOPERATIVA - DEPOSITOU[\s\S]*?Quantia::\s*(\d+)/i;
+          const cooperativaDepositouMatch = extractedContent.match(cooperativaDepositouPattern);
+
           if (plantsMatch) {
             ferroviaActivityDetected = true;
             activityType = `Plants withdrawn: ${plantsMatch[2]} ${plantsMatch[1]}`;
@@ -369,6 +377,12 @@ export class MultiChannelForwarder {
           } else if (bankDepositMatch) {
             ferroviaActivityDetected = true;
             activityType = `Bank deposit: $${bankDepositMatch[1]}`;
+          } else if (cooperativaSacouMatch) {
+            ferroviaActivityDetected = true;
+            activityType = `Revenue collected: $${cooperativaSacouMatch[1]}`;
+          } else if (cooperativaDepositouMatch) {
+            ferroviaActivityDetected = true;
+            activityType = `Revenue distributed: $${cooperativaDepositouMatch[1]}`;
           }
           
           if (ferroviaActivityDetected) {

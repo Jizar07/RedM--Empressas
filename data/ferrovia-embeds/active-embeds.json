@@ -36,7 +36,7 @@
     "workerId": "1204772480305209384",
     "workerName": "BONNIE BENNETT",
     "channelId": "1416502543990915132",
-    "lastUpdated": "2025-09-14T18:03:03.205Z",
+    "lastUpdated": "2025-09-15T20:00:28.966Z",
     "embedMessageId": "1416591599806447768"
   },
   "333664599549411329": {
@@ -44,7 +44,7 @@
     "workerId": "333664599549411329",
     "workerName": "Johnny Rocks",
     "channelId": "1416535914196504787",
-    "lastUpdated": "2025-09-14T02:34:20.613Z",
+    "lastUpdated": "2025-09-15T20:37:31.769Z",
     "embedMessageId": "1416613007743778848"
   },
   "1235055429260935321": {
@@ -52,7 +52,7 @@
     "workerId": "1235055429260935321",
     "workerName": "smith ramirez",
     "channelId": "1416447193685950595",
-    "lastUpdated": "2025-09-14T18:21:50.115Z",
+    "lastUpdated": "2025-09-15T23:44:20.671Z",
     "embedMessageId": "1416851273889747035"
   },
   "273987353456934913": {
@@ -84,8 +84,8 @@
     "workerId": "372161270176153601",
     "workerName": "Jizar Stoffeliz",
     "channelId": "1417124587833004075",
-    "lastUpdated": "2025-09-15T12:55:24.490Z",
-    "embedMessageId": "1417129889827393628"
+    "lastUpdated": "2025-09-15T23:46:15.463Z",
+    "embedMessageId": "1417292228916936715"
   },
   "515729025788936202": {
     "sessionId": "08e8dea8-a456-4542-a64b-3e2ea0666cfb",
@@ -94,5 +94,37 @@
     "channelId": "1416905830762287114",
     "lastUpdated": "2025-09-15T12:25:02.948Z",
     "embedMessageId": "1417124051876446250"
+  },
+  "807953013603172352": {
+    "sessionId": "2d8abf55-04bd-4f33-982a-6e9685d59da4",
+    "workerId": "807953013603172352",
+    "workerName": "Adhine Kenway",
+    "channelId": "1416502413321568296",
+    "lastUpdated": "2025-09-15T19:38:46.899Z",
+    "embedMessageId": "1417215730704842893"
+  },
+  "398270963969425408": {
+    "sessionId": "b9bf8693-5572-4189-9ff9-8391dd0ecf6f",
+    "workerId": "398270963969425408",
+    "workerName": "john Weslley",
+    "channelId": "1416880519165120542",
+    "lastUpdated": "2025-09-15T23:47:57.201Z",
+    "embedMessageId": "1417261201641177171"
+  },
+  "198538680686608384": {
+    "sessionId": "dec89156-0d4e-4d08-a4d3-1b000174efb7",
+    "workerId": "198538680686608384",
+    "workerName": "Bartholomeu Dias",
+    "channelId": "1416530771283546274",
+    "lastUpdated": "2025-09-15T23:37:05.402Z",
+    "embedMessageId": "1417235194787663944"
+  },
+  "584129725052747798": {
+    "sessionId": "8dfcd3f1-5ff7-40e2-a41b-dc7181280ef6",
+    "workerId": "584129725052747798",
+    "workerName": "Cliff Dillimore",
+    "channelId": "1416197670632161451",
+    "lastUpdated": "2025-09-15T21:58:37.941Z",
+    "embedMessageId": "1417268398731296921"
   }
 }

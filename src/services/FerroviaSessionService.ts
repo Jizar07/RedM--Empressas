@@ -558,7 +558,24 @@ export class FerroviaSessionService {
             timestamp: new Date(),
             originalMessage: messageContent
           };
-          
+
+          session.totalRevenueGenerated += amount;
+        }
+      } else if (activityType.startsWith('Revenue collected:')) {
+        // Revenue collected from company withdrawals (COOPERATIVA - SACOU)
+        const revenueMatch = activityType.match(/Revenue collected: \$?([\d,\.]+)/);
+        if (revenueMatch) {
+          const amount = parseFloat(revenueMatch[1].replace(/,/g, ''));
+          transaction = {
+            transactionId: `tx_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+            type: 'REVENUE_COLLECTED' as const,
+            itemName: 'company_withdrawal',
+            quantity: 1,
+            amount: amount,
+            timestamp: new Date(),
+            originalMessage: messageContent
+          };
+
           session.totalRevenueGenerated += amount;
         }
       } else if (activityType.startsWith('Bank deposit:')) {
@@ -575,7 +592,27 @@ export class FerroviaSessionService {
             timestamp: new Date(),
             originalMessage: messageContent
           };
-          
+
+          session.totalRevenueReturned += amount;
+          // Reduce open responsibilities
+          session.openResponsibilities.moneyOwed -= amount;
+          if (session.openResponsibilities.moneyOwed < 0) session.openResponsibilities.moneyOwed = 0;
+        }
+      } else if (activityType.startsWith('Revenue distributed:')) {
+        // Revenue distributed to company (COOPERATIVA - DEPOSITOU)
+        const revenueDistributedMatch = activityType.match(/Revenue distributed: \$?([\d,\.]+)/);
+        if (revenueDistributedMatch) {
+          const amount = parseFloat(revenueDistributedMatch[1].replace(/,/g, ''));
+          transaction = {
+            transactionId: `tx_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+            type: 'REVENUE_DISTRIBUTED' as const,
+            itemName: 'company_deposit',
+            quantity: 1,
+            amount: amount,
+            timestamp: new Date(),
+            originalMessage: messageContent
+          };
+
           session.totalRevenueReturned += amount;
           // Reduce open responsibilities
           session.openResponsibilities.moneyOwed -= amount;
