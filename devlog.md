@@ -4,6 +4,28 @@ This is a local timestamped file to track all development changes and prompts.
 
 ## Log Entries
 
+### 2025-09-16 05:43:46
+**Action**: Complete Registration Cleanup & Auto-Pin Embed System Implementation
+**Prompt**: Multiple tasks - "check Nelio Tavares channel", "now check GraceAne Fieldstorm channel id 1417227529009365015", "why was these user not mapped already?", "ok, lets do this, check all channels in the category id 1415217611939119125, compare the names with the name in registration.json, if there is no match, delete the names that dont match from the .json file. we have too many old data in that file", "great, lets make embeds a pin messages, so it wont be deleted by the /clear command"
+**Changes**:
+- **Registration Database Cleanup**: Cleaned registrations.json from 103 to 25 active worker registrations, removing duplicates and keeping only latest registrations with active function ID `func_1757681433033`
+- **Worker Channel Mapping Audit**: Added missing worker mappings for Nelio Tavares, GraceAne Fieldstorm, and Robinho Makhachev
+- **Automatic Channel Discovery**: Created comprehensive cleanup script that matches Discord channel names against registrations using normalized name comparison
+- **Payment Logic Fix**: Updated plant payment system to only pay workers for plants matching seed expectations (not Ferrovia returns)
+- **Default Price Updates**: Changed default plant price from $2.50 to $0.15 and animal price from $40.00 to $60.00
+- **Auto-Pin Embed System**: Implemented automatic pinning for both worker activity embeds and Ferrovia embeds upon creation to prevent deletion by /clear commands
+- **System Synchronization**: All 26 active workers now have proper channel mappings and will receive embeds correctly
+- **Data Integrity**: Removed 78 stale registrations while maintaining all active worker functionality
+
+### 2025-09-16 05:43:46
+**Action**: Plant Payment Logic Enhancement - Seed Expectation Tracking
+**Prompt**: "we need to fix the fazenda embed. everytime someone deposit any type of plants it counts as payment, but it only should count as payment if the person takes seeds first."
+**Changes**:
+- Enhanced WorkerActivityService to track seed expectations and only pay workers for plants they were supposed to grow
+- Fixed payment calculation to distinguish between legitimate plant sales and Ferrovia returns
+- Workers now only receive payment for plants matching their seed-taking activity
+- Excess plant deposits (Ferrovia returns) show $0 payment correctly
+
 ### 2025-09-15 14:33:52
 **Action**: Fixed Critical Worker Receipt Reactivation Issue - Session Filtering Solution
 **Prompt**: "this is the problem we are having, when finalizing and paying worker, the embed should became a receitp, which is working, the problem is that after there is a new transaction by the worker, the recipt is becoming the current session again and it continues to add services to the already paid receipt."

@@ -5,7 +5,16 @@ This file is synchronized with: https://github.com/Jizar07/RedM--Empressas
 
 ## Version History
 
-### [0.040] - 2025-09-15 **[CURRENT VERSION]**
+### [0.041] - 2025-09-16 **[CURRENT VERSION]**
+- **MAJOR ENHANCEMENT**: Complete Registration Database Cleanup & Auto-Pin System Implementation
+- **DATABASE CLEANUP**: Cleaned registrations.json from 103 to 25 active workers, removed 78 duplicate/stale entries
+- **WORKER MAPPING AUDIT**: Added missing channel mappings for Nelio Tavares, GraceAne Fieldstorm, and Robinho Makhachev
+- **PAYMENT LOGIC FIX**: Enhanced plant payment to only pay for seed-expected plants (not Ferrovia returns)
+- **AUTO-PIN SYSTEM**: Worker and Ferrovia embeds now auto-pin to prevent deletion by /clear commands
+- **PRICE UPDATES**: Updated default plant price ($2.50→$0.15) and animal price ($40→$60)
+- **SYSTEM INTEGRITY**: All 26 active workers now have proper channel mappings and functioning payment tracking
+
+### [0.040] - 2025-09-15
 - **CRITICAL FIX**: Resolved Worker Receipt Reactivation Issue - Sessions No Longer Revert from Paid Status
 - **ROOT CAUSE**: Race condition between payment completion and new worker activity causing paid sessions to be reused
 - **ENHANCED SESSION FILTERING**: WorkerActivityService now properly filters paid/rejected sessions during loading and saving

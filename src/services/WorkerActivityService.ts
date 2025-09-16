@@ -492,8 +492,8 @@ export class WorkerActivityService {
         console.log(`🔧 Parsed prices:`, prices);
 
         const workerPrices: WorkerPrices = {
-          plantPrice: prices.plantPrice || 2.50,
-          animalPrice: prices.animalPrice || 40.00,
+          plantPrice: prices.plantPrice || 0.15,
+          animalPrice: prices.animalPrice || 60.00,
           animalCost: prices.animalCost || 20.00
         };
 
@@ -512,8 +512,8 @@ export class WorkerActivityService {
 
     // Return defaults if file doesn't exist
     const defaultPrices: WorkerPrices = {
-      plantPrice: 2.50,
-      animalPrice: 40.00,
+      plantPrice: 0.15,
+      animalPrice: 60.00,
       animalCost: 20.00
     };
 
@@ -542,19 +542,24 @@ export class WorkerActivityService {
     let totalCredits = 0;
     let totalCosts = 0;
 
-    // Calculate plant credits - pay for ALL plants, not just those matching expectations
+    // Calculate plant credits - ONLY pay for plants matching seed expectations
     session.plantTransactions
       .filter(t => t.type === 'plant_deposited')
       .forEach(transaction => {
-        // Update seed expectations for visual tracking (strikethrough display)
-        // This only updates the display, NOT the payment calculation
-        this.updateSeedExpectations(session, transaction.itemName, transaction.quantity);
+        // Get the number of valid plants (those matching seed expectations)
+        const validPlants = this.updateSeedExpectations(session, transaction.itemName, transaction.quantity);
 
-        // Pay workers for ALL plants deposited, regardless of seed expectations
-        const plantCredit = transaction.quantity * prices.plantPrice;
-        totalCredits += plantCredit;
+        // Only pay for valid plants, not Ferrovia returns
+        if (validPlants > 0) {
+          const plantCredit = validPlants * prices.plantPrice;
+          totalCredits += plantCredit;
+          console.log(`💰 Plant payment: ${validPlants} ${transaction.itemName} = $${plantCredit.toFixed(2)} (matched seed expectation)`);
+        }
 
-        console.log(`💰 Plant payment: ${transaction.quantity} ${transaction.itemName} = $${plantCredit.toFixed(2)}`);
+        const ferroviaReturns = transaction.quantity - validPlants;
+        if (ferroviaReturns > 0) {
+          console.log(`🚂 Ferrovia return: ${ferroviaReturns} ${transaction.itemName} (no payment - no seed expectation)`);
+        }
       });
 
     // Calculate animal deliveries
@@ -757,6 +762,15 @@ export class WorkerActivityService {
         const message = await channel.send({ embeds: [embed], components });
         session.embedMessageId = message.id;
         this.saveActiveSessions();
+
+        // Pin the message to prevent deletion by /clear
+        try {
+          await message.pin();
+          console.log(`📌 Pinned embed for ${session.workerName} in channel ${session.channelId}`);
+        } catch (pinError) {
+          console.warn(`⚠️ Failed to pin embed for ${session.workerName}:`, pinError);
+        }
+
         console.log(`✨ Created new embed for ${session.workerName} in channel ${session.channelId}`);
       }
 

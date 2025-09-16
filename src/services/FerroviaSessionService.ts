@@ -174,6 +174,15 @@ export class FerroviaSessionService {
         embedData.embedMessageId = message.id;
         embedData.lastUpdated = new Date();
         this.saveActiveEmbeds();
+
+        // Pin the message to prevent deletion by /clear
+        try {
+          await message.pin();
+          console.log(`📌 Pinned Ferrovia embed for ${embedData.workerName} in channel ${embedData.channelId}`);
+        } catch (pinError) {
+          console.warn(`⚠️ Failed to pin Ferrovia embed for ${embedData.workerName}:`, pinError);
+        }
+
         console.log(`✨ Created new Ferrovia embed for ${embedData.workerName} in channel ${embedData.channelId}`);
       }
 

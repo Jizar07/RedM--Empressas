@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1758015430186_mz7ylw",
+  "sessionId": "session_1757884159582_clcytc",
+  "managerId": "372161270176153601",
+  "managerName": "GM Stoffel",
+  "workerId": "924392622552916028",
+  "workerName": "Thiago Bennett",
+  "amountPaid": 3675,
+  "paidAt": "2025-09-16T09:37:10.186Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-09-16T09:32:10.186Z",
+    "endTime": "2025-09-16T09:47:10.186Z"
+  }
+}
