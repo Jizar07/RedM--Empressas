@@ -1,7 +1,33 @@
 {
-  "lastUpdated": "2025-09-11T14:24:00.553Z",
-  "messageCount": 13,
+  "lastUpdated": "2025-09-17T12:31:12.595Z",
+  "messageCount": 14,
   "messages": [
+    {
+      "id": "1417850379525423166",
+      "author": "Bercario",
+      "content": "REGISTRO - REGISTRO - berçario fazenda BW1\nRENOMEAR LOJA\nNovo nome da loja: berçario fazenda BW1\nAutor: Zero Bala | 74829",
+      "timestamp": "2025-09-17T12:31:12.865Z",
+      "raw_embeds": [
+        {
+          "title": "RENOMEAR LOJA",
+          "description": null,
+          "fields": [
+            {
+              "name": "Novo nome da loja",
+              "value": "berçario fazenda BW1",
+              "inline": true
+            },
+            {
+              "name": "Autor",
+              "value": "Zero Bala | 74829",
+              "inline": true
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - REGISTRO - berçario fazenda BW1\nRENOMEAR LOJA\nNovo nome da loja: berçario fazenda BW1\nAutor: Zero Bala | 74829",
+      "rawEmbeds": []
+    },
     {
       "content": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZA��O - DEP�SITO\nValor depositado:: $160.0\nA��o:: Silas Moreau vendeu 4 animais no matadouro\nSaldo ap�s dep�sito:: $6567.71\nData:: 11/09/2025 - 11:00:04",
       "author": "Test",

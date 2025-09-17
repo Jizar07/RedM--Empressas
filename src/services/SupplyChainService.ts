@@ -99,15 +99,24 @@ export interface RevenueDistribution {
 }
 
 export class SupplyChainService {
+  private static instance: SupplyChainService | null = null;
   private sessionsFilePath: string;
   private archivedSessionsPath: string;
   private activeSessions: Map<string, SupplyChainSession> = new Map();
 
-  constructor() {
+  private constructor() {
     this.sessionsFilePath = path.join(process.cwd(), 'data', 'supply-chain', 'active-sessions.json');
     this.archivedSessionsPath = path.join(process.cwd(), 'data', 'supply-chain', 'archived');
     this.ensureDirectories();
     this.loadActiveSessions();
+  }
+
+  public static getInstance(): SupplyChainService {
+    if (!SupplyChainService.instance) {
+      console.log('⛓️ Creating new SupplyChainService singleton instance');
+      SupplyChainService.instance = new SupplyChainService();
+    }
+    return SupplyChainService.instance;
   }
 
   private async ensureDirectories(): Promise<void> {

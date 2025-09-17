@@ -33,7 +33,7 @@ export const data = new SlashCommandBuilder()
 export async function execute(interaction: ChatInputCommandInteraction): Promise<void> {
   try {
     const subcommand = interaction.options.getSubcommand();
-    const supplyChainService = new SupplyChainService();
+    const supplyChainService = SupplyChainService.getInstance();
 
     switch (subcommand) {
       case 'status':
@@ -247,7 +247,7 @@ async function handleResponsibilitiesCommand(interaction: ChatInputCommandIntera
 export async function autocomplete(interaction: any) {
   try {
     const focusedValue = interaction.options.getFocused().toLowerCase();
-    const supplyChainService = new SupplyChainService();
+    const supplyChainService = SupplyChainService.getInstance();
     const activeSessions = supplyChainService.getAllActiveSessions();
     
     const choices = activeSessions

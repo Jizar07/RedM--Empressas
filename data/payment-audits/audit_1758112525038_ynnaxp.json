@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1758112525038_ynnaxp",
+  "sessionId": "session_1758112503353_6la56r",
+  "managerId": "372161270176153601",
+  "managerName": "GM Stoffel",
+  "workerId": "372161270176153601",
+  "workerName": "Jizar Stoffeliz",
+  "amountPaid": 2.5,
+  "paidAt": "2025-09-17T12:35:25.038Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-09-17T12:30:25.038Z",
+    "endTime": "2025-09-17T12:45:25.038Z"
+  }
+}

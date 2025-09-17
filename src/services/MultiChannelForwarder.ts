@@ -92,7 +92,7 @@ export class MultiChannelForwarder {
     }
     
     if (!this.ferroviaSessionService) {
-      this.ferroviaSessionService = new FerroviaSessionService(client);
+      this.ferroviaSessionService = FerroviaSessionService.getInstance(client);
       console.log('🚂 MultiChannelForwarder: FerroviaSessionService initialized');
     }
   }

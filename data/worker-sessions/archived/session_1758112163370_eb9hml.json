@@ -1,0 +1,41 @@
+{
+  "workerId": "372161270176153601",
+  "workerName": "Jizar Stoffeliz",
+  "channelId": "1417124587833004075",
+  "sessionId": "session_1758112163370_eb9hml",
+  "startTime": "2025-09-17T12:29:23.370Z",
+  "lastActivity": "2025-09-17T12:29:50.051Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Junco",
+      "quantity": 1,
+      "transactionId": "tx_1758112163371_xq2029",
+      "timestamp": "2025-09-17T12:29:23.371Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 10,
+      "transactionId": "tx_1758112190051_l2zcl",
+      "timestamp": "2025-09-17T12:29:50.051Z"
+    }
+  ],
+  "animalTransactions": [],
+  "totalCredits": 2.5,
+  "embedMessageId": "1417849923075833910",
+  "seedExpectations": [
+    {
+      "seedType": "Semente de Junco",
+      "seedQuantity": 1,
+      "expectedPlantType": "Junco",
+      "expectedPlantQuantity": 10,
+      "plantsFulfilled": 10,
+      "isComplete": true,
+      "transactionId": "tx_1758112163371_xq2029"
+    }
+  ],
+  "completedAt": "2025-09-17T12:34:39.787Z",
+  "notes": "Pago por GM Stoffel (372161270176153601)"
+}

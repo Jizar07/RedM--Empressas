@@ -87,7 +87,7 @@ export async function startApiServer(bot: BotClient): Promise<void> {
   initializeSupplyChainService();
   
   // Initialize Ferrovia session service
-  const ferroviaSessionService = new FerroviaSessionService(bot);
+  const ferroviaSessionService = FerroviaSessionService.getInstance(bot);
   setFerroviaSessionService(ferroviaSessionService);
   console.log('🚂 FerroviaSessionService initialized');
   

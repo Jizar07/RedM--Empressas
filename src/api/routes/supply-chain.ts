@@ -8,7 +8,7 @@ let supplyChainService: SupplyChainService | null = null;
 
 // Initialize the service
 function initializeSupplyChainService() {
-  supplyChainService = new SupplyChainService();
+  supplyChainService = SupplyChainService.getInstance();
   console.log('🔧 SupplyChainService initialized');
 }
 

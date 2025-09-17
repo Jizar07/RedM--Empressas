@@ -11,7 +11,7 @@ export async function handleSupplyChainRefresh(interaction: ButtonInteraction): 
   try {
     await interaction.deferUpdate();
     
-    const supplyChainService = new SupplyChainService();
+    const supplyChainService = SupplyChainService.getInstance();
     const analytics = supplyChainService.getAnalytics();
     const activeSessions = supplyChainService.getAllActiveSessions();
 
@@ -84,7 +84,7 @@ export async function handleSupplyChainResponsibilities(interaction: ButtonInter
   try {
     await interaction.deferReply({ ephemeral: true });
     
-    const supplyChainService = new SupplyChainService();
+    const supplyChainService = SupplyChainService.getInstance();
     const sessionsWithResponsibilities = supplyChainService.getSessionsWithResponsibilities();
     const overdueSessions = supplyChainService.getOverdueSessions();
 
@@ -156,7 +156,7 @@ export async function handleSupplyChainAnalytics(interaction: ButtonInteraction)
   try {
     await interaction.deferReply({ ephemeral: true });
     
-    const supplyChainService = new SupplyChainService();
+    const supplyChainService = SupplyChainService.getInstance();
     const analytics = supplyChainService.getAnalytics();
     const allSessions = supplyChainService.getAllActiveSessions();
 

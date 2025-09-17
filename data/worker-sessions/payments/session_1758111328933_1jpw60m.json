@@ -1,0 +1,26 @@
+{
+  "sessionId": "session_1758111328933_1jpw60m",
+  "workerId": "372161270176153601",
+  "workerName": "Jizar Stoffeliz",
+  "amount": 2.5,
+  "paidBy": "372161270176153601",
+  "paidByName": "GM Stoffel",
+  "paidAt": "2025-09-17T12:21:32.672Z",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Junco",
+      "quantity": 1,
+      "transactionId": "tx_1758111328934_9ocsfi",
+      "timestamp": "2025-09-17T12:15:28.934Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 10,
+      "transactionId": "tx_1758111359048_tdi05h",
+      "timestamp": "2025-09-17T12:15:59.048Z"
+    }
+  ],
+  "animalTransactions": []
+}

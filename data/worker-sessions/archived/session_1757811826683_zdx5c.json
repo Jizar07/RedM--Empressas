@@ -1,0 +1,51 @@
+{
+  "workerId": "976320273601146973",
+  "workerName": "Nina Vatore",
+  "channelId": "1416556550453198878",
+  "sessionId": "session_1757811826683_zdx5c",
+  "startTime": "2025-09-14T01:03:46.683Z",
+  "lastActivity": "2025-09-14T03:21:25.210Z",
+  "status": "stale",
+  "plantTransactions": [
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1757811826683_zwoo1",
+      "timestamp": "2025-09-14T01:03:46.683Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 50,
+      "transactionId": "tx_1757812253904_dwlg7i",
+      "timestamp": "2025-09-14T01:10:53.904Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 470,
+      "transactionId": "tx_1757816824868_vkxm0o",
+      "timestamp": "2025-09-14T02:27:04.868Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 440,
+      "transactionId": "tx_1757819903082_ad66e",
+      "timestamp": "2025-09-14T03:18:23.082Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 90,
+      "transactionId": "tx_1757820085210_qrsbf",
+      "timestamp": "2025-09-14T03:21:25.210Z"
+    }
+  ],
+  "animalTransactions": [],
+  "totalCredits": 387.5,
+  "embedMessageId": "1416590217334493358",
+  "completedAt": "2025-09-17T11:31:10.458Z",
+  "notes": "Auto-archived due to inactivity"
+}

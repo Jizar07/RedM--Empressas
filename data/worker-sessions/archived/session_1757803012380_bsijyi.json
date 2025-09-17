@@ -1,0 +1,23 @@
+{
+  "workerId": "266262427329495041",
+  "workerName": "Guilherme Senna",
+  "channelId": "1416447163231244348",
+  "sessionId": "session_1757803012380_bsijyi",
+  "startTime": "2025-09-13T22:36:52.380Z",
+  "lastActivity": "2025-09-13T22:36:52.381Z",
+  "status": "stale",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente Trigo",
+      "quantity": 100,
+      "transactionId": "tx_1757803012381_5jb82",
+      "timestamp": "2025-09-13T22:36:52.381Z"
+    }
+  ],
+  "animalTransactions": [],
+  "totalCredits": 0,
+  "embedMessageId": "1416553247547592875",
+  "completedAt": "2025-09-17T11:31:10.455Z",
+  "notes": "Auto-archived due to inactivity"
+}

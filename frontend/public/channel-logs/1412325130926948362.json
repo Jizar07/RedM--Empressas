@@ -1,8 +1,938 @@
 {
   "channelId": "1412325130926948362",
-  "lastUpdated": "2025-09-16T09:44:34.417Z",
+  "lastUpdated": "2025-09-17T12:50:18.360Z",
   "messageCount": 100,
   "messages": [
+    {
+      "id": "1417855184897445908",
+      "author": "John Weslley",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: common_portion_pig x10\nAutor:: John Weslley | FIXO: 550\nData:: 17/09/2025 - 09:50:18",
+      "timestamp": "2025-09-17T12:50:18.555Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: common_portion_pig x10\nAutor:: John Weslley | FIXO: 550\nData:: 17/09/2025 - 09:50:18",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417853538331005028",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush_Seed x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 09:43:45",
+      "timestamp": "2025-09-17T12:43:45.983Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush_Seed x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 09:43:45",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417851389366894683",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: Bulrush x10\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 17/09/2025 - 09:35:13",
+      "timestamp": "2025-09-17T12:35:13.630Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: Bulrush x10\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 17/09/2025 - 09:35:13",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417851347281383496",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush_Seed x1\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 17/09/2025 - 09:35:03",
+      "timestamp": "2025-09-17T12:35:03.596Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush_Seed x1\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 17/09/2025 - 09:35:03",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417850033700868146",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: Bulrush x10\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 17/09/2025 - 09:29:49",
+      "timestamp": "2025-09-17T12:29:50.414Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: Bulrush x10\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 17/09/2025 - 09:29:49",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417849921347915841",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush_Seed x1\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 17/09/2025 - 09:29:23",
+      "timestamp": "2025-09-17T12:29:23.627Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush_Seed x1\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 17/09/2025 - 09:29:23",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417848865159381073",
+      "author": "John Weslley",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: semente_trigo x200\nAutor:: John Weslley | FIXO: 550\nData:: 17/09/2025 - 09:25:11",
+      "timestamp": "2025-09-17T12:25:11.812Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: semente_trigo x200\nAutor:: John Weslley | FIXO: 550\nData:: 17/09/2025 - 09:25:11",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417848371913428994",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: Bulrush x10\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 17/09/2025 - 09:23:13",
+      "timestamp": "2025-09-17T12:23:14.213Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: Bulrush x10\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 17/09/2025 - 09:23:13",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417848299104370798",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush_Seed x1\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 17/09/2025 - 09:22:56",
+      "timestamp": "2025-09-17T12:22:56.854Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush_Seed x1\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 17/09/2025 - 09:22:56",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417847428597547028",
+      "author": "Notorius Bowdin",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - SAQUE\nValor sacado:: $1262.5\nAutor:: Notorius Bowdin | FIXO: 71896\nSaldo após saque:: $17616.3\nData:: 17/09/2025 - 09:19:28",
+      "timestamp": "2025-09-17T12:19:29.309Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - SAQUE\nValor sacado:: $1262.5\nAutor:: Notorius Bowdin | FIXO: 71896\nSaldo após saque:: $17616.3\nData:: 17/09/2025 - 09:19:28",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417846548246695958",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: Bulrush x10\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 17/09/2025 - 09:15:58",
+      "timestamp": "2025-09-17T12:15:59.417Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: Bulrush x10\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 17/09/2025 - 09:15:58",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417846514746658967",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 17/09/2025 - 09:15:50",
+      "timestamp": "2025-09-17T12:15:51.430Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 17/09/2025 - 09:15:50",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417846421977174119",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush_Seed x1\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 17/09/2025 - 09:15:28",
+      "timestamp": "2025-09-17T12:15:29.312Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush_Seed x1\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 17/09/2025 - 09:15:28",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417845561406656617",
+      "author": "Bartholomeu Dias",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x100\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 17/09/2025 - 09:12:03",
+      "timestamp": "2025-09-17T12:12:04.136Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x100\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 17/09/2025 - 09:12:03",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417845453487214632",
+      "author": "Bartholomeu Dias",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 17/09/2025 - 09:11:38",
+      "timestamp": "2025-09-17T12:11:38.406Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 17/09/2025 - 09:11:38",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417845437305589901",
+      "author": "Bartholomeu Dias",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 17/09/2025 - 09:11:34",
+      "timestamp": "2025-09-17T12:11:34.548Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 17/09/2025 - 09:11:34",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417845325095243927",
+      "author": "Bartholomeu Dias",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x50\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 17/09/2025 - 09:11:07",
+      "timestamp": "2025-09-17T12:11:07.795Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x50\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 17/09/2025 - 09:11:07",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417845310255796237",
+      "author": "Bartholomeu Dias",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 17/09/2025 - 09:11:03",
+      "timestamp": "2025-09-17T12:11:04.257Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 17/09/2025 - 09:11:03",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417844158487330937",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: trigo x490\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 09:06:29",
+      "timestamp": "2025-09-17T12:06:29.654Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: trigo x490\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 09:06:29",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417843976249151683",
+      "author": "Bartholomeu Dias",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x50\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 17/09/2025 - 09:05:45",
+      "timestamp": "2025-09-17T12:05:46.205Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x50\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 17/09/2025 - 09:05:45",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417843963137622026",
+      "author": "Bartholomeu Dias",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 17/09/2025 - 09:05:42",
+      "timestamp": "2025-09-17T12:05:43.079Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 17/09/2025 - 09:05:42",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417843935652352002",
+      "author": "Bartholomeu Dias",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x50\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 17/09/2025 - 09:05:36",
+      "timestamp": "2025-09-17T12:05:36.526Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x50\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 17/09/2025 - 09:05:36",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417843917667438594",
+      "author": "Bartholomeu Dias",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 17/09/2025 - 09:05:31",
+      "timestamp": "2025-09-17T12:05:32.238Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 17/09/2025 - 09:05:31",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417843296461656155",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: trigo x490\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 09:03:03",
+      "timestamp": "2025-09-17T12:03:04.131Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: trigo x490\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 09:03:03",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417843024280420423",
+      "author": "Koda Smith",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: Bulrush x250\nAutor:: Koda Smith | FIXO: 76977\nData:: 17/09/2025 - 09:01:58",
+      "timestamp": "2025-09-17T12:01:59.238Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: Bulrush x250\nAutor:: Koda Smith | FIXO: 76977\nData:: 17/09/2025 - 09:01:58",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417842987836112928",
+      "author": "Koda Smith",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x50\nAutor:: Koda Smith | FIXO: 76977\nData:: 17/09/2025 - 09:01:50",
+      "timestamp": "2025-09-17T12:01:50.549Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x50\nAutor:: Koda Smith | FIXO: 76977\nData:: 17/09/2025 - 09:01:50",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417842946262437888",
+      "author": "Koda Smith",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x200\nAutor:: Koda Smith | FIXO: 76977\nData:: 17/09/2025 - 09:01:40",
+      "timestamp": "2025-09-17T12:01:40.637Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x200\nAutor:: Koda Smith | FIXO: 76977\nData:: 17/09/2025 - 09:01:40",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417842923986223216",
+      "author": "Koda Smith",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x126\nAutor:: Koda Smith | FIXO: 76977\nData:: 17/09/2025 - 09:01:34",
+      "timestamp": "2025-09-17T12:01:35.326Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x126\nAutor:: Koda Smith | FIXO: 76977\nData:: 17/09/2025 - 09:01:34",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417842451997134861",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: trigo x490\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 08:59:42",
+      "timestamp": "2025-09-17T11:59:42.795Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: trigo x490\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 08:59:42",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417841798369509469",
+      "author": "Koda Smith",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x100\nAutor:: Koda Smith | FIXO: 76977\nData:: 17/09/2025 - 08:57:06",
+      "timestamp": "2025-09-17T11:57:06.958Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x100\nAutor:: Koda Smith | FIXO: 76977\nData:: 17/09/2025 - 08:57:06",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417841786373804114",
+      "author": "Koda Smith",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x200\nAutor:: Koda Smith | FIXO: 76977\nData:: 17/09/2025 - 08:57:03",
+      "timestamp": "2025-09-17T11:57:04.098Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x200\nAutor:: Koda Smith | FIXO: 76977\nData:: 17/09/2025 - 08:57:03",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417841772888981544",
+      "author": "Koda Smith",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x200\nAutor:: Koda Smith | FIXO: 76977\nData:: 17/09/2025 - 08:57:00",
+      "timestamp": "2025-09-17T11:57:00.883Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x200\nAutor:: Koda Smith | FIXO: 76977\nData:: 17/09/2025 - 08:57:00",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417841742752776283",
+      "author": "Koda Smith",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x626\nAutor:: Koda Smith | FIXO: 76977\nData:: 17/09/2025 - 08:56:53",
+      "timestamp": "2025-09-17T11:56:53.698Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x626\nAutor:: Koda Smith | FIXO: 76977\nData:: 17/09/2025 - 08:56:53",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417840504674062377",
+      "author": "Notorius Bowdin",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: semente_trigo x500\nAutor:: Notorius Bowdin | FIXO: 71896\nData:: 17/09/2025 - 08:51:58",
+      "timestamp": "2025-09-17T11:51:58.517Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: semente_trigo x500\nAutor:: Notorius Bowdin | FIXO: 71896\nData:: 17/09/2025 - 08:51:58",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417840492787404950",
+      "author": "Notorius Bowdin",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: cornseed x500\nAutor:: Notorius Bowdin | FIXO: 71896\nData:: 17/09/2025 - 08:51:55",
+      "timestamp": "2025-09-17T11:51:55.683Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: cornseed x500\nAutor:: Notorius Bowdin | FIXO: 71896\nData:: 17/09/2025 - 08:51:55",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417840436499714108",
+      "author": "Notorius Bowdin",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: semente_trigo x500\nAutor:: Notorius Bowdin | FIXO: 71896\nData:: 17/09/2025 - 08:51:41",
+      "timestamp": "2025-09-17T11:51:42.263Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: semente_trigo x500\nAutor:: Notorius Bowdin | FIXO: 71896\nData:: 17/09/2025 - 08:51:41",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417840421983490078",
+      "author": "Notorius Bowdin",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: cornseed x500\nAutor:: Notorius Bowdin | FIXO: 71896\nData:: 17/09/2025 - 08:51:38",
+      "timestamp": "2025-09-17T11:51:38.802Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: cornseed x500\nAutor:: Notorius Bowdin | FIXO: 71896\nData:: 17/09/2025 - 08:51:38",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417840175970652241",
+      "author": "Notorius Bowdin",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: Bulrush_Seed x500\nAutor:: Notorius Bowdin | FIXO: 71896\nData:: 17/09/2025 - 08:50:39",
+      "timestamp": "2025-09-17T11:50:40.148Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: Bulrush_Seed x500\nAutor:: Notorius Bowdin | FIXO: 71896\nData:: 17/09/2025 - 08:50:39",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417840164021211188",
+      "author": "Notorius Bowdin",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x16\nAutor:: Notorius Bowdin | FIXO: 71896\nData:: 17/09/2025 - 08:50:36",
+      "timestamp": "2025-09-17T11:50:37.299Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x16\nAutor:: Notorius Bowdin | FIXO: 71896\nData:: 17/09/2025 - 08:50:36",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417840152813764729",
+      "author": "Notorius Bowdin",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: cornseed x500\nAutor:: Notorius Bowdin | FIXO: 71896\nData:: 17/09/2025 - 08:50:34",
+      "timestamp": "2025-09-17T11:50:34.627Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: cornseed x500\nAutor:: Notorius Bowdin | FIXO: 71896\nData:: 17/09/2025 - 08:50:34",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417837060554752001",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush_Seed x1\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 17/09/2025 - 08:38:16",
+      "timestamp": "2025-09-17T11:38:17.375Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush_Seed x1\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 17/09/2025 - 08:38:16",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417831661114228766",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixadeverduras x125\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 08:16:49",
+      "timestamp": "2025-09-17T11:16:50.048Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixadeverduras x125\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 08:16:49",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417831556915003485",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixadeverduras x500\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 08:16:24",
+      "timestamp": "2025-09-17T11:16:25.205Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixadeverduras x500\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 08:16:24",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417828548642603059",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: semente_trigo x100\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 08:04:27",
+      "timestamp": "2025-09-17T11:04:27.977Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: semente_trigo x100\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 08:04:27",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417828436487045192",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x50\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 08:04:00",
+      "timestamp": "2025-09-17T11:04:01.237Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x50\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 08:04:00",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417828413179170838",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 08:03:55",
+      "timestamp": "2025-09-17T11:03:55.680Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 08:03:55",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417828235433214043",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x50\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 08:03:12",
+      "timestamp": "2025-09-17T11:03:13.302Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x50\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 08:03:12",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417828221147283489",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 08:03:09",
+      "timestamp": "2025-09-17T11:03:09.896Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 08:03:09",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417828180714065971",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x50\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 08:02:59",
+      "timestamp": "2025-09-17T11:03:00.256Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x50\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 08:02:59",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417828166801821758",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 08:02:56",
+      "timestamp": "2025-09-17T11:02:56.939Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 08:02:56",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417828153270861885",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixarustica x25\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 08:02:53",
+      "timestamp": "2025-09-17T11:02:53.713Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixarustica x25\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 08:02:53",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417827914413768754",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x100\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 08:01:56",
+      "timestamp": "2025-09-17T11:01:56.765Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x100\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 08:01:56",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417827901298049065",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 08:01:53",
+      "timestamp": "2025-09-17T11:01:53.638Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 08:01:53",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417827869396308079",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 08:01:45",
+      "timestamp": "2025-09-17T11:01:46.032Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 08:01:45",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417827625707110420",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixarustica x25\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 08:00:47",
+      "timestamp": "2025-09-17T11:00:47.932Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixarustica x25\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 08:00:47",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417827598787936267",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x50\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 08:00:41",
+      "timestamp": "2025-09-17T11:00:41.514Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x50\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 08:00:41",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417827583835504722",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 08:00:37",
+      "timestamp": "2025-09-17T11:00:37.949Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 08:00:37",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417827562465267783",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x50\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 08:00:32",
+      "timestamp": "2025-09-17T11:00:32.854Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x50\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 08:00:32",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417827545528926259",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 08:00:28",
+      "timestamp": "2025-09-17T11:00:28.816Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 08:00:28",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417827119181856809",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x100\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:58:46",
+      "timestamp": "2025-09-17T10:58:47.167Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x100\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:58:46",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417827102375284787",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:58:42",
+      "timestamp": "2025-09-17T10:58:43.160Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:58:42",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417827090102878360",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:58:39",
+      "timestamp": "2025-09-17T10:58:40.234Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:58:39",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417826902835593246",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x50\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:57:55",
+      "timestamp": "2025-09-17T10:57:55.586Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x50\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:57:55",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417826887132123237",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:57:51",
+      "timestamp": "2025-09-17T10:57:51.842Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:57:51",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417826823433093201",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x50\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:57:36",
+      "timestamp": "2025-09-17T10:57:36.655Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x50\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:57:36",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417826808082202745",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:57:32",
+      "timestamp": "2025-09-17T10:57:32.995Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:57:32",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417826486534144021",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixarustica x25\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:56:15",
+      "timestamp": "2025-09-17T10:56:16.332Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixarustica x25\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:56:15",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417826467840262166",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x100\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:56:11",
+      "timestamp": "2025-09-17T10:56:11.875Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x100\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:56:11",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417826450001891409",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:56:07",
+      "timestamp": "2025-09-17T10:56:07.622Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:56:07",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417826431756537856",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:56:02",
+      "timestamp": "2025-09-17T10:56:03.272Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:56:02",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417826288391159873",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x50\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:55:28",
+      "timestamp": "2025-09-17T10:55:29.091Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x50\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:55:28",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417826272511266926",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:55:24",
+      "timestamp": "2025-09-17T10:55:25.305Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:55:24",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417826244061302895",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: Bulrush x150\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:55:18",
+      "timestamp": "2025-09-17T10:55:18.522Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: Bulrush x150\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:55:18",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417826209407959061",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:55:09",
+      "timestamp": "2025-09-17T10:55:10.260Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:55:09",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417826193381789737",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:55:06",
+      "timestamp": "2025-09-17T10:55:06.439Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:55:06",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417825915030994984",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixarustica x25\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:53:59",
+      "timestamp": "2025-09-17T10:54:00.075Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixarustica x25\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:53:59",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417825887293931521",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x100\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:53:53",
+      "timestamp": "2025-09-17T10:53:53.462Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x100\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:53:53",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417825872802742272",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:53:49",
+      "timestamp": "2025-09-17T10:53:50.007Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:53:49",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417825850010767401",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:53:44",
+      "timestamp": "2025-09-17T10:53:44.573Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:53:44",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417825707962269778",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x50\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:53:10",
+      "timestamp": "2025-09-17T10:53:10.706Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x50\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:53:10",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417825694381117512",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:53:07",
+      "timestamp": "2025-09-17T10:53:07.468Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:53:07",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417825675984764958",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x50\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:53:02",
+      "timestamp": "2025-09-17T10:53:03.082Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x50\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:53:02",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417825659522125844",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:52:58",
+      "timestamp": "2025-09-17T10:52:59.157Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:52:58",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417825338486034462",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixarustica x50\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:51:42",
+      "timestamp": "2025-09-17T10:51:42.616Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixarustica x50\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:51:42",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417825319074791464",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixarustica x100\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:51:37",
+      "timestamp": "2025-09-17T10:51:37.988Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixarustica x100\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:51:37",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417825280243798016",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x100\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:51:28",
+      "timestamp": "2025-09-17T10:51:28.730Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x100\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:51:28",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417825262695092235",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:51:24",
+      "timestamp": "2025-09-17T10:51:24.546Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:51:24",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417825245309698049",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:51:19",
+      "timestamp": "2025-09-17T10:51:20.401Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:51:19",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417825035061694496",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x50\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:50:29",
+      "timestamp": "2025-09-17T10:50:30.274Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x50\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:50:29",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417825010822938775",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:50:24",
+      "timestamp": "2025-09-17T10:50:24.495Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:50:24",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417824967898300417",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x50\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:50:13",
+      "timestamp": "2025-09-17T10:50:14.261Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x50\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:50:13",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417824947748733038",
+      "author": "Vitorn Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:50:09",
+      "timestamp": "2025-09-17T10:50:09.457Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x200\nAutor:: Vitorn Stoffeliz | FIXO: 77649\nData:: 17/09/2025 - 07:50:09",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417823160958455839",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush_Seed x1\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 17/09/2025 - 07:43:02",
+      "timestamp": "2025-09-17T10:43:03.453Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush_Seed x1\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 17/09/2025 - 07:43:02",
+      "rawEmbeds": []
+    },
     {
       "id": "1417446052780572672",
       "author": "Jizar Stoffeliz",
@@ -71,936 +1001,6 @@
       "source": "discord",
       "channelId": "1412325130926948362",
       "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x1\nAutor:: Notorius Bowdin | FIXO: 71896\nData:: 16/09/2025 - 06:33:47",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417442634238132335",
-      "author": "Notorius Bowdin",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixadeverduras x1\nAutor:: Notorius Bowdin | FIXO: 71896\nData:: 16/09/2025 - 06:30:58",
-      "timestamp": "2025-09-16T09:30:58.813Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixadeverduras x1\nAutor:: Notorius Bowdin | FIXO: 71896\nData:: 16/09/2025 - 06:30:58",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417442625522499605",
-      "author": "Notorius Bowdin",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x1\nAutor:: Notorius Bowdin | FIXO: 71896\nData:: 16/09/2025 - 06:30:56",
-      "timestamp": "2025-09-16T09:30:56.735Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x1\nAutor:: Notorius Bowdin | FIXO: 71896\nData:: 16/09/2025 - 06:30:56",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417442615602974762",
-      "author": "Notorius Bowdin",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixadeverduras x1\nAutor:: Notorius Bowdin | FIXO: 71896\nData:: 16/09/2025 - 06:30:53",
-      "timestamp": "2025-09-16T09:30:54.370Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixadeverduras x1\nAutor:: Notorius Bowdin | FIXO: 71896\nData:: 16/09/2025 - 06:30:53",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417442371569848331",
-      "author": "Notorius Bowdin",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x1\nAutor:: Notorius Bowdin | FIXO: 71896\nData:: 16/09/2025 - 06:29:55",
-      "timestamp": "2025-09-16T09:29:56.188Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x1\nAutor:: Notorius Bowdin | FIXO: 71896\nData:: 16/09/2025 - 06:29:55",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417441332858978406",
-      "author": "Notorius Bowdin",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixadeverduras x1\nAutor:: Notorius Bowdin | FIXO: 71896\nData:: 16/09/2025 - 06:25:48",
-      "timestamp": "2025-09-16T09:25:48.540Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixadeverduras x1\nAutor:: Notorius Bowdin | FIXO: 71896\nData:: 16/09/2025 - 06:25:48",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417441318598348810",
-      "author": "Notorius Bowdin",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x1\nAutor:: Notorius Bowdin | FIXO: 71896\nData:: 16/09/2025 - 06:25:44",
-      "timestamp": "2025-09-16T09:25:45.140Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x1\nAutor:: Notorius Bowdin | FIXO: 71896\nData:: 16/09/2025 - 06:25:44",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417403417537679421",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $2000\nAutor:: Bartholomeu Dias | FIXO: 76312\nSaldo após depósito:: $28283.8\nData:: 16/09/2025 - 03:55:08",
-      "timestamp": "2025-09-16T06:55:08.823Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $2000\nAutor:: Bartholomeu Dias | FIXO: 76312\nSaldo após depósito:: $28283.8\nData:: 16/09/2025 - 03:55:08",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417387418411335783",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x50\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:51:33",
-      "timestamp": "2025-09-16T05:51:34.334Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x50\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:51:33",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417387403596927080",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:51:30",
-      "timestamp": "2025-09-16T05:51:30.802Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:51:30",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417387233941651489",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x50\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:50:49",
-      "timestamp": "2025-09-16T05:50:50.353Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x50\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:50:49",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417387220771541062",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:50:46",
-      "timestamp": "2025-09-16T05:50:47.213Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:50:46",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417387085673009153",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x100\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:50:14",
-      "timestamp": "2025-09-16T05:50:15.003Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x100\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:50:14",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417387070825172994",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:50:11",
-      "timestamp": "2025-09-16T05:50:11.463Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:50:11",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417387055767490610",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:50:07",
-      "timestamp": "2025-09-16T05:50:07.873Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:50:07",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417386915660959774",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x50\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:49:34",
-      "timestamp": "2025-09-16T05:49:34.469Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x50\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:49:34",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417386902423732345",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:49:30",
-      "timestamp": "2025-09-16T05:49:31.313Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:49:30",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417386881947140119",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x50\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:49:26",
-      "timestamp": "2025-09-16T05:49:26.431Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x50\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:49:26",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417386870761066496",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:49:23",
-      "timestamp": "2025-09-16T05:49:23.764Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:49:23",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417386755463843840",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:48:55",
-      "timestamp": "2025-09-16T05:48:56.275Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:48:55",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417386741651996745",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:48:52",
-      "timestamp": "2025-09-16T05:48:52.982Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:48:52",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417386726518947922",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x100\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:48:48",
-      "timestamp": "2025-09-16T05:48:49.374Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x100\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:48:48",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417386563918106695",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x50\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:48:10",
-      "timestamp": "2025-09-16T05:48:10.607Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x50\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:48:10",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417386547468304486",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:48:06",
-      "timestamp": "2025-09-16T05:48:06.685Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:48:06",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417386524370276393",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x50\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:48:00",
-      "timestamp": "2025-09-16T05:48:01.178Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x50\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:48:00",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417386509870301297",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:47:57",
-      "timestamp": "2025-09-16T05:47:57.721Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:47:57",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417386364068040777",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x100\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:47:22",
-      "timestamp": "2025-09-16T05:47:22.959Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x100\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:47:22",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417386348167565427",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:47:18",
-      "timestamp": "2025-09-16T05:47:19.168Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:47:18",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417386334636478564",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:47:15",
-      "timestamp": "2025-09-16T05:47:15.942Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:47:15",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417385831634698351",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - SAQUE\nValor sacado:: $500\nAutor:: Bartholomeu Dias | FIXO: 76312\nSaldo após saque:: $26283.8\nData:: 16/09/2025 - 02:45:15",
-      "timestamp": "2025-09-16T05:45:16.017Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - SAQUE\nValor sacado:: $500\nAutor:: Bartholomeu Dias | FIXO: 76312\nSaldo após saque:: $26283.8\nData:: 16/09/2025 - 02:45:15",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417385639317340233",
-      "author": "Nelio Tavares",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x100\nAutor:: Nelio Tavares | FIXO: 77677\nData:: 16/09/2025 - 02:44:29",
-      "timestamp": "2025-09-16T05:44:30.165Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x100\nAutor:: Nelio Tavares | FIXO: 77677\nData:: 16/09/2025 - 02:44:29",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417385622271819817",
-      "author": "Nelio Tavares",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x200\nAutor:: Nelio Tavares | FIXO: 77677\nData:: 16/09/2025 - 02:44:25",
-      "timestamp": "2025-09-16T05:44:26.101Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x200\nAutor:: Nelio Tavares | FIXO: 77677\nData:: 16/09/2025 - 02:44:25",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417385611949637653",
-      "author": "Nelio Tavares",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x200\nAutor:: Nelio Tavares | FIXO: 77677\nData:: 16/09/2025 - 02:44:21",
-      "timestamp": "2025-09-16T05:44:23.640Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x200\nAutor:: Nelio Tavares | FIXO: 77677\nData:: 16/09/2025 - 02:44:21",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417384056320032809",
-      "author": "Nelio Tavares",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x100\nAutor:: Nelio Tavares | FIXO: 77677\nData:: 16/09/2025 - 02:38:12",
-      "timestamp": "2025-09-16T05:38:12.749Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x100\nAutor:: Nelio Tavares | FIXO: 77677\nData:: 16/09/2025 - 02:38:12",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417384040679608392",
-      "author": "Nelio Tavares",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x200\nAutor:: Nelio Tavares | FIXO: 77677\nData:: 16/09/2025 - 02:38:08",
-      "timestamp": "2025-09-16T05:38:09.020Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x200\nAutor:: Nelio Tavares | FIXO: 77677\nData:: 16/09/2025 - 02:38:08",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417384019167019131",
-      "author": "Nelio Tavares",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x200\nAutor:: Nelio Tavares | FIXO: 77677\nData:: 16/09/2025 - 02:38:03",
-      "timestamp": "2025-09-16T05:38:03.891Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x200\nAutor:: Nelio Tavares | FIXO: 77677\nData:: 16/09/2025 - 02:38:03",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417382552015994943",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x50\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:32:13",
-      "timestamp": "2025-09-16T05:32:14.095Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x50\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:32:13",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417382537650634802",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:32:10",
-      "timestamp": "2025-09-16T05:32:10.670Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:32:10",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417382510655963226",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x50\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:32:03",
-      "timestamp": "2025-09-16T05:32:04.234Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x50\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:32:03",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417382498153009193",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:32:00",
-      "timestamp": "2025-09-16T05:32:01.253Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:32:00",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417382351985442927",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x100\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:31:25",
-      "timestamp": "2025-09-16T05:31:26.404Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x100\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:31:25",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417382336894472223",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:31:22",
-      "timestamp": "2025-09-16T05:31:22.806Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:31:22",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417382323548065874",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:31:19",
-      "timestamp": "2025-09-16T05:31:19.624Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:31:19",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417382308683714712",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x60\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:31:15",
-      "timestamp": "2025-09-16T05:31:16.080Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x60\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:31:15",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417382185261858958",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x500\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:30:45",
-      "timestamp": "2025-09-16T05:30:46.654Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x500\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:30:45",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417382120451739701",
-      "author": "Nelio Tavares",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: Bulrush x100\nAutor:: Nelio Tavares | FIXO: 77677\nData:: 16/09/2025 - 02:30:30",
-      "timestamp": "2025-09-16T05:30:31.202Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: Bulrush x100\nAutor:: Nelio Tavares | FIXO: 77677\nData:: 16/09/2025 - 02:30:30",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417382098691424276",
-      "author": "Nelio Tavares",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: Bulrush x200\nAutor:: Nelio Tavares | FIXO: 77677\nData:: 16/09/2025 - 02:30:25",
-      "timestamp": "2025-09-16T05:30:26.014Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: Bulrush x200\nAutor:: Nelio Tavares | FIXO: 77677\nData:: 16/09/2025 - 02:30:25",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417382079435378798",
-      "author": "Nelio Tavares",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: Bulrush x200\nAutor:: Nelio Tavares | FIXO: 77677\nData:: 16/09/2025 - 02:30:21",
-      "timestamp": "2025-09-16T05:30:21.423Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: Bulrush x200\nAutor:: Nelio Tavares | FIXO: 77677\nData:: 16/09/2025 - 02:30:21",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417380814391611393",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x50\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:25:19",
-      "timestamp": "2025-09-16T05:25:19.813Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x50\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:25:19",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417380800030179430",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:25:15",
-      "timestamp": "2025-09-16T05:25:16.389Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:25:15",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417380771085422673",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x50\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:25:09",
-      "timestamp": "2025-09-16T05:25:09.488Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x50\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:25:09",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417380747454451723",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:25:03",
-      "timestamp": "2025-09-16T05:25:03.854Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:25:03",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417380579263119473",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x100\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:24:23",
-      "timestamp": "2025-09-16T05:24:23.754Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x100\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:24:23",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417380565740556310",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:24:20",
-      "timestamp": "2025-09-16T05:24:20.530Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:24:20",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417380551039389820",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:24:16",
-      "timestamp": "2025-09-16T05:24:17.025Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:24:16",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417380436241289329",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x50\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:23:49",
-      "timestamp": "2025-09-16T05:23:49.655Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x50\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:23:49",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417380424015020032",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:23:46",
-      "timestamp": "2025-09-16T05:23:46.740Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:23:46",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417380330523852873",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x50\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:23:24",
-      "timestamp": "2025-09-16T05:23:24.450Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x50\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:23:24",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417380317865709659",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:23:20",
-      "timestamp": "2025-09-16T05:23:21.432Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:23:20",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417380170083471420",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixarustica x150\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:22:45",
-      "timestamp": "2025-09-16T05:22:46.198Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixarustica x150\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:22:45",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417380059555299419",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x100\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:22:19",
-      "timestamp": "2025-09-16T05:22:19.846Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x100\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:22:19",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417380046821130351",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:22:16",
-      "timestamp": "2025-09-16T05:22:16.810Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:22:16",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417380033881837668",
-      "author": "Bartholomeu Dias",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:22:13",
-      "timestamp": "2025-09-16T05:22:13.725Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 16/09/2025 - 02:22:13",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417379841568935967",
-      "author": "Nelio Tavares",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: Bulrush x100\nAutor:: Nelio Tavares | FIXO: 77677\nData:: 16/09/2025 - 02:21:27",
-      "timestamp": "2025-09-16T05:21:27.874Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: Bulrush x100\nAutor:: Nelio Tavares | FIXO: 77677\nData:: 16/09/2025 - 02:21:27",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417379823734751316",
-      "author": "Nelio Tavares",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: Bulrush x200\nAutor:: Nelio Tavares | FIXO: 77677\nData:: 16/09/2025 - 02:21:23",
-      "timestamp": "2025-09-16T05:21:23.622Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: Bulrush x200\nAutor:: Nelio Tavares | FIXO: 77677\nData:: 16/09/2025 - 02:21:23",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417379806986895481",
-      "author": "Nelio Tavares",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: Bulrush x200\nAutor:: Nelio Tavares | FIXO: 77677\nData:: 16/09/2025 - 02:21:19",
-      "timestamp": "2025-09-16T05:21:19.629Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: Bulrush x200\nAutor:: Nelio Tavares | FIXO: 77677\nData:: 16/09/2025 - 02:21:19",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417379131401830511",
-      "author": "Thony Gustav",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: frangocaipira x4\nAutor:: Thony Gustav | FIXO: 72363\nData:: 16/09/2025 - 02:18:38",
-      "timestamp": "2025-09-16T05:18:38.557Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: frangocaipira x4\nAutor:: Thony Gustav | FIXO: 72363\nData:: 16/09/2025 - 02:18:38",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417379016192557077",
-      "author": "Thony Gustav",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: SucodeMorango x20\nAutor:: Thony Gustav | FIXO: 72363\nData:: 16/09/2025 - 02:18:10",
-      "timestamp": "2025-09-16T05:18:11.089Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: SucodeMorango x20\nAutor:: Thony Gustav | FIXO: 72363\nData:: 16/09/2025 - 02:18:10",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417371169803210784",
-      "author": "Gabriel Soares",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: hoe x1\nAutor:: Gabriel Soares | FIXO: 77642\nData:: 16/09/2025 - 01:46:59",
-      "timestamp": "2025-09-16T04:47:00.364Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: hoe x1\nAutor:: Gabriel Soares | FIXO: 77642\nData:: 16/09/2025 - 01:46:59",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417370863572877373",
-      "author": "Gabriel Soares",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x100\nAutor:: Gabriel Soares | FIXO: 77642\nData:: 16/09/2025 - 01:45:46",
-      "timestamp": "2025-09-16T04:45:47.353Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x100\nAutor:: Gabriel Soares | FIXO: 77642\nData:: 16/09/2025 - 01:45:46",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417358854156714044",
-      "author": "Nelio Tavares",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x100\nAutor:: Nelio Tavares | FIXO: 77677\nData:: 16/09/2025 - 00:58:03",
-      "timestamp": "2025-09-16T03:58:04.085Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x100\nAutor:: Nelio Tavares | FIXO: 77677\nData:: 16/09/2025 - 00:58:03",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417358828265013360",
-      "author": "Nelio Tavares",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush_Seed x100\nAutor:: Nelio Tavares | FIXO: 77677\nData:: 16/09/2025 - 00:57:57",
-      "timestamp": "2025-09-16T03:57:57.912Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush_Seed x100\nAutor:: Nelio Tavares | FIXO: 77677\nData:: 16/09/2025 - 00:57:57",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417357735271469118",
-      "author": "Chris Rubble",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: sucodelemon x5\nAutor:: Chris Rubble | FIXO: 72751\nData:: 16/09/2025 - 00:53:36",
-      "timestamp": "2025-09-16T03:53:37.322Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: sucodelemon x5\nAutor:: Chris Rubble | FIXO: 72751\nData:: 16/09/2025 - 00:53:36",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417357718364356678",
-      "author": "Chris Rubble",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: saladadefruta x10\nAutor:: Chris Rubble | FIXO: 72751\nData:: 16/09/2025 - 00:53:32",
-      "timestamp": "2025-09-16T03:53:33.291Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: saladadefruta x10\nAutor:: Chris Rubble | FIXO: 72751\nData:: 16/09/2025 - 00:53:32",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417357702853689396",
-      "author": "Chris Rubble",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bay_Bolete_Seed x20\nAutor:: Chris Rubble | FIXO: 72751\nData:: 16/09/2025 - 00:53:29",
-      "timestamp": "2025-09-16T03:53:29.593Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bay_Bolete_Seed x20\nAutor:: Chris Rubble | FIXO: 72751\nData:: 16/09/2025 - 00:53:29",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417357689327190166",
-      "author": "Chris Rubble",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Prairie_Poppy_Seed x20\nAutor:: Chris Rubble | FIXO: 72751\nData:: 16/09/2025 - 00:53:25",
-      "timestamp": "2025-09-16T03:53:26.368Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Prairie_Poppy_Seed x20\nAutor:: Chris Rubble | FIXO: 72751\nData:: 16/09/2025 - 00:53:25",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417357676169658460",
-      "author": "Chris Rubble",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: semente_algodao x30\nAutor:: Chris Rubble | FIXO: 72751\nData:: 16/09/2025 - 00:53:22",
-      "timestamp": "2025-09-16T03:53:23.231Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: semente_algodao x30\nAutor:: Chris Rubble | FIXO: 72751\nData:: 16/09/2025 - 00:53:22",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417356429756727437",
-      "author": "Cherokee Bill",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: sucodelemon x20\nAutor:: Cherokee Bill | FIXO: 77562\nData:: 16/09/2025 - 00:48:25",
-      "timestamp": "2025-09-16T03:48:26.063Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: sucodelemon x20\nAutor:: Cherokee Bill | FIXO: 77562\nData:: 16/09/2025 - 00:48:25",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417356382776328252",
-      "author": "Cherokee Bill",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: Prairie_Poppy_Seed x20\nAutor:: Cherokee Bill | FIXO: 77562\nData:: 16/09/2025 - 00:48:14",
-      "timestamp": "2025-09-16T03:48:14.862Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: Prairie_Poppy_Seed x20\nAutor:: Cherokee Bill | FIXO: 77562\nData:: 16/09/2025 - 00:48:14",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417356375079649291",
-      "author": "Cherokee Bill",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: semente_algodao x30\nAutor:: Cherokee Bill | FIXO: 77562\nData:: 16/09/2025 - 00:48:12",
-      "timestamp": "2025-09-16T03:48:13.027Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: semente_algodao x30\nAutor:: Cherokee Bill | FIXO: 77562\nData:: 16/09/2025 - 00:48:12",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417356368695787592",
-      "author": "Cherokee Bill",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: Bay_Bolete_Seed x20\nAutor:: Cherokee Bill | FIXO: 77562\nData:: 16/09/2025 - 00:48:11",
-      "timestamp": "2025-09-16T03:48:11.505Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: Bay_Bolete_Seed x20\nAutor:: Cherokee Bill | FIXO: 77562\nData:: 16/09/2025 - 00:48:11",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417355931167096905",
-      "author": "John Weslley",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x100\nAutor:: John Weslley | FIXO: 550\nData:: 16/09/2025 - 00:46:26",
-      "timestamp": "2025-09-16T03:46:27.190Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x100\nAutor:: John Weslley | FIXO: 550\nData:: 16/09/2025 - 00:46:26",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417355912582135870",
-      "author": "John Weslley",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x200\nAutor:: John Weslley | FIXO: 550\nData:: 16/09/2025 - 00:46:22",
-      "timestamp": "2025-09-16T03:46:22.759Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x200\nAutor:: John Weslley | FIXO: 550\nData:: 16/09/2025 - 00:46:22",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417355897323130890",
-      "author": "John Weslley",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x200\nAutor:: John Weslley | FIXO: 550\nData:: 16/09/2025 - 00:46:18",
-      "timestamp": "2025-09-16T03:46:19.121Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x200\nAutor:: John Weslley | FIXO: 550\nData:: 16/09/2025 - 00:46:18",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417355368979501147",
-      "author": "Chris Rubble",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: alcoolindustrial x150\nAutor:: Chris Rubble | FIXO: 72751\nData:: 16/09/2025 - 00:44:12",
-      "timestamp": "2025-09-16T03:44:13.154Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: alcoolindustrial x150\nAutor:: Chris Rubble | FIXO: 72751\nData:: 16/09/2025 - 00:44:12",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417355235545845820",
-      "author": "John Weslley",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x100\nAutor:: John Weslley | FIXO: 550\nData:: 16/09/2025 - 00:43:40",
-      "timestamp": "2025-09-16T03:43:41.341Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x100\nAutor:: John Weslley | FIXO: 550\nData:: 16/09/2025 - 00:43:40",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417355219637112924",
-      "author": "John Weslley",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x200\nAutor:: John Weslley | FIXO: 550\nData:: 16/09/2025 - 00:43:37",
-      "timestamp": "2025-09-16T03:43:37.548Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x200\nAutor:: John Weslley | FIXO: 550\nData:: 16/09/2025 - 00:43:37",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417355199298797619",
-      "author": "John Weslley",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x200\nAutor:: John Weslley | FIXO: 550\nData:: 16/09/2025 - 00:43:32",
-      "timestamp": "2025-09-16T03:43:32.699Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x200\nAutor:: John Weslley | FIXO: 550\nData:: 16/09/2025 - 00:43:32",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417355103429460048",
-      "author": "Chris Rubble",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: alcoolindustrial x150\nAutor:: Chris Rubble | FIXO: 72751\nData:: 16/09/2025 - 00:43:09",
-      "timestamp": "2025-09-16T03:43:09.842Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: alcoolindustrial x150\nAutor:: Chris Rubble | FIXO: 72751\nData:: 16/09/2025 - 00:43:09",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417354988803457035",
-      "author": "Chris Rubble",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: alcoolindustrial x150\nAutor:: Chris Rubble | FIXO: 72751\nData:: 16/09/2025 - 00:42:42",
-      "timestamp": "2025-09-16T03:42:42.513Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: alcoolindustrial x150\nAutor:: Chris Rubble | FIXO: 72751\nData:: 16/09/2025 - 00:42:42",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417354882884698174",
-      "author": "Chris Rubble",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: alcoolindustrial x150\nAutor:: Chris Rubble | FIXO: 72751\nData:: 16/09/2025 - 00:42:16",
-      "timestamp": "2025-09-16T03:42:17.260Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: alcoolindustrial x150\nAutor:: Chris Rubble | FIXO: 72751\nData:: 16/09/2025 - 00:42:16",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417354777003561053",
-      "author": "Chris Rubble",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: alcoolindustrial x150\nAutor:: Chris Rubble | FIXO: 72751\nData:: 16/09/2025 - 00:41:51",
-      "timestamp": "2025-09-16T03:41:52.016Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: alcoolindustrial x150\nAutor:: Chris Rubble | FIXO: 72751\nData:: 16/09/2025 - 00:41:51",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417354645281443913",
-      "author": "Chris Rubble",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: alcoolindustrial x150\nAutor:: Chris Rubble | FIXO: 72751\nData:: 16/09/2025 - 00:41:20",
-      "timestamp": "2025-09-16T03:41:20.611Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: alcoolindustrial x150\nAutor:: Chris Rubble | FIXO: 72751\nData:: 16/09/2025 - 00:41:20",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417349797198958683",
-      "author": "Chris Rubble",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixaanimal x175\nAutor:: Chris Rubble | FIXO: 72751\nData:: 16/09/2025 - 00:22:04",
-      "timestamp": "2025-09-16T03:22:04.738Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixaanimal x175\nAutor:: Chris Rubble | FIXO: 72751\nData:: 16/09/2025 - 00:22:04",
       "rawEmbeds": []
     }
   ]

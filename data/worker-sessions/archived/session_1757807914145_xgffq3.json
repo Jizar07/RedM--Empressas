@@ -1,0 +1,23 @@
+{
+  "workerId": "1245794457161564201",
+  "workerName": "juca rabicho",
+  "channelId": "1416510577768923190",
+  "sessionId": "session_1757807914145_xgffq3",
+  "startTime": "2025-09-13T23:58:34.145Z",
+  "lastActivity": "2025-09-13T23:58:34.146Z",
+  "status": "stale",
+  "plantTransactions": [
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 100,
+      "transactionId": "tx_1757807914146_2bbgz",
+      "timestamp": "2025-09-13T23:58:34.146Z"
+    }
+  ],
+  "animalTransactions": [],
+  "totalCredits": 25,
+  "embedMessageId": "1416573806876557436",
+  "completedAt": "2025-09-17T11:31:10.456Z",
+  "notes": "Auto-archived due to inactivity"
+}

@@ -41,7 +41,7 @@ export function getFerroviaSessionService(): FerroviaSessionService | null {
 
 // Initialize supply chain service when module loads
 if (!supplyChainService) {
-  supplyChainService = new SupplyChainService();
+  supplyChainService = SupplyChainService.getInstance();
   console.log('🔧 SupplyChainService initialized in webhook receiver');
 }
 

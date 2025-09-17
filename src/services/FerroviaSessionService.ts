@@ -16,6 +16,7 @@ interface FerroviaSessionEmbed {
 }
 
 export class FerroviaSessionService {
+  private static instance: FerroviaSessionService | null = null;
   private client: Client;
   private supplyChainService: SupplyChainService;
   private itemTranslationService: ItemTranslationService;
@@ -24,15 +25,23 @@ export class FerroviaSessionService {
   private activeEmbeds: Map<string, FerroviaSessionEmbed> = new Map();
   private dataDir: string;
 
-  constructor(client: Client) {
+  private constructor(client: Client) {
     this.client = client;
-    this.supplyChainService = new SupplyChainService();
+    this.supplyChainService = SupplyChainService.getInstance();
     this.itemTranslationService = ItemTranslationService.getInstance();
     this.recipeService = new RecipeService();
     this.workerChannelService = WorkerChannelService.getInstance(client);
     this.dataDir = path.join(process.cwd(), 'data', 'ferrovia-embeds');
     this.ensureDataDirectory();
     this.loadActiveEmbeds();
+  }
+
+  public static getInstance(client: Client): FerroviaSessionService {
+    if (!FerroviaSessionService.instance) {
+      console.log('🏭 Creating new FerroviaSessionService singleton instance');
+      FerroviaSessionService.instance = new FerroviaSessionService(client);
+    }
+    return FerroviaSessionService.instance;
   }
 
   private ensureDataDirectory(): void {

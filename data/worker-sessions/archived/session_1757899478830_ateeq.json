@@ -1,0 +1,50 @@
+{
+  "workerId": "273987353456934913",
+  "workerName": "Souzz Ramirez",
+  "channelId": "1416760197329719306",
+  "sessionId": "session_1757899478830_ateeq",
+  "startTime": "2025-09-15T01:24:38.830Z",
+  "lastActivity": "2025-09-15T01:34:25.952Z",
+  "status": "stale",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Junco",
+      "quantity": 100,
+      "transactionId": "tx_1757899478831_zmpzxj",
+      "timestamp": "2025-09-15T01:24:38.831Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Junco",
+      "quantity": 100,
+      "transactionId": "tx_1757900065952_2c0ffq",
+      "timestamp": "2025-09-15T01:34:25.952Z"
+    }
+  ],
+  "animalTransactions": [],
+  "totalCredits": 0,
+  "embedMessageId": "1416957856900452364",
+  "seedExpectations": [
+    {
+      "seedType": "Semente de Junco",
+      "seedQuantity": 100,
+      "expectedPlantType": "Junco",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1757899478831_zmpzxj"
+    },
+    {
+      "seedType": "Semente de Junco",
+      "seedQuantity": 100,
+      "expectedPlantType": "Junco",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1757900065952_2c0ffq"
+    }
+  ],
+  "completedAt": "2025-09-17T11:31:10.461Z",
+  "notes": "Auto-archived due to inactivity"
+}

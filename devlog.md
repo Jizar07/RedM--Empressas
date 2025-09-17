@@ -4,6 +4,25 @@ This is a local timestamped file to track all development changes and prompts.
 
 ## Log Entries
 
+### 2025-09-17 08:55:21
+**Action**: Complete Ferrovia System Singleton Pattern Fix
+**Prompt**: "check the ferrovia system, see if there are the same problems with that so we can fix it too."
+**Changes**:
+- **FIXED**: Applied singleton pattern to FerroviaSessionService to resolve multiple instance issues
+- **FIXED**: Applied singleton pattern to SupplyChainService to resolve massive multiple instance problem (9 instances)
+- **ARCHITECTURE**: Unified Ferrovia system service architecture identical to farm worker system fix
+- **FILES MODIFIED**:
+  - src/services/FerroviaSessionService.ts - Added singleton pattern with getInstance() method
+  - src/services/SupplyChainService.ts - Added singleton pattern with getInstance() method
+  - src/services/MultiChannelForwarder.ts - Updated to use FerroviaSessionService singleton
+  - src/api/server.ts - Updated to use FerroviaSessionService singleton
+  - src/handlers/supplyChainHandlers.ts - Updated to use SupplyChainService singleton (3 locations)
+  - src/bot/commands/supply-chain/status.ts - Updated to use SupplyChainService singleton (2 locations)
+  - src/api/routes/webhook-receiver.ts - Updated to use SupplyChainService singleton
+  - src/api/routes/supply-chain.ts - Updated to use SupplyChainService singleton
+- **RESULT**: Eliminated all multiple instance issues in Ferrovia system, preventing verification/reset button failures and session state inconsistency
+- **STATUS**: Ferrovia system now has same unified service architecture as farm worker system
+
 ### 2025-09-17 08:35:49
 **Action**: Complete Zombie Session Resurrection Fix & Singleton Pattern Implementation
 **Prompt**: "analyze codebase", "my problem, which we tried the whole day yesterday trying to fix and ended up breaking the whole app. - we have the system that track fazendas/workers activities. and creates a embed in the worker's channels detailing all. analyze this", "same issue again, we are starting the same way as yesterday. we can not go down the same route this time.", "it seems that will not work, because if we pay the worker for the farm services, that should not also pay the ferrovia services, theses are 2 different services, and not all worker do ferrovia.", "when clicking pay worker now i get - ❌ Este trabalhador não possui sessão ativa ou já foi pago. Verifique se há atividades recentes para pagar.", "same issue, took one seed, added 10 plants, when clicking pay worker im still getting ❌ Este trabalhador não possui sessão ativa ou já foi pago. Verifique se há atividades recentes para pagar.", "so i have to restart bot to make it work?", "same issue, took one seed, added 10 plants, when clicking pay worker im still getting Fazenda Bot APP — 8:29 AM ❌ Este trabalhador não possui sessão ativa ou já foi pago. Verifique se há atividades recentes para pagar.", "perfect, update .mds and push to git"

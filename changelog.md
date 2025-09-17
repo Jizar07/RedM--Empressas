@@ -5,7 +5,25 @@ This file is synchronized with: https://github.com/Jizar07/RedM--Empressas
 
 ## Version History
 
-### [0.042] - 2025-09-17 **[CURRENT VERSION]**
+### [0.043] - 2025-09-17 **[CURRENT VERSION]**
+- **ARCHITECTURAL ENHANCEMENT**: Complete Ferrovia System Singleton Pattern Implementation
+- **FERROVIA FIX**: Applied singleton pattern to FerroviaSessionService resolving multiple instance issues (API server + MultiChannelForwarder)
+- **SUPPLY CHAIN FIX**: Applied singleton pattern to SupplyChainService resolving massive multiple instance problem (9 separate instances)
+- **VERIFICATION RELIABILITY**: Eliminated verification/reset button failures due to service instance isolation in Ferrovia system
+- **SESSION CONSISTENCY**: Unified session state management across all Ferrovia operations preventing data inconsistency
+- **ARCHITECTURAL PARITY**: Ferrovia system now has identical singleton architecture as farm worker system
+- **FILES MODIFIED**:
+  - src/services/FerroviaSessionService.ts - Singleton pattern implementation
+  - src/services/SupplyChainService.ts - Singleton pattern implementation
+  - src/services/MultiChannelForwarder.ts - Updated to use FerroviaSessionService singleton
+  - src/api/server.ts - Updated to use FerroviaSessionService singleton
+  - src/handlers/supplyChainHandlers.ts - Updated to use SupplyChainService singleton (3 locations)
+  - src/bot/commands/supply-chain/status.ts - Updated to use SupplyChainService singleton (2 locations)
+  - src/api/routes/webhook-receiver.ts - Updated to use SupplyChainService singleton
+  - src/api/routes/supply-chain.ts - Updated to use SupplyChainService singleton
+- **RESULT**: Both farm worker and Ferrovia systems now use unified singleton service architecture preventing all multiple instance issues
+
+### [0.042] - 2025-09-17
 - **CRITICAL FIX**: Complete Zombie Session Resurrection Resolution & Architecture Unification
 - **SESSION INTEGRITY**: Fixed zombie sessions being reactivated after payment, preventing paid sessions from coming back to life
 - **RACE CONDITION RESOLUTION**: Eliminated redundant delete/save operations causing sessions to remain in active-sessions.json after archiving
