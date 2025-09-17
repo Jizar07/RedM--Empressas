@@ -8,7 +8,7 @@ let workerChannelService: WorkerChannelService | null = null;
 
 // Initialize the service with Discord client
 export function initializeWorkerChannelService(client: any) {
-  workerChannelService = new WorkerChannelService(client);
+  workerChannelService = WorkerChannelService.getInstance(client);
   console.log('🔧 WorkerChannelService initialized with Discord client');
 }
 

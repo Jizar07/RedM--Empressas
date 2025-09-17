@@ -2,6 +2,7 @@ import { Client, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, Tex
 import fs from 'fs';
 import path from 'path';
 import PaymentAuditService from './PaymentAuditService';
+import { SessionCleanupService } from '../utils/SessionCleanupService';
 
 interface PlantTransaction {
   type: 'seed_taken' | 'plant_deposited';
@@ -79,14 +80,19 @@ export class WorkerActivityService {
   private serviceConfig!: ServiceConfig;
   private workerPricesCache: Map<string, { prices: WorkerPrices; fetchedAt: Date }> = new Map();
   private paymentAuditService: PaymentAuditService;
+  private cleanupService: SessionCleanupService;
 
   constructor(client: Client) {
     this.client = client;
     this.dataDir = path.join(process.cwd(), 'data', 'worker-sessions');
     this.paymentAuditService = PaymentAuditService.getInstance();
+    this.cleanupService = new SessionCleanupService();
     this.ensureDataDirectory();
     this.loadServiceConfig();
     this.loadActiveSessions();
+
+    // Start automatic cleanup service
+    this.cleanupService.startAutoCleanup();
   }
 
   private ensureDataDirectory(): void {
@@ -123,13 +129,32 @@ export class WorkerActivityService {
 
         let loadedCount = 0;
         let skippedCount = 0;
+        let cleanedUp = false;
+
+        // Get list of archived session IDs to prevent loading zombie sessions
+        const archivedSessionIds = this.getArchivedSessionIds();
 
         // Convert to Map and restore Date objects - ONLY for active sessions
         Object.entries(sessions).forEach(([workerId, session]: [string, any]) => {
+          // Skip placeholder entries completely
+          if (workerId === 'placeholder_user_id' || session.channelId === 'placeholder_channel_id') {
+            console.log(`🧹 Removing placeholder entry: ${workerId}`);
+            cleanedUp = true;
+            return;
+          }
+
+          // ZOMBIE SESSION CHECK: Skip sessions that exist in archived folder
+          if (archivedSessionIds.has(session.sessionId)) {
+            console.log(`🧟 ZOMBIE SESSION DETECTED: ${session.workerName} (${session.sessionId}) - exists in archived folder, removing from active`);
+            cleanedUp = true;
+            return;
+          }
+
           // CRITICAL FIX: Only load sessions with 'active' status
           if (session.status !== 'active') {
             console.log(`⏭️ Skipping non-active session for ${session.workerName} (status: ${session.status})`);
             skippedCount++;
+            cleanedUp = true;
             return;
           }
 
@@ -157,6 +182,12 @@ export class WorkerActivityService {
         });
 
         console.log(`📊 Loaded ${loadedCount} active worker sessions (skipped ${skippedCount} non-active sessions)`);
+
+        // If we cleaned up any sessions, save immediately
+        if (cleanedUp) {
+          console.log(`🧹 Cleaning up sessions file...`);
+          this.saveActiveSessions();
+        }
       }
     } catch (error) {
       console.error('❌ Error loading active sessions:', error);
@@ -191,6 +222,27 @@ export class WorkerActivityService {
 
   private generateTransactionId(): string {
     return `tx_${Date.now()}_${Math.random().toString(36).substring(7)}`;
+  }
+
+  // Get all archived session IDs to prevent zombie sessions
+  private getArchivedSessionIds(): Set<string> {
+    const archivedIds = new Set<string>();
+    try {
+      const archiveDir = path.join(this.dataDir, 'archived');
+      if (fs.existsSync(archiveDir)) {
+        const files = fs.readdirSync(archiveDir);
+        files.forEach(file => {
+          if (file.endsWith('.json')) {
+            // Extract session ID from filename (remove .json extension)
+            const sessionId = file.replace('.json', '');
+            archivedIds.add(sessionId);
+          }
+        });
+      }
+    } catch (error) {
+      console.error('❌ Error reading archived sessions:', error);
+    }
+    return archivedIds;
   }
 
   // Convert seed name to expected plant name and calculate expected quantity
@@ -591,12 +643,20 @@ export class WorkerActivityService {
 
   public getOrCreateSession(workerId: string, workerName: string, channelId: string): WorkerSession {
     let session = this.activeSessions.get(workerId);
-    
-    // Enhanced: Validate existing session state
+
+    // CRITICAL FIX: If session exists but is not active, remove it completely
     if (session) {
-      // If session is not active, treat it as if it doesn't exist
-      if (!this.isSessionActive(session)) {
-        console.log(`⚠️ Found non-active session (${session.status}) for ${workerName}, creating new session instead`);
+      // Check if this session was archived (zombie detection)
+      const archivedSessionIds = this.getArchivedSessionIds();
+      if (archivedSessionIds.has(session.sessionId)) {
+        console.log(`🧟 ZOMBIE SESSION RESURRECTION BLOCKED: ${workerName} (${session.sessionId}) - session was paid and archived, removing completely`);
+        this.activeSessions.delete(workerId);
+        this.saveActiveSessions();
+        session = undefined;
+      } else if (!this.isSessionActive(session)) {
+        console.log(`⚠️ Found non-active session (${session.status}) for ${workerName}, removing and creating fresh session`);
+        this.activeSessions.delete(workerId);
+        this.saveActiveSessions();
         session = undefined;
       }
     }
@@ -1150,6 +1210,10 @@ export class WorkerActivityService {
       return false;
     }
 
+    // PAYMENT PROTECTION: Temporarily mark session to prevent zombie detection during payment
+    console.log(`🔒 PAYMENT PROTECTION: Marking session ${session.sessionId} as processing to prevent interference`);
+    session.status = 'pending_payment';
+
     console.log(`💰 Processing payment for ${session.workerName} - $${session.totalCredits.toFixed(2)}`);
 
     // Transform embed into permanent receipt
@@ -1160,7 +1224,11 @@ export class WorkerActivityService {
     // Wait a moment to ensure embed is updated before archiving
     await new Promise(resolve => setTimeout(resolve, 500));
 
-    // Archive the session
+    // Mark session as paid BEFORE archiving
+    session.status = 'paid';
+
+    // Archive the session (this will remove it from active sessions)
+    console.log(`🔄 STATUS CHANGE: ${session.workerName} session ${session.sessionId} changing from 'paid' to archived`);
     await this.archiveSession(session, 'paid', `Pago por ${managerName} (${managerId})`);
     
     // Create payment record
@@ -1201,10 +1269,7 @@ export class WorkerActivityService {
       // Don't fail the payment if audit creation fails
     }
 
-    // Enhanced: Remove from active sessions with comprehensive cleanup
-    this.activeSessions.delete(workerId);
-    this.saveActiveSessions();
-
+    // Session was already deleted and saved in archiveSession() - no need for redundant operations
     console.log(`✅ Successfully paid worker ${session.workerName} $${session.totalCredits.toFixed(2)} - Session archived and cleaned up`);
     console.log(`📋 Payment completed by ${managerName} (${managerId}) - Receipt saved as ${session.sessionId}`);
     
@@ -1226,6 +1291,14 @@ export class WorkerActivityService {
 
     const archiveFile = path.join(archiveDir, `${session.sessionId}.json`);
     fs.writeFileSync(archiveFile, JSON.stringify(archivedSession, null, 2));
+
+    // CRITICAL: Remove the session from active sessions immediately after archiving
+    this.activeSessions.delete(session.workerId);
+    console.log(`🗑️ MEMORY CLEANUP: Deleted session ${session.sessionId} from active memory (worker: ${session.workerId})`);
+
+    this.saveActiveSessions();
+    console.log(`💾 FILE CLEANUP: Saved active sessions to disk without archived session ${session.sessionId}`);
+    console.log(`🗂️ Session archived and removed from active sessions: ${session.workerName} (${session.sessionId})`);
   }
 
   public getActiveSessionsCount(): number {
@@ -1238,6 +1311,25 @@ export class WorkerActivityService {
 
   public getWorkerSession(workerId: string): WorkerSession | undefined {
     return this.activeSessions.get(workerId);
+  }
+
+  // Validation method to check for zombie sessions periodically
+  public validateActiveSessionsIntegrity(): void {
+    const archivedSessionIds = this.getArchivedSessionIds();
+    let zombieCount = 0;
+
+    this.activeSessions.forEach((session, _) => {
+      if (archivedSessionIds.has(session.sessionId)) {
+        console.log(`🚨 ZOMBIE DETECTED: Worker ${session.workerName} has active session ${session.sessionId} that exists in archived folder!`);
+        zombieCount++;
+      }
+    });
+
+    if (zombieCount > 0) {
+      console.log(`⚠️ INTEGRITY CHECK FAILED: Found ${zombieCount} zombie sessions in active memory`);
+    } else {
+      console.log(`✅ INTEGRITY CHECK PASSED: No zombie sessions detected`);
+    }
   }
 
   /**

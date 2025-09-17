@@ -281,6 +281,7 @@ When updating .md files:
 - **USE SIMPLE SOLUTIONS** - Prefer straightforward approaches over complex ones
 - **IF YOU DON'T KNOW, ASK** - Seek clarification rather than guessing
 - **🚨 CRITICAL: DO NOT FUCKING MAKE CHANGES OR RUN PROGRAMS WITHOUT EXPLICIT PERMISSION** - NEVER delete files, kill processes, modify code, or execute commands without the user's direct approval
+- **🚫 SERVER MANAGEMENT FORBIDDEN** - NEVER attempt to start, stop, restart, or kill servers/processes using pm2, npm run dev, node, or any other server commands
 
 ## MANDATORY PRE-RESPONSE CHECKLIST
 

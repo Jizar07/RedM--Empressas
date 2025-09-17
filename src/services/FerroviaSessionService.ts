@@ -29,7 +29,7 @@ export class FerroviaSessionService {
     this.supplyChainService = new SupplyChainService();
     this.itemTranslationService = ItemTranslationService.getInstance();
     this.recipeService = new RecipeService();
-    this.workerChannelService = new WorkerChannelService(client);
+    this.workerChannelService = WorkerChannelService.getInstance(client);
     this.dataDir = path.join(process.cwd(), 'data', 'ferrovia-embeds');
     this.ensureDataDirectory();
     this.loadActiveEmbeds();

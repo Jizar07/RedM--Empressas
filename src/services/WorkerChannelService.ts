@@ -26,6 +26,8 @@ interface TransactionData {
 }
 
 export class WorkerChannelService {
+  private static instance: WorkerChannelService | null = null;
+
   // @ts-ignore - Used in child services
   private client: Client;
   private workerMappings: Map<string, WorkerChannelMapping> = new Map();
@@ -33,13 +35,24 @@ export class WorkerChannelService {
   private dataDir: string;
   private translationService: ItemTranslationService;
 
-  constructor(client: Client) {
+  private constructor(client: Client) {
     this.client = client;
     this.dataDir = path.join(process.cwd(), 'data', 'worker-channels');
     this.ensureDataDirectory();
     this.loadWorkerMappings();
     this.activityService = new WorkerActivityService(client);
     this.translationService = ItemTranslationService.getInstance();
+  }
+
+  public static getInstance(client?: Client): WorkerChannelService {
+    if (!WorkerChannelService.instance) {
+      if (!client) {
+        throw new Error('WorkerChannelService: Client required for first initialization');
+      }
+      WorkerChannelService.instance = new WorkerChannelService(client);
+      console.log('🔧 WorkerChannelService: Created singleton instance');
+    }
+    return WorkerChannelService.instance;
   }
 
   private ensureDataDirectory(): void {

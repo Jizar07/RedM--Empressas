@@ -87,7 +87,7 @@ export class MultiChannelForwarder {
 
   public initializeWorkerChannelService(client: any): void {
     if (!this.workerChannelService) {
-      this.workerChannelService = new WorkerChannelService(client);
+      this.workerChannelService = WorkerChannelService.getInstance(client);
       console.log('🔧 MultiChannelForwarder: WorkerChannelService initialized');
     }
     

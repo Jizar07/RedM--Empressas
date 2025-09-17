@@ -5,7 +5,25 @@ This file is synchronized with: https://github.com/Jizar07/RedM--Empressas
 
 ## Version History
 
-### [0.041] - 2025-09-16 **[CURRENT VERSION]**
+### [0.042] - 2025-09-17 **[CURRENT VERSION]**
+- **CRITICAL FIX**: Complete Zombie Session Resurrection Resolution & Architecture Unification
+- **SESSION INTEGRITY**: Fixed zombie sessions being reactivated after payment, preventing paid sessions from coming back to life
+- **RACE CONDITION RESOLUTION**: Eliminated redundant delete/save operations causing sessions to remain in active-sessions.json after archiving
+- **SINGLETON ARCHITECTURE**: Converted WorkerChannelService to singleton pattern ensuring unified session tracking across all systems
+- **PAYMENT SYSTEM FIX**: Resolved "session not found" errors during payment by unifying service instances (API, MultiChannelForwarder, FerroviaSessionService)
+- **ZOMBIE DETECTION**: Added comprehensive archived session validation to prevent loading dead sessions back into memory
+- **PAYMENT PROTECTION**: Implemented `pending_payment` status during processing to prevent concurrent operation interference
+- **PERFORMANCE OPTIMIZATION**: Created SessionCleanupService for automated session maintenance and file optimization
+- **DATA CLEANUP**: Removed 6 zombie sessions that were corrupting the payment system
+- **ENHANCED LOGGING**: Added detailed session lifecycle tracking for better debugging and monitoring
+- **DEVELOPMENT RULES**: Enhanced CLAUDE.md with server management prohibitions for safer development workflow
+- **FILES AFFECTED**:
+  - Enhanced: WorkerActivityService.ts, WorkerChannelService.ts (singleton), MultiChannelForwarder.ts, FerroviaSessionService.ts
+  - Created: SessionCleanupService.ts
+  - Updated: API routes, CLAUDE.md development rules
+- **RESULT**: Completely stable payment system with proper session isolation and unified architecture
+
+### [0.041] - 2025-09-16
 - **MAJOR ENHANCEMENT**: Complete Registration Database Cleanup & Auto-Pin System Implementation
 - **DATABASE CLEANUP**: Cleaned registrations.json from 103 to 25 active workers, removed 78 duplicate/stale entries
 - **WORKER MAPPING AUDIT**: Added missing channel mappings for Nelio Tavares, GraceAne Fieldstorm, and Robinho Makhachev

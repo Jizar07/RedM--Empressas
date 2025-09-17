@@ -4,6 +4,31 @@ This is a local timestamped file to track all development changes and prompts.
 
 ## Log Entries
 
+### 2025-09-17 08:35:49
+**Action**: Complete Zombie Session Resurrection Fix & Singleton Pattern Implementation
+**Prompt**: "analyze codebase", "my problem, which we tried the whole day yesterday trying to fix and ended up breaking the whole app. - we have the system that track fazendas/workers activities. and creates a embed in the worker's channels detailing all. analyze this", "same issue again, we are starting the same way as yesterday. we can not go down the same route this time.", "it seems that will not work, because if we pay the worker for the farm services, that should not also pay the ferrovia services, theses are 2 different services, and not all worker do ferrovia.", "when clicking pay worker now i get - ❌ Este trabalhador não possui sessão ativa ou já foi pago. Verifique se há atividades recentes para pagar.", "same issue, took one seed, added 10 plants, when clicking pay worker im still getting ❌ Este trabalhador não possui sessão ativa ou já foi pago. Verifique se há atividades recentes para pagar.", "so i have to restart bot to make it work?", "same issue, took one seed, added 10 plants, when clicking pay worker im still getting Fazenda Bot APP — 8:29 AM ❌ Este trabalhador não possui sessão ativa ou já foi pago. Verifique se há atividades recentes para pagar.", "perfect, update .mds and push to git"
+**Changes**:
+- **Critical Bug Resolution**: Fixed zombie session resurrection where paid sessions were being reactivated by new transactions
+- **Race Condition Fix**: Removed redundant delete/save operations in payment flow that caused sessions to remain in active-sessions.json after archiving
+- **Zombie Session Detection**: Added comprehensive validation to prevent loading archived sessions back into active memory during startup
+- **Session Integrity Protection**: Implemented `getArchivedSessionIds()` to cross-reference archived sessions and block resurrection attempts
+- **Payment Protection**: Added `pending_payment` status during payment processing to prevent interference from concurrent operations
+- **Singleton Pattern Implementation**: Converted WorkerChannelService to singleton pattern to ensure all systems (API, MultiChannelForwarder, FerroviaSessionService) share the same WorkerActivityService instance
+- **Instance Isolation Fix**: Resolved multiple service instances creating separate in-memory session storage causing "session not found" errors during payment
+- **Cleanup Execution**: Removed 6 zombie sessions from active-sessions.json that were previously paid but still active
+- **Enhanced Logging**: Added detailed session lifecycle tracking with memory cleanup and file operations logging
+- **Server Management Rule**: Added explicit rule to CLAUDE.md prohibiting server start/stop/restart commands
+**Files Modified**:
+  - `src/services/WorkerActivityService.ts` - Enhanced archiving, zombie detection, payment protection
+  - `src/utils/SessionCleanupService.ts` - Automated cleanup system for performance optimization
+  - `src/services/WorkerChannelService.ts` - Converted to singleton pattern
+  - `src/services/MultiChannelForwarder.ts` - Updated to use singleton instance
+  - `src/services/FerroviaSessionService.ts` - Updated to use singleton instance
+  - `src/api/routes/worker-activity.ts` - Updated to use singleton instance
+  - `CLAUDE.md` - Added server management prohibition rule
+  - `data/worker-sessions/active-sessions.json` - Cleaned zombie sessions
+**Result**: Complete resolution of zombie session reactivation with proper payment workflow and unified service architecture
+
 ### 2025-09-16 05:43:46
 **Action**: Complete Registration Cleanup & Auto-Pin Embed System Implementation
 **Prompt**: Multiple tasks - "check Nelio Tavares channel", "now check GraceAne Fieldstorm channel id 1417227529009365015", "why was these user not mapped already?", "ok, lets do this, check all channels in the category id 1415217611939119125, compare the names with the name in registration.json, if there is no match, delete the names that dont match from the .json file. we have too many old data in that file", "great, lets make embeds a pin messages, so it wont be deleted by the /clear command"
