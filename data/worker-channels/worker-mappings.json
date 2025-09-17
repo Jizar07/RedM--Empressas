@@ -4,7 +4,7 @@
     "workerName": "Jizar Stoffeliz",
     "channelId": "1417124587833004075",
     "createdAt": "2025-09-15T12:27:10.260Z",
-    "lastActive": "2025-09-17T12:35:13.359Z"
+    "lastActive": "2025-09-17T21:46:08.239Z"
   },
   "584129725052747798": {
     "workerId": "584129725052747798",
@@ -17,7 +17,7 @@
     "workerName": "Notorius Bowdin",
     "channelId": "1416375054211481731",
     "createdAt": "2025-09-13T10:48:47.987Z",
-    "lastActive": "2025-09-17T11:50:36.734Z"
+    "lastActive": "2025-09-17T19:03:36.747Z"
   },
   "774273635414048800": {
     "workerId": "774273635414048800",
@@ -50,7 +50,7 @@
     "workerName": "smith ramirez",
     "channelId": "1416447193685950595",
     "createdAt": "2025-09-13T15:35:28.840Z",
-    "lastActive": "2025-09-15T23:44:20.653Z"
+    "lastActive": "2025-09-17T21:30:30.652Z"
   },
   "807953013603172352": {
     "workerId": "807953013603172352",
@@ -64,7 +64,7 @@
     "workerName": "BONNIE BENNETT",
     "channelId": "1416502543990915132",
     "createdAt": "2025-09-13T19:15:23.917Z",
-    "lastActive": "2025-09-15T19:47:47.437Z"
+    "lastActive": "2025-09-17T19:50:34.009Z"
   },
   "831906964786511903": {
     "workerId": "831906964786511903",
@@ -90,7 +90,7 @@
     "workerName": "Johnny Rocks",
     "channelId": "1416535914196504787",
     "createdAt": "2025-09-13T21:28:00.018Z",
-    "lastActive": "2025-09-15T21:19:26.726Z"
+    "lastActive": "2025-09-17T15:56:41.396Z"
   },
   "1199469210842189954": {
     "workerId": "1199469210842189954",
@@ -110,7 +110,7 @@
     "workerName": "Koda Smith",
     "channelId": "1417118647150706719",
     "createdAt": "2025-09-13T23:15:21.663Z",
-    "lastActive": "2025-09-17T12:01:58.643Z"
+    "lastActive": "2025-09-17T21:14:31.074Z"
   },
   "273987353456934913": {
     "workerId": "273987353456934913",
@@ -137,7 +137,7 @@
     "workerName": "Bartholomeu Dias",
     "channelId": "1416530771283546274",
     "createdAt": "2025-09-14T21:15:00.000Z",
-    "lastActive": "2025-09-15T23:38:36.514Z"
+    "lastActive": "2025-09-17T13:48:39.634Z"
   },
   "388494830483013638": {
     "workerId": "388494830483013638",
@@ -150,13 +150,26 @@
     "workerName": "john Weslley",
     "channelId": "1416880519165120542",
     "createdAt": "2025-09-14T21:15:00.000Z",
-    "lastActive": "2025-09-17T12:25:11.439Z"
+    "lastActive": "2025-09-17T14:44:44.487Z"
   },
   "515729025788936202": {
     "workerId": "515729025788936202",
     "workerName": "Vitorn Stoffeliz",
     "channelId": "1416905830762287114",
     "createdAt": "2025-09-14T21:57:54.984Z",
-    "lastActive": "2025-09-17T12:43:45.704Z"
+    "lastActive": "2025-09-17T15:50:29.870Z"
+  },
+  "739598072707022918": {
+    "workerId": "739598072707022918",
+    "workerName": "Robinho Makhachev",
+    "channelId": "1416925848438575135",
+    "createdAt": "2025-09-17T15:10:00.000Z"
+  },
+  "736275282935283872": {
+    "workerId": "736275282935283872",
+    "workerName": "GraceAne Fieldstorm",
+    "channelId": "1417227529009365015",
+    "createdAt": "2025-09-17T15:10:00.000Z",
+    "lastActive": "2025-09-17T16:54:02.926Z"
   }
 }

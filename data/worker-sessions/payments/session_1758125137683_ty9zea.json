@@ -1,0 +1,68 @@
+{
+  "sessionId": "session_1758125137683_ty9zea",
+  "workerId": "372161270176153601",
+  "workerName": "Jizar Stoffeliz",
+  "amount": 500,
+  "paidBy": "372161270176153601",
+  "paidByName": "GM Stoffel",
+  "paidAt": "2025-09-17T21:46:42.027Z",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente Trigo",
+      "quantity": 1,
+      "transactionId": "tx_1758125137684_mvk0jq",
+      "timestamp": "2025-09-17T16:05:37.684Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente Trigo",
+      "quantity": 99,
+      "transactionId": "tx_1758125187686_ni62h",
+      "timestamp": "2025-09-17T16:06:27.686Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 100,
+      "transactionId": "tx_1758125203431_oyxcyd",
+      "timestamp": "2025-09-17T16:06:43.431Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758129879834_11snyl",
+      "timestamp": "2025-09-17T17:24:39.834Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758130052213_bt4qjl",
+      "timestamp": "2025-09-17T17:27:32.213Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1758143858644_3giw1",
+      "timestamp": "2025-09-17T21:17:38.644Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 350,
+      "transactionId": "tx_1758145088439_ontexi",
+      "timestamp": "2025-09-17T21:38:08.439Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 150,
+      "transactionId": "tx_1758145568240_mqsaqc",
+      "timestamp": "2025-09-17T21:46:08.240Z"
+    }
+  ],
+  "animalTransactions": []
+}

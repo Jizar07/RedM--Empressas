@@ -594,24 +594,17 @@ export class WorkerActivityService {
     let totalCredits = 0;
     let totalCosts = 0;
 
-    // Calculate plant credits - ONLY pay for plants matching seed expectations
+    // Calculate plant credits - Pay for ALL plants deposited
     session.plantTransactions
       .filter(t => t.type === 'plant_deposited')
       .forEach(transaction => {
-        // Get the number of valid plants (those matching seed expectations)
-        const validPlants = this.updateSeedExpectations(session, transaction.itemName, transaction.quantity);
+        // Pay for ALL plants deposited regardless of seed expectations
+        const plantCredit = transaction.quantity * prices.plantPrice;
+        totalCredits += plantCredit;
+        console.log(`💰 Plant payment: ${transaction.quantity} ${transaction.itemName} = $${plantCredit.toFixed(2)}`);
 
-        // Only pay for valid plants, not Ferrovia returns
-        if (validPlants > 0) {
-          const plantCredit = validPlants * prices.plantPrice;
-          totalCredits += plantCredit;
-          console.log(`💰 Plant payment: ${validPlants} ${transaction.itemName} = $${plantCredit.toFixed(2)} (matched seed expectation)`);
-        }
-
-        const ferroviaReturns = transaction.quantity - validPlants;
-        if (ferroviaReturns > 0) {
-          console.log(`🚂 Ferrovia return: ${ferroviaReturns} ${transaction.itemName} (no payment - no seed expectation)`);
-        }
+        // Still update seed expectations for tracking purposes
+        this.updateSeedExpectations(session, transaction.itemName, transaction.quantity);
       });
 
     // Calculate animal deliveries
@@ -806,33 +799,65 @@ export class WorkerActivityService {
       const components = buttons.components.length > 0 ? [buttons] : [];
 
       if (session.embedMessageId) {
-        // Update existing message
+        // Delete the old active embed to keep channel clean
         try {
-          const message = await channel.messages.fetch(session.embedMessageId);
-          await message.edit({ embeds: [embed], components });
-          console.log(`📝 Updated embed for ${session.workerName} in channel ${session.channelId}`);
+          const oldMessage = await channel.messages.fetch(session.embedMessageId);
+          await oldMessage.delete();
+          console.log(`🗑️ Deleted old active embed for ${session.workerName}`);
         } catch (error) {
-          console.error('❌ Failed to update existing embed, creating new one:', error);
-          session.embedMessageId = undefined;
+          console.log(`ℹ️ Could not delete old embed (may already be deleted or transformed to receipt)`);
         }
+        // Clear the old message ID
+        session.embedMessageId = undefined;
       }
 
-      if (!session.embedMessageId) {
-        // Create new message
-        const message = await channel.send({ embeds: [embed], components });
-        session.embedMessageId = message.id;
-        this.saveActiveSessions();
+      // Always create new message at the end of channel
+      const message = await channel.send({ embeds: [embed], components });
+      session.embedMessageId = message.id;
+      this.saveActiveSessions();
 
-        // Pin the message to prevent deletion by /clear
+      // Pin the message to prevent deletion by /clear
+      try {
+        await message.pin();
+        console.log(`📌 Pinned new active embed for ${session.workerName} at end of channel ${session.channelId}`);
+
+        // Delete ALL "pinned a message" system messages
         try {
-          await message.pin();
-          console.log(`📌 Pinned embed for ${session.workerName} in channel ${session.channelId}`);
-        } catch (pinError) {
-          console.warn(`⚠️ Failed to pin embed for ${session.workerName}:`, pinError);
-        }
+          // Wait longer for the system message to appear
+          await new Promise(resolve => setTimeout(resolve, 1000));
 
-        console.log(`✨ Created new embed for ${session.workerName} in channel ${session.channelId}`);
+          // Fetch more recent messages to find all system messages
+          const recentMessages = await channel.messages.fetch({ limit: 15 });
+          const systemMessages = recentMessages.filter(msg =>
+            msg.type === 6 && // CHANNEL_PINNED_MESSAGE type
+            msg.author.id === this.client.user?.id
+          );
+
+          if (systemMessages.size > 0) {
+            console.log(`🗑️ Found ${systemMessages.size} pin system messages to delete for ${session.workerName}`);
+
+            // Delete all found system messages
+            for (const systemMessage of systemMessages.values()) {
+              try {
+                await systemMessage.delete();
+                console.log(`🗑️ Deleted pin system message (ID: ${systemMessage.id})`);
+                // Small delay between deletions to avoid rate limits
+                await new Promise(resolve => setTimeout(resolve, 100));
+              } catch (individualDeleteError) {
+                console.log(`⚠️ Could not delete individual pin message:`, individualDeleteError);
+              }
+            }
+          } else {
+            console.log(`ℹ️ No pin system messages found to delete for ${session.workerName}`);
+          }
+        } catch (deleteError) {
+          console.log(`ℹ️ Could not delete pin system messages:`, deleteError);
+        }
+      } catch (pinError) {
+        console.warn(`⚠️ Failed to pin embed for ${session.workerName}:`, pinError);
       }
+
+      console.log(`✨ Created new active embed for ${session.workerName} at end of channel`);
 
     } catch (error) {
       console.error(`❌ Error updating embed for ${session.workerName}:`, error);
@@ -1175,17 +1200,25 @@ export class WorkerActivityService {
   private createSessionButtons(session: WorkerSession): ActionRowBuilder<ButtonBuilder> {
     const row = new ActionRowBuilder<ButtonBuilder>();
 
-    if (session.status === 'active' && session.totalCredits > 0) {
-      row.addComponents(
-        new ButtonBuilder()
-          .setCustomId(`worker_pay_${session.workerId}`)
-          .setLabel('💰 Pagar Trabalhador')
-          .setStyle(ButtonStyle.Success),
-        new ButtonBuilder()
-          .setCustomId(`worker_edit_${session.workerId}`)
-          .setLabel('✏️ Editar')
-          .setStyle(ButtonStyle.Secondary)
-      );
+    if (session.status === 'active') {
+      // Check if there are any plants deposited or animal deliveries to pay for
+      const hasCompletedWork =
+        session.plantTransactions.filter(t => t.type === 'plant_deposited').length > 0 ||
+        session.animalTransactions?.some(t => t.type === 'delivery_completed') ||
+        session.totalCredits > 0;
+
+      if (hasCompletedWork) {
+        row.addComponents(
+          new ButtonBuilder()
+            .setCustomId(`worker_pay_${session.workerId}`)
+            .setLabel('💰 Pagar Trabalhador')
+            .setStyle(ButtonStyle.Success),
+          new ButtonBuilder()
+            .setCustomId(`worker_edit_${session.workerId}`)
+            .setLabel('✏️ Editar')
+            .setStyle(ButtonStyle.Secondary)
+        );
+      }
     }
 
     return row;
@@ -1483,6 +1516,51 @@ export class WorkerActivityService {
     } catch (error) {
       console.error('❌ Error deleting transaction:', error);
       return false;
+    }
+  }
+
+  /**
+   * Clean up all pin system messages in a worker channel
+   */
+  public async cleanupPinMessages(channelId: string): Promise<void> {
+    try {
+      const channel = await this.client.channels.fetch(channelId) as TextChannel;
+      if (!channel) {
+        console.error(`❌ Channel ${channelId} not found for pin cleanup`);
+        return;
+      }
+
+      console.log(`🧹 Starting pin message cleanup for channel ${channelId}`);
+
+      // Fetch recent messages to find all pin system messages
+      const recentMessages = await channel.messages.fetch({ limit: 50 });
+      const pinMessages = recentMessages.filter(msg =>
+        msg.type === 6 && // CHANNEL_PINNED_MESSAGE type
+        msg.author.id === this.client.user?.id
+      );
+
+      if (pinMessages.size > 0) {
+        console.log(`🗑️ Found ${pinMessages.size} pin system messages to cleanup in channel ${channelId}`);
+
+        let deletedCount = 0;
+        for (const pinMessage of pinMessages.values()) {
+          try {
+            await pinMessage.delete();
+            deletedCount++;
+            console.log(`🗑️ Deleted pin system message (ID: ${pinMessage.id})`);
+            // Small delay between deletions to avoid rate limits
+            await new Promise(resolve => setTimeout(resolve, 200));
+          } catch (deleteError) {
+            console.log(`⚠️ Could not delete pin message ${pinMessage.id}:`, deleteError);
+          }
+        }
+
+        console.log(`✅ Pin cleanup completed for channel ${channelId}: ${deletedCount}/${pinMessages.size} messages deleted`);
+      } else {
+        console.log(`ℹ️ No pin system messages found in channel ${channelId}`);
+      }
+    } catch (error) {
+      console.error(`❌ Error during pin cleanup for channel ${channelId}:`, error);
     }
   }
 

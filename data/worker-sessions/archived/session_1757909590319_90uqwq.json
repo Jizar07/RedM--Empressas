@@ -1,0 +1,149 @@
+{
+  "workerId": "807953013603172352",
+  "workerName": "Adhine Kenway",
+  "channelId": "1416502413321568296",
+  "sessionId": "session_1757909590319_90uqwq",
+  "startTime": "2025-09-15T04:13:10.319Z",
+  "lastActivity": "2025-09-15T19:38:46.884Z",
+  "status": "stale",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Bay Bolete Semente",
+      "quantity": 200,
+      "transactionId": "tx_1757909590320_2fd65f",
+      "timestamp": "2025-09-15T04:13:10.320Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Bay Bolete Semente",
+      "quantity": 50,
+      "transactionId": "tx_1757909713309_r68z78",
+      "timestamp": "2025-09-15T04:15:13.309Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Junco",
+      "quantity": 50,
+      "transactionId": "tx_1757909757697_64nm4q",
+      "timestamp": "2025-09-15T04:15:57.697Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente Trigo",
+      "quantity": 50,
+      "transactionId": "tx_1757909784418_f416qk",
+      "timestamp": "2025-09-15T04:16:24.418Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente Trigo",
+      "quantity": 50,
+      "transactionId": "tx_1757909796929_19zvw",
+      "timestamp": "2025-09-15T04:16:36.929Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Junco",
+      "quantity": 50,
+      "transactionId": "tx_1757909828261_qha6b",
+      "timestamp": "2025-09-15T04:17:08.261Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 60,
+      "transactionId": "tx_1757960960711_d38bhc",
+      "timestamp": "2025-09-15T18:29:20.711Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 200,
+      "transactionId": "tx_1757961792504_k05bkj",
+      "timestamp": "2025-09-15T18:43:12.504Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 140,
+      "transactionId": "tx_1757961804081_pou5ib",
+      "timestamp": "2025-09-15T18:43:24.081Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Sacodemilho22",
+      "quantity": 50,
+      "transactionId": "tx_1757963510773_4xv7md",
+      "timestamp": "2025-09-15T19:11:50.773Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 100,
+      "transactionId": "tx_1757965126884_a80e5i",
+      "timestamp": "2025-09-15T19:38:46.884Z"
+    }
+  ],
+  "animalTransactions": [],
+  "totalCredits": 137.5,
+  "embedMessageId": "1417000267924373665",
+  "seedExpectations": [
+    {
+      "seedType": "Bay Bolete Semente",
+      "seedQuantity": 200,
+      "expectedPlantType": "Bay Bolete Semente",
+      "expectedPlantQuantity": 2000,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1757909590320_2fd65f"
+    },
+    {
+      "seedType": "Bay Bolete Semente",
+      "seedQuantity": 50,
+      "expectedPlantType": "Bay Bolete Semente",
+      "expectedPlantQuantity": 500,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1757909713309_r68z78"
+    },
+    {
+      "seedType": "Semente de Junco",
+      "seedQuantity": 50,
+      "expectedPlantType": "Junco",
+      "expectedPlantQuantity": 500,
+      "plantsFulfilled": 500,
+      "isComplete": true,
+      "transactionId": "tx_1757909757697_64nm4q"
+    },
+    {
+      "seedType": "Semente Trigo",
+      "seedQuantity": 50,
+      "expectedPlantType": "Trigo",
+      "expectedPlantQuantity": 500,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1757909784418_f416qk"
+    },
+    {
+      "seedType": "Semente Trigo",
+      "seedQuantity": 50,
+      "expectedPlantType": "Trigo",
+      "expectedPlantQuantity": 500,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1757909796929_19zvw"
+    },
+    {
+      "seedType": "Semente de Junco",
+      "seedQuantity": 50,
+      "expectedPlantType": "Junco",
+      "expectedPlantQuantity": 500,
+      "plantsFulfilled": 500,
+      "isComplete": true,
+      "transactionId": "tx_1757909828261_qha6b"
+    }
+  ],
+  "completedAt": "2025-09-17T20:52:28.969Z",
+  "notes": "Auto-archived due to inactivity"
+}

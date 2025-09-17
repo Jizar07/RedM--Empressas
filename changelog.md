@@ -634,5 +634,14 @@ This file is synchronized with: https://github.com/Jizar07/RedM--Empressas
 - Created CLAUDE.md for AI assistant guidance
 - Repository: https://github.com/Jizar07/RedM--Empressas
 
+### [0.042] - 2025-09-17
+- **Payment System Fix**: Changed to pay workers for ALL plants deposited, not just those matching seed expectations
+- **Button Logic Fix**: Pay Worker button now shows when any plants are deposited
+- **Pin Message Cleanup Enhancement**: Improved deletion of Discord system messages
+  - Increased detection time and message fetch limit
+  - Now deletes ALL pin messages, not just first one
+  - Added utility method for bulk cleanup
+  - Rate limit protection with delays
+
 ---
 *Note: This changelog is used for code reverts in case of problems. Each version should be tagged in the repository.*

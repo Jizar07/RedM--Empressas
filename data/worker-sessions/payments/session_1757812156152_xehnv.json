@@ -1,0 +1,157 @@
+{
+  "sessionId": "session_1757812156152_xehnv",
+  "workerId": "1204772480305209384",
+  "workerName": "BONNIE BENNETT",
+  "amount": 1832.5,
+  "paidBy": "614876929266417672",
+  "paidByName": "puddingbach",
+  "paidAt": "2025-09-17T19:47:57.403Z",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 100,
+      "transactionId": "tx_1757812156153_ab2me",
+      "timestamp": "2025-09-14T01:09:16.153Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1757813478736_ke051",
+      "timestamp": "2025-09-14T01:31:18.736Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1757814169826_kwa5ep",
+      "timestamp": "2025-09-14T01:42:49.826Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 60,
+      "transactionId": "tx_1757814283830_el4epr",
+      "timestamp": "2025-09-14T01:44:43.830Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 200,
+      "transactionId": "tx_1757872983198_ik0w1",
+      "timestamp": "2025-09-14T18:03:03.198Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1757874740765_n496bp",
+      "timestamp": "2025-09-14T18:32:20.765Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1757876303323_004s6u",
+      "timestamp": "2025-09-14T18:58:23.323Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1757876561398_xbcsrq",
+      "timestamp": "2025-09-14T19:02:41.398Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1757876869282_vjeaxh",
+      "timestamp": "2025-09-14T19:07:49.282Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 200,
+      "transactionId": "tx_1757961121104_sbqt6",
+      "timestamp": "2025-09-15T18:32:01.104Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1757963732378_d1yati",
+      "timestamp": "2025-09-15T19:15:32.378Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1757964434103_vudv5",
+      "timestamp": "2025-09-15T19:27:14.103Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 350,
+      "transactionId": "tx_1757965667438_fvuco3",
+      "timestamp": "2025-09-15T19:47:47.438Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758137390621_c0p4gb",
+      "timestamp": "2025-09-17T19:29:50.621Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758137544296_uy2adp",
+      "timestamp": "2025-09-17T19:32:24.296Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1757876134432_9e0hs",
+      "timestamp": "2025-09-14T18:55:34.432Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Ovelha Femea",
+      "quantity": 1,
+      "cost": 20,
+      "amount": 0,
+      "transactionId": "tx_1757887562379_syhkug",
+      "timestamp": "2025-09-14T22:06:02.379Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Ovelha Macho",
+      "quantity": 1,
+      "cost": 20,
+      "amount": 0,
+      "transactionId": "tx_1757887565834_9pbwdt",
+      "timestamp": "2025-09-14T22:06:05.834Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1757963987868_76u04i",
+      "timestamp": "2025-09-15T19:19:47.868Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758137219017_wsahw",
+      "timestamp": "2025-09-17T19:26:59.017Z"
+    }
+  ]
+}

@@ -97,7 +97,21 @@ When you see "/update" command from the user, perform the following actions:
 3. Update changelog.md if there are version-worthy changes
 4. Update CLAUDE.md if there are architectural or command changes
 
-## Recent Major Updates (v0.038) **[CURRENT VERSION]**
+## Recent Major Updates (v0.042) **[CURRENT VERSION]**
+
+### Complete Payment System and Pin Message Cleanup Fix (v0.042)
+- **Payment Calculation Fixed**: Workers now paid for ALL plants deposited, not just those matching seed expectations
+- **Removed Payment Restrictions**: Eliminated seed expectation filtering from payment calculation
+- **Pay Worker Button Logic**: Button now appears when any plant deposits exist, not when expectations complete
+- **Pin Message Cleanup Enhancement**:
+  - Increased wait time to 1000ms for better system message detection
+  - Expanded message fetch limit from 5 to 15 messages
+  - Now deletes ALL pin messages found, not just first one
+  - Added `cleanupPinMessages(channelId)` utility method for bulk cleanup
+  - Rate limit protection with 100-200ms delays between deletions
+- **Result**: Correct payment calculations and clean worker channels without pin message spam
+
+## Previous Major Updates (v0.038-v0.041)
 
 ### Complete Worker Channel Mapping Resolution (v0.038)
 - **Critical Fix**: Resolved missing worker channel mappings for all registered users

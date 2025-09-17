@@ -165,35 +165,34 @@ export class FerroviaSessionService {
       const components = buttons.components.length > 0 ? [buttons] : [];
 
       if (embedData.embedMessageId) {
-        // Update existing message
+        // Delete the old active embed to keep channel clean
         try {
-          const message = await channel.messages.fetch(embedData.embedMessageId);
-          await message.edit({ embeds: [embed], components });
-          console.log(`📝 Updated Ferrovia embed for ${embedData.workerName} in channel ${embedData.channelId}`);
+          const oldMessage = await channel.messages.fetch(embedData.embedMessageId);
+          await oldMessage.delete();
+          console.log(`🗑️ Deleted old Ferrovia embed for ${embedData.workerName}`);
         } catch (error) {
-          console.log(`ℹ️ Previous embed message not found (likely deleted), creating new one for ${embedData.workerName}`);
-          embedData.embedMessageId = undefined;
-          await this.saveActiveEmbeds(); // Save the cleared message ID
+          console.log(`ℹ️ Could not delete old Ferrovia embed (may already be deleted or transformed to receipt)`);
         }
+        // Clear the old message ID
+        embedData.embedMessageId = undefined;
+        await this.saveActiveEmbeds(); // Save the cleared message ID
       }
 
-      if (!embedData.embedMessageId) {
-        // Create new message
-        const message = await channel.send({ embeds: [embed], components });
-        embedData.embedMessageId = message.id;
-        embedData.lastUpdated = new Date();
-        this.saveActiveEmbeds();
+      // Always create new message at the end of channel
+      const message = await channel.send({ embeds: [embed], components });
+      embedData.embedMessageId = message.id;
+      embedData.lastUpdated = new Date();
+      this.saveActiveEmbeds();
 
-        // Pin the message to prevent deletion by /clear
-        try {
-          await message.pin();
-          console.log(`📌 Pinned Ferrovia embed for ${embedData.workerName} in channel ${embedData.channelId}`);
-        } catch (pinError) {
-          console.warn(`⚠️ Failed to pin Ferrovia embed for ${embedData.workerName}:`, pinError);
-        }
-
-        console.log(`✨ Created new Ferrovia embed for ${embedData.workerName} in channel ${embedData.channelId}`);
+      // Pin the message to prevent deletion by /clear
+      try {
+        await message.pin();
+        console.log(`📌 Pinned new Ferrovia embed for ${embedData.workerName} at end of channel ${embedData.channelId}`);
+      } catch (pinError) {
+        console.warn(`⚠️ Failed to pin Ferrovia embed for ${embedData.workerName}:`, pinError);
       }
+
+      console.log(`✨ Created new Ferrovia embed for ${embedData.workerName} at end of channel`);
 
     } catch (error) {
       console.error(`❌ Error updating Ferrovia embed for ${embedData.workerName}:`, error);
