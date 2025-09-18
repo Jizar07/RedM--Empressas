@@ -754,7 +754,7 @@ export default function FazendaBW(props: FazendaBWProps = {}) {
               return acc;
             }, [] as any[]);
             
-            setRecentActivity(uniqueActivities.slice(-1000)); // Keep last 1000
+            setRecentActivity(uniqueActivities); // Keep ALL activities
             
             // Mark initial load as complete after first processing
             if (!initialLoadComplete) {

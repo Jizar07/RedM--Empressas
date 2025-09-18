@@ -1,10 +1,11 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
-import { 
-  Users, Search, Plus, Edit, Trash2, Eye, Crown, User, 
-  Activity, DollarSign, Package, TrendingUp, Clock, 
-  X, Save, AlertTriangle, BarChart3, Award, Star 
+import {
+  Users, Search, Plus, Edit, Trash2, Eye, Crown, User,
+  Activity, DollarSign, Package, TrendingUp, Clock,
+  X, Save, AlertTriangle, BarChart3, Award, Star,
+  ArrowUp, ArrowDown, ChevronsUpDown
 } from 'lucide-react';
 import { FirmConfig } from '@/types/firms';
 import { useInventoryManager } from '@/hooks/useInventoryManager';
@@ -32,7 +33,7 @@ export default function FazendaCDPWorkersManagement({
 }: FazendaCDPWorkersManagementProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedRole, setSelectedRole] = useState<'all' | WorkerRole>('all');
-  const [sortBy, setSortBy] = useState<'name' | 'activities' | 'role' | 'added'>('activities');
+  const [sortBy, setSortBy] = useState<'name' | 'activities' | 'role' | 'added' | 'performance' | 'lastActivity'>('activities');
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('desc');
   const [showAddModal, setShowAddModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
@@ -70,9 +71,19 @@ export default function FazendaCDPWorkersManagement({
         case 'added':
           const addedA = workerProfiles.get(a.userId)?.addedAt || a.firstActivity;
           const addedB = workerProfiles.get(b.userId)?.addedAt || b.firstActivity;
-          return sortDirection === 'asc' 
+          return sortDirection === 'asc'
             ? new Date(addedA).getTime() - new Date(addedB).getTime()
             : new Date(addedB).getTime() - new Date(addedA).getTime();
+        case 'performance':
+          return sortDirection === 'asc'
+            ? a.averagePerDay - b.averagePerDay
+            : b.averagePerDay - a.averagePerDay;
+        case 'lastActivity':
+          const lastA = a.lastActivity ? new Date(a.lastActivity).getTime() : 0;
+          const lastB = b.lastActivity ? new Date(b.lastActivity).getTime() : 0;
+          return sortDirection === 'asc'
+            ? lastA - lastB
+            : lastB - lastA;
         default:
           return b.totalTransactions - a.totalTransactions;
       }
@@ -167,9 +178,29 @@ export default function FazendaCDPWorkersManagement({
   };
 
   const getRoleColor = (role: WorkerRole) => {
-    return role === 'manager' 
-      ? 'bg-purple-100 text-purple-800' 
+    return role === 'manager'
+      ? 'bg-purple-100 text-purple-800'
       : 'bg-blue-100 text-blue-800';
+  };
+
+  // Handle column sorting
+  const handleSort = (column: typeof sortBy) => {
+    if (sortBy === column) {
+      setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
+    } else {
+      setSortBy(column);
+      setSortDirection('desc'); // Default to descending for most columns
+    }
+  };
+
+  // Sort indicator component
+  const SortIndicator = ({ column }: { column: typeof sortBy }) => {
+    if (sortBy !== column) {
+      return <ChevronsUpDown className="h-4 w-4 text-gray-400" />;
+    }
+    return sortDirection === 'asc'
+      ? <ArrowUp className="h-4 w-4 text-purple-600" />
+      : <ArrowDown className="h-4 w-4 text-purple-600" />;
   };
 
   if (loading) {
@@ -255,17 +286,44 @@ export default function FazendaCDPWorkersManagement({
                 <option value="activities">Atividades</option>
                 <option value="name">Nome</option>
                 <option value="role">Função</option>
+                <option value="performance">Performance</option>
+                <option value="lastActivity">Última Atividade</option>
                 <option value="added">Data de Adição</option>
               </select>
             </div>
 
-            <div className="flex items-end">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Direção
+              </label>
+              <div className="flex items-center gap-2 mb-2">
+                <button
+                  onClick={() => setSortDirection('desc')}
+                  className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                    sortDirection === 'desc'
+                      ? 'bg-purple-500 text-white'
+                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                  }`}
+                >
+                  <ArrowDown className="h-4 w-4" />
+                </button>
+                <button
+                  onClick={() => setSortDirection('asc')}
+                  className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                    sortDirection === 'asc'
+                      ? 'bg-purple-500 text-white'
+                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                  }`}
+                >
+                  <ArrowUp className="h-4 w-4" />
+                </button>
+              </div>
               <button
                 onClick={() => setShowAddModal(true)}
                 className="w-full px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors flex items-center justify-center gap-2"
               >
                 <Plus className="h-4 w-4" />
-                Adicionar Trabalhador
+                Adicionar
               </button>
             </div>
           </div>
@@ -358,23 +416,53 @@ export default function FazendaCDPWorkersManagement({
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Rank
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Trabalhador
+                      <th
+                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100 transition-colors"
+                        onClick={() => handleSort('name')}
+                      >
+                        <div className="flex items-center gap-1">
+                          Trabalhador
+                          <SortIndicator column="name" />
+                        </div>
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Função
+                      <th
+                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100 transition-colors"
+                        onClick={() => handleSort('role')}
+                      >
+                        <div className="flex items-center gap-1">
+                          Função
+                          <SortIndicator column="role" />
+                        </div>
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Transações
+                      <th
+                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100 transition-colors"
+                        onClick={() => handleSort('activities')}
+                      >
+                        <div className="flex items-center gap-1">
+                          Transações
+                          <SortIndicator column="activities" />
+                        </div>
                       </th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Itens +/-
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Performance
+                      <th
+                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100 transition-colors"
+                        onClick={() => handleSort('performance')}
+                      >
+                        <div className="flex items-center gap-1">
+                          Performance
+                          <SortIndicator column="performance" />
+                        </div>
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Última Atividade
+                      <th
+                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100 transition-colors"
+                        onClick={() => handleSort('lastActivity')}
+                      >
+                        <div className="flex items-center gap-1">
+                          Última Atividade
+                          <SortIndicator column="lastActivity" />
+                        </div>
                       </th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Ações

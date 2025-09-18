@@ -39,10 +39,7 @@ export async function POST(request: NextRequest) {
       timestamp: data.timestamp || new Date().toISOString()
     });
     
-    // Keep only last 100 payments in memory
-    if (paymentQueue.length > 100) {
-      paymentQueue = paymentQueue.slice(-100);
-    }
+    // Keep ALL payments in memory - no limits
     
     console.log(`✅ Payment queued for ${data.userName}: $${data.payment}`);
     

@@ -5,7 +5,22 @@ This file is synchronized with: https://github.com/Jizar07/RedM--Empressas
 
 ## Version History
 
-### [0.043] - 2025-09-17 **[CURRENT VERSION]**
+### [0.044] - 2025-09-18 **[CURRENT VERSION]**
+- **UI/UX ENHANCEMENT**: Complete Worker Management Table Overhaul with Full Text Display
+- **RANKING SYSTEM**: Implemented performance-based ranking that follows workers across all sort criteria
+- **TEXT DISPLAY**: Eliminated all abbreviations - full Portuguese text throughout interface
+  - "Trans." → "Transações"
+  - "Perf." → "Performance"
+  - "Última" → "Última Atividade"
+  - "Ger./Trab." → "Gerente/Trabalhador"
+- **DATA VISIBILITY**: Worker names and full Discord IDs now display without truncation
+- **SMART RANKING**: #1 rank follows top performer regardless of alphabetical or other sorting
+- **VISUAL CONSISTENCY**: Maintained star icon distinction for performance-based rankings
+- **TABLE OPTIMIZATION**: Responsive column widths for optimal space utilization
+- **FILES MODIFIED**:
+  - frontend/components/FazendaCDPWorkersManagementNew.tsx - Complete table enhancement system
+
+### [0.043] - 2025-09-17
 - **ARCHITECTURAL ENHANCEMENT**: Complete Ferrovia System Singleton Pattern Implementation
 - **FERROVIA FIX**: Applied singleton pattern to FerroviaSessionService resolving multiple instance issues (API server + MultiChannelForwarder)
 - **SUPPLY CHAIN FIX**: Applied singleton pattern to SupplyChainService resolving massive multiple instance problem (9 separate instances)

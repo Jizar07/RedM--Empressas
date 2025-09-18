@@ -129,7 +129,7 @@
     "channelId": "1416447193685950595",
     "sessionId": "session_1757979860654_d6aa1",
     "startTime": "2025-09-15T23:44:20.654Z",
-    "lastActivity": "2025-09-17T21:30:30.653Z",
+    "lastActivity": "2025-09-17T22:56:47.962Z",
     "status": "active",
     "plantTransactions": [
       {
@@ -201,11 +201,18 @@
         "quantity": 100,
         "transactionId": "tx_1758144630653_lzbpj",
         "timestamp": "2025-09-17T21:30:30.653Z"
+      },
+      {
+        "type": "plant_deposited",
+        "itemName": "Junco",
+        "quantity": 100,
+        "transactionId": "tx_1758149807962_wgo4dj",
+        "timestamp": "2025-09-17T22:56:47.962Z"
       }
     ],
     "animalTransactions": [],
-    "totalCredits": 325,
-    "embedMessageId": "1417986101305671760",
+    "totalCredits": 350,
+    "embedMessageId": "1418007815867600937",
     "seedExpectations": [
       {
         "seedType": "Semente Trigo",
@@ -1077,7 +1084,7 @@
     "channelId": "1416502543990915132",
     "sessionId": "session_1758138634010_9dp549",
     "startTime": "2025-09-17T19:50:34.010Z",
-    "lastActivity": "2025-09-17T19:50:34.011Z",
+    "lastActivity": "2025-09-17T22:34:24.125Z",
     "status": "active",
     "plantTransactions": [
       {
@@ -1086,11 +1093,28 @@
         "quantity": 120,
         "transactionId": "tx_1758138634011_ev5xsn",
         "timestamp": "2025-09-17T19:50:34.011Z"
+      },
+      {
+        "type": "seed_taken",
+        "itemName": "Semente Trigo",
+        "quantity": 100,
+        "transactionId": "tx_1758148464125_sfxneo",
+        "timestamp": "2025-09-17T22:34:24.125Z"
       }
     ],
     "animalTransactions": [],
     "totalCredits": 30,
-    "embedMessageId": "1417960948270108742",
-    "seedExpectations": []
+    "embedMessageId": "1418002180387897385",
+    "seedExpectations": [
+      {
+        "seedType": "Semente Trigo",
+        "seedQuantity": 100,
+        "expectedPlantType": "Trigo",
+        "expectedPlantQuantity": 1000,
+        "plantsFulfilled": 0,
+        "isComplete": false,
+        "transactionId": "tx_1758148464125_sfxneo"
+      }
+    ]
   }
 }

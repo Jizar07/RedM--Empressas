@@ -68,7 +68,10 @@ export class WorkerChannelService {
       if (fs.existsSync(mappingsFile)) {
         const data = fs.readFileSync(mappingsFile, 'utf8');
         const mappings = JSON.parse(data);
-        
+
+        // Clear existing mappings before reloading
+        this.workerMappings.clear();
+
         // Convert to Map and restore Date objects
         Object.entries(mappings).forEach(([key, mapping]: [string, any]) => {
           mapping.createdAt = new Date(mapping.createdAt);
@@ -77,12 +80,21 @@ export class WorkerChannelService {
           }
           this.workerMappings.set(key, mapping);
         });
-        
+
         console.log(`🗺️ Loaded ${this.workerMappings.size} worker channel mappings`);
       }
     } catch (error) {
       console.error('❌ Error loading worker mappings:', error);
     }
+  }
+
+  /**
+   * Reload worker mappings from file - useful after new registrations
+   */
+  public reloadMappings(): void {
+    console.log('🔄 Reloading worker mappings from file...');
+    this.loadWorkerMappings();
+    console.log(`✅ Reloaded ${this.workerMappings.size} worker mappings`);
   }
 
   private saveWorkerMappings(): void {
@@ -121,8 +133,12 @@ export class WorkerChannelService {
 
     this.workerMappings.set(workerId, mapping);
     this.saveWorkerMappings();
-    
+
     console.log(`📝 Registered worker channel: ${workerName} (${workerId}) → ${channelId}`);
+
+    // Reload mappings to ensure all instances have the latest data
+    this.reloadMappings();
+    console.log(`🔄 Mappings reloaded after registration - now tracking ${this.workerMappings.size} workers`);
   }
 
   public getWorkerChannel(workerId: string): WorkerChannelMapping | undefined {
@@ -187,7 +203,25 @@ export class WorkerChannelService {
       }
     }
 
-    console.log(`❌ WorkerChannelService: No match found for "${workerName}"`);
+    // If no match found, try reloading mappings from file in case of new registrations
+    console.log(`🔄 WorkerChannelService: No match found, attempting reload from file...`);
+    const previousSize = this.workerMappings.size;
+    this.reloadMappings();
+
+    if (this.workerMappings.size > previousSize) {
+      console.log(`📥 WorkerChannelService: Found ${this.workerMappings.size - previousSize} new mappings after reload`);
+
+      // Try searching again with reloaded data
+      for (const mapping of this.workerMappings.values()) {
+        const sanitizedMappingName = this.sanitizeWorkerName(mapping.workerName);
+        if (sanitizedMappingName.toLowerCase() === sanitizedWorkerName.toLowerCase()) {
+          console.log(`✅ WorkerChannelService: Found match after reload!`);
+          return mapping;
+        }
+      }
+    }
+
+    console.log(`❌ WorkerChannelService: No match found for "${workerName}" even after reload`);
     return undefined;
   }
 

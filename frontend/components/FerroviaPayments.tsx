@@ -67,7 +67,7 @@ export default function FerroviaPayments({ firm }: FerroviaPaymentsProps) {
       activity.categoria === 'financeiro' &&
       activity.tipo === 'saque' // ONLY withdrawals
     );
-    return withdrawalActivities.slice(0, 100); // Latest 100
+    return withdrawalActivities; // Return ALL withdrawal activities
   };
 
   useEffect(() => {

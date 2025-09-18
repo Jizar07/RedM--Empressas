@@ -59,6 +59,32 @@ export function useInventoryManager({
   const [error, setError] = useState<string | null>(null);
   const [itemTranslations, setItemTranslations] = useState<Record<string, string>>({});
   const [priceList, setPriceList] = useState<Record<string, PriceListItem>>({});
+  const [registeredWorkers, setRegisteredWorkers] = useState<any[]>([]);
+
+  // Load registered workers from backend
+  const loadRegisteredWorkers = useCallback(async () => {
+    try {
+      const response = await fetch(`http://localhost:3050/api/worker-activity/all-workers`, {
+        headers: {
+          'x-bot-token': process.env.NEXT_PUBLIC_DISCORD_TOKEN || ''
+        }
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        if (data.success) {
+          setRegisteredWorkers(data.workers);
+          console.log(`✅ Loaded ${data.workers.length} registered workers`);
+        }
+      } else {
+        console.error(`❌ Failed to load registered workers: ${response.status} ${response.statusText}`);
+        const errorData = await response.json().catch(() => ({}));
+        console.error('Error details:', errorData);
+      }
+    } catch (error) {
+      console.error('❌ Error loading registered workers:', error);
+    }
+  }, []);
 
   // Load global translations
   const loadTranslations = useCallback(async () => {
@@ -458,18 +484,62 @@ export function useInventoryManager({
     const priceMatches = Object.values(items).filter(item => item.preco_min && item.preco_max).length;
     const unmatchedItems = Object.values(items).filter(item => !item.preco_min && !item.preco_max).map(item => item.id);
 
+    // Merge registered workers with transaction-based workers
+    const allWorkers: WorkerInventoryStats[] = [];
+
+    // Add registered workers first
+    registeredWorkers.forEach(regWorker => {
+      const existingStats = workerStats[regWorker.userName];
+
+      if (existingStats) {
+        // Worker has activity, merge with registration data
+        allWorkers.push({
+          ...existingStats,
+          registeredAt: regWorker.registeredAt,
+          hasActiveSession: regWorker.hasActiveSession,
+          totalPaid: regWorker.totalPaid
+        } as WorkerInventoryStats);
+      } else {
+        // Registered worker with no activity yet
+        allWorkers.push({
+          userId: regWorker.userId,
+          userName: regWorker.userName,
+          totalTransactions: 0,
+          itemsAdded: 0,
+          itemsRemoved: 0,
+          netItems: 0,
+          categorias: {},
+          firstActivity: regWorker.registeredAt,
+          lastActivity: regWorker.lastActivity || regWorker.registeredAt,
+          mostActiveDay: regWorker.registeredAt,
+          averagePerDay: 0,
+          registeredAt: regWorker.registeredAt,
+          hasActiveSession: regWorker.hasActiveSession,
+          totalPaid: regWorker.totalPaid,
+          noActivity: true
+        } as WorkerInventoryStats);
+      }
+    });
+
+    // Add any workers from transactions not in registrations (legacy data)
+    Object.values(workerStats).forEach(stats => {
+      if (!allWorkers.find(w => w.userName === stats.userName)) {
+        allWorkers.push(stats as WorkerInventoryStats);
+      }
+    });
+
     return {
       totalItems,
       totalQuantity,
       totalValue,
       categorias,
-      workers: Object.values(workerStats) as WorkerInventoryStats[],
+      workers: allWorkers,
       recentTransactions: transactions.slice(0, 50), // Last 50 transactions
       lowStockAlerts,
       priceMatches,
       unmatchedItems
     };
-  }, [inventoryData.settings.lowStockThreshold]);
+  }, [inventoryData.settings.lowStockThreshold, registeredWorkers]);
 
   // localStorage backup functions
   const backupToLocalStorage = useCallback((data: InventoryData) => {
@@ -889,7 +959,8 @@ export function useInventoryManager({
   useEffect(() => {
     loadTranslations();
     loadPriceList();
-    
+    loadRegisteredWorkers(); // Load all registered workers
+
     // Try loading from backup first for instant load
     const backupData = loadFromLocalStorage();
     if (backupData) {
@@ -897,7 +968,7 @@ export function useInventoryManager({
       setLoading(false);
       console.log('📂 Loaded initial data from localStorage backup');
     }
-  }, [loadTranslations, loadPriceList, loadFromLocalStorage]);
+  }, [loadTranslations, loadPriceList, loadRegisteredWorkers, loadFromLocalStorage]);
 
   useEffect(() => {
     if (itemTranslations && Object.keys(itemTranslations).length > 0) {

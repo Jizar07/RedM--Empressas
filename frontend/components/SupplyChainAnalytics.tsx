@@ -62,12 +62,12 @@ export default function SupplyChainAnalytics({}: SupplyChainAnalyticsProps) {
       const [sessionsResponse, analyticsResponse] = await Promise.all([
         fetch('/api/supply-chain/sessions', {
           headers: {
-            'x-bot-token': process.env.NEXT_PUBLIC_BOT_TOKEN || 'development-token'
+            'x-bot-token': process.env.NEXT_PUBLIC_DISCORD_TOKEN || 'development-token'
           }
         }),
         fetch('/api/supply-chain/analytics', {
           headers: {
-            'x-bot-token': process.env.NEXT_PUBLIC_BOT_TOKEN || 'development-token'
+            'x-bot-token': process.env.NEXT_PUBLIC_DISCORD_TOKEN || 'development-token'
           }
         })
       ]);

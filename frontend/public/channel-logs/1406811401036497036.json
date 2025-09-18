@@ -1,8 +1,38 @@
 {
   "channelId": "1406811401036497036",
-  "lastUpdated": "2025-09-17T20:55:25.332Z",
+  "lastUpdated": "2025-09-18T01:42:48.483Z",
   "messageCount": 100,
   "messages": [
+    {
+      "id": "1418049590590177300",
+      "author": "Atlanta",
+      "content": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nRetirar item da Loja\nItem Retirado:: chicken_female x4\nFuncionario:: Thony Gustav | FIXO: 72363\nData:: 17/09/2025 -  22:42:48",
+      "timestamp": "2025-09-18T01:42:48.484Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nRetirar item da Loja\nItem Retirado:: chicken_female x4\nFuncionario:: Thony Gustav | FIXO: 72363\nData:: 17/09/2025 -  22:42:48",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418015519432245308",
+      "author": "Atlanta",
+      "content": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nRetirar item da Loja\nItem Retirado:: goat_male x4\nFuncionario:: Cliff Dillimore | FIXO: 267\nData:: 17/09/2025 -  20:27:25",
+      "timestamp": "2025-09-17T23:27:25.287Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nRetirar item da Loja\nItem Retirado:: goat_male x4\nFuncionario:: Cliff Dillimore | FIXO: 267\nData:: 17/09/2025 -  20:27:25",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417999943263584359",
+      "author": "Atlanta",
+      "content": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nRetirar item da Loja\nItem Retirado:: cow_male x4\nFuncionario:: Cliff Dillimore | FIXO: 267\nData:: 17/09/2025 -  19:25:31",
+      "timestamp": "2025-09-17T22:25:31.639Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nRetirar item da Loja\nItem Retirado:: cow_male x4\nFuncionario:: Cliff Dillimore | FIXO: 267\nData:: 17/09/2025 -  19:25:31",
+      "rawEmbeds": []
+    },
     {
       "id": "1417977267971297301",
       "author": "BONNIE BENNETT",
@@ -971,36 +1001,6 @@
       "source": "discord",
       "channelId": "1406811401036497036",
       "embedContent": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nMover Item para Loja\nItem adicionado:: cow_female x2\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 13/09/2025 - 09:30:51",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1416400720395108452",
-      "author": "Santiago Bowdin",
-      "content": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nMover Item para Loja\nItem adicionado:: pig_male x2\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 13/09/2025 - 09:30:47",
-      "timestamp": "2025-09-13T12:30:47.195Z",
-      "source": "discord",
-      "channelId": "1406811401036497036",
-      "embedContent": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nMover Item para Loja\nItem adicionado:: pig_male x2\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 13/09/2025 - 09:30:47",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1416400703747915820",
-      "author": "Santiago Bowdin",
-      "content": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nMover Item para Loja\nItem adicionado:: pig_female x3\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 13/09/2025 - 09:30:43",
-      "timestamp": "2025-09-13T12:30:43.226Z",
-      "source": "discord",
-      "channelId": "1406811401036497036",
-      "embedContent": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nMover Item para Loja\nItem adicionado:: pig_female x3\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 13/09/2025 - 09:30:43",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1416400688090714142",
-      "author": "Santiago Bowdin",
-      "content": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nMover Item para Loja\nItem adicionado:: sheep_male x5\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 13/09/2025 - 09:30:39",
-      "timestamp": "2025-09-13T12:30:39.493Z",
-      "source": "discord",
-      "channelId": "1406811401036497036",
-      "embedContent": "REGISTRO - REGISTRO - Berçário Bowdin | 2512 - 198\nMover Item para Loja\nItem adicionado:: sheep_male x5\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 13/09/2025 - 09:30:39",
       "rawEmbeds": []
     }
   ]

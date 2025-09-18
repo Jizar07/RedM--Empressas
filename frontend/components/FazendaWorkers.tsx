@@ -1,10 +1,10 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Users, TrendingUp, DollarSign, Activity, Star, Award, Clock, BarChart3, User, Settings, Edit, Eye, Trash2 } from 'lucide-react';
+import { Users, TrendingUp, DollarSign, Activity, Star, Award, Clock, BarChart3, User, Settings, Edit, Eye, Trash2, Search, Filter, ArrowUp, ArrowDown, ChevronsUpDown } from 'lucide-react';
 import { FirmConfig } from '@/types/firms';
 import { useInventoryManager } from '@/hooks/useInventoryManager';
-import FazendaCDPWorkersManagement from './FazendaCDPWorkersManagement';
+import FazendaCDPWorkersManagement from './FazendaCDPWorkersManagementNew';
 
 interface FazendaWorkersProps {
   firm: FirmConfig;
@@ -13,16 +13,43 @@ interface FazendaWorkersProps {
 // Using types from inventory.ts and useInventoryManager hook
 
 export default function FazendaWorkers({ firm }: FazendaWorkersProps) {
+  // Just render the advanced management component directly (no modal)
+  return (
+    <div className="space-y-6">
+      {/* Header */}
+      <div className="bg-gradient-to-r from-purple-500 to-purple-600 rounded-lg p-6 text-white">
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-2xl font-bold">👥 {firm.name} - Trabalhadores</h1>
+            <p className="text-purple-100">Performance e análise de atividades</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Advanced Management Component (no modal) */}
+      <FazendaCDPWorkersManagement
+        firm={firm}
+        // No onClose prop = non-modal mode
+      />
+    </div>
+  );
+}
+
+// Keep the old component as backup/reference
+function FazendaWorkersOLD({ firm }: FazendaWorkersProps) {
   const [selectedPeriod, setSelectedPeriod] = useState('7d');
   const [showSettings, setShowSettings] = useState(false);
   const [plantPrice, setPlantPrice] = useState(2.50); // Default price per plant
   const [animalPrice, setAnimalPrice] = useState(40.00); // Default price per animal
-  const [showAdvancedManagement, setShowAdvancedManagement] = useState(false);
-  const [selectedWorkerForView, setSelectedWorkerForView] = useState<any>(null);
-  const [showWorkerModal, setShowWorkerModal] = useState(false);
   const [selectedWorkerForEdit, setSelectedWorkerForEdit] = useState<any>(null);
   const [showEditWorkerModal, setShowEditWorkerModal] = useState(false);
   const [pricesChanged, setPricesChanged] = useState(false);
+
+  // Filtering and sorting state
+  const [searchTerm, setSearchTerm] = useState('');
+  const [sortBy, setSortBy] = useState<'rank' | 'name' | 'transactions' | 'performance' | 'items'>('rank');
+  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
+  const [statusFilter, setStatusFilter] = useState<'all' | 'active' | 'inactive'>('all');
   
   // Use the unified inventory manager hook
   const {
@@ -108,10 +135,84 @@ export default function FazendaWorkers({ firm }: FazendaWorkersProps) {
     { value: 'all', label: 'Todo o período' }
   ];
 
-  // Get worker data from inventory manager analytics
-  const workerStats = Object.values(inventoryData.analytics.workers || {}).sort(
-    (a, b) => b.totalTransactions - a.totalTransactions
-  );
+  // Handle column sorting
+  const handleSort = (column: typeof sortBy) => {
+    if (sortBy === column) {
+      setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
+    } else {
+      setSortBy(column);
+      setSortDirection('desc'); // Default to descending for most columns
+    }
+  };
+
+  // Sort indicator component
+  const SortIndicator = ({ column }: { column: typeof sortBy }) => {
+    if (sortBy !== column) {
+      return <ChevronsUpDown className="h-3 w-3 text-gray-400" />;
+    }
+    return sortDirection === 'asc'
+      ? <ArrowUp className="h-3 w-3 text-purple-600" />
+      : <ArrowDown className="h-3 w-3 text-purple-600" />;
+  };
+
+  // Get worker data from inventory manager analytics with filtering and sorting
+  const filteredAndSortedWorkers = React.useMemo(() => {
+    let filtered = Object.values(inventoryData.analytics.workers || {});
+
+    // Apply search filter
+    if (searchTerm) {
+      filtered = filtered.filter(worker =>
+        worker.userName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        worker.userId.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+
+    // Apply status filter (for now, all workers are considered active)
+    if (statusFilter !== 'all') {
+      // Note: We can enhance this later to include actual status data
+      filtered = filtered.filter(worker => statusFilter === 'active');
+    }
+
+    // Apply sorting
+    filtered.sort((a, b) => {
+      let valueA: any, valueB: any;
+
+      switch (sortBy) {
+        case 'name':
+          valueA = a.userName.toLowerCase();
+          valueB = b.userName.toLowerCase();
+          break;
+        case 'transactions':
+          valueA = a.totalTransactions;
+          valueB = b.totalTransactions;
+          break;
+        case 'performance':
+          valueA = a.averagePerDay || 0;
+          valueB = b.averagePerDay || 0;
+          break;
+        case 'items':
+          valueA = a.netItems;
+          valueB = b.netItems;
+          break;
+        case 'rank':
+        default:
+          valueA = a.totalTransactions;
+          valueB = b.totalTransactions;
+          break;
+      }
+
+      if (sortDirection === 'asc') {
+        return valueA < valueB ? -1 : valueA > valueB ? 1 : 0;
+      } else {
+        return valueA > valueB ? -1 : valueA < valueB ? 1 : 0;
+      }
+    });
+
+    return filtered;
+  }, [inventoryData.analytics.workers, searchTerm, statusFilter, sortBy, sortDirection]);
+
+  // Use filteredAndSortedWorkers instead of workerStats
+  const workerStats = filteredAndSortedWorkers;
   
   // Helper function to identify category types
   const isPlantCategory = (categoria: string): boolean => {
@@ -344,9 +445,93 @@ export default function FazendaWorkers({ firm }: FazendaWorkersProps) {
       {/* Workers Table */}
       <div className="bg-white rounded-lg shadow-sm border border-gray-200">
         <div className="p-6 border-b border-gray-200">
-          <h2 className="text-lg font-semibold text-gray-900">
-            Lista de Trabalhadores de {firm.name}
-          </h2>
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-lg font-semibold text-gray-900">
+              Lista de Trabalhadores de {firm.name}
+            </h2>
+          </div>
+
+          {/* Search and Filter Controls */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Buscar Trabalhadores
+              </label>
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+                <input
+                  type="text"
+                  placeholder="Nome ou ID..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Filtrar por Função
+              </label>
+              <select
+                value={statusFilter}
+                onChange={(e) => setStatusFilter(e.target.value as any)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              >
+                <option value="all">Todas as Funções</option>
+                <option value="active">Trabalhadores</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Ordenar por
+              </label>
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value as any)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              >
+                <option value="transactions">Atividades</option>
+                <option value="name">Nome</option>
+                <option value="performance">Performance</option>
+                <option value="items">Itens Líquidos</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Direção
+              </label>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => setSortDirection('desc')}
+                  className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                    sortDirection === 'desc'
+                      ? 'bg-purple-500 text-white'
+                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                  }`}
+                >
+                  <ArrowDown className="h-4 w-4 mx-auto" />
+                </button>
+                <button
+                  onClick={() => setSortDirection('asc')}
+                  className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                    sortDirection === 'asc'
+                      ? 'bg-purple-500 text-white'
+                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                  }`}
+                >
+                  <ArrowUp className="h-4 w-4 mx-auto" />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Results Summary */}
+          <div className="text-sm text-gray-600 mb-4">
+            Mostrando {workerStats.length} de {Object.keys(inventoryData.analytics.workers || {}).length} trabalhadores
+          </div>
         </div>
         
         {workerStats.length === 0 ? (
@@ -359,77 +544,164 @@ export default function FazendaWorkers({ firm }: FazendaWorkersProps) {
           </div>
         ) : (
           <div className="overflow-x-auto">
-            <div className="bg-gray-50 rounded-lg p-6">
-              <div className="grid grid-cols-8 gap-4 text-xs font-medium text-gray-500 uppercase tracking-wider mb-4">
-                <div className="text-left">Rank</div>
-                <div className="text-left">Trabalhador</div>
-                <div className="text-left">Status</div>
-                <div className="text-left">Transações</div>
-                <div className="text-left">Itens +/-</div>
-                <div className="text-left">Performance</div>
-                <div className="text-left">Primeira Ativ</div>
-                <div className="text-left">Ações</div>
-              </div>
+            <table className="min-w-full divide-y divide-gray-200">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Rank
+                  </th>
+                  <th
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100 transition-colors"
+                    onClick={() => handleSort('name')}
+                  >
+                    <div className="flex items-center gap-1">
+                      Trabalhador
+                      <SortIndicator column="name" />
+                    </div>
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Função
+                  </th>
+                  <th
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100 transition-colors"
+                    onClick={() => handleSort('transactions')}
+                  >
+                    <div className="flex items-center gap-1">
+                      Transações
+                      <SortIndicator column="transactions" />
+                    </div>
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Itens +/-
+                  </th>
+                  <th
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100 transition-colors"
+                    onClick={() => handleSort('performance')}
+                  >
+                    <div className="flex items-center gap-1">
+                      Performance
+                      <SortIndicator column="performance" />
+                    </div>
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Última Atividade
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Ações
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="bg-white divide-y divide-gray-200">
               
-              {workerStats.map((worker, index) => (
-                <div key={worker.userId} className="grid grid-cols-8 gap-4 py-3 border-t border-gray-200 text-sm">
-                  <div className="flex items-center space-x-2">
-                    <Star className={`h-4 w-4 ${index === 0 ? 'text-yellow-500' : index === 1 ? 'text-gray-400' : index === 2 ? 'text-amber-600' : 'text-gray-300'}`} />
-                    <span className="font-medium">#{index + 1}</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <User className="h-4 w-4 text-purple-500" />
-                    <span className="font-medium">{worker.userName}</span>
-                  </div>
-                  <div>
-                    <span className="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">Ativo</span>
-                  </div>
-                  <div className="flex items-center">
-                    <Activity className="h-4 w-4 mr-2 text-orange-500" />
-                    <span className="font-medium">{worker.totalTransactions}</span>
-                  </div>
-                  <div className="text-sm">
-                    <span className="text-green-600">+{worker.itemsAdded}</span> / 
-                    <span className="text-red-600 ml-1">-{worker.itemsRemoved}</span>
-                    <div className="text-xs text-gray-500">Net: {worker.netItems}</div>
-                  </div>
-                  <div className="text-sm">
-                    <span className="text-blue-600">{(worker.averagePerDay || 0).toFixed(1)}/dia</span>
-                  </div>
-                  <div className="flex items-center">
-                    <Clock className="h-4 w-4 mr-2 text-gray-400" />
-                    <span className="text-xs">
-                      {worker.firstActivity ? 
-                        new Date(worker.firstActivity).toLocaleDateString('pt-BR', { month: 'short', day: 'numeric' })
-                        : '--'
-                      }
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <button 
-                      onClick={() => {
-                        setSelectedWorkerForView(worker);
-                        setShowWorkerModal(true);
-                      }}
-                      className="p-1 text-blue-600 hover:bg-blue-100 rounded transition-colors"
-                      title="Ver detalhes"
-                    >
-                      <Eye className="h-4 w-4" />
-                    </button>
-                    <button 
-                      onClick={() => {
-                        setSelectedWorkerForEdit(worker);
-                        setShowEditWorkerModal(true);
-                      }}
-                      className="p-1 text-purple-600 hover:bg-purple-100 rounded transition-colors"
-                      title="Editar trabalhador"
-                    >
-                      <Edit className="h-4 w-4" />
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
+              {workerStats.map((worker, index) => {
+                // Calculate dynamic rank based on sort criteria
+                const getRankDisplay = () => {
+                  // Only show numerical rank for performance-based sorting
+                  if (sortBy === 'transactions' || sortBy === 'performance' || sortBy === 'items' || sortBy === 'rank') {
+                    const rank = index + 1;
+                    return `#${rank}`;
+                  }
+                  // For name or other non-performance sorts, show position
+                  return `${index + 1}.`;
+                };
+
+                const getRankIcon = () => {
+                  // Only show ranking stars for performance-based sorting
+                  if (sortBy === 'transactions' || sortBy === 'performance' || sortBy === 'items' || sortBy === 'rank') {
+                    return (
+                      <Star className={`h-4 w-4 ${
+                        index === 0 ? 'text-yellow-500' :
+                        index === 1 ? 'text-gray-400' :
+                        index === 2 ? 'text-amber-600' :
+                        'text-gray-300'
+                      }`} />
+                    );
+                  }
+                  // For alphabetical or other sorts, show a neutral icon
+                  return <User className="h-4 w-4 text-gray-400" />;
+                };
+
+                return (
+                  <tr key={worker.userId} className="hover:bg-gray-50">
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="flex items-center">
+                        {getRankIcon()}
+                        <span className="text-sm font-medium text-gray-900 ml-2">{getRankDisplay()}</span>
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="flex items-center">
+                        <div className="flex-shrink-0 h-10 w-10">
+                          <div className="h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center">
+                            <User className="h-5 w-5 text-purple-600" />
+                          </div>
+                        </div>
+                        <div className="ml-4">
+                          <div className="text-sm font-medium text-gray-900">{worker.userName}</div>
+                          <div className="text-sm text-gray-500">{worker.userId}</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                        <User className="h-3 w-3 mr-1" />
+                        Trabalhador
+                      </span>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="flex items-center">
+                        <Activity className="h-4 w-4 mr-2 text-orange-500" />
+                        <span className="text-sm font-medium text-gray-900">{worker.totalTransactions}</span>
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm">
+                      <div>
+                        <span className="text-green-600">+{worker.itemsAdded}</span> /
+                        <span className="text-red-600 ml-1">-{worker.itemsRemoved}</span>
+                      </div>
+                      <div className="text-xs text-gray-500">Net: {worker.netItems}</div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm">
+                      <div className="flex items-center">
+                        <TrendingUp className="h-4 w-4 mr-2 text-blue-500" />
+                        <span className="text-blue-600">{(worker.averagePerDay || 0).toFixed(1)}/dia</span>
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm">
+                      <div className="flex items-center">
+                        <Clock className="h-4 w-4 mr-2 text-gray-400" />
+                        <span className="text-gray-500">
+                          {worker.lastActivity ?
+                            new Date(worker.lastActivity).toLocaleDateString('pt-BR', {
+                              month: 'short',
+                              day: 'numeric',
+                              hour: '2-digit',
+                              minute: '2-digit'
+                            })
+                            : '--'
+                          }
+                        </span>
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm">
+                      <div className="flex items-center space-x-2">
+                        <button
+                          onClick={() => {
+                            setSelectedWorkerForEdit(worker);
+                            setShowEditWorkerModal(true);
+                          }}
+                          className="p-2 text-purple-600 hover:bg-purple-100 rounded-lg transition-colors"
+                          title="Editar"
+                        >
+                          <Edit className="h-4 w-4" />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })}
+              </tbody>
+            </table>
           </div>
         )}
         
@@ -537,99 +809,7 @@ export default function FazendaWorkers({ firm }: FazendaWorkersProps) {
         </div>
       </div>
 
-      {/* Advanced Management Modal */}
-      {showAdvancedManagement && (
-        <FazendaCDPWorkersManagement
-          firm={firm}
-          onClose={() => setShowAdvancedManagement(false)}
-        />
-      )}
 
-      {/* Worker Details Modal */}
-      {showWorkerModal && selectedWorkerForView && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-xl font-bold text-gray-900">
-                👤 Detalhes do Trabalhador: {selectedWorkerForView.userName}
-              </h2>
-              <button
-                onClick={() => {
-                  setShowWorkerModal(false);
-                  setSelectedWorkerForView(null);
-                }}
-                className="text-gray-400 hover:text-gray-600"
-              >
-                ✕
-              </button>
-            </div>
-            
-            <div className="space-y-6">
-              {/* Summary Cards */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div className="bg-blue-50 rounded-lg p-4 text-center">
-                  <div className="text-2xl font-bold text-blue-600">{selectedWorkerForView.totalTransactions}</div>
-                  <div className="text-sm text-blue-800">Total Transações</div>
-                </div>
-                <div className="bg-green-50 rounded-lg p-4 text-center">
-                  <div className="text-2xl font-bold text-green-600">+{selectedWorkerForView.itemsAdded}</div>
-                  <div className="text-sm text-green-800">Itens Adicionados</div>
-                </div>
-                <div className="bg-red-50 rounded-lg p-4 text-center">
-                  <div className="text-2xl font-bold text-red-600">-{selectedWorkerForView.itemsRemoved}</div>
-                  <div className="text-sm text-red-800">Itens Removidos</div>
-                </div>
-                <div className="bg-purple-50 rounded-lg p-4 text-center">
-                  <div className="text-2xl font-bold text-purple-600">{(selectedWorkerForView.averagePerDay || 0).toFixed(1)}</div>
-                  <div className="text-sm text-purple-800">Média/Dia</div>
-                </div>
-              </div>
-
-              {/* Activity Timeline */}
-              <div className="bg-gray-50 rounded-lg p-4">
-                <h3 className="font-semibold text-gray-900 mb-2">📅 Período de Atividade</h3>
-                <div className="text-sm text-gray-600 space-y-1">
-                  <div><strong>Primeira Atividade:</strong> {selectedWorkerForView.firstActivity ? new Date(selectedWorkerForView.firstActivity).toLocaleString('pt-BR') : 'N/A'}</div>
-                  <div><strong>Última Atividade:</strong> {selectedWorkerForView.lastActivity ? new Date(selectedWorkerForView.lastActivity).toLocaleString('pt-BR') : 'N/A'}</div>
-                  <div><strong>Saldo Líquido:</strong> <span className={`font-medium ${selectedWorkerForView.netItems >= 0 ? 'text-green-600' : 'text-red-600'}`}>{selectedWorkerForView.netItems > 0 ? '+' : ''}{selectedWorkerForView.netItems}</span> itens</div>
-                </div>
-              </div>
-
-              {/* Category Breakdown */}
-              {selectedWorkerForView.categorias && Object.keys(selectedWorkerForView.categorias).length > 0 && (
-                <div className="bg-gray-50 rounded-lg p-4">
-                  <h3 className="font-semibold text-gray-900 mb-2">📊 Atividades por Categoria</h3>
-                  <div className="space-y-2">
-                    {Object.entries(selectedWorkerForView.categorias).map(([categoria, stats]: [string, any]) => (
-                      <div key={categoria} className="flex items-center justify-between bg-white rounded p-2">
-                        <span className="font-medium capitalize">{categoria}</span>
-                        <div className="text-sm">
-                          <span className="text-green-600">+{stats.added || 0}</span>
-                          <span className="text-gray-400 mx-1">/</span>
-                          <span className="text-red-600">-{stats.removed || 0}</span>
-                          <span className="text-gray-400 mx-1">=</span>
-                          <span className={`font-medium ${(stats.net || 0) >= 0 ? 'text-green-600' : 'text-red-600'}`}>
-                            {stats.net > 0 ? '+' : ''}{stats.net || 0}
-                          </span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-
-            <div className="mt-6 flex justify-end">
-              <button
-                onClick={() => setShowAdvancedManagement(true)}
-                className="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors"
-              >
-                Abrir Gestão Avançada
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Individual Worker Edit Modal */}
       {showEditWorkerModal && selectedWorkerForEdit && (
@@ -801,8 +981,7 @@ export default function FazendaWorkers({ firm }: FazendaWorkersProps) {
                 
                 <button
                   onClick={() => {
-                    setSelectedWorkerForView(selectedWorkerForEdit);
-                    setShowWorkerModal(true);
+                    setShowAdvancedManagement(true);
                     setShowEditWorkerModal(false);
                   }}
                   className="flex-1 px-4 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors flex items-center justify-center gap-2"

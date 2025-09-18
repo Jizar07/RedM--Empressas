@@ -273,5 +273,16 @@
     "invitedBy": "Jubiscleia 🩷",
     "approved": true,
     "registeredAt": "2025-09-15T19:16:12.388Z"
+  },
+  {
+    "userId": "476911115561992192",
+    "username": "odin_br",
+    "ingameName": "Frank James",
+    "mailId": "Jango",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "Django / Barba",
+    "approved": true,
+    "registeredAt": "2025-09-17T22:14:57.393Z"
   }
 ]

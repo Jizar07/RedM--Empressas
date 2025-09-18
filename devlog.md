@@ -4,6 +4,25 @@ This is a local timestamped file to track all development changes and prompts.
 
 ## Log Entries
 
+### 2025-09-18 08:00:07
+**Action**: Enhanced Worker Management Table - Full Text Display & Performance-Based Ranking
+**Prompt**: "perfect. update .mds and push all to git"
+**Changes**:
+- **ENHANCED**: Worker table now displays full text without abbreviations
+  - "Trans." → "Transações"
+  - "Perf." → "Performance"
+  - "Última" → "Última Atividade"
+  - "Ger./Trab." → "Gerente/Trabalhador"
+- **FIXED**: Worker names and IDs now show in full (removed truncation)
+- **IMPLEMENTED**: Performance-based ranking system that follows workers across all sorts
+  - Ranking based on totalTransactions (performance metric)
+  - #1 rank follows the top performer regardless of current sort order
+  - Visual distinction with star icons for performance-based sorts
+- **OPTIMIZED**: Table column widths for better space utilization
+  - Trabalhador: w-40, Função: w-32 for full text display
+- **FILES MODIFIED**:
+  - frontend/components/FazendaCDPWorkersManagementNew.tsx - Complete table enhancement with persistent ranking system
+
 ### 2025-09-17 08:55:21
 **Action**: Complete Ferrovia System Singleton Pattern Fix
 **Prompt**: "check the ferrovia system, see if there are the same problems with that so we can fix it too."

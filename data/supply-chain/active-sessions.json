@@ -78,7 +78,7 @@
     "role": "worker",
     "status": "active",
     "startTime": "2025-09-14T00:00:27.223Z",
-    "lastActivity": "2025-09-17T22:02:02.056Z",
+    "lastActivity": "2025-09-17T22:02:02.061Z",
     "transactions": [
       {
         "transactionId": "tx_1757808027229_jisoapdun",
@@ -774,7 +774,7 @@
     "role": "worker",
     "status": "active",
     "startTime": "2025-09-14T01:09:16.155Z",
-    "lastActivity": "2025-09-17T20:44:28.953Z",
+    "lastActivity": "2025-09-17T22:38:27.040Z",
     "transactions": [
       {
         "transactionId": "tx_1757812156158_l4k99bk41",
@@ -1032,6 +1032,70 @@
         "quantity": 200,
         "timestamp": "2025-09-17T20:44:28.949Z",
         "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixadeverduras x200\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 17/09/2025 - 17:44:28"
+      },
+      {
+        "transactionId": "tx_1758148363050_49ujbdfyb",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "Bulrush",
+        "quantity": 100,
+        "timestamp": "2025-09-17T22:32:43.050Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 17/09/2025 - 19:32:42"
+      },
+      {
+        "transactionId": "tx_1758148368301_wot1fzbv4",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 100,
+        "timestamp": "2025-09-17T22:32:48.301Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 17/09/2025 - 19:32:47"
+      },
+      {
+        "transactionId": "tx_1758148456212_1hj1fwt4g",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 100,
+        "timestamp": "2025-09-17T22:34:16.212Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x100\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 17/09/2025 - 19:34:15"
+      },
+      {
+        "transactionId": "tx_1758148459386_rhcvsr42f",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 100,
+        "timestamp": "2025-09-17T22:34:19.386Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x100\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 17/09/2025 - 19:34:19"
+      },
+      {
+        "transactionId": "tx_1758148464128_1x39n3kid",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "semente_trigo ",
+        "quantity": 100,
+        "timestamp": "2025-09-17T22:34:24.128Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: semente_trigo x100\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 17/09/2025 - 19:34:23"
+      },
+      {
+        "transactionId": "tx_1758148475654_8bikrmava",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "Bulrush",
+        "quantity": 100,
+        "timestamp": "2025-09-17T22:34:35.654Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 17/09/2025 - 19:34:35"
+      },
+      {
+        "transactionId": "tx_1758148536422_g2vsmgf5b",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 127,
+        "timestamp": "2025-09-17T22:35:36.422Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x127\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 17/09/2025 - 19:35:35"
+      },
+      {
+        "transactionId": "tx_1758148707033_pn2x3cree",
+        "type": "BOXES_CREATED",
+        "itemName": "caixadeverduras",
+        "quantity": 75,
+        "timestamp": "2025-09-17T22:38:27.033Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixadeverduras x75\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 17/09/2025 - 19:38:26"
       }
     ],
     "openResponsibilities": {
@@ -1823,7 +1887,7 @@
     "role": "worker",
     "status": "active",
     "startTime": "2025-09-14T18:21:07.422Z",
-    "lastActivity": "2025-09-17T21:57:26.290Z",
+    "lastActivity": "2025-09-17T23:34:48.041Z",
     "transactions": [
       {
         "transactionId": "tx_1757874067424_72w9n5xd7",
@@ -2913,6 +2977,33 @@
         "quantity": 100,
         "timestamp": "2025-09-17T21:57:26.286Z",
         "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:57:26"
+      },
+      {
+        "transactionId": "tx_1758147002383_lzyr61x1f",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-09-17T22:10:02.383Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 19:10:02"
+      },
+      {
+        "transactionId": "tx_1758147699702_nz31tsqo8",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-09-17T22:21:39.702Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 19:21:39"
+      },
+      {
+        "transactionId": "tx_1758152088038_dcpg7s5za",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 3000,
+        "timestamp": "2025-09-17T23:34:48.038Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 3000\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 20:34:47"
       }
     ],
     "openResponsibilities": {
@@ -2922,7 +3013,7 @@
       "startDate": "2025-09-14T18:21:07.422Z"
     },
     "totalBoxesProcessed": 0,
-    "totalRevenueGenerated": 2000,
+    "totalRevenueGenerated": 7000,
     "totalRevenueReturned": 0
   },
   {
@@ -3454,7 +3545,7 @@
     "role": "worker",
     "status": "active",
     "startTime": "2025-09-14T23:56:42.454Z",
-    "lastActivity": "2025-09-16T08:33:38.352Z",
+    "lastActivity": "2025-09-18T01:29:32.183Z",
     "transactions": [
       {
         "transactionId": "tx_1757973517671_7xqt1tmp2",
@@ -3527,16 +3618,100 @@
         "amount": 1000,
         "timestamp": "2025-09-16T08:33:38.352Z",
         "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 16/09/2025 - 05:33:38"
+      },
+      {
+        "transactionId": "tx_1758148916621_mnjgkst2h",
+        "type": "BOXES_WITHDRAWN",
+        "itemName": "caixadeverduras",
+        "quantity": 200,
+        "timestamp": "2025-09-17T22:41:56.621Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x200\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 17/09/2025 - 19:41:56"
+      },
+      {
+        "transactionId": "tx_1758148918887_06swymd7f",
+        "type": "BOXES_WITHDRAWN",
+        "itemName": "caixadeverduras",
+        "quantity": 200,
+        "timestamp": "2025-09-17T22:41:58.887Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x200\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 17/09/2025 - 19:41:58"
+      },
+      {
+        "transactionId": "tx_1758148921348_xbp0hkctp",
+        "type": "BOXES_WITHDRAWN",
+        "itemName": "caixadeverduras",
+        "quantity": 100,
+        "timestamp": "2025-09-17T22:42:01.348Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x100\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 17/09/2025 - 19:42:00"
+      },
+      {
+        "transactionId": "tx_1758149694833_inbokqwmm",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-09-17T22:54:54.833Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 17/09/2025 - 19:54:54"
+      },
+      {
+        "transactionId": "tx_1758150926847_htpasxyes",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-09-17T23:15:26.847Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 17/09/2025 - 20:15:26"
+      },
+      {
+        "transactionId": "tx_1758156667658_50f37pdd7",
+        "type": "BOXES_WITHDRAWN",
+        "itemName": "caixadeverduras",
+        "quantity": 15,
+        "timestamp": "2025-09-18T00:51:07.658Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x15\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 17/09/2025 - 21:51:07"
+      },
+      {
+        "transactionId": "tx_1758156674938_m4a02vpcw",
+        "type": "BOXES_WITHDRAWN",
+        "itemName": "caixadeverduras",
+        "quantity": 130,
+        "timestamp": "2025-09-18T00:51:14.938Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x130\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 17/09/2025 - 21:51:14"
+      },
+      {
+        "transactionId": "tx_1758156678583_xwf6l5jjn",
+        "type": "BOXES_WITHDRAWN",
+        "itemName": "caixadeverduras",
+        "quantity": 5,
+        "timestamp": "2025-09-18T00:51:18.583Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x5\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 17/09/2025 - 21:51:18"
+      },
+      {
+        "transactionId": "tx_1758157772057_hazso0448",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-09-18T01:09:32.057Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 17/09/2025 - 22:09:31"
+      },
+      {
+        "transactionId": "tx_1758158972180_xsk1657kp",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-09-18T01:29:32.180Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 17/09/2025 - 22:29:32"
       }
     ],
     "openResponsibilities": {
-      "boxesTaken": 0,
-      "moneyOwed": 0,
+      "boxesTaken": 650,
+      "moneyOwed": 2600,
       "dueDate": "2025-09-15T23:56:42.454Z",
       "startDate": "2025-09-14T23:56:42.454Z"
     },
     "totalBoxesProcessed": 0,
-    "totalRevenueGenerated": 8000,
+    "totalRevenueGenerated": 12000,
     "totalRevenueReturned": 0
   },
   {
@@ -4477,7 +4652,7 @@
     "role": "worker",
     "status": "active",
     "startTime": "2025-09-17T13:10:08.457Z",
-    "lastActivity": "2025-09-17T18:38:15.641Z",
+    "lastActivity": "2025-09-18T05:31:14.198Z",
     "transactions": [
       {
         "transactionId": "tx_1758114784303_53ckvtyhi",
@@ -4530,6 +4705,15 @@
         "quantity": 375,
         "timestamp": "2025-09-17T18:38:15.638Z",
         "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixadeverduras x375\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 17/09/2025 - 15:38:15"
+      },
+      {
+        "transactionId": "tx_1758173474197_fwl46xnyr",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 4000,
+        "timestamp": "2025-09-18T05:31:14.197Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 4000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 18/09/2025 - 02:31:14"
       }
     ],
     "openResponsibilities": {
@@ -4539,7 +4723,7 @@
       "startDate": "2025-09-17T13:10:08.457Z"
     },
     "totalBoxesProcessed": 0,
-    "totalRevenueGenerated": 4000,
+    "totalRevenueGenerated": 8000,
     "totalRevenueReturned": 0
   },
   {

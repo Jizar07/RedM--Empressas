@@ -1,8 +1,648 @@
 {
   "channelId": "1412325130926948362",
-  "lastUpdated": "2025-09-17T22:02:02.840Z",
+  "lastUpdated": "2025-09-18T05:28:58.889Z",
   "messageCount": 100,
   "messages": [
+    {
+      "id": "1418106509245546506",
+      "author": "Thony Gustav",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - SAQUE\nValor sacado:: $1500\nAutor:: Thony Gustav | FIXO: 72363\nSaldo após saque:: $26178.8\nData:: 18/09/2025 - 02:28:58",
+      "timestamp": "2025-09-18T05:28:58.949Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - SAQUE\nValor sacado:: $1500\nAutor:: Thony Gustav | FIXO: 72363\nSaldo após saque:: $26178.8\nData:: 18/09/2025 - 02:28:58",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418085697935376426",
+      "author": "Thony Gustav",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $1500\nAutor:: Thony Gustav | FIXO: 72363\nSaldo após depósito:: $27678.8\nData:: 18/09/2025 - 01:06:16",
+      "timestamp": "2025-09-18T04:06:17.146Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $1500\nAutor:: Thony Gustav | FIXO: 72363\nSaldo após depósito:: $27678.8\nData:: 18/09/2025 - 01:06:16",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418058083988672603",
+      "author": "Thony Gustav",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - SAQUE\nValor sacado:: $160\nAutor:: Thony Gustav | FIXO: 72363\nSaldo após saque:: $26178.8\nData:: 17/09/2025 - 23:16:32",
+      "timestamp": "2025-09-18T02:16:33.468Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - SAQUE\nValor sacado:: $160\nAutor:: Thony Gustav | FIXO: 72363\nSaldo após saque:: $26178.8\nData:: 17/09/2025 - 23:16:32",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418057852102250588",
+      "author": "Spidey Bot",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $160.0\nAção:: Thony Gustav vendeu 4 animais no matadouro\nSaldo após depósito:: $26338.8\nData:: 17/09/2025 - 23:15:37",
+      "timestamp": "2025-09-18T02:15:38.182Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $160.0\nAção:: Thony Gustav vendeu 4 animais no matadouro\nSaldo após depósito:: $26338.8\nData:: 17/09/2025 - 23:15:37",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418054865632104540",
+      "author": "Bartholomeu Dias",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - SAQUE\nValor sacado:: $200\nAutor:: Bartholomeu Dias | FIXO: 76312\nSaldo após saque:: $26178.8\nData:: 17/09/2025 - 23:03:45",
+      "timestamp": "2025-09-18T02:03:46.152Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - SAQUE\nValor sacado:: $200\nAutor:: Bartholomeu Dias | FIXO: 76312\nSaldo após saque:: $26178.8\nData:: 17/09/2025 - 23:03:45",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418051904226984009",
+      "author": "juca rabicho",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: sucodelemon x5\nAutor:: juca rabicho | FIXO: 76612\nData:: 17/09/2025 - 22:51:59",
+      "timestamp": "2025-09-18T01:52:00.098Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: sucodelemon x5\nAutor:: juca rabicho | FIXO: 76612\nData:: 17/09/2025 - 22:51:59",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418050400124276756",
+      "author": "Bartholomeu Dias",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: sucodelemon x14\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 17/09/2025 - 22:46:00",
+      "timestamp": "2025-09-18T01:46:01.492Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: sucodelemon x14\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 17/09/2025 - 22:46:00",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418049443969896498",
+      "author": "Thony Gustav",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: common_portion_chicken x10\nAutor:: Thony Gustav | FIXO: 72363\nData:: 17/09/2025 - 22:42:13",
+      "timestamp": "2025-09-18T01:42:13.527Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: common_portion_chicken x10\nAutor:: Thony Gustav | FIXO: 72363\nData:: 17/09/2025 - 22:42:13",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418041753881284609",
+      "author": "Cliff Dillimore",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $500\nAutor:: Cliff Dillimore | FIXO: 267\nSaldo após depósito:: $26378.8\nData:: 17/09/2025 - 22:11:39",
+      "timestamp": "2025-09-18T01:11:40.067Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $500\nAutor:: Cliff Dillimore | FIXO: 267\nSaldo após depósito:: $26378.8\nData:: 17/09/2025 - 22:11:39",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418041724638593045",
+      "author": "Bartholomeu Dias",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $420\nAutor:: Bartholomeu Dias | FIXO: 76312\nSaldo após depósito:: $25878.8\nData:: 17/09/2025 - 22:11:32",
+      "timestamp": "2025-09-18T01:11:33.095Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $420\nAutor:: Bartholomeu Dias | FIXO: 76312\nSaldo após depósito:: $25878.8\nData:: 17/09/2025 - 22:11:32",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418036630874226708",
+      "author": "Cliff Dillimore",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x5\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 17/09/2025 - 21:51:18",
+      "timestamp": "2025-09-18T00:51:18.647Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x5\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 17/09/2025 - 21:51:18",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418036615040864258",
+      "author": "Cliff Dillimore",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x130\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 17/09/2025 - 21:51:14",
+      "timestamp": "2025-09-18T00:51:14.872Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x130\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 17/09/2025 - 21:51:14",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418036584959311892",
+      "author": "Cliff Dillimore",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x15\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 17/09/2025 - 21:51:07",
+      "timestamp": "2025-09-18T00:51:07.700Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x15\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 17/09/2025 - 21:51:07",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418025422334984244",
+      "author": "Quase Nada",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: racaoequina x2\nAutor:: Quase Nada | FIXO: 77363\nData:: 17/09/2025 - 21:06:45",
+      "timestamp": "2025-09-18T00:06:46.323Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: racaoequina x2\nAutor:: Quase Nada | FIXO: 77363\nData:: 17/09/2025 - 21:06:45",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418024838613958768",
+      "author": "Spidey Bot",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $160.0\nAção:: Quase Nada vendeu 4 animais no matadouro\nSaldo após depósito:: $25458.8\nData:: 17/09/2025 - 21:04:26",
+      "timestamp": "2025-09-18T00:04:27.153Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $160.0\nAção:: Quase Nada vendeu 4 animais no matadouro\nSaldo após depósito:: $25458.8\nData:: 17/09/2025 - 21:04:26",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418022903940775959",
+      "author": "Quase Nada",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: batatarecheada x2\nAutor:: Quase Nada | FIXO: 77363\nData:: 17/09/2025 - 20:56:45",
+      "timestamp": "2025-09-17T23:56:45.891Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: batatarecheada x2\nAutor:: Quase Nada | FIXO: 77363\nData:: 17/09/2025 - 20:56:45",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418022881534939237",
+      "author": "Quase Nada",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: frangocaipira x2\nAutor:: Quase Nada | FIXO: 77363\nData:: 17/09/2025 - 20:56:40",
+      "timestamp": "2025-09-17T23:56:40.549Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: frangocaipira x2\nAutor:: Quase Nada | FIXO: 77363\nData:: 17/09/2025 - 20:56:40",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418022642723590196",
+      "author": "Quase Nada",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: rubromiralis x1\nAutor:: Quase Nada | FIXO: 77363\nData:: 17/09/2025 - 20:55:43",
+      "timestamp": "2025-09-17T23:55:43.612Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: rubromiralis x1\nAutor:: Quase Nada | FIXO: 77363\nData:: 17/09/2025 - 20:55:43",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418022613271449640",
+      "author": "Quase Nada",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: sucodelemon x5\nAutor:: Quase Nada | FIXO: 77363\nData:: 17/09/2025 - 20:55:35",
+      "timestamp": "2025-09-17T23:55:36.590Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: sucodelemon x5\nAutor:: Quase Nada | FIXO: 77363\nData:: 17/09/2025 - 20:55:35",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418022568685731920",
+      "author": "Quase Nada",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: trigo x100\nAutor:: Quase Nada | FIXO: 77363\nData:: 17/09/2025 - 20:55:25",
+      "timestamp": "2025-09-17T23:55:25.960Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: trigo x100\nAutor:: Quase Nada | FIXO: 77363\nData:: 17/09/2025 - 20:55:25",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418022555796639744",
+      "author": "Quase Nada",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: trigo x200\nAutor:: Quase Nada | FIXO: 77363\nData:: 17/09/2025 - 20:55:22",
+      "timestamp": "2025-09-17T23:55:22.887Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: trigo x200\nAutor:: Quase Nada | FIXO: 77363\nData:: 17/09/2025 - 20:55:22",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418021877863026772",
+      "author": "Habbi Wills",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: common_portion x10\nAutor:: Habbi Wills | FIXO: 76565\nData:: 17/09/2025 - 20:52:40",
+      "timestamp": "2025-09-17T23:52:41.255Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: common_portion x10\nAutor:: Habbi Wills | FIXO: 76565\nData:: 17/09/2025 - 20:52:40",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418021857050886155",
+      "author": "Habbi Wills",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: rubromiralis x86\nAutor:: Habbi Wills | FIXO: 76565\nData:: 17/09/2025 - 20:52:35",
+      "timestamp": "2025-09-17T23:52:36.293Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: rubromiralis x86\nAutor:: Habbi Wills | FIXO: 76565\nData:: 17/09/2025 - 20:52:35",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418021823617958002",
+      "author": "Habbi Wills",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixadeverduras x50\nAutor:: Habbi Wills | FIXO: 76565\nData:: 17/09/2025 - 20:52:27",
+      "timestamp": "2025-09-17T23:52:28.322Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixadeverduras x50\nAutor:: Habbi Wills | FIXO: 76565\nData:: 17/09/2025 - 20:52:27",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418019907144126565",
+      "author": "Bartholomeu Dias",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - SAQUE\nValor sacado:: $7000\nAutor:: Bartholomeu Dias | FIXO: 76312\nSaldo após saque:: $25298.8\nData:: 17/09/2025 - 20:44:50",
+      "timestamp": "2025-09-17T23:44:51.399Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - SAQUE\nValor sacado:: $7000\nAutor:: Bartholomeu Dias | FIXO: 76312\nSaldo após saque:: $25298.8\nData:: 17/09/2025 - 20:44:50",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418019789024133143",
+      "author": "Bartholomeu Dias",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $7000\nAutor:: Bartholomeu Dias | FIXO: 76312\nSaldo após depósito:: $32298.8\nData:: 17/09/2025 - 20:44:22",
+      "timestamp": "2025-09-17T23:44:23.237Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $7000\nAutor:: Bartholomeu Dias | FIXO: 76312\nSaldo após depósito:: $32298.8\nData:: 17/09/2025 - 20:44:22",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418017730845610096",
+      "author": "Smith Ramirez",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $1500\nAutor:: Smith Ramirez | FIXO: 340\nSaldo após depósito:: $25298.8\nData:: 17/09/2025 - 20:36:12",
+      "timestamp": "2025-09-17T23:36:12.529Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $1500\nAutor:: Smith Ramirez | FIXO: 340\nSaldo após depósito:: $25298.8\nData:: 17/09/2025 - 20:36:12",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418016296628518943",
+      "author": "Notorius Bowdin",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $500\nAutor:: Notorius Bowdin | FIXO: 71896\nSaldo após depósito:: $23798.8\nData:: 17/09/2025 - 20:30:30",
+      "timestamp": "2025-09-17T23:30:30.585Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $500\nAutor:: Notorius Bowdin | FIXO: 71896\nSaldo após depósito:: $23798.8\nData:: 17/09/2025 - 20:30:30",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418016254702391409",
+      "author": "Quase Nada",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: semente_trigo x30\nAutor:: Quase Nada | FIXO: 77363\nData:: 17/09/2025 - 20:30:20",
+      "timestamp": "2025-09-17T23:30:20.589Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: semente_trigo x30\nAutor:: Quase Nada | FIXO: 77363\nData:: 17/09/2025 - 20:30:20",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418016002888699957",
+      "author": "BONNIE BENNETT",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: Bulrush_Seed x200\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 17/09/2025 - 20:29:20",
+      "timestamp": "2025-09-17T23:29:20.552Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: Bulrush_Seed x200\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 17/09/2025 - 20:29:20",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418015994571390986",
+      "author": "BONNIE BENNETT",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: cornseed x500\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 17/09/2025 - 20:29:17",
+      "timestamp": "2025-09-17T23:29:18.569Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: cornseed x500\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 17/09/2025 - 20:29:17",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418015660247879901",
+      "author": "Cliff Dillimore",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $1000\nAutor:: Cliff Dillimore | FIXO: 267\nSaldo após depósito:: $23298.8\nData:: 17/09/2025 - 20:27:58",
+      "timestamp": "2025-09-17T23:27:58.860Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $1000\nAutor:: Cliff Dillimore | FIXO: 267\nSaldo após depósito:: $23298.8\nData:: 17/09/2025 - 20:27:58",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418011904667942936",
+      "author": "Quase Nada",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: cornseed x1\nAutor:: Quase Nada | FIXO: 77363\nData:: 17/09/2025 - 20:13:02",
+      "timestamp": "2025-09-17T23:13:03.460Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: cornseed x1\nAutor:: Quase Nada | FIXO: 77363\nData:: 17/09/2025 - 20:13:02",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418011882941317232",
+      "author": "Quase Nada",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x90\nAutor:: Quase Nada | FIXO: 77363\nData:: 17/09/2025 - 20:12:57",
+      "timestamp": "2025-09-17T23:12:58.280Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x90\nAutor:: Quase Nada | FIXO: 77363\nData:: 17/09/2025 - 20:12:57",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418011867594621159",
+      "author": "Quase Nada",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x100\nAutor:: Quase Nada | FIXO: 77363\nData:: 17/09/2025 - 20:12:54",
+      "timestamp": "2025-09-17T23:12:54.621Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x100\nAutor:: Quase Nada | FIXO: 77363\nData:: 17/09/2025 - 20:12:54",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418011848028196915",
+      "author": "Quase Nada",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x100\nAutor:: Quase Nada | FIXO: 77363\nData:: 17/09/2025 - 20:12:49",
+      "timestamp": "2025-09-17T23:12:49.956Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x100\nAutor:: Quase Nada | FIXO: 77363\nData:: 17/09/2025 - 20:12:49",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418011582704648294",
+      "author": "Quase Nada",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x10\nAutor:: Quase Nada | FIXO: 77363\nData:: 17/09/2025 - 20:11:46",
+      "timestamp": "2025-09-17T23:11:46.698Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x10\nAutor:: Quase Nada | FIXO: 77363\nData:: 17/09/2025 - 20:11:46",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418010745664442378",
+      "author": "Spidey Bot",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $160.0\nAção:: Quase Nada vendeu 4 animais no matadouro\nSaldo após depósito:: $22298.8\nData:: 17/09/2025 - 20:08:26",
+      "timestamp": "2025-09-17T23:08:27.132Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $160.0\nAção:: Quase Nada vendeu 4 animais no matadouro\nSaldo após depósito:: $22298.8\nData:: 17/09/2025 - 20:08:26",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418009152931762419",
+      "author": "BONNIE BENNETT",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: Bulrush_Seed x456\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 17/09/2025 - 20:02:07",
+      "timestamp": "2025-09-17T23:02:07.395Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: Bulrush_Seed x456\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 17/09/2025 - 20:02:07",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418009038893088778",
+      "author": "BONNIE BENNETT",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: Bulrush_Seed x444\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 17/09/2025 - 20:01:39",
+      "timestamp": "2025-09-17T23:01:40.206Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: Bulrush_Seed x444\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 17/09/2025 - 20:01:39",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418007813019533343",
+      "author": "Smith Ramirez",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: Bulrush x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 19:56:47",
+      "timestamp": "2025-09-17T22:56:47.935Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: Bulrush x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 19:56:47",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418007752776876153",
+      "author": "Smith Ramirez",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $1000\nAutor:: Smith Ramirez | FIXO: 340\nSaldo após depósito:: $22138.8\nData:: 17/09/2025 - 19:56:33",
+      "timestamp": "2025-09-17T22:56:33.572Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $1000\nAutor:: Smith Ramirez | FIXO: 340\nSaldo após depósito:: $22138.8\nData:: 17/09/2025 - 19:56:33",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418005623655895111",
+      "author": "Quase Nada",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x30\nAutor:: Quase Nada | FIXO: 77363\nData:: 17/09/2025 - 19:48:05",
+      "timestamp": "2025-09-17T22:48:05.950Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x30\nAutor:: Quase Nada | FIXO: 77363\nData:: 17/09/2025 - 19:48:05",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418005240363356332",
+      "author": "Quase Nada",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x90\nAutor:: Quase Nada | FIXO: 77363\nData:: 17/09/2025 - 19:46:33",
+      "timestamp": "2025-09-17T22:46:34.566Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x90\nAutor:: Quase Nada | FIXO: 77363\nData:: 17/09/2025 - 19:46:33",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418004094387486872",
+      "author": "Cliff Dillimore",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x100\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 17/09/2025 - 19:42:00",
+      "timestamp": "2025-09-17T22:42:01.344Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x100\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 17/09/2025 - 19:42:00",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418004084014714943",
+      "author": "Cliff Dillimore",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x200\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 17/09/2025 - 19:41:58",
+      "timestamp": "2025-09-17T22:41:58.871Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x200\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 17/09/2025 - 19:41:58",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418004074548301935",
+      "author": "Cliff Dillimore",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x200\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 17/09/2025 - 19:41:56",
+      "timestamp": "2025-09-17T22:41:56.614Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x200\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 17/09/2025 - 19:41:56",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418003195677900830",
+      "author": "BONNIE BENNETT",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixadeverduras x75\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 17/09/2025 - 19:38:26",
+      "timestamp": "2025-09-17T22:38:27.075Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixadeverduras x75\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 17/09/2025 - 19:38:26",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418002764792856648",
+      "author": "Quase Nada",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: saladadefruta x3\nAutor:: Quase Nada | FIXO: 77363\nData:: 17/09/2025 - 19:36:43",
+      "timestamp": "2025-09-17T22:36:44.344Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: saladadefruta x3\nAutor:: Quase Nada | FIXO: 77363\nData:: 17/09/2025 - 19:36:43",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418002713597182183",
+      "author": "Quase Nada",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: SucodeMorango x2\nAutor:: Quase Nada | FIXO: 77363\nData:: 17/09/2025 - 19:36:31",
+      "timestamp": "2025-09-17T22:36:32.138Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: SucodeMorango x2\nAutor:: Quase Nada | FIXO: 77363\nData:: 17/09/2025 - 19:36:31",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418002479919927429",
+      "author": "BONNIE BENNETT",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x127\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 17/09/2025 - 19:35:35",
+      "timestamp": "2025-09-17T22:35:36.425Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x127\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 17/09/2025 - 19:35:35",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418002468171943946",
+      "author": "BONNIE BENNETT",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: semente_trigo x100\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 17/09/2025 - 19:35:33",
+      "timestamp": "2025-09-17T22:35:33.624Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: semente_trigo x100\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 17/09/2025 - 19:35:33",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418002225191456919",
+      "author": "BONNIE BENNETT",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 17/09/2025 - 19:34:35",
+      "timestamp": "2025-09-17T22:34:35.693Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 17/09/2025 - 19:34:35",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418002176789450825",
+      "author": "BONNIE BENNETT",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: semente_trigo x100\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 17/09/2025 - 19:34:23",
+      "timestamp": "2025-09-17T22:34:24.153Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: semente_trigo x100\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 17/09/2025 - 19:34:23",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418002156992335982",
+      "author": "BONNIE BENNETT",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x100\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 17/09/2025 - 19:34:19",
+      "timestamp": "2025-09-17T22:34:19.433Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x100\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 17/09/2025 - 19:34:19",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418002143264116898",
+      "author": "BONNIE BENNETT",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x100\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 17/09/2025 - 19:34:15",
+      "timestamp": "2025-09-17T22:34:16.160Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x100\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 17/09/2025 - 19:34:15",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418002033742577755",
+      "author": "Notorius Bowdin",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - SAQUE\nValor sacado:: $400\nAutor:: Notorius Bowdin | FIXO: 71896\nSaldo após saque:: $21138.8\nData:: 17/09/2025 - 19:33:49",
+      "timestamp": "2025-09-17T22:33:50.048Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - SAQUE\nValor sacado:: $400\nAutor:: Notorius Bowdin | FIXO: 71896\nSaldo após saque:: $21138.8\nData:: 17/09/2025 - 19:33:49",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418001795845853302",
+      "author": "BONNIE BENNETT",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixarustica x100\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 17/09/2025 - 19:32:52",
+      "timestamp": "2025-09-17T22:32:53.329Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixarustica x100\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 17/09/2025 - 19:32:52",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418001774895431680",
+      "author": "BONNIE BENNETT",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 17/09/2025 - 19:32:47",
+      "timestamp": "2025-09-17T22:32:48.334Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 17/09/2025 - 19:32:47",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418001752480808960",
+      "author": "BONNIE BENNETT",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 17/09/2025 - 19:32:42",
+      "timestamp": "2025-09-17T22:32:42.990Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 17/09/2025 - 19:32:42",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1418000430201311244",
+      "author": "Quase Nada",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: common_portion x10\nAutor:: Quase Nada | FIXO: 77363\nData:: 17/09/2025 - 19:27:27",
+      "timestamp": "2025-09-17T22:27:27.734Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: common_portion x10\nAutor:: Quase Nada | FIXO: 77363\nData:: 17/09/2025 - 19:27:27",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417999422557782088",
+      "author": "Quase Nada",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x10\nAutor:: Quase Nada | FIXO: 77363\nData:: 17/09/2025 - 19:23:27",
+      "timestamp": "2025-09-17T22:23:27.493Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x10\nAutor:: Quase Nada | FIXO: 77363\nData:: 17/09/2025 - 19:23:27",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417999347651710986",
+      "author": "Quase Nada",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: hoe x1\nAutor:: Quase Nada | FIXO: 77363\nData:: 17/09/2025 - 19:23:09",
+      "timestamp": "2025-09-17T22:23:09.634Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: hoe x1\nAutor:: Quase Nada | FIXO: 77363\nData:: 17/09/2025 - 19:23:09",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1417998537701986335",
+      "author": "Cliff Dillimore",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: satchel x8\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 17/09/2025 - 19:19:56",
+      "timestamp": "2025-09-17T22:19:56.527Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: satchel x8\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 17/09/2025 - 19:19:56",
+      "rawEmbeds": []
+    },
     {
       "id": "1417994031232979024",
       "author": "Koda Smith",
@@ -361,646 +1001,6 @@
       "source": "discord",
       "channelId": "1412325130926948362",
       "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:47:47",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417990435296514079",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixarustica x10\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:47:44",
-      "timestamp": "2025-09-17T21:47:44.763Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixarustica x10\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:47:44",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417990425142235136",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:47:41",
-      "timestamp": "2025-09-17T21:47:42.342Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:47:41",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417990412660113428",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixadeverduras x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:47:38",
-      "timestamp": "2025-09-17T21:47:39.366Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixadeverduras x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:47:38",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417990229507178506",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:46:55",
-      "timestamp": "2025-09-17T21:46:55.699Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:46:55",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417990217050361996",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixarustica x10\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:46:52",
-      "timestamp": "2025-09-17T21:46:52.729Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixarustica x10\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:46:52",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417990205138403510",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:46:49",
-      "timestamp": "2025-09-17T21:46:49.889Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:46:49",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417990185463054356",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:46:44",
-      "timestamp": "2025-09-17T21:46:45.198Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:46:44",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417990142429233215",
-      "author": "Jizar Stoffeliz",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - SAQUE\nValor sacado:: $500\nAutor:: Jizar Stoffeliz | FIXO: 75119\nSaldo após saque:: $21538.8\nData:: 17/09/2025 - 18:46:34",
-      "timestamp": "2025-09-17T21:46:34.938Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - SAQUE\nValor sacado:: $500\nAutor:: Jizar Stoffeliz | FIXO: 75119\nSaldo após saque:: $21538.8\nData:: 17/09/2025 - 18:46:34",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417990030718275675",
-      "author": "Jizar Stoffeliz",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: trigo x150\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 17/09/2025 - 18:46:07",
-      "timestamp": "2025-09-17T21:46:08.304Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: trigo x150\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 17/09/2025 - 18:46:07",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417989978352255176",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:45:55",
-      "timestamp": "2025-09-17T21:45:55.819Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:45:55",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417989963882037290",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixarustica x10\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:45:51",
-      "timestamp": "2025-09-17T21:45:52.369Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixarustica x10\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:45:51",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417989950367993988",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:45:48",
-      "timestamp": "2025-09-17T21:45:49.147Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:45:48",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417989938481463376",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:45:45",
-      "timestamp": "2025-09-17T21:45:46.313Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:45:45",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417989924975808704",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixadeverduras x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:45:42",
-      "timestamp": "2025-09-17T21:45:43.093Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixadeverduras x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:45:42",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417989744436052044",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:44:59",
-      "timestamp": "2025-09-17T21:45:00.049Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:44:59",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417989728095178833",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixarustica x10\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:44:55",
-      "timestamp": "2025-09-17T21:44:56.153Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixarustica x10\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:44:55",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417989715633901698",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:44:52",
-      "timestamp": "2025-09-17T21:44:53.182Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:44:52",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417989696407081111",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:44:47",
-      "timestamp": "2025-09-17T21:44:48.598Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:44:47",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417989516613914655",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:44:05",
-      "timestamp": "2025-09-17T21:44:05.732Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:44:05",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417989499274662090",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:44:01",
-      "timestamp": "2025-09-17T21:44:01.598Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:44:01",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417989481436545135",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:43:56",
-      "timestamp": "2025-09-17T21:43:57.345Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:43:56",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417989468954165259",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixarustica x10\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:43:53",
-      "timestamp": "2025-09-17T21:43:54.369Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixarustica x10\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:43:53",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417989444891316275",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixadeverduras x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:43:48",
-      "timestamp": "2025-09-17T21:43:48.632Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixadeverduras x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:43:48",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417989266432065630",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:43:05",
-      "timestamp": "2025-09-17T21:43:06.084Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:43:05",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417989250128810096",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:43:01",
-      "timestamp": "2025-09-17T21:43:02.197Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:43:01",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417989239169351780",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:42:58",
-      "timestamp": "2025-09-17T21:42:59.584Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:42:58",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417989223629328435",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixarustica x10\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:42:55",
-      "timestamp": "2025-09-17T21:42:55.879Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixarustica x10\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:42:55",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417989037557416089",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixarustica x10\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:42:11",
-      "timestamp": "2025-09-17T21:42:11.516Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixarustica x10\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:42:11",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417989025385545910",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:42:08",
-      "timestamp": "2025-09-17T21:42:08.614Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:42:08",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417989010101371042",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:42:04",
-      "timestamp": "2025-09-17T21:42:04.970Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:42:04",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417988994075201638",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:42:00",
-      "timestamp": "2025-09-17T21:42:01.149Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:42:00",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417988981894807703",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixadeverduras x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:41:57",
-      "timestamp": "2025-09-17T21:41:58.245Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixadeverduras x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:41:57",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417988804530274374",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:41:15",
-      "timestamp": "2025-09-17T21:41:15.958Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:41:15",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417988789032194300",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:41:11",
-      "timestamp": "2025-09-17T21:41:12.263Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:41:11",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417988774868025595",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:41:08",
-      "timestamp": "2025-09-17T21:41:08.886Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:41:08",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417988760804524064",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixarustica x10\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:41:05",
-      "timestamp": "2025-09-17T21:41:05.533Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixarustica x10\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:41:05",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417988552213401631",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixarustica x10\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:40:15",
-      "timestamp": "2025-09-17T21:40:15.801Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixarustica x10\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:40:15",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417988534861562036",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:40:11",
-      "timestamp": "2025-09-17T21:40:11.664Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:40:11",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417988522257682453",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:40:08",
-      "timestamp": "2025-09-17T21:40:08.659Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:40:08",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417988500913000469",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:40:03",
-      "timestamp": "2025-09-17T21:40:03.570Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:40:03",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417988484974772295",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixadeverduras x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:39:59",
-      "timestamp": "2025-09-17T21:39:59.770Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixadeverduras x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:39:59",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417988018018586626",
-      "author": "Jizar Stoffeliz",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: trigo x350\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 17/09/2025 - 18:38:08",
-      "timestamp": "2025-09-17T21:38:08.439Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: trigo x350\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 17/09/2025 - 18:38:08",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417987950452674656",
-      "author": "Blair Camargo",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: tampadegarrafa x15\nAutor:: Blair Camargo | FIXO: 77151\nData:: 17/09/2025 - 18:37:51",
-      "timestamp": "2025-09-17T21:37:52.330Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: tampadegarrafa x15\nAutor:: Blair Camargo | FIXO: 77151\nData:: 17/09/2025 - 18:37:51",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417987922656891044",
-      "author": "Blair Camargo",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: cornseed x100\nAutor:: Blair Camargo | FIXO: 77151\nData:: 17/09/2025 - 18:37:45",
-      "timestamp": "2025-09-17T21:37:45.703Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: cornseed x100\nAutor:: Blair Camargo | FIXO: 77151\nData:: 17/09/2025 - 18:37:45",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417987879665270914",
-      "author": "Blair Camargo",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: frangocaipira x10\nAutor:: Blair Camargo | FIXO: 77151\nData:: 17/09/2025 - 18:37:34",
-      "timestamp": "2025-09-17T21:37:35.453Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: frangocaipira x10\nAutor:: Blair Camargo | FIXO: 77151\nData:: 17/09/2025 - 18:37:34",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417987709951021227",
-      "author": "Blair Camargo",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: sucodelemon x10\nAutor:: Blair Camargo | FIXO: 77151\nData:: 17/09/2025 - 18:36:54",
-      "timestamp": "2025-09-17T21:36:54.990Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: sucodelemon x10\nAutor:: Blair Camargo | FIXO: 77151\nData:: 17/09/2025 - 18:36:54",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417987035154874509",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:34:13",
-      "timestamp": "2025-09-17T21:34:14.106Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:34:13",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417987018188914721",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:34:09",
-      "timestamp": "2025-09-17T21:34:10.061Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:34:09",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417987006423760948",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixarustica x10\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:34:06",
-      "timestamp": "2025-09-17T21:34:07.256Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixarustica x10\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:34:06",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417986993052455082",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:34:03",
-      "timestamp": "2025-09-17T21:34:04.068Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:34:03",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417986789712330874",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:33:15",
-      "timestamp": "2025-09-17T21:33:15.588Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:33:15",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417986771266044065",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:33:10",
-      "timestamp": "2025-09-17T21:33:11.190Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:33:10",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417986756434989218",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:33:07",
-      "timestamp": "2025-09-17T21:33:07.654Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:33:07",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417986742023225344",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixarustica x10\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:33:03",
-      "timestamp": "2025-09-17T21:33:04.218Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixarustica x10\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:33:03",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417986709718831245",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixadeverduras x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:32:56",
-      "timestamp": "2025-09-17T21:32:56.516Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixadeverduras x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:32:56",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417986522711461930",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixarustica x10\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:32:11",
-      "timestamp": "2025-09-17T21:32:11.930Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixarustica x10\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:32:11",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417986511583842334",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:32:08",
-      "timestamp": "2025-09-17T21:32:09.277Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:32:08",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417986493170843710",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:32:04",
-      "timestamp": "2025-09-17T21:32:04.887Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:32:04",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417986475168890921",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:32:00",
-      "timestamp": "2025-09-17T21:32:00.595Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:32:00",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417986246172606616",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:31:05",
-      "timestamp": "2025-09-17T21:31:05.998Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:31:05",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417986229382938716",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: semente_trigo x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:31:01",
-      "timestamp": "2025-09-17T21:31:01.995Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: semente_trigo x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:31:01",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417986098398888056",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: semente_trigo x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:30:30",
-      "timestamp": "2025-09-17T21:30:30.766Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: semente_trigo x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:30:30",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417986072553586800",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:30:24",
-      "timestamp": "2025-09-17T21:30:24.604Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:30:24",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1417986059723079853",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:30:21",
-      "timestamp": "2025-09-17T21:30:21.545Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 17/09/2025 - 18:30:21",
       "rawEmbeds": []
     }
   ]

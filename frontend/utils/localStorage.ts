@@ -131,7 +131,7 @@ class LocalStorageManager {
               const cleaned = this.cleanupInventario(parsed);
               localStorage.setItem(key, JSON.stringify(cleaned));
             } else if (key.includes('pagamentos')) {
-              // Keep only last 100 payments
+              // Keep ALL payment history
               const cleaned = this.cleanupPagamentos(parsed);
               localStorage.setItem(key, JSON.stringify(cleaned));
             }
@@ -203,8 +203,8 @@ class LocalStorageManager {
    * Clean up pagamentos data
    */
   private cleanupPagamentos(pagamentos: any[]): any[] {
-    // Keep only last 100 payments
-    return pagamentos.slice(-100);
+    // Keep ALL payment history - no limits
+    return pagamentos;
   }
 
   /**

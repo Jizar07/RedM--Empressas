@@ -635,8 +635,8 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
       activity.categoria === 'inventario' &&
       (activity.tipo && ['adicionar', 'remover'].includes(activity.tipo))
     );
-    // Take the first 100 (newest) since activities are already sorted
-    return itemActivities.slice(0, 100);
+    // Return ALL item activities - no limits
+    return itemActivities;
   };
 
   const getMoneyActivities = (): Activity[] => {
@@ -646,8 +646,8 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
              (activity.tipo && ['deposito', 'saque', 'venda', 'compra'].includes(activity.tipo) ||
               (activity.valor !== undefined && activity.valor !== null));
     });
-    // Take the first 100 (newest) since activities are already sorted
-    return moneyActivities.slice(0, 100);
+    // Return ALL money activities - no limits
+    return moneyActivities;
   };
 
   // Get unique inventory managers (people who add/remove animals)

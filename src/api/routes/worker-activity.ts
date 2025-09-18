@@ -314,4 +314,186 @@ router.delete('/transaction/:workerId/:transactionId', authenticateBot, async (r
   }
 });
 
+// Get all registered workers with activity summary
+router.get('/all-workers', authenticateBot, async (_req: Request, res: Response) => {
+  try {
+    const fs = require('fs');
+    const path = require('path');
+
+    // Load registered workers
+    const registrationsPath = path.join(process.cwd(), 'data', 'registrations.json');
+    const registrations = JSON.parse(fs.readFileSync(registrationsPath, 'utf8'));
+
+    // Get active sessions
+    if (!workerChannelService) {
+      return res.status(503).json({ error: 'Service not initialized' });
+    }
+
+    const activityService = workerChannelService.getActivityService();
+    const activeSessions = activityService.getAllActiveSessions();
+
+    // Load archived sessions
+    const archivedDir = path.join(process.cwd(), 'data', 'worker-sessions', 'archived');
+    const paymentsDir = path.join(process.cwd(), 'data', 'worker-sessions', 'payments');
+
+    // Create worker summary for each registered user
+    const allWorkers = registrations.map((reg: any) => {
+      const activeSession = activeSessions.find(s => s.workerId === reg.userId);
+
+      // Count archived sessions for this worker
+      let archivedCount = 0;
+      let totalPaid = 0;
+
+      if (fs.existsSync(archivedDir)) {
+        const archivedFiles = fs.readdirSync(archivedDir);
+        archivedFiles.forEach((file: string) => {
+          try {
+            const content = JSON.parse(fs.readFileSync(path.join(archivedDir, file), 'utf8'));
+            if (content.workerId === reg.userId) {
+              archivedCount++;
+            }
+          } catch (e) {
+            // Skip invalid files
+          }
+        });
+      }
+
+      if (fs.existsSync(paymentsDir)) {
+        const paymentFiles = fs.readdirSync(paymentsDir);
+        paymentFiles.forEach((file: string) => {
+          try {
+            const content = JSON.parse(fs.readFileSync(path.join(paymentsDir, file), 'utf8'));
+            if (content.workerId === reg.userId) {
+              totalPaid += content.totalCredits || 0;
+            }
+          } catch (e) {
+            // Skip invalid files
+          }
+        });
+      }
+
+      return {
+        userId: reg.userId,
+        userName: reg.ingameName,
+        registeredAt: reg.registeredAt,
+        functionName: reg.functionName,
+        hasActiveSession: !!activeSession,
+        activeSessionId: activeSession?.sessionId,
+        totalPaid,
+        archivedSessions: archivedCount,
+        lastActivity: activeSession?.lastActivity || null
+      };
+    });
+
+    return res.json({
+      success: true,
+      workers: allWorkers,
+      total: allWorkers.length,
+      activeCount: activeSessions.length
+    });
+
+  } catch (error) {
+    console.error('❌ Error getting all workers:', error);
+    return res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Get detailed worker data including embeds/receipts
+router.get('/worker-details/:workerId', authenticateBot, async (req: Request, res: Response) => {
+  try {
+    const fs = require('fs');
+    const path = require('path');
+    const { workerId } = req.params;
+
+    if (!workerChannelService) {
+      return res.status(503).json({ error: 'Service not initialized' });
+    }
+
+    // Get registration data
+    const registrationsPath = path.join(process.cwd(), 'data', 'registrations.json');
+    const registrations = JSON.parse(fs.readFileSync(registrationsPath, 'utf8'));
+    const registration = registrations.find((r: any) => r.userId === workerId);
+
+    // Get active session
+    const activityService = workerChannelService.getActivityService();
+    const activeSession = activityService.getWorkerSession(workerId);
+
+    // Get archived sessions
+    const archivedSessions: any[] = [];
+    const archivedDir = path.join(process.cwd(), 'data', 'worker-sessions', 'archived');
+    if (fs.existsSync(archivedDir)) {
+      const files = fs.readdirSync(archivedDir);
+      files.forEach((file: string) => {
+        try {
+          const content = JSON.parse(fs.readFileSync(path.join(archivedDir, file), 'utf8'));
+          if (content.workerId === workerId) {
+            archivedSessions.push(content);
+          }
+        } catch (e) {
+          // Skip invalid files
+        }
+      });
+    }
+
+    // Get payment records
+    const paymentRecords: any[] = [];
+    const paymentsDir = path.join(process.cwd(), 'data', 'worker-sessions', 'payments');
+    if (fs.existsSync(paymentsDir)) {
+      const files = fs.readdirSync(paymentsDir);
+      files.forEach((file: string) => {
+        try {
+          const content = JSON.parse(fs.readFileSync(path.join(paymentsDir, file), 'utf8'));
+          if (content.workerId === workerId) {
+            paymentRecords.push(content);
+          }
+        } catch (e) {
+          // Skip invalid files
+        }
+      });
+    }
+
+    // Get Ferrovia session data
+    let ferroviaSession = null;
+    const ferroviaPath = path.join(process.cwd(), 'data', 'ferrovia-embeds', 'active-embeds.json');
+    if (fs.existsSync(ferroviaPath)) {
+      const ferroviaData = JSON.parse(fs.readFileSync(ferroviaPath, 'utf8'));
+      ferroviaSession = ferroviaData[workerId] || null;
+    }
+
+    // Calculate statistics
+    const totalPlants = activeSession
+      ? activeSession.plantTransactions.filter((t: any) => t.type === 'plant_deposited').reduce((sum: number, t: any) => sum + t.quantity, 0)
+      : 0;
+
+    const totalAnimals = activeSession
+      ? activeSession.animalTransactions.filter((t: any) => t.type === 'delivery_completed').length
+      : 0;
+
+    const totalEarnings = paymentRecords.reduce((sum, record) => sum + (record.totalCredits || 0), 0) + (activeSession?.totalCredits || 0);
+
+    return res.json({
+      success: true,
+      workerId,
+      registration,
+      activeSession,
+      statistics: {
+        totalEarnings,
+        totalPlants,
+        totalAnimals,
+        sessionsCount: archivedSessions.length + (activeSession ? 1 : 0),
+        lastActive: activeSession?.lastActivity || null
+      },
+      history: {
+        payments: paymentRecords,
+        archivedSessions,
+        ferroviaSession
+      }
+    });
+
+  } catch (error) {
+    console.error('❌ Error getting worker details:', error);
+    return res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
 export default router;

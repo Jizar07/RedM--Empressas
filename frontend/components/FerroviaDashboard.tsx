@@ -193,7 +193,7 @@ export default function FerroviaDashboard({ firm }: FerroviaDashboardProps) {
     const missionActivities = activities.filter(activity => 
       activity.tipo === 'entrega' // Delivery completions
     );
-    return missionActivities.slice(0, 100); // Latest 100
+    return missionActivities; // Return ALL mission activities
   };
 
   // Get ONLY withdrawal activities for money activities
@@ -202,7 +202,7 @@ export default function FerroviaDashboard({ firm }: FerroviaDashboardProps) {
       activity.categoria === 'financeiro' &&
       activity.tipo === 'saque' // ONLY withdrawals
     );
-    return withdrawalActivities.slice(0, 100); // Latest 100
+    return withdrawalActivities; // Return ALL withdrawal activities
   };
 
   const getActivityIcon = (activity: Activity) => {
