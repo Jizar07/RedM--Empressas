@@ -10,10 +10,10 @@ export default function PlayerManagement() {
   const [knownPlayers, setKnownPlayers] = useState<KnownPlayer[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [editingPlayer, setEditingPlayer] = useState<number | null>(null);
+  const [editingPlayer, setEditingPlayer] = useState<string | null>(null);
   const [editForm, setEditForm] = useState<Partial<KnownPlayer>>({});
   const [mounted, setMounted] = useState(false);
-  
+
   // Sorting and filtering state
   const [sortField, setSortField] = useState<SortField>('name');
   const [sortDirection, setSortDirection] = useState<SortDirection>('asc');
@@ -59,13 +59,11 @@ export default function PlayerManagement() {
   const mergedPlayers = useMemo(() => {
     if (!mounted) return [];
     return players.map(player => {
-      const knownData = knownPlayers.find(kp => kp.playerId === player.id);
+      const knownData = knownPlayers.find(kp => kp.playerName === player.name);
       return {
         ...player,
         displayName: knownData?.displayName,
-        job: knownData?.job,
-        position: knownData?.position,
-        bootId: knownData?.bootId,
+        bootId: player.id, // Current boot ID from live data
         mailId: knownData?.mailId,
         lastLogin: knownData?.lastLogin,
         lastLogout: knownData?.lastLogout,
@@ -82,19 +80,14 @@ export default function PlayerManagement() {
     // Apply filters
     if (filters.search) {
       const search = filters.search.toLowerCase();
-      filtered = filtered.filter(player => 
+      filtered = filtered.filter(player =>
         player.name.toLowerCase().includes(search) ||
-        player.displayName?.toLowerCase().includes(search) ||
-        player.job?.toLowerCase().includes(search)
+        player.displayName?.toLowerCase().includes(search)
       );
     }
 
     if (filters.knownOnly) {
       filtered = filtered.filter(player => player.isKnown);
-    }
-
-    if (filters.job) {
-      filtered = filtered.filter(player => player.job === filters.job);
     }
 
     // Apply sorting
@@ -135,15 +128,12 @@ export default function PlayerManagement() {
   };
 
   const handleEditPlayer = (player: Player & { isKnown?: boolean }) => {
-    const knownData = knownPlayers.find(kp => kp.playerId === player.id);
-    setEditingPlayer(player.id);
+    const knownData = knownPlayers.find(kp => kp.playerName === player.name);
+    setEditingPlayer(player.name);
     setEditForm({
-      playerId: player.id,
-      name: player.name,
+      playerName: player.name,
       displayName: knownData?.displayName || '',
-      job: knownData?.job || '',
-      position: knownData?.position || '',
-      bootId: knownData?.bootId || '',
+      bootId: player.id.toString(), // Current boot ID
       mailId: knownData?.mailId || '',
       ping: player.ping,
       isKnown: true,
@@ -152,14 +142,11 @@ export default function PlayerManagement() {
   };
 
   const handleSavePlayer = () => {
-    if (!editForm.playerId) return;
+    if (!editForm.playerName) return;
 
     const knownPlayer: KnownPlayer = {
-      playerId: editForm.playerId,
-      name: editForm.name || '',
+      playerName: editForm.playerName,
       displayName: editForm.displayName,
-      job: editForm.job,
-      position: editForm.position,
       bootId: editForm.bootId,
       mailId: editForm.mailId,
       lastLogin: new Date().toISOString(),
@@ -174,16 +161,10 @@ export default function PlayerManagement() {
     setEditForm({});
   };
 
-  const handleRemoveKnownPlayer = (playerId: number) => {
-    knownPlayersStorage.removeKnownPlayer(playerId);
+  const handleRemoveKnownPlayer = (playerName: string) => {
+    knownPlayersStorage.removeKnownPlayer(playerName);
     setKnownPlayers(knownPlayersStorage.getKnownPlayers());
   };
-
-  const uniqueJobs = useMemo(() => {
-    if (!mounted) return [];
-    const jobs = new Set(knownPlayers.map(p => p.job).filter(Boolean));
-    return Array.from(jobs);
-  }, [knownPlayers, mounted]);
 
   const getPingColor = (ping: number) => {
     if (ping < 50) return 'text-green-600';
@@ -232,18 +213,6 @@ export default function PlayerManagement() {
               className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-redm-500 focus:border-transparent"
             />
           </div>
-
-          {/* Job Filter */}
-          <select
-            value={filters.job || ''}
-            onChange={(e) => setFilters(prev => ({ ...prev, job: e.target.value || undefined }))}
-            className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-redm-500"
-          >
-            <option value="">All Jobs</option>
-            {uniqueJobs.map(job => (
-              <option key={job} value={job}>{job}</option>
-            ))}
-          </select>
         </div>
 
         {/* Toggle Filters */}
@@ -291,18 +260,17 @@ export default function PlayerManagement() {
               </th>
               <th className="text-left py-3 px-4">
                 <button
-                  onClick={() => handleSort('job')}
+                  onClick={() => handleSort('id')}
                   className="flex items-center space-x-1 hover:text-redm-600 font-medium"
                 >
-                  <span>Job/Position</span>
-                  {sortField === 'job' && (
-                    sortDirection === 'asc' 
+                  <span>Boot</span>
+                  {sortField === 'id' && (
+                    sortDirection === 'asc'
                       ? <ChevronUp className="h-4 w-4" />
                       : <ChevronDown className="h-4 w-4" />
                   )}
                 </button>
               </th>
-              <th className="text-left py-3 px-4">IDs</th>
               <th className="text-left py-3 px-4">
                 <button
                   onClick={() => handleSort('ping')}
@@ -322,7 +290,7 @@ export default function PlayerManagement() {
           <tbody>
             {filteredAndSortedPlayers.map((player) => (
               <tr key={player.id} className="border-b border-gray-100 hover:bg-gray-50">
-                {editingPlayer === player.id ? (
+                {editingPlayer === player.name ? (
                   <EditPlayerRow
                     editForm={editForm}
                     setEditForm={setEditForm}
@@ -336,7 +304,7 @@ export default function PlayerManagement() {
                   <PlayerRow
                     player={player}
                     onEdit={() => handleEditPlayer(player)}
-                    onRemove={() => handleRemoveKnownPlayer(player.id)}
+                    onRemove={() => handleRemoveKnownPlayer(player.name)}
                     getPingColor={getPingColor}
                   />
                 )}
@@ -381,15 +349,8 @@ function PlayerRow({
         </div>
       </td>
       <td className="py-3 px-4">
-        <div>
-          {player.job && <div className="font-medium">{player.job}</div>}
-          {player.position && <div className="text-sm text-gray-500">{player.position}</div>}
-        </div>
-      </td>
-      <td className="py-3 px-4">
         <div className="text-sm">
-          <div>Server: #{player.id}</div>
-          {player.bootId && <div>Boot: {player.bootId}</div>}
+          <div className="font-mono">{player.id}</div>
           {player.mailId && <div>Mail: {player.mailId}</div>}
         </div>
       </td>
@@ -443,27 +404,6 @@ function EditPlayerRow({
               placeholder="Display Name"
               value={editForm.displayName || ''}
               onChange={(e) => setEditForm(prev => ({ ...prev, displayName: e.target.value }))}
-              className="px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-redm-500"
-            />
-            <input
-              type="text"
-              placeholder="Job"
-              value={editForm.job || ''}
-              onChange={(e) => setEditForm(prev => ({ ...prev, job: e.target.value }))}
-              className="px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-redm-500"
-            />
-            <input
-              type="text"
-              placeholder="Position"
-              value={editForm.position || ''}
-              onChange={(e) => setEditForm(prev => ({ ...prev, position: e.target.value }))}
-              className="px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-redm-500"
-            />
-            <input
-              type="text"
-              placeholder="Boot ID"
-              value={editForm.bootId || ''}
-              onChange={(e) => setEditForm(prev => ({ ...prev, bootId: e.target.value }))}
               className="px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-redm-500"
             />
             <input

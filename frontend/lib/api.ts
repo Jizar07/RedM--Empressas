@@ -360,9 +360,71 @@ export const healthCheck = async (): Promise<any> => {
 
 // Local storage helpers for known players
 export const knownPlayersStorage = {
+  // Migration function to fix data structure changes
+  migrateOldData: (): void => {
+    if (typeof window === 'undefined') return;
+    try {
+      const stored = localStorage.getItem('knownPlayers');
+      if (!stored) return;
+
+      const data = JSON.parse(stored);
+      let needsMigration = false;
+
+      // Check if data has old structure (playerId instead of playerName)
+      const migratedData = data.map((player: any) => {
+        if (player.playerId && !player.playerName) {
+          needsMigration = true;
+          // Try to migrate - but this might require manual intervention
+          return {
+            ...player,
+            playerName: player.name || `Player_${player.playerId}`, // Fallback
+            // Remove old playerId field
+            playerId: undefined
+          };
+        }
+        return player;
+      });
+
+      if (needsMigration) {
+        localStorage.setItem('knownPlayers', JSON.stringify(migratedData));
+        console.log('🔄 Migrated known players data structure');
+      }
+    } catch (error) {
+      console.error('Error migrating known players data:', error);
+    }
+  },
+
+  // Manual fix for specific broken entries
+  fixPlayerEntry: (oldPlayerName: string, correctPlayerName: string): boolean => {
+    if (typeof window === 'undefined') return false;
+    try {
+      const known = knownPlayersStorage.getKnownPlayers();
+      const playerIndex = known.findIndex(p => p.playerName === oldPlayerName);
+
+      if (playerIndex >= 0) {
+        // Update the playerName while keeping all other data
+        known[playerIndex] = {
+          ...known[playerIndex],
+          playerName: correctPlayerName
+        };
+
+        localStorage.setItem('knownPlayers', JSON.stringify(known));
+        console.log(`🔧 Fixed player entry: "${oldPlayerName}" -> "${correctPlayerName}"`);
+        return true;
+      }
+      return false;
+    } catch (error) {
+      console.error('Error fixing player entry:', error);
+      return false;
+    }
+  },
+
   getKnownPlayers: (): KnownPlayer[] => {
     if (typeof window === 'undefined') return [];
     try {
+      // Run migration on first access
+      knownPlayersStorage.migrateOldData();
+
       const stored = localStorage.getItem('knownPlayers');
       return stored ? JSON.parse(stored) : [];
     } catch (error) {
@@ -375,38 +437,59 @@ export const knownPlayersStorage = {
     if (typeof window === 'undefined') return;
     try {
       const known = knownPlayersStorage.getKnownPlayers();
-      const index = known.findIndex(p => p.playerId === player.playerId);
-      
+      const index = known.findIndex(p => p.playerName === player.playerName);
+
+      // Validation: prevent empty playerName
+      if (!player.playerName || player.playerName.trim() === '') {
+        console.error('Cannot save player with empty playerName');
+        return;
+      }
+
       if (index >= 0) {
-        known[index] = player;
+        // When updating, preserve the original playerName structure
+        known[index] = {
+          ...player,
+          // Ensure playerName doesn't get accidentally changed during edits
+          playerName: known[index].playerName
+        };
       } else {
         known.push(player);
       }
-      
+
       localStorage.setItem('knownPlayers', JSON.stringify(known));
     } catch (error) {
       console.error('Error saving known player to localStorage:', error);
     }
   },
 
-  removeKnownPlayer: (playerId: number): void => {
+  removeKnownPlayer: (playerName: string): void => {
     if (typeof window === 'undefined') return;
     try {
       const known = knownPlayersStorage.getKnownPlayers();
-      const filtered = known.filter(p => p.playerId !== playerId);
+      const filtered = known.filter(p => p.playerName !== playerName);
       localStorage.setItem('knownPlayers', JSON.stringify(filtered));
     } catch (error) {
       console.error('Error removing known player from localStorage:', error);
     }
   },
 
-  isKnownPlayer: (playerId: number): boolean => {
+  isKnownPlayer: (playerName: string): boolean => {
     const known = knownPlayersStorage.getKnownPlayers();
-    return known.some(p => p.playerId === playerId);
+    return known.some(p => p.playerName === playerName);
   },
 
-  getKnownPlayer: (playerId: number): KnownPlayer | null => {
+  getKnownPlayer: (playerName: string): KnownPlayer | null => {
     const known = knownPlayersStorage.getKnownPlayers();
-    return known.find(p => p.playerId === playerId) || null;
+    return known.find(p => p.playerName === playerName) || null;
   },
+
+  // Debug function to check current state
+  debugPlayerData: (): void => {
+    if (typeof window === 'undefined') return;
+    const known = knownPlayersStorage.getKnownPlayers();
+    console.log('🔍 Current Known Players Data:');
+    known.forEach((player, index) => {
+      console.log(`${index + 1}. PlayerName: "${player.playerName}", DisplayName: "${player.displayName}", BootId: "${player.bootId}"`);
+    });
+  }
 };

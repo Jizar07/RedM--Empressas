@@ -19,12 +19,11 @@ export interface Player {
 }
 
 export interface KnownPlayer {
-  playerId: number;
-  name: string;
+  playerName: string; // Primary key - the player's consistent in-game name
   displayName?: string;
   job?: string;
   position?: string;
-  bootId?: string;
+  bootId?: string; // Last known boot ID (changes on each login)
   mailId?: string;
   lastLogin?: string;
   lastLogout?: string;
@@ -43,7 +42,7 @@ export interface BotStats {
   ping: number;
 }
 
-export type SortField = 'name' | 'ping' | 'lastLogin' | 'job' | 'displayName' | 'isOnline';
+export type SortField = 'name' | 'id' | 'ping' | 'lastLogin' | 'job' | 'displayName' | 'isOnline';
 export type SortDirection = 'asc' | 'desc';
 
 export interface PlayerFilter {

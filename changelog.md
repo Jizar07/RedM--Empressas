@@ -5,7 +5,24 @@ This file is synchronized with: https://github.com/Jizar07/RedM--Empressas
 
 ## Version History
 
-### [0.044] - 2025-09-18 **[CURRENT VERSION]**
+### [0.045] - 2025-09-20 **[CURRENT VERSION]**
+- **CRITICAL BUG FIX**: Complete Player Management System Architecture Overhaul
+- **PLAYER MATCHING SYSTEM**: Fixed broken online/offline status between PlayerManagement and KnownPeople
+- **ROOT CAUSE RESOLUTION**: Switched from unstable session ID matching to persistent name-based matching
+- **DATA STRUCTURE CHANGE**: Updated `KnownPlayer` interface - `playerId` → `playerName` for consistency
+- **BOOT ID CLARITY**: Renamed "ID" column to "Boot" to distinguish from player names, shows live boot ID
+- **REAL-TIME SYNC**: KnownPeople now correctly shows current boot ID when players are online
+- **DATA MIGRATION**: Automatic migration system for existing localStorage data + manual fix functions
+- **VALIDATION SYSTEM**: PlayerName field protection prevents accidental anchor changes during edits
+- **DEBUG TOOLKIT**: Added troubleshooting functions (`debugPlayerData`, `fixPlayerEntry`)
+- **CONSISTENCY GUARANTEE**: Players maintain correct online status across login sessions
+- **FILES MODIFIED**:
+  - `frontend/types/index.ts` - Updated KnownPlayer interface structure
+  - `frontend/lib/api.ts` - Complete storage system overhaul with migration
+  - `frontend/components/PlayerManagement.tsx` - Name-based matching + Boot column
+  - `frontend/components/KnownPlayersCard.tsx` - Fixed matching logic + live boot ID display
+
+### [0.044] - 2025-09-18
 - **UI/UX ENHANCEMENT**: Complete Worker Management Table Overhaul with Full Text Display
 - **RANKING SYSTEM**: Implemented performance-based ranking that follows workers across all sort criteria
 - **TEXT DISPLAY**: Eliminated all abbreviations - full Portuguese text throughout interface

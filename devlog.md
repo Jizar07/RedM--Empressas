@@ -4,6 +4,24 @@ This is a local timestamped file to track all development changes and prompts.
 
 ## Log Entries
 
+### 2025-09-20 06:58:53
+**Action**: Complete Player Management System Overhaul - Name-Based Matching & Boot ID Display
+**Prompt**: "-Change ID to boot. so we dont confused Player ID (which is the player name on player management) with the Boot ID (which is the number that changes every time player log on) -when clicking on the action button, and adding player to known People, even thou player is online on player management, they show as offline on known people, it seems the system is not checking againts the player id (name) after adding them to the know people list. - it is also not show the ID (boot) on known people - this changes everytime player logs on."
+**Changes**:
+- **FIXED CRITICAL BUG**: Player matching between PlayerManagement and KnownPeople was broken due to using session ID instead of player name
+- **ROOT CAUSE IDENTIFIED**: System was using `player.id` (boot ID that changes on each login) as primary key instead of consistent `player.name`
+- **COMPLETE REFACTOR**: Switched to name-based matching system:
+  - Updated `KnownPlayer` interface: `playerId` → `playerName` (consistent server name)
+  - Updated all storage functions to use name-based matching
+  - PlayerManagement now uses `player.name` as anchor, `displayName` for character names
+- **ID COLUMN RENAMED**: Changed "ID" column to "Boot" column showing current boot ID (`player.id`)
+- **CURRENT BOOT ID DISPLAY**: KnownPeople now shows live boot ID when online, stored when offline
+- **DATA MIGRATION**: Added automatic migration for old data structure + manual fix functions
+- **VALIDATION PROTECTION**: PlayerName field locked to prevent accidental changes during edits
+- **SPECIFIC FIX**: Added `fixPlayerEntry()` function for broken entries (GM Stoffel/Jizar Stoffeliz case)
+- **DEBUG TOOLS**: Added `debugPlayerData()` to troubleshoot data issues
+**Result**: Players now correctly show as online when they are, with current boot ID displayed. System maintains consistency across login sessions using player name as anchor.
+
 ### 2025-09-18 08:00:07
 **Action**: Enhanced Worker Management Table - Full Text Display & Performance-Based Ranking
 **Prompt**: "perfect. update .mds and push all to git"

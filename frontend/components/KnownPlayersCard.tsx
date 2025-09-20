@@ -13,7 +13,7 @@ export default function KnownPlayersCard() {
   const [showOffline, setShowOffline] = useState(true);
   const [sortField, setSortField] = useState<SortField>('displayName');
   const [sortDirection, setSortDirection] = useState<SortDirection>('asc');
-  const [editingPlayer, setEditingPlayer] = useState<number | null>(null);
+  const [editingPlayer, setEditingPlayer] = useState<string | null>(null);
   const [editForm, setEditForm] = useState<Partial<KnownPlayer>>({});
 
   useEffect(() => {
@@ -57,12 +57,13 @@ export default function KnownPlayersCard() {
   // Merge known players with online status
   const playersWithStatus = useMemo(() => {
     return knownPlayers.map(player => {
-      // Check if player is currently online
-      const onlinePlayer = onlinePlayers.find(op => op.id === player.playerId);
+      // Check if player is currently online by name
+      const onlinePlayer = onlinePlayers.find(op => op.name === player.playerName);
       return {
         ...player,
         isOnline: !!onlinePlayer,
         ping: onlinePlayer?.ping || player.ping,
+        currentBootId: onlinePlayer?.id || null, // Current boot ID if online
         lastSeen: player.lastLogin || 'Unknown',
       };
     });
@@ -77,7 +78,7 @@ export default function KnownPlayersCard() {
       const search = searchTerm.toLowerCase();
       filtered = filtered.filter(player => 
         player.displayName?.toLowerCase().includes(search) ||
-        player.name.toLowerCase().includes(search) ||
+        player.playerName.toLowerCase().includes(search) ||
         player.job?.toLowerCase().includes(search) ||
         player.position?.toLowerCase().includes(search)
       );
@@ -100,8 +101,8 @@ export default function KnownPlayersCard() {
         aValue = a.isOnline ? 1 : 0;
         bValue = b.isOnline ? 1 : 0;
       } else if (sortField === 'displayName') {
-        aValue = a.displayName || a.name || '';
-        bValue = b.displayName || b.name || '';
+        aValue = a.displayName || a.playerName || '';
+        bValue = b.displayName || b.playerName || '';
         aValue = aValue.toLowerCase();
         bValue = bValue.toLowerCase();
       } else if (typeof aValue === 'string') {
@@ -129,12 +130,12 @@ export default function KnownPlayersCard() {
   };
 
   const handleEdit = (player: KnownPlayer) => {
-    setEditingPlayer(player.playerId);
+    setEditingPlayer(player.playerName);
     setEditForm(player);
   };
 
   const handleSave = () => {
-    if (!editForm.playerId) return;
+    if (!editForm.playerName) return;
 
     const updatedPlayer: KnownPlayer = {
       ...editForm as KnownPlayer,
@@ -147,9 +148,9 @@ export default function KnownPlayersCard() {
     setEditForm({});
   };
 
-  const handleDelete = (playerId: number) => {
+  const handleDelete = (playerName: string) => {
     if (confirm('Are you sure you want to remove this known player?')) {
-      knownPlayersStorage.removeKnownPlayer(playerId);
+      knownPlayersStorage.removeKnownPlayer(playerName);
       setKnownPlayers(knownPlayersStorage.getKnownPlayers());
     }
   };
@@ -307,8 +308,8 @@ export default function KnownPlayersCard() {
           </thead>
           <tbody>
             {filteredAndSortedPlayers.map((player) => (
-              <tr key={player.playerId} className="border-b border-gray-100 hover:bg-gray-50">
-                {editingPlayer === player.playerId ? (
+              <tr key={player.playerName} className="border-b border-gray-100 hover:bg-gray-50">
+                {editingPlayer === player.playerName ? (
                   <EditPlayerForm
                     player={player}
                     editForm={editForm}
@@ -335,7 +336,7 @@ export default function KnownPlayersCard() {
                 <td className="py-3 px-2">
                   <div className="flex items-center space-x-2">
                     <Star className="h-4 w-4 text-yellow-500" />
-                    <span className="font-medium">{player.displayName || player.name}</span>
+                    <span className="font-medium">{player.displayName || player.playerName}</span>
                   </div>
                 </td>
 
@@ -344,9 +345,11 @@ export default function KnownPlayersCard() {
                   <span className="text-sm">{player.job || '-'}</span>
                 </td>
 
-                {/* Boot ID */}
+                {/* Boot ID - Show current if online, last known if offline */}
                 <td className="py-3 px-2">
-                  <span className="font-mono text-sm">{player.bootId || '-'}</span>
+                  <span className="font-mono text-sm">
+                    {player.isOnline && player.currentBootId ? player.currentBootId : (player.bootId || '-')}
+                  </span>
                 </td>
 
                 {/* Pombo (Mail ID) */}
@@ -386,7 +389,7 @@ export default function KnownPlayersCard() {
                       <Edit3 className="h-4 w-4" />
                     </button>
                     <button
-                      onClick={() => handleDelete(player.playerId)}
+                      onClick={() => handleDelete(player.playerName)}
                       className="p-1 text-red-600 hover:bg-red-50 rounded"
                       title="Remove player"
                     >
@@ -433,7 +436,18 @@ function EditPlayerForm({
       <div className="bg-gray-50 rounded-lg p-4 space-y-4">
         <h4 className="font-medium text-gray-900">Edit Known Player</h4>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Player Name</label>
+            <input
+              type="text"
+              placeholder="Player Name"
+              value={editForm.playerName || ''}
+              disabled
+              className="w-full px-3 py-2 border border-gray-300 rounded-md bg-gray-100 text-gray-600 text-sm"
+            />
+          </div>
+
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Display Name</label>
             <input
