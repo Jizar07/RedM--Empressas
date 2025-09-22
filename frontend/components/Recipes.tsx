@@ -133,6 +133,284 @@ const Recipes = () => {
         { item: 'trigo', quantidade: 50, nome: 'Trigo' },
         { item: 'milho', quantidade: 100, nome: 'Milho' }
       ]
+    },
+    // Veterinary Recipes - Libidgels
+    {
+      id: 'libidgel_bovino',
+      nome: 'Libidgel Bovino',
+      categoria: 'VETERINARIA',
+      produz: 10,
+      materiais: [
+        { item: 'cápsula_plástica', quantidade: 20, nome: 'Cápsula Plástica' },
+        { item: 'rótulo_1', quantidade: 20, nome: 'Rótulo' },
+        { item: 'seringa_de_vidro', quantidade: 4, nome: 'Seringa de Vidro' },
+        { item: 'embalagem', quantidade: 20, nome: 'Embalagem' }
+      ]
+    },
+    {
+      id: 'libidgel_suino',
+      nome: 'Libidgel Suíno',
+      categoria: 'VETERINARIA',
+      produz: 10,
+      materiais: [
+        { item: 'cápsula_plástica', quantidade: 20, nome: 'Cápsula Plástica' },
+        { item: 'rótulo_1', quantidade: 20, nome: 'Rótulo' },
+        { item: 'seringa_de_vidro', quantidade: 4, nome: 'Seringa de Vidro' },
+        { item: 'embalagem', quantidade: 20, nome: 'Embalagem' }
+      ]
+    },
+    {
+      id: 'libidgel_aviario',
+      nome: 'Libidgel Aviário',
+      categoria: 'VETERINARIA',
+      produz: 10,
+      materiais: [
+        { item: 'cápsula_plástica', quantidade: 20, nome: 'Cápsula Plástica' },
+        { item: 'rótulo_1', quantidade: 20, nome: 'Rótulo' },
+        { item: 'seringa_de_vidro', quantidade: 4, nome: 'Seringa de Vidro' },
+        { item: 'embalagem', quantidade: 20, nome: 'Embalagem' }
+      ]
+    },
+    {
+      id: 'libidgel_caprino',
+      nome: 'Libidgel Caprino',
+      categoria: 'VETERINARIA',
+      produz: 10,
+      materiais: [
+        { item: 'cápsula_plástica', quantidade: 20, nome: 'Cápsula Plástica' },
+        { item: 'rótulo_1', quantidade: 20, nome: 'Rótulo' },
+        { item: 'seringa_de_vidro', quantidade: 4, nome: 'Seringa de Vidro' },
+        { item: 'embalagem', quantidade: 20, nome: 'Embalagem' }
+      ]
+    },
+    {
+      id: 'libidgel_ovino',
+      nome: 'Libidgel Ovino',
+      categoria: 'VETERINARIA',
+      produz: 10,
+      materiais: [
+        { item: 'cápsula_plástica', quantidade: 20, nome: 'Cápsula Plástica' },
+        { item: 'rótulo_1', quantidade: 20, nome: 'Rótulo' },
+        { item: 'seringa_de_vidro', quantidade: 4, nome: 'Seringa de Vidro' },
+        { item: 'embalagem', quantidade: 20, nome: 'Embalagem' }
+      ]
+    },
+    {
+      id: 'libidgel_asineiro',
+      nome: 'Libidgel Asineiro',
+      categoria: 'VETERINARIA',
+      produz: 10,
+      materiais: [
+        { item: 'cápsula_plástica', quantidade: 20, nome: 'Cápsula Plástica' },
+        { item: 'rótulo_1', quantidade: 20, nome: 'Rótulo' },
+        { item: 'seringa_de_vidro', quantidade: 4, nome: 'Seringa de Vidro' },
+        { item: 'embalagem', quantidade: 20, nome: 'Embalagem' }
+      ]
+    },
+    // Veterinary Recipes - Animal Feed Portions
+    {
+      id: 'porcao_comum',
+      nome: 'Porção Comum',
+      categoria: 'VETERINARIA',
+      produz: 10,
+      materiais: [
+        { item: 'papoula_prado', quantidade: 20, nome: 'Papoula do Prado' },
+        { item: 'framboesa_vermelha', quantidade: 20, nome: 'Framboesa Vermelha' }
+      ]
+    },
+    {
+      id: 'porcao_cabra',
+      nome: 'Porção Comum de Cabra',
+      categoria: 'VETERINARIA',
+      produz: 10,
+      materiais: [
+        { item: 'papoula_prado', quantidade: 20, nome: 'Papoula do Prado' },
+        { item: 'framboesa_vermelha', quantidade: 20, nome: 'Framboesa Vermelha' }
+      ]
+    },
+    {
+      id: 'porcao_mula',
+      nome: 'Porção Comum de Mula',
+      categoria: 'VETERINARIA',
+      produz: 10,
+      materiais: [
+        { item: 'amora', quantidade: 20, nome: 'Amora' },
+        { item: 'groselha_negra', quantidade: 20, nome: 'Groselha Negra' }
+      ]
+    },
+    {
+      id: 'porcao_galinha',
+      nome: 'Porção Comum de Galinha',
+      categoria: 'VETERINARIA',
+      produz: 10,
+      materiais: [
+        { item: 'alho_selvagem', quantidade: 20, nome: 'Alho Selvagem' },
+        { item: 'salvia_oleandro', quantidade: 20, nome: 'Sálvia Oleandro' }
+      ]
+    },
+    {
+      id: 'porcao_ovelha',
+      nome: 'Porção Comum de Ovelha',
+      categoria: 'VETERINARIA',
+      produz: 10,
+      materiais: [
+        { item: 'cogumelo_parasol', quantidade: 20, nome: 'Cogumelo Parasol' },
+        { item: 'oregano', quantidade: 20, nome: 'Orégano' }
+      ]
+    },
+    {
+      id: 'porcao_porco',
+      nome: 'Porção Comum de Porco',
+      categoria: 'VETERINARIA',
+      produz: 10,
+      materiais: [
+        { item: 'ameixa_brejo', quantidade: 20, nome: 'Ameixa do Brejo' },
+        { item: 'graos_cafe', quantidade: 20, nome: 'Grãos de Café' }
+      ]
+    },
+    // Veterinary Supplies
+    {
+      id: 'caixa_veterinaria',
+      nome: 'Caixa de Veterinária',
+      categoria: 'VETERINARIA',
+      produz: 25,
+      materiais: [
+        { item: 'libidgel_ovino', quantidade: 5, nome: 'Libidgel Ovino' },
+        { item: 'libidgel_asineiro', quantidade: 5, nome: 'Libidgel Asineiro' },
+        { item: 'porcao_porco', quantidade: 20, nome: 'Porção Comum de Porco' }
+      ]
+    },
+    // Artesanato (Crafting)
+    {
+      id: 'garrafa_de_vidro',
+      nome: 'Garrafa de Vidro',
+      categoria: 'ARTESANATO',
+      produz: 20,
+      materiais: [
+        { item: 'pedra_de_silica', quantidade: 4, nome: 'Pedra de Sílica' },
+        { item: 'carvao', quantidade: 4, nome: 'Carvão' },
+        { item: 'quartzo', quantidade: 4, nome: 'Quartzo' }
+      ]
+    },
+    {
+      id: 'linha_de_algodao',
+      nome: 'Linha de Algodão',
+      categoria: 'ARTESANATO',
+      produz: 12,
+      materiais: [
+        { item: 'algodao', quantidade: 3, nome: 'Algodão' },
+        { item: 'fibras', quantidade: 6, nome: 'Fibras' }
+      ]
+    },
+    {
+      id: 'tinta',
+      nome: 'Tinta',
+      categoria: 'ARTESANATO',
+      produz: 26,
+      materiais: [
+        { item: 'agua', quantidade: 3, nome: 'Água' },
+        { item: 'po_de_cafe', quantidade: 3, nome: 'Pó de Café' }
+      ]
+    },
+    {
+      id: 'capsula_plastica',
+      nome: 'Cápsula Plástica',
+      categoria: 'ARTESANATO',
+      produz: 25,
+      materiais: [
+        { item: 'pedra_de_silica', quantidade: 5, nome: 'Pedra de Sílica' },
+        { item: 'alcool_industrial', quantidade: 6, nome: 'Álcool Industrial' },
+        { item: 'amido_de_milho', quantidade: 3, nome: 'Amido de Milho' }
+      ]
+    },
+    {
+      id: 'alca_de_couro',
+      nome: 'Alça de Couro',
+      categoria: 'ARTESANATO',
+      produz: 15,
+      materiais: [
+        { item: 'linha_de_algodao', quantidade: 4, nome: 'Linha de Algodão' },
+        { item: 'algodao', quantidade: 6, nome: 'Algodão' },
+        { item: 'pele_de_jacare', quantidade: 1, nome: 'Pele de Jacaré' }
+      ]
+    },
+    {
+      id: 'rotulo',
+      nome: 'Rótulo',
+      categoria: 'ARTESANATO',
+      produz: 20,
+      materiais: [
+        { item: 'tinta', quantidade: 6, nome: 'Tinta' },
+        { item: 'milk_weed', quantidade: 6, nome: 'Milk Weed' }
+      ]
+    },
+    {
+      id: 'mochila_20kg',
+      nome: 'Mochila 20kg',
+      categoria: 'ARTESANATO',
+      produz: 4,
+      materiais: [
+        { item: 'alca_de_couro', quantidade: 6, nome: 'Alça de Couro' },
+        { item: 'linha_de_algodao', quantidade: 14, nome: 'Linha de Algodão' },
+        { item: 'pele_de_lobo', quantidade: 2, nome: 'Pele de Lobo' },
+        { item: 'pele_de_jacare', quantidade: 2, nome: 'Pele de Jacaré' }
+      ]
+    },
+    {
+      id: 'embalagem_artesanato',
+      nome: 'Embalagem',
+      categoria: 'ARTESANATO',
+      produz: 26,
+      materiais: [
+        { item: 'alcool_industrial', quantidade: 6, nome: 'Álcool Industrial' },
+        { item: 'quartzo', quantidade: 3, nome: 'Quartzo' },
+        { item: 'amido_de_milho', quantidade: 3, nome: 'Amido de Milho' }
+      ]
+    },
+    {
+      id: 'verniz',
+      nome: 'Verniz',
+      categoria: 'ARTESANATO',
+      produz: 24,
+      materiais: [
+        { item: 'madeira', quantidade: 6, nome: 'Madeira' },
+        { item: 'fruta_wintergreen', quantidade: 6, nome: 'Fruta Wintergreen' },
+        { item: 'tinta', quantidade: 2, nome: 'Tinta' },
+        { item: 'agua', quantidade: 5, nome: 'Água' }
+      ]
+    },
+    {
+      id: 'caixa_de_artesanato',
+      nome: 'Caixa de Artesanato',
+      categoria: 'ARTESANATO',
+      produz: 25,
+      materiais: [
+        { item: 'embalagem', quantidade: 10, nome: 'Embalagem' },
+        { item: 'picareta', quantidade: 1, nome: 'Picareta' },
+        { item: 'mochila', quantidade: 10, nome: 'Mochila' },
+        { item: 'boneca_de_pano', quantidade: 1, nome: 'Boneca de Pano' }
+      ]
+    },
+    {
+      id: 'coador',
+      nome: 'Coador',
+      categoria: 'ARTESANATO',
+      produz: 26,
+      materiais: [
+        { item: 'madeira', quantidade: 3, nome: 'Madeira' },
+        { item: 'linha_de_algodao', quantidade: 6, nome: 'Linha de Algodão' }
+      ]
+    },
+    {
+      id: 'caixa_rustica_artesanato',
+      nome: 'Caixa Rústica',
+      categoria: 'ARTESANATO',
+      produz: 45,
+      materiais: [
+        { item: 'madeira_cubica', quantidade: 3, nome: 'Madeira Cúbica' },
+        { item: 'madeira_lapidada', quantidade: 3, nome: 'Madeira Lapidada' },
+        { item: 'madeira_cilindrica', quantidade: 3, nome: 'Madeira Cilíndrica' }
+      ]
     }
   ];
 
@@ -187,7 +465,7 @@ const Recipes = () => {
       'coal': 0.20,
       'salitre': 0.30,
       'enxofre': 0.35,
-      'embalagem': 0.25,
+      'embalagem': 0.71,
       'rustic_box': 1.00,
       'moedor': 0.60,
       'caixa_rustica': 1.00,
@@ -202,7 +480,58 @@ const Recipes = () => {
       'ovos': 0.40,
       'leite_de_cabra': 0.50,
       'leite_de_ovelha': 0.50,
-      'taurina': 0.90
+      'taurina': 0.90,
+      // Veterinary base materials (using PriceList averages)
+      'cápsula_plástica': 0.81,
+      'rótulo_1': 0.605,
+      'seringa_de_vidro': 0.81,
+      // Plant ingredients (all at 0.25 as specified)
+      'papoula_prado': 0.25,
+      'framboesa_vermelha': 0.25,
+      'amora': 0.25,
+      'groselha_negra': 0.25,
+      'alho_selvagem': 0.25,
+      'salvia_oleandro': 0.25,
+      'cogumelo_parasol': 0.25,
+      'oregano': 0.25,
+      'ameixa_brejo': 0.25,
+      'graos_cafe': 0.25,
+      // Intermediate products (calculated from their recipes)
+      'libidgel_bovino': 4.574,
+      'libidgel_suino': 4.574,
+      'libidgel_aviario': 4.574,
+      'libidgel_caprino': 4.574,
+      'libidgel_ovino': 4.574,
+      'libidgel_asineiro': 4.574,
+      'porcao_comum': 1.0,
+      'porcao_cabra': 1.0,
+      'porcao_mula': 1.0,
+      'porcao_galinha': 1.0,
+      'porcao_ovelha': 1.0,
+      'porcao_porco': 1.0,
+      // Artesanato materials
+      'pedra_de_silica': 0.35,
+      'quartzo': 0.40,
+      'algodao': 0.25,
+      'fibras': 0.20,
+      'agua': 0.05,
+      'po_de_cafe': 0.30,
+      'alcool_industrial': 0.45,
+      'amido_de_milho': 0.60,
+      'linha_de_algodao': 0.80,
+      'pele_de_jacare': 1.20,
+      'milk_weed': 0.25,
+      'tinta': 1.15,
+      'alca_de_couro': 2.50,
+      'pele_de_lobo': 1.50,
+      'fruta_wintergreen': 0.25,
+      'madeira': 0.15,
+      'picareta': 2.00,
+      'mochila': 5.00,
+      'boneca_de_pano': 3.00,
+      'madeira_cubica': 0.20,
+      'madeira_lapidada': 0.20,
+      'madeira_cilindrica': 0.20
     };
     
     return fallbackPrices[itemId] || 0;
@@ -235,6 +564,8 @@ const Recipes = () => {
       case 'PROCESSAMENTO': return 'bg-blue-100 text-blue-800';
       case 'MINERACAO': return 'bg-purple-100 text-purple-800';
       case 'CAIXAS': return 'bg-green-100 text-green-800';
+      case 'VETERINARIA': return 'bg-pink-100 text-pink-800';
+      case 'ARTESANATO': return 'bg-orange-100 text-orange-800';
       default: return 'bg-gray-100 text-gray-800';
     }
   };

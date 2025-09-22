@@ -5,7 +5,15 @@ This file is synchronized with: https://github.com/Jizar07/RedM--Empressas
 
 ## Version History
 
-### [0.045] - 2025-09-20 **[CURRENT VERSION]**
+### [0.046] - 2025-09-22 **[CURRENT VERSION]**
+- **COMPLETE ARTESANATO RECIPES SYSTEM**: Added comprehensive crafting recipes system
+- **12 NEW RECIPES**: All Artesanato recipes from screenshots implemented
+- **RECIPE DOCUMENTATION**: Created ArtesanatoRecipes.md with complete recipe database
+- **FRONTEND INTEGRATION**: All recipes visible in frontend with proper pricing
+- **PRICING SYSTEM**: Added fallback prices for all new Artesanato materials
+- **ORANGE COLOR THEME**: ARTESANATO category styling for visual distinction
+
+### [0.045] - 2025-09-20
 - **CRITICAL BUG FIX**: Complete Player Management System Architecture Overhaul
 - **PLAYER MATCHING SYSTEM**: Fixed broken online/offline status between PlayerManagement and KnownPeople
 - **ROOT CAUSE RESOLUTION**: Switched from unstable session ID matching to persistent name-based matching
