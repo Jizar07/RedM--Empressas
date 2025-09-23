@@ -1,0 +1,66 @@
+{
+  "workerId": "141250620593012736",
+  "workerName": "Santiago Bowdin",
+  "channelId": "1416444206033145897",
+  "sessionId": "session_1758359856602_z0f01r",
+  "startTime": "2025-09-20T09:17:36.602Z",
+  "lastActivity": "2025-09-20T09:17:45.616Z",
+  "status": "stale",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Black Berry Semente",
+      "quantity": 4,
+      "transactionId": "tx_1758359856603_f9qw3ca",
+      "timestamp": "2025-09-20T09:17:36.603Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Prairie Poppy Semente",
+      "quantity": 70,
+      "transactionId": "tx_1758359860976_c6jal",
+      "timestamp": "2025-09-20T09:17:40.976Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Bay Bolete Semente",
+      "quantity": 70,
+      "transactionId": "tx_1758359865616_fp44f",
+      "timestamp": "2025-09-20T09:17:45.616Z"
+    }
+  ],
+  "animalTransactions": [],
+  "totalCredits": 0,
+  "embedMessageId": "1418888860548599849",
+  "seedExpectations": [
+    {
+      "seedType": "Black Berry Semente",
+      "seedQuantity": 4,
+      "expectedPlantType": "Black Berry Semente",
+      "expectedPlantQuantity": 40,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1758359856603_f9qw3ca"
+    },
+    {
+      "seedType": "Prairie Poppy Semente",
+      "seedQuantity": 70,
+      "expectedPlantType": "Prairie Poppy Semente",
+      "expectedPlantQuantity": 700,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1758359860976_c6jal"
+    },
+    {
+      "seedType": "Bay Bolete Semente",
+      "seedQuantity": 70,
+      "expectedPlantType": "Bay Bolete Semente",
+      "expectedPlantQuantity": 700,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1758359865616_fp44f"
+    }
+  ],
+  "completedAt": "2025-09-23T05:59:43.448Z",
+  "notes": "Auto-archived due to inactivity"
+}

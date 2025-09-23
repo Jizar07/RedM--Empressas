@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1758518087784_9v1v8x",
+  "sessionId": "session_1758410694355_ex3xiv",
+  "managerId": "141250620593012736",
+  "managerName": "r3dley",
+  "workerId": "1324174429953065020",
+  "workerName": "biel silva",
+  "amountPaid": 687.5,
+  "paidAt": "2025-09-22T05:14:47.784Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-09-22T05:09:47.784Z",
+    "endTime": "2025-09-22T05:24:47.784Z"
+  }
+}

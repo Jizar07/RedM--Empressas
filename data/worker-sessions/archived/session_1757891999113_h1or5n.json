@@ -1,0 +1,133 @@
+{
+  "workerId": "198538680686608384",
+  "workerName": "Bartholomeu Dias",
+  "channelId": "1416530771283546274",
+  "sessionId": "session_1757891999113_h1or5n",
+  "startTime": "2025-09-14T23:19:59.113Z",
+  "lastActivity": "2025-09-19T12:14:49.717Z",
+  "status": "stale",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Junco",
+      "quantity": 100,
+      "transactionId": "tx_1757891999114_6rrbb5",
+      "timestamp": "2025-09-14T23:19:59.114Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 260,
+      "transactionId": "tx_1757900993314_nsi9ir",
+      "timestamp": "2025-09-15T01:49:53.314Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 20,
+      "transactionId": "tx_1757965601324_c6umkc",
+      "timestamp": "2025-09-15T19:46:41.324Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1757979516516_vs80ha",
+      "timestamp": "2025-09-15T23:38:36.516Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente Trigo",
+      "quantity": 200,
+      "transactionId": "tx_1757986545102_gcueq",
+      "timestamp": "2025-09-16T01:35:45.102Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente Trigo",
+      "quantity": 50,
+      "transactionId": "tx_1757986548110_gs7rdp",
+      "timestamp": "2025-09-16T01:35:48.110Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758000646791_0qjmjw",
+      "timestamp": "2025-09-16T05:30:46.791Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 60,
+      "transactionId": "tx_1758000676150_bwa8pg",
+      "timestamp": "2025-09-16T05:31:16.150Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente Trigo",
+      "quantity": 20,
+      "transactionId": "tx_1758116919636_fzmd9l",
+      "timestamp": "2025-09-17T13:48:39.636Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758284089717_jph04g",
+      "timestamp": "2025-09-19T12:14:49.717Z"
+    }
+  ],
+  "animalTransactions": [],
+  "totalCredits": 455,
+  "embedMessageId": "1418571034042302545",
+  "seedExpectations": [
+    {
+      "seedType": "Semente de Junco",
+      "seedQuantity": 100,
+      "expectedPlantType": "Junco",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1757891999114_6rrbb5"
+    },
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 20,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 200,
+      "plantsFulfilled": 200,
+      "isComplete": true,
+      "transactionId": "tx_1757965601324_c6umkc"
+    },
+    {
+      "seedType": "Semente Trigo",
+      "seedQuantity": 200,
+      "expectedPlantType": "Trigo",
+      "expectedPlantQuantity": 2000,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1757986545102_gcueq"
+    },
+    {
+      "seedType": "Semente Trigo",
+      "seedQuantity": 50,
+      "expectedPlantType": "Trigo",
+      "expectedPlantQuantity": 500,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1757986548110_gs7rdp"
+    },
+    {
+      "seedType": "Semente Trigo",
+      "seedQuantity": 20,
+      "expectedPlantType": "Trigo",
+      "expectedPlantQuantity": 200,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1758116919636_fzmd9l"
+    }
+  ],
+  "completedAt": "2025-09-21T12:52:18.119Z",
+  "notes": "Auto-archived due to inactivity"
+}

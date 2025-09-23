@@ -4,13 +4,14 @@
     "workerName": "Jizar Stoffeliz",
     "channelId": "1417124587833004075",
     "createdAt": "2025-09-15T12:27:10.260Z",
-    "lastActive": "2025-09-17T21:46:08.239Z"
+    "lastActive": "2025-09-22T19:49:52.159Z"
   },
   "584129725052747798": {
     "workerId": "584129725052747798",
     "workerName": "Cliff Dillimore",
     "channelId": "1416197670632161451",
-    "createdAt": "2025-09-12T23:03:56.469Z"
+    "createdAt": "2025-09-12T23:03:56.469Z",
+    "lastActive": "2025-09-22T18:49:29.221Z"
   },
   "614876929266417672": {
     "workerId": "614876929266417672",
@@ -30,7 +31,7 @@
     "workerName": "Santiago Bowdin",
     "channelId": "1416444206033145897",
     "createdAt": "2025-09-13T15:23:35.079Z",
-    "lastActive": "2025-09-14T22:51:48.657Z"
+    "lastActive": "2025-09-20T09:17:45.615Z"
   },
   "1190841069127077918": {
     "workerId": "1190841069127077918",
@@ -50,7 +51,7 @@
     "workerName": "smith ramirez",
     "channelId": "1416447193685950595",
     "createdAt": "2025-09-13T15:35:28.840Z",
-    "lastActive": "2025-09-17T22:56:47.961Z"
+    "lastActive": "2025-09-22T22:48:16.511Z"
   },
   "807953013603172352": {
     "workerId": "807953013603172352",
@@ -64,7 +65,7 @@
     "workerName": "BONNIE BENNETT",
     "channelId": "1416502543990915132",
     "createdAt": "2025-09-13T19:15:23.917Z",
-    "lastActive": "2025-09-17T22:34:24.124Z"
+    "lastActive": "2025-09-22T22:52:18.174Z"
   },
   "831906964786511903": {
     "workerId": "831906964786511903",
@@ -77,7 +78,7 @@
     "workerName": "juca rabicho",
     "channelId": "1416510577768923190",
     "createdAt": "2025-09-13T19:47:19.359Z",
-    "lastActive": "2025-09-13T23:58:34.144Z"
+    "lastActive": "2025-09-18T18:38:26.714Z"
   },
   "390569796195975179": {
     "workerId": "390569796195975179",
@@ -90,7 +91,7 @@
     "workerName": "Johnny Rocks",
     "channelId": "1416535914196504787",
     "createdAt": "2025-09-13T21:28:00.018Z",
-    "lastActive": "2025-09-17T15:56:41.396Z"
+    "lastActive": "2025-09-21T06:50:36.486Z"
   },
   "1199469210842189954": {
     "workerId": "1199469210842189954",
@@ -103,21 +104,21 @@
     "workerName": "Nina Vatore",
     "channelId": "1416556550453198878",
     "createdAt": "2025-09-13T22:50:00.105Z",
-    "lastActive": "2025-09-14T03:21:25.209Z"
+    "lastActive": "2025-09-21T22:14:05.257Z"
   },
   "1195169284847050786": {
     "workerId": "1195169284847050786",
     "workerName": "Koda Smith",
     "channelId": "1417118647150706719",
     "createdAt": "2025-09-13T23:15:21.663Z",
-    "lastActive": "2025-09-17T21:14:31.074Z"
+    "lastActive": "2025-09-19T14:10:28.404Z"
   },
   "273987353456934913": {
     "workerId": "273987353456934913",
     "workerName": "Souzz Ramirez",
     "channelId": "1416760197329719306",
     "createdAt": "2025-09-14T12:19:13.240Z",
-    "lastActive": "2025-09-15T01:34:25.951Z"
+    "lastActive": "2025-09-22T21:47:15.810Z"
   },
   "811051118251474964": {
     "workerId": "811051118251474964",
@@ -137,7 +138,7 @@
     "workerName": "Bartholomeu Dias",
     "channelId": "1416530771283546274",
     "createdAt": "2025-09-14T21:15:00.000Z",
-    "lastActive": "2025-09-17T13:48:39.634Z"
+    "lastActive": "2025-09-19T12:14:49.716Z"
   },
   "388494830483013638": {
     "workerId": "388494830483013638",
@@ -150,14 +151,14 @@
     "workerName": "john Weslley",
     "channelId": "1416880519165120542",
     "createdAt": "2025-09-14T21:15:00.000Z",
-    "lastActive": "2025-09-17T14:44:44.487Z"
+    "lastActive": "2025-09-22T02:26:46.790Z"
   },
   "515729025788936202": {
     "workerId": "515729025788936202",
     "workerName": "Vitorn Stoffeliz",
     "channelId": "1416905830762287114",
     "createdAt": "2025-09-14T21:57:54.984Z",
-    "lastActive": "2025-09-17T15:50:29.870Z"
+    "lastActive": "2025-09-18T18:15:13.909Z"
   },
   "739598072707022918": {
     "workerId": "739598072707022918",
@@ -177,5 +178,134 @@
     "workerName": "Frank James",
     "channelId": "1417997287577096192",
     "createdAt": "2025-09-17T22:14:58.577Z"
+  },
+  "1417906472569929789": {
+    "workerId": "1417906472569929789",
+    "workerName": "Juca",
+    "channelId": "1418253657727565904",
+    "createdAt": "2025-09-18T15:13:41.911Z"
+  },
+  "1250911940923101327": {
+    "workerId": "1250911940923101327",
+    "workerName": "Blair Camargo",
+    "channelId": "1418420705225343168",
+    "createdAt": "2025-09-19T02:17:29.224Z"
+  },
+  "614115703229775904": {
+    "workerId": "614115703229775904",
+    "workerName": "Sasa Pietra",
+    "channelId": "1418756632652808313",
+    "createdAt": "2025-09-20T00:32:20.587Z",
+    "lastActive": "2025-09-22T22:38:05.318Z"
+  },
+  "949397147030274059": {
+    "workerId": "949397147030274059",
+    "workerName": "Izzynha Evans",
+    "channelId": "1418756866430730382",
+    "createdAt": "2025-09-20T00:33:16.283Z",
+    "lastActive": "2025-09-22T20:50:58.487Z"
+  },
+  "808461479040909322": {
+    "workerId": "808461479040909322",
+    "workerName": "Alehzinho Beckham",
+    "channelId": "1418895237585174620",
+    "createdAt": "2025-09-20T09:43:06.588Z",
+    "lastActive": "2025-09-22T14:27:27.272Z"
+  },
+  "1127730801182777355": {
+    "workerId": "1127730801182777355",
+    "workerName": "Thony Gustav",
+    "channelId": "1418976922746097705",
+    "createdAt": "2025-09-20T15:07:41.861Z",
+    "lastActive": "2025-09-22T20:23:55.855Z"
+  },
+  "473199499490230273": {
+    "workerId": "473199499490230273",
+    "workerName": "Nathy Miller",
+    "channelId": "1419092061596024872",
+    "createdAt": "2025-09-20T22:45:13.094Z",
+    "lastActive": "2025-09-22T01:10:26.697Z"
+  },
+  "671877868497666089": {
+    "workerId": "671877868497666089",
+    "workerName": "Thomas Shelby",
+    "channelId": "1419094086283038840",
+    "createdAt": "2025-09-20T22:53:15.737Z",
+    "lastActive": "2025-09-21T17:45:46.547Z"
+  },
+  "845126525602365501": {
+    "workerId": "845126525602365501",
+    "workerName": "Florencio Laffon",
+    "channelId": "1419094090339057735",
+    "createdAt": "2025-09-20T22:53:16.775Z",
+    "lastActive": "2025-09-23T00:12:24.042Z"
+  },
+  "1324174429953065020": {
+    "workerId": "1324174429953065020",
+    "workerName": "biel silva",
+    "channelId": "1419094518632026123",
+    "createdAt": "2025-09-20T22:54:58.957Z",
+    "lastActive": "2025-09-21T17:45:21.317Z"
+  },
+  "414405166079672323": {
+    "workerId": "414405166079672323",
+    "workerName": "mixel laffon",
+    "channelId": "1419098099648954399",
+    "createdAt": "2025-09-20T23:09:12.610Z",
+    "lastActive": "2025-09-23T00:15:12.774Z"
+  },
+  "1240761203429478493": {
+    "workerId": "1240761203429478493",
+    "workerName": "Polly Lima",
+    "channelId": "1419181360123351050",
+    "createdAt": "2025-09-21T04:40:03.424Z"
+  },
+  "695109023741116496": {
+    "workerId": "695109023741116496",
+    "workerName": "yuri westside",
+    "channelId": "1419192598798536897",
+    "createdAt": "2025-09-21T05:24:42.986Z",
+    "lastActive": "2025-09-23T05:35:10.681Z"
+  },
+  "1117649799181783130": {
+    "workerId": "1117649799181783130",
+    "workerName": "Ubirajara Cauamb",
+    "channelId": "1419493917547823216",
+    "createdAt": "2025-09-22T01:22:03.098Z",
+    "lastActive": "2025-09-23T03:37:34.529Z"
+  },
+  "1258184736963039265": {
+    "workerId": "1258184736963039265",
+    "workerName": "Gabriel Borges",
+    "channelId": "1419384320719720550",
+    "createdAt": "2025-09-21T18:06:33.043Z",
+    "lastActive": "2025-09-22T00:48:38.665Z"
+  },
+  "381598369556070402": {
+    "workerId": "381598369556070402",
+    "workerName": "jubiscleia",
+    "channelId": "1419461289037795390",
+    "createdAt": "2025-09-21T23:12:25.016Z"
+  },
+  "470361257497722886": {
+    "workerId": "470361257497722886",
+    "workerName": "Kenai Comanches",
+    "channelId": "1419471810495512636",
+    "createdAt": "2025-09-21T23:54:12.370Z",
+    "lastActive": "2025-09-22T21:33:55.620Z"
+  },
+  "940279402145669241": {
+    "workerId": "940279402145669241",
+    "workerName": "Tereza Mcfell",
+    "channelId": "1419738529801699369",
+    "createdAt": "2025-09-22T17:34:03.228Z",
+    "lastActive": "2025-09-23T04:42:54.800Z"
+  },
+  "234380781479395338": {
+    "workerId": "234380781479395338",
+    "workerName": "Gaioto Silva",
+    "channelId": "1419822180119871559",
+    "createdAt": "2025-09-22T23:06:26.893Z",
+    "lastActive": "2025-09-23T03:01:10.034Z"
   }
 }

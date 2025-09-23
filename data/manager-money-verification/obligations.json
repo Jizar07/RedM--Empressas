@@ -1,0 +1,16 @@
+{
+  "obligations": {
+    "payment_372161270176153601_1758474418966": {
+      "managerId": "372161270176153601",
+      "managerName": "jizarstoffel",
+      "sessionId": "payment_372161270176153601_1758474418966",
+      "withdrawalAmount": 1640,
+      "depositObligation": 820,
+      "withdrawalDate": "2025-09-21T17:06:58.966Z",
+      "depositedAmount": 0,
+      "status": "pending",
+      "obligationDeadline": "2025-09-22T17:06:58.966Z"
+    }
+  },
+  "lastUpdated": "2025-09-21T17:06:58.966Z"
+}

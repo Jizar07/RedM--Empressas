@@ -381,8 +381,9 @@ export class WorkerChannelService {
       if (parsedMessage.parseSuccess && (parsedMessage.categoria === 'estoque' || parsedMessage.categoria === 'inventario')) {
         const content = parsedMessage.content || '';
         
-        // PATTERN: "Item adicionado:: Bulrush x500"
-        const itemAdicionadoPattern = /Item adicionado::\s*([^x]+)\s*x(\d+)/i;
+        // PATTERN: "Item adicionado:: Bulrush x500" or "Item adicionado:\nBulrush x500"
+        // Supports both : and :: formats, and handles newlines
+        const itemAdicionadoPattern = /Item adicionado::?\s*\n?\s*([^x]+)\s*x(\d+)/is;
         const itemAdicionadoMatch = content.match(itemAdicionadoPattern);
         
         if (itemAdicionadoMatch) {
@@ -405,8 +406,9 @@ export class WorkerChannelService {
           }
         }
         
-        // PATTERN: "Item removido:: Bulrush_Seed x1"
-        const itemRemovidoPattern = /Item removido::\s*([^x]+)\s*x(\d+)/i;
+        // PATTERN: "Item removido:: Bulrush_Seed x1" or "Item removido:\nBulrush_Seed x1"
+        // Supports both : and :: formats, and handles newlines
+        const itemRemovidoPattern = /Item removido::?\s*\n?\s*([^x]+)\s*x(\d+)/is;
         const itemRemovidoMatch = content.match(itemRemovidoPattern);
         
         if (itemRemovidoMatch) {

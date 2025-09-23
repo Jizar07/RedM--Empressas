@@ -4,6 +4,19 @@ This is a local timestamped file to track all development changes and prompts.
 
 ## Log Entries
 
+### 2025-09-23 07:08:53
+**Action**: Complete Weekly Rankings System with Real Current Week Data Calculation
+**Prompt**: "🥇 Koda Smith: 144,994 plantas esta semana, 144,994 total - THIS IS NOT RIGHT.... AT ALL... ITS IMPOSSIBLE" and "THAT IS NOT SHWOING IN THE BACKEND, ITS ON FRONTEND ONLY"
+**Changes**:
+- Fixed critical bug where weekly rankings showed impossible numbers (144k plants/week)
+- Created scripts/calculate-current-week.js to properly parse activities from current week boundaries (Sunday 00:00 - Saturday 23:59 Brazilian time)
+- Fixed WeeklyRankingService.ts to populate initial weekly rankings from all-time totals when creating new week files
+- Updated ranking calculation to show real activities since Sunday: 31,870 plants, 172 animals, 48 Ferrovia missions this week
+- Corrected weekly rankings now show realistic numbers: Kenai Comanches (6,980 plantas esta semana), Gaioto Silva (4,020), john Weslley (4,000)
+- Fixed API /api/worker-rankings/weekly to return proper "X esta semana, Y total" format with real current week data
+- System correctly tracks activities from 64 worker session files with proper timestamp filtering
+**Result**: Fully functional weekly ranking system with accurate current week calculations, ready for Discord backend integration
+
 ### 2025-09-22 16:34:50
 **Action**: Complete Artesanato Recipes System Implementation
 **Prompt**: "let do the same thing for aterzanato, create a file called aterzanatorecipies and add these:" [followed by 10 screenshot paths]

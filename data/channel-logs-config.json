@@ -9,7 +9,17 @@
       "messageTypes": ["ALL"],
       "includeEmbeds": true,
       "createdAt": "2025-09-05T19:45:00.000Z"
+    },
+    {
+      "id": "ferrovia-money-logs",
+      "name": "Ferrovia Money Transaction Logs",
+      "channelId": "1414735729082499072",
+      "systemEndpoint": "https://fazenda.stoffeltech.com/api/webhook/channel-messages",
+      "enabled": true,
+      "messageTypes": ["ALL"],
+      "includeEmbeds": true,
+      "createdAt": "2025-09-18T20:50:00.000Z"
     }
   ],
-  "lastUpdated": "2025-09-05T19:45:00.000Z"
+  "lastUpdated": "2025-09-18T20:50:00.000Z"
 }

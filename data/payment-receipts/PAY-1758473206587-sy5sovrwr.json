@@ -1,0 +1,21 @@
+{
+  "receiptId": "PAY-1758473206587-sy5sovrwr",
+  "payerId": "372161270176153601",
+  "payerName": "jizarstoffel",
+  "workerId": "372161270176153601",
+  "workerName": "jizarstoffel",
+  "workerDisplayName": "Jizar Stoffeliz | 4222",
+  "services": [
+    {
+      "type": "Plants",
+      "quantity": 2000,
+      "amount": 500
+    }
+  ],
+  "totalAmount": 500,
+  "channelId": "1419358418484858950",
+  "timestamp": "2025-09-21T16:46:46.587Z",
+  "status": "verified",
+  "verifiedBy": "jizarstoffel",
+  "verifiedAt": "2025-09-21T16:47:01.451Z"
+}

@@ -1,0 +1,112 @@
+{
+  "workerId": "671877868497666089",
+  "workerName": "Thomas Shelby",
+  "channelId": "1419094086283038840",
+  "sessionId": "session_1758409899918_6o6sdc",
+  "startTime": "2025-09-20T23:11:39.918Z",
+  "lastActivity": "2025-09-21T17:45:46.549Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 100,
+      "transactionId": "tx_1758409899920_rp53tf",
+      "timestamp": "2025-09-20T23:11:39.920Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "CoffeeSementes",
+      "quantity": 100,
+      "transactionId": "tx_1758464337504_6zsz45",
+      "timestamp": "2025-09-21T14:18:57.504Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Red Raspberry Semente",
+      "quantity": 100,
+      "transactionId": "tx_1758470680870_ade2g6",
+      "timestamp": "2025-09-21T16:04:40.870Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Black Currant Semente",
+      "quantity": 100,
+      "transactionId": "tx_1758475548003_7ab0hg",
+      "timestamp": "2025-09-21T17:25:48.003Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 147.2,
+      "transactionId": "tx_1758465656826_cor74",
+      "timestamp": "2025-09-21T14:40:56.826Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 140.8,
+      "transactionId": "tx_1758468119237_6sfd9",
+      "timestamp": "2025-09-21T15:21:59.237Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758473395439_umt1qf",
+      "timestamp": "2025-09-21T16:49:55.439Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758476746549_nlv71h",
+      "timestamp": "2025-09-21T17:45:46.549Z"
+    }
+  ],
+  "totalCredits": 608,
+  "embedMessageId": "1419379095233495100",
+  "seedExpectations": [
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 100,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1758409899920_rp53tf"
+    },
+    {
+      "seedType": "CoffeeSementes",
+      "seedQuantity": 100,
+      "expectedPlantType": "CoffeeSementes",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1758464337504_6zsz45"
+    },
+    {
+      "seedType": "Red Raspberry Semente",
+      "seedQuantity": 100,
+      "expectedPlantType": "Red Raspberry Semente",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1758470680870_ade2g6"
+    },
+    {
+      "seedType": "Black Currant Semente",
+      "seedQuantity": 100,
+      "expectedPlantType": "Black Currant Semente",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1758475548003_7ab0hg"
+    }
+  ],
+  "animalExpectations": [],
+  "completedAt": "2025-09-21T18:08:35.883Z",
+  "notes": "Pago por 𝓢𝓸𝓾𝔃𝔃 🏄🏾 (273987353456934913)"
+}

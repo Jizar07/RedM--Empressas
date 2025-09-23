@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1758497763755_vux28l",
+  "sessionId": "session_1758495493068_secnog",
+  "managerId": "1127730801182777355",
+  "managerName": "thony",
+  "workerId": "473199499490230273",
+  "workerName": "Nathy Miller",
+  "amountPaid": 160,
+  "paidAt": "2025-09-21T23:36:03.755Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-09-21T23:31:03.755Z",
+    "endTime": "2025-09-21T23:46:03.755Z"
+  }
+}

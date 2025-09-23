@@ -1,0 +1,71 @@
+{
+  "workerId": "940279402145669241",
+  "workerName": "Tereza Mcfell",
+  "channelId": "1419738529801699369",
+  "sessionId": "session_1758599003166_5i6sxm",
+  "startTime": "2025-09-23T03:43:23.166Z",
+  "lastActivity": "2025-09-23T04:42:54.801Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente Trigo",
+      "quantity": 100,
+      "transactionId": "tx_1758599003167_5pcqgn",
+      "timestamp": "2025-09-23T03:43:23.167Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1758601958842_a4qf23l",
+      "timestamp": "2025-09-23T04:32:38.842Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1758602267690_2jpvf8",
+      "timestamp": "2025-09-23T04:37:47.690Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1758602484614_jxn0jq",
+      "timestamp": "2025-09-23T04:41:24.614Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 90,
+      "transactionId": "tx_1758602574801_m9349i",
+      "timestamp": "2025-09-23T04:42:54.801Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758600905936_f3e6bi",
+      "timestamp": "2025-09-23T04:15:05.936Z"
+    }
+  ],
+  "totalCredits": 557.5,
+  "embedMessageId": "1419906856029126696",
+  "seedExpectations": [
+    {
+      "seedType": "Semente Trigo",
+      "seedQuantity": 100,
+      "expectedPlantType": "Trigo",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 1000,
+      "isComplete": true,
+      "transactionId": "tx_1758599003167_5pcqgn"
+    }
+  ],
+  "animalExpectations": [],
+  "completedAt": "2025-09-23T04:45:47.138Z",
+  "notes": "Pago por ๖ۣۜζ͜͡ɪᴢᴢʏɴʜᴀ🎀 (949397147030274059)"
+}

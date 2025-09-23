@@ -1,0 +1,82 @@
+{
+  "workerId": "1258184736963039265",
+  "workerName": "Gabriel Borges",
+  "channelId": "1419384320719720550",
+  "sessionId": "session_1758479595881_6ibbd",
+  "startTime": "2025-09-21T18:33:15.881Z",
+  "lastActivity": "2025-09-21T20:43:43.565Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 460,
+      "transactionId": "tx_1758479934265_x7wr5s",
+      "timestamp": "2025-09-21T18:38:54.265Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 130,
+      "transactionId": "tx_1758482664136_o1xsjh",
+      "timestamp": "2025-09-21T19:24:24.136Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 480,
+      "transactionId": "tx_1758482681474_6ck91",
+      "timestamp": "2025-09-21T19:24:41.474Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 200,
+      "transactionId": "tx_1758485053839_0sp5xr",
+      "timestamp": "2025-09-21T20:04:13.839Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758486232781_oc49z8",
+      "timestamp": "2025-09-21T20:23:52.781Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758479595883_q7hv1q",
+      "timestamp": "2025-09-21T18:33:15.883Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758484682303_3enb2d",
+      "timestamp": "2025-09-21T19:58:02.303Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758484842031_h7w0q",
+      "timestamp": "2025-09-21T20:00:42.031Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 144,
+      "transactionId": "tx_1758487423565_xjspk7",
+      "timestamp": "2025-09-21T20:43:43.565Z"
+    }
+  ],
+  "totalCredits": 1066.5,
+  "embedMessageId": "1419423876869525694",
+  "animalExpectations": [],
+  "seedExpectations": [],
+  "completedAt": "2025-09-21T22:24:01.809Z",
+  "notes": "Pago por r3dley (141250620593012736)"
+}

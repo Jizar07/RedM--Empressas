@@ -493,3 +493,33 @@ export const knownPlayersStorage = {
     });
   }
 };
+
+export const workerRankingsApi = {
+  // Get all worker rankings
+  getRankings: async () => {
+    const response = await api.get('/worker-rankings');
+    return response.data;
+  },
+
+  // Get rankings for specific category
+  getCategoryRankings: async (category: string) => {
+    const response = await api.get(`/worker-rankings/${category}`);
+    return response.data;
+  },
+
+  // Weekly rankings endpoints
+  getWeeklyRankings: async () => {
+    const response = await api.get('/worker-rankings/weekly');
+    return response.data;
+  },
+
+  getAllTimeStats: async () => {
+    const response = await api.get('/worker-rankings/weekly/stats');
+    return response.data;
+  },
+
+  getPrizeHistory: async () => {
+    const response = await api.get('/worker-rankings/weekly/prizes');
+    return response.data;
+  }
+};

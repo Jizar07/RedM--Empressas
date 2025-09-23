@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1758462997779_ilqisi",
+  "sessionId": "session_1758409145020_jfdmq",
+  "managerId": "372161270176153601",
+  "managerName": "GM Stoffel",
+  "workerId": "845126525602365501",
+  "workerName": "Florencio Laffon",
+  "amountPaid": 112.5,
+  "paidAt": "2025-09-21T13:56:37.779Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-09-21T13:51:37.779Z",
+    "endTime": "2025-09-21T14:06:37.779Z"
+  }
+}

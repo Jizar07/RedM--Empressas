@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1758599401175_e821ou",
+  "sessionId": "session_1758501066653_m6xrdm",
+  "managerId": "333664599549411329",
+  "managerName": "éoKs",
+  "workerId": "470361257497722886",
+  "workerName": "Kenai Comanches",
+  "amountPaid": 2865,
+  "paidAt": "2025-09-23T03:50:01.175Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-09-23T03:45:01.175Z",
+    "endTime": "2025-09-23T04:00:01.175Z"
+  }
+}

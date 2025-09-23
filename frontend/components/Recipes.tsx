@@ -1,15 +1,16 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { ChefHat, TrendingUp, DollarSign, Plus, Trash2, Edit, ShoppingCart, Mail } from 'lucide-react';
+import { ChefHat, TrendingUp, DollarSign, Plus, Trash2, Edit, ShoppingCart, Mail, BarChart3 } from 'lucide-react';
+import ProductionDashboard from './ProductionDashboard';
 
-interface Material {
+export interface Material {
   item: string;
   quantidade: number;
   nome: string;
 }
 
-interface Recipe {
+export interface Recipe {
   id: string;
   nome: string;
   categoria: string;
@@ -73,9 +74,9 @@ const Recipes = () => {
       categoria: 'PROCESSAMENTO',
       produz: 12,
       materiais: [
-        { item: 'wood', quantidade: 6, nome: 'Wood' },
+        { item: 'madeira', quantidade: 6, nome: 'Madeira' },
         { item: 'moedor', quantidade: 3, nome: 'Moedor' },
-        { item: 'corn', quantidade: 6, nome: 'Corn' }
+        { item: 'milho', quantidade: 6, nome: 'Milho' }
       ]
     },
     {
@@ -84,7 +85,7 @@ const Recipes = () => {
       categoria: 'MINERACAO',
       produz: 15,
       materiais: [
-        { item: 'wood', quantidade: 5, nome: 'Wood' },
+        { item: 'madeira', quantidade: 5, nome: 'Madeira' },
         { item: 'ferro', quantidade: 6, nome: 'Ferro' },
         { item: 'carvao', quantidade: 5, nome: 'Carvão' }
       ]
@@ -128,7 +129,7 @@ const Recipes = () => {
       categoria: 'CAIXAS',
       produz: 25,
       materiais: [
-        { item: 'rustic_box', quantidade: 5, nome: 'Rustic Box' },
+        { item: 'caixa_rustica', quantidade: 5, nome: 'Caixa Rústica' },
         { item: 'junco', quantidade: 50, nome: 'Junco' },
         { item: 'trigo', quantidade: 50, nome: 'Trigo' },
         { item: 'milho', quantidade: 100, nome: 'Milho' }
@@ -452,21 +453,17 @@ const Recipes = () => {
       return (item.preco_min + item.preco_max) / 2;
     }
     
-    // Fallback prices for common items not in price list
+    // Fallback prices for common items not in price list (Portuguese names only)
     const fallbackPrices: Record<string, number> = {
       'milho': 0.10,
-      'corn': 0.10,
       'junco': 0.10,
       'trigo': 0.10,
-      'wood': 0.15,
+      'madeira': 0.15,
       'ferro': 0.25,
       'carvao': 0.20,
-      'iron': 0.25,
-      'coal': 0.20,
       'salitre': 0.30,
       'enxofre': 0.35,
       'embalagem': 0.71,
-      'rustic_box': 1.00,
       'moedor': 0.60,
       'caixa_rustica': 1.00,
       'leite_de_mula': 0.50,
@@ -719,6 +716,17 @@ const Recipes = () => {
           >
             <ShoppingCart className="h-4 w-4" />
             Encomendas
+          </button>
+          <button
+            onClick={() => setCurrentTab(2)}
+            className={`flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+              currentTab === 2
+                ? 'bg-white text-red-600 shadow-sm'
+                : 'text-gray-600 hover:text-gray-900'
+            }`}
+          >
+            <BarChart3 className="h-4 w-4" />
+            Otimização
           </button>
         </div>
 
@@ -1042,6 +1050,12 @@ const Recipes = () => {
                 })}
               </div>
             )}
+          </div>
+        )}
+
+        {currentTab === 2 && (
+          <div>
+            <ProductionDashboard recipes={recipes} priceList={precos} />
           </div>
         )}
       </div>

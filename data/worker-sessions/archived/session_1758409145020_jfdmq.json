@@ -1,0 +1,41 @@
+{
+  "workerId": "845126525602365501",
+  "workerName": "Florencio Laffon",
+  "channelId": "1419094090339057735",
+  "sessionId": "session_1758409145020_jfdmq",
+  "startTime": "2025-09-20T22:59:05.020Z",
+  "lastActivity": "2025-09-21T13:55:58.196Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente Trigo",
+      "quantity": 100,
+      "transactionId": "tx_1758409145021_o2xf2l",
+      "timestamp": "2025-09-20T22:59:05.021Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 450,
+      "transactionId": "tx_1758462958196_mvf8j",
+      "timestamp": "2025-09-21T13:55:58.196Z"
+    }
+  ],
+  "animalTransactions": [],
+  "totalCredits": 112.5,
+  "embedMessageId": "1419321262521716806",
+  "seedExpectations": [
+    {
+      "seedType": "Semente Trigo",
+      "seedQuantity": 100,
+      "expectedPlantType": "Trigo",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 450,
+      "isComplete": false,
+      "transactionId": "tx_1758409145021_o2xf2l"
+    }
+  ],
+  "completedAt": "2025-09-21T13:56:37.775Z",
+  "notes": "Pago por GM Stoffel (372161270176153601)"
+}

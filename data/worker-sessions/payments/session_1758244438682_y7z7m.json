@@ -1,0 +1,83 @@
+{
+  "sessionId": "session_1758244438682_y7z7m",
+  "workerId": "976320273601146973",
+  "workerName": "Nina Vatore",
+  "amount": 722.5,
+  "paidBy": "141250620593012736",
+  "paidByName": "r3dley",
+  "paidAt": "2025-09-21T22:23:42.481Z",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 100,
+      "transactionId": "tx_1758244438683_8off6f",
+      "timestamp": "2025-09-19T01:13:58.683Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 420,
+      "transactionId": "tx_1758331981089_udbfjj",
+      "timestamp": "2025-09-20T01:33:01.089Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758332215511_tcd2sq",
+      "timestamp": "2025-09-20T01:36:55.511Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 80,
+      "transactionId": "tx_1758332354217_lpepz",
+      "timestamp": "2025-09-20T01:39:14.217Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 100,
+      "transactionId": "tx_1758481349276_ezwvxd",
+      "timestamp": "2025-09-21T19:02:29.276Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 100,
+      "transactionId": "tx_1758481359749_4y3r9r",
+      "timestamp": "2025-09-21T19:02:39.749Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 120,
+      "transactionId": "tx_1758492759328_7zpyhg",
+      "timestamp": "2025-09-21T22:12:39.328Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 390,
+      "transactionId": "tx_1758492845260_k11d3g",
+      "timestamp": "2025-09-21T22:14:05.260Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758332677836_f11z6d",
+      "timestamp": "2025-09-20T01:44:37.836Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758409630888_4u93hg",
+      "timestamp": "2025-09-20T23:07:10.888Z"
+    }
+  ]
+}

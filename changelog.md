@@ -5,7 +5,17 @@ This file is synchronized with: https://github.com/Jizar07/RedM--Empressas
 
 ## Version History
 
-### [0.046] - 2025-09-22 **[CURRENT VERSION]**
+### [0.047] - 2025-09-23 **[CURRENT VERSION]**
+- **WEEKLY RANKINGS SYSTEM FIX**: Complete overhaul of weekly ranking calculations
+- **REAL CURRENT WEEK DATA**: Fixed impossible weekly numbers (144k plants) by implementing proper current week boundary parsing
+- **TIMESTAMP FILTERING**: Activities now correctly filtered from Sunday 00:00 - Saturday 23:59 Brazilian timezone
+- **ACCURATE CALCULATIONS**: System now shows realistic weekly totals: 31,870 plants, 172 animals, 48 Ferrovia missions
+- **PROPER FORMAT**: "X plantas esta semana, Y total" format working correctly with real data
+- **API ENHANCEMENT**: /api/worker-rankings/weekly returns accurate current week rankings
+- **DATA INTEGRITY**: 64 worker session files properly parsed with timestamp validation
+- **RANKING LEADERS**: Kenai Comanches (6,980 plants), Gaioto Silva (4,020), john Weslley (4,000) this week
+
+### [0.046] - 2025-09-22
 - **COMPLETE ARTESANATO RECIPES SYSTEM**: Added comprehensive crafting recipes system
 - **12 NEW RECIPES**: All Artesanato recipes from screenshots implemented
 - **RECIPE DOCUMENTATION**: Created ArtesanatoRecipes.md with complete recipe database

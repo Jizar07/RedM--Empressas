@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1758518081335_lc0fyh",
+  "sessionId": "session_1758464636316_kbeudp",
+  "managerId": "141250620593012736",
+  "managerName": "r3dley",
+  "workerId": "845126525602365501",
+  "workerName": "Florencio Laffon",
+  "amountPaid": 755,
+  "paidAt": "2025-09-22T05:14:41.335Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-09-22T05:09:41.335Z",
+    "endTime": "2025-09-22T05:24:41.335Z"
+  }
+}

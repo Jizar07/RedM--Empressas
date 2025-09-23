@@ -1,0 +1,19 @@
+{
+  "sessionId": "session_1758596470035_4hilvh",
+  "workerId": "234380781479395338",
+  "workerName": "Gaioto Silva",
+  "amount": 125,
+  "paidBy": "198538680686608384",
+  "paidByName": "Barth",
+  "paidAt": "2025-09-23T03:02:46.212Z",
+  "plantTransactions": [
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758596470037_g3018l",
+      "timestamp": "2025-09-23T03:01:10.037Z"
+    }
+  ],
+  "animalTransactions": []
+}

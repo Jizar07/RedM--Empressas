@@ -1,0 +1,24 @@
+{
+  "workerId": "234380781479395338",
+  "workerName": "Gaioto Silva",
+  "channelId": "1419822180119871559",
+  "sessionId": "session_1758596470035_4hilvh",
+  "startTime": "2025-09-23T03:01:10.035Z",
+  "lastActivity": "2025-09-23T03:01:10.037Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758596470037_g3018l",
+      "timestamp": "2025-09-23T03:01:10.037Z"
+    }
+  ],
+  "animalTransactions": [],
+  "totalCredits": 125,
+  "embedMessageId": "1419881250205859981",
+  "seedExpectations": [],
+  "completedAt": "2025-09-23T03:02:46.211Z",
+  "notes": "Pago por Barth (198538680686608384)"
+}

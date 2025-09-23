@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1758595431889_smfyzq",
+  "sessionId": "session_1758569107610_t0e5c7",
+  "managerId": "949397147030274059",
+  "managerName": "๖ۣۜζ͜͡ɪᴢᴢʏɴʜᴀ🎀",
+  "workerId": "940279402145669241",
+  "workerName": "Tereza Mcfell",
+  "amountPaid": 197.5,
+  "paidAt": "2025-09-23T02:43:51.889Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-09-23T02:38:51.889Z",
+    "endTime": "2025-09-23T02:53:51.889Z"
+  }
+}

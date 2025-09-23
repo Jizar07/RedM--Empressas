@@ -1,0 +1,36 @@
+{
+  "receiptId": "PAY-1758474418966-lc3yq6hvi",
+  "payerId": "372161270176153601",
+  "payerName": "jizarstoffel",
+  "workerId": "372161270176153601",
+  "workerName": "jizarstoffel",
+  "workerDisplayName": "Jizar Stoffeliz | 4222",
+  "services": [
+    {
+      "type": "Plants",
+      "quantity": 2000,
+      "amount": 500,
+      "unitPrice": 0.25
+    },
+    {
+      "type": "Animals",
+      "quantity": 4,
+      "amount": 640,
+      "unitPrice": 160
+    },
+    {
+      "type": "Ferrovia",
+      "quantity": 2,
+      "amount": 500,
+      "unitPrice": 250
+    }
+  ],
+  "totalAmount": 1640,
+  "channelId": "1419358418484858950",
+  "timestamp": "2025-09-21T17:06:58.999Z",
+  "status": "verified",
+  "paymentSessionId": "payment_372161270176153601_1758474418966",
+  "inventoryWithdrawal": 1640,
+  "verifiedBy": "jizarstoffel",
+  "verifiedAt": "2025-09-21T18:09:24.353Z"
+}

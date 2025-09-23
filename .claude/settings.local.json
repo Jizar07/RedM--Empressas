@@ -47,7 +47,10 @@
       "Bash(pm2 delete:*)",
       "Bash(pm2 status:*)",
       "Read(//c/Users/jizar/OneDrive/Documents/Cabra da Peste/**)",
-      "Read(//c/Users/jizar/OneDrive/Documents/Stoffel Bot/**)"
+      "Read(//c/Users/jizar/OneDrive/Documents/Stoffel Bot/**)",
+      "Bash(npx tsx:*)",
+      "Read(//c/Users/jizar/OneDrive/Pictures/Screenshots/**)",
+      "Bash(dir:*)"
     ],
     "deny": [],
     "ask": []

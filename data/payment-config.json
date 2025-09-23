@@ -1,0 +1,32 @@
+{
+  "enabled": true,
+  "defaultPrices": {
+    "plants": {
+      "unitPrice": 0.25,
+      "description": "Preço padrão por planta depositada"
+    },
+    "animals": {
+      "unitPrice": 160,
+      "description": "Preço padrão por serviço animal concluído"
+    },
+    "ferrovia": {
+      "unitPrice": 250,
+      "description": "Preço padrão por missão ferrovia concluída"
+    }
+  },
+  "inventoryVerification": {
+    "enabled": true,
+    "timeWindowMinutes": 30,
+    "tolerance": 0.01
+  },
+  "rolePermissions": {
+    "managerRoles": [
+      "1274479410107646008",
+      "1274479410107646009"
+    ],
+    "farmOwnerRoles": [
+      "1274479410107646006"
+    ]
+  },
+  "lastUpdated": "2025-09-22T00:26:04.912Z"
+}

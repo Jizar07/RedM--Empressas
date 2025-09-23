@@ -1,0 +1,377 @@
+{
+  "sessionId": "session_1758243168653_q5vj9i",
+  "workerId": "1195169284847050786",
+  "workerName": "Koda Smith",
+  "amount": 5407.5,
+  "paidBy": "372161270176153601",
+  "paidByName": "GM Stoffel",
+  "paidAt": "2025-09-19T21:52:40.642Z",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Junco",
+      "quantity": 200,
+      "transactionId": "tx_1758243168657_q6alm",
+      "timestamp": "2025-09-19T00:52:48.657Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Junco",
+      "quantity": 100,
+      "transactionId": "tx_1758243171819_fei65l",
+      "timestamp": "2025-09-19T00:52:51.819Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Junco",
+      "quantity": 34,
+      "transactionId": "tx_1758243177531_svenwr",
+      "timestamp": "2025-09-19T00:52:57.531Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Junco",
+      "quantity": 40,
+      "transactionId": "tx_1758243182462_nw5frl",
+      "timestamp": "2025-09-19T00:53:02.462Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 200,
+      "transactionId": "tx_1758243189177_1v7dal",
+      "timestamp": "2025-09-19T00:53:09.177Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 200,
+      "transactionId": "tx_1758243191983_zvrszg",
+      "timestamp": "2025-09-19T00:53:11.983Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 100,
+      "transactionId": "tx_1758243194697_fqqrb",
+      "timestamp": "2025-09-19T00:53:14.697Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 500,
+      "transactionId": "tx_1758246244703_w8alh",
+      "timestamp": "2025-09-19T01:44:04.703Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 500,
+      "transactionId": "tx_1758246427105_uz7k8o",
+      "timestamp": "2025-09-19T01:47:07.105Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 500,
+      "transactionId": "tx_1758246595295_yfg6p",
+      "timestamp": "2025-09-19T01:49:55.295Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 500,
+      "transactionId": "tx_1758246741777_vj107j",
+      "timestamp": "2025-09-19T01:52:21.777Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 500,
+      "transactionId": "tx_1758246883557_bebsqk",
+      "timestamp": "2025-09-19T01:54:43.557Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 500,
+      "transactionId": "tx_1758247025984_emkeah",
+      "timestamp": "2025-09-19T01:57:05.984Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 500,
+      "transactionId": "tx_1758247151431_9ho9k",
+      "timestamp": "2025-09-19T01:59:11.431Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 200,
+      "transactionId": "tx_1758247222260_vi7c3",
+      "timestamp": "2025-09-19T02:00:22.260Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 500,
+      "transactionId": "tx_1758278252329_ijytwa",
+      "timestamp": "2025-09-19T10:37:32.329Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 500,
+      "transactionId": "tx_1758278371684_ry46ar",
+      "timestamp": "2025-09-19T10:39:31.684Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 500,
+      "transactionId": "tx_1758278506443_7lnrsc",
+      "timestamp": "2025-09-19T10:41:46.443Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 500,
+      "transactionId": "tx_1758278645500_j9cpqa",
+      "timestamp": "2025-09-19T10:44:05.500Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 500,
+      "transactionId": "tx_1758278788602_8smyqi",
+      "timestamp": "2025-09-19T10:46:28.602Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 500,
+      "transactionId": "tx_1758278901156_89dnus",
+      "timestamp": "2025-09-19T10:48:21.156Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 500,
+      "transactionId": "tx_1758279026159_z9avc",
+      "timestamp": "2025-09-19T10:50:26.159Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 240,
+      "transactionId": "tx_1758279108491_dij29",
+      "timestamp": "2025-09-19T10:51:48.491Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758281376146_hgs2m",
+      "timestamp": "2025-09-19T11:29:36.146Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758281472497_mzvtav",
+      "timestamp": "2025-09-19T11:31:12.497Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758281674792_9fmp2f",
+      "timestamp": "2025-09-19T11:34:34.792Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 500,
+      "transactionId": "tx_1758281757069_9ar6d",
+      "timestamp": "2025-09-19T11:35:57.069Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 500,
+      "transactionId": "tx_1758281926266_wbq07m",
+      "timestamp": "2025-09-19T11:38:46.266Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 500,
+      "transactionId": "tx_1758282073207_ofjyy",
+      "timestamp": "2025-09-19T11:41:13.207Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 440,
+      "transactionId": "tx_1758282213550_2go6d",
+      "timestamp": "2025-09-19T11:43:33.550Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 480,
+      "transactionId": "tx_1758282223567_ow8zm6",
+      "timestamp": "2025-09-19T11:43:43.567Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758285565119_cub3c",
+      "timestamp": "2025-09-19T12:39:25.119Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758285757575_q6ggd6",
+      "timestamp": "2025-09-19T12:42:37.575Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758285881979_ncibbj",
+      "timestamp": "2025-09-19T12:44:41.979Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758286018928_322wq",
+      "timestamp": "2025-09-19T12:46:58.928Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758286162375_oujat",
+      "timestamp": "2025-09-19T12:49:22.375Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758286305077_s47j6k",
+      "timestamp": "2025-09-19T12:51:45.077Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758286849260_wmkpjc",
+      "timestamp": "2025-09-19T13:00:49.260Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 480,
+      "transactionId": "tx_1758287016143_ryj64e",
+      "timestamp": "2025-09-19T13:03:36.143Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 10,
+      "transactionId": "tx_1758287034926_5y0pmc",
+      "timestamp": "2025-09-19T13:03:54.926Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 430,
+      "transactionId": "tx_1758290116163_mb0i6j",
+      "timestamp": "2025-09-19T13:55:16.163Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758290359255_226yqi",
+      "timestamp": "2025-09-19T13:59:19.255Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758290483975_zx3nc",
+      "timestamp": "2025-09-19T14:01:23.975Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758290624381_foa8uw",
+      "timestamp": "2025-09-19T14:03:44.381Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758290732890_l3g8cf",
+      "timestamp": "2025-09-19T14:05:32.890Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758290842740_vcuqce",
+      "timestamp": "2025-09-19T14:07:22.740Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758290953513_emwtm",
+      "timestamp": "2025-09-19T14:09:13.513Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 300,
+      "transactionId": "tx_1758291028405_tszhs",
+      "timestamp": "2025-09-19T14:10:28.405Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758250270191_m5kb49",
+      "timestamp": "2025-09-19T02:51:10.191Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758279173755_dna29",
+      "timestamp": "2025-09-19T10:52:53.755Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758284274198_jcu2v",
+      "timestamp": "2025-09-19T12:17:54.198Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758288608452_d73zvq",
+      "timestamp": "2025-09-19T13:30:08.452Z"
+    }
+  ]
+}

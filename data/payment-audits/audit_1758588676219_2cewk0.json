@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1758588676219_2cewk0",
+  "sessionId": "session_1758583208931_db6lhu",
+  "managerId": "614876929266417672",
+  "managerName": "puddingbach",
+  "workerId": "234380781479395338",
+  "workerName": "Gaioto Silva",
+  "amountPaid": 660,
+  "paidAt": "2025-09-23T00:51:16.219Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-09-23T00:46:16.219Z",
+    "endTime": "2025-09-23T01:01:16.219Z"
+  }
+}

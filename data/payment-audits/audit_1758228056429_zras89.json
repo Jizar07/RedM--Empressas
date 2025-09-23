@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1758228056429_zras89",
+  "sessionId": "session_1758110518644_5fhcy8",
+  "managerId": "372161270176153601",
+  "managerName": "GM Stoffel",
+  "workerId": "1195169284847050786",
+  "workerName": "Koda Smith",
+  "amountPaid": 6544.25,
+  "paidAt": "2025-09-18T20:40:56.429Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-09-18T20:35:56.429Z",
+    "endTime": "2025-09-18T20:50:56.429Z"
+  }
+}

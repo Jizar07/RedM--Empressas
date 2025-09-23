@@ -20,7 +20,7 @@ interface ChannelLog {
 }
 
 export class ChannelMessageManager {
-    private readonly MAX_MESSAGES_PER_CHANNEL = 100;
+    private readonly MAX_MESSAGES_PER_CHANNEL = 1000;
     private readonly channelLogsDir: string;
 
     constructor() {

@@ -1,0 +1,26 @@
+{
+  "receiptId": "PAY-1758473364087-g9oaok0h0",
+  "payerId": "141250620593012736",
+  "payerName": "r3dley",
+  "workerId": "1117649799181783130",
+  "workerName": "shelby.011",
+  "workerDisplayName": "Ubirajara | 1506",
+  "services": [
+    {
+      "type": "Plants",
+      "quantity": 500,
+      "amount": 125
+    },
+    {
+      "type": "Animals",
+      "quantity": 4,
+      "amount": 160
+    }
+  ],
+  "totalAmount": 285,
+  "channelId": "1419358418484858950",
+  "timestamp": "2025-09-21T16:49:24.087Z",
+  "status": "verified",
+  "verifiedBy": "r3dley",
+  "verifiedAt": "2025-09-21T16:49:38.289Z"
+}

@@ -1,0 +1,78 @@
+{
+  "workerId": "234380781479395338",
+  "workerName": "Gaioto Silva",
+  "channelId": "1419822180119871559",
+  "sessionId": "session_1758590099014_9437is",
+  "startTime": "2025-09-23T01:14:59.014Z",
+  "lastActivity": "2025-09-23T02:36:00.994Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 100,
+      "transactionId": "tx_1758590099016_3bi3q9",
+      "timestamp": "2025-09-23T01:14:59.016Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758593454907_3i71k8",
+      "timestamp": "2025-09-23T02:10:54.907Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 20,
+      "transactionId": "tx_1758593472424_2r6ac",
+      "timestamp": "2025-09-23T02:11:12.424Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758593894777_78sl6",
+      "timestamp": "2025-09-23T02:18:14.777Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758594340405_350k3",
+      "timestamp": "2025-09-23T02:25:40.405Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758592708837_nujz3zl",
+      "timestamp": "2025-09-23T01:58:28.837Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758594960994_fo7uz",
+      "timestamp": "2025-09-23T02:36:00.994Z"
+    }
+  ],
+  "totalCredits": 700,
+  "embedMessageId": "1419874921370357834",
+  "seedExpectations": [
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 100,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 1000,
+      "isComplete": true,
+      "transactionId": "tx_1758590099016_3bi3q9"
+    }
+  ],
+  "animalExpectations": [],
+  "completedAt": "2025-09-23T02:43:02.905Z",
+  "notes": "Pago por Barth (198538680686608384)"
+}

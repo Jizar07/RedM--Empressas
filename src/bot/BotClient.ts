@@ -7,6 +7,7 @@ import OrdersService from '../services/OrdersService';
 import MessageManagerService from '../services/MessageManagerService';
 import BotStatusService from '../services/BotStatusService';
 import { MultiChannelForwarder } from '../services/MultiChannelForwarder';
+import { WeeklyRankingService } from '../services/WeeklyRankingService';
 import { createDynamicRegistrationCommand } from './dynamicCommandRegistration';
 import { initializeDynamicCommands } from '../api/routes/discord-commands';
 
@@ -23,6 +24,7 @@ export class BotClient extends Client {
   public messageManager: MessageManagerService;
   public statusService: typeof BotStatusService;
   public multiChannelForwarder!: MultiChannelForwarder;
+  public weeklyRankingService: WeeklyRankingService;
   
   constructor() {
     super({
@@ -50,6 +52,7 @@ export class BotClient extends Client {
     this.messageManager = new MessageManagerService(this);
     this.statusService = BotStatusService;
     this.multiChannelForwarder = MultiChannelForwarder.getInstance();
+    this.weeklyRankingService = WeeklyRankingService.getInstance();
   }
   
   public async init(): Promise<void> {
@@ -72,7 +75,10 @@ export class BotClient extends Client {
     
     // Initialize OrdersService with bot client
     OrdersService.setClient(this);
-    
+
+    // Initialize WeeklyRankingService with bot client
+    this.weeklyRankingService.initialize(this);
+
     // Login to Discord
     await this.login(config.discord.token);
   }

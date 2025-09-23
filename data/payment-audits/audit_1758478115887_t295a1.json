@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1758478115887_t295a1",
+  "sessionId": "session_1758409899918_6o6sdc",
+  "managerId": "273987353456934913",
+  "managerName": "𝓢𝓸𝓾𝔃𝔃 🏄🏾",
+  "workerId": "671877868497666089",
+  "workerName": "Thomas Shelby",
+  "amountPaid": 608,
+  "paidAt": "2025-09-21T18:08:35.887Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-09-21T18:03:35.887Z",
+    "endTime": "2025-09-21T18:18:35.887Z"
+  }
+}

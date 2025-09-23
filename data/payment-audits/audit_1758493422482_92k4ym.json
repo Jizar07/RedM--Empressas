@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1758493422482_92k4ym",
+  "sessionId": "session_1758244438682_y7z7m",
+  "managerId": "141250620593012736",
+  "managerName": "r3dley",
+  "workerId": "976320273601146973",
+  "workerName": "Nina Vatore",
+  "amountPaid": 722.5,
+  "paidAt": "2025-09-21T22:23:42.482Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-09-21T22:18:42.482Z",
+    "endTime": "2025-09-21T22:33:42.482Z"
+  }
+}

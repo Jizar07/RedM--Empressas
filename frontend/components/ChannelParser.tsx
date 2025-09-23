@@ -7,7 +7,7 @@ import { channelParserApi } from '@/lib/api';
 export default function ChannelParser() {
   const [channelId, setChannelId] = useState('');
   const [webhookUrl, setWebhookUrl] = useState('');
-  const [limit, setLimit] = useState(100);
+  const [limit, setLimit] = useState(1000);
   const [filterUser, setFilterUser] = useState('');
   const [filterKeyword, setFilterKeyword] = useState('');
   const [isLoading, setIsLoading] = useState(false);

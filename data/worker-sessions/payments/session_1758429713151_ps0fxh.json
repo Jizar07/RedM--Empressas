@@ -1,0 +1,33 @@
+{
+  "sessionId": "session_1758429713151_ps0fxh",
+  "workerId": "949397147030274059",
+  "workerName": "Izzynha Evans",
+  "amount": 125,
+  "paidBy": "1127730801182777355",
+  "paidByName": "thony",
+  "paidAt": "2025-09-21T05:23:22.897Z",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 200,
+      "transactionId": "tx_1758429713153_cvn44b",
+      "timestamp": "2025-09-21T04:41:53.153Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 200,
+      "transactionId": "tx_1758429845816_pn8ulu",
+      "timestamp": "2025-09-21T04:44:05.816Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 300,
+      "transactionId": "tx_1758429851439_b1pp5q",
+      "timestamp": "2025-09-21T04:44:11.439Z"
+    }
+  ],
+  "animalTransactions": []
+}

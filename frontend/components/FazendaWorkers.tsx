@@ -21,7 +21,13 @@ export default function FazendaWorkers({ firm }: FazendaWorkersProps) {
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-2xl font-bold">👥 {firm.name} - Trabalhadores</h1>
-            <p className="text-purple-100">Performance e análise de atividades</p>
+            <p className="text-purple-100">Performance, análise de atividades e rankings</p>
+          </div>
+          <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-1 bg-white/20 rounded-lg px-3 py-1">
+              <Award className="w-4 h-4" />
+              <span className="text-sm font-medium">Rankings Disponíveis</span>
+            </div>
           </div>
         </div>
       </div>

@@ -1,0 +1,24 @@
+{
+  "workerId": "584129725052747798",
+  "workerName": "Cliff Dillimore",
+  "channelId": "1416197670632161451",
+  "sessionId": "session_1758266464850_8qs2u4",
+  "startTime": "2025-09-19T07:21:04.850Z",
+  "lastActivity": "2025-09-19T07:21:04.851Z",
+  "status": "stale",
+  "plantTransactions": [
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 10,
+      "transactionId": "tx_1758266464851_8qery",
+      "timestamp": "2025-09-19T07:21:04.851Z"
+    }
+  ],
+  "animalTransactions": [],
+  "totalCredits": 2.5,
+  "embedMessageId": "1418497108281131049",
+  "seedExpectations": [],
+  "completedAt": "2025-09-21T12:52:18.124Z",
+  "notes": "Auto-archived due to inactivity"
+}

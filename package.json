@@ -12,7 +12,9 @@
     "format": "npx prettier --write \"src/**/*.ts\"",
     "typecheck": "npx tsc --noEmit",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "test:connection": "npx tsc src/test-connection.ts --outDir dist --esModuleInterop --resolveJsonModule --skipLibCheck && node dist/test-connection.js"
+    "test:connection": "npx tsc src/test-connection.ts --outDir dist --esModuleInterop --resolveJsonModule --skipLibCheck && node dist/test-connection.js",
+    "analyze-channel": "npx ts-node scripts/channel-analyzer.ts",
+    "export-data": "npx ts-node scripts/export-channel-data.ts"
   },
   "keywords": [
     "discord",
@@ -29,6 +31,7 @@
     "@types/multer": "^2.0.0",
     "@types/sharp": "^0.32.0",
     "@types/uuid": "^10.0.0",
+    "@types/xlsx": "^0.0.35",
     "axios": "^1.11.0",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
@@ -45,7 +48,8 @@
     "sharp": "^0.34.3",
     "socket.io": "^4.8.1",
     "tesseract.js": "^6.0.1",
-    "uuid": "^11.1.0"
+    "uuid": "^11.1.0",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",

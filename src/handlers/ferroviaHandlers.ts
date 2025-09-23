@@ -1,8 +1,9 @@
-import { 
-  ButtonInteraction, 
+import {
+  ButtonInteraction,
   EmbedBuilder
 } from 'discord.js';
 import { getFerroviaSessionService } from '../api/routes/webhook-receiver';
+import ManagerMoneyVerificationService from '../services/ManagerMoneyVerificationService';
 import axios from 'axios';
 import config from '../config/config';
 
@@ -45,120 +46,93 @@ export async function handleFerroviaVerified(interaction: ButtonInteraction): Pr
         return;
       }
 
-      // Prepare session summary for the verified embed
-      const summary = [];
-      if (session.totalBoxesProcessed > 0) {
-        summary.push(`📦 **Caixas Processadas:** ${session.totalBoxesProcessed}`);
-      }
-      if (session.totalRevenueGenerated > 0) {
-        summary.push(`💰 **Receita Gerada:** $${session.totalRevenueGenerated.toFixed(2)}`);
-      }
-      if (session.totalRevenueReturned > 0) {
-        summary.push(`💸 **Receita Retornada:** $${session.totalRevenueReturned.toFixed(2)}`);
-      }
+      // Get comprehensive session summary using new calculation methods
+      const verificationSummary = ferroviaService.getSessionVerificationSummary(session);
 
-      // Add open responsibilities if any
-      if (session.openResponsibilities.boxesTaken > 0 || session.openResponsibilities.moneyOwed > 0) {
-        summary.push(`⚠️ **Responsabilidades Pendentes:**`);
-        if (session.openResponsibilities.boxesTaken > 0) {
-          summary.push(`   📦 ${session.openResponsibilities.boxesTaken} caixas`);
-        }
-        if (session.openResponsibilities.moneyOwed > 0) {
-          summary.push(`   💰 $${session.openResponsibilities.moneyOwed.toFixed(2)}`);
-        }
-      }
+      // Get money verification status for this session
+      const moneyVerificationService = ManagerMoneyVerificationService.getInstance();
+      const moneyStatus = moneyVerificationService.getSessionVerificationStatus(session.sessionId);
 
-      // Note: Session verification metadata would be stored separately if needed
-      // as the SupplyChainSession interface doesn't include verification fields
+      // Update money obligations in summary
+      verificationSummary.obligations.pendingMoney = moneyStatus.remainingObligation;
 
-      // Create receipt embed (transform existing embed)
+      // Create comprehensive verification receipt
       const receiptEmbed = new EmbedBuilder()
         .setTitle(`🚂 ${session.workerName} - Verificado`)
-        .setColor(0x0088FF) // Blue for receipt
+        .setColor(0x00AA00) // Green for verified
         .setTimestamp()
         .setFooter({ text: `Verificado por ${interaction.user.displayName || interaction.user.username} • Sessão: ${session.sessionId.substring(0, 8)}` });
 
-      // Add the same session data as the receipt
-      if (summary.length > 0) {
+      // Mission Summary Section
+      if (verificationSummary.missions.completed > 0) {
+        const missionDetails = [
+          `• **Missões realizadas:** ${verificationSummary.missions.completed}`,
+          `• **Caixas utilizadas:** ${verificationSummary.missions.netBoxesUsed} (${verificationSummary.missions.totalWithdrawn} retiradas - ${verificationSummary.missions.totalReturned} devolvidas)`
+        ];
+
         receiptEmbed.addFields({
-          name: '📊 Resumo da Sessão',
-          value: summary.join('\n') || 'Nenhuma atividade registrada',
+          name: '🎯 MISSÕES COMPLETADAS',
+          value: missionDetails.join('\n'),
           inline: false
         });
       }
 
-      // Add plant transactions if any
-      const plantWithdrawals = session.transactions.filter(t => t.type === 'PLANTS_WITHDRAWN');
-      const plantDeposits = session.transactions.filter(t => t.type === 'PLANTS_DEPOSITED');
+      // Financial Summary Section
+      if (verificationSummary.money.revenueCollected > 0) {
+        const financialDetails = [
+          `• **Receita coletada da Ferrovia:** $${verificationSummary.money.revenueCollected.toFixed(2)}`,
+          `• **Pagamento do gerente (50%):** $${verificationSummary.money.expectedManagerPayment.toFixed(2)}`,
+          `• **Depósito obrigatório (50%):** $${verificationSummary.money.expectedDeposit.toFixed(2)}`
+        ];
 
-      if (plantWithdrawals.length > 0 || plantDeposits.length > 0) {
-        const plantDetails: string[] = [];
-
-        // Calculate NET plants
-        const plantBalance: { [key: string]: number } = {};
-        plantWithdrawals.forEach(t => {
-          plantBalance[t.itemName] = (plantBalance[t.itemName] || 0) + t.quantity;
-        });
-        plantDeposits.forEach(t => {
-          plantBalance[t.itemName] = (plantBalance[t.itemName] || 0) - t.quantity;
-        });
-
-        Object.entries(plantBalance).forEach(([plant, net]) => {
-          if (net > 0) {
-            plantDetails.push(`🌿 ${plant}: ${net} (ainda deve)`);
-          } else if (net < 0) {
-            plantDetails.push(`✅ ${plant}: ${Math.abs(net)} (devolvido extra)`);
+        if (moneyStatus.hasObligation) {
+          financialDetails.push(`• **Depositado no inventário:** $${moneyStatus.depositedAmount.toFixed(2)}`);
+          if (moneyStatus.remainingObligation > 0) {
+            financialDetails.push(`• **Ainda deve depositar:** $${moneyStatus.remainingObligation.toFixed(2)} ⚠️`);
           } else {
-            plantDetails.push(`✅ ${plant}: 0 (totalmente devolvido)`);
+            financialDetails.push(`• **✅ Depósito completo!**`);
           }
+        }
+
+        receiptEmbed.addFields({
+          name: '💰 MOVIMENTAÇÃO FINANCEIRA',
+          value: financialDetails.join('\n'),
+          inline: false
         });
-
-        if (plantDetails.length > 0) {
-          receiptEmbed.addFields({
-            name: '🌿 Plantas Processadas',
-            value: plantDetails.join('\n'),
-            inline: false
-          });
-        }
       }
 
-      // Add box transactions if any
-      const boxesCreated = session.transactions.filter(t => t.type === 'BOXES_CREATED');
-      const boxesWithdrawn = session.transactions.filter(t => t.type === 'BOXES_WITHDRAWN');
+      // Box Utilization Breakdown
+      if (verificationSummary.missions.totalWithdrawn > 0) {
+        const boxDetails = [
+          `• **Total retiradas:** ${verificationSummary.missions.totalWithdrawn} caixadeverduras`,
+          `• **Total devolvidas:** ${verificationSummary.missions.totalReturned} caixadeverduras`,
+          `• **Utilizadas em missões:** ${verificationSummary.missions.netBoxesUsed} caixadeverduras`
+        ];
 
-      if (boxesCreated.length > 0 || boxesWithdrawn.length > 0) {
-        const boxDetails: string[] = [];
-
-        if (boxesCreated.length > 0) {
-          const boxesMap = new Map<string, number>();
-          boxesCreated.forEach(t => {
-            const current = boxesMap.get(t.itemName) || 0;
-            boxesMap.set(t.itemName, current + t.quantity);
-          });
-          boxesMap.forEach((quantity, item) => {
-            boxDetails.push(`📦 Criadas: ${quantity} ${item}`);
-          });
+        if (verificationSummary.obligations.pendingBoxes > 0) {
+          boxDetails.push(`• **Ainda em posse:** ${verificationSummary.obligations.pendingBoxes} caixadeverduras ⚠️`);
+        } else {
+          boxDetails.push(`• **✅ Todas as caixas processadas!**`);
         }
 
-        if (boxesWithdrawn.length > 0) {
-          const boxesMap = new Map<string, number>();
-          boxesWithdrawn.forEach(t => {
-            const current = boxesMap.get(t.itemName) || 0;
-            boxesMap.set(t.itemName, current + t.quantity);
-          });
-          boxesMap.forEach((quantity, item) => {
-            boxDetails.push(`📤 Retiradas: ${quantity} ${item}`);
-          });
-        }
-
-        if (boxDetails.length > 0) {
-          receiptEmbed.addFields({
-            name: '📦 Caixas Processadas',
-            value: boxDetails.join('\n'),
-            inline: false
-          });
-        }
+        receiptEmbed.addFields({
+          name: '📦 DETALHAMENTO DE CAIXAS',
+          value: boxDetails.join('\n'),
+          inline: false
+        });
       }
+
+      // Verification Status
+      const allComplete = verificationSummary.obligations.pendingBoxes === 0 && verificationSummary.obligations.pendingMoney === 0;
+      const statusDetails = allComplete
+        ? ['• **✅ Todas as obrigações cumpridas**', '• **✅ Sessão encerrada com sucesso**']
+        : ['• **⚠️ Verificação com pendências**', '• **📝 Revisar obrigações em aberto**'];
+
+      receiptEmbed.addFields({
+        name: allComplete ? '✅ VERIFICAÇÃO COMPLETADA' : '⚠️ VERIFICAÇÃO COM PENDÊNCIAS',
+        value: statusDetails.join('\n'),
+        inline: false
+      });
 
       // Transform the existing embed into a permanent receipt (remove buttons)
       if (interaction.message) {

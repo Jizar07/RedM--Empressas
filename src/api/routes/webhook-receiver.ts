@@ -3,6 +3,7 @@ import MessageManagerService from '../../services/MessageManagerService';
 import FarmMessageParser from '../../services/FarmMessageParser';
 import SupplyChainService from '../../services/SupplyChainService';
 import FerroviaSessionService from '../../services/FerroviaSessionService';
+import DiscordRoleService from '../../services/DiscordRoleService';
 
 const router = Router();
 
@@ -26,6 +27,7 @@ let messageManager: MessageManagerService | null = null;
 let storedExtensionMessages: any[] = []; // Store extension messages for dashboard
 let supplyChainService: SupplyChainService | null = null;
 let ferroviaSessionService: FerroviaSessionService | null = null;
+let discordRoleService: DiscordRoleService | null = null;
 
 export function setMessageManager(manager: MessageManagerService): void {
   messageManager = manager;
@@ -37,6 +39,10 @@ export function setFerroviaSessionService(service: FerroviaSessionService): void
 
 export function getFerroviaSessionService(): FerroviaSessionService | null {
   return ferroviaSessionService;
+}
+
+export function setDiscordRoleService(service: DiscordRoleService): void {
+  discordRoleService = service;
 }
 
 // Initialize supply chain service when module loads
@@ -196,17 +202,31 @@ router.post('/channel-messages', async (req: Request, res: Response): Promise<vo
     }
 
     // Process messages using unified parser
-    const processedMessages = messages.map((msg: any) => {
+    const processedMessages = await Promise.all(messages.map(async (msg: any) => {
       // Use unified parser for consistent processing
       const parsed = FarmMessageParser.parseMessage(msg);
-      
+
+      // Add Discord role detection if we have user ID and role service is available
+      let detectedRole: 'manager' | 'worker' | 'unknown' = 'unknown';
+      if (discordRoleService && msg.author?.id) {
+        try {
+          const roleResult = await discordRoleService.detectUserRole(msg.author.id);
+          detectedRole = roleResult.role;
+          console.log(`🎭 Role detected for ${parsed.autor}: ${detectedRole}`);
+        } catch (error) {
+          console.warn(`⚠️ Could not detect role for ${parsed.autor}:`, error);
+        }
+      }
+
       return {
         ...parsed,
+        workerRole: detectedRole,
         channelId: msg.channelId,
         discordTimestamp: msg.discordTimestamp,
+        discordUserId: msg.author?.id, // Store Discord user ID for reference
         source: msg.source || 'browser_extension'
       };
-    });
+    }));
 
     // Process supply chain activities
     for (const parsedMsg of processedMessages) {
@@ -215,9 +235,15 @@ router.post('/channel-messages', async (req: Request, res: Response): Promise<vo
           // Extract worker ID from message - for now use author name as worker ID
           const workerId = parsedMsg.autor.replace(/\s+/g, '_').toLowerCase();
           const workerName = parsedMsg.autor;
-          
-          // For now, assume worker role (you might want to determine this based on permissions or config)
-          const role = 'worker'; // TODO: Determine role from user permissions or configuration
+
+          // Use detected role from Discord role detection
+          let role: 'manager' | 'worker' = 'worker'; // Default to worker if role detection failed
+          if (parsedMsg.workerRole === 'manager') {
+            role = 'manager';
+          } else if (parsedMsg.workerRole === 'worker') {
+            role = 'worker';
+          }
+          // If workerRole is 'unknown', we keep the default 'worker'
           
           // Create or get worker session
           await supplyChainService.createOrGetSession(workerId, workerName, role);

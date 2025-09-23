@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1758482610230_h2k6ny",
+  "sessionId": "session_1758460816769_zc4yq",
+  "managerId": "372161270176153601",
+  "managerName": "GM Stoffel",
+  "workerId": "414405166079672323",
+  "workerName": "mixel laffon",
+  "amountPaid": 1345,
+  "paidAt": "2025-09-21T19:23:30.230Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-09-21T19:18:30.230Z",
+    "endTime": "2025-09-21T19:33:30.230Z"
+  }
+}

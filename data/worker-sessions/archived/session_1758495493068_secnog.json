@@ -1,0 +1,24 @@
+{
+  "workerId": "473199499490230273",
+  "workerName": "Nathy Miller",
+  "channelId": "1419092061596024872",
+  "sessionId": "session_1758495493068_secnog",
+  "startTime": "2025-09-21T22:58:13.068Z",
+  "lastActivity": "2025-09-21T22:58:13.069Z",
+  "status": "paid",
+  "plantTransactions": [],
+  "animalTransactions": [
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758495493069_iobpbj",
+      "timestamp": "2025-09-21T22:58:13.069Z"
+    }
+  ],
+  "totalCredits": 160,
+  "embedMessageId": "1419457721748688947",
+  "animalExpectations": [],
+  "completedAt": "2025-09-21T23:36:03.751Z",
+  "notes": "Pago por thony (1127730801182777355)"
+}

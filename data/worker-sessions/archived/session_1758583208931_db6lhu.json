@@ -1,0 +1,87 @@
+{
+  "workerId": "234380781479395338",
+  "workerName": "Gaioto Silva",
+  "channelId": "1419822180119871559",
+  "sessionId": "session_1758583208931_db6lhu",
+  "startTime": "2025-09-22T23:20:08.931Z",
+  "lastActivity": "2025-09-23T00:17:56.760Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758583208932_3kx9df",
+      "timestamp": "2025-09-22T23:20:08.932Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758584477360_sri23r",
+      "timestamp": "2025-09-22T23:41:17.360Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758585537858_q2f6jm",
+      "timestamp": "2025-09-22T23:58:57.858Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758586190983_5jo0we",
+      "timestamp": "2025-09-23T00:09:50.983Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 200,
+      "transactionId": "tx_1758586652227_birm4s",
+      "timestamp": "2025-09-23T00:17:32.227Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 100,
+      "transactionId": "tx_1758586676760_4ct97",
+      "timestamp": "2025-09-23T00:17:56.760Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758585650272_i6wh08",
+      "timestamp": "2025-09-23T00:00:50.272Z"
+    }
+  ],
+  "totalCredits": 660,
+  "embedMessageId": "1419840175038533723",
+  "seedExpectations": [
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 200,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 2000,
+      "plantsFulfilled": 2000,
+      "isComplete": true,
+      "transactionId": "tx_1758586652227_birm4s"
+    },
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 100,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 1000,
+      "isComplete": true,
+      "transactionId": "tx_1758586676760_4ct97"
+    }
+  ],
+  "animalExpectations": [],
+  "completedAt": "2025-09-23T00:51:16.217Z",
+  "notes": "Pago por puddingbach (614876929266417672)"
+}

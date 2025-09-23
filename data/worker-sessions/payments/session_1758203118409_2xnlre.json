@@ -1,0 +1,306 @@
+{
+  "sessionId": "session_1758203118409_2xnlre",
+  "workerId": "372161270176153601",
+  "workerName": "Jizar Stoffeliz",
+  "amount": 2099.25,
+  "paidBy": "372161270176153601",
+  "paidByName": "GM Stoffel",
+  "paidAt": "2025-09-21T14:27:34.682Z",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Junco",
+      "quantity": 200,
+      "transactionId": "tx_1758203118410_701y1n",
+      "timestamp": "2025-09-18T13:45:18.410Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 500,
+      "transactionId": "tx_1758206489374_opjvdi",
+      "timestamp": "2025-09-18T14:41:29.374Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 480,
+      "transactionId": "tx_1758208702530_povgdf",
+      "timestamp": "2025-09-18T15:18:22.530Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 440,
+      "transactionId": "tx_1758211943240_zrf315",
+      "timestamp": "2025-09-18T16:12:23.240Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 500,
+      "transactionId": "tx_1758213234140_m6ijm",
+      "timestamp": "2025-09-18T16:33:54.140Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 80,
+      "transactionId": "tx_1758213267503_ipdw6",
+      "timestamp": "2025-09-18T16:34:27.503Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 200,
+      "transactionId": "tx_1758213495423_794zs",
+      "timestamp": "2025-09-18T16:38:15.423Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758216799149_b5etir",
+      "timestamp": "2025-09-18T17:33:19.149Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758216955159_pn24j",
+      "timestamp": "2025-09-18T17:35:55.159Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 480,
+      "transactionId": "tx_1758217155309_7xt6n6",
+      "timestamp": "2025-09-18T17:39:15.309Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758218606615_c8mjhf",
+      "timestamp": "2025-09-18T18:03:26.615Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 20,
+      "transactionId": "tx_1758218633819_akvwzf",
+      "timestamp": "2025-09-18T18:03:53.819Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente Trigo",
+      "quantity": 200,
+      "transactionId": "tx_1758320719641_10ud4",
+      "timestamp": "2025-09-19T22:25:19.641Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1758325461970_76owv7",
+      "timestamp": "2025-09-19T23:44:21.970Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1758325783672_nhh0k2",
+      "timestamp": "2025-09-19T23:49:43.672Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1758325925131_mb43rg",
+      "timestamp": "2025-09-19T23:52:05.131Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1758326055949_exjuaq",
+      "timestamp": "2025-09-19T23:54:15.949Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 150,
+      "transactionId": "tx_1758327305276_sf44ko",
+      "timestamp": "2025-09-20T00:15:05.276Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 50,
+      "transactionId": "tx_1758328209117_gngne4",
+      "timestamp": "2025-09-20T00:30:09.117Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 400,
+      "transactionId": "tx_1758328211663_u75xx3",
+      "timestamp": "2025-09-20T00:30:11.663Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 157,
+      "transactionId": "tx_1758328216211_i8tawx",
+      "timestamp": "2025-09-20T00:30:16.211Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 10,
+      "transactionId": "tx_1758372212260_edfv1h",
+      "timestamp": "2025-09-20T12:43:32.260Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente Trigo",
+      "quantity": 200,
+      "transactionId": "tx_1758381259562_uashs",
+      "timestamp": "2025-09-20T15:14:19.562Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1758385719641_o0w7ed",
+      "timestamp": "2025-09-20T16:28:39.641Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1758385843365_k7cshi",
+      "timestamp": "2025-09-20T16:30:43.365Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 190,
+      "transactionId": "tx_1758385913873_r8uck",
+      "timestamp": "2025-09-20T16:31:53.873Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 40,
+      "transactionId": "tx_1758387780688_e4pbj",
+      "timestamp": "2025-09-20T17:03:00.688Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 200,
+      "transactionId": "tx_1758458598538_h6l529",
+      "timestamp": "2025-09-21T12:43:18.538Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 200,
+      "transactionId": "tx_1758458607660_fg7vxg",
+      "timestamp": "2025-09-21T12:43:27.660Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Black Berry Semente",
+      "quantity": 500,
+      "transactionId": "tx_1758463134946_49ogot",
+      "timestamp": "2025-09-21T13:58:54.946Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "CoffeeSementes",
+      "quantity": 200,
+      "transactionId": "tx_1758463138387_m04o9",
+      "timestamp": "2025-09-21T13:58:58.387Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Crows Garlic Semente",
+      "quantity": 500,
+      "transactionId": "tx_1758463140691_59snsr",
+      "timestamp": "2025-09-21T13:59:00.691Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Parasol Mushroom Semente",
+      "quantity": 200,
+      "transactionId": "tx_1758463143086_p6tjb6",
+      "timestamp": "2025-09-21T13:59:03.086Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Red Raspberry Semente",
+      "quantity": 500,
+      "transactionId": "tx_1758463145044_zvoz2e",
+      "timestamp": "2025-09-21T13:59:05.044Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Black Currant Semente",
+      "quantity": 500,
+      "transactionId": "tx_1758463147449_9k0dgdk",
+      "timestamp": "2025-09-21T13:59:07.449Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Oregano Semente",
+      "quantity": 200,
+      "transactionId": "tx_1758463150329_9ds6mkf",
+      "timestamp": "2025-09-21T13:59:10.329Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Oleander Sage Semente",
+      "quantity": 200,
+      "transactionId": "tx_1758463153886_k7xbna",
+      "timestamp": "2025-09-21T13:59:13.886Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Red Raspberry Semente",
+      "quantity": 500,
+      "transactionId": "tx_1758463363472_v3cs92",
+      "timestamp": "2025-09-21T14:02:43.472Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Black Currant Semente",
+      "quantity": 500,
+      "transactionId": "tx_1758463365821_k8xeb7",
+      "timestamp": "2025-09-21T14:02:45.821Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Oleander Sage Semente",
+      "quantity": 200,
+      "transactionId": "tx_1758463368683_y2aip2",
+      "timestamp": "2025-09-21T14:02:48.683Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Prairie Poppy Semente",
+      "quantity": 500,
+      "transactionId": "tx_1758463371310_98kqmq",
+      "timestamp": "2025-09-21T14:02:51.310Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "CoffeeSementes",
+      "quantity": 100,
+      "transactionId": "tx_1758464792903_cwofmn",
+      "timestamp": "2025-09-21T14:26:32.903Z"
+    }
+  ],
+  "animalTransactions": []
+}

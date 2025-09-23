@@ -1,0 +1,47 @@
+{
+  "workerId": "940279402145669241",
+  "workerName": "Tereza Mcfell",
+  "channelId": "1419738529801699369",
+  "sessionId": "session_1758563978955_4hdpm",
+  "startTime": "2025-09-22T17:59:38.955Z",
+  "lastActivity": "2025-09-22T18:28:25.453Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758565208851_x3rdnu",
+      "timestamp": "2025-09-22T18:20:08.851Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758565693260_khw84l",
+      "timestamp": "2025-09-22T18:28:13.260Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 10,
+      "transactionId": "tx_1758565705453_czra3s",
+      "timestamp": "2025-09-22T18:28:25.453Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758563978956_fog1ln",
+      "timestamp": "2025-09-22T17:59:38.956Z"
+    }
+  ],
+  "totalCredits": 412.5,
+  "embedMessageId": "1419752216259985438",
+  "animalExpectations": [],
+  "seedExpectations": [],
+  "completedAt": "2025-09-22T18:29:15.083Z",
+  "notes": "Pago por Rodrigo (584129725052747798)"
+}

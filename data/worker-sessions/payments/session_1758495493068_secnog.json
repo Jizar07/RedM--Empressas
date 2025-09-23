@@ -1,0 +1,19 @@
+{
+  "sessionId": "session_1758495493068_secnog",
+  "workerId": "473199499490230273",
+  "workerName": "Nathy Miller",
+  "amount": 160,
+  "paidBy": "1127730801182777355",
+  "paidByName": "thony",
+  "paidAt": "2025-09-21T23:36:03.753Z",
+  "plantTransactions": [],
+  "animalTransactions": [
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758495493069_iobpbj",
+      "timestamp": "2025-09-21T22:58:13.069Z"
+    }
+  ]
+}

@@ -24,6 +24,7 @@ import FazendaBW from '@/components/FazendaBW';
 import EstoqueBW from '@/components/EstoqueBW';
 import TrabalhadoresBW from '@/components/TrabalhadoresBW';
 import FirmManagement from '@/components/FirmManagement';
+import PaymentSettings from '@/components/PaymentSettings';
 import GenericFirmDashboard from '@/components/GenericFirmDashboard';
 import FirmTemplateRenderer, { getAvailableComponents } from '@/components/FirmTemplateRenderer';
 import ProtectedRoute from '@/components/ProtectedRoute';
@@ -309,7 +310,7 @@ export default function HomePage() {
             {tabs.map((tab) => {
               const Icon = tab.icon;
               const isActive = activeTab === tab.id || 
-                (tab.id === 'admin' && (activeTab === 'registration-settings' || activeTab === 'registration-analytics' || activeTab === 'orders-settings' || activeTab === 'channel-logs-config' || activeTab === 'discord-commands' || activeTab === 'moderation-settings' || activeTab === 'firm-management')) ||
+                (tab.id === 'admin' && (activeTab === 'registration-settings' || activeTab === 'registration-analytics' || activeTab === 'orders-settings' || activeTab === 'channel-logs-config' || activeTab === 'discord-commands' || activeTab === 'moderation-settings' || activeTab === 'firm-management' || activeTab === 'payment-settings')) ||
                 (tab.id === 'servicos' && (activeTab === 'orders-dashboard' || activeTab === 'orders-management' || activeTab === 'recipes' || activeTab === 'price-list')) ||
                 (tab.submenu && tab.submenu.some((subitem: any) => subitem.id === activeTab));
               return (
@@ -453,7 +454,7 @@ export default function HomePage() {
         )}
 
 
-        {(activeTab === 'admin' || activeTab === 'registration-settings' || activeTab === 'registration-analytics' || activeTab === 'orders-settings' || activeTab === 'channel-logs-config' || activeTab === 'discord-commands' || activeTab === 'moderation-settings' || activeTab === 'firm-management') && (
+        {(activeTab === 'admin' || activeTab === 'registration-settings' || activeTab === 'registration-analytics' || activeTab === 'orders-settings' || activeTab === 'channel-logs-config' || activeTab === 'discord-commands' || activeTab === 'moderation-settings' || activeTab === 'payment-settings' || activeTab === 'firm-management') && (
           <div className="space-y-8">
             {/* Admin Menu */}
             <div className="card p-6">
@@ -532,6 +533,18 @@ export default function HomePage() {
                   <p className="text-gray-600">Configure clear command, auto-mod, and auto-reply features</p>
                 </button>
                 <button
+                  onClick={() => changeTab('payment-settings')}
+                  className={`p-6 border-2 rounded-lg text-left transition-colors ${
+                    activeTab === 'payment-settings'
+                      ? 'border-blue-500 bg-blue-50'
+                      : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
+                  }`}
+                >
+                  <DollarSign className="h-8 w-8 text-gray-600 mb-3" />
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Payment Settings</h3>
+                  <p className="text-gray-600">Configure default pricing and payment system settings</p>
+                </button>
+                <button
                   onClick={() => changeTab('firm-management')}
                   className={`p-6 border-2 rounded-lg text-left transition-colors ${
                     activeTab === 'firm-management'
@@ -553,6 +566,7 @@ export default function HomePage() {
             {activeTab === 'channel-logs-config' && <ChannelLogsConfig />}
             {activeTab === 'discord-commands' && <DiscordCommands />}
             {activeTab === 'moderation-settings' && <ModerationSettings />}
+            {activeTab === 'payment-settings' && <PaymentSettings />}
             {activeTab === 'firm-management' && <FirmManagement />}
           </div>
         )}

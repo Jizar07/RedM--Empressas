@@ -1,0 +1,41 @@
+{
+  "workerId": "273987353456934913",
+  "workerName": "Souzz Ramirez",
+  "channelId": "1416760197329719306",
+  "sessionId": "session_1758396440306_yp6efi",
+  "startTime": "2025-09-20T19:27:20.306Z",
+  "lastActivity": "2025-09-20T20:12:13.770Z",
+  "status": "stale",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente Trigo",
+      "quantity": 100,
+      "transactionId": "tx_1758396440307_kqb2pe",
+      "timestamp": "2025-09-20T19:27:20.307Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1758399133770_5m1wbd",
+      "timestamp": "2025-09-20T20:12:13.770Z"
+    }
+  ],
+  "animalTransactions": [],
+  "totalCredits": 125,
+  "embedMessageId": "1419053563371327550",
+  "seedExpectations": [
+    {
+      "seedType": "Semente Trigo",
+      "seedQuantity": 100,
+      "expectedPlantType": "Trigo",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 500,
+      "isComplete": false,
+      "transactionId": "tx_1758396440307_kqb2pe"
+    }
+  ],
+  "completedAt": "2025-09-22T20:59:42.952Z",
+  "notes": "Auto-archived due to inactivity"
+}

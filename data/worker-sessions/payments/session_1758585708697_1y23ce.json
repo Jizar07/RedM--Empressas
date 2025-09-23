@@ -1,0 +1,26 @@
+{
+  "sessionId": "session_1758585708697_1y23ce",
+  "workerId": "1117649799181783130",
+  "workerName": "Ubirajara Cauamb",
+  "amount": 125,
+  "paidBy": "949397147030274059",
+  "paidByName": "๖ۣۜζ͜͡ɪᴢᴢʏɴʜᴀ🎀",
+  "paidAt": "2025-09-23T02:59:02.902Z",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 50,
+      "transactionId": "tx_1758585708698_aa1de",
+      "timestamp": "2025-09-23T00:01:48.698Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758596158925_qvj24d",
+      "timestamp": "2025-09-23T02:55:58.925Z"
+    }
+  ],
+  "animalTransactions": []
+}

@@ -320,17 +320,25 @@ export class MultiChannelForwarder {
           let activityType = '';
           
           // 1. Plants taken from inventory (for making boxes) - ALL plants from global translations
-          const plantsWithdrawnPattern = /Item removido::\s*(junco|trigo|milho|corn|wheat|bulrush|milk_weed)\s*x(\d+)/i;
+          // Supports both : and :: formats, and handles newlines
+          const plantsWithdrawnPattern = /Item removido::?\s*\n?\s*(junco|trigo|milho|corn|wheat|bulrush|milk_weed)\s*x(\d+)/is;
           const plantsMatch = extractedContent.match(plantsWithdrawnPattern);
           
           // 2. Boxes deposited to inventory (made from plants) - ALL box types except caixarustica
-          const boxesDepositedPattern = /Item adicionado::\s*(caixadeverduras|caixadelegumes|caixa_agro|caixa_verduras)\s*x(\d+)/i;
+          // Supports both : and :: formats, and handles newlines
+          const boxesDepositedPattern = /Item adicionado::?\s*\n?\s*(caixadeverduras|caixadelegumes|caixa_agro|caixa_verduras)\s*x(\d+)/is;
           const boxesDepositedMatch = extractedContent.match(boxesDepositedPattern);
-          
+
           // 3. Boxes taken from inventory (for missions) - ALL box types except caixarustica
-          const boxesWithdrawnPattern = /Item removido::\s*(caixadeverduras|caixadelegumes|caixa_agro|caixa_verduras)\s*x(\d+)/i;
+          // Supports both : and :: formats, and handles newlines
+          const boxesWithdrawnPattern = /Item removido::?\s*\n?\s*(caixadeverduras|caixadelegumes|caixa_agro|caixa_verduras)\s*x(\d+)/is;
           const boxesWithdrawnMatch = extractedContent.match(boxesWithdrawnPattern);
-          
+
+          // Context detection: Simple heuristic - box returns usually don't have plant mentions
+          // Box creation typically involves plant processing, returns are just leftover boxes
+          const hasPlantContext = extractedContent.match(/(junco|trigo|milho|corn|wheat|bulrush|milk_weed)/i);
+          const isLikelyBoxReturn = boxesDepositedMatch && !hasPlantContext;
+
           // 4. Mission completion (using boxes)
           const missionCompletedPattern = /completou\s+missão\s+ferrovia/i;
           const missionMatch = extractedContent.match(missionCompletedPattern);
@@ -344,11 +352,13 @@ export class MultiChannelForwarder {
           const bankDepositMatch = extractedContent.match(bankDepositPattern);
           
           // 7. Plants deposited back to inventory (potential Ferrovia returns)
-          const plantsDepositedPattern = /Item adicionado::\s*(junco|trigo|milho|corn|wheat|bulrush|milk_weed)\s*x(\d+)/i;
+          // Supports both : and :: formats, and handles newlines
+          const plantsDepositedPattern = /Item adicionado::?\s*\n?\s*(junco|trigo|milho|corn|wheat|bulrush|milk_weed)\s*x(\d+)/is;
           const plantsDepositedMatch = extractedContent.match(plantsDepositedPattern);
           
           // 8. Seeds withdrawn (for farm service detection)
-          const seedsWithdrawnPattern = /Item removido::\s*(.*seed.*|.*semente.*)\s*x(\d+)/i;
+          // Supports both : and :: formats, and handles newlines
+          const seedsWithdrawnPattern = /Item removido::?\s*\n?\s*(.*seed.*|.*semente.*)\s*x(\d+)/is;
           const seedsWithdrawnMatch = extractedContent.match(seedsWithdrawnPattern);
 
           // 9. Company withdrawal (COOPERATIVA - SACOU) - Revenue collected activity
@@ -362,6 +372,10 @@ export class MultiChannelForwarder {
           if (plantsMatch) {
             ferroviaActivityDetected = true;
             activityType = `Plants withdrawn: ${plantsMatch[2]} ${plantsMatch[1]}`;
+          } else if (boxesDepositedMatch && isLikelyBoxReturn) {
+            ferroviaActivityDetected = true;
+            activityType = `Boxes returned: ${boxesDepositedMatch[2]} ${boxesDepositedMatch[1]}`;
+            console.log(`🔄 Context detected: Box addition is likely a return after recent withdrawals by ${realAuthor}`);
           } else if (boxesDepositedMatch) {
             ferroviaActivityDetected = true;
             activityType = `Boxes deposited: ${boxesDepositedMatch[2]} ${boxesDepositedMatch[1]}`;

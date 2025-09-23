@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1758594582016_hr6scb",
+  "sessionId": "session_1758432950510_ftg0oe",
+  "managerId": "273987353456934913",
+  "managerName": "𝓢𝓸𝓾𝔃𝔃 🏄🏾",
+  "workerId": "695109023741116496",
+  "workerName": "yuri westside",
+  "amountPaid": 2302.5,
+  "paidAt": "2025-09-23T02:29:42.016Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-09-23T02:24:42.016Z",
+    "endTime": "2025-09-23T02:39:42.016Z"
+  }
+}

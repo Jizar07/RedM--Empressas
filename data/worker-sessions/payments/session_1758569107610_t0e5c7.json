@@ -1,0 +1,41 @@
+{
+  "sessionId": "session_1758569107610_t0e5c7",
+  "workerId": "940279402145669241",
+  "workerName": "Tereza Mcfell",
+  "amount": 197.5,
+  "paidBy": "949397147030274059",
+  "paidByName": "๖ۣۜζ͜͡ɪᴢᴢʏɴʜᴀ🎀",
+  "paidAt": "2025-09-23T02:43:51.888Z",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 2,
+      "transactionId": "tx_1758569107611_xmldc",
+      "timestamp": "2025-09-22T19:25:07.611Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 10,
+      "transactionId": "tx_1758569241189_l6262",
+      "timestamp": "2025-09-22T19:27:21.189Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 150,
+      "transactionId": "tx_1758570457834_tt4fkr",
+      "timestamp": "2025-09-22T19:47:37.834Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758583687270_rto3d",
+      "timestamp": "2025-09-22T23:28:07.270Z"
+    }
+  ]
+}

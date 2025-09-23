@@ -1,0 +1,38 @@
+{
+  "workerId": "1245794457161564201",
+  "workerName": "juca rabicho",
+  "channelId": "1416510577768923190",
+  "sessionId": "session_1758220678492_1mxdqj",
+  "startTime": "2025-09-18T18:37:58.492Z",
+  "lastActivity": "2025-09-18T18:38:26.716Z",
+  "status": "stale",
+  "plantTransactions": [
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 100,
+      "transactionId": "tx_1758220678493_3obcm",
+      "timestamp": "2025-09-18T18:37:58.493Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 100,
+      "transactionId": "tx_1758220682820_z5aqxs",
+      "timestamp": "2025-09-18T18:38:02.820Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 150,
+      "transactionId": "tx_1758220706716_14xy74",
+      "timestamp": "2025-09-18T18:38:26.716Z"
+    }
+  ],
+  "animalTransactions": [],
+  "totalCredits": 87.5,
+  "embedMessageId": "1418305185800782015",
+  "seedExpectations": [],
+  "completedAt": "2025-09-21T12:52:18.123Z",
+  "notes": "Auto-archived due to inactivity"
+}

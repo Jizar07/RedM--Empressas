@@ -1,0 +1,120 @@
+{
+  "workerId": "1235055429260935321",
+  "workerName": "smith ramirez",
+  "channelId": "1416447193685950595",
+  "sessionId": "session_1757979860654_d6aa1",
+  "startTime": "2025-09-15T23:44:20.654Z",
+  "lastActivity": "2025-09-18T21:49:14.858Z",
+  "status": "stale",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente Trigo",
+      "quantity": 200,
+      "transactionId": "tx_1757979860656_q5s9pm",
+      "timestamp": "2025-09-15T23:44:20.656Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 200,
+      "transactionId": "tx_1757982882842_9b1ue",
+      "timestamp": "2025-09-16T00:34:42.842Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 200,
+      "transactionId": "tx_1757982886703_3b0jb8",
+      "timestamp": "2025-09-16T00:34:46.703Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 100,
+      "transactionId": "tx_1757982890590_fo3lv",
+      "timestamp": "2025-09-16T00:34:50.590Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 200,
+      "transactionId": "tx_1757983146256_e68jo",
+      "timestamp": "2025-09-16T00:39:06.256Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 200,
+      "transactionId": "tx_1757983150851_y01ywg",
+      "timestamp": "2025-09-16T00:39:10.851Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 100,
+      "transactionId": "tx_1757983154876_tyljc",
+      "timestamp": "2025-09-16T00:39:14.876Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 200,
+      "transactionId": "tx_1757983248205_rxygg",
+      "timestamp": "2025-09-16T00:40:48.205Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 100,
+      "transactionId": "tx_1757983252446_w3y9b2",
+      "timestamp": "2025-09-16T00:40:52.446Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente Trigo",
+      "quantity": 100,
+      "transactionId": "tx_1758144630653_lzbpj",
+      "timestamp": "2025-09-17T21:30:30.653Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 100,
+      "transactionId": "tx_1758149807962_wgo4dj",
+      "timestamp": "2025-09-17T22:56:47.962Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 50,
+      "transactionId": "tx_1758232154858_lkqw5c",
+      "timestamp": "2025-09-18T21:49:14.858Z"
+    }
+  ],
+  "animalTransactions": [],
+  "totalCredits": 362.5,
+  "embedMessageId": "1418353202402955398",
+  "seedExpectations": [
+    {
+      "seedType": "Semente Trigo",
+      "seedQuantity": 200,
+      "expectedPlantType": "Trigo",
+      "expectedPlantQuantity": 2000,
+      "plantsFulfilled": 2000,
+      "isComplete": true,
+      "transactionId": "tx_1757979860656_q5s9pm"
+    },
+    {
+      "seedType": "Semente Trigo",
+      "seedQuantity": 100,
+      "expectedPlantType": "Trigo",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 1000,
+      "isComplete": true,
+      "transactionId": "tx_1758144630653_lzbpj"
+    }
+  ],
+  "completedAt": "2025-09-21T12:52:18.121Z",
+  "notes": "Auto-archived due to inactivity"
+}

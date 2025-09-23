@@ -3,15 +3,20 @@ import path from 'path';
 import { v4 as uuidv4 } from 'uuid';
 
 // Types for supply chain management
-export type SupplyChainTransactionType = 
+export type SupplyChainTransactionType =
   | 'PLANTS_WITHDRAWN'          // Plants taken from inventory for box making
-  | 'PLANTS_DEPOSITED'          // Plants returned to inventory (Ferrovia returns)
+  | 'PLANTS_DEPOSITED'          // Plants deposited to inventory (new farming production)
+  | 'PLANTS_RETURNED'           // Plants returned to inventory (leftover from box making)
   | 'SEEDS_WITHDRAWN'           // Seeds taken for farming (context tracking)
   | 'BOXES_CREATED'             // Boxes made from plants and added to inventory
   | 'BOXES_WITHDRAWN'           // Boxes taken from inventory for Ferrovia missions
+  | 'BOXES_RETURNED'            // Boxes returned to inventory (unused from Ferrovia)
   | 'FERROVIA_MISSION_COMPLETED' // Mission completed using boxes
   | 'REVENUE_COLLECTED'         // Money collected from Ferrovia
-  | 'REVENUE_DISTRIBUTED';      // Money distributed according to role rules
+  | 'REVENUE_DISTRIBUTED'       // Money distributed according to role rules
+  | 'MONEY_WITHDRAWN_FROM_FERROVIA' // Money taken from Ferrovia by worker
+  | 'MONEY_DEPOSITED_TO_INVENTORY'  // Money deposited to inventory
+  | 'WORKER_PAYMENT_OWED';      // Amount owed to worker ($250 per mission)
 
 export type WorkerRole = 'manager' | 'worker';
 export type SessionStatus = 'active' | 'completed' | 'overdue';
@@ -87,6 +92,13 @@ export interface SupplyChainSession {
   totalBoxesProcessed: number;
   totalRevenueGenerated: number;
   totalRevenueReturned: number;
+  totalMoneyWithdrawn?: number; // Money taken from Ferrovia
+  totalMoneyDeposited?: number; // Money deposited to inventory
+  totalPaymentOwed?: number; // Amount owed to worker ($250 per mission)
+  // Money verification tracking for managers
+  moneyWithdrawalObligations?: number; // Amount manager must deposit (50% of withdrawals)
+  moneyDepositVerified?: boolean; // Whether deposits match withdrawal obligations
+  lastDepositVerification?: Date; // Last time deposit verification was checked
   channelId?: string;
   messageId?: string;
 }
@@ -201,7 +213,10 @@ export class SupplyChainService {
         },
         totalBoxesProcessed: 0,
         totalRevenueGenerated: 0,
-        totalRevenueReturned: 0
+        totalRevenueReturned: 0,
+        totalMoneyWithdrawn: 0,
+        totalMoneyDeposited: 0,
+        totalPaymentOwed: 0
       };
       
       this.activeSessions.set(workerId, session);
@@ -280,6 +295,23 @@ export class SupplyChainService {
         session.totalBoxesProcessed += transaction.quantity;
         break;
 
+      case 'BOXES_RETURNED':
+        // Worker returned unused boxes - reduce responsibility
+        session.openResponsibilities.boxesTaken -= transaction.quantity;
+        const returnRevenue = this.calculateRevenueDistribution(transaction.quantity, session.role);
+        session.openResponsibilities.moneyOwed -= returnRevenue.totalRevenue;
+
+        // Ensure we don't go negative
+        if (session.openResponsibilities.boxesTaken < 0) {
+          session.openResponsibilities.boxesTaken = 0;
+        }
+        if (session.openResponsibilities.moneyOwed < 0) {
+          session.openResponsibilities.moneyOwed = 0;
+        }
+
+        console.log(`📦 ${session.workerName} returned ${transaction.quantity} boxes, reduced responsibility`);
+        break;
+
       case 'REVENUE_COLLECTED':
         // Money collected from Ferrovia - update revenue expectations
         if (transaction.amount) {
@@ -304,6 +336,30 @@ export class SupplyChainService {
             session.openResponsibilities.boxesTaken = 0;
             session.openResponsibilities.moneyOwed = 0;
           }
+        }
+        break;
+
+      case 'MONEY_WITHDRAWN_FROM_FERROVIA':
+        // Money taken from Ferrovia by worker - track withdrawal
+        if (transaction.amount) {
+          session.totalMoneyWithdrawn = (session.totalMoneyWithdrawn || 0) + transaction.amount;
+          console.log(`💸 ${session.workerName} withdrew $${transaction.amount} from Ferrovia`);
+        }
+        break;
+
+      case 'MONEY_DEPOSITED_TO_INVENTORY':
+        // Money deposited to inventory - track deposit
+        if (transaction.amount) {
+          session.totalMoneyDeposited = (session.totalMoneyDeposited || 0) + transaction.amount;
+          console.log(`💳 ${session.workerName} deposited $${transaction.amount} to inventory`);
+        }
+        break;
+
+      case 'WORKER_PAYMENT_OWED':
+        // Payment owed to worker - track debt
+        if (transaction.amount) {
+          session.totalPaymentOwed = (session.totalPaymentOwed || 0) + transaction.amount;
+          console.log(`💵 ${session.workerName} is owed $${transaction.amount}`);
         }
         break;
     }
@@ -490,9 +546,9 @@ export class SupplyChainService {
         plantBalance[t.itemName] = (plantBalance[t.itemName] || 0) + t.quantity;
       });
     
-    // Subtract deposited plants (negative)
+    // Subtract deposited and returned plants (negative)
     session.transactions
-      .filter(t => t.type === 'PLANTS_DEPOSITED')
+      .filter(t => t.type === 'PLANTS_DEPOSITED' || t.type === 'PLANTS_RETURNED')
       .forEach(t => {
         plantBalance[t.itemName] = (plantBalance[t.itemName] || 0) - t.quantity;
       });
@@ -508,16 +564,16 @@ export class SupplyChainService {
     return netWithdrawn;
   }
 
-  // Calculate plants returned from transactions  
+  // Calculate plants returned from transactions
   public getPlantsReturnedFromSession(session: SupplyChainSession): { [plantName: string]: number } {
     const plantsReturned: { [plantName: string]: number } = {};
-    
+
     session.transactions
-      .filter(t => t.type === 'PLANTS_DEPOSITED')
+      .filter(t => t.type === 'PLANTS_DEPOSITED' || t.type === 'PLANTS_RETURNED')
       .forEach(t => {
         plantsReturned[t.itemName] = (plantsReturned[t.itemName] || 0) + t.quantity;
       });
-    
+
     return plantsReturned;
   }
 
@@ -713,7 +769,10 @@ export class SupplyChainService {
         },
         totalBoxesProcessed: 0,
         totalRevenueGenerated: 0,
-        totalRevenueReturned: 0
+        totalRevenueReturned: 0,
+        totalMoneyWithdrawn: 0,
+        totalMoneyDeposited: 0,
+        totalPaymentOwed: 0
       };
 
       // Add fresh session to memory and save to disk

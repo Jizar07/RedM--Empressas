@@ -28,6 +28,10 @@ import {
   handleFerroviaVerified,
   handleFerroviaReset
 } from '../../handlers/ferroviaHandlers';
+import {
+  handlePaymentServicesModal,
+  handlePaymentVerification
+} from '../commands/admin/pagar';
 
 
 export default {
@@ -41,6 +45,15 @@ export default {
           await handleFarmServiceStart(interaction);
         } catch (error) {
           console.error('Error in handleFarmServiceStart:', error);
+        }
+        return;
+      }
+      // Handle payment verification button
+      if (interaction.customId.startsWith('payment_verify_')) {
+        try {
+          await handlePaymentVerification(interaction);
+        } catch (error) {
+          console.error('Error in handlePaymentVerification:', error);
         }
         return;
       }
@@ -124,6 +137,11 @@ export default {
       }
       if (interaction.customId.startsWith('receipt_edit_quantity_')) {
         await handleReceiptEditQuantity(interaction);
+        return;
+      }
+      // Handle new payment services modal
+      if (interaction.customId.startsWith('payment_services_')) {
+        await handlePaymentServicesModal(interaction);
         return;
       }
       

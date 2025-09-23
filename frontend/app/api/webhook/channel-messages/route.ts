@@ -173,12 +173,23 @@ function extractWorkerTransactionData(parsedMessage: any): any {
 // Normalize item names
 function normalizeItemName(itemName: string): string {
   return itemName
+    .replace(/^[:;\s]+|[:;\s]+$/g, '') // Remove leading/trailing colons, semicolons, and whitespace
     .replace(/sementes?\s+de\s+/gi, '')
     .replace(/\s+sementes?/gi, '')
     .replace(/s$/, '') // Remove plural 's'
+    .replace(/\s+/g, ' ') // Normalize whitespace
     .trim()
     .toLowerCase()
     .replace(/^./, c => c.toUpperCase()); // Capitalize first letter
+}
+
+// Enhanced item name cleaning specifically for Berçário/Veterinária items
+function cleanBercarioItemName(itemName: string): string {
+  return itemName
+    .replace(/^[:;\s]+|[:;\s]+$/g, '') // Remove leading/trailing punctuation and whitespace
+    .replace(/\n+/g, ' ') // Replace newlines with spaces
+    .replace(/\s+/g, ' ') // Normalize whitespace
+    .trim();
 }
 
 // Disable static generation for this API route
@@ -467,15 +478,15 @@ function parseDiscordMessage(message: MessageData): any {
       const autor = spideyBotMatch[2].trim();
       
       // Parse INSERIR ITEM (add item)
-      const addMatch = actionPart.match(/INSERIR ITEM\s*Item adicionado::\s*(.+?)\s*x(\d+)/);
+      const addMatch = actionPart.match(/INSERIR ITEM\s*Item adicionado::?\s*\n?\s*(.+?)\s*x(\d+)/s);
       if (addMatch) {
-        const cleanItem = addMatch[1].trim();
-        
+        const cleanItem = cleanBercarioItemName(addMatch[1]);
+
         // Check if this is a box item for supply chain tracking
         const isBoxItem = cleanItem.toLowerCase().includes('caixa');
-        const boxType = cleanItem.toLowerCase().includes('verdura') ? 'verduras' : 
+        const boxType = cleanItem.toLowerCase().includes('verdura') ? 'verduras' :
                        cleanItem.toLowerCase().includes('agro') || cleanItem.toLowerCase().includes('animal') ? 'agro' : null;
-        
+
         return {
           ...message,
           parseSuccess: true,
@@ -491,17 +502,17 @@ function parseDiscordMessage(message: MessageData): any {
           isBoxAddition: isBoxItem
         };
       }
-      
-      // Parse REMOVER ITEM (remove item)  
-      const removeMatch = actionPart.match(/REMOVER ITEM\s*Item removido::\s*(.+?)\s*x(\d+)/);
+
+      // Parse REMOVER ITEM (remove item)
+      const removeMatch = actionPart.match(/REMOVER ITEM\s*Item removido::?\s*\n?\s*(.+?)\s*x(\d+)/s);
       if (removeMatch) {
-        const cleanItem = removeMatch[1].trim();
-        
+        const cleanItem = cleanBercarioItemName(removeMatch[1]);
+
         // Check if this is a box item for supply chain tracking
         const isBoxItem = cleanItem.toLowerCase().includes('caixa');
-        const boxType = cleanItem.toLowerCase().includes('verdura') ? 'verduras' : 
+        const boxType = cleanItem.toLowerCase().includes('verdura') ? 'verduras' :
                        cleanItem.toLowerCase().includes('agro') || cleanItem.toLowerCase().includes('animal') ? 'agro' : null;
-        
+
         return {
           ...message,
           parseSuccess: true,
@@ -519,6 +530,52 @@ function parseDiscordMessage(message: MessageData): any {
       }
     }
     
+    // Parse BERÇÁRIO/VETERINÁRIA inventory management (Mover Item para Loja)
+    const bercarioInventoryMatch = content.match(/REGISTRO - REGISTRO - (?:Berçário e Veterinária|Berçário)\s+(.+?)\s*Mover Item para Loja\s*Item adicionado::\s*(.+?)\s*x(\d+)\s*Autor::\s*(.+?)\s*\|\s*FIXO:\s*(\d+)/s);
+    if (bercarioInventoryMatch) {
+      const empresa = bercarioInventoryMatch[1].trim(); // "Bowdin" etc
+      const item = cleanBercarioItemName(bercarioInventoryMatch[2]);
+      const quantidade = parseInt(bercarioInventoryMatch[3]);
+      const autor = bercarioInventoryMatch[4].trim();
+
+      return {
+        ...message,
+        parseSuccess: true,
+        tipo: 'adicionar',
+        categoria: 'inventario',
+        item: item,
+        quantidade: quantidade,
+        autor: autor,
+        empresa: empresa,
+        descricao: `Adicionou ${quantidade}x ${item} para a loja`,
+        displayText: `${autor} adicionou ${quantidade}x ${item}`,
+        confidence: 'high'
+      };
+    }
+
+    // Parse BERÇÁRIO/VETERINÁRIA inventory removal
+    const bercarioRemovalMatch = content.match(/REGISTRO - REGISTRO - (?:Berçário e Veterinária|Berçário)\s+(.+?)\s*Mover Item para Loja\s*Item removido::\s*(.+?)\s*x(\d+)\s*Autor::\s*(.+?)\s*\|\s*FIXO:\s*(\d+)/s);
+    if (bercarioRemovalMatch) {
+      const empresa = bercarioRemovalMatch[1].trim(); // "Bowdin" etc
+      const item = cleanBercarioItemName(bercarioRemovalMatch[2]);
+      const quantidade = parseInt(bercarioRemovalMatch[3]);
+      const autor = bercarioRemovalMatch[4].trim();
+
+      return {
+        ...message,
+        parseSuccess: true,
+        tipo: 'remover',
+        categoria: 'inventario',
+        item: item,
+        quantidade: quantidade,
+        autor: autor,
+        empresa: empresa,
+        descricao: `Removeu ${quantidade}x ${item} da loja`,
+        displayText: `${autor} removeu ${quantidade}x ${item}`,
+        confidence: 'high'
+      };
+    }
+
     // Parse BERÇARIO BRAITHWHAITE shop purchases (Compra na Loja)
     const shopPurchaseMatch = content.match(/REGISTRO - BERÇARIO BRAITHWHAITE(.+?)Compra na Loja\s*Item Comprado:\s*(.+?)\s*x(\d+)\s*Comprador:\s*(.+?)\s*\|\s*FIXO:\s*(\d+)\s*Preço Total:\s*\$([0-9,.]+)/s);
     if (shopPurchaseMatch) {
@@ -526,7 +583,7 @@ function parseDiscordMessage(message: MessageData): any {
       const quantidade = parseInt(shopPurchaseMatch[3]);
       const comprador = shopPurchaseMatch[4].trim();
       const preco = parseFloat(shopPurchaseMatch[6].replace(',', ''));
-      
+
       return {
         ...message,
         parseSuccess: true,
@@ -609,29 +666,31 @@ function parseDiscordMessage(message: MessageData): any {
     
     const addMatch = content.match(itemAddPattern);
     if (addMatch) {
+      const cleanItem = cleanBercarioItemName(addMatch[1]);
       return {
         ...message,
         parseSuccess: true,
         tipo: 'adicionar',
         categoria: 'inventario',
-        item: addMatch[1].trim(),
+        item: cleanItem,
         quantidade: parseInt(addMatch[2]),
         autor: message.author || 'Sistema',
-        displayText: `${message.author} adicionou ${addMatch[2]}x ${addMatch[1]}`,
+        displayText: `${message.author} adicionou ${addMatch[2]}x ${cleanItem}`,
       };
     }
-    
+
     const removeMatch = content.match(itemRemovePattern);
     if (removeMatch) {
+      const cleanItem = cleanBercarioItemName(removeMatch[1]);
       return {
         ...message,
         parseSuccess: true,
         tipo: 'remover',
         categoria: 'inventario',
-        item: removeMatch[1].trim(),
+        item: cleanItem,
         quantidade: parseInt(removeMatch[2]),
         autor: message.author || 'Sistema',
-        displayText: `${message.author} removeu ${removeMatch[2]}x ${removeMatch[1]}`,
+        displayText: `${message.author} removeu ${removeMatch[2]}x ${cleanItem}`,
       };
     }
     

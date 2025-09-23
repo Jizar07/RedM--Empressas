@@ -15,7 +15,7 @@ import channelParserRoutes from './routes/channel-parser';
 import authRoutes from './routes/auth';
 import registrationRoutes from './routes/registration';
 import ordersRoutes from './routes/orders';
-import webhookReceiverRoutes, { setMessageManager, setFerroviaSessionService } from './routes/webhook-receiver';
+import webhookReceiverRoutes, { setMessageManager, setFerroviaSessionService, setDiscordRoleService } from './routes/webhook-receiver';
 import channelLogsConfigRoutes from './routes/channel-logs-config';
 import botApiRoutes from './routes/bot-api';
 import internalApiRoutes from './routes/internal-api';
@@ -25,14 +25,17 @@ import discordCommandsRoutes from './routes/discord-commands';
 import serviceSubmissionsRoutes from './routes/service-submissions';
 import farmServiceConfigRoutes from './routes/farm-service-config';
 import farmServiceDataRoutes from './routes/farm-service-data';
+import paymentConfigRoutes from './routes/payment-config';
 import discordRolesRoutes from './routes/discord-roles';
 import moderationRoutes from './routes/moderation';
 import localizationRoutes from './routes/localization';
 import firmsConfigRoutes from './routes/firms-config';
 import workerActivityRoutes, { initializeWorkerChannelService } from './routes/worker-activity';
 import workerPricesRoutes from './routes/worker-prices';
+import workerRankingsRoutes from './routes/worker-rankings';
 import supplyChainRoutes, { initializeSupplyChainService } from './routes/supply-chain';
 import FerroviaSessionService from '../services/FerroviaSessionService';
+import DiscordRoleService from '../services/DiscordRoleService';
 
 export async function startApiServer(bot: BotClient): Promise<void> {
   // Make bot client available globally for API routes
@@ -90,6 +93,11 @@ export async function startApiServer(bot: BotClient): Promise<void> {
   const ferroviaSessionService = FerroviaSessionService.getInstance(bot);
   setFerroviaSessionService(ferroviaSessionService);
   console.log('🚂 FerroviaSessionService initialized');
+
+  // Initialize Discord role service
+  const discordRoleService = DiscordRoleService.getInstance(bot);
+  setDiscordRoleService(discordRoleService);
+  console.log('🎭 DiscordRoleService initialized');
   
   // Static file serving for uploads
   app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
@@ -131,7 +139,10 @@ export async function startApiServer(bot: BotClient): Promise<void> {
   
   // Farm service data (history, overview)
   app.use('/api/farm-service-data', farmServiceDataRoutes);
-  
+
+  // Payment configuration
+  app.use('/api/payment-config', paymentConfigRoutes);
+
   // Moderation configuration
   app.use('/api/moderation', moderationRoutes);
   
@@ -146,7 +157,10 @@ export async function startApiServer(bot: BotClient): Promise<void> {
   
   // Worker activity tracking routes
   app.use('/api/worker-activity', workerActivityRoutes);
-  
+
+  // Worker rankings routes
+  app.use('/api/worker-rankings', workerRankingsRoutes);
+
   // Supply chain management routes
   app.use('/api/supply-chain', supplyChainRoutes);
   
