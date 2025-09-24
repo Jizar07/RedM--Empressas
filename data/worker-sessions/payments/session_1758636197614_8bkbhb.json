@@ -1,0 +1,76 @@
+{
+  "sessionId": "session_1758636197614_8bkbhb",
+  "workerId": "803001567627837501",
+  "workerName": "Nuka Mato",
+  "amount": 530,
+  "paidBy": "949397147030274059",
+  "paidByName": "๖ۣۜζ͜͡ɪᴢᴢʏɴʜᴀ🎀",
+  "paidAt": "2025-09-23T18:04:15.305Z",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 100,
+      "transactionId": "tx_1758636197615_qelp7",
+      "timestamp": "2025-09-23T14:03:17.615Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 200,
+      "transactionId": "tx_1758647813002_qwur9",
+      "timestamp": "2025-09-23T17:16:53.002Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 200,
+      "transactionId": "tx_1758647817029_gqrofc",
+      "timestamp": "2025-09-23T17:16:57.029Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 100,
+      "transactionId": "tx_1758647821135_jm7cto",
+      "timestamp": "2025-09-23T17:17:01.135Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 200,
+      "transactionId": "tx_1758648922399_qg5bbff",
+      "timestamp": "2025-09-23T17:35:22.399Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 200,
+      "transactionId": "tx_1758648925993_lgq0hk",
+      "timestamp": "2025-09-23T17:35:25.993Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 100,
+      "transactionId": "tx_1758648930548_clc1eq",
+      "timestamp": "2025-09-23T17:35:30.548Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758638108037_3rutv",
+      "timestamp": "2025-09-23T14:35:08.037Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 120,
+      "transactionId": "tx_1758648399903_7n1ydl",
+      "timestamp": "2025-09-23T17:26:39.903Z"
+    }
+  ]
+}

@@ -377,10 +377,14 @@ export class WorkerActivityService {
     // Try to add individual transactions first
     for (let i = 0; i < transactions.length; i++) {
       const transaction = transactions[i];
-      const timeStr = new Date(transaction.timestamp).toLocaleTimeString('en-US', {
+      const timeStr = new Date(transaction.timestamp).toLocaleDateString('pt-BR', {
+        day: '2-digit',
+        month: '2-digit'
+      }) + ' ' + new Date(transaction.timestamp).toLocaleTimeString('pt-BR', {
         hour: '2-digit',
         minute: '2-digit',
-        hour12: true
+        second: '2-digit',
+        hour12: false
       });
       const line = `• ${timeStr} - ${formatItem(transaction)}`;
 
@@ -887,9 +891,27 @@ export class WorkerActivityService {
     }
 
     // Add session info
+    const startTimeStr = session.startTime.toLocaleDateString('pt-BR', {
+      day: '2-digit',
+      month: '2-digit'
+    }) + ' ' + session.startTime.toLocaleTimeString('pt-BR', {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false
+    });
+    const lastActivityStr = session.lastActivity.toLocaleDateString('pt-BR', {
+      day: '2-digit',
+      month: '2-digit'
+    }) + ' ' + session.lastActivity.toLocaleTimeString('pt-BR', {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false
+    });
     embed.addFields({
       name: '📅 Informações da Sessão',
-      value: `**Iniciado:** <t:${Math.floor(session.startTime.getTime() / 1000)}:R>\n**Última Atividade:** <t:${Math.floor(session.lastActivity.getTime() / 1000)}:R>`,
+      value: `**Iniciado:** ${startTimeStr}\n**Última Atividade:** ${lastActivityStr}`,
       inline: false
     });
 
@@ -994,7 +1016,15 @@ export class WorkerActivityService {
     const animalDeliveries = session.animalTransactions.filter(t => t.type === 'delivery_completed');
     if (animalDeliveries.length > 0) {
       const animalSummary = animalDeliveries.map(t => {
-        const timeStr = `<t:${Math.floor(t.timestamp.getTime() / 1000)}:t>`;
+        const timeStr = t.timestamp.toLocaleDateString('pt-BR', {
+          day: '2-digit',
+          month: '2-digit'
+        }) + ' ' + t.timestamp.toLocaleTimeString('pt-BR', {
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: false
+        });
         return `• ${timeStr} - ${t.quantity} Animais → $${(t.amount || 0).toFixed(2)}`;
       });
 
@@ -1061,9 +1091,27 @@ export class WorkerActivityService {
       .setColor(0x0088FF); // Blue for receipt
 
     // Add session info
+    const startTimeStr = session.startTime.toLocaleDateString('pt-BR', {
+      day: '2-digit',
+      month: '2-digit'
+    }) + ' ' + session.startTime.toLocaleTimeString('pt-BR', {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false
+    });
+    const finishedTimeStr = new Date().toLocaleDateString('pt-BR', {
+      day: '2-digit',
+      month: '2-digit'
+    }) + ' ' + new Date().toLocaleTimeString('pt-BR', {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false
+    });
     embed.addFields({
       name: '📅 Informações da Sessão',
-      value: `**Iniciado:** <t:${Math.floor(session.startTime.getTime() / 1000)}:R>\n**Finalizado:** <t:${Math.floor(Date.now() / 1000)}:t>`,
+      value: `**Iniciado:** ${startTimeStr}\n**Finalizado:** ${finishedTimeStr}`,
       inline: false
     });
 
@@ -1154,7 +1202,15 @@ export class WorkerActivityService {
     const animalDeliveries = session.animalTransactions.filter(t => t.type === 'delivery_completed');
     if (animalDeliveries.length > 0) {
       const animalSummary = animalDeliveries.map(t => {
-        const timeStr = `<t:${Math.floor(t.timestamp.getTime() / 1000)}:t>`;
+        const timeStr = t.timestamp.toLocaleDateString('pt-BR', {
+          day: '2-digit',
+          month: '2-digit'
+        }) + ' ' + t.timestamp.toLocaleTimeString('pt-BR', {
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: false
+        });
         return `• ${timeStr} - ${t.quantity} Animais → $${(t.amount || 0).toFixed(2)}`;
       });
 

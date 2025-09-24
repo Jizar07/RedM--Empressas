@@ -26,6 +26,7 @@ import serviceSubmissionsRoutes from './routes/service-submissions';
 import farmServiceConfigRoutes from './routes/farm-service-config';
 import farmServiceDataRoutes from './routes/farm-service-data';
 import paymentConfigRoutes from './routes/payment-config';
+import workerPaymentReceiptsRoutes from './routes/worker-payment-receipts';
 import discordRolesRoutes from './routes/discord-roles';
 import moderationRoutes from './routes/moderation';
 import localizationRoutes from './routes/localization';
@@ -34,6 +35,7 @@ import workerActivityRoutes, { initializeWorkerChannelService } from './routes/w
 import workerPricesRoutes from './routes/worker-prices';
 import workerRankingsRoutes from './routes/worker-rankings';
 import supplyChainRoutes, { initializeSupplyChainService } from './routes/supply-chain';
+import ferroviaUserMetricsRoutes from './routes/ferrovia-user-metrics';
 import FerroviaSessionService from '../services/FerroviaSessionService';
 import DiscordRoleService from '../services/DiscordRoleService';
 
@@ -143,6 +145,9 @@ export async function startApiServer(bot: BotClient): Promise<void> {
   // Payment configuration
   app.use('/api/payment-config', paymentConfigRoutes);
 
+  // Worker payment receipts
+  app.use('/api', workerPaymentReceiptsRoutes);
+
   // Moderation configuration
   app.use('/api/moderation', moderationRoutes);
   
@@ -163,7 +168,10 @@ export async function startApiServer(bot: BotClient): Promise<void> {
 
   // Supply chain management routes
   app.use('/api/supply-chain', supplyChainRoutes);
-  
+
+  // Ferrovia user metrics and fraud detection routes
+  app.use('/api/ferrovia', ferroviaUserMetricsRoutes);
+
   // Worker prices management routes
   app.use('/api', workerPricesRoutes);
   

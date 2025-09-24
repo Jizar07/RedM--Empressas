@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1758681769130_cyaycz",
+  "sessionId": "session_1758503426698_m3v21b",
+  "managerId": "198538680686608384",
+  "managerName": "Barth",
+  "workerId": "473199499490230273",
+  "workerName": "Nathy Miller",
+  "amountPaid": 697.5,
+  "paidAt": "2025-09-24T02:42:49.130Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-09-24T02:37:49.130Z",
+    "endTime": "2025-09-24T02:52:49.130Z"
+  }
+}

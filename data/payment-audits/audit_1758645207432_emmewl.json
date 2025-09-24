@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1758645207432_emmewl",
+  "sessionId": "session_1758637441912_asjpwt",
+  "managerId": "198538680686608384",
+  "managerName": "Barth",
+  "workerId": "845126525602365501",
+  "workerName": "Florencio Laffon",
+  "amountPaid": 285,
+  "paidAt": "2025-09-23T16:33:27.432Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-09-23T16:28:27.432Z",
+    "endTime": "2025-09-23T16:43:27.432Z"
+  }
+}

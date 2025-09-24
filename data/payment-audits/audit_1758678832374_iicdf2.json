@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1758678832374_iicdf2",
+  "sessionId": "session_1758642464571_nfeckk",
+  "managerId": "1204772480305209384",
+  "managerName": "𝑻𝒐́𝒙𝒊𝒄𝒂 𓆩♡𓆪",
+  "workerId": "470361257497722886",
+  "workerName": "Kenai Comanches",
+  "amountPaid": 2690,
+  "paidAt": "2025-09-24T01:53:52.374Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-09-24T01:48:52.374Z",
+    "endTime": "2025-09-24T02:03:52.374Z"
+  }
+}

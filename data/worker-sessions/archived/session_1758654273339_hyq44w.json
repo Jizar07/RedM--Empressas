@@ -1,0 +1,145 @@
+{
+  "workerId": "803001567627837501",
+  "workerName": "Nuka Mato",
+  "channelId": "1420047059175604316",
+  "sessionId": "session_1758654273339_hyq44w",
+  "startTime": "2025-09-23T19:04:33.339Z",
+  "lastActivity": "2025-09-24T01:11:46.166Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Prairie Poppy Semente",
+      "quantity": 100,
+      "transactionId": "tx_1758670006516_6y124j",
+      "timestamp": "2025-09-23T23:26:46.516Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 100,
+      "transactionId": "tx_1758671720293_c0vael",
+      "timestamp": "2025-09-23T23:55:20.293Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 1,
+      "transactionId": "tx_1758674327872_7bcqsp",
+      "timestamp": "2025-09-24T00:38:47.872Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 200,
+      "transactionId": "tx_1758674999999_o0bkbb",
+      "timestamp": "2025-09-24T00:49:59.999Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 100,
+      "transactionId": "tx_1758675003819_47cets",
+      "timestamp": "2025-09-24T00:50:03.819Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 200,
+      "transactionId": "tx_1758675007625_0ylny",
+      "timestamp": "2025-09-24T00:50:07.625Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 200,
+      "transactionId": "tx_1758675522555_qgam8u",
+      "timestamp": "2025-09-24T00:58:42.555Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 200,
+      "transactionId": "tx_1758675561687_hbniea",
+      "timestamp": "2025-09-24T00:59:21.687Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 100,
+      "transactionId": "tx_1758675567930_suqrv",
+      "timestamp": "2025-09-24T00:59:27.930Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758654273340_hv3b3l",
+      "timestamp": "2025-09-23T19:04:33.340Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758657156560_p4qok",
+      "timestamp": "2025-09-23T19:52:36.560Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758671598698_hlfs0o",
+      "timestamp": "2025-09-23T23:53:18.698Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758673980796_wrlvq",
+      "timestamp": "2025-09-24T00:33:00.796Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758676306166_to9mg2v",
+      "timestamp": "2025-09-24T01:11:46.166Z"
+    }
+  ],
+  "totalCredits": 1050,
+  "embedMessageId": "1420216107817504889",
+  "animalExpectations": [],
+  "seedExpectations": [
+    {
+      "seedType": "Prairie Poppy Semente",
+      "seedQuantity": 100,
+      "expectedPlantType": "Prairie Poppy Semente",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1758670006516_6y124j"
+    },
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 100,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 1000,
+      "isComplete": true,
+      "transactionId": "tx_1758671720293_c0vael"
+    },
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 1,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 10,
+      "plantsFulfilled": 10,
+      "isComplete": true,
+      "transactionId": "tx_1758674327872_7bcqsp"
+    }
+  ],
+  "completedAt": "2025-09-24T01:15:58.398Z",
+  "notes": "Pago por ๖ۣۜζ͜͡ɪᴢᴢʏɴʜᴀ🎀 (949397147030274059)"
+}

@@ -1,0 +1,24 @@
+{
+  "workerId": "1117649799181783130",
+  "workerName": "Ubirajara Cauamb",
+  "channelId": "1419493917547823216",
+  "sessionId": "session_1758676310775_5hv6in7",
+  "startTime": "2025-09-24T01:11:50.775Z",
+  "lastActivity": "2025-09-24T01:11:50.776Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758676310776_lcbokw",
+      "timestamp": "2025-09-24T01:11:50.776Z"
+    }
+  ],
+  "animalTransactions": [],
+  "totalCredits": 125,
+  "embedMessageId": "1420216126356455454",
+  "seedExpectations": [],
+  "completedAt": "2025-09-24T01:13:59.825Z",
+  "notes": "Pago por thony (1127730801182777355)"
+}

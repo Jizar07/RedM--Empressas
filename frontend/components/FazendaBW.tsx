@@ -82,6 +82,8 @@ const getActivityIcon = (transaction: Activity): React.ReactNode => {
     const itemName = transaction.item?.toLowerCase() || transaction.descricao?.toLowerCase() || '';
     
     // Return emoji icons for specific items
+
+    // Animals
     if (itemName.includes('cow') || itemName.includes('vaca') || itemName.includes('cow_female')) {
       return <span className="text-xl">🐄</span>;
     }
@@ -97,14 +99,38 @@ const getActivityIcon = (transaction: Activity): React.ReactNode => {
     if (itemName.includes('donkey') || itemName.includes('burro')) {
       return <span className="text-xl">🐴</span>;
     }
+
+    // Plants & Crops
+    if (itemName.includes('junco') || itemName.includes('bulrush')) {
+      return <span className="text-xl">🫘</span>;
+    }
     if (itemName.includes('trigo') || itemName.includes('wheat')) {
       return <span className="text-xl">🌾</span>;
     }
     if (itemName.includes('milho') || itemName.includes('corn')) {
       return <span className="text-xl">🌽</span>;
     }
+    if (itemName.includes('milk_weed') || itemName.includes('asclepias')) {
+      return <span className="text-xl">🌿</span>;
+    }
+
+    // Seeds
     if (itemName.includes('semente') || itemName.includes('seed')) {
       return <span className="text-xl">🌱</span>;
+    }
+
+    // Animal Products
+    if (itemName.includes('leite') || itemName.includes('milk')) {
+      return <span className="text-xl">🥛</span>;
+    }
+    if (itemName.includes('ovo') || itemName.includes('egg')) {
+      return <span className="text-xl">🥚</span>;
+    }
+    if (itemName.includes('carne') || itemName.includes('meat')) {
+      return <span className="text-xl">🥩</span>;
+    }
+    if (itemName.includes('queijo') || itemName.includes('cheese')) {
+      return <span className="text-xl">🧀</span>;
     }
     if (itemName.includes('wood') || itemName.includes('madeira')) {
       return <span className="text-xl">🪵</span>;

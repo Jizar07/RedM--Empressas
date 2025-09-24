@@ -15,7 +15,7 @@ export async function handleFerroviaVerified(interaction: ButtonInteraction): Pr
     console.log(`✅ Manager ${interaction.user.username} is verifying Ferrovia session for worker ${workerId}`);
     
     // Check if user has permission to verify
-    const hasPermission = await checkManagerPermissions(interaction, 'pay');
+    const hasPermission = await checkFerroviaPermissions(interaction, 'verify');
     if (!hasPermission) {
       await interaction.reply({
         content: '❌ Você não tem permissão para verificar sessões de Ferrovia.',
@@ -321,6 +321,52 @@ async function checkManagerPermissions(interaction: ButtonInteraction, permissio
 
   } catch (error) {
     console.error('❌ Error checking manager permissions:', error);
+    return false;
+  }
+}
+
+async function checkFerroviaPermissions(interaction: ButtonInteraction, permissionType: 'verify' | 'edit' | 'reset'): Promise<boolean> {
+  try {
+    // Get user's roles from Discord (both by ID and name)
+    const member = await interaction.guild?.members.fetch(interaction.user.id);
+    if (!member) return false;
+
+    const userRoleIds = member.roles.cache.map(role => role.id);
+    const userRoleNames = member.roles.cache.map(role => role.name);
+
+    // Load ferrovia service configuration for role permissions
+    const fs = require('fs');
+    const path = require('path');
+    const ferroviaConfigPath = path.join(process.cwd(), 'data', 'ferrovia-service-config.json');
+    const ferroviaConfig = JSON.parse(fs.readFileSync(ferroviaConfigPath, 'utf8'));
+
+    // Determine required roles based on permission type
+    let requiredRoles: string[] = [];
+    switch (permissionType) {
+      case 'verify':
+        requiredRoles = ferroviaConfig.rolePermissions?.verifyRoles || ferroviaConfig.rolePermissions?.acceptRoles || [];
+        break;
+      case 'edit':
+        requiredRoles = ferroviaConfig.rolePermissions?.editRoles || [];
+        break;
+      case 'reset':
+        requiredRoles = ferroviaConfig.rolePermissions?.editRoles || ferroviaConfig.rolePermissions?.acceptRoles || [];
+        break;
+    }
+
+    // Check if user has any of the required roles (by both ID and name)
+    const hasPermissionById = requiredRoles.some(roleId => userRoleIds.includes(roleId));
+    const hasPermissionByName = requiredRoles.some(roleName => userRoleNames.includes(roleName));
+    const hasPermission = hasPermissionById || hasPermissionByName;
+
+    console.log(`🔐 Ferrovia permission check for ${interaction.user.username}: ${permissionType} - ${hasPermission ? 'GRANTED' : 'DENIED'}`);
+    console.log(`   User role IDs: [${userRoleIds.join(', ')}]`);
+    console.log(`   User role names: [${userRoleNames.join(', ')}]`);
+    console.log(`   Required roles: [${requiredRoles.join(', ')}]`);
+
+    return hasPermission;
+  } catch (error) {
+    console.error('Error checking Ferrovia permissions:', error);
     return false;
   }
 }

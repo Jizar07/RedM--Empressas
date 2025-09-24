@@ -1,0 +1,188 @@
+{
+  "workerId": "372161270176153601",
+  "workerName": "Jizar Stoffeliz",
+  "channelId": "1417124587833004075",
+  "sessionId": "session_1758485370460_5veyjz",
+  "startTime": "2025-09-21T20:09:30.460Z",
+  "lastActivity": "2025-09-22T19:49:52.160Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "plant_deposited",
+      "itemName": "Algodão",
+      "quantity": 130,
+      "transactionId": "tx_1758485370462_ls41mj",
+      "timestamp": "2025-09-21T20:09:30.462Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Oleander Sage Semente",
+      "quantity": 50,
+      "transactionId": "tx_1758485383980_elou0b",
+      "timestamp": "2025-09-21T20:09:43.980Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Oregano Semente",
+      "quantity": 50,
+      "transactionId": "tx_1758485389195_om4r5f",
+      "timestamp": "2025-09-21T20:09:49.195Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Parasol Mushroom Semente",
+      "quantity": 50,
+      "transactionId": "tx_1758485400371_srqy8u",
+      "timestamp": "2025-09-21T20:10:00.371Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Black Berry Semente",
+      "quantity": 50,
+      "transactionId": "tx_1758485411653_mmm9ol",
+      "timestamp": "2025-09-21T20:10:11.653Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Prairie Poppy Semente",
+      "quantity": 50,
+      "transactionId": "tx_1758489411173_xdd4jf",
+      "timestamp": "2025-09-21T21:16:51.173Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Parasol Mushroom Semente",
+      "quantity": 50,
+      "transactionId": "tx_1758489424566_i6z4vm",
+      "timestamp": "2025-09-21T21:17:04.566Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Red Raspberry Semente",
+      "quantity": 200,
+      "transactionId": "tx_1758545699990_35arb",
+      "timestamp": "2025-09-22T12:54:59.990Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente Trigo",
+      "quantity": 200,
+      "transactionId": "tx_1758567228859_02ab7f",
+      "timestamp": "2025-09-22T18:53:48.859Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1758569719108_hrci4c",
+      "timestamp": "2025-09-22T19:35:19.108Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1758570219427_xxrznb",
+      "timestamp": "2025-09-22T19:43:39.427Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1758570337577_bqasn",
+      "timestamp": "2025-09-22T19:45:37.577Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1758570513471_hin7gs",
+      "timestamp": "2025-09-22T19:48:33.471Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 100,
+      "transactionId": "tx_1758570592160_pqekcp",
+      "timestamp": "2025-09-22T19:49:52.160Z"
+    }
+  ],
+  "animalTransactions": [],
+  "totalCredits": 557.5,
+  "embedMessageId": "1419772711764230176",
+  "seedExpectations": [
+    {
+      "seedType": "Oleander Sage Semente",
+      "seedQuantity": 50,
+      "expectedPlantType": "Oleander Sage Semente",
+      "expectedPlantQuantity": 500,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1758485383980_elou0b"
+    },
+    {
+      "seedType": "Oregano Semente",
+      "seedQuantity": 50,
+      "expectedPlantType": "Oregano Semente",
+      "expectedPlantQuantity": 500,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1758485389195_om4r5f"
+    },
+    {
+      "seedType": "Parasol Mushroom Semente",
+      "seedQuantity": 50,
+      "expectedPlantType": "Parasol Mushroom Semente",
+      "expectedPlantQuantity": 500,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1758485400371_srqy8u"
+    },
+    {
+      "seedType": "Black Berry Semente",
+      "seedQuantity": 50,
+      "expectedPlantType": "Black Berry Semente",
+      "expectedPlantQuantity": 500,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1758485411653_mmm9ol"
+    },
+    {
+      "seedType": "Prairie Poppy Semente",
+      "seedQuantity": 50,
+      "expectedPlantType": "Prairie Poppy Semente",
+      "expectedPlantQuantity": 500,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1758489411173_xdd4jf"
+    },
+    {
+      "seedType": "Parasol Mushroom Semente",
+      "seedQuantity": 50,
+      "expectedPlantType": "Parasol Mushroom Semente",
+      "expectedPlantQuantity": 500,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1758489424566_i6z4vm"
+    },
+    {
+      "seedType": "Red Raspberry Semente",
+      "seedQuantity": 200,
+      "expectedPlantType": "Red Raspberry Semente",
+      "expectedPlantQuantity": 2000,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1758545699990_35arb"
+    },
+    {
+      "seedType": "Semente Trigo",
+      "seedQuantity": 200,
+      "expectedPlantType": "Trigo",
+      "expectedPlantQuantity": 2000,
+      "plantsFulfilled": 2000,
+      "isComplete": true,
+      "transactionId": "tx_1758567228859_02ab7f"
+    }
+  ],
+  "completedAt": "2025-09-23T22:34:20.727Z",
+  "notes": "Pago por r3dley (141250620593012736)"
+}

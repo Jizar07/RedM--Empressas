@@ -528,7 +528,7 @@
   },
   "unknown": {
     "workerId": "unknown",
-    "workerName": "Zeca Trindade",
+    "workerName": "Bartholomeu Dias",
     "plants": {
       "thisWeek": 0,
       "allTime": 0
@@ -539,9 +539,9 @@
     },
     "ferrovia": {
       "thisWeek": 2,
-      "allTime": 96
+      "allTime": 145
     },
-    "lastActivity": "2025-09-23T10:58:38.628Z"
+    "lastActivity": "2025-09-24T07:45:31.978Z"
   },
   "266262427329495041": {
     "workerId": "266262427329495041",

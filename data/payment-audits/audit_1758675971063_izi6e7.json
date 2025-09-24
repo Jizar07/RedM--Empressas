@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1758675971063_izi6e7",
+  "sessionId": "session_1758671408535_yrlvn6",
+  "managerId": "333664599549411329",
+  "managerName": "éoKs",
+  "workerId": "614201248551403590",
+  "workerName": "Richard Klein",
+  "amountPaid": 406.8,
+  "paidAt": "2025-09-24T01:06:11.063Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-09-24T01:01:11.063Z",
+    "endTime": "2025-09-24T01:16:11.063Z"
+  }
+}

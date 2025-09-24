@@ -50,7 +50,7 @@ export default function FerroviaWorkers({ firm }: FerroviaWorkersProps) {
   const [selectedWorker, setSelectedWorker] = useState<string | null>(null);
 
   // Fazenda channel for inventory data
-  const fazendaChannelId = "1412325130926948362"; // Fazenda Cabra da Peste
+  const fazendaChannelId = "1412325130926948362"; // Fazenda
 
   useEffect(() => {
     loadSupplyChainData();

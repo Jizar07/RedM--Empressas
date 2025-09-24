@@ -147,6 +147,26 @@ export class MultiChannelForwarder {
                 console.log(`🔍 Debug - Sanitized length: ${realAuthor.length} chars`);
                 break;
               }
+
+              // Look for "Funcionario" field (for Berçário messages)
+              if (cleanFieldName === 'funcionario' || cleanFieldName.includes('funcionario')) {
+                const rawAuthor = cleanValue
+                  .replace(/^:+\s*/, '')
+                  .split('|')[0]
+                  .trim();
+
+                // Enhanced debug logging with character inspection
+                console.log(`🔍 Multi-Channel Forwarder: Found author from Funcionario field: "${rawAuthor}"`);
+                console.log(`🔍 Debug - Raw field value: "${cleanValue}"`);
+                console.log(`🔍 Debug - Author length: ${rawAuthor.length} chars`);
+                console.log(`🔍 Debug - Author char codes: [${rawAuthor.split('').map(c => c.charCodeAt(0)).join(', ')}]`);
+
+                // Comprehensive string sanitization
+                realAuthor = this.sanitizeAuthorName(rawAuthor);
+                console.log(`🔍 Multi-Channel Forwarder: Sanitized author: "${realAuthor}"`);
+                console.log(`🔍 Debug - Sanitized length: ${realAuthor.length} chars`);
+                break;
+              }
               
               // For animal services: Look for "Ação" field if no Autor field found
               if ((cleanFieldName === 'ação' || cleanFieldName === 'acao') && realAuthor === message.author.username) {
@@ -173,7 +193,7 @@ export class MultiChannelForwarder {
       }
 
       // Extract content from embeds if message content is empty
-      let extractedContent = message.content;
+      let extractedContent: string = message.content;
       if (!extractedContent && message.embeds.length > 0) {
         const embedContents: string[] = [];
         for (const embed of message.embeds) {
@@ -192,6 +212,20 @@ export class MultiChannelForwarder {
           }
         }
         extractedContent = embedContents.join('\n\n');
+      }
+
+      // Check content text for author patterns (for Berçário messages)
+      const autorContentMatch = extractedContent.match(/Autor::\s*([^|]+)\s*\|/);
+      const funcionarioContentMatch = extractedContent.match(/Funcionario::\s*([^|]+)\s*\|/);
+
+      if (autorContentMatch) {
+        const rawAuthor = autorContentMatch[1].trim();
+        realAuthor = this.sanitizeAuthorName(rawAuthor);
+        console.log(`🔍 Multi-Channel Forwarder: Found author from content Autor:: "${realAuthor}"`);
+      } else if (funcionarioContentMatch) {
+        const rawAuthor = funcionarioContentMatch[1].trim();
+        realAuthor = this.sanitizeAuthorName(rawAuthor);
+        console.log(`🔍 Multi-Channel Forwarder: Found author from content Funcionario:: "${realAuthor}"`);
       }
 
       // Prepare webhook data
@@ -217,7 +251,7 @@ export class MultiChannelForwarder {
       };
 
       // NEW: Direct worker activity processing (no roundtrip to frontend)
-      if (this.workerChannelService && firm.name === 'Fazenda Cabra da Peste') {
+      if (this.workerChannelService && firm.name === 'Fazenda') {
         try {
           console.log(`🔄 MultiChannelForwarder: Processing worker activity directly for ${realAuthor}`);
           console.log(`🔍 MultiChannelForwarder: Message content: "${extractedContent}"`);

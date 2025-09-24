@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1758640891206_a3krac",
+  "sessionId": "session_1758584360943_oznnwb",
+  "managerId": "198538680686608384",
+  "managerName": "Barth",
+  "workerId": "414405166079672323",
+  "workerName": "mixel laffon",
+  "amountPaid": 730,
+  "paidAt": "2025-09-23T15:21:31.206Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-09-23T15:16:31.206Z",
+    "endTime": "2025-09-23T15:31:31.206Z"
+  }
+}

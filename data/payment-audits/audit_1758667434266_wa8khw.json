@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1758667434266_wa8khw",
+  "sessionId": "session_1758388262233_z5wkeq",
+  "managerId": "141250620593012736",
+  "managerName": "r3dley",
+  "workerId": "1127730801182777355",
+  "workerName": "Thony Gustav",
+  "amountPaid": 300,
+  "paidAt": "2025-09-23T22:43:54.266Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-09-23T22:38:54.266Z",
+    "endTime": "2025-09-23T22:53:54.266Z"
+  }
+}

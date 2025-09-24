@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1758645128726_bq79kd",
+  "sessionId": "session_1758634771806_nkq67p",
+  "managerId": "198538680686608384",
+  "managerName": "Barth",
+  "workerId": "234380781479395338",
+  "workerName": "Gaioto Silva",
+  "amountPaid": 870,
+  "paidAt": "2025-09-23T16:32:08.726Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-09-23T16:27:08.726Z",
+    "endTime": "2025-09-23T16:42:08.726Z"
+  }
+}

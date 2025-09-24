@@ -1,0 +1,76 @@
+{
+  "sessionId": "session_1758421594434_1kld7",
+  "workerId": "1204772480305209384",
+  "workerName": "BONNIE BENNETT",
+  "amount": 820,
+  "paidBy": "614876929266417672",
+  "paidByName": "puddingbach",
+  "paidAt": "2025-09-24T02:22:37.336Z",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente Trigo",
+      "quantity": 100,
+      "transactionId": "tx_1758421594435_9v7sw",
+      "timestamp": "2025-09-21T02:26:34.435Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1758423938033_zg4wa",
+      "timestamp": "2025-09-21T03:05:38.033Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1758424169057_bj5c7x",
+      "timestamp": "2025-09-21T03:09:29.057Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Junco",
+      "quantity": 100,
+      "transactionId": "tx_1758505503429_vpn8dz4",
+      "timestamp": "2025-09-22T01:45:03.429Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 100,
+      "transactionId": "tx_1758576598780_jq9zii",
+      "timestamp": "2025-09-22T21:29:58.780Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758580237739_dmsuh",
+      "timestamp": "2025-09-22T22:30:37.739Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758580440590_8rlhbd",
+      "timestamp": "2025-09-22T22:34:00.590Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758424777737_c92pws",
+      "timestamp": "2025-09-21T03:19:37.737Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758581538175_xj9vb7",
+      "timestamp": "2025-09-22T22:52:18.175Z"
+    }
+  ]
+}

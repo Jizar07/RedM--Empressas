@@ -1,0 +1,85 @@
+{
+  "workerId": "234380781479395338",
+  "workerName": "Gaioto Silva",
+  "channelId": "1419822180119871559",
+  "sessionId": "session_1758634771806_nkq67p",
+  "startTime": "2025-09-23T13:39:31.806Z",
+  "lastActivity": "2025-09-23T16:17:23.015Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 200,
+      "transactionId": "tx_1758634771807_uvp44j",
+      "timestamp": "2025-09-23T13:39:31.807Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente Trigo",
+      "quantity": 200,
+      "transactionId": "tx_1758634795656_pe58f",
+      "timestamp": "2025-09-23T13:39:55.656Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1758642590821_tizbnj",
+      "timestamp": "2025-09-23T15:49:50.821Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1758643007444_b00ykh",
+      "timestamp": "2025-09-23T15:56:47.444Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1758643811999_r1cuia",
+      "timestamp": "2025-09-23T16:10:11.999Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1758644243015_qgjoqr",
+      "timestamp": "2025-09-23T16:17:23.015Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758638086553_dxlvnm",
+      "timestamp": "2025-09-23T14:34:46.553Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758641653660_zse387",
+      "timestamp": "2025-09-23T15:34:13.660Z"
+    }
+  ],
+  "totalCredits": 870,
+  "embedMessageId": "1420081625718460468",
+  "seedExpectations": [
+    {
+      "seedType": "Semente Trigo",
+      "seedQuantity": 200,
+      "expectedPlantType": "Trigo",
+      "expectedPlantQuantity": 2000,
+      "plantsFulfilled": 2000,
+      "isComplete": true,
+      "transactionId": "tx_1758634795656_pe58f"
+    }
+  ],
+  "animalExpectations": [],
+  "completedAt": "2025-09-23T16:32:08.723Z",
+  "notes": "Pago por Barth (198538680686608384)"
+}

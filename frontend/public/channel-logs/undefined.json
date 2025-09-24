@@ -1,7 +1,2230 @@
 {
-  "lastUpdated": "2025-09-23T08:34:20.274Z",
-  "messageCount": 100,
+  "lastUpdated": "2025-09-24T07:45:32.040Z",
+  "messageCount": 153,
   "messages": [
+    {
+      "id": "1420315191341486202",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 24/09/2025 - 04:45:29",
+      "timestamp": "2025-09-24T07:45:29.796Z",
+      "raw_embeds": [
+        {
+          "title": "COOPERATIVA - SACOU",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Ação:`",
+              "value": "```prolog\nSACOU\n```",
+              "inline": true
+            },
+            {
+              "name": "`Quantia:`",
+              "value": "```prolog\n1000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nBartholomeu Dias | FIXO: 76312\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n24/09/2025 - 04:45:29\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 24/09/2025 - 04:45:29",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420312228820684880",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 24/09/2025 - 04:33:43",
+      "timestamp": "2025-09-24T07:33:43.476Z",
+      "raw_embeds": [
+        {
+          "title": "COOPERATIVA - SACOU",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Ação:`",
+              "value": "```prolog\nSACOU\n```",
+              "inline": true
+            },
+            {
+              "name": "`Quantia:`",
+              "value": "```prolog\n1000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nBartholomeu Dias | FIXO: 76312\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n24/09/2025 - 04:33:43\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 24/09/2025 - 04:33:43",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420306958816120842",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 24/09/2025 - 04:12:46",
+      "timestamp": "2025-09-24T07:12:47.009Z",
+      "raw_embeds": [
+        {
+          "title": "COOPERATIVA - SACOU",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Ação:`",
+              "value": "```prolog\nSACOU\n```",
+              "inline": true
+            },
+            {
+              "name": "`Quantia:`",
+              "value": "```prolog\n1000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nBartholomeu Dias | FIXO: 76312\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n24/09/2025 - 04:12:46\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 24/09/2025 - 04:12:46",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420306797029228596",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 978\nRecompensa:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 24/09/2025 - 04:12:08",
+      "timestamp": "2025-09-24T07:12:08.436Z",
+      "raw_embeds": [
+        {
+          "title": "ENTREGA COMPLETA - 3 ROTAS",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Missão:`",
+              "value": "```prolog\n2\n```",
+              "inline": true
+            },
+            {
+              "name": "`Entregas Completadas:`",
+              "value": "```prolog\n978\n```",
+              "inline": true
+            },
+            {
+              "name": "`Recompensa:`",
+              "value": "```prolog\n1000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nBartholomeu Dias | FIXO: 76312\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n24/09/2025 - 04:12:08\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 978\nRecompensa:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 24/09/2025 - 04:12:08",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420304035247816715",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 24/09/2025 - 04:01:09",
+      "timestamp": "2025-09-24T07:01:09.976Z",
+      "raw_embeds": [
+        {
+          "title": "COOPERATIVA - SACOU",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Ação:`",
+              "value": "```prolog\nSACOU\n```",
+              "inline": true
+            },
+            {
+              "name": "`Quantia:`",
+              "value": "```prolog\n1000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nBartholomeu Dias | FIXO: 76312\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n24/09/2025 - 04:01:09\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 24/09/2025 - 04:01:09",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420301269045874719",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 24/09/2025 - 03:50:09",
+      "timestamp": "2025-09-24T06:50:10.462Z",
+      "raw_embeds": [
+        {
+          "title": "COOPERATIVA - SACOU",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Ação:`",
+              "value": "```prolog\nSACOU\n```",
+              "inline": true
+            },
+            {
+              "name": "`Quantia:`",
+              "value": "```prolog\n1000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nBartholomeu Dias | FIXO: 76312\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n24/09/2025 - 03:50:09\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 24/09/2025 - 03:50:09",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420298124684955688",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 24/09/2025 - 03:37:40",
+      "timestamp": "2025-09-24T06:37:40.788Z",
+      "raw_embeds": [
+        {
+          "title": "COOPERATIVA - SACOU",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Ação:`",
+              "value": "```prolog\nSACOU\n```",
+              "inline": true
+            },
+            {
+              "name": "`Quantia:`",
+              "value": "```prolog\n1000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nBartholomeu Dias | FIXO: 76312\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n24/09/2025 - 03:37:40\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 24/09/2025 - 03:37:40",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420298069257490563",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 975\nRecompensa:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 24/09/2025 - 03:37:27",
+      "timestamp": "2025-09-24T06:37:27.573Z",
+      "raw_embeds": [
+        {
+          "title": "ENTREGA COMPLETA - 3 ROTAS",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Missão:`",
+              "value": "```prolog\n2\n```",
+              "inline": true
+            },
+            {
+              "name": "`Entregas Completadas:`",
+              "value": "```prolog\n975\n```",
+              "inline": true
+            },
+            {
+              "name": "`Recompensa:`",
+              "value": "```prolog\n1000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nBartholomeu Dias | FIXO: 76312\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n24/09/2025 - 03:37:27\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 975\nRecompensa:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 24/09/2025 - 03:37:27",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420295388845572206",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 24/09/2025 - 03:26:48",
+      "timestamp": "2025-09-24T06:26:48.513Z",
+      "raw_embeds": [
+        {
+          "title": "COOPERATIVA - SACOU",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Ação:`",
+              "value": "```prolog\nSACOU\n```",
+              "inline": true
+            },
+            {
+              "name": "`Quantia:`",
+              "value": "```prolog\n1000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nBartholomeu Dias | FIXO: 76312\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n24/09/2025 - 03:26:48\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 24/09/2025 - 03:26:48",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420292007615660052",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 24/09/2025 - 03:13:22",
+      "timestamp": "2025-09-24T06:13:22.365Z",
+      "raw_embeds": [
+        {
+          "title": "COOPERATIVA - SACOU",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Ação:`",
+              "value": "```prolog\nSACOU\n```",
+              "inline": true
+            },
+            {
+              "name": "`Quantia:`",
+              "value": "```prolog\n1000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nBartholomeu Dias | FIXO: 76312\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n24/09/2025 - 03:13:22\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 24/09/2025 - 03:13:22",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420275109075226714",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 02:06:13",
+      "timestamp": "2025-09-24T05:06:13.439Z",
+      "raw_embeds": [
+        {
+          "title": "COOPERATIVA - SACOU",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Ação:`",
+              "value": "```prolog\nSACOU\n```",
+              "inline": true
+            },
+            {
+              "name": "`Quantia:`",
+              "value": "```prolog\n1000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nSmith Ramirez | FIXO: 340\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n24/09/2025 - 02:06:13\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 02:06:13",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420274982323228703",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 972\nRecompensa:: 1000\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 02:05:43",
+      "timestamp": "2025-09-24T05:05:43.219Z",
+      "raw_embeds": [
+        {
+          "title": "ENTREGA COMPLETA - 3 ROTAS",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Missão:`",
+              "value": "```prolog\n2\n```",
+              "inline": true
+            },
+            {
+              "name": "`Entregas Completadas:`",
+              "value": "```prolog\n972\n```",
+              "inline": true
+            },
+            {
+              "name": "`Recompensa:`",
+              "value": "```prolog\n1000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nSmith Ramirez | FIXO: 340\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n24/09/2025 - 02:05:43\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 972\nRecompensa:: 1000\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 02:05:43",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420271858674171996",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 2000\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 01:53:18",
+      "timestamp": "2025-09-24T04:53:18.483Z",
+      "raw_embeds": [
+        {
+          "title": "COOPERATIVA - SACOU",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Ação:`",
+              "value": "```prolog\nSACOU\n```",
+              "inline": true
+            },
+            {
+              "name": "`Quantia:`",
+              "value": "```prolog\n2000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nSmith Ramirez | FIXO: 340\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n24/09/2025 - 01:53:18\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 2000\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 01:53:18",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420265293908807822",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 969\nRecompensa:: 1000\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 01:27:13",
+      "timestamp": "2025-09-24T04:27:13.321Z",
+      "raw_embeds": [
+        {
+          "title": "ENTREGA COMPLETA - 3 ROTAS",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Missão:`",
+              "value": "```prolog\n2\n```",
+              "inline": true
+            },
+            {
+              "name": "`Entregas Completadas:`",
+              "value": "```prolog\n969\n```",
+              "inline": true
+            },
+            {
+              "name": "`Recompensa:`",
+              "value": "```prolog\n1000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nSmith Ramirez | FIXO: 340\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n24/09/2025 - 01:27:13\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 969\nRecompensa:: 1000\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 01:27:13",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420265056305807470",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 2000\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 01:26:16",
+      "timestamp": "2025-09-24T04:26:16.672Z",
+      "raw_embeds": [
+        {
+          "title": "COOPERATIVA - SACOU",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Ação:`",
+              "value": "```prolog\nSACOU\n```",
+              "inline": true
+            },
+            {
+              "name": "`Quantia:`",
+              "value": "```prolog\n2000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nSmith Ramirez | FIXO: 340\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n24/09/2025 - 01:26:16\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 2000\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 01:26:16",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420253945221353482",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 00:42:07",
+      "timestamp": "2025-09-24T03:42:07.583Z",
+      "raw_embeds": [
+        {
+          "title": "COOPERATIVA - SACOU",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Ação:`",
+              "value": "```prolog\nSACOU\n```",
+              "inline": true
+            },
+            {
+              "name": "`Quantia:`",
+              "value": "```prolog\n1000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nSmith Ramirez | FIXO: 340\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n24/09/2025 - 00:42:07\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 00:42:07",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420250649894846535",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 00:29:01",
+      "timestamp": "2025-09-24T03:29:01.916Z",
+      "raw_embeds": [
+        {
+          "title": "COOPERATIVA - SACOU",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Ação:`",
+              "value": "```prolog\nSACOU\n```",
+              "inline": true
+            },
+            {
+              "name": "`Quantia:`",
+              "value": "```prolog\n1000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nSmith Ramirez | FIXO: 340\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n24/09/2025 - 00:29:01\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 00:29:01",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420250569708146749",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 966\nRecompensa:: 1000\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 00:28:42",
+      "timestamp": "2025-09-24T03:28:42.798Z",
+      "raw_embeds": [
+        {
+          "title": "ENTREGA COMPLETA - 3 ROTAS",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Missão:`",
+              "value": "```prolog\n2\n```",
+              "inline": true
+            },
+            {
+              "name": "`Entregas Completadas:`",
+              "value": "```prolog\n966\n```",
+              "inline": true
+            },
+            {
+              "name": "`Recompensa:`",
+              "value": "```prolog\n1000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nSmith Ramirez | FIXO: 340\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n24/09/2025 - 00:28:42\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 966\nRecompensa:: 1000\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 00:28:42",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420247703052619816",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 2000\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 00:17:19",
+      "timestamp": "2025-09-24T03:17:19.334Z",
+      "raw_embeds": [
+        {
+          "title": "COOPERATIVA - SACOU",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Ação:`",
+              "value": "```prolog\nSACOU\n```",
+              "inline": true
+            },
+            {
+              "name": "`Quantia:`",
+              "value": "```prolog\n2000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nSmith Ramirez | FIXO: 340\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n24/09/2025 - 00:17:19\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 2000\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 00:17:19",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420241569189204041",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 3000\nAutor:: Notorius Bowdin | FIXO: 71896\nData:: 23/09/2025 - 23:52:56",
+      "timestamp": "2025-09-24T02:52:56.907Z",
+      "raw_embeds": [
+        {
+          "title": "COOPERATIVA - SACOU",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Ação:`",
+              "value": "```prolog\nSACOU\n```",
+              "inline": true
+            },
+            {
+              "name": "`Quantia:`",
+              "value": "```prolog\n3000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nNotorius Bowdin | FIXO: 71896\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n23/09/2025 - 23:52:56\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 3000\nAutor:: Notorius Bowdin | FIXO: 71896\nData:: 23/09/2025 - 23:52:56",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420241194814013584",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 963\nRecompensa:: 1000\nAutor:: Kenai Comanches | FIXO: 78096\nData:: 23/09/2025 - 23:51:27",
+      "timestamp": "2025-09-24T02:51:27.649Z",
+      "raw_embeds": [
+        {
+          "title": "ENTREGA COMPLETA - 3 ROTAS",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Missão:`",
+              "value": "```prolog\n2\n```",
+              "inline": true
+            },
+            {
+              "name": "`Entregas Completadas:`",
+              "value": "```prolog\n963\n```",
+              "inline": true
+            },
+            {
+              "name": "`Recompensa:`",
+              "value": "```prolog\n1000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nKenai Comanches | FIXO: 78096\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n23/09/2025 - 23:51:27\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 963\nRecompensa:: 1000\nAutor:: Kenai Comanches | FIXO: 78096\nData:: 23/09/2025 - 23:51:27",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420239592086306918",
+      "author": "Bercario",
+      "content": "REGISTRO - REGISTRO - berçario fazenda BW1\nCompra na Loja\nItem Comprado:: cow_female x20\nComprador:: Barnabe Torto | FIXO: 76480\nPreço Total:: $400\nData:: 23/09/2025 -  23:45:05",
+      "timestamp": "2025-09-24T02:45:05.529Z",
+      "raw_embeds": [
+        {
+          "title": "Compra na Loja",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item Comprado:`",
+              "value": "```prolog\ncow_female x20\n```",
+              "inline": true
+            },
+            {
+              "name": "`Comprador:`",
+              "value": "```prolog\nBarnabe Torto | FIXO: 76480\n```",
+              "inline": true
+            },
+            {
+              "name": "`Preço Total:`",
+              "value": "```prolog\n$400\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n23/09/2025 -  23:45:05\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - REGISTRO - berçario fazenda BW1\nCompra na Loja\nItem Comprado:: cow_female x20\nComprador:: Barnabe Torto | FIXO: 76480\nPreço Total:: $400\nData:: 23/09/2025 -  23:45:05",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420239576974491668",
+      "author": "Bercario",
+      "content": "REGISTRO - REGISTRO - berçario fazenda BW1\nCompra na Loja\nItem Comprado:: chicken_female x20\nComprador:: Barnabe Torto | FIXO: 76480\nPreço Total:: $400\nData:: 23/09/2025 -  23:45:01",
+      "timestamp": "2025-09-24T02:45:01.926Z",
+      "raw_embeds": [
+        {
+          "title": "Compra na Loja",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item Comprado:`",
+              "value": "```prolog\nchicken_female x20\n```",
+              "inline": true
+            },
+            {
+              "name": "`Comprador:`",
+              "value": "```prolog\nBarnabe Torto | FIXO: 76480\n```",
+              "inline": true
+            },
+            {
+              "name": "`Preço Total:`",
+              "value": "```prolog\n$400\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n23/09/2025 -  23:45:01\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - REGISTRO - berçario fazenda BW1\nCompra na Loja\nItem Comprado:: chicken_female x20\nComprador:: Barnabe Torto | FIXO: 76480\nPreço Total:: $400\nData:: 23/09/2025 -  23:45:01",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420233789652865074",
+      "author": "Bercario",
+      "content": "REGISTRO - REGISTRO - berçario fazenda BW1\nMover Item para Loja\nItem adicionado:: chicken_female x20\nAutor:: Zero Bala | FIXO: 74829\nData:: 23/09/2025 - 23:22:01",
+      "timestamp": "2025-09-24T02:22:02.121Z",
+      "raw_embeds": [
+        {
+          "title": "Mover Item para Loja",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item adicionado:`",
+              "value": "```prolog\nchicken_female x20\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n23/09/2025 - 23:22:01\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - REGISTRO - berçario fazenda BW1\nMover Item para Loja\nItem adicionado:: chicken_female x20\nAutor:: Zero Bala | FIXO: 74829\nData:: 23/09/2025 - 23:22:01",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420203191072723026",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 2000\nAutor:: Notorius Bowdin | FIXO: 71896\nData:: 23/09/2025 - 21:20:26",
+      "timestamp": "2025-09-24T00:20:26.851Z",
+      "raw_embeds": [
+        {
+          "title": "COOPERATIVA - SACOU",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Ação:`",
+              "value": "```prolog\nSACOU\n```",
+              "inline": true
+            },
+            {
+              "name": "`Quantia:`",
+              "value": "```prolog\n2000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nNotorius Bowdin | FIXO: 71896\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n23/09/2025 - 21:20:26\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 2000\nAutor:: Notorius Bowdin | FIXO: 71896\nData:: 23/09/2025 - 21:20:26",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420203090283597905",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 960\nRecompensa:: 1000\nAutor:: Notorius Bowdin | FIXO: 71896\nData:: 23/09/2025 - 21:20:02",
+      "timestamp": "2025-09-24T00:20:02.821Z",
+      "raw_embeds": [
+        {
+          "title": "ENTREGA COMPLETA - 3 ROTAS",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Missão:`",
+              "value": "```prolog\n2\n```",
+              "inline": true
+            },
+            {
+              "name": "`Entregas Completadas:`",
+              "value": "```prolog\n960\n```",
+              "inline": true
+            },
+            {
+              "name": "`Recompensa:`",
+              "value": "```prolog\n1000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nNotorius Bowdin | FIXO: 71896\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n23/09/2025 - 21:20:02\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 960\nRecompensa:: 1000\nAutor:: Notorius Bowdin | FIXO: 71896\nData:: 23/09/2025 - 21:20:02",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420202078223204435",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 - 21:16:01",
+      "timestamp": "2025-09-24T00:16:01.527Z",
+      "raw_embeds": [
+        {
+          "title": "COOPERATIVA - SACOU",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Ação:`",
+              "value": "```prolog\nSACOU\n```",
+              "inline": true
+            },
+            {
+              "name": "`Quantia:`",
+              "value": "```prolog\n1000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nBartholomeu Dias | FIXO: 76312\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n23/09/2025 - 21:16:01\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 - 21:16:01",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420190777388306452",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 957\nRecompensa:: 1000\nAutor:: John Weslley | FIXO: 550\nData:: 23/09/2025 - 20:31:07",
+      "timestamp": "2025-09-23T23:31:07.198Z",
+      "raw_embeds": [
+        {
+          "title": "ENTREGA COMPLETA - 3 ROTAS",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Missão:`",
+              "value": "```prolog\n2\n```",
+              "inline": true
+            },
+            {
+              "name": "`Entregas Completadas:`",
+              "value": "```prolog\n957\n```",
+              "inline": true
+            },
+            {
+              "name": "`Recompensa:`",
+              "value": "```prolog\n1000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nJohn Weslley | FIXO: 550\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n23/09/2025 - 20:31:07\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 957\nRecompensa:: 1000\nAutor:: John Weslley | FIXO: 550\nData:: 23/09/2025 - 20:31:07",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420187248527147028",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 2000\nAutor:: Notorius Bowdin | FIXO: 71896\nData:: 23/09/2025 - 20:17:05",
+      "timestamp": "2025-09-23T23:17:05.852Z",
+      "raw_embeds": [
+        {
+          "title": "COOPERATIVA - SACOU",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Ação:`",
+              "value": "```prolog\nSACOU\n```",
+              "inline": true
+            },
+            {
+              "name": "`Quantia:`",
+              "value": "```prolog\n2000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nNotorius Bowdin | FIXO: 71896\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n23/09/2025 - 20:17:05\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 2000\nAutor:: Notorius Bowdin | FIXO: 71896\nData:: 23/09/2025 - 20:17:05",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420187034928156703",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Smith Ramirez | FIXO: 340\nData:: 23/09/2025 - 20:16:14",
+      "timestamp": "2025-09-23T23:16:14.926Z",
+      "raw_embeds": [
+        {
+          "title": "COOPERATIVA - SACOU",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Ação:`",
+              "value": "```prolog\nSACOU\n```",
+              "inline": true
+            },
+            {
+              "name": "`Quantia:`",
+              "value": "```prolog\n1000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nSmith Ramirez | FIXO: 340\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n23/09/2025 - 20:16:14\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Smith Ramirez | FIXO: 340\nData:: 23/09/2025 - 20:16:14",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420183471984349245",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 - 20:02:05",
+      "timestamp": "2025-09-23T23:02:05.454Z",
+      "raw_embeds": [
+        {
+          "title": "COOPERATIVA - SACOU",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Ação:`",
+              "value": "```prolog\nSACOU\n```",
+              "inline": true
+            },
+            {
+              "name": "`Quantia:`",
+              "value": "```prolog\n1000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nBartholomeu Dias | FIXO: 76312\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n23/09/2025 - 20:02:05\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 - 20:02:05",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420183410684592219",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 954\nRecompensa:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 - 20:01:50",
+      "timestamp": "2025-09-23T23:01:50.839Z",
+      "raw_embeds": [
+        {
+          "title": "ENTREGA COMPLETA - 3 ROTAS",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Missão:`",
+              "value": "```prolog\n2\n```",
+              "inline": true
+            },
+            {
+              "name": "`Entregas Completadas:`",
+              "value": "```prolog\n954\n```",
+              "inline": true
+            },
+            {
+              "name": "`Recompensa:`",
+              "value": "```prolog\n1000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nBartholomeu Dias | FIXO: 76312\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n23/09/2025 - 20:01:50\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 954\nRecompensa:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 - 20:01:50",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420173102914076742",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Izzynha Evans | FIXO: 2477\nData:: 23/09/2025 - 19:20:53",
+      "timestamp": "2025-09-23T22:20:53.275Z",
+      "raw_embeds": [
+        {
+          "title": "COOPERATIVA - SACOU",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Ação:`",
+              "value": "```prolog\nSACOU\n```",
+              "inline": true
+            },
+            {
+              "name": "`Quantia:`",
+              "value": "```prolog\n1000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nIzzynha Evans | FIXO: 2477\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n23/09/2025 - 19:20:53\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Izzynha Evans | FIXO: 2477\nData:: 23/09/2025 - 19:20:53",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420171772589772801",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Notorius Bowdin | FIXO: 71896\nData:: 23/09/2025 - 19:15:36",
+      "timestamp": "2025-09-23T22:15:36.101Z",
+      "raw_embeds": [
+        {
+          "title": "COOPERATIVA - SACOU",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Ação:`",
+              "value": "```prolog\nSACOU\n```",
+              "inline": true
+            },
+            {
+              "name": "`Quantia:`",
+              "value": "```prolog\n1000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nNotorius Bowdin | FIXO: 71896\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n23/09/2025 - 19:15:36\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Notorius Bowdin | FIXO: 71896\nData:: 23/09/2025 - 19:15:36",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420171714779807845",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 951\nRecompensa:: 1000\nAutor:: Notorius Bowdin | FIXO: 71896\nData:: 23/09/2025 - 19:15:22",
+      "timestamp": "2025-09-23T22:15:22.318Z",
+      "raw_embeds": [
+        {
+          "title": "ENTREGA COMPLETA - 3 ROTAS",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Missão:`",
+              "value": "```prolog\n2\n```",
+              "inline": true
+            },
+            {
+              "name": "`Entregas Completadas:`",
+              "value": "```prolog\n951\n```",
+              "inline": true
+            },
+            {
+              "name": "`Recompensa:`",
+              "value": "```prolog\n1000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nNotorius Bowdin | FIXO: 71896\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n23/09/2025 - 19:15:22\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 951\nRecompensa:: 1000\nAutor:: Notorius Bowdin | FIXO: 71896\nData:: 23/09/2025 - 19:15:22",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420168977132556309",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Izzynha Evans | FIXO: 2477\nData:: 23/09/2025 - 19:04:29",
+      "timestamp": "2025-09-23T22:04:29.612Z",
+      "raw_embeds": [
+        {
+          "title": "COOPERATIVA - SACOU",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Ação:`",
+              "value": "```prolog\nSACOU\n```",
+              "inline": true
+            },
+            {
+              "name": "`Quantia:`",
+              "value": "```prolog\n1000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nIzzynha Evans | FIXO: 2477\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n23/09/2025 - 19:04:29\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Izzynha Evans | FIXO: 2477\nData:: 23/09/2025 - 19:04:29",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420136790928523481",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Izzynha Evans | FIXO: 2477\nData:: 23/09/2025 - 16:56:35",
+      "timestamp": "2025-09-23T19:56:35.823Z",
+      "raw_embeds": [
+        {
+          "title": "COOPERATIVA - SACOU",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Ação:`",
+              "value": "```prolog\nSACOU\n```",
+              "inline": true
+            },
+            {
+              "name": "`Quantia:`",
+              "value": "```prolog\n1000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nIzzynha Evans | FIXO: 2477\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n23/09/2025 - 16:56:35\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Izzynha Evans | FIXO: 2477\nData:: 23/09/2025 - 16:56:35",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420125774463242242",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Thony Gustav | FIXO: 72363\nData:: 23/09/2025 - 16:12:49",
+      "timestamp": "2025-09-23T19:12:49.293Z",
+      "raw_embeds": [
+        {
+          "title": "COOPERATIVA - SACOU",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Ação:`",
+              "value": "```prolog\nSACOU\n```",
+              "inline": true
+            },
+            {
+              "name": "`Quantia:`",
+              "value": "```prolog\n1000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nThony Gustav | FIXO: 72363\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n23/09/2025 - 16:12:49\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Thony Gustav | FIXO: 72363\nData:: 23/09/2025 - 16:12:49",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420123124309033051",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 2000\nAutor:: Izzynha Evans | FIXO: 2477\nData:: 23/09/2025 - 16:02:17",
+      "timestamp": "2025-09-23T19:02:17.447Z",
+      "raw_embeds": [
+        {
+          "title": "COOPERATIVA - SACOU",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Ação:`",
+              "value": "```prolog\nSACOU\n```",
+              "inline": true
+            },
+            {
+              "name": "`Quantia:`",
+              "value": "```prolog\n2000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nIzzynha Evans | FIXO: 2477\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n23/09/2025 - 16:02:17\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 2000\nAutor:: Izzynha Evans | FIXO: 2477\nData:: 23/09/2025 - 16:02:17",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420121894908199063",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Thony Gustav | FIXO: 72363\nData:: 23/09/2025 - 15:57:24",
+      "timestamp": "2025-09-23T18:57:24.335Z",
+      "raw_embeds": [
+        {
+          "title": "COOPERATIVA - SACOU",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Ação:`",
+              "value": "```prolog\nSACOU\n```",
+              "inline": true
+            },
+            {
+              "name": "`Quantia:`",
+              "value": "```prolog\n1000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nThony Gustav | FIXO: 72363\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n23/09/2025 - 15:57:24\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Thony Gustav | FIXO: 72363\nData:: 23/09/2025 - 15:57:24",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420121821038116885",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 945\nRecompensa:: 1000\nAutor:: Thony Gustav | FIXO: 72363\nData:: 23/09/2025 - 15:57:06",
+      "timestamp": "2025-09-23T18:57:06.723Z",
+      "raw_embeds": [
+        {
+          "title": "ENTREGA COMPLETA - 3 ROTAS",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Missão:`",
+              "value": "```prolog\n2\n```",
+              "inline": true
+            },
+            {
+              "name": "`Entregas Completadas:`",
+              "value": "```prolog\n945\n```",
+              "inline": true
+            },
+            {
+              "name": "`Recompensa:`",
+              "value": "```prolog\n1000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nThony Gustav | FIXO: 72363\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n23/09/2025 - 15:57:06\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 945\nRecompensa:: 1000\nAutor:: Thony Gustav | FIXO: 72363\nData:: 23/09/2025 - 15:57:06",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420113720612356186",
+      "author": "Bercario",
+      "content": "REGISTRO - REGISTRO - berçario fazenda BW1\nCompra na Loja\nItem Comprado:: chicken_female x20\nComprador:: Gregoryo Montanha | FIXO: 479\nPreço Total:: $400\nData:: 23/09/2025 -  15:24:55",
+      "timestamp": "2025-09-23T18:24:55.431Z",
+      "raw_embeds": [
+        {
+          "title": "Compra na Loja",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Item Comprado:`",
+              "value": "```prolog\nchicken_female x20\n```",
+              "inline": true
+            },
+            {
+              "name": "`Comprador:`",
+              "value": "```prolog\nGregoryo Montanha | FIXO: 479\n```",
+              "inline": true
+            },
+            {
+              "name": "`Preço Total:`",
+              "value": "```prolog\n$400\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n23/09/2025 -  15:24:55\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - REGISTRO - berçario fazenda BW1\nCompra na Loja\nItem Comprado:: chicken_female x20\nComprador:: Gregoryo Montanha | FIXO: 479\nPreço Total:: $400\nData:: 23/09/2025 -  15:24:55",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420074316967575562",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 - 12:48:20",
+      "timestamp": "2025-09-23T15:48:20.870Z",
+      "raw_embeds": [
+        {
+          "title": "COOPERATIVA - SACOU",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Ação:`",
+              "value": "```prolog\nSACOU\n```",
+              "inline": true
+            },
+            {
+              "name": "`Quantia:`",
+              "value": "```prolog\n1000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nBartholomeu Dias | FIXO: 76312\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n23/09/2025 - 12:48:20\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 - 12:48:20",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420073938288906351",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 942\nRecompensa:: 1000\nAutor:: John Weslley | FIXO: 550\nData:: 23/09/2025 - 12:46:50",
+      "timestamp": "2025-09-23T15:46:50.586Z",
+      "raw_embeds": [
+        {
+          "title": "ENTREGA COMPLETA - 3 ROTAS",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Missão:`",
+              "value": "```prolog\n2\n```",
+              "inline": true
+            },
+            {
+              "name": "`Entregas Completadas:`",
+              "value": "```prolog\n942\n```",
+              "inline": true
+            },
+            {
+              "name": "`Recompensa:`",
+              "value": "```prolog\n1000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nJohn Weslley | FIXO: 550\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n23/09/2025 - 12:46:50\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 942\nRecompensa:: 1000\nAutor:: John Weslley | FIXO: 550\nData:: 23/09/2025 - 12:46:50",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420071140780408842",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 - 12:35:43",
+      "timestamp": "2025-09-23T15:35:43.608Z",
+      "raw_embeds": [
+        {
+          "title": "COOPERATIVA - SACOU",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Ação:`",
+              "value": "```prolog\nSACOU\n```",
+              "inline": true
+            },
+            {
+              "name": "`Quantia:`",
+              "value": "```prolog\n1000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nBartholomeu Dias | FIXO: 76312\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n23/09/2025 - 12:35:43\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 - 12:35:43",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420067069453664346",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 - 12:19:32",
+      "timestamp": "2025-09-23T15:19:32.928Z",
+      "raw_embeds": [
+        {
+          "title": "COOPERATIVA - SACOU",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Ação:`",
+              "value": "```prolog\nSACOU\n```",
+              "inline": true
+            },
+            {
+              "name": "`Quantia:`",
+              "value": "```prolog\n1000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nBartholomeu Dias | FIXO: 76312\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n23/09/2025 - 12:19:32\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 - 12:19:32",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420066999479832644",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 939\nRecompensa:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 - 12:19:16",
+      "timestamp": "2025-09-23T15:19:16.245Z",
+      "raw_embeds": [
+        {
+          "title": "ENTREGA COMPLETA - 3 ROTAS",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Missão:`",
+              "value": "```prolog\n2\n```",
+              "inline": true
+            },
+            {
+              "name": "`Entregas Completadas:`",
+              "value": "```prolog\n939\n```",
+              "inline": true
+            },
+            {
+              "name": "`Recompensa:`",
+              "value": "```prolog\n1000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nBartholomeu Dias | FIXO: 76312\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n23/09/2025 - 12:19:16\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 939\nRecompensa:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 - 12:19:16",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420061838728626297",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 3000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 - 11:58:45",
+      "timestamp": "2025-09-23T14:58:45.826Z",
+      "raw_embeds": [
+        {
+          "title": "COOPERATIVA - SACOU",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Ação:`",
+              "value": "```prolog\nSACOU\n```",
+              "inline": true
+            },
+            {
+              "name": "`Quantia:`",
+              "value": "```prolog\n3000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nBartholomeu Dias | FIXO: 76312\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n23/09/2025 - 11:58:45\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 3000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 - 11:58:45",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420061574478954536",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 - 11:57:42",
+      "timestamp": "2025-09-23T14:57:42.824Z",
+      "raw_embeds": [
+        {
+          "title": "COOPERATIVA - SACOU",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Ação:`",
+              "value": "```prolog\nSACOU\n```",
+              "inline": true
+            },
+            {
+              "name": "`Quantia:`",
+              "value": "```prolog\n1000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nBartholomeu Dias | FIXO: 76312\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n23/09/2025 - 11:57:42\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 - 11:57:42",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420058052522021027",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 - 11:43:42",
+      "timestamp": "2025-09-23T14:43:43.124Z",
+      "raw_embeds": [
+        {
+          "title": "COOPERATIVA - SACOU",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Ação:`",
+              "value": "```prolog\nSACOU\n```",
+              "inline": true
+            },
+            {
+              "name": "`Quantia:`",
+              "value": "```prolog\n1000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nBartholomeu Dias | FIXO: 76312\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n23/09/2025 - 11:43:42\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 - 11:43:42",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420057989594877976",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 936\nRecompensa:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 - 11:43:28",
+      "timestamp": "2025-09-23T14:43:28.121Z",
+      "raw_embeds": [
+        {
+          "title": "ENTREGA COMPLETA - 3 ROTAS",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Missão:`",
+              "value": "```prolog\n2\n```",
+              "inline": true
+            },
+            {
+              "name": "`Entregas Completadas:`",
+              "value": "```prolog\n936\n```",
+              "inline": true
+            },
+            {
+              "name": "`Recompensa:`",
+              "value": "```prolog\n1000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nBartholomeu Dias | FIXO: 76312\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n23/09/2025 - 11:43:28\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 936\nRecompensa:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 - 11:43:28",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420052679467729079",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 - 11:22:21",
+      "timestamp": "2025-09-23T14:22:22.088Z",
+      "raw_embeds": [
+        {
+          "title": "COOPERATIVA - SACOU",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Ação:`",
+              "value": "```prolog\nSACOU\n```",
+              "inline": true
+            },
+            {
+              "name": "`Quantia:`",
+              "value": "```prolog\n1000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nBartholomeu Dias | FIXO: 76312\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n23/09/2025 - 11:22:21\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 - 11:22:21",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420049704078671882",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 933\nRecompensa:: 1000\nAutor:: Kenai Comanches | FIXO: 78096\nData:: 23/09/2025 - 11:10:32",
+      "timestamp": "2025-09-23T14:10:32.700Z",
+      "raw_embeds": [
+        {
+          "title": "ENTREGA COMPLETA - 3 ROTAS",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Missão:`",
+              "value": "```prolog\n2\n```",
+              "inline": true
+            },
+            {
+              "name": "`Entregas Completadas:`",
+              "value": "```prolog\n933\n```",
+              "inline": true
+            },
+            {
+              "name": "`Recompensa:`",
+              "value": "```prolog\n1000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nKenai Comanches | FIXO: 78096\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n23/09/2025 - 11:10:32\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 933\nRecompensa:: 1000\nAutor:: Kenai Comanches | FIXO: 78096\nData:: 23/09/2025 - 11:10:32",
+      "rawEmbeds": []
+    },
     {
       "id": "1419965093499764776",
       "author": "ferrovia",

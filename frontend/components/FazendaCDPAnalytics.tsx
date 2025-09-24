@@ -307,7 +307,7 @@ export default function FazendaCDPAnalytics({ firm }: FazendaCDPAnalyticsProps) 
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
-          🐐 Fazenda Cabra da Peste - Analytics
+          🐐 Fazenda - Analytics
         </h2>
         <div className="flex gap-2">
           <select

@@ -53,7 +53,7 @@ export const ProductionDashboard: React.FC<ProductionDashboardProps> = ({
     const firms = [
       {
         id: 'fazenda-cabra-da-peste',
-        name: 'Fazenda Cabra da Peste',
+        name: 'Fazenda',
         channelId: '1414735729082499072',
         display: { itemTranslations: 'global' }
       },

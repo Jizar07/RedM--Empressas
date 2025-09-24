@@ -1,0 +1,89 @@
+{
+  "sessionId": "session_1758388262233_z5wkeq",
+  "workerId": "1127730801182777355",
+  "workerName": "Thony Gustav",
+  "amount": 300,
+  "paidBy": "141250620593012736",
+  "paidByName": "r3dley",
+  "paidAt": "2025-09-23T22:43:54.265Z",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 50,
+      "transactionId": "tx_1758388262234_8rk7l",
+      "timestamp": "2025-09-20T17:11:02.234Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente Trigo",
+      "quantity": 100,
+      "transactionId": "tx_1758562549488_c2821g",
+      "timestamp": "2025-09-22T17:35:49.488Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 100,
+      "transactionId": "tx_1758562558286_pxdt1",
+      "timestamp": "2025-09-22T17:35:58.286Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 100,
+      "transactionId": "tx_1758569739642_1eu4i5",
+      "timestamp": "2025-09-22T19:35:39.642Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 200,
+      "transactionId": "tx_1758572389924_lbifov",
+      "timestamp": "2025-09-22T20:19:49.926Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 200,
+      "transactionId": "tx_1758572397431_rjykbi",
+      "timestamp": "2025-09-22T20:19:57.431Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 100,
+      "transactionId": "tx_1758572406603_uv8oot",
+      "timestamp": "2025-09-22T20:20:06.603Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 200,
+      "transactionId": "tx_1758572635857_x97pi",
+      "timestamp": "2025-09-22T20:23:55.857Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 150,
+      "transactionId": "tx_1758651679357_ycavi",
+      "timestamp": "2025-09-23T18:21:19.357Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 150,
+      "transactionId": "tx_1758651700342_d7xvek",
+      "timestamp": "2025-09-23T18:21:40.342Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 200,
+      "transactionId": "tx_1758654897254_24m38f",
+      "timestamp": "2025-09-23T19:14:57.254Z"
+    }
+  ],
+  "animalTransactions": []
+}

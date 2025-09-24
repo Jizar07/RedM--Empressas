@@ -1,0 +1,92 @@
+{
+  "workerId": "803001567627837501",
+  "workerName": "Nuka Mato",
+  "channelId": "1420047059175604316",
+  "sessionId": "session_1758636197614_8bkbhb",
+  "startTime": "2025-09-23T14:03:17.614Z",
+  "lastActivity": "2025-09-23T17:35:30.548Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 100,
+      "transactionId": "tx_1758636197615_qelp7",
+      "timestamp": "2025-09-23T14:03:17.615Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 200,
+      "transactionId": "tx_1758647813002_qwur9",
+      "timestamp": "2025-09-23T17:16:53.002Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 200,
+      "transactionId": "tx_1758647817029_gqrofc",
+      "timestamp": "2025-09-23T17:16:57.029Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 100,
+      "transactionId": "tx_1758647821135_jm7cto",
+      "timestamp": "2025-09-23T17:17:01.135Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 200,
+      "transactionId": "tx_1758648922399_qg5bbff",
+      "timestamp": "2025-09-23T17:35:22.399Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 200,
+      "transactionId": "tx_1758648925993_lgq0hk",
+      "timestamp": "2025-09-23T17:35:25.993Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 100,
+      "transactionId": "tx_1758648930548_clc1eq",
+      "timestamp": "2025-09-23T17:35:30.548Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758638108037_3rutv",
+      "timestamp": "2025-09-23T14:35:08.037Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 120,
+      "transactionId": "tx_1758648399903_7n1ydl",
+      "timestamp": "2025-09-23T17:26:39.903Z"
+    }
+  ],
+  "totalCredits": 530,
+  "embedMessageId": "1420101292424171712",
+  "seedExpectations": [
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 100,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 1000,
+      "isComplete": true,
+      "transactionId": "tx_1758636197615_qelp7"
+    }
+  ],
+  "animalExpectations": [],
+  "completedAt": "2025-09-23T18:04:15.304Z",
+  "notes": "Pago por ๖ۣۜζ͜͡ɪᴢᴢʏɴʜᴀ🎀 (949397147030274059)"
+}

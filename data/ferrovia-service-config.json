@@ -61,8 +61,10 @@
   },
   "rolePermissions": {
     "acceptRoles": [
-      "👑│CEO",
-      "❪★❱ Gerentes"
+      "1274479410107646006"
+    ],
+    "verifyRoles": [
+      "1274479410107646006"
     ],
     "editRoles": [
       "👑│CEO",

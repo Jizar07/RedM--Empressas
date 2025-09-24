@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { useServer } from '@/contexts/ServerContext';
-import { Server, Users, Bot, Activity, MessageSquare, Settings, BarChart3, Shield, Package, Truck, Send, FileText, Gavel, ChefHat, DollarSign, Building } from 'lucide-react';
+import { Server, Users, Bot, Activity, MessageSquare, Settings, BarChart3, Shield, Package, Truck, Send, FileText, Gavel, ChefHat, DollarSign, Building, Receipt } from 'lucide-react';
 import ServerStatusCard from '@/components/ServerStatusCard';
 import EnhancedServerStatus from '@/components/EnhancedServerStatus';
 import PlayerManagement from '@/components/PlayerManagement';
@@ -25,13 +25,14 @@ import EstoqueBW from '@/components/EstoqueBW';
 import TrabalhadoresBW from '@/components/TrabalhadoresBW';
 import FirmManagement from '@/components/FirmManagement';
 import PaymentSettings from '@/components/PaymentSettings';
+import WorkerPaymentReceipts from '@/components/WorkerPaymentReceipts';
 import GenericFirmDashboard from '@/components/GenericFirmDashboard';
 import FirmTemplateRenderer, { getAvailableComponents } from '@/components/FirmTemplateRenderer';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import UserMenu from '@/components/UserMenu';
 import SimpleUserMenu from '@/components/SimpleUserMenu';
 import AuthButton from '@/components/AuthButton';
-import ServerSelector from '@/components/ServerSelector';
+import ServerDropdown from '@/components/ServerDropdown';
 import SplashPage from '@/components/SplashPage';
 import RoleGuard from '@/components/RoleGuard';
 import { useAuth } from '@/lib/auth';
@@ -281,13 +282,16 @@ export default function HomePage() {
                 <Server className="h-6 w-6 text-white" />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-gray-900">Stoffel's RedM Empresas</h1>
+                <h1 className="text-xl font-bold text-gray-900">
+                  {selectedServerName || 'RedM Empresas'}
+                </h1>
                 <p className="text-sm text-gray-500">Gerenciador de Empresas</p>
               </div>
             </div>
 
-            {/* Bot Status and User Menu */}
+            {/* Bot Status, Server Selector and User Menu */}
             <div className="flex items-center space-x-4">
+              <ServerDropdown />
               <AuthButton />
               {botStats && (
                 <div className="flex items-center space-x-2 text-sm">
@@ -310,7 +314,7 @@ export default function HomePage() {
             {tabs.map((tab) => {
               const Icon = tab.icon;
               const isActive = activeTab === tab.id || 
-                (tab.id === 'admin' && (activeTab === 'registration-settings' || activeTab === 'registration-analytics' || activeTab === 'orders-settings' || activeTab === 'channel-logs-config' || activeTab === 'discord-commands' || activeTab === 'moderation-settings' || activeTab === 'firm-management' || activeTab === 'payment-settings')) ||
+                (tab.id === 'admin' && (activeTab === 'registration-settings' || activeTab === 'registration-analytics' || activeTab === 'orders-settings' || activeTab === 'channel-logs-config' || activeTab === 'discord-commands' || activeTab === 'moderation-settings' || activeTab === 'firm-management' || activeTab === 'payment-settings' || activeTab === 'payment-receipts')) ||
                 (tab.id === 'servicos' && (activeTab === 'orders-dashboard' || activeTab === 'orders-management' || activeTab === 'recipes' || activeTab === 'price-list')) ||
                 (tab.submenu && tab.submenu.some((subitem: any) => subitem.id === activeTab));
               return (
@@ -332,38 +336,40 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Server Selection */}
-      <div className="bg-gray-50 border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <ServerSelector 
-            onServerSelect={handleServerSelect}
-            selectedServerId={selectedServerId}
-          />
-        </div>
-      </div>
-
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {activeTab === 'dashboard' && (
           <div className="space-y-8">
             {/* Dashboard Overview */}
             <div className="card p-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Stoffel's RedM Empresas Dashboard</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                {selectedServerName ? `${selectedServerName} Dashboard` : 'RedM Empresas Dashboard'}
+              </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="bg-gradient-to-r from-red-500 to-red-600 p-6 rounded-lg text-white">
-                  <h3 className="text-lg font-semibold mb-2">Total Players</h3>
-                  <p className="text-3xl font-bold">121</p>
-                  <p className="text-red-100 text-sm">Currently online</p>
+                  <h3 className="text-lg font-semibold mb-2">Server Players</h3>
+                  <p className="text-3xl font-bold">
+                    {serverInfo?.players || 0}
+                  </p>
+                  <p className="text-red-100 text-sm">
+                    Max: {serverInfo?.maxPlayers || 0}
+                  </p>
                 </div>
                 <div className="bg-gradient-to-r from-green-500 to-green-600 p-6 rounded-lg text-white">
-                  <h3 className="text-lg font-semibold mb-2">Server Status</h3>
-                  <p className="text-3xl font-bold">Online</p>
-                  <p className="text-green-100 text-sm">100% uptime</p>
+                  <h3 className="text-lg font-semibold mb-2">Bot Status</h3>
+                  <p className="text-3xl font-bold">
+                    {botStats?.ready ? 'Online' : 'Offline'}
+                  </p>
+                  <p className="text-green-100 text-sm">
+                    {botStats ? `${botStats.ping}ms ping` : 'Connecting...'}
+                  </p>
                 </div>
                 <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-6 rounded-lg text-white">
-                  <h3 className="text-lg font-semibold mb-2">Registrations</h3>
-                  <p className="text-3xl font-bold">45</p>
-                  <p className="text-blue-100 text-sm">This week</p>
+                  <h3 className="text-lg font-semibold mb-2">Active Firms</h3>
+                  <p className="text-3xl font-bold">
+                    {accessibleFirms.length}
+                  </p>
+                  <p className="text-blue-100 text-sm">Accessible to you</p>
                 </div>
               </div>
             </div>
@@ -454,7 +460,7 @@ export default function HomePage() {
         )}
 
 
-        {(activeTab === 'admin' || activeTab === 'registration-settings' || activeTab === 'registration-analytics' || activeTab === 'orders-settings' || activeTab === 'channel-logs-config' || activeTab === 'discord-commands' || activeTab === 'moderation-settings' || activeTab === 'payment-settings' || activeTab === 'firm-management') && (
+        {(activeTab === 'admin' || activeTab === 'registration-settings' || activeTab === 'registration-analytics' || activeTab === 'orders-settings' || activeTab === 'channel-logs-config' || activeTab === 'discord-commands' || activeTab === 'moderation-settings' || activeTab === 'payment-settings' || activeTab === 'payment-receipts' || activeTab === 'firm-management') && (
           <div className="space-y-8">
             {/* Admin Menu */}
             <div className="card p-6">
@@ -545,6 +551,18 @@ export default function HomePage() {
                   <p className="text-gray-600">Configure default pricing and payment system settings</p>
                 </button>
                 <button
+                  onClick={() => changeTab('payment-receipts')}
+                  className={`p-6 border-2 rounded-lg text-left transition-colors ${
+                    activeTab === 'payment-receipts'
+                      ? 'border-blue-500 bg-blue-50'
+                      : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
+                  }`}
+                >
+                  <Receipt className="h-8 w-8 text-gray-600 mb-3" />
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Worker Payment Receipts</h3>
+                  <p className="text-gray-600">View worker payment receipts created by Pay Worker button</p>
+                </button>
+                <button
                   onClick={() => changeTab('firm-management')}
                   className={`p-6 border-2 rounded-lg text-left transition-colors ${
                     activeTab === 'firm-management'
@@ -567,6 +585,7 @@ export default function HomePage() {
             {activeTab === 'discord-commands' && <DiscordCommands />}
             {activeTab === 'moderation-settings' && <ModerationSettings />}
             {activeTab === 'payment-settings' && <PaymentSettings />}
+            {activeTab === 'payment-receipts' && <WorkerPaymentReceipts />}
             {activeTab === 'firm-management' && <FirmManagement />}
           </div>
         )}
@@ -769,17 +788,21 @@ export default function HomePage() {
 
       {/* Footer */}
       <footer className="bg-white border-t border-gray-200 mt-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between text-sm text-gray-500">
             <div>
-              Empresas Black Golden Dashboard v0.024 - Business Management System
+              Stoffeltech v0.046 - Gerenciador de Empresas no RedM
             </div>
             <div className="flex items-center space-x-4">
               {mounted && healthStatus && (
-                <span>API: {healthStatus.status}</span>
+                <span className={healthStatus.status === 'healthy' ? 'text-green-600' : 'text-red-600'}>
+                  API: {healthStatus.status}
+                </span>
               )}
-              {mounted && (
-                <span>Last updated: {new Date().toLocaleTimeString()}</span>
+              {botStats && (
+                <span className={botStats.ready ? 'text-green-600' : 'text-red-600'}>
+                  Bot: {botStats.ready ? 'Online' : 'Offline'}
+                </span>
               )}
             </div>
           </div>

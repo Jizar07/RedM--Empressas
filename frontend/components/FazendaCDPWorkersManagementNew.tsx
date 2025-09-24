@@ -999,7 +999,11 @@ function WorkerDetailModal({ worker, workerProfile, onClose }: WorkerDetailModal
                         <div className="max-h-32 overflow-y-auto">
                           {detailData.activeSession.plantTransactions.map((transaction: any, index: number) => (
                             <div key={index} className="text-sm text-gray-700 py-1">
-                              {transaction.type === 'seed_taken' ? '🌱' : '🌾'} {transaction.itemName} x{transaction.quantity}
+                              {transaction.type === 'seed_taken' ? '🌱' :
+                                transaction.itemName.toLowerCase().includes('junco') || transaction.itemName.toLowerCase().includes('bulrush') ? '🫘' :
+                                transaction.itemName.toLowerCase().includes('trigo') || transaction.itemName.toLowerCase().includes('wheat') ? '🌾' :
+                                transaction.itemName.toLowerCase().includes('milho') || transaction.itemName.toLowerCase().includes('corn') ? '🌽' :
+                                '🌾'} {transaction.itemName} x{transaction.quantity}
                               <span className="text-gray-500 ml-2">
                                 {new Date(transaction.timestamp).toLocaleTimeString('pt-BR')}
                               </span>

@@ -1,0 +1,48 @@
+{
+  "sessionId": "session_1758645738129_zd6kfs",
+  "workerId": "234380781479395338",
+  "workerName": "Gaioto Silva",
+  "amount": 570,
+  "paidBy": "949397147030274059",
+  "paidByName": "๖ۣۜζ͜͡ɪᴢᴢʏɴʜᴀ🎀",
+  "paidAt": "2025-09-23T18:00:34.014Z",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Junco",
+      "quantity": 100,
+      "transactionId": "tx_1758645738129_g1xpj",
+      "timestamp": "2025-09-23T16:42:18.129Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 500,
+      "transactionId": "tx_1758649243286_5ixcla",
+      "timestamp": "2025-09-23T17:40:43.286Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 500,
+      "transactionId": "tx_1758649333428_vfbmsf",
+      "timestamp": "2025-09-23T17:42:13.428Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758647297633_dfu6o",
+      "timestamp": "2025-09-23T17:08:17.633Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758650213710_nkc5hc",
+      "timestamp": "2025-09-23T17:56:53.710Z"
+    }
+  ]
+}

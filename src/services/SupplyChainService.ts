@@ -21,6 +21,51 @@ export type SupplyChainTransactionType =
 export type WorkerRole = 'manager' | 'worker';
 export type SessionStatus = 'active' | 'completed' | 'overdue';
 
+export interface BoxSourceDetails {
+  farmOrigin?: string;
+  purchasePrice?: number;
+  plantCostRatio?: number; // plants used vs boxes created ratio
+  suspicionLevel?: 'low' | 'medium' | 'high';
+  detectionMethod?: 'ratio_analysis' | 'timeline_gap' | 'pattern_recognition' | 'manual_flag';
+}
+
+export interface DetailedTimelineEvent {
+  timestamp: Date;
+  type: 'plants_withdrawn' | 'boxes_created' | 'boxes_withdrawn' |
+        'mission_completed' | 'revenue_collected' | 'revenue_deposited' | 'boxes_returned';
+  details: string;
+  quantity?: number;
+  amount?: number;
+  suspiciousFlag?: boolean;
+  source?: 'farm_produced' | 'external_purchase' | 'trade' | 'unknown';
+}
+
+export interface DetailedTimeline {
+  sessionId: string;
+  events: DetailedTimelineEvent[];
+  suspiciousGaps: Array<{
+    gapStart: Date;
+    gapEnd: Date;
+    gapHours: number;
+    suspicionReason: string;
+  }>;
+}
+
+export interface UserPerformanceMetrics {
+  userId: string;
+  userName: string;
+  totalSessions: number;
+  avgPlantToBoxRatio: number;
+  externalBoxPercentage: number; // % of likely external boxes
+  farmProfitContribution: number; // actual $ contributed to farm
+  totalExternalBoxes: number;
+  totalFarmLoss: number; // estimated farm revenue loss
+  suspicionLevel: 'low' | 'medium' | 'high';
+  recommendedAction: 'monitor' | 'warn' | 'investigate' | 'terminate';
+  lastActivity: Date;
+  flaggedSessions: string[]; // session IDs with suspicious activity
+}
+
 export interface SupplyChainTransaction {
   transactionId: string;
   type: SupplyChainTransactionType;
@@ -30,6 +75,9 @@ export interface SupplyChainTransaction {
   timestamp: Date;
   discordMessageId?: string;
   originalMessage?: string;
+  // Enhanced source tracking for boxes
+  source?: 'farm_produced' | 'external_purchase' | 'trade' | 'unknown';
+  sourceDetails?: BoxSourceDetails;
 }
 
 export interface ExpectedProduction {
@@ -855,6 +903,15 @@ export class SupplyChainService {
     } catch (error) {
       console.error('❌ Error during reset verification:', error);
     }
+  }
+
+
+  // Get sessions for a specific worker
+  public async getSessionsByWorkerId(workerId: string): Promise<SupplyChainSession[]> {
+    // For now, return only the current active session
+    // In the future, this could be extended to include archived sessions
+    const activeSession = this.activeSessions.get(workerId);
+    return activeSession ? [activeSession] : [];
   }
 
 }

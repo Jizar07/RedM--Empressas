@@ -5,7 +5,22 @@ This file is synchronized with: https://github.com/Jizar07/RedM--Empressas
 
 ## Version History
 
-### [0.047] - 2025-09-23 **[CURRENT VERSION]**
+### [0.048] - 2025-09-24 **[CURRENT VERSION]**
+- **TYPESCRIPT COMPILATION FIX**: Complete resolution of all TypeScript compilation errors preventing server startup
+- **EMBED FORMAT DOCUMENTATION**: Comprehensive documentation of Farm and Ferrovia embed formats with timestamp improvements
+- **BOX TYPE SYSTEM CONFIRMATION**: Verified and documented all 4 configured box types in RecipeService
+- **FRAUD DETECTION ENHANCEMENT**: Advanced BoxOriginAnalyzer with plant-to-box ratio analysis and external box detection
+- **ARCHITECTURE IMPROVEMENTS**: Fixed multiple service singleton patterns and transaction type mismatches
+- **KEY FIXES**:
+  - Fixed duplicate getAllActiveSessions() method in SupplyChainService
+  - Resolved variable scoping issues in MultiChannelForwarder
+  - Updated transaction types from MISSION_COMPLETED to FERROVIA_MISSION_COMPLETED
+  - Fixed property references from startDate to startTime in ferrovia-user-metrics
+- **SYSTEM FEATURES**: DD/MM HH:mm:ss timestamps, smart summarization, transparent payment calculation, NET plant tracking
+- **BOX TYPES**: Caixa de Legumes, Caixa de Verduras, Caixa de Ervas, Caixa de Frutas (25 boxes each)
+- **RESULT**: System fully operational with comprehensive fraud detection and improved embed documentation
+
+### [0.047] - 2025-09-23
 - **WEEKLY RANKINGS SYSTEM FIX**: Complete overhaul of weekly ranking calculations
 - **REAL CURRENT WEEK DATA**: Fixed impossible weekly numbers (144k plants) by implementing proper current week boundary parsing
 - **TIMESTAMP FILTERING**: Activities now correctly filtered from Sunday 00:00 - Saturday 23:59 Brazilian timezone

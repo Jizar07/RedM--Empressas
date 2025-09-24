@@ -515,5 +515,60 @@
     "invitedBy": "Chris Rubble",
     "approved": true,
     "registeredAt": "2025-09-22T23:06:26.128Z"
+  },
+  {
+    "userId": "803001567627837501",
+    "username": "luizcj1227",
+    "ingameName": "Nuka Mato",
+    "mailId": "5776",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "mixel laffon | 5707",
+    "approved": true,
+    "registeredAt": "2025-09-23T14:00:01.153Z"
+  },
+  {
+    "userId": "588934801508270082",
+    "username": "chrisbam",
+    "ingameName": "Chris Rubble",
+    "mailId": "2975",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "Santiago Bowdin | 2512",
+    "approved": true,
+    "registeredAt": "2025-09-23T23:10:56.988Z"
+  },
+  {
+    "userId": "614201248551403590",
+    "username": "ceiffar",
+    "ingameName": "Richard Klein",
+    "mailId": "000",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "Johnny Rocks ( Korea )",
+    "approved": true,
+    "registeredAt": "2025-09-23T23:43:52.018Z"
+  },
+  {
+    "userId": "1302696401272180900",
+    "username": "apunhalei",
+    "ingameName": "Renan Klein",
+    "mailId": "000",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "Johnny Rocks ( Korea )",
+    "approved": true,
+    "registeredAt": "2025-09-23T23:43:52.520Z"
+  },
+  {
+    "userId": "676963159940136960",
+    "username": "mariii57_",
+    "ingameName": "Marietta Alencar",
+    "mailId": "0000",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "Barth",
+    "approved": true,
+    "registeredAt": "2025-09-24T04:17:12.339Z"
   }
 ]

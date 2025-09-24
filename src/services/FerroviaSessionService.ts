@@ -7,6 +7,7 @@ import RecipeService from './RecipeService';
 import { WorkerChannelService } from './WorkerChannelService';
 import DiscordRoleService from './DiscordRoleService';
 import ManagerMoneyVerificationService from './ManagerMoneyVerificationService';
+import { BoxOriginAnalyzer } from './BoxOriginAnalyzer';
 
 interface FerroviaSessionEmbed {
   sessionId: string;
@@ -26,6 +27,7 @@ export class FerroviaSessionService {
   private workerChannelService: WorkerChannelService;
   private discordRoleService: DiscordRoleService;
   private managerMoneyVerificationService: ManagerMoneyVerificationService;
+  private boxOriginAnalyzer: BoxOriginAnalyzer;
   private activeEmbeds: Map<string, FerroviaSessionEmbed> = new Map();
   private dataDir: string;
 
@@ -37,6 +39,7 @@ export class FerroviaSessionService {
     this.workerChannelService = WorkerChannelService.getInstance(client);
     this.discordRoleService = DiscordRoleService.getInstance(client);
     this.managerMoneyVerificationService = ManagerMoneyVerificationService.getInstance();
+    this.boxOriginAnalyzer = BoxOriginAnalyzer.getInstance();
     this.dataDir = path.join(process.cwd(), 'data', 'ferrovia-embeds');
     this.ensureDataDirectory();
     this.loadActiveEmbeds();
@@ -396,6 +399,86 @@ export class FerroviaSessionService {
           value: boxSection,
           inline: false
         });
+      }
+    }
+
+    // Add box origin analysis section
+    const boxOriginAnalysis = this.boxOriginAnalyzer.analyzeSession(session);
+    if (boxOriginAnalysis.totalBoxesWithdrawn > 0) {
+      let originSection = '';
+
+      // Production analysis
+      if (boxOriginAnalysis.totalBoxesCreated > 0) {
+        originSection += `✅ **Produção Própria:** ${boxOriginAnalysis.totalBoxesCreated} caixas (plantas: ${boxOriginAnalysis.totalPlantsUsed})\n`;
+      }
+
+      // External box suspicion
+      if (boxOriginAnalysis.externalBoxesSuspected > 0) {
+        const suspicionEmoji = boxOriginAnalysis.suspicionLevel === 'high' ? '🚨' : '⚠️';
+        originSection += `${suspicionEmoji} **Fonte Externa (Suspeita):** ${boxOriginAnalysis.externalBoxesSuspected} caixas\n`;
+      }
+
+      // Plant-to-box ratio analysis
+      if (boxOriginAnalysis.plantToBoxRatio > 0) {
+        const ratioEmoji = boxOriginAnalysis.plantToBoxRatio < 250 ? '⚠️' : '📊';
+        originSection += `${ratioEmoji} **Ratio P/C:** ${boxOriginAnalysis.plantToBoxRatio.toFixed(1)} (Normal: 250-300)\n`;
+      }
+
+      // Farm revenue impact
+      if (boxOriginAnalysis.farmRevenueImpact > 0) {
+        originSection += `💰 **Impacto na Receita:** -$${boxOriginAnalysis.farmRevenueImpact.toFixed(2)} (farm)\n`;
+      }
+
+      // Detection flags
+      if (boxOriginAnalysis.detectionFlags.length > 0) {
+        originSection += `\n**🔍 Alertas de Detecção:**\n`;
+        boxOriginAnalysis.detectionFlags.forEach(flag => {
+          originSection += `• ${flag}\n`;
+        });
+      }
+
+      if (originSection) {
+        const fieldName = boxOriginAnalysis.suspicionLevel === 'high' ? '🚨 ANÁLISE DE ORIGEM DAS CAIXAS' :
+                         boxOriginAnalysis.suspicionLevel === 'medium' ? '⚠️ ANÁLISE DE ORIGEM DAS CAIXAS' :
+                         '🔍 ANÁLISE DE ORIGEM DAS CAIXAS';
+
+        embed.addFields({
+          name: fieldName,
+          value: originSection.substring(0, 1024), // Discord limit
+          inline: false
+        });
+      }
+
+      // Add detailed timeline section
+      const detailedTimeline = this.boxOriginAnalyzer.createDetailedTimeline(session);
+      if (detailedTimeline.events.length > 0) {
+        let timelineSection = '';
+
+        // Show recent events (last 8 to fit Discord limits)
+        const recentEvents = detailedTimeline.events.slice(-8);
+        recentEvents.forEach(event => {
+          const timeStr = event.timestamp.toLocaleString('pt-BR', {
+            day: '2-digit',
+            month: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+          });
+
+          const suspiciousEmoji = event.suspiciousFlag ? ' ⚠️ ORIGEM SUSPEITA' : '';
+          const sourceEmoji = event.source === 'external_purchase' ? ' 🚨' :
+                            event.source === 'farm_produced' ? ' ✅' : '';
+
+          timelineSection += `${timeStr} - ${event.details}${suspiciousEmoji}${sourceEmoji}\n`;
+        });
+
+        if (timelineSection && timelineSection.length <= 1024) {
+          embed.addFields({
+            name: '⏰ LINHA TEMPORAL DETALHADA',
+            value: timelineSection,
+            inline: false
+          });
+        }
       }
     }
 

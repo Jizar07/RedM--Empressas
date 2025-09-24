@@ -503,16 +503,43 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
       const itemName = transaction.item?.toLowerCase() || transaction.descricao?.toLowerCase() || '';
       
       // Return emoji icons for specific items based on template config
+
+      // Animals
       if (template.features.customFields?.animalManagement) {
         if (itemName.includes('cow') || itemName.includes('vaca')) return <span className="text-xl">🐄</span>;
         if (itemName.includes('pig') || itemName.includes('porco')) return <span className="text-xl">🐷</span>;
         if (itemName.includes('chicken') || itemName.includes('galinha')) return <span className="text-xl">🐔</span>;
         if (itemName.includes('sheep') || itemName.includes('ovelha')) return <span className="text-xl">🐑</span>;
+        if (itemName.includes('donkey') || itemName.includes('burro')) return <span className="text-xl">🐴</span>;
       }
-      
+
+      // Plants & Crops
       if (template.features.customFields?.cropManagement) {
+        if (itemName.includes('junco') || itemName.includes('bulrush')) return <span className="text-xl">🫘</span>;
         if (itemName.includes('trigo') || itemName.includes('wheat')) return <span className="text-xl">🌾</span>;
         if (itemName.includes('milho') || itemName.includes('corn')) return <span className="text-xl">🌽</span>;
+        if (itemName.includes('milk_weed') || itemName.includes('asclepias')) return <span className="text-xl">🌿</span>;
+      }
+
+      // Universal icons (always show regardless of template config)
+
+      // Seeds
+      if (itemName.includes('semente') || itemName.includes('seed')) {
+        return <span className="text-xl">🌱</span>;
+      }
+
+      // Animal Products
+      if (itemName.includes('leite') || itemName.includes('milk')) {
+        return <span className="text-xl">🥛</span>;
+      }
+      if (itemName.includes('ovo') || itemName.includes('egg')) {
+        return <span className="text-xl">🥚</span>;
+      }
+      if (itemName.includes('carne') || itemName.includes('meat')) {
+        return <span className="text-xl">🥩</span>;
+      }
+      if (itemName.includes('queijo') || itemName.includes('cheese')) {
+        return <span className="text-xl">🧀</span>;
       }
 
       return <Package className={color} size={20} />;

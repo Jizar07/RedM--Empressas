@@ -1,0 +1,34 @@
+{
+  "sessionId": "session_1758637441912_asjpwt",
+  "workerId": "845126525602365501",
+  "workerName": "Florencio Laffon",
+  "amount": 285,
+  "paidBy": "198538680686608384",
+  "paidByName": "Barth",
+  "paidAt": "2025-09-23T16:33:27.431Z",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Junco",
+      "quantity": 100,
+      "transactionId": "tx_1758637441912_2sly",
+      "timestamp": "2025-09-23T14:24:01.912Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1758639517851_4tovsm",
+      "timestamp": "2025-09-23T14:58:37.851Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758639293892_ggl2oh",
+      "timestamp": "2025-09-23T14:54:53.892Z"
+    }
+  ]
+}

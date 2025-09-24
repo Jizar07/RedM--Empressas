@@ -1,0 +1,217 @@
+{
+  "workerId": "470361257497722886",
+  "workerName": "Kenai Comanches",
+  "channelId": "1419471810495512636",
+  "sessionId": "session_1758642464571_nfeckk",
+  "startTime": "2025-09-23T15:47:44.571Z",
+  "lastActivity": "2025-09-24T01:34:05.459Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Junco",
+      "quantity": 100,
+      "transactionId": "tx_1758642464572_284xdf",
+      "timestamp": "2025-09-23T15:47:44.572Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 500,
+      "transactionId": "tx_1758646768152_qfmts8",
+      "timestamp": "2025-09-23T16:59:28.152Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 500,
+      "transactionId": "tx_1758647412722_w58595",
+      "timestamp": "2025-09-23T17:10:12.722Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Junco",
+      "quantity": 100,
+      "transactionId": "tx_1758663997541_wxk7xe",
+      "timestamp": "2025-09-23T21:46:37.541Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 500,
+      "transactionId": "tx_1758666617182_e6tta5",
+      "timestamp": "2025-09-23T22:30:17.182Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 500,
+      "transactionId": "tx_1758667033390_s63v4s",
+      "timestamp": "2025-09-23T22:37:13.390Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 500,
+      "transactionId": "tx_1758667444866_sw9zlt",
+      "timestamp": "2025-09-23T22:44:04.867Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 500,
+      "transactionId": "tx_1758667790193_abnjke",
+      "timestamp": "2025-09-23T22:49:50.193Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 100,
+      "transactionId": "tx_1758668698530_39gn8",
+      "timestamp": "2025-09-23T23:04:58.530Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 100,
+      "transactionId": "tx_1758668716219_17zf3n",
+      "timestamp": "2025-09-23T23:05:16.219Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758675905615_euuzaa",
+      "timestamp": "2025-09-24T01:05:05.615Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758676121191_9mdf9h",
+      "timestamp": "2025-09-24T01:08:41.191Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758676291376_uj8u5k",
+      "timestamp": "2025-09-24T01:11:31.376Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758676551326_2ufo37",
+      "timestamp": "2025-09-24T01:15:51.326Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758645365478_2xp3yq",
+      "timestamp": "2025-09-23T16:36:05.478Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758647261562_ov5eb",
+      "timestamp": "2025-09-23T17:07:41.562Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758649967259_8ozzhm",
+      "timestamp": "2025-09-23T17:52:47.259Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758663770845_8kqe6v",
+      "timestamp": "2025-09-23T21:42:50.846Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758665660054_bx0avk",
+      "timestamp": "2025-09-23T22:14:20.054Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758667926430_ewue3",
+      "timestamp": "2025-09-23T22:52:06.430Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758668972913_uy7g2",
+      "timestamp": "2025-09-23T23:09:32.913Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758671225330_rdac6c",
+      "timestamp": "2025-09-23T23:47:05.330Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758677645459_8qe2ud",
+      "timestamp": "2025-09-24T01:34:05.459Z"
+    }
+  ],
+  "totalCredits": 2690,
+  "embedMessageId": "1420221725127479348",
+  "seedExpectations": [
+    {
+      "seedType": "Semente de Junco",
+      "seedQuantity": 100,
+      "expectedPlantType": "Junco",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 1000,
+      "isComplete": true,
+      "transactionId": "tx_1758642464572_284xdf"
+    },
+    {
+      "seedType": "Semente de Junco",
+      "seedQuantity": 100,
+      "expectedPlantType": "Junco",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 1000,
+      "isComplete": true,
+      "transactionId": "tx_1758663997541_wxk7xe"
+    },
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 100,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 1000,
+      "isComplete": true,
+      "transactionId": "tx_1758668698530_39gn8"
+    },
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 100,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 1000,
+      "isComplete": true,
+      "transactionId": "tx_1758668716219_17zf3n"
+    }
+  ],
+  "animalExpectations": [],
+  "completedAt": "2025-09-24T01:53:52.372Z",
+  "notes": "Pago por 𝑻𝒐́𝒙𝒊𝒄𝒂 𓆩♡𓆪 (1204772480305209384)"
+}

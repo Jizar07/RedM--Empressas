@@ -97,7 +97,7 @@ export default function FirmTemplateRenderer({ firm, activeComponent }: FirmTemp
   // render the legacy components
   const isLegacyFazendaBW = !firm.template && firm.id === 'fazenda-bw';
   
-  // Special handling for Fazenda Cabra da Peste
+  // Special handling for Fazenda
   const isFazendaCabraDaPeste = firm.id === 'fazenda-cabra-da-peste';
 
   // Check if component is enabled in template
@@ -120,7 +120,7 @@ export default function FirmTemplateRenderer({ firm, activeComponent }: FirmTemp
     }
   }
 
-  // Special rendering for Fazenda Cabra da Peste
+  // Special rendering for Fazenda
   if (isFazendaCabraDaPeste) {
     switch (activeComponent) {
       case 'dashboard':

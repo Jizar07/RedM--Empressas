@@ -1,8 +1,818 @@
 {
   "channelId": "1406811401036497036",
-  "lastUpdated": "2025-09-23T05:39:52.921Z",
-  "messageCount": 100,
+  "lastUpdated": "2025-09-24T11:01:02.676Z",
+  "messageCount": 181,
   "messages": [
+    {
+      "id": "1420364401805885515",
+      "author": "Atlanta",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nCompra na Loja\nItem Comprado:: common_portion_pig x6\nComprador:: Thiago Bennett | FIXO: 75408\nPreço Total:: $9.0\nData:: 24/09/2025 -  08:01:02",
+      "timestamp": "2025-09-24T11:01:02.485Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nCompra na Loja\nItem Comprado:: common_portion_pig x6\nComprador:: Thiago Bennett | FIXO: 75408\nPreço Total:: $9.0\nData:: 24/09/2025 -  08:01:02",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420363765215658076",
+      "author": "Atlanta",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nCompra na Loja\nItem Comprado:: pig_male x1\nComprador:: Thiago Bennett | FIXO: 75408\nPreço Total:: $20\nData:: 24/09/2025 -  07:58:30",
+      "timestamp": "2025-09-24T10:58:30.710Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nCompra na Loja\nItem Comprado:: pig_male x1\nComprador:: Thiago Bennett | FIXO: 75408\nPreço Total:: $20\nData:: 24/09/2025 -  07:58:30",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420363746999537767",
+      "author": "Atlanta",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nCompra na Loja\nItem Comprado:: pig_female x3\nComprador:: Thiago Bennett | FIXO: 75408\nPreço Total:: $60\nData:: 24/09/2025 -  07:58:26",
+      "timestamp": "2025-09-24T10:58:26.367Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nCompra na Loja\nItem Comprado:: pig_female x3\nComprador:: Thiago Bennett | FIXO: 75408\nPreço Total:: $60\nData:: 24/09/2025 -  07:58:26",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420326576314257428",
+      "author": "Atlanta",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nCompra na Loja\nItem Comprado:: goat_female x6\nComprador:: Thiago Bennett | FIXO: 75408\nPreço Total:: $120\nData:: 24/09/2025 -  05:30:44",
+      "timestamp": "2025-09-24T08:30:44.185Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nCompra na Loja\nItem Comprado:: goat_female x6\nComprador:: Thiago Bennett | FIXO: 75408\nPreço Total:: $120\nData:: 24/09/2025 -  05:30:44",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420326551437705266",
+      "author": "Atlanta",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nCompra na Loja\nItem Comprado:: goat_male x2\nComprador:: Thiago Bennett | FIXO: 75408\nPreço Total:: $40\nData:: 24/09/2025 -  05:30:38",
+      "timestamp": "2025-09-24T08:30:38.254Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nCompra na Loja\nItem Comprado:: goat_male x2\nComprador:: Thiago Bennett | FIXO: 75408\nPreço Total:: $40\nData:: 24/09/2025 -  05:30:38",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420276629376077837",
+      "author": "Smith Ramirez",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: donkey_male x4\nFuncionario:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 -  02:12:15",
+      "timestamp": "2025-09-24T05:12:15.907Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: donkey_male x4\nFuncionario:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 -  02:12:15",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420276615232880701",
+      "author": "Smith Ramirez",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: common_portion_donkey x6\nFuncionario:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 -  02:12:12",
+      "timestamp": "2025-09-24T05:12:12.535Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: common_portion_donkey x6\nFuncionario:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 -  02:12:12",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420276586900361277",
+      "author": "Smith Ramirez",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: common_portion_donkey x4\nFuncionario:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 -  02:12:05",
+      "timestamp": "2025-09-24T05:12:05.780Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: common_portion_donkey x4\nFuncionario:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 -  02:12:05",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420233015514108034",
+      "author": "yuri westside",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: common_portion x8\nFuncionario:: yuri westside | FIXO: 78043\nData:: 23/09/2025 -  23:18:57",
+      "timestamp": "2025-09-24T02:18:57.552Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: common_portion x8\nFuncionario:: yuri westside | FIXO: 78043\nData:: 23/09/2025 -  23:18:57",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420232998497816718",
+      "author": "yuri westside",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: cow_female x4\nFuncionario:: yuri westside | FIXO: 78043\nData:: 23/09/2025 -  23:18:53",
+      "timestamp": "2025-09-24T02:18:53.495Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: cow_female x4\nFuncionario:: yuri westside | FIXO: 78043\nData:: 23/09/2025 -  23:18:53",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420224140899647659",
+      "author": "Nathy Miller",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: goat_male x4\nFuncionario:: Nathy Miller | FIXO: 77097\nData:: 23/09/2025 -  22:43:41",
+      "timestamp": "2025-09-24T01:43:41.679Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: goat_male x4\nFuncionario:: Nathy Miller | FIXO: 77097\nData:: 23/09/2025 -  22:43:41",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420218783586451576",
+      "author": "Bartholomeu Dias",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: pig_female x4\nFuncionario:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 -  22:22:24",
+      "timestamp": "2025-09-24T01:22:24.396Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: pig_female x4\nFuncionario:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 -  22:22:24",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420213391095762944",
+      "author": "Johnny Rocks",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: donkey_female x4\nFuncionario:: Johnny Rocks | FIXO: 77228\nData:: 23/09/2025 -  22:00:58",
+      "timestamp": "2025-09-24T01:00:58.726Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: donkey_female x4\nFuncionario:: Johnny Rocks | FIXO: 77228\nData:: 23/09/2025 -  22:00:58",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420209977821368343",
+      "author": "John Weslley",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: chicken_female x4\nFuncionario:: John Weslley | FIXO: 550\nData:: 23/09/2025 -  21:47:24",
+      "timestamp": "2025-09-24T00:47:24.938Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: chicken_female x4\nFuncionario:: John Weslley | FIXO: 550\nData:: 23/09/2025 -  21:47:24",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420208090304745644",
+      "author": "Johnny Rocks",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: sheep_female x4\nFuncionario:: Johnny Rocks | FIXO: 77228\nData:: 23/09/2025 -  21:39:54",
+      "timestamp": "2025-09-24T00:39:54.919Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: sheep_female x4\nFuncionario:: Johnny Rocks | FIXO: 77228\nData:: 23/09/2025 -  21:39:54",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420208062656155739",
+      "author": "Johnny Rocks",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nMover Item para Loja\nItem adicionado:: pig_female x4\nAutor:: Johnny Rocks | FIXO: 77228\nData:: 23/09/2025 - 21:39:48",
+      "timestamp": "2025-09-24T00:39:48.327Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nMover Item para Loja\nItem adicionado:: pig_female x4\nAutor:: Johnny Rocks | FIXO: 77228\nData:: 23/09/2025 - 21:39:48",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420197909093154828",
+      "author": "Johnny Rocks",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: cow_male x4\nFuncionario:: Johnny Rocks | FIXO: 77228\nData:: 23/09/2025 -  20:59:27",
+      "timestamp": "2025-09-23T23:59:27.529Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: cow_male x4\nFuncionario:: Johnny Rocks | FIXO: 77228\nData:: 23/09/2025 -  20:59:27",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420196291878846584",
+      "author": "Johnny Rocks",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: pig_male x4\nFuncionario:: Johnny Rocks | FIXO: 77228\nData:: 23/09/2025 -  20:53:01",
+      "timestamp": "2025-09-23T23:53:01.955Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: pig_male x4\nFuncionario:: Johnny Rocks | FIXO: 77228\nData:: 23/09/2025 -  20:53:01",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420196282663833601",
+      "author": "Johnny Rocks",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: pig_female x4\nFuncionario:: Johnny Rocks | FIXO: 77228\nData:: 23/09/2025 -  20:52:59",
+      "timestamp": "2025-09-23T23:52:59.758Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: pig_female x4\nFuncionario:: Johnny Rocks | FIXO: 77228\nData:: 23/09/2025 -  20:52:59",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420190507279323196",
+      "author": "Atlanta",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nCompra na Loja\nItem Comprado:: sheep_male x8\nComprador:: Thiago Bennett | FIXO: 75408\nPreço Total:: $160\nData:: 23/09/2025 -  20:30:02",
+      "timestamp": "2025-09-23T23:30:02.799Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nCompra na Loja\nItem Comprado:: sheep_male x8\nComprador:: Thiago Bennett | FIXO: 75408\nPreço Total:: $160\nData:: 23/09/2025 -  20:30:02",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420188316371914863",
+      "author": "Smith Ramirez",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: common_portion_chicken x10\nFuncionario:: Smith Ramirez | FIXO: 340\nData:: 23/09/2025 -  20:21:20",
+      "timestamp": "2025-09-23T23:21:20.446Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: common_portion_chicken x10\nFuncionario:: Smith Ramirez | FIXO: 340\nData:: 23/09/2025 -  20:21:20",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420188300395675658",
+      "author": "Smith Ramirez",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: chicken_male x4\nFuncionario:: Smith Ramirez | FIXO: 340\nData:: 23/09/2025 -  20:21:16",
+      "timestamp": "2025-09-23T23:21:16.637Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: chicken_male x4\nFuncionario:: Smith Ramirez | FIXO: 340\nData:: 23/09/2025 -  20:21:16",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420185747348258847",
+      "author": "Bartholomeu Dias",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: goat_male x4\nFuncionario:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 -  20:11:07",
+      "timestamp": "2025-09-23T23:11:07.943Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: goat_male x4\nFuncionario:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 -  20:11:07",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420179521554088058",
+      "author": "BONNIE BENNETT",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nMover Item para Loja\nItem adicionado:: pig_female x7\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 23/09/2025 - 19:46:23",
+      "timestamp": "2025-09-23T22:46:23.598Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nMover Item para Loja\nItem adicionado:: pig_female x7\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 23/09/2025 - 19:46:23",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420179507582865541",
+      "author": "BONNIE BENNETT",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nMover Item para Loja\nItem adicionado:: sheep_female x5\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 23/09/2025 - 19:46:20",
+      "timestamp": "2025-09-23T22:46:20.267Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nMover Item para Loja\nItem adicionado:: sheep_female x5\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 23/09/2025 - 19:46:20",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420179496211976274",
+      "author": "BONNIE BENNETT",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nMover Item para Loja\nItem adicionado:: sheep_male x8\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 23/09/2025 - 19:46:17",
+      "timestamp": "2025-09-23T22:46:17.556Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nMover Item para Loja\nItem adicionado:: sheep_male x8\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 23/09/2025 - 19:46:17",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420179484556005541",
+      "author": "BONNIE BENNETT",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nMover Item para Loja\nItem adicionado:: cow_female x3\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 23/09/2025 - 19:46:14",
+      "timestamp": "2025-09-23T22:46:14.777Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nMover Item para Loja\nItem adicionado:: cow_female x3\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 23/09/2025 - 19:46:14",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420179438448152696",
+      "author": "BONNIE BENNETT",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nMover Item para Loja\nItem adicionado:: pig_male x6\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 23/09/2025 - 19:46:03",
+      "timestamp": "2025-09-23T22:46:03.784Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nMover Item para Loja\nItem adicionado:: pig_male x6\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 23/09/2025 - 19:46:03",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420179392344100936",
+      "author": "BONNIE BENNETT",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nMover Item para Loja\nItem adicionado:: donkey_male x4\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 23/09/2025 - 19:45:52",
+      "timestamp": "2025-09-23T22:45:52.792Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nMover Item para Loja\nItem adicionado:: donkey_male x4\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 23/09/2025 - 19:45:52",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420179378779717714",
+      "author": "BONNIE BENNETT",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nMover Item para Loja\nItem adicionado:: donkey_female x9\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 23/09/2025 - 19:45:49",
+      "timestamp": "2025-09-23T22:45:49.558Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nMover Item para Loja\nItem adicionado:: donkey_female x9\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 23/09/2025 - 19:45:49",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420179365890621520",
+      "author": "BONNIE BENNETT",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nMover Item para Loja\nItem adicionado:: chicken_male x6\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 23/09/2025 - 19:45:46",
+      "timestamp": "2025-09-23T22:45:46.485Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nMover Item para Loja\nItem adicionado:: chicken_male x6\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 23/09/2025 - 19:45:46",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420179351361683536",
+      "author": "BONNIE BENNETT",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nMover Item para Loja\nItem adicionado:: chicken_female x7\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 23/09/2025 - 19:45:42",
+      "timestamp": "2025-09-23T22:45:43.021Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nMover Item para Loja\nItem adicionado:: chicken_female x7\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 23/09/2025 - 19:45:42",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420179337847505059",
+      "author": "BONNIE BENNETT",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nMover Item para Loja\nItem adicionado:: goat_female x6\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 23/09/2025 - 19:45:39",
+      "timestamp": "2025-09-23T22:45:39.799Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nMover Item para Loja\nItem adicionado:: goat_female x6\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 23/09/2025 - 19:45:39",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420179324300038185",
+      "author": "BONNIE BENNETT",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nMover Item para Loja\nItem adicionado:: cow_male x5\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 23/09/2025 - 19:45:36",
+      "timestamp": "2025-09-23T22:45:36.569Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nMover Item para Loja\nItem adicionado:: cow_male x5\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 23/09/2025 - 19:45:36",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420179308399427634",
+      "author": "BONNIE BENNETT",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nMover Item para Loja\nItem adicionado:: goat_male x7\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 23/09/2025 - 19:45:32",
+      "timestamp": "2025-09-23T22:45:32.778Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nMover Item para Loja\nItem adicionado:: goat_male x7\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 23/09/2025 - 19:45:32",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420176218816249908",
+      "author": "John Weslley",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: cow_female x8\nFuncionario:: John Weslley | FIXO: 550\nData:: 23/09/2025 -  19:33:14",
+      "timestamp": "2025-09-23T22:33:16.164Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: cow_female x8\nFuncionario:: John Weslley | FIXO: 550\nData:: 23/09/2025 -  19:33:14",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420167226924732560",
+      "author": "BONNIE BENNETT",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: LibidgelAsneiro x5\nFuncionario:: BONNIE BENNETT | FIXO: 74490\nData:: 23/09/2025 -  18:57:32",
+      "timestamp": "2025-09-23T21:57:32.330Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: LibidgelAsneiro x5\nFuncionario:: BONNIE BENNETT | FIXO: 74490\nData:: 23/09/2025 -  18:57:32",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420167202308493373",
+      "author": "BONNIE BENNETT",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: LibidgelSuino x5\nFuncionario:: BONNIE BENNETT | FIXO: 74490\nData:: 23/09/2025 -  18:57:26",
+      "timestamp": "2025-09-23T21:57:26.461Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: LibidgelSuino x5\nFuncionario:: BONNIE BENNETT | FIXO: 74490\nData:: 23/09/2025 -  18:57:26",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420167190648455301",
+      "author": "BONNIE BENNETT",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: LibidgelOvino x5\nFuncionario:: BONNIE BENNETT | FIXO: 74490\nData:: 23/09/2025 -  18:57:23",
+      "timestamp": "2025-09-23T21:57:23.681Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: LibidgelOvino x5\nFuncionario:: BONNIE BENNETT | FIXO: 74490\nData:: 23/09/2025 -  18:57:23",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420167179940135068",
+      "author": "BONNIE BENNETT",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: LibidgelCaprino x5\nFuncionario:: BONNIE BENNETT | FIXO: 74490\nData:: 23/09/2025 -  18:57:21",
+      "timestamp": "2025-09-23T21:57:21.128Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: LibidgelCaprino x5\nFuncionario:: BONNIE BENNETT | FIXO: 74490\nData:: 23/09/2025 -  18:57:21",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420167168565448784",
+      "author": "BONNIE BENNETT",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: LibidgelAviario x5\nFuncionario:: BONNIE BENNETT | FIXO: 74490\nData:: 23/09/2025 -  18:57:18",
+      "timestamp": "2025-09-23T21:57:18.416Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: LibidgelAviario x5\nFuncionario:: BONNIE BENNETT | FIXO: 74490\nData:: 23/09/2025 -  18:57:18",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420162931760566352",
+      "author": "John Weslley",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: chicken_male x4\nFuncionario:: John Weslley | FIXO: 550\nData:: 23/09/2025 -  18:40:28",
+      "timestamp": "2025-09-23T21:40:28.283Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: chicken_male x4\nFuncionario:: John Weslley | FIXO: 550\nData:: 23/09/2025 -  18:40:28",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420161427607388292",
+      "author": "Atlanta",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nCompra na Loja\nItem Comprado:: book x1\nComprador:: Bella Star | FIXO: 41876\nPreço Total:: $0.01\nData:: 23/09/2025 -  18:34:29",
+      "timestamp": "2025-09-23T21:34:29.665Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nCompra na Loja\nItem Comprado:: book x1\nComprador:: Bella Star | FIXO: 41876\nPreço Total:: $0.01\nData:: 23/09/2025 -  18:34:29",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420147333395382443",
+      "author": "John Weslley",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: goat_male x4\nFuncionario:: John Weslley | FIXO: 550\nData:: 23/09/2025 -  17:38:29",
+      "timestamp": "2025-09-23T20:38:29.343Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: goat_male x4\nFuncionario:: John Weslley | FIXO: 550\nData:: 23/09/2025 -  17:38:29",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420137424394260641",
+      "author": "Chris Rubble",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nMover Item para Loja\nItem adicionado:: common_portion_pig x20\nAutor:: Chris Rubble | FIXO: 72751\nData:: 23/09/2025 - 16:59:06",
+      "timestamp": "2025-09-23T19:59:06.853Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nMover Item para Loja\nItem adicionado:: common_portion_pig x20\nAutor:: Chris Rubble | FIXO: 72751\nData:: 23/09/2025 - 16:59:06",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420137028468736051",
+      "author": "Chris Rubble",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: chicken_female x7\nFuncionario:: Chris Rubble | FIXO: 72751\nData:: 23/09/2025 -  16:57:32",
+      "timestamp": "2025-09-23T19:57:32.457Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: chicken_female x7\nFuncionario:: Chris Rubble | FIXO: 72751\nData:: 23/09/2025 -  16:57:32",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420136950811201637",
+      "author": "Chris Rubble",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: sheep_female x6\nFuncionario:: Chris Rubble | FIXO: 72751\nData:: 23/09/2025 -  16:57:13",
+      "timestamp": "2025-09-23T19:57:13.942Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: sheep_female x6\nFuncionario:: Chris Rubble | FIXO: 72751\nData:: 23/09/2025 -  16:57:13",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420136908574691421",
+      "author": "Chris Rubble",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: sheep_male x6\nFuncionario:: Chris Rubble | FIXO: 72751\nData:: 23/09/2025 -  16:57:03",
+      "timestamp": "2025-09-23T19:57:03.872Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: sheep_male x6\nFuncionario:: Chris Rubble | FIXO: 72751\nData:: 23/09/2025 -  16:57:03",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420136797148680252",
+      "author": "Chris Rubble",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nMover Item para Loja\nItem adicionado:: chicken_female x7\nAutor:: Chris Rubble | FIXO: 72751\nData:: 23/09/2025 - 16:56:37",
+      "timestamp": "2025-09-23T19:56:37.306Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nMover Item para Loja\nItem adicionado:: chicken_female x7\nAutor:: Chris Rubble | FIXO: 72751\nData:: 23/09/2025 - 16:56:37",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420136782686584883",
+      "author": "Chris Rubble",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: chicken_female x7\nFuncionario:: Chris Rubble | FIXO: 72751\nData:: 23/09/2025 -  16:56:33",
+      "timestamp": "2025-09-23T19:56:33.858Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: chicken_female x7\nFuncionario:: Chris Rubble | FIXO: 72751\nData:: 23/09/2025 -  16:56:33",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420136755214155888",
+      "author": "Chris Rubble",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nMover Item para Loja\nItem adicionado:: chicken_female x7\nAutor:: Chris Rubble | FIXO: 72751\nData:: 23/09/2025 - 16:56:27",
+      "timestamp": "2025-09-23T19:56:27.308Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nMover Item para Loja\nItem adicionado:: chicken_female x7\nAutor:: Chris Rubble | FIXO: 72751\nData:: 23/09/2025 - 16:56:27",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420136546925023397",
+      "author": "Chris Rubble",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: chicken_female x7\nFuncionario:: Chris Rubble | FIXO: 72751\nData:: 23/09/2025 -  16:55:37",
+      "timestamp": "2025-09-23T19:55:37.648Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: chicken_female x7\nFuncionario:: Chris Rubble | FIXO: 72751\nData:: 23/09/2025 -  16:55:37",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420136495188152454",
+      "author": "Chris Rubble",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: pig_female x4\nFuncionario:: Chris Rubble | FIXO: 72751\nData:: 23/09/2025 -  16:55:25",
+      "timestamp": "2025-09-23T19:55:25.313Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: pig_female x4\nFuncionario:: Chris Rubble | FIXO: 72751\nData:: 23/09/2025 -  16:55:25",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420128266454302800",
+      "author": "Atlanta",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nCompra na Loja\nItem Comprado:: sheep_female x12\nComprador:: Thiago Bennett | FIXO: 75408\nPreço Total:: $240\nData:: 23/09/2025 -  16:22:43",
+      "timestamp": "2025-09-23T19:22:43.430Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nCompra na Loja\nItem Comprado:: sheep_female x12\nComprador:: Thiago Bennett | FIXO: 75408\nPreço Total:: $240\nData:: 23/09/2025 -  16:22:43",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420120256608866518",
+      "author": "John Weslley",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: sheep_male x4\nFuncionario:: John Weslley | FIXO: 550\nData:: 23/09/2025 -  15:50:53",
+      "timestamp": "2025-09-23T18:50:53.734Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: sheep_male x4\nFuncionario:: John Weslley | FIXO: 550\nData:: 23/09/2025 -  15:50:53",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420116914453348484",
+      "author": "Atlanta",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nCompra na Loja\nItem Comprado:: book x1\nComprador:: Smith Garcia | FIXO: 77810\nPreço Total:: $0.01\nData:: 23/09/2025 -  15:37:36",
+      "timestamp": "2025-09-23T18:37:36.902Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nCompra na Loja\nItem Comprado:: book x1\nComprador:: Smith Garcia | FIXO: 77810\nPreço Total:: $0.01\nData:: 23/09/2025 -  15:37:36",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420116858001952788",
+      "author": "Atlanta",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nCompra na Loja\nItem Comprado:: pig_male x1\nComprador:: Smith Garcia | FIXO: 77810\nPreço Total:: $20\nData:: 23/09/2025 -  15:37:23",
+      "timestamp": "2025-09-23T18:37:23.443Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nCompra na Loja\nItem Comprado:: pig_male x1\nComprador:: Smith Garcia | FIXO: 77810\nPreço Total:: $20\nData:: 23/09/2025 -  15:37:23",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420116841979711509",
+      "author": "Atlanta",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nCompra na Loja\nItem Comprado:: pig_male x8\nComprador:: Smith Garcia | FIXO: 77810\nPreço Total:: $160\nData:: 23/09/2025 -  15:37:19",
+      "timestamp": "2025-09-23T18:37:19.623Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nCompra na Loja\nItem Comprado:: pig_male x8\nComprador:: Smith Garcia | FIXO: 77810\nPreço Total:: $160\nData:: 23/09/2025 -  15:37:19",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420116814469267538",
+      "author": "Atlanta",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nCompra na Loja\nItem Comprado:: pig_male x8\nComprador:: Smith Garcia | FIXO: 77810\nPreço Total:: $160\nData:: 23/09/2025 -  15:37:13",
+      "timestamp": "2025-09-23T18:37:13.064Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nCompra na Loja\nItem Comprado:: pig_male x8\nComprador:: Smith Garcia | FIXO: 77810\nPreço Total:: $160\nData:: 23/09/2025 -  15:37:13",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420115730929680504",
+      "author": "Chris Rubble",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nMover Item para Loja\nItem adicionado:: common_portion_donkey x190\nAutor:: Chris Rubble | FIXO: 72751\nData:: 23/09/2025 - 15:32:54",
+      "timestamp": "2025-09-23T18:32:54.728Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nMover Item para Loja\nItem adicionado:: common_portion_donkey x190\nAutor:: Chris Rubble | FIXO: 72751\nData:: 23/09/2025 - 15:32:54",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420115707164889119",
+      "author": "Chris Rubble",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: common_portion_donkey x190\nFuncionario:: Chris Rubble | FIXO: 72751\nData:: 23/09/2025 -  15:32:48",
+      "timestamp": "2025-09-23T18:32:49.062Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: common_portion_donkey x190\nFuncionario:: Chris Rubble | FIXO: 72751\nData:: 23/09/2025 -  15:32:48",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420115698063245352",
+      "author": "Chris Rubble",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nMover Item para Loja\nItem adicionado:: common_portion_chicken x100\nAutor:: Chris Rubble | FIXO: 72751\nData:: 23/09/2025 - 15:32:46",
+      "timestamp": "2025-09-23T18:32:46.892Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nMover Item para Loja\nItem adicionado:: common_portion_chicken x100\nAutor:: Chris Rubble | FIXO: 72751\nData:: 23/09/2025 - 15:32:46",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420115673727762494",
+      "author": "Chris Rubble",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nMover Item para Loja\nItem adicionado:: common_portion_sheep x60\nAutor:: Chris Rubble | FIXO: 72751\nData:: 23/09/2025 - 15:32:40",
+      "timestamp": "2025-09-23T18:32:41.090Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nMover Item para Loja\nItem adicionado:: common_portion_sheep x60\nAutor:: Chris Rubble | FIXO: 72751\nData:: 23/09/2025 - 15:32:40",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420115574524219633",
+      "author": "Chris Rubble",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nMover Item para Loja\nItem adicionado:: common_portion_donkey x90\nAutor:: Chris Rubble | FIXO: 72751\nData:: 23/09/2025 - 15:32:17",
+      "timestamp": "2025-09-23T18:32:17.438Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nMover Item para Loja\nItem adicionado:: common_portion_donkey x90\nAutor:: Chris Rubble | FIXO: 72751\nData:: 23/09/2025 - 15:32:17",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420115144809254914",
+      "author": "Chris Rubble",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: donkey_female x4\nFuncionario:: Chris Rubble | FIXO: 72751\nData:: 23/09/2025 -  15:30:34",
+      "timestamp": "2025-09-23T18:30:34.986Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: donkey_female x4\nFuncionario:: Chris Rubble | FIXO: 72751\nData:: 23/09/2025 -  15:30:34",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420097376982401026",
+      "author": "Izzynha Evans",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: chicken_female x4\nFuncionario:: Izzynha Evans | FIXO: 2477\nData:: 23/09/2025 -  14:19:58",
+      "timestamp": "2025-09-23T17:19:58.806Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: chicken_female x4\nFuncionario:: Izzynha Evans | FIXO: 2477\nData:: 23/09/2025 -  14:19:58",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420097267200819292",
+      "author": "Izzynha Evans",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: cow_female x4\nFuncionario:: Izzynha Evans | FIXO: 2477\nData:: 23/09/2025 -  14:19:32",
+      "timestamp": "2025-09-23T17:19:32.632Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: cow_female x4\nFuncionario:: Izzynha Evans | FIXO: 2477\nData:: 23/09/2025 -  14:19:32",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420097236662096044",
+      "author": "Izzynha Evans",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: pig_male x4\nFuncionario:: Izzynha Evans | FIXO: 2477\nData:: 23/09/2025 -  14:19:25",
+      "timestamp": "2025-09-23T17:19:25.351Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: pig_male x4\nFuncionario:: Izzynha Evans | FIXO: 2477\nData:: 23/09/2025 -  14:19:25",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420096734096396450",
+      "author": "Izzynha Evans",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: sheep_female x4\nFuncionario:: Izzynha Evans | FIXO: 2477\nData:: 23/09/2025 -  14:17:25",
+      "timestamp": "2025-09-23T17:17:25.530Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: sheep_female x4\nFuncionario:: Izzynha Evans | FIXO: 2477\nData:: 23/09/2025 -  14:17:25",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420096705394905202",
+      "author": "Izzynha Evans",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: pig_female x4\nFuncionario:: Izzynha Evans | FIXO: 2477\nData:: 23/09/2025 -  14:17:18",
+      "timestamp": "2025-09-23T17:17:18.687Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: pig_female x4\nFuncionario:: Izzynha Evans | FIXO: 2477\nData:: 23/09/2025 -  14:17:18",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420090770073059570",
+      "author": "Bartholomeu Dias",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: cow_female x4\nFuncionario:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 -  13:53:43",
+      "timestamp": "2025-09-23T16:53:43.596Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: cow_female x4\nFuncionario:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 -  13:53:43",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420087196290908161",
+      "author": "John Weslley",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: sheep_male x4\nFuncionario:: John Weslley | FIXO: 550\nData:: 23/09/2025 -  13:39:31",
+      "timestamp": "2025-09-23T16:39:31.540Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: sheep_male x4\nFuncionario:: John Weslley | FIXO: 550\nData:: 23/09/2025 -  13:39:31",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420083017375809546",
+      "author": "Bartholomeu Dias",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: donkey_male x4\nFuncionario:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 -  13:22:55",
+      "timestamp": "2025-09-23T16:22:55.209Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: donkey_male x4\nFuncionario:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 -  13:22:55",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420082999516729505",
+      "author": "Bartholomeu Dias",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: chicken_female x4\nFuncionario:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 -  13:22:50",
+      "timestamp": "2025-09-23T16:22:50.951Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: chicken_female x4\nFuncionario:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 -  13:22:50",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420082988183453857",
+      "author": "Bartholomeu Dias",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: goat_male x4\nFuncionario:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 -  13:22:48",
+      "timestamp": "2025-09-23T16:22:48.249Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: goat_male x4\nFuncionario:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 -  13:22:48",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420076267637837844",
+      "author": "Bartholomeu Dias",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: pig_female x4\nFuncionario:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 -  12:56:05",
+      "timestamp": "2025-09-23T15:56:05.946Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: pig_female x4\nFuncionario:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 -  12:56:05",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420076252978745515",
+      "author": "Bartholomeu Dias",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: goat_male x4\nFuncionario:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 -  12:56:02",
+      "timestamp": "2025-09-23T15:56:02.451Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: goat_male x4\nFuncionario:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 -  12:56:02",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420058364976828518",
+      "author": "Bartholomeu Dias",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: sheep_male x4\nFuncionario:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 -  11:44:57",
+      "timestamp": "2025-09-23T14:44:57.619Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: sheep_male x4\nFuncionario:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 -  11:44:57",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420051776970690765",
+      "author": "Bartholomeu Dias",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: pig_female x4\nFuncionario:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 -  11:18:46",
+      "timestamp": "2025-09-23T14:18:46.916Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: pig_female x4\nFuncionario:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 -  11:18:46",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420045874704285858",
+      "author": "Bartholomeu Dias",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: chicken_female x4\nFuncionario:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 -  10:55:19",
+      "timestamp": "2025-09-23T13:55:19.706Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: chicken_female x4\nFuncionario:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 -  10:55:19",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1420045863677333575",
+      "author": "Bartholomeu Dias",
+      "content": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: goat_male x4\nFuncionario:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 -  10:55:16",
+      "timestamp": "2025-09-23T13:55:17.077Z",
+      "source": "discord",
+      "channelId": "1406811401036497036",
+      "embedContent": "REGISTRO - REGISTRO - Berçário e Veterinária Bowdin\nRetirar item da Loja\nItem Retirado:: goat_male x4\nFuncionario:: Bartholomeu Dias | FIXO: 76312\nData:: 23/09/2025 -  10:55:16",
+      "rawEmbeds": []
+    },
     {
       "id": "1419921191103369216",
       "author": "Chris Rubble",

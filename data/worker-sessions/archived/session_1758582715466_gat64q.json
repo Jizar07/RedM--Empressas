@@ -1,0 +1,64 @@
+{
+  "workerId": "845126525602365501",
+  "workerName": "Florencio Laffon",
+  "channelId": "1419094090339057735",
+  "sessionId": "session_1758582715466_gat64q",
+  "startTime": "2025-09-22T23:11:55.466Z",
+  "lastActivity": "2025-09-23T14:14:39.053Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente Trigo",
+      "quantity": 100,
+      "transactionId": "tx_1758582715467_0vm07b",
+      "timestamp": "2025-09-22T23:11:55.467Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 460,
+      "transactionId": "tx_1758585978218_z4ayg",
+      "timestamp": "2025-09-23T00:06:18.218Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 50,
+      "transactionId": "tx_1758586344043_mnua3j",
+      "timestamp": "2025-09-23T00:12:24.043Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente Trigo",
+      "quantity": 100,
+      "transactionId": "tx_1758636879053_e3iql",
+      "timestamp": "2025-09-23T14:14:39.053Z"
+    }
+  ],
+  "animalTransactions": [],
+  "totalCredits": 127.5,
+  "embedMessageId": "1420050740902101133",
+  "seedExpectations": [
+    {
+      "seedType": "Semente Trigo",
+      "seedQuantity": 100,
+      "expectedPlantType": "Trigo",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 1000,
+      "isComplete": true,
+      "transactionId": "tx_1758582715467_0vm07b"
+    },
+    {
+      "seedType": "Semente Trigo",
+      "seedQuantity": 100,
+      "expectedPlantType": "Trigo",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 480,
+      "isComplete": false,
+      "transactionId": "tx_1758636879053_e3iql"
+    }
+  ],
+  "completedAt": "2025-09-23T14:21:10.477Z",
+  "notes": "Pago por Barth (198538680686608384)"
+}

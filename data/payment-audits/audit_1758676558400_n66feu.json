@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1758676558400_n66feu",
+  "sessionId": "session_1758654273339_hyq44w",
+  "managerId": "949397147030274059",
+  "managerName": "๖ۣۜζ͜͡ɪᴢᴢʏɴʜᴀ🎀",
+  "workerId": "803001567627837501",
+  "workerName": "Nuka Mato",
+  "amountPaid": 1050,
+  "paidAt": "2025-09-24T01:15:58.400Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-09-24T01:10:58.400Z",
+    "endTime": "2025-09-24T01:25:58.400Z"
+  }
+}

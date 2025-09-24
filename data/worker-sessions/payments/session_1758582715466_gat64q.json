@@ -1,0 +1,40 @@
+{
+  "sessionId": "session_1758582715466_gat64q",
+  "workerId": "845126525602365501",
+  "workerName": "Florencio Laffon",
+  "amount": 127.5,
+  "paidBy": "198538680686608384",
+  "paidByName": "Barth",
+  "paidAt": "2025-09-23T14:21:10.478Z",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente Trigo",
+      "quantity": 100,
+      "transactionId": "tx_1758582715467_0vm07b",
+      "timestamp": "2025-09-22T23:11:55.467Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 460,
+      "transactionId": "tx_1758585978218_z4ayg",
+      "timestamp": "2025-09-23T00:06:18.218Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 50,
+      "transactionId": "tx_1758586344043_mnua3j",
+      "timestamp": "2025-09-23T00:12:24.043Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente Trigo",
+      "quantity": 100,
+      "transactionId": "tx_1758636879053_e3iql",
+      "timestamp": "2025-09-23T14:14:39.053Z"
+    }
+  ],
+  "animalTransactions": []
+}
