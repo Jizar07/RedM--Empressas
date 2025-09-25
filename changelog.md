@@ -5,7 +5,22 @@ This file is synchronized with: https://github.com/Jizar07/RedM--Empressas
 
 ## Version History
 
-### [0.048] - 2025-09-24 **[CURRENT VERSION]**
+### [0.049] - 2025-09-25 **[CURRENT VERSION]**
+- **VETERINARIA MATERIAL FLOW TRACKING**: Complete implementation of cross-channel material tracking system for Veterinaria workers
+- **WORKER NAME CONSOLIDATION**: Fixed worker duplicate issues by merging workers with same username but different user IDs
+- **REGEX PATTERN OPTIMIZATION**: Enhanced Discord message parsing with flexible patterns for "Item adicionado::" and "Item removido::" formats
+- **CROSS-FIRM CORRELATION**: Successfully implemented correlation between inventory data and Discord channel logs across Veterinaria, Bercario, and Fazenda
+- **MODAL INTERFACE ENHANCEMENT**: Eye icon modal system with tabbed interface showing material balance, flow diagrams, recipe tracking, and timeline
+- **RECIPE DETECTION SYSTEM**: Automated detection of Libidgel crafting attempts with ingredient progress tracking
+- **KEY FEATURES**:
+  - Material flow tracking from Veterinaria to Bercario/Fazenda deposits
+  - Recipe completion detection for 4 Libidgel variants (Bovino, Suíno, Aviário, Caprino)
+  - Missing material detection and suspicious activity alerts
+  - Comprehensive worker activity correlation across multiple Discord channels
+  - Enhanced debugging and logging system for troubleshooting
+- **TECHNICAL IMPROVEMENTS**: Fixed circular dependencies, improved worker matching algorithms, optimized channel data fetching
+
+### [0.048] - 2025-09-24
 - **TYPESCRIPT COMPILATION FIX**: Complete resolution of all TypeScript compilation errors preventing server startup
 - **EMBED FORMAT DOCUMENTATION**: Comprehensive documentation of Farm and Ferrovia embed formats with timestamp improvements
 - **BOX TYPE SYSTEM CONFIRMATION**: Verified and documented all 4 configured box types in RecipeService
