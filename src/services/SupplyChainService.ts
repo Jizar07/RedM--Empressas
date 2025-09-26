@@ -220,7 +220,7 @@ export class SupplyChainService {
     const totalRevenue = boxCount * 4; // $4 per box
     
     if (role === 'manager') {
-      // Manager: 50/50 split - $2000 to farm, $2000 to manager per 1000 boxes
+      // Manager: 50/50 split - $500 to farm, $500 to manager per 250 boxes
       return {
         totalRevenue,
         farmShare: totalRevenue * 0.5,
@@ -228,7 +228,7 @@ export class SupplyChainService {
         role
       };
     } else {
-      // Worker: 75/25 split - $3000 to farm, $1000 to worker per 1000 boxes
+      // Worker: 75/25 split - $750 to farm, $250 to worker per 250 boxes
       return {
         totalRevenue,
         farmShare: totalRevenue * 0.75,

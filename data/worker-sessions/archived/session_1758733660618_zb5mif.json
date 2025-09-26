@@ -1,0 +1,48 @@
+{
+  "workerId": "1204772480305209384",
+  "workerName": "BONNIE BENNETT",
+  "channelId": "1416502543990915132",
+  "sessionId": "session_1758733660618_zb5mif",
+  "startTime": "2025-09-24T17:07:40.618Z",
+  "lastActivity": "2025-09-24T18:27:24.793Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 100,
+      "transactionId": "tx_1758733660619_hnpteq",
+      "timestamp": "2025-09-24T17:07:40.619Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758738247166_347r56",
+      "timestamp": "2025-09-24T18:24:07.166Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758738444793_k28j4b",
+      "timestamp": "2025-09-24T18:27:24.793Z"
+    }
+  ],
+  "animalTransactions": [],
+  "totalCredits": 250,
+  "embedMessageId": "1420476735731929252",
+  "seedExpectations": [
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 100,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 1000,
+      "isComplete": true,
+      "transactionId": "tx_1758733660619_hnpteq"
+    }
+  ],
+  "completedAt": "2025-09-24T18:28:39.737Z",
+  "notes": "Pago por puddingbach (614876929266417672)"
+}

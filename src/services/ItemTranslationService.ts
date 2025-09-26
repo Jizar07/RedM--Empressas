@@ -163,6 +163,13 @@ export class ItemTranslationService {
   }
 
   /**
+   * Check if an item is an animal byproduct (milk, leather, wool, etc.)
+   */
+  public isAnimalByproduct(itemName: string): boolean {
+    return this.getCategory(itemName) === 'produtos_animais';
+  }
+
+  /**
    * Normalize item name for consistent lookup
    */
   private normalizeItemName(itemName: string): string {
@@ -202,7 +209,14 @@ export class ItemTranslationService {
     if (name.includes('portion') || name.includes('racao') || name.includes('feed')) {
       return 'racoes';
     }
-    if (name.includes('cow') || name.includes('pig') || name.includes('chicken') || name.includes('sheep') || 
+    // Detect animal byproducts BEFORE checking for live animals
+    if (name.includes('milk') || name.includes('leather') || name.includes('wool') ||
+        name.includes('mane') || name.includes('pork') || name.includes('beef') ||
+        name.includes('ladeo') || name.includes('couro') || name.includes('la_') ||
+        name.startsWith('milk_') || name.startsWith('leather_')) {
+      return 'produtos_animais';
+    }
+    if (name.includes('cow') || name.includes('pig') || name.includes('chicken') || name.includes('sheep') ||
         name.includes('donkey') || name.includes('goat') ||
         name.includes('vaca') || name.includes('porco') || name.includes('galinha') || name.includes('ovelha') ||
         name.includes('burro') || name.includes('cabra') || name.includes('bode')) {

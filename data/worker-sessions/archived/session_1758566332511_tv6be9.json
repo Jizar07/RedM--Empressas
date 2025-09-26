@@ -1,0 +1,73 @@
+{
+  "workerId": "584129725052747798",
+  "workerName": "Cliff Dillimore",
+  "channelId": "1416197670632161451",
+  "sessionId": "session_1758566332511_tv6be9",
+  "startTime": "2025-09-22T18:38:52.511Z",
+  "lastActivity": "2025-09-22T18:49:29.223Z",
+  "status": "stale",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente Trigo",
+      "quantity": 1,
+      "transactionId": "tx_1758566332513_qllbw",
+      "timestamp": "2025-09-22T18:38:52.513Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 7,
+      "transactionId": "tx_1758566389830_qznkrb",
+      "timestamp": "2025-09-22T18:39:49.830Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Junco",
+      "quantity": 2,
+      "transactionId": "tx_1758566919882_htdgsp",
+      "timestamp": "2025-09-22T18:48:39.882Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Junco",
+      "quantity": 8,
+      "transactionId": "tx_1758566969223_waub4",
+      "timestamp": "2025-09-22T18:49:29.223Z"
+    }
+  ],
+  "animalTransactions": [],
+  "totalCredits": 1.75,
+  "embedMessageId": "1419757516186976379",
+  "seedExpectations": [
+    {
+      "seedType": "Semente Trigo",
+      "seedQuantity": 1,
+      "expectedPlantType": "Trigo",
+      "expectedPlantQuantity": 10,
+      "plantsFulfilled": 10,
+      "isComplete": true,
+      "transactionId": "tx_1758566332513_qllbw"
+    },
+    {
+      "seedType": "Semente de Junco",
+      "seedQuantity": 2,
+      "expectedPlantType": "Junco",
+      "expectedPlantQuantity": 20,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1758566919882_htdgsp"
+    },
+    {
+      "seedType": "Semente de Junco",
+      "seedQuantity": 8,
+      "expectedPlantType": "Junco",
+      "expectedPlantQuantity": 80,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1758566969223_waub4"
+    }
+  ],
+  "completedAt": "2025-09-24T19:39:43.368Z",
+  "notes": "Auto-archived due to inactivity"
+}

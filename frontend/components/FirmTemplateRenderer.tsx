@@ -17,6 +17,7 @@ import FazendaCDPAnalytics from './FazendaCDPAnalytics';
 import FerroviaDashboard from './FerroviaDashboard';
 import FerroviaPayments from './FerroviaPayments';
 import FerroviaWorkers from './FerroviaWorkers';
+import VeterinariaWorkers from './VeterinariaWorkers';
 
 interface FirmTemplateRendererProps {
   firm: FirmConfig;
@@ -182,6 +183,10 @@ export default function FirmTemplateRenderer({ firm, activeComponent }: FirmTemp
             <p className="text-gray-500">Trabalhadores não habilitado para este template</p>
           </div>
         );
+      }
+      // Special handling for Veterinaria - use filtered workers view
+      if (firm.id === 'veterinaria') {
+        return <VeterinariaWorkers firm={firm} />;
       }
       return <FazendaWorkers firm={firm} />;
 

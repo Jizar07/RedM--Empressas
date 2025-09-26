@@ -8,9 +8,9 @@
     "junco_seed": "Semente de Junco",
     "test_item": "Test Item",
     "plantacoes_por_semente_plantada": "Plantas ?",
-    "mane_chicken": "Crina de Galo",
+    "mane_chicken": "mane_chicken",
     "pork": "Carne de Porco",
-    "leather_donkey": "Couro de Burro",
+    "leather_donkey": "leather_donkey",
     "eggs": "Ovos",
     "indian_tobbaco_seed": "Semente de Tabaco",
     "prairie_poppy_seed": "Semente de Papoula",
@@ -123,5 +123,5 @@
     "test_global_fazenda": "Teste Global Fazenda",
     "Milk_Weed": "Asclepias"
   },
-  "ultima_atualizacao": "2025-09-12T19:57:24.282Z"
+  "ultima_atualizacao": "2025-09-26T11:31:50.734Z"
 }

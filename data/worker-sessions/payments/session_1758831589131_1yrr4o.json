@@ -1,0 +1,28 @@
+{
+  "sessionId": "session_1758831589131_1yrr4o",
+  "workerId": "470361257497722886",
+  "workerName": "Kenai Comanches",
+  "amount": 160,
+  "paidBy": "588934801508270082",
+  "paidByName": "chrisbam",
+  "paidAt": "2025-09-25T21:53:17.352Z",
+  "plantTransactions": [],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Ovelha Femea",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1758831589132_27vnea",
+      "timestamp": "2025-09-25T20:19:49.132Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758835815533_6fk2df",
+      "timestamp": "2025-09-25T21:30:15.533Z"
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "workerId": "470361257497722886",
+  "workerName": "Kenai Comanches",
+  "channelId": "1419471810495512636",
+  "sessionId": "session_1758810163448_64qor",
+  "startTime": "2025-09-25T14:22:43.448Z",
+  "lastActivity": "2025-09-25T18:15:39.570Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Junco",
+      "quantity": 100,
+      "transactionId": "tx_1758810252292_1objh",
+      "timestamp": "2025-09-25T14:24:12.292Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 500,
+      "transactionId": "tx_1758813941958_9aj4",
+      "timestamp": "2025-09-25T15:25:41.958Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 500,
+      "transactionId": "tx_1758814113526_5kctw",
+      "timestamp": "2025-09-25T15:28:33.526Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 500,
+      "transactionId": "tx_1758814264320_34g8rf",
+      "timestamp": "2025-09-25T15:31:04.320Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 290,
+      "transactionId": "tx_1758815069955_2j993g",
+      "timestamp": "2025-09-25T15:44:29.955Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Sacodemilho22",
+      "quantity": 3,
+      "transactionId": "tx_1758824139570_xj5rp",
+      "timestamp": "2025-09-25T18:15:39.570Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Mula",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1758810163450_xg3bj9",
+      "timestamp": "2025-09-25T14:22:43.450Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Porca",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1758810168755_zxxu38",
+      "timestamp": "2025-09-25T14:22:48.755Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758811969853_5247x",
+      "timestamp": "2025-09-25T14:52:49.853Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758814743759_h97o9f",
+      "timestamp": "2025-09-25T15:39:03.759Z"
+    }
+  ],
+  "totalCredits": 768.25,
+  "embedMessageId": "1420836166885970121",
+  "animalExpectations": [
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1758810163450_xg3bj9",
+      "takenTimestamp": "2025-09-25T14:22:43.450Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1758810168755_zxxu38",
+      "takenTimestamp": "2025-09-25T14:22:48.755Z"
+    }
+  ],
+  "seedExpectations": [
+    {
+      "seedType": "Semente de Junco",
+      "seedQuantity": 100,
+      "expectedPlantType": "Junco",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 1000,
+      "isComplete": true,
+      "transactionId": "tx_1758810252292_1objh"
+    }
+  ],
+  "completedAt": "2025-09-25T20:12:34.613Z",
+  "notes": "Pago por GM Stoffel (372161270176153601)"
+}

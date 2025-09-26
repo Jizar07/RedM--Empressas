@@ -36,6 +36,7 @@ import workerPricesRoutes from './routes/worker-prices';
 import workerRankingsRoutes from './routes/worker-rankings';
 import supplyChainRoutes, { initializeSupplyChainService } from './routes/supply-chain';
 import ferroviaUserMetricsRoutes from './routes/ferrovia-user-metrics';
+import globalWorkerAnalyticsRoutes from './routes/global-worker-analytics';
 import FerroviaSessionService from '../services/FerroviaSessionService';
 import DiscordRoleService from '../services/DiscordRoleService';
 
@@ -171,6 +172,9 @@ export async function startApiServer(bot: BotClient): Promise<void> {
 
   // Ferrovia user metrics and fraud detection routes
   app.use('/api/ferrovia', ferroviaUserMetricsRoutes);
+
+  // Global worker analytics and comprehensive tracking routes
+  app.use('/api/global-worker-analytics', globalWorkerAnalyticsRoutes);
 
   // Worker prices management routes
   app.use('/api', workerPricesRoutes);

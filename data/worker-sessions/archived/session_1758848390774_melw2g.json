@@ -1,0 +1,115 @@
+{
+  "workerId": "1117649799181783130",
+  "workerName": "Ubirajara Cauamb",
+  "channelId": "1419493917547823216",
+  "sessionId": "session_1758848390774_melw2g",
+  "startTime": "2025-09-26T00:59:50.774Z",
+  "lastActivity": "2025-09-26T01:52:48.937Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 50,
+      "transactionId": "tx_1758848700986_meo4ta",
+      "timestamp": "2025-09-26T01:05:00.986Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758850938160_7jcaee",
+      "timestamp": "2025-09-26T01:42:18.160Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Galinha",
+      "quantity": 3,
+      "cost": 60,
+      "amount": 0,
+      "transactionId": "tx_1758848390776_qstlw",
+      "timestamp": "2025-09-26T00:59:50.776Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Porco",
+      "quantity": 8,
+      "cost": 160,
+      "amount": 0,
+      "transactionId": "tx_1758848407246_ia64iq",
+      "timestamp": "2025-09-26T01:00:07.246Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Mula",
+      "quantity": 8,
+      "cost": 160,
+      "amount": 0,
+      "transactionId": "tx_1758848416863_rqy1z",
+      "timestamp": "2025-09-26T01:00:16.863Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Vaca",
+      "quantity": 3,
+      "cost": 60,
+      "amount": 0,
+      "transactionId": "tx_1758848564137_qb30a4",
+      "timestamp": "2025-09-26T01:02:44.137Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758851568937_sot1cl",
+      "timestamp": "2025-09-26T01:52:48.937Z"
+    }
+  ],
+  "totalCredits": 0,
+  "embedMessageId": "1420951213280854027",
+  "animalExpectations": [
+    {
+      "animalsTaken": 3,
+      "animalsDelivered": 3,
+      "isComplete": true,
+      "transactionId": "tx_1758848390776_qstlw",
+      "takenTimestamp": "2025-09-26T00:59:50.776Z"
+    },
+    {
+      "animalsTaken": 8,
+      "animalsDelivered": 1,
+      "isComplete": false,
+      "transactionId": "tx_1758848407246_ia64iq",
+      "takenTimestamp": "2025-09-26T01:00:07.246Z"
+    },
+    {
+      "animalsTaken": 8,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1758848416863_rqy1z",
+      "takenTimestamp": "2025-09-26T01:00:16.863Z"
+    },
+    {
+      "animalsTaken": 3,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1758848564137_qb30a4",
+      "takenTimestamp": "2025-09-26T01:02:44.137Z"
+    }
+  ],
+  "seedExpectations": [
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 50,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 500,
+      "plantsFulfilled": 500,
+      "isComplete": true,
+      "transactionId": "tx_1758848700986_meo4ta"
+    }
+  ],
+  "completedAt": "2025-09-26T02:03:25.994Z",
+  "notes": "Pago por Barth (198538680686608384)"
+}

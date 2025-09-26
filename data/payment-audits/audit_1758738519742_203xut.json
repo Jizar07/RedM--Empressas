@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1758738519742_203xut",
+  "sessionId": "session_1758733660618_zb5mif",
+  "managerId": "614876929266417672",
+  "managerName": "puddingbach",
+  "workerId": "1204772480305209384",
+  "workerName": "BONNIE BENNETT",
+  "amountPaid": 250,
+  "paidAt": "2025-09-24T18:28:39.742Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-09-24T18:23:39.742Z",
+    "endTime": "2025-09-24T18:38:39.742Z"
+  }
+}

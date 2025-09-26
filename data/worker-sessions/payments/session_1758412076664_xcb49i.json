@@ -1,0 +1,62 @@
+{
+  "sessionId": "session_1758412076664_xcb49i",
+  "workerId": "614115703229775904",
+  "workerName": "Sasa Pietra",
+  "amount": 660,
+  "paidBy": "198538680686608384",
+  "paidByName": "Barth",
+  "paidAt": "2025-09-25T23:08:49.034Z",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente Trigo",
+      "quantity": 100,
+      "transactionId": "tx_1758577129155_tpve8",
+      "timestamp": "2025-09-22T21:38:49.155Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1758580356865_2ufrem",
+      "timestamp": "2025-09-22T22:32:36.865Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1758580685320_amyyti",
+      "timestamp": "2025-09-22T22:38:05.320Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente Trigo",
+      "quantity": 100,
+      "transactionId": "tx_1758753369699_8ovdju",
+      "timestamp": "2025-09-24T22:36:09.699Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1758758315321_ps526",
+      "timestamp": "2025-09-24T23:58:35.321Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1758758549513_obbpui",
+      "timestamp": "2025-09-25T00:02:29.513Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758412076665_2mfcc",
+      "timestamp": "2025-09-20T23:47:56.665Z"
+    }
+  ]
+}

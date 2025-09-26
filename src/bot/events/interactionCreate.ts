@@ -17,7 +17,9 @@ import {
 import {
   handleWorkerPayment,
   handleWorkerEdit,
-  handleTransactionManageSubmit
+  handleTransactionManageSubmit,
+  handleTransactionDelete,
+  handleTransactionEditModal
 } from '../../handlers/workerActivityHandlers';
 import {
   handleSupplyChainRefresh,
@@ -88,6 +90,16 @@ export default {
         return;
       }
 
+      // Handle transaction management buttons
+      if (interaction.customId.startsWith('transaction_delete_')) {
+        await handleTransactionDelete(interaction);
+        return;
+      }
+      if (interaction.customId.startsWith('transaction_edit_modal_')) {
+        await handleTransactionEditModal(interaction);
+        return;
+      }
+
       // Handle supply chain buttons
       if (interaction.customId === 'supply_chain_refresh') {
         await handleSupplyChainRefresh(interaction);
@@ -147,7 +159,7 @@ export default {
       
       
       // Handle transaction management modal submissions
-      if (interaction.customId.startsWith('transaction_manage_modal_')) {
+      if (interaction.customId.startsWith('transaction_manage_modal_') || interaction.customId.startsWith('transaction_edit_submit_')) {
         await handleTransactionManageSubmit(interaction);
         return;
       }

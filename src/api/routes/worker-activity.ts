@@ -336,8 +336,17 @@ router.get('/all-workers', authenticateBot, async (_req: Request, res: Response)
     const archivedDir = path.join(process.cwd(), 'data', 'worker-sessions', 'archived');
     const paymentsDir = path.join(process.cwd(), 'data', 'worker-sessions', 'payments');
 
-    // Create worker summary for each registered user
-    const allWorkers = registrations.map((reg: any) => {
+    // Deduplicate registrations by Discord ID (keep most recent)
+    const deduplicatedRegistrations = new Map();
+    registrations.forEach((reg: any) => {
+      if (!deduplicatedRegistrations.has(reg.userId) ||
+          new Date(reg.registeredAt) > new Date(deduplicatedRegistrations.get(reg.userId).registeredAt)) {
+        deduplicatedRegistrations.set(reg.userId, reg);
+      }
+    });
+
+    // Create worker summary for each unique registered user
+    const allWorkers = Array.from(deduplicatedRegistrations.values()).map((reg: any) => {
       const activeSession = activeSessions.find(s => s.workerId === reg.userId);
 
       // Count archived sessions for this worker
@@ -412,11 +421,31 @@ router.get('/worker-details/:workerId', authenticateBot, async (req: Request, re
     // Get registration data
     const registrationsPath = path.join(process.cwd(), 'data', 'registrations.json');
     const registrations = JSON.parse(fs.readFileSync(registrationsPath, 'utf8'));
-    const registration = registrations.find((r: any) => r.userId === workerId);
 
-    // Get active session
+    // Try to find registration by direct Discord ID match first
+    let registration = registrations.find((r: any) => r.userId === workerId);
+    let actualWorkerId = workerId;
+
+    // If not found and workerId looks like a generated name-based ID, try to match by ingameName
+    if (!registration && workerId.includes('_')) {
+      // Convert ID like "smith_ramirez" back to "Smith Ramirez" for matching
+      const nameFromId = workerId.split('_').map(part =>
+        part.charAt(0).toUpperCase() + part.slice(1).toLowerCase()
+      ).join(' ');
+
+      registration = registrations.find((r: any) =>
+        r.ingameName && r.ingameName.toLowerCase() === nameFromId.toLowerCase()
+      );
+
+      if (registration) {
+        actualWorkerId = registration.userId; // Use the Discord ID for subsequent lookups
+        console.log(`🔗 Mapped name-based ID "${workerId}" to Discord ID "${actualWorkerId}" for ${registration.ingameName}`);
+      }
+    }
+
+    // Get active session using the actual worker ID
     const activityService = workerChannelService.getActivityService();
-    const activeSession = activityService.getWorkerSession(workerId);
+    const activeSession = activityService.getWorkerSession(actualWorkerId);
 
     // Get archived sessions
     const archivedSessions: any[] = [];
@@ -426,7 +455,7 @@ router.get('/worker-details/:workerId', authenticateBot, async (req: Request, re
       files.forEach((file: string) => {
         try {
           const content = JSON.parse(fs.readFileSync(path.join(archivedDir, file), 'utf8'));
-          if (content.workerId === workerId) {
+          if (content.workerId === actualWorkerId) {
             archivedSessions.push(content);
           }
         } catch (e) {
@@ -443,7 +472,7 @@ router.get('/worker-details/:workerId', authenticateBot, async (req: Request, re
       files.forEach((file: string) => {
         try {
           const content = JSON.parse(fs.readFileSync(path.join(paymentsDir, file), 'utf8'));
-          if (content.workerId === workerId) {
+          if (content.workerId === actualWorkerId) {
             paymentRecords.push(content);
           }
         } catch (e) {
@@ -457,7 +486,7 @@ router.get('/worker-details/:workerId', authenticateBot, async (req: Request, re
     const ferroviaPath = path.join(process.cwd(), 'data', 'ferrovia-embeds', 'active-embeds.json');
     if (fs.existsSync(ferroviaPath)) {
       const ferroviaData = JSON.parse(fs.readFileSync(ferroviaPath, 'utf8'));
-      ferroviaSession = ferroviaData[workerId] || null;
+      ferroviaSession = ferroviaData[actualWorkerId] || null;
     }
 
     // Calculate statistics
@@ -473,7 +502,8 @@ router.get('/worker-details/:workerId', authenticateBot, async (req: Request, re
 
     return res.json({
       success: true,
-      workerId,
+      workerId: actualWorkerId, // Return the resolved Discord ID
+      originalWorkerId: workerId, // Include original for reference
       registration,
       activeSession,
       statistics: {

@@ -1,0 +1,80 @@
+{
+  "sessionId": "session_1758842318196_beva1m",
+  "workerId": "473199499490230273",
+  "workerName": "Nathy Miller",
+  "amount": 697.5,
+  "paidBy": "1127730801182777355",
+  "paidByName": "thony",
+  "paidAt": "2025-09-26T02:34:29.372Z",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente Trigo",
+      "quantity": 200,
+      "transactionId": "tx_1758847037529_90tfa",
+      "timestamp": "2025-09-26T00:37:17.529Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1758851709141_cbfva4",
+      "timestamp": "2025-09-26T01:55:09.141Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1758852447391_142ule",
+      "timestamp": "2025-09-26T02:07:27.391Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1758852812778_qchpq",
+      "timestamp": "2025-09-26T02:13:32.778Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1758853287604_q1dyjq",
+      "timestamp": "2025-09-26T02:21:27.604Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 150,
+      "transactionId": "tx_1758853778591_qligwe",
+      "timestamp": "2025-09-26T02:29:38.591Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Galo",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1758842318198_pofpdo",
+      "timestamp": "2025-09-25T23:18:38.198Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758844805759_dwoyuq",
+      "timestamp": "2025-09-26T00:00:05.759Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Porco",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1758847761250_xilsjq",
+      "timestamp": "2025-09-26T00:49:21.250Z"
+    }
+  ]
+}

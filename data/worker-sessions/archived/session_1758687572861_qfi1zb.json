@@ -1,0 +1,34 @@
+{
+  "workerId": "676963159940136960",
+  "workerName": "Marietta Alencar",
+  "channelId": "1420262775921311775",
+  "sessionId": "session_1758687572861_qfi1zb",
+  "startTime": "2025-09-24T04:19:32.861Z",
+  "lastActivity": "2025-09-24T04:19:32.862Z",
+  "status": "stale",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 100,
+      "transactionId": "tx_1758687572862_7c2p2v",
+      "timestamp": "2025-09-24T04:19:32.862Z"
+    }
+  ],
+  "animalTransactions": [],
+  "totalCredits": 0,
+  "embedMessageId": "1420263363044315196",
+  "seedExpectations": [
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 100,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1758687572862_7c2p2v"
+    }
+  ],
+  "completedAt": "2025-09-26T11:45:05.757Z",
+  "notes": "Auto-archived due to inactivity"
+}

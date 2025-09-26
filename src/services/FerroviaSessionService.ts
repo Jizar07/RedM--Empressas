@@ -507,9 +507,9 @@ export class FerroviaSessionService {
         const netBoxesUsed = totalWithdrawn - totalReturned;
         const totalRevenue = revenueCollected.reduce((sum, t) => sum + (t.amount || 0), 0);
 
-        // Estimate missions: typically 1 mission = 1000 boxes = $2000 revenue
-        const estimatedFromBoxes = Math.floor(netBoxesUsed / 1000);
-        const estimatedFromRevenue = Math.floor(totalRevenue / 2000);
+        // Estimate missions: typically 1 mission = 250 boxes = $1000 revenue
+        const estimatedFromBoxes = Math.floor(netBoxesUsed / 250);
+        const estimatedFromRevenue = Math.floor(totalRevenue / 1000);
 
         // Use the lower estimate to be conservative, but ensure it's positive
         inferredMissionCount = Math.max(0, Math.min(estimatedFromBoxes, estimatedFromRevenue));
@@ -517,7 +517,7 @@ export class FerroviaSessionService {
         if (inferredMissionCount > 0) {
           console.log(`🔍 INFERENCE: Estimated ${inferredMissionCount} missions from ${netBoxesUsed} net boxes (${totalWithdrawn} withdrawn - ${totalReturned} returned) and $${totalRevenue} revenue`);
         } else if (netBoxesUsed > 0) {
-          console.log(`🔍 INFERENCE: ${netBoxesUsed} net boxes used but insufficient for mission estimation (need 1000+ boxes or $2000+ revenue)`);
+          console.log(`🔍 INFERENCE: ${netBoxesUsed} net boxes used but insufficient for mission estimation (need 250+ boxes or $1000+ revenue)`);
         }
       }
     }

@@ -484,17 +484,38 @@ export function useInventoryManager({
     const priceMatches = Object.values(items).filter(item => item.preco_min && item.preco_max).length;
     const unmatchedItems = Object.values(items).filter(item => !item.preco_min && !item.preco_max).map(item => item.id);
 
+    // Create name-to-discordId mapping for user consolidation
+    const nameToDiscordId = new Map<string, string>();
+    registeredWorkers.forEach(regWorker => {
+      const normalizedName = regWorker.userName.toLowerCase().trim();
+      nameToDiscordId.set(normalizedName, regWorker.userId);
+    });
+
     // Merge registered workers with transaction-based workers
     const allWorkers: WorkerInventoryStats[] = [];
+    const processedDiscordIds = new Set<string>();
 
-    // Add registered workers first
+    // First, process registered workers and merge with their transaction stats
     registeredWorkers.forEach(regWorker => {
-      const existingStats = workerStats[regWorker.userName];
+      const normalizedName = regWorker.userName.toLowerCase().trim();
+
+      // Look for transaction stats by exact name match
+      const exactNameStats = workerStats[regWorker.userName];
+
+      // Look for transaction stats by normalized name variations
+      const nameBasedStats = Object.values(workerStats).find(stats =>
+        stats.userName && stats.userName.toLowerCase().trim() === normalizedName
+      );
+
+      // Choose the best stats match (prefer exact name match)
+      const existingStats = exactNameStats || nameBasedStats;
 
       if (existingStats) {
         // Worker has activity, merge with registration data
         allWorkers.push({
           ...existingStats,
+          userId: regWorker.userId, // Use Discord ID as primary
+          userName: regWorker.userName, // Use registered name as primary (always clean)
           registeredAt: regWorker.registeredAt,
           hasActiveSession: regWorker.hasActiveSession,
           totalPaid: regWorker.totalPaid
@@ -519,12 +540,50 @@ export function useInventoryManager({
           noActivity: true
         } as WorkerInventoryStats);
       }
+
+      processedDiscordIds.add(regWorker.userId);
     });
 
-    // Add any workers from transactions not in registrations (legacy data)
+    // Add any workers from transactions that weren't matched with registered workers (legacy data)
     Object.values(workerStats).forEach(stats => {
-      if (!allWorkers.find(w => w.userName === stats.userName)) {
-        allWorkers.push(stats as WorkerInventoryStats);
+      const normalizedStatsName = stats.userName?.toLowerCase().trim();
+
+      // Check if this transaction-based user was already merged with a registered worker
+      const alreadyMerged = registeredWorkers.some(regWorker => {
+        const normalizedRegName = regWorker.userName.toLowerCase().trim();
+        return normalizedRegName === normalizedStatsName ||
+               regWorker.userName === stats.userName;
+      });
+
+      // If not already merged, add as standalone transaction-based worker
+      if (!alreadyMerged) {
+        // Clean up corrupted userNames that look like Discord IDs or partial IDs
+        let cleanUserName = stats.userName || '';
+
+        // If userName looks like a Discord ID (long number) or corrupted, try to clean it
+        if (/^\d{10,}$/.test(cleanUserName) || cleanUserName.includes('_')) {
+          // For name-based IDs like "smith_ramirez", convert to proper name
+          if (cleanUserName.includes('_')) {
+            cleanUserName = cleanUserName.split('_').map(part =>
+              part.charAt(0).toUpperCase() + part.slice(1).toLowerCase()
+            ).join(' ');
+          } else {
+            // For Discord IDs, try to find a matching registration or use a fallback
+            const matchingReg = registeredWorkers.find(reg => reg.userId === cleanUserName);
+            if (matchingReg) {
+              cleanUserName = matchingReg.userName;
+            } else {
+              cleanUserName = `User ${cleanUserName.slice(-4)}`; // Show last 4 digits
+            }
+          }
+        }
+
+        allWorkers.push({
+          ...stats,
+          userId: stats.userId, // Keep generated ID
+          userName: cleanUserName, // Use cleaned name for display
+          isLegacyUser: true // Flag to indicate this is transaction-only data
+        } as WorkerInventoryStats);
       }
     });
 

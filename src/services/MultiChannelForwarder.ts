@@ -3,6 +3,8 @@ import { FirmConfigService } from './FirmConfigService';
 import WorkerChannelService from './WorkerChannelService';
 import FerroviaSessionService from './FerroviaSessionService';
 import PaymentAuditService from './PaymentAuditService';
+import { GlobalWorkerTracker } from './GlobalWorkerTracker';
+import { RecipeValidator } from './RecipeValidator';
 
 interface WebhookData {
   raw_embeds: Array<{
@@ -42,10 +44,14 @@ export class MultiChannelForwarder {
   private workerChannelService: WorkerChannelService | null = null;
   private ferroviaSessionService: FerroviaSessionService | null = null;
   private paymentAuditService: PaymentAuditService;
+  private globalWorkerTracker: GlobalWorkerTracker;
+  private recipeValidator: RecipeValidator;
 
   private constructor() {
     this.firmConfigService = FirmConfigService.getInstance();
     this.paymentAuditService = PaymentAuditService.getInstance();
+    this.globalWorkerTracker = GlobalWorkerTracker.getInstance();
+    this.recipeValidator = RecipeValidator.getInstance();
     this.monitoringStats = new Map();
     this.initialize();
   }
@@ -250,6 +256,9 @@ export class MultiChannelForwarder {
         content: extractedContent
       };
 
+      // ENHANCED: Comprehensive item activity tracking for ALL firms
+      await this.trackComprehensiveItemActivity(message, realAuthor, extractedContent, firm);
+
       // NEW: Direct worker activity processing (no roundtrip to frontend)
       if (this.workerChannelService && firm.name === 'Fazenda') {
         try {
@@ -360,12 +369,12 @@ export class MultiChannelForwarder {
           
           // 2. Boxes deposited to inventory (made from plants) - ALL box types except caixarustica
           // Supports both : and :: formats, and handles newlines
-          const boxesDepositedPattern = /Item adicionado::?\s*\n?\s*(caixadeverduras|caixadelegumes|caixa_agro|caixa_verduras)\s*x(\d+)/is;
+          const boxesDepositedPattern = /Item adicionado:?\s*:?\s*\n\s*(caixadeverduras|caixadelegumes|caixa_agro|caixa_verduras|caixadefrutas|caixaanimal)\s*x(\d+)/is;
           const boxesDepositedMatch = extractedContent.match(boxesDepositedPattern);
 
           // 3. Boxes taken from inventory (for missions) - ALL box types except caixarustica
           // Supports both : and :: formats, and handles newlines
-          const boxesWithdrawnPattern = /Item removido::?\s*\n?\s*(caixadeverduras|caixadelegumes|caixa_agro|caixa_verduras)\s*x(\d+)/is;
+          const boxesWithdrawnPattern = /Item removido:?\s*:?\s*\n\s*(caixadeverduras|caixadelegumes|caixa_agro|caixa_verduras|caixadefrutas|caixaanimal)\s*x(\d+)/is;
           const boxesWithdrawnMatch = extractedContent.match(boxesWithdrawnPattern);
 
           // Context detection: Simple heuristic - box returns usually don't have plant mentions
@@ -374,7 +383,7 @@ export class MultiChannelForwarder {
           const isLikelyBoxReturn = boxesDepositedMatch && !hasPlantContext;
 
           // 4. Mission completion (using boxes)
-          const missionCompletedPattern = /completou\s+missão\s+ferrovia/i;
+          const missionCompletedPattern = /(?:completou\s+missão\s+ferrovia|ENTREGA COMPLETA)/i;
           const missionMatch = extractedContent.match(missionCompletedPattern);
           
           // 5. Money taken from Ferrovia (from completed missions)
@@ -382,7 +391,7 @@ export class MultiChannelForwarder {
           const ferroviaMoneyMatch = extractedContent.match(ferroviaMoneyPattern);
           
           // 6. Money deposited to farm bank (final step)
-          const bankDepositPattern = /depositou\s+\$?([\d,\.]+)/i;
+          const bankDepositPattern = /Valor depositado::\s*\$?([\d,\.]+)/i;
           const bankDepositMatch = extractedContent.match(bankDepositPattern);
           
           // 7. Plants deposited back to inventory (potential Ferrovia returns)
@@ -679,6 +688,15 @@ export class MultiChannelForwarder {
     try {
       console.log(`💰 MultiChannelForwarder: Checking for manager withdrawal by ${authorName}`);
 
+      // FIXED: Only process withdrawals from the Ferrovia channel (1414735729082499072)
+      // This prevents false positives from other channels like Fazenda
+      const FERROVIA_CHANNEL_ID = '1414735729082499072';
+
+      if (message.channelId !== FERROVIA_CHANNEL_ID) {
+        console.log(`💭 MultiChannelForwarder: Withdrawal detection skipped - not in Ferrovia channel (current: ${message.channelId})`);
+        return;
+      }
+
       // Pattern to match withdrawal messages like "João sacou $350.00" or "JOÃO STOFFELIZ sacou $1,200.50"
       const withdrawalPatterns = [
         // Standard withdrawal format: "Name sacou $amount"
@@ -743,9 +761,9 @@ export class MultiChannelForwarder {
       }
 
       if (withdrawalMatch && detectedAmount > 0) {
-        console.log(`💸 MultiChannelForwarder: Detected withdrawal - ${detectedName} withdrew $${detectedAmount}`);
+        console.log(`🚂 MultiChannelForwarder: Detected FERROVIA withdrawal - ${detectedName} withdrew $${detectedAmount}`);
 
-        // Record the withdrawal in the payment audit system
+        // Record the withdrawal in the payment audit system (now only for Ferrovia)
         await this.paymentAuditService.recordManagerWithdrawal(
           message.author.id,
           detectedName,
@@ -755,9 +773,9 @@ export class MultiChannelForwarder {
           content
         );
 
-        console.log(`✅ MultiChannelForwarder: Recorded withdrawal for payment audit tracking`);
+        console.log(`✅ MultiChannelForwarder: Recorded Ferrovia withdrawal for payment audit tracking`);
       } else {
-        console.log(`💭 MultiChannelForwarder: No withdrawal detected in this message`);
+        console.log(`💭 MultiChannelForwarder: No Ferrovia withdrawal detected in this message`);
       }
 
     } catch (error) {
@@ -785,5 +803,191 @@ export class MultiChannelForwarder {
 
       // Remove any remaining control characters
       .replace(/[\x00-\x1F\x7F]/g, '');
+  }
+
+  /**
+   * Comprehensive item activity tracking across ALL firms
+   * Tracks materials, crafted items, equipment, plants, seeds, animals, tools, food, boxes
+   */
+  private async trackComprehensiveItemActivity(message: Message, authorName: string, content: string, firm: any): Promise<void> {
+    try {
+      console.log(`🎯 MultiChannelForwarder: Comprehensive tracking for ${firm.name} - ${authorName}`);
+
+      // Enhanced pattern matching for ALL item types
+      const itemPatterns = {
+        // Items added to inventory
+        itemAdded: /Item adicionado::?\s*\n?\s*([^\n]+?)\s*x(\d+)/gis,
+        // Items removed from inventory
+        itemRemoved: /Item removido::?\s*\n?\s*([^\n]+?)\s*x(\d+)/gis,
+        // Alternative formats
+        itemAddedAlt: /adicionou\s+([^\s]+)\s*x(\d+)/gis,
+        itemRemovedAlt: /removeu\s+([^\s]+)\s*x(\d+)/gis,
+        // Equipment/tools patterns
+        equipmentAdded: /(martelo|enxada|serra|hammer|hoe|saw|wateringcan|regador)\s+adicionad[oa]\s*x?(\d+)/gis,
+        equipmentRemoved: /(martelo|enxada|serra|hammer|hoe|saw|wateringcan|regador)\s+removid[oa]\s*x?(\d+)/gis,
+        // Material patterns (wood, metal, leather, stone, coal)
+        materialAdded: /(madeira|wood|ferro|metal|couro|leather|pedra|stone|cascalho|carvao|coal)\s+adicionad[oa]\s*x?(\d+)/gis,
+        materialRemoved: /(madeira|wood|ferro|metal|couro|leather|pedra|stone|cascalho|carvao|coal)\s+removid[oa]\s*x?(\d+)/gis,
+        // Crafted items patterns
+        craftedAdded: /(bandage|medicine|potion|weapon|gear|arma|medicina|pocao)\s+adicionad[oa]\s*x?(\d+)/gis,
+        craftedRemoved: /(bandage|medicine|potion|weapon|gear|arma|medicina|pocao)\s+removid[oa]\s*x?(\d+)/gis
+      };
+
+      // Process all pattern matches
+      for (const [patternType, regex] of Object.entries(itemPatterns)) {
+        let match;
+        while ((match = regex.exec(content)) !== null) {
+          const itemName = match[1].trim();
+          const quantity = parseInt(match[2]) || 1;
+
+          // Determine activity type
+          const activityType = patternType.includes('Added') || patternType.includes('adicionad')
+            ? 'item_added' as const
+            : 'item_removed' as const;
+
+          console.log(`🔍 MultiChannelForwarder: Found ${activityType} - ${authorName} ${activityType === 'item_added' ? 'added' : 'removed'} ${quantity}x ${itemName} in ${firm.name}`);
+
+          // Track with GlobalWorkerTracker
+          try {
+            this.globalWorkerTracker.trackItemActivity({
+              workerId: message.author.id,
+              workerName: authorName,
+              firmId: firm.id,
+              firmName: firm.name,
+              activityType,
+              itemName,
+              quantity,
+              timestamp: message.createdAt,
+              originalMessage: content
+            });
+
+            console.log(`✅ MultiChannelForwarder: Successfully tracked ${activityType} with GlobalWorkerTracker`);
+
+            // ENHANCED: Smart recipe validation for item removals
+            if (activityType === 'item_removed') {
+              try {
+                console.log(`🧠 MultiChannelForwarder: Running smart recipe analysis for ${authorName}`);
+
+                // Get recent withdrawals for this worker
+                const recentWithdrawals = this.globalWorkerTracker.getWorkerActivities(message.author.id)
+                  .filter(a =>
+                    a.activityType === 'item_removed' &&
+                    Date.now() - a.timestamp.getTime() < 45 * 60 * 1000 // Last 45 minutes
+                  )
+                  .slice(0, 20); // Limit to recent 20 withdrawals
+
+                if (recentWithdrawals.length > 0) {
+                  // Validate crafting intent
+                  const craftingPrediction = await this.recipeValidator.validateCraftingIntent(
+                    message.author.id,
+                    recentWithdrawals
+                  );
+
+                  console.log(`🎯 MultiChannelForwarder: Crafting prediction for ${authorName}:`, {
+                    confidence: craftingPrediction.predictionConfidence.toFixed(2),
+                    action: craftingPrediction.suggestedAction,
+                    possibleRecipes: craftingPrediction.possibleRecipes.length,
+                    topRecipe: craftingPrediction.possibleRecipes[0]?.recipe.name || 'None'
+                  });
+
+                  // Detect anomalies
+                  const anomalies = this.recipeValidator.detectAnomalies(message.author.id);
+                  if (anomalies.length > 0) {
+                    console.log(`⚠️ MultiChannelForwarder: Detected ${anomalies.length} anomalies for ${authorName}:`,
+                      anomalies.map(a => `${a.anomalyType} (${a.severity})`)
+                    );
+                  }
+
+                  // Analyze worker behavior
+                  const behaviorAnalysis = this.recipeValidator.analyzeWorkerBehavior(message.author.id);
+                  console.log(`📊 MultiChannelForwarder: Behavior analysis for ${authorName}:`, {
+                    craftingSkill: behaviorAnalysis.craftingSkill.toFixed(2),
+                    efficiency: behaviorAnalysis.efficiency.toFixed(2),
+                    specializations: behaviorAnalysis.specializations.join(', '),
+                    riskFactors: behaviorAnalysis.riskFactors.length
+                  });
+                }
+              } catch (validationError) {
+                console.error(`❌ MultiChannelForwarder: Recipe validation error:`, validationError);
+              }
+            }
+          } catch (trackingError) {
+            console.error(`❌ MultiChannelForwarder: GlobalWorkerTracker error:`, trackingError);
+          }
+        }
+      }
+
+      // Special handling for animal activities (sales, breeding, feeding)
+      const animalPatterns = {
+        animalSold: /(.+?)\s+vendeu\s+(\d+)\s+animais\s+no\s+matadouro/gis,
+        animalBred: /criou\s+(\d+)\s+(vaca|pig|chicken|galinha|porco)/gis,
+        animalFed: /alimentou\s+(\d+)\s+(vaca|pig|chicken|galinha|porco)/gis
+      };
+
+      for (const [patternType, regex] of Object.entries(animalPatterns)) {
+        let match;
+        while ((match = regex.exec(content)) !== null) {
+          let workerName = authorName;
+          let quantity = 0;
+          let animalType = 'animal';
+
+          if (patternType === 'animalSold') {
+            workerName = match[1].trim();
+            quantity = parseInt(match[2]);
+          } else {
+            quantity = parseInt(match[1]);
+            animalType = match[2];
+          }
+
+          console.log(`🐄 MultiChannelForwarder: Found animal activity - ${workerName} ${patternType} ${quantity}x ${animalType} in ${firm.name}`);
+
+          // Track animal activity as item_removed (sold/processed)
+          this.globalWorkerTracker.trackItemActivity({
+            workerId: message.author.id,
+            workerName,
+            firmId: firm.id,
+            firmName: firm.name,
+            activityType: 'item_removed',
+            itemName: animalType,
+            quantity,
+            timestamp: message.createdAt,
+            originalMessage: content
+          });
+        }
+      }
+
+      // Track money transactions (deposits, withdrawals, payments)
+      const moneyPatterns = {
+        deposit: /depositou\s+\$?([\d,.]+)/gis,
+        withdrawal: /sacou\s+\$?([\d,.]+)/gis,
+        payment: /pagou\s+\$?([\d,.]+)/gis,
+        received: /recebeu\s+\$?([\d,.]+)/gis
+      };
+
+      for (const [patternType, regex] of Object.entries(moneyPatterns)) {
+        let match;
+        while ((match = regex.exec(content)) !== null) {
+          const amount = parseFloat(match[1].replace(/[,]/g, ''));
+
+          console.log(`💰 MultiChannelForwarder: Found money activity - ${authorName} ${patternType} $${amount} in ${firm.name}`);
+
+          // Track money as special item type
+          this.globalWorkerTracker.trackItemActivity({
+            workerId: message.author.id,
+            workerName: authorName,
+            firmId: firm.id,
+            firmName: firm.name,
+            activityType: patternType === 'deposit' ? 'item_added' : 'item_removed',
+            itemName: 'money',
+            quantity: amount,
+            timestamp: message.createdAt,
+            originalMessage: content
+          });
+        }
+      }
+
+    } catch (error) {
+      console.error('❌ MultiChannelForwarder: Comprehensive tracking error:', error);
+    }
   }
 }

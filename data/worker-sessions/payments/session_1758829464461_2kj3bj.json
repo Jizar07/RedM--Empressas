@@ -1,0 +1,90 @@
+{
+  "sessionId": "session_1758829464461_2kj3bj",
+  "workerId": "803001567627837501",
+  "workerName": "Nuka Mato",
+  "amount": 890,
+  "paidBy": "273987353456934913",
+  "paidByName": "𝓢𝓸𝓾𝔃𝔃 🏄🏾",
+  "paidAt": "2025-09-26T01:59:57.154Z",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente Trigo",
+      "quantity": 100,
+      "transactionId": "tx_1758844638339_b29d",
+      "timestamp": "2025-09-25T23:57:18.339Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 100,
+      "transactionId": "tx_1758849133363_i6ssa",
+      "timestamp": "2025-09-26T01:12:13.363Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 200,
+      "transactionId": "tx_1758849137593_qvoree",
+      "timestamp": "2025-09-26T01:12:17.594Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 200,
+      "transactionId": "tx_1758849142295_pqft2ug",
+      "timestamp": "2025-09-26T01:12:22.295Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 100,
+      "transactionId": "tx_1758849878036_tktijp",
+      "timestamp": "2025-09-26T01:24:38.036Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 200,
+      "transactionId": "tx_1758849881631_1z37c",
+      "timestamp": "2025-09-26T01:24:41.631Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 200,
+      "transactionId": "tx_1758849885367_64irjm",
+      "timestamp": "2025-09-26T01:24:45.367Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758829464462_qat8d",
+      "timestamp": "2025-09-25T19:44:24.462Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758846911695_n4snat",
+      "timestamp": "2025-09-26T00:35:11.695Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758849439722_xkad7",
+      "timestamp": "2025-09-26T01:17:19.722Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758851781249_x99klf",
+      "timestamp": "2025-09-26T01:56:21.249Z"
+    }
+  ]
+}

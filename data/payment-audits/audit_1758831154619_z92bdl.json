@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1758831154619_z92bdl",
+  "sessionId": "session_1758810163448_64qor",
+  "managerId": "372161270176153601",
+  "managerName": "GM Stoffel",
+  "workerId": "470361257497722886",
+  "workerName": "Kenai Comanches",
+  "amountPaid": 768.25,
+  "paidAt": "2025-09-25T20:12:34.619Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-09-25T20:07:34.619Z",
+    "endTime": "2025-09-25T20:22:34.619Z"
+  }
+}

@@ -45,6 +45,11 @@ export interface WorkerInventoryStats {
   lastActivity: string;
   mostActiveDay: string;
   averagePerDay: number;
+  registeredAt?: string;
+  hasActiveSession?: boolean;
+  totalPaid?: number;
+  noActivity?: boolean;
+  isLegacyUser?: boolean;
 }
 
 export interface InventoryAnalytics {

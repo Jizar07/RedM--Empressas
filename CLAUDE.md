@@ -345,6 +345,53 @@ When updating .md files:
 - **Always ask about existing implementations before suggesting new ones**
 - **When in doubt, ask "What do you have already?" or "Show me your current setup"**
 
+## Complete System Architecture
+
+### System Overview
+
+#### Frontend Global Systems:
+- **Global Naming System** - If a name is changed or edited in one place, change in all the system
+- **Global Translation System** - Items that were not changed or edited should be translated from English to Portuguese
+- **Global Normalization System** - Normalize names by replacing "_" | "-" | etc. with spaces and for example: Caixa-agro to Caixa Agro, or caixadeverduras to Caixa de Verduras, etc.
+- **Global Recipes System** - Track items taken from any firm, check against recipes, check if items taken are being used to craft something
+
+#### Backend Core Systems:
+- **Registration System** - `/register-setup` command
+- **Channel Clear** - `/clear` command for each user based on current system
+
+### Firm-Specific Tracking
+
+#### Fazenda:
+- Track Discord channel messages for deposits/withdraws for both items and money
+- Track each user transaction to be saved to their details → link to worker management
+- Track items taken, added to other firms → link to all systems
+
+#### Ferrovia:
+- Track Discord channel messages for money withdraws, missions completed
+- Track boxes taken from inventory → Link to Fazenda inventory | Taken by Managers and Workers
+- Track money deposited in inventory → Link to Fazenda inventory | Deposited by Managers
+- Track each user transaction to be saved to their details → link to worker management
+
+User Role Permissions:
+- **Manager:**
+  - Able to withdraw money
+  - Able to pay Workers
+  - Take 50% of missions completed by themselves
+
+- **Workers:**
+  - Not able to take money
+  - Take 25% of missions completed by themselves
+
+#### Berçário:
+- Track Discord channel messages for deposits/withdraws for both items and money
+- Track each user transaction to be saved to their details → link to worker management
+- Track items taken, added to other firms → link to all systems
+
+#### Veterinária:
+- Track Discord channel messages for deposits/withdraws for both items and money
+- Track each user transaction to be saved to their details → link to worker management
+- Track items taken, added to other firms → link to all systems
+
 ## Notes
 
 - This CLAUDE.md file should be updated as the Discord bot project grows

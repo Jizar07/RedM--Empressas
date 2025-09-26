@@ -4,7 +4,10 @@ import {
   TextInputBuilder,
   TextInputStyle,
   ActionRowBuilder,
-  ModalSubmitInteraction
+  ModalSubmitInteraction,
+  EmbedBuilder,
+  ButtonBuilder,
+  ButtonStyle
 } from 'discord.js';
 import axios from 'axios';
 import config from '../config/config';
@@ -180,103 +183,87 @@ export async function handleWorkerEdit(interaction: ButtonInteraction): Promise<
       });
     }
 
-    // Create transaction list for editing
-    let transactionsList = '';
-    let transactionCount = 0;
+    // Collect all transactions
+    const allTransactions = [
+      ...session.plantTransactions.map((t: any) => ({...t, category: 'plant'})),
+      ...session.animalTransactions.map((t: any) => ({...t, category: 'animal'}))
+    ];
 
-    // Add plant transactions
-    session.plantTransactions.forEach((transaction: any) => {
-      transactionCount++;
-      const emoji = transaction.type === 'seed_taken' ? '🌱' : '🌾';
-      transactionsList += `${transactionCount}. ${emoji} ${transaction.itemName} x${transaction.quantity} (${transaction.transactionId.substring(3, 8)})\n`;
-    });
-
-    // Add animal transactions  
-    session.animalTransactions.forEach((transaction: any) => {
-      transactionCount++;
-      const emoji = transaction.type === 'animal_delivery' ? '🐄' : '🐄';
-      transactionsList += `${transactionCount}. ${emoji} ${transaction.animalType} x${transaction.quantity} - $${transaction.amount} (${transaction.transactionId.substring(3, 8)})\n`;
-    });
-
-    if (transactionCount === 0) {
+    if (allTransactions.length === 0) {
       return await interaction.reply({
         content: '❌ Nenhuma transação encontrada para editar.',
         ephemeral: true
       });
     }
 
-    // Show modal for transaction management
-    const modal = new ModalBuilder()
-      .setCustomId(`transaction_manage_modal_${workerId}`)
-      .setTitle('Gerenciar Transações');
+    // Create embed with transaction list
+    const embed = new EmbedBuilder()
+      .setTitle(`🔧 Gerenciar Transações - ${session.workerName}`)
+      .setDescription('Clique nos botões abaixo para editar ou deletar transações específicas.')
+      .setColor(0x0099FF);
 
-    const transactionInput = new TextInputBuilder()
-      .setCustomId('transaction_id')
-      .setLabel('ID da Transação (últimos 5 dígitos)')
-      .setStyle(TextInputStyle.Short)
-      .setPlaceholder('Ex: 8g7h2')
-      .setRequired(true);
+    let fieldValue = '';
+    allTransactions.forEach((transaction: any, index: number) => {
+      const emoji = transaction.category === 'plant'
+        ? (transaction.type === 'seed_taken' ? '🌱' : '🌾')
+        : '🐄';
 
-    const actionInput = new TextInputBuilder()
-      .setCustomId('action')  
-      .setLabel('Ação (edit/delete)')
-      .setStyle(TextInputStyle.Short)
-      .setPlaceholder('edit ou delete')
-      .setRequired(true);
+      const displayText = transaction.category === 'plant'
+        ? `${emoji} ${transaction.itemName} x${transaction.quantity}`
+        : `${emoji} ${transaction.animalType} x${transaction.quantity} - $${transaction.amount}`;
 
-    const newNameInput = new TextInputBuilder()
-      .setCustomId('new_name')
-      .setLabel('Novo nome do item (apenas para edit)')
-      .setStyle(TextInputStyle.Short)
-      .setPlaceholder('Ex: Algodão')
-      .setRequired(false);
+      fieldValue += `**${index + 1}.** ${displayText}\n`;
+    });
 
-    const newQuantityInput = new TextInputBuilder()
-      .setCustomId('new_quantity')
-      .setLabel('Nova quantidade (apenas para edit)')
-      .setStyle(TextInputStyle.Short)
-      .setPlaceholder('Ex: 15')
-      .setRequired(false);
+    embed.addFields({
+      name: '📋 Transações Disponíveis',
+      value: fieldValue.substring(0, 1024) // Discord field limit
+    });
 
-    const newAmountInput = new TextInputBuilder()
-      .setCustomId('new_amount')
-      .setLabel('Novo valor em $ (apenas para animais)')
-      .setStyle(TextInputStyle.Short)
-      .setPlaceholder('Ex: 250.50')
-      .setRequired(false);
+    // Create buttons for each transaction (max 25 buttons total due to Discord limits)
+    const components: ActionRowBuilder<ButtonBuilder>[] = [];
+    const maxButtons = Math.min(allTransactions.length, 20); // Leave room for navigation if needed
 
-    modal.addComponents(
-      new ActionRowBuilder<TextInputBuilder>().addComponents(transactionInput),
-      new ActionRowBuilder<TextInputBuilder>().addComponents(actionInput),
-      new ActionRowBuilder<TextInputBuilder>().addComponents(newNameInput),
-      new ActionRowBuilder<TextInputBuilder>().addComponents(newQuantityInput),
-      new ActionRowBuilder<TextInputBuilder>().addComponents(newAmountInput)
-    );
+    for (let i = 0; i < maxButtons; i += 5) { // 5 buttons per row
+      const row = new ActionRowBuilder<ButtonBuilder>();
 
-    // Send transaction list first, then show modal
+      for (let j = i; j < Math.min(i + 5, maxButtons); j++) {
+        const transaction = allTransactions[j];
+        const transactionId = transaction.transactionId;
+
+        // Add delete button
+        const deleteButton = new ButtonBuilder()
+          .setCustomId(`transaction_delete_${workerId}_${transactionId}`)
+          .setLabel(`❌ ${j + 1}`)
+          .setStyle(ButtonStyle.Danger);
+
+        row.addComponents(deleteButton);
+      }
+
+      components.push(row);
+    }
+
+    // Add a separate row for edit functionality
+    if (maxButtons < 25) {
+      const editRow = new ActionRowBuilder<ButtonBuilder>();
+      editRow.addComponents(
+        new ButtonBuilder()
+          .setCustomId(`transaction_edit_modal_${workerId}`)
+          .setLabel('✏️ Editar Transação (Modal)')
+          .setStyle(ButtonStyle.Secondary)
+      );
+      components.push(editRow);
+    }
+
     await interaction.reply({
-      content: `**📋 Transações Disponíveis para ${session.workerName}:**\n\`\`\`\n${transactionsList}\`\`\``,
+      embeds: [embed],
+      components: components,
       ephemeral: true
     });
 
-    // Show modal after a brief delay
-    setTimeout(() => {
-      interaction.followUp({ 
-        content: '⚠️ Use o modal que aparecerá para gerenciar as transações.',
-        ephemeral: true
-      }).catch(console.error);
-    }, 1000);
-
-    await interaction.showModal(modal);
-
   } catch (error) {
     console.error('❌ Error handling worker edit:', error);
-    if (interaction.replied) {
-      await interaction.followUp({
-        content: '❌ Erro interno.',
-        ephemeral: true
-      });
-    } else {
+    if (!interaction.replied) {
       await interaction.reply({
         content: '❌ Erro interno.',
         ephemeral: true
@@ -285,7 +272,122 @@ export async function handleWorkerEdit(interaction: ButtonInteraction): Promise<
   }
 }
 
+export async function handleTransactionDelete(interaction: ButtonInteraction): Promise<any> {
+  try {
+    await interaction.deferReply({ ephemeral: true });
 
+    // Extract workerId and transactionId from custom ID: transaction_delete_{workerId}_{transactionId}
+    const customIdParts = interaction.customId.split('_');
+    if (customIdParts.length < 4) {
+      return await interaction.editReply({
+        content: '❌ Erro no formato do botão.'
+      });
+    }
+
+    const workerId = customIdParts[2];
+    const transactionId = customIdParts.slice(3).join('_'); // Rejoin in case transactionId has underscores
+
+    console.log(`🗑️ Manager ${interaction.user.username} is deleting transaction ${transactionId} for worker ${workerId}`);
+
+    // Check permissions
+    const hasPermission = await checkManagerPermissions(interaction, 'edit');
+    if (!hasPermission) {
+      return await interaction.editReply({
+        content: '❌ Você não tem permissão para deletar transações.'
+      });
+    }
+
+    // Call the delete API
+    const deleteResponse = await axios.delete(
+      `http://localhost:${config.api.port}/api/worker-activity/transaction/${workerId}/${transactionId}`,
+      { headers: { 'X-Bot-Token': config.discord.token } }
+    );
+
+    if (deleteResponse.data.success) {
+      await interaction.editReply({
+        content: `✅ Transação deletada com sucesso! Créditos recalculados automaticamente.`
+      });
+
+      console.log(`✅ Transaction ${transactionId} deleted successfully by ${interaction.user.username}`);
+    } else {
+      await interaction.editReply({
+        content: `❌ Erro ao deletar transação: ${deleteResponse.data.error}`
+      });
+    }
+
+  } catch (error) {
+    console.error('❌ Error handling transaction delete:', error);
+
+    if (interaction.deferred) {
+      await interaction.editReply({
+        content: '❌ Erro interno ao deletar transação.'
+      });
+    } else {
+      await interaction.reply({
+        content: '❌ Erro interno ao deletar transação.',
+        ephemeral: true
+      });
+    }
+  }
+}
+
+export async function handleTransactionEditModal(interaction: ButtonInteraction): Promise<any> {
+  try {
+    // Check permissions
+    const hasPermission = await checkManagerPermissions(interaction, 'edit');
+    if (!hasPermission) {
+      return await interaction.reply({
+        content: '❌ Você não tem permissão para editar transações.',
+        ephemeral: true
+      });
+    }
+
+    const workerId = interaction.customId.replace('transaction_edit_modal_', '');
+
+    // Create simplified modal for editing
+    const modal = new ModalBuilder()
+      .setCustomId(`transaction_edit_submit_${workerId}`)
+      .setTitle('Editar Transação');
+
+    const transactionIdInput = new TextInputBuilder()
+      .setCustomId('transaction_id')
+      .setLabel('Número da Transação (1, 2, 3, etc.)')
+      .setStyle(TextInputStyle.Short)
+      .setPlaceholder('Ex: 5')
+      .setRequired(true);
+
+    const newNameInput = new TextInputBuilder()
+      .setCustomId('new_name')
+      .setLabel('Novo nome do item (opcional)')
+      .setStyle(TextInputStyle.Short)
+      .setPlaceholder('Ex: Algodão')
+      .setRequired(false);
+
+    const editValuesInput = new TextInputBuilder()
+      .setCustomId('edit_values')
+      .setLabel('Quantidade|Valor - Ex: 15|250.50 (opcional)')
+      .setStyle(TextInputStyle.Short)
+      .setPlaceholder('Nova quantidade|Novo valor em $ (use | para separar)')
+      .setRequired(false);
+
+    modal.addComponents(
+      new ActionRowBuilder<TextInputBuilder>().addComponents(transactionIdInput),
+      new ActionRowBuilder<TextInputBuilder>().addComponents(newNameInput),
+      new ActionRowBuilder<TextInputBuilder>().addComponents(editValuesInput)
+    );
+
+    await interaction.showModal(modal);
+
+  } catch (error) {
+    console.error('❌ Error handling transaction edit modal:', error);
+    if (!interaction.replied) {
+      await interaction.reply({
+        content: '❌ Erro interno.',
+        ephemeral: true
+      });
+    }
+  }
+}
 
 async function checkManagerPermissions(interaction: ButtonInteraction, permissionType: 'pay' | 'edit'): Promise<boolean> {
   try {
@@ -327,51 +429,75 @@ export async function handleTransactionManageSubmit(interaction: ModalSubmitInte
   try {
     await interaction.deferReply({ ephemeral: true });
 
-    const workerId = interaction.customId.replace('transaction_manage_modal_', '');
-    const transactionId = interaction.fields.getTextInputValue('transaction_id');
-    const action = interaction.fields.getTextInputValue('action').toLowerCase().trim();
-    const newName = interaction.fields.getTextInputValue('new_name') || '';
-    const newQuantity = interaction.fields.getTextInputValue('new_quantity') || '';
-    const newAmount = interaction.fields.getTextInputValue('new_amount') || '';
+    // Handle both old modal format and new simplified format
+    let workerId: string;
+    let transactionId: string;
+    let newName: string;
+    let editValues: string;
 
-    // Find full transaction ID from partial ID
-    const sessionsResponse = await axios.get(`http://localhost:${config.api.port}/api/worker-activity/sessions`, {
-      headers: { 'X-Bot-Token': config.discord.token }
-    });
+    if (interaction.customId.includes('transaction_edit_submit_')) {
+      // New simplified format
+      workerId = interaction.customId.replace('transaction_edit_submit_', '');
+      const transactionNumber = interaction.fields.getTextInputValue('transaction_id');
+      newName = interaction.fields.getTextInputValue('new_name') || '';
+      editValues = interaction.fields.getTextInputValue('edit_values') || '';
 
-    const session = sessionsResponse.data.sessions.find((s: any) => s.workerId === workerId);
-    if (!session) {
-      return await interaction.editReply({
-        content: '❌ Este trabalhador não possui sessão ativa ou já foi pago. Verifique se há atividades recentes para editar.'
+      // Get worker session to find transaction by number
+      const sessionsResponse = await axios.get(`http://localhost:${config.api.port}/api/worker-activity/sessions`, {
+        headers: { 'X-Bot-Token': config.discord.token }
       });
-    }
 
-    // Find full transaction ID from partial ID
-    let fullTransactionId = '';
-    const allTransactions = [...session.plantTransactions, ...session.animalTransactions];
-    
-    for (const transaction of allTransactions) {
-      if (transaction.transactionId.includes(transactionId)) {
-        fullTransactionId = transaction.transactionId;
-        break;
+      const session = sessionsResponse.data.sessions.find((s: any) => s.workerId === workerId);
+      if (!session) {
+        return await interaction.editReply({
+          content: '❌ Este trabalhador não possui sessão ativa.'
+        });
+      }
+
+      // Collect all transactions
+      const allTransactions = [
+        ...session.plantTransactions,
+        ...session.animalTransactions
+      ];
+
+      const transactionIndex = parseInt(transactionNumber) - 1;
+      if (isNaN(transactionIndex) || transactionIndex < 0 || transactionIndex >= allTransactions.length) {
+        return await interaction.editReply({
+          content: `❌ Número da transação inválido. Use um número entre 1 e ${allTransactions.length}.`
+        });
+      }
+
+      transactionId = allTransactions[transactionIndex].transactionId;
+
+    } else {
+      // Legacy format (if still in use)
+      workerId = interaction.customId.replace('transaction_manage_modal_', '');
+      transactionId = interaction.fields.getTextInputValue('transaction_id');
+      const action = interaction.fields.getTextInputValue('action').toLowerCase().trim();
+      newName = interaction.fields.getTextInputValue('new_name') || '';
+      editValues = interaction.fields.getTextInputValue('edit_values') || '';
+
+      if (action !== 'edit') {
+        return await interaction.editReply({
+          content: '❌ Esta função só suporta edição. Use os botões de delete para deletar transações.'
+        });
       }
     }
 
-    if (!fullTransactionId) {
-      return await interaction.editReply({
-        content: `❌ Transação não encontrada com ID: ${transactionId}`
-      });
-    }
-
-    // Validate action
-    if (action !== 'edit' && action !== 'delete') {
-      return await interaction.editReply({
-        content: '❌ Ação inválida. Use "edit" ou "delete".'
-      });
+    // Parse the combined quantity|amount format
+    let newQuantity = '';
+    let newAmount = '';
+    if (editValues.includes('|')) {
+      const [quantity, amount] = editValues.split('|');
+      newQuantity = quantity ? quantity.trim() : '';
+      newAmount = amount ? amount.trim() : '';
+    } else if (editValues.trim() !== '') {
+      // If no separator, assume it's quantity for plants or amount for animals
+      newQuantity = editValues.trim();
     }
 
     // Validate edit action - require at least one field
-    if (action === 'edit' && (!newName || newName.trim() === '') && (!newQuantity || newQuantity.trim() === '') && (!newAmount || newAmount.trim() === '')) {
+    if ((!newName || newName.trim() === '') && (!newQuantity || newQuantity.trim() === '') && (!newAmount || newAmount.trim() === '')) {
       return await interaction.editReply({
         content: '❌ Para edição, forneça pelo menos um dos seguintes: novo nome, nova quantidade ou novo valor.'
       });
@@ -399,63 +525,43 @@ export async function handleTransactionManageSubmit(interaction: ModalSubmitInte
       }
     }
 
-    // Perform the action
-    if (action === 'edit') {
-      // Edit transaction
-      const editPayload: any = {};
+    // Edit transaction
+    const editPayload: any = {};
+    if (newName && newName.trim() !== '') {
+      editPayload.newItemName = newName.trim();
+    }
+    if (parsedQuantity !== undefined) {
+      editPayload.newQuantity = parsedQuantity;
+    }
+    if (parsedAmount !== undefined) {
+      editPayload.newAmount = parsedAmount;
+    }
+
+    const editResponse = await axios.put(
+      `http://localhost:${config.api.port}/api/worker-activity/transaction/${workerId}/${transactionId}`,
+      editPayload,
+      { headers: { 'X-Bot-Token': config.discord.token }}
+    );
+
+    if (editResponse.data.success) {
+      let changesSummary: string[] = [];
       if (newName && newName.trim() !== '') {
-        editPayload.newItemName = newName.trim();
+        changesSummary.push(`Nome: **${newName.trim()}**`);
       }
       if (parsedQuantity !== undefined) {
-        editPayload.newQuantity = parsedQuantity;
+        changesSummary.push(`Quantidade: **${parsedQuantity}**`);
       }
       if (parsedAmount !== undefined) {
-        editPayload.newAmount = parsedAmount;
+        changesSummary.push(`Valor: **$${parsedAmount.toFixed(2)}**`);
       }
 
-      const editResponse = await axios.put(
-        `http://localhost:${config.api.port}/api/worker-activity/transaction/${workerId}/${fullTransactionId}`,
-        editPayload,
-        { headers: { 'X-Bot-Token': config.discord.token }}
-      );
-
-      if (editResponse.data.success) {
-        let changesSummary: string[] = [];
-        if (newName && newName.trim() !== '') {
-          changesSummary.push(`Nome: **${newName.trim()}**`);
-        }
-        if (parsedQuantity !== undefined) {
-          changesSummary.push(`Quantidade: **${parsedQuantity}**`);
-        }
-        if (parsedAmount !== undefined) {
-          changesSummary.push(`Valor: **$${parsedAmount.toFixed(2)}**`);
-        }
-
-        await interaction.editReply({
-          content: `✅ Transação ${transactionId} editada com sucesso!\n${changesSummary.join('\n')}`
-        });
-      } else {
-        await interaction.editReply({
-          content: `❌ Erro ao editar transação: ${editResponse.data.error}`
-        });
-      }
-
-    } else if (action === 'delete') {
-      // Delete transaction  
-      const deleteResponse = await axios.delete(
-        `http://localhost:${config.api.port}/api/worker-activity/transaction/${workerId}/${fullTransactionId}`,
-        { headers: { 'X-Bot-Token': config.discord.token }}
-      );
-
-      if (deleteResponse.data.success) {
-        await interaction.editReply({
-          content: `✅ Transação ${transactionId} deletada com sucesso! Créditos recalculados automaticamente.`
-        });
-      } else {
-        await interaction.editReply({
-          content: `❌ Erro ao deletar transação: ${deleteResponse.data.error}`
-        });
-      }
+      await interaction.editReply({
+        content: `✅ Transação editada com sucesso!\n${changesSummary.join('\n')}`
+      });
+    } else {
+      await interaction.editReply({
+        content: `❌ Erro ao editar transação: ${editResponse.data.error}`
+      });
     }
 
   } catch (error) {

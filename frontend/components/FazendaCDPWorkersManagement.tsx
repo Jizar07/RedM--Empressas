@@ -5,7 +5,7 @@ import {
   Users, Search, Plus, Edit, Trash2, Eye, Crown, User,
   Activity, DollarSign, Package, TrendingUp, Clock,
   X, Save, AlertTriangle, BarChart3, Award, Star,
-  ArrowUp, ArrowDown, ChevronsUpDown
+  ArrowUp, ArrowDown, ChevronsUpDown, ArrowLeftRight
 } from 'lucide-react';
 import { FirmConfig } from '@/types/firms';
 import { useInventoryManager } from '@/hooks/useInventoryManager';
@@ -1026,8 +1026,48 @@ interface WorkerDetailModalProps {
 
 interface WorkerDetailData {
   workerId: string;
+  workerName: string;
   registration?: any;
   activeSession?: any;
+
+  // Smart Analytics from Global Worker Tracker
+  smartAnalytics: {
+    totalActivities: number;
+    purposeDetection: {
+      crafting: number;
+      farming: number;
+      trading: number;
+      storage: number;
+      unknown: number;
+    };
+    crossFirmActivity: {
+      firmId: string;
+      firmName: string;
+      adds: number;
+      removes: number;
+      transfers: number;
+    }[];
+    recipeAnalytics: {
+      totalAttempts: number;
+      successfulAttempts: number;
+      successRate: number;
+      averageDuration: number;
+      topRecipes: string[];
+    };
+    recentActivities: {
+      id: string;
+      activityType: string;
+      itemName: string;
+      quantity: number;
+      firmName: string;
+      detectedPurpose: string;
+      timestamp: string;
+    }[];
+    anomalyFlags: string[];
+    efficiencyScore: number;
+  };
+
+  // Basic Statistics (legacy)
   statistics: {
     totalEarnings: number;
     totalPlants: number;
@@ -1035,6 +1075,8 @@ interface WorkerDetailData {
     sessionsCount: number;
     lastActive: string | null;
   };
+
+  // History
   history: {
     payments: any[];
     archivedSessions: any[];
@@ -1057,9 +1099,9 @@ function WorkerDetailModal({ worker, workerProfile, onClose }: WorkerDetailModal
       setLoading(true);
       setError(null);
 
-      const response = await fetch(`http://localhost:3050/api/worker-activity/worker-details/${worker.userId}`, {
+      const response = await fetch(`http://localhost:3050/api/global-worker-analytics/worker/${worker.userId}?includeActivities=true&includeTransfers=true&includeRecipes=true&limit=100`, {
         headers: {
-          'x-bot-token': process.env.NEXT_PUBLIC_BOT_WEBHOOK_TOKEN || ''
+          'x-bot-token': process.env.NEXT_PUBLIC_DISCORD_TOKEN || ''
         }
       });
 
@@ -1152,71 +1194,199 @@ function WorkerDetailModal({ worker, workerProfile, onClose }: WorkerDetailModal
                 </div>
               )}
 
-              {/* Statistics Summary */}
+              {/* Smart Analytics Overview */}
               <div className="mb-6">
                 <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
                   <BarChart3 className="h-5 w-5 text-blue-500 mr-2" />
-                  Estatísticas Gerais
+                  Análise Inteligente
                 </h4>
-                <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+
+                {/* Efficiency Score */}
+                <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-4 mb-4">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h5 className="font-semibold text-gray-800">Score de Eficiência</h5>
+                      <div className="flex items-center mt-2">
+                        <div className="w-32 bg-gray-200 rounded-full h-2 mr-3">
+                          <div
+                            className={`h-2 rounded-full transition-all ${
+                              detailData.smartAnalytics?.efficiencyScore >= 0.8 ? 'bg-green-500' :
+                              detailData.smartAnalytics?.efficiencyScore >= 0.6 ? 'bg-yellow-500' : 'bg-red-500'
+                            }`}
+                            style={{ width: `${(detailData.smartAnalytics?.efficiencyScore || 0) * 100}%` }}
+                          ></div>
+                        </div>
+                        <span className="font-bold text-lg">
+                          {((detailData.smartAnalytics?.efficiencyScore || 0) * 100).toFixed(0)}%
+                        </span>
+                      </div>
+                    </div>
+                    <Activity className="h-8 w-8 text-blue-500" />
+                  </div>
+                </div>
+
+                {/* Purpose Detection */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-4">
                   <div className="bg-green-50 rounded-lg p-4">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <p className="text-sm font-medium text-green-600">Total Ganho</p>
-                        <p className="text-xl font-bold text-green-900">
-                          ${detailData.statistics.totalEarnings.toFixed(2)}
-                        </p>
-                      </div>
-                      <DollarSign className="h-6 w-6 text-green-500" />
-                    </div>
-                  </div>
-
-                  <div className="bg-blue-50 rounded-lg p-4">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <p className="text-sm font-medium text-blue-600">Plantas</p>
-                        <p className="text-xl font-bold text-blue-900">{detailData.statistics.totalPlants}</p>
-                      </div>
-                      <Package className="h-6 w-6 text-blue-500" />
-                    </div>
-                  </div>
-
-                  <div className="bg-purple-50 rounded-lg p-4">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <p className="text-sm font-medium text-purple-600">Animais</p>
-                        <p className="text-xl font-bold text-purple-900">{detailData.statistics.totalAnimals}</p>
-                      </div>
-                      <Users className="h-6 w-6 text-purple-500" />
+                    <div className="text-center">
+                      <div className="text-2xl mb-2">🔨</div>
+                      <p className="text-sm font-medium text-green-600">Crafting</p>
+                      <p className="text-xl font-bold text-green-900">
+                        {detailData.smartAnalytics?.purposeDetection?.crafting || 0}
+                      </p>
                     </div>
                   </div>
 
                   <div className="bg-yellow-50 rounded-lg p-4">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <p className="text-sm font-medium text-yellow-600">Sessões</p>
-                        <p className="text-xl font-bold text-yellow-900">{detailData.statistics.sessionsCount}</p>
-                      </div>
-                      <Activity className="h-6 w-6 text-yellow-500" />
+                    <div className="text-center">
+                      <div className="text-2xl mb-2">🌱</div>
+                      <p className="text-sm font-medium text-yellow-600">Farming</p>
+                      <p className="text-xl font-bold text-yellow-900">
+                        {detailData.smartAnalytics?.purposeDetection?.farming || 0}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="bg-purple-50 rounded-lg p-4">
+                    <div className="text-center">
+                      <div className="text-2xl mb-2">💱</div>
+                      <p className="text-sm font-medium text-purple-600">Trading</p>
+                      <p className="text-xl font-bold text-purple-900">
+                        {detailData.smartAnalytics?.purposeDetection?.trading || 0}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="bg-blue-50 rounded-lg p-4">
+                    <div className="text-center">
+                      <div className="text-2xl mb-2">📦</div>
+                      <p className="text-sm font-medium text-blue-600">Storage</p>
+                      <p className="text-xl font-bold text-blue-900">
+                        {detailData.smartAnalytics?.purposeDetection?.storage || 0}
+                      </p>
                     </div>
                   </div>
 
                   <div className="bg-gray-50 rounded-lg p-4">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <p className="text-sm font-medium text-gray-600">Última Atividade</p>
-                        <p className="text-sm font-bold text-gray-900">
-                          {detailData.statistics.lastActive
-                            ? new Date(detailData.statistics.lastActive).toLocaleDateString('pt-BR')
-                            : 'N/A'
-                          }
-                        </p>
-                      </div>
-                      <Clock className="h-6 w-6 text-gray-500" />
+                    <div className="text-center">
+                      <div className="text-2xl mb-2">❓</div>
+                      <p className="text-sm font-medium text-gray-600">Unknown</p>
+                      <p className="text-xl font-bold text-gray-900">
+                        {detailData.smartAnalytics?.purposeDetection?.unknown || 0}
+                      </p>
                     </div>
                   </div>
                 </div>
+
+                {/* Total Activities */}
+                <div className="bg-gray-50 rounded-lg p-4">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-sm font-medium text-gray-600">Total de Atividades</p>
+                      <p className="text-2xl font-bold text-gray-900">
+                        {detailData.smartAnalytics?.totalActivities || 0}
+                      </p>
+                    </div>
+                    <Package className="h-6 w-6 text-gray-500" />
+                  </div>
+                </div>
               </div>
+
+              {/* Cross-Firm Activity Analysis */}
+              {detailData.smartAnalytics?.crossFirmActivity && detailData.smartAnalytics.crossFirmActivity.length > 0 && (
+                <div className="mb-6">
+                  <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                    <ArrowLeftRight className="h-5 w-5 text-orange-500 mr-2" />
+                    Atividade Entre Empresas
+                  </h4>
+                  <div className="space-y-3">
+                    {detailData.smartAnalytics.crossFirmActivity.slice(0, 5).map((transfer: any, index: number) => (
+                      <div key={index} className="bg-orange-50 rounded-lg p-3">
+                        <div className="flex items-center justify-between">
+                          <div className="flex-1">
+                            <p className="font-medium text-gray-800">
+                              {transfer.sourceFirm} → {transfer.destinationFirm}
+                            </p>
+                            <p className="text-sm text-gray-600">
+                              {transfer.itemName} (×{transfer.quantity})
+                            </p>
+                          </div>
+                          <div className="text-right">
+                            <p className="text-sm text-gray-500">
+                              {new Date(transfer.timestamp).toLocaleDateString('pt-BR')}
+                            </p>
+                            <span className={`inline-block px-2 py-1 rounded-full text-xs ${
+                              transfer.riskLevel === 'high' ? 'bg-red-100 text-red-800' :
+                              transfer.riskLevel === 'medium' ? 'bg-yellow-100 text-yellow-800' :
+                              'bg-green-100 text-green-800'
+                            }`}>
+                              {transfer.riskLevel}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Recipe Analytics */}
+              {detailData.smartAnalytics?.recipeAnalytics && (
+                <div className="mb-6">
+                  <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                    <Users className="h-5 w-5 text-purple-500 mr-2" />
+                    Análise de Receitas
+                  </h4>
+                  <div className="bg-purple-50 rounded-lg p-4">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <div className="text-center">
+                        <p className="text-sm font-medium text-purple-600">Tentativas</p>
+                        <p className="text-2xl font-bold text-purple-900">
+                          {detailData.smartAnalytics.recipeAnalytics.totalAttempts}
+                        </p>
+                      </div>
+                      <div className="text-center">
+                        <p className="text-sm font-medium text-purple-600">Taxa de Sucesso</p>
+                        <p className="text-2xl font-bold text-purple-900">
+                          {(detailData.smartAnalytics.recipeAnalytics.successRate * 100).toFixed(1)}%
+                        </p>
+                      </div>
+                      <div className="text-center">
+                        <p className="text-sm font-medium text-purple-600">Receita Favorita</p>
+                        <p className="text-lg font-bold text-purple-900 truncate">
+                          {detailData.smartAnalytics.recipeAnalytics.favoriteRecipe || 'N/A'}
+                        </p>
+                      </div>
+                    </div>
+
+                    {detailData.smartAnalytics.recipeAnalytics.recentAttempts &&
+                     detailData.smartAnalytics.recipeAnalytics.recentAttempts.length > 0 && (
+                      <div className="mt-4">
+                        <h5 className="font-medium text-gray-900 mb-2">Tentativas Recentes</h5>
+                        <div className="space-y-2 max-h-32 overflow-y-auto">
+                          {detailData.smartAnalytics.recipeAnalytics.recentAttempts.map((attempt: any, index: number) => (
+                            <div key={index} className="flex items-center justify-between text-sm">
+                              <span className="text-gray-700">{attempt.recipeName}</span>
+                              <div className="flex items-center space-x-2">
+                                <span className={`px-2 py-1 rounded text-xs ${
+                                  attempt.status === 'completed' ? 'bg-green-100 text-green-800' :
+                                  attempt.status === 'in_progress' ? 'bg-yellow-100 text-yellow-800' :
+                                  'bg-red-100 text-red-800'
+                                }`}>
+                                  {attempt.status}
+                                </span>
+                                <span className="text-gray-500">
+                                  {new Date(attempt.timestamp).toLocaleDateString('pt-BR')}
+                                </span>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
 
               {/* Active Session */}
               {detailData.activeSession && (
@@ -1288,6 +1458,116 @@ function WorkerDetailModal({ worker, workerProfile, onClose }: WorkerDetailModal
                 </div>
               )}
 
+              {/* Recent Activities */}
+              {detailData.smartAnalytics?.recentActivities && detailData.smartAnalytics.recentActivities.length > 0 && (
+                <div className="mb-6">
+                  <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                    <Clock className="h-5 w-5 text-blue-500 mr-2" />
+                    Atividades Recentes
+                  </h4>
+                  <div className="space-y-2 max-h-64 overflow-y-auto">
+                    {detailData.smartAnalytics.recentActivities.map((activity: any, index: number) => (
+                      <div key={index} className="bg-gray-50 rounded-lg p-3">
+                        <div className="flex items-center justify-between">
+                          <div className="flex-1">
+                            <div className="flex items-center space-x-2">
+                              <span className="text-lg">
+                                {activity.activityType === 'item_added' ? '➕' :
+                                 activity.activityType === 'item_removed' ? '➖' :
+                                 activity.activityType === 'animals_sold' ? '💰' :
+                                 activity.activityType === 'crafting_started' ? '🔨' :
+                                 activity.activityType === 'farming_begun' ? '🌱' : '📦'}
+                              </span>
+                              <div>
+                                <p className="font-medium text-gray-800">
+                                  {activity.itemName} (×{activity.quantity})
+                                </p>
+                                <p className="text-sm text-gray-600">
+                                  {activity.firmName} • {activity.activityType.replace('_', ' ')}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="text-right">
+                            <p className="text-sm text-gray-500">
+                              {new Date(activity.timestamp).toLocaleDateString('pt-BR')}
+                            </p>
+                            <p className="text-xs text-gray-400">
+                              {new Date(activity.timestamp).toLocaleTimeString('pt-BR')}
+                            </p>
+                            {activity.predictedPurpose && (
+                              <span className={`inline-block px-2 py-1 rounded-full text-xs mt-1 ${
+                                activity.predictedPurpose === 'crafting' ? 'bg-green-100 text-green-800' :
+                                activity.predictedPurpose === 'farming' ? 'bg-yellow-100 text-yellow-800' :
+                                activity.predictedPurpose === 'trading' ? 'bg-purple-100 text-purple-800' :
+                                'bg-gray-100 text-gray-800'
+                              }`}>
+                                {activity.predictedPurpose}
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Anomaly Detection */}
+              {detailData.smartAnalytics?.anomalyFlags && detailData.smartAnalytics.anomalyFlags.length > 0 && (
+                <div className="mb-6">
+                  <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                    <AlertTriangle className="h-5 w-5 text-red-500 mr-2" />
+                    Alertas & Anomalias
+                  </h4>
+                  <div className="space-y-3">
+                    {detailData.smartAnalytics.anomalyFlags.map((anomaly: any, index: number) => (
+                      <div key={index} className={`rounded-lg p-4 ${
+                        anomaly.severity === 'high' ? 'bg-red-50 border border-red-200' :
+                        anomaly.severity === 'medium' ? 'bg-yellow-50 border border-yellow-200' :
+                        'bg-blue-50 border border-blue-200'
+                      }`}>
+                        <div className="flex items-start justify-between">
+                          <div className="flex-1">
+                            <div className="flex items-center space-x-2 mb-2">
+                              <span className="text-lg">
+                                {anomaly.type === 'excessive_activity' ? '⚡' :
+                                 anomaly.type === 'unusual_pattern' ? '🔍' :
+                                 anomaly.type === 'resource_waste' ? '⚠️' :
+                                 anomaly.type === 'cross_firm_excess' ? '🔄' : '🚨'}
+                              </span>
+                              <h5 className="font-semibold text-gray-800">
+                                {anomaly.title || 'Anomalia Detectada'}
+                              </h5>
+                              <span className={`px-2 py-1 rounded-full text-xs ${
+                                anomaly.severity === 'high' ? 'bg-red-100 text-red-800' :
+                                anomaly.severity === 'medium' ? 'bg-yellow-100 text-yellow-800' :
+                                'bg-blue-100 text-blue-800'
+                              }`}>
+                                {anomaly.severity}
+                              </span>
+                            </div>
+                            <p className="text-sm text-gray-700 mb-2">
+                              {anomaly.description}
+                            </p>
+                            {anomaly.recommendation && (
+                              <p className="text-sm text-blue-600 italic">
+                                💡 {anomaly.recommendation}
+                              </p>
+                            )}
+                          </div>
+                          <div className="text-right">
+                            <p className="text-xs text-gray-500">
+                              {new Date(anomaly.timestamp).toLocaleDateString('pt-BR')}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               {/* Payment History */}
               {detailData.history.payments.length > 0 && (
                 <div className="mb-6">
@@ -1335,13 +1615,23 @@ function WorkerDetailModal({ worker, workerProfile, onClose }: WorkerDetailModal
               )}
 
               {/* No Data Message */}
-              {!detailData.activeSession && detailData.history.payments.length === 0 && (
+              {!detailData.smartAnalytics?.totalActivities && !detailData.activeSession && detailData.history.payments.length === 0 && (
                 <div className="text-center py-8">
                   <Eye className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                  <h4 className="text-lg font-semibold text-gray-900 mb-2">Nenhuma atividade do Discord bot encontrada</h4>
-                  <p className="text-gray-600">
-                    Este trabalhador ainda não possui sessões ativas ou histórico de pagamentos no Discord bot.
+                  <h4 className="text-lg font-semibold text-gray-900 mb-2">Nenhuma atividade inteligente encontrada</h4>
+                  <p className="text-gray-600 mb-4">
+                    Este trabalhador ainda não possui atividades suficientes para análise inteligente.
                   </p>
+                  <div className="bg-blue-50 rounded-lg p-4 text-left max-w-md mx-auto">
+                    <h5 className="font-semibold text-blue-800 mb-2">🔍 Para ver análises inteligentes:</h5>
+                    <ul className="text-sm text-blue-700 space-y-1">
+                      <li>• O trabalhador precisa ter atividade registrada</li>
+                      <li>• Análises incluem detecção de propósito (crafting/farming)</li>
+                      <li>• Monitoramento de transferências entre empresas</li>
+                      <li>• Análise de receitas e eficiência</li>
+                      <li>• Detecção de anomalias e padrões</li>
+                    </ul>
+                  </div>
                 </div>
               )}
             </>

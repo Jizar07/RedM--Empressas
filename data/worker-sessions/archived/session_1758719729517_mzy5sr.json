@@ -1,0 +1,55 @@
+{
+  "workerId": "372161270176153601",
+  "workerName": "Jizar Stoffeliz",
+  "channelId": "1417124587833004075",
+  "sessionId": "session_1758719729517_mzy5sr",
+  "startTime": "2025-09-24T13:15:29.517Z",
+  "lastActivity": "2025-09-24T13:31:31.944Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 320,
+      "transactionId": "tx_1758719729518_y24wgo",
+      "timestamp": "2025-09-24T13:15:29.518Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "SugarcaneSemente",
+      "quantity": 2,
+      "transactionId": "tx_1758719810019_ohe1pr",
+      "timestamp": "2025-09-24T13:16:50.019Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 400,
+      "transactionId": "tx_1758720458663_ckbps9",
+      "timestamp": "2025-09-24T13:27:38.663Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 250,
+      "transactionId": "tx_1758720691944_mfeahm",
+      "timestamp": "2025-09-24T13:31:31.944Z"
+    }
+  ],
+  "animalTransactions": [],
+  "totalCredits": 242.5,
+  "embedMessageId": "1420402275561771162",
+  "seedExpectations": [
+    {
+      "seedType": "SugarcaneSemente",
+      "seedQuantity": 2,
+      "expectedPlantType": "SugarcaneSemente",
+      "expectedPlantQuantity": 20,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1758719810019_ohe1pr"
+    }
+  ],
+  "completedAt": "2025-09-24T13:35:08.993Z",
+  "notes": "Pago por GM Stoffel (372161270176153601)"
+}

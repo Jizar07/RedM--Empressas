@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1758721091860_5s8vqz",
+  "sessionId": "session_1758679005423_191rx",
+  "managerId": "372161270176153601",
+  "managerName": "GM Stoffel",
+  "workerId": "803001567627837501",
+  "workerName": "Nuka Mato",
+  "amountPaid": 890,
+  "paidAt": "2025-09-24T13:38:11.860Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-09-24T13:33:11.860Z",
+    "endTime": "2025-09-24T13:48:11.860Z"
+  }
+}

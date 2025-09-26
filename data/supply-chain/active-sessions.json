@@ -126,7 +126,7 @@
     "role": "worker",
     "status": "active",
     "startTime": "2025-09-14T01:03:46.686Z",
-    "lastActivity": "2025-09-21T22:14:05.263Z",
+    "lastActivity": "2025-09-25T00:04:24.090Z",
     "transactions": [
       {
         "transactionId": "tx_1757811826689_4meyttfsh",
@@ -191,6 +191,22 @@
         "quantity": 100,
         "timestamp": "2025-09-21T19:02:39.755Z",
         "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x100\nAutor:: Nina Vatore | FIXO: 77628\nData:: 21/09/2025 - 16:02:39"
+      },
+      {
+        "transactionId": "tx_1758751089016_qj1vsufdm",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "cornseed ",
+        "quantity": 100,
+        "timestamp": "2025-09-24T21:58:09.016Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x100\nAutor:: Nina Vatore | FIXO: 77628\nData:: 24/09/2025 - 18:58:08"
+      },
+      {
+        "transactionId": "tx_1758754744635_60a7kh59h",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "semente_trigo ",
+        "quantity": 100,
+        "timestamp": "2025-09-24T22:59:04.635Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: semente_trigo x100\nAutor:: Nina Vatore | FIXO: 77628\nData:: 24/09/2025 - 19:59:04"
       }
     ],
     "openResponsibilities": {
@@ -210,7 +226,7 @@
     "role": "manager",
     "status": "active",
     "startTime": "2025-09-14T21:00:55.169Z",
-    "lastActivity": "2025-09-23T03:12:20.647Z",
+    "lastActivity": "2025-09-25T03:22:06.587Z",
     "transactions": [
       {
         "transactionId": "tx_1758396440312_1l4vv9ft3",
@@ -887,11 +903,59 @@
         "amount": 1000,
         "timestamp": "2025-09-23T03:12:20.643Z",
         "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Souzz Ramirez | FIXO: 421\nData:: 23/09/2025 - 00:12:20"
+      },
+      {
+        "transactionId": "tx_1758770494293_w3jldc4vj",
+        "type": "BOXES_WITHDRAWN",
+        "itemName": "caixadeverduras",
+        "quantity": 200,
+        "timestamp": "2025-09-25T03:21:34.293Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x200\nAutor:: Souzz Ramirez | FIXO: 421\nData:: 25/09/2025 - 00:21:33"
+      },
+      {
+        "transactionId": "tx_1758770497289_lgdzb9nd4",
+        "type": "BOXES_WITHDRAWN",
+        "itemName": "caixadeverduras",
+        "quantity": 200,
+        "timestamp": "2025-09-25T03:21:37.289Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x200\nAutor:: Souzz Ramirez | FIXO: 421\nData:: 25/09/2025 - 00:21:36"
+      },
+      {
+        "transactionId": "tx_1758770499975_dlwd4d4nq",
+        "type": "BOXES_WITHDRAWN",
+        "itemName": "caixadeverduras",
+        "quantity": 100,
+        "timestamp": "2025-09-25T03:21:39.975Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x100\nAutor:: Souzz Ramirez | FIXO: 421\nData:: 25/09/2025 - 00:21:39"
+      },
+      {
+        "transactionId": "tx_1758770521579_v0ekpjgjs",
+        "type": "BOXES_WITHDRAWN",
+        "itemName": "caixadeverduras",
+        "quantity": 200,
+        "timestamp": "2025-09-25T03:22:01.579Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x200\nAutor:: Souzz Ramirez | FIXO: 421\nData:: 25/09/2025 - 00:22:00"
+      },
+      {
+        "transactionId": "tx_1758770523949_2rirlza10",
+        "type": "BOXES_WITHDRAWN",
+        "itemName": "caixadeverduras",
+        "quantity": 200,
+        "timestamp": "2025-09-25T03:22:03.949Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x200\nAutor:: Souzz Ramirez | FIXO: 421\nData:: 25/09/2025 - 00:22:03"
+      },
+      {
+        "transactionId": "tx_1758770526583_nwg2mapqe",
+        "type": "BOXES_WITHDRAWN",
+        "itemName": "caixadeverduras",
+        "quantity": 100,
+        "timestamp": "2025-09-25T03:22:06.583Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x100\nAutor:: Souzz Ramirez | FIXO: 421\nData:: 25/09/2025 - 00:22:06"
       }
     ],
     "openResponsibilities": {
-      "boxesTaken": 4900,
-      "moneyOwed": 19600,
+      "boxesTaken": 5900,
+      "moneyOwed": 23600,
       "dueDate": "2025-09-15T21:00:55.169Z",
       "startDate": "2025-09-14T21:00:55.169Z"
     },
@@ -906,7 +970,7 @@
     "role": "worker",
     "status": "active",
     "startTime": "2025-09-15T04:46:30.038Z",
-    "lastActivity": "2025-09-24T03:12:19.779Z",
+    "lastActivity": "2025-09-26T06:48:05.828Z",
     "transactions": [
       {
         "transactionId": "tx_1757964652819_5wtr15qm1",
@@ -2355,6 +2419,518 @@
         "quantity": 100,
         "timestamp": "2025-09-24T03:12:19.775Z",
         "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: John Weslley | FIXO: 550\nData:: 24/09/2025 - 00:12:19"
+      },
+      {
+        "transactionId": "tx_1758863606836_ftoafjxvi",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-09-26T05:13:26.836Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:13:26"
+      },
+      {
+        "transactionId": "tx_1758863619366_qgdpu2jlo",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 100,
+        "timestamp": "2025-09-26T05:13:39.366Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:13:38"
+      },
+      {
+        "transactionId": "tx_1758863630118_slmpr0dgb",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "Bulrush",
+        "quantity": 100,
+        "timestamp": "2025-09-26T05:13:50.118Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:13:49"
+      },
+      {
+        "transactionId": "tx_1758864520757_zsxtjvt3v",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "Bulrush",
+        "quantity": 100,
+        "timestamp": "2025-09-26T05:28:40.757Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:28:40"
+      },
+      {
+        "transactionId": "tx_1758864525049_wheerixkm",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-09-26T05:28:45.049Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:28:44"
+      },
+      {
+        "transactionId": "tx_1758864530548_ftglsacp0",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 100,
+        "timestamp": "2025-09-26T05:28:50.548Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:28:50"
+      },
+      {
+        "transactionId": "tx_1758864601216_grx5z6k8f",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 100,
+        "timestamp": "2025-09-26T05:30:01.216Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:30:00"
+      },
+      {
+        "transactionId": "tx_1758864608697_5f9fvs7u1",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-09-26T05:30:08.697Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:30:08"
+      },
+      {
+        "transactionId": "tx_1758864613323_kq4fim12n",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "Bulrush",
+        "quantity": 100,
+        "timestamp": "2025-09-26T05:30:13.323Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:30:12"
+      },
+      {
+        "transactionId": "tx_1758864705691_4up17urek",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "Bulrush",
+        "quantity": 100,
+        "timestamp": "2025-09-26T05:31:45.691Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:31:45"
+      },
+      {
+        "transactionId": "tx_1758864709846_vgplqxmx7",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-09-26T05:31:49.846Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:31:49"
+      },
+      {
+        "transactionId": "tx_1758864715819_3lah2ifrq",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 100,
+        "timestamp": "2025-09-26T05:31:55.819Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:31:55"
+      },
+      {
+        "transactionId": "tx_1758864768582_fx2ll2wps",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 100,
+        "timestamp": "2025-09-26T05:32:48.582Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:32:48"
+      },
+      {
+        "transactionId": "tx_1758864777579_n32u89yek",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-09-26T05:32:57.579Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:32:57"
+      },
+      {
+        "transactionId": "tx_1758864790403_hlrjp40xg",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "Bulrush",
+        "quantity": 100,
+        "timestamp": "2025-09-26T05:33:10.404Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:33:09"
+      },
+      {
+        "transactionId": "tx_1758864865861_xxa5x6ddy",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "Bulrush",
+        "quantity": 100,
+        "timestamp": "2025-09-26T05:34:25.861Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:34:25"
+      },
+      {
+        "transactionId": "tx_1758864870915_kdm2jr9px",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-09-26T05:34:30.915Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:34:30"
+      },
+      {
+        "transactionId": "tx_1758864881184_bx1psgtwt",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 100,
+        "timestamp": "2025-09-26T05:34:41.184Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:34:40"
+      },
+      {
+        "transactionId": "tx_1758864938081_gmn51n1td",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "Bulrush",
+        "quantity": 100,
+        "timestamp": "2025-09-26T05:35:38.081Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:35:37"
+      },
+      {
+        "transactionId": "tx_1758864942511_r8a3z11ly",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-09-26T05:35:42.511Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:35:42"
+      },
+      {
+        "transactionId": "tx_1758864949827_lgwwvngj2",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 100,
+        "timestamp": "2025-09-26T05:35:49.827Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:35:49"
+      },
+      {
+        "transactionId": "tx_1758865000966_to67xb0v5",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 100,
+        "timestamp": "2025-09-26T05:36:40.966Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:36:40"
+      },
+      {
+        "transactionId": "tx_1758865008454_7au9l8itz",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-09-26T05:36:48.454Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:36:48"
+      },
+      {
+        "transactionId": "tx_1758865013409_os368mqvi",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "Bulrush",
+        "quantity": 100,
+        "timestamp": "2025-09-26T05:36:53.409Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:36:52"
+      },
+      {
+        "transactionId": "tx_1758865075657_he02d7vgp",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "Bulrush",
+        "quantity": 100,
+        "timestamp": "2025-09-26T05:37:55.657Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:37:55"
+      },
+      {
+        "transactionId": "tx_1758865080861_tkav1zimd",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-09-26T05:38:00.861Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:38:00"
+      },
+      {
+        "transactionId": "tx_1758865088504_ak4o7hny8",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 100,
+        "timestamp": "2025-09-26T05:38:08.504Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:38:08"
+      },
+      {
+        "transactionId": "tx_1758865140974_7d9rpw7g3",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 100,
+        "timestamp": "2025-09-26T05:39:00.974Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:39:00"
+      },
+      {
+        "transactionId": "tx_1758865148430_ue83kxwz6",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-09-26T05:39:08.430Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:39:07"
+      },
+      {
+        "transactionId": "tx_1758865154461_x5wrvuv74",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "Bulrush",
+        "quantity": 100,
+        "timestamp": "2025-09-26T05:39:14.461Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:39:13"
+      },
+      {
+        "transactionId": "tx_1758865219084_h3jznqgpx",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "Bulrush",
+        "quantity": 100,
+        "timestamp": "2025-09-26T05:40:19.084Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:40:18"
+      },
+      {
+        "transactionId": "tx_1758865223252_4ov7bhf0t",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-09-26T05:40:23.252Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:40:22"
+      },
+      {
+        "transactionId": "tx_1758865230096_z8pjj8m14",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 100,
+        "timestamp": "2025-09-26T05:40:30.096Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:40:29"
+      },
+      {
+        "transactionId": "tx_1758865281159_u35sgmwuy",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 100,
+        "timestamp": "2025-09-26T05:41:21.159Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:41:20"
+      },
+      {
+        "transactionId": "tx_1758865287592_ktdaym224",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-09-26T05:41:27.592Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:41:27"
+      },
+      {
+        "transactionId": "tx_1758865292166_f9cpr5mv3",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "Bulrush",
+        "quantity": 100,
+        "timestamp": "2025-09-26T05:41:32.166Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:41:31"
+      },
+      {
+        "transactionId": "tx_1758865355358_l84uv1wsz",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "Bulrush",
+        "quantity": 100,
+        "timestamp": "2025-09-26T05:42:35.358Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:42:34"
+      },
+      {
+        "transactionId": "tx_1758865360074_hqhex6fal",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-09-26T05:42:40.074Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:42:39"
+      },
+      {
+        "transactionId": "tx_1758865368479_2it0brnra",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 100,
+        "timestamp": "2025-09-26T05:42:48.479Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:42:47"
+      },
+      {
+        "transactionId": "tx_1758865436785_6e9z3lcad",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 100,
+        "timestamp": "2025-09-26T05:43:56.785Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:43:56"
+      },
+      {
+        "transactionId": "tx_1758865444109_y59yhzqp0",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-09-26T05:44:04.109Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:44:03"
+      },
+      {
+        "transactionId": "tx_1758865448066_c89xd7juj",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "Bulrush",
+        "quantity": 100,
+        "timestamp": "2025-09-26T05:44:08.066Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:44:07"
+      },
+      {
+        "transactionId": "tx_1758865504395_p1cl44y3s",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "Bulrush",
+        "quantity": 100,
+        "timestamp": "2025-09-26T05:45:04.395Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:45:03"
+      },
+      {
+        "transactionId": "tx_1758865508019_sz7feeql2",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-09-26T05:45:08.019Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:45:07"
+      },
+      {
+        "transactionId": "tx_1758865514198_x5mqmykxg",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 100,
+        "timestamp": "2025-09-26T05:45:14.198Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:45:13"
+      },
+      {
+        "transactionId": "tx_1758865566646_mcemb3tc6",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 100,
+        "timestamp": "2025-09-26T05:46:06.646Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:46:05"
+      },
+      {
+        "transactionId": "tx_1758865571707_8qku3y9el",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-09-26T05:46:11.707Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:46:11"
+      },
+      {
+        "transactionId": "tx_1758865576151_4po6yoyt5",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "Bulrush",
+        "quantity": 100,
+        "timestamp": "2025-09-26T05:46:16.151Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:46:15"
+      },
+      {
+        "transactionId": "tx_1758865636699_ikknvvxm4",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "Bulrush",
+        "quantity": 100,
+        "timestamp": "2025-09-26T05:47:16.699Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:47:16"
+      },
+      {
+        "transactionId": "tx_1758865641956_8umu28agp",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-09-26T05:47:21.956Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:47:21"
+      },
+      {
+        "transactionId": "tx_1758865647485_xq6fnbtxg",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 100,
+        "timestamp": "2025-09-26T05:47:27.485Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:47:27"
+      },
+      {
+        "transactionId": "tx_1758865736816_s53vmp79s",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "Bulrush",
+        "quantity": 100,
+        "timestamp": "2025-09-26T05:48:56.816Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:48:56"
+      },
+      {
+        "transactionId": "tx_1758865741070_f7i8dc1ds",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-09-26T05:49:01.070Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:49:00"
+      },
+      {
+        "transactionId": "tx_1758865746439_jtvmczoqy",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 100,
+        "timestamp": "2025-09-26T05:49:06.439Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:49:06"
+      },
+      {
+        "transactionId": "tx_1758865797975_0b9j5qrdd",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 100,
+        "timestamp": "2025-09-26T05:49:57.975Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:49:57"
+      },
+      {
+        "transactionId": "tx_1758865804032_qmqhfsgv1",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-09-26T05:50:04.032Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:50:03"
+      },
+      {
+        "transactionId": "tx_1758865808806_i3p2h0vod",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "Bulrush",
+        "quantity": 100,
+        "timestamp": "2025-09-26T05:50:08.806Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:50:08"
+      },
+      {
+        "transactionId": "tx_1758865891493_72t5prfw8",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "Bulrush",
+        "quantity": 200,
+        "timestamp": "2025-09-26T05:51:31.493Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x200\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:51:31"
+      },
+      {
+        "transactionId": "tx_1758865896240_5zsp7kj6k",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-09-26T05:51:36.240Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:51:35"
+      },
+      {
+        "transactionId": "tx_1758865901983_0b6hjq1en",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 100,
+        "timestamp": "2025-09-26T05:51:41.983Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:51:41"
+      },
+      {
+        "transactionId": "tx_1758865949383_ntatp2nfr",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 100,
+        "timestamp": "2025-09-26T05:52:29.383Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:52:28"
+      },
+      {
+        "transactionId": "tx_1758865954824_81lt32i68",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-09-26T05:52:34.824Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 02:52:34"
+      },
+      {
+        "transactionId": "tx_1758866801486_js8x8ftwg",
+        "type": "FERROVIA_MISSION_COMPLETED",
+        "itemName": "ferrovia_mission",
+        "quantity": 1,
+        "timestamp": "2025-09-26T06:06:41.486Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 1017\nRecompensa:: 1000\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 03:06:41"
+      },
+      {
+        "transactionId": "tx_1758869285823_iime6dlaa",
+        "type": "FERROVIA_MISSION_COMPLETED",
+        "itemName": "ferrovia_mission",
+        "quantity": 1,
+        "timestamp": "2025-09-26T06:48:05.823Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 1020\nRecompensa:: 1000\nAutor:: John Weslley | FIXO: 550\nData:: 26/09/2025 - 03:48:05"
       }
     ],
     "openResponsibilities": {
@@ -2363,9 +2939,10 @@
       "dueDate": "2025-09-16T04:46:30.038Z",
       "startDate": "2025-09-15T04:46:30.038Z"
     },
-    "totalBoxesProcessed": 0,
+    "totalBoxesProcessed": 2,
     "totalRevenueGenerated": 0,
-    "totalRevenueReturned": 0
+    "totalRevenueReturned": 0,
+    "totalPaymentOwed": 500
   },
   {
     "sessionId": "2d8abf55-04bd-4f33-982a-6e9685d59da4",
@@ -3073,7 +3650,7 @@
     "role": "manager",
     "status": "active",
     "startTime": "2025-09-18T20:48:07.570Z",
-    "lastActivity": "2025-09-24T05:06:13.477Z",
+    "lastActivity": "2025-09-25T00:23:09.534Z",
     "transactions": [
       {
         "transactionId": "tx_1758228746106_u2fj4ojpz",
@@ -5481,17 +6058,309 @@
         "amount": 1000,
         "timestamp": "2025-09-24T05:06:13.473Z",
         "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 02:06:13"
+      },
+      {
+        "transactionId": "tx_1758730141677_f7apl86ah",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "cornseed ",
+        "quantity": 100,
+        "timestamp": "2025-09-24T16:09:01.677Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 13:09:01"
+      },
+      {
+        "transactionId": "tx_1758733704926_chyescwm7",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "Bulrush_Seed ",
+        "quantity": 50,
+        "timestamp": "2025-09-24T17:08:24.926Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush_Seed x50\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 14:08:24"
+      },
+      {
+        "transactionId": "tx_1758750751403_huj9mawiu",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-09-24T21:52:31.403Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 18:52:31"
+      },
+      {
+        "transactionId": "tx_1758750795349_bvpb27fyf",
+        "type": "REVENUE_DISTRIBUTED",
+        "itemName": "bank_deposit",
+        "quantity": 1,
+        "amount": 500,
+        "timestamp": "2025-09-24T21:53:15.349Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $500\nAutor:: Smith Ramirez | FIXO: 340\nSaldo após depósito:: $33219.4\nData:: 24/09/2025 - 18:53:14"
+      },
+      {
+        "transactionId": "tx_1758750829544_iw68d2x4y",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "Bulrush",
+        "quantity": 100,
+        "timestamp": "2025-09-24T21:53:49.544Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 18:53:49"
+      },
+      {
+        "transactionId": "tx_1758750835146_oq3rzn3x1",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-09-24T21:53:55.146Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 18:53:54"
+      },
+      {
+        "transactionId": "tx_1758750839752_4mrk7kxae",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 100,
+        "timestamp": "2025-09-24T21:53:59.752Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 18:53:59"
+      },
+      {
+        "transactionId": "tx_1758750940842_segym5kig",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "Bulrush",
+        "quantity": 100,
+        "timestamp": "2025-09-24T21:55:40.842Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 18:55:40"
+      },
+      {
+        "transactionId": "tx_1758750944027_5066w7q0x",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 20,
+        "timestamp": "2025-09-24T21:55:44.027Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x20\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 18:55:43"
+      },
+      {
+        "transactionId": "tx_1758750949965_ctbnuctk3",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 180,
+        "timestamp": "2025-09-24T21:55:49.965Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x180\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 18:55:49"
+      },
+      {
+        "transactionId": "tx_1758750957643_klbtksk1t",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 100,
+        "timestamp": "2025-09-24T21:55:57.643Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 18:55:57"
+      },
+      {
+        "transactionId": "tx_1758751032969_u2ac2bpfq",
+        "type": "BOXES_RETURNED",
+        "itemName": "caixadeverduras",
+        "quantity": 100,
+        "timestamp": "2025-09-24T21:57:12.969Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixadeverduras x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 18:57:12"
+      },
+      {
+        "transactionId": "tx_1758751376770_dhd8dyscl",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "Bulrush",
+        "quantity": 100,
+        "timestamp": "2025-09-24T22:02:56.770Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 19:02:56"
+      },
+      {
+        "transactionId": "tx_1758751380354_j0iq3nxvx",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-09-24T22:03:00.354Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 19:02:59"
+      },
+      {
+        "transactionId": "tx_1758751385850_z7vv1cvna",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 100,
+        "timestamp": "2025-09-24T22:03:05.850Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 19:03:05"
+      },
+      {
+        "transactionId": "tx_1758751429774_pp93semxi",
+        "type": "BOXES_RETURNED",
+        "itemName": "caixadeverduras",
+        "quantity": 50,
+        "timestamp": "2025-09-24T22:03:49.774Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixadeverduras x50\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 19:03:49"
+      },
+      {
+        "transactionId": "tx_1758751451192_gv1pjt16m",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "Bulrush",
+        "quantity": 100,
+        "timestamp": "2025-09-24T22:04:11.192Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 19:04:10"
+      },
+      {
+        "transactionId": "tx_1758751454741_hjhxnfvj3",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-09-24T22:04:14.741Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 19:04:14"
+      },
+      {
+        "transactionId": "tx_1758751458452_m5b643qag",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 100,
+        "timestamp": "2025-09-24T22:04:18.452Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 19:04:17"
+      },
+      {
+        "transactionId": "tx_1758751522789_q50ftkfpi",
+        "type": "BOXES_RETURNED",
+        "itemName": "caixadeverduras",
+        "quantity": 100,
+        "timestamp": "2025-09-24T22:05:22.789Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixadeverduras x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 19:05:22"
+      },
+      {
+        "transactionId": "tx_1758751534402_a85csan3v",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 100,
+        "timestamp": "2025-09-24T22:05:34.402Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 19:05:33"
+      },
+      {
+        "transactionId": "tx_1758751539533_yotz7k8dc",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-09-24T22:05:39.533Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 19:05:38"
+      },
+      {
+        "transactionId": "tx_1758751542662_lwdpinfs8",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "Bulrush",
+        "quantity": 100,
+        "timestamp": "2025-09-24T22:05:42.662Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 19:05:42"
+      },
+      {
+        "transactionId": "tx_1758751591330_bhf81tra6",
+        "type": "BOXES_RETURNED",
+        "itemName": "caixadeverduras",
+        "quantity": 50,
+        "timestamp": "2025-09-24T22:06:31.330Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixadeverduras x50\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 19:06:30"
+      },
+      {
+        "transactionId": "tx_1758751599084_0s1ixvi1r",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "Bulrush",
+        "quantity": 100,
+        "timestamp": "2025-09-24T22:06:39.084Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 19:06:38"
+      },
+      {
+        "transactionId": "tx_1758751602075_jlvc2wzkf",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-09-24T22:06:42.075Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 19:06:41"
+      },
+      {
+        "transactionId": "tx_1758751606726_3j9ovtm1h",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 100,
+        "timestamp": "2025-09-24T22:06:46.726Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 19:06:46"
+      },
+      {
+        "transactionId": "tx_1758751652224_qi2r79a8h",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 100,
+        "timestamp": "2025-09-24T22:07:32.224Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 19:07:31"
+      },
+      {
+        "transactionId": "tx_1758751657587_a6yplpxot",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-09-24T22:07:37.587Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 19:07:37"
+      },
+      {
+        "transactionId": "tx_1758751660566_cn3q5xvrv",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "Bulrush",
+        "quantity": 100,
+        "timestamp": "2025-09-24T22:07:40.566Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 19:07:40"
+      },
+      {
+        "transactionId": "tx_1758751708967_f0oa8uipn",
+        "type": "BOXES_RETURNED",
+        "itemName": "caixadeverduras",
+        "quantity": 100,
+        "timestamp": "2025-09-24T22:08:28.967Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixadeverduras x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 19:08:28"
+      },
+      {
+        "transactionId": "tx_1758751711972_7qy2liz07",
+        "type": "BOXES_WITHDRAWN",
+        "itemName": "caixadeverduras",
+        "quantity": 200,
+        "timestamp": "2025-09-24T22:08:31.972Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x200\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 19:08:31"
+      },
+      {
+        "transactionId": "tx_1758751715098_jp8s2lhga",
+        "type": "BOXES_WITHDRAWN",
+        "itemName": "caixadeverduras",
+        "quantity": 200,
+        "timestamp": "2025-09-24T22:08:35.098Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x200\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 19:08:34"
+      },
+      {
+        "transactionId": "tx_1758751718706_x8s76jrzc",
+        "type": "BOXES_WITHDRAWN",
+        "itemName": "caixadeverduras",
+        "quantity": 100,
+        "timestamp": "2025-09-24T22:08:38.706Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x100\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 19:08:38"
+      },
+      {
+        "transactionId": "tx_1758759761265_54a4q66bi",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 2000,
+        "timestamp": "2025-09-25T00:22:41.265Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 2000\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 21:22:41"
+      },
+      {
+        "transactionId": "tx_1758759789528_5sp53q8dv",
+        "type": "REVENUE_DISTRIBUTED",
+        "itemName": "bank_deposit",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-09-25T00:23:09.528Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $1000\nAutor:: Smith Ramirez | FIXO: 340\nSaldo após depósito:: $31219.4\nData:: 24/09/2025 - 21:23:08"
       }
     ],
     "openResponsibilities": {
-      "boxesTaken": 5425,
-      "moneyOwed": 21700,
+      "boxesTaken": 5925,
+      "moneyOwed": 22200,
       "dueDate": "2025-09-19T20:48:07.570Z",
       "startDate": "2025-09-18T20:48:07.570Z"
     },
     "totalBoxesProcessed": 0,
-    "totalRevenueGenerated": 38000,
-    "totalRevenueReturned": 0,
+    "totalRevenueGenerated": 41000,
+    "totalRevenueReturned": 1500,
     "totalMoneyWithdrawn": 0,
     "totalMoneyDeposited": 0,
     "totalPaymentOwed": 0
@@ -5503,7 +6372,7 @@
     "role": "worker",
     "status": "active",
     "startTime": "2025-09-20T00:34:29.125Z",
-    "lastActivity": "2025-09-22T22:38:05.323Z",
+    "lastActivity": "2025-09-26T01:10:13.015Z",
     "transactions": [
       {
         "transactionId": "tx_1758328469132_2svbh56fs",
@@ -5528,6 +6397,30 @@
         "quantity": 100,
         "timestamp": "2025-09-22T21:38:49.161Z",
         "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: semente_trigo x100\nAutor:: Sasa Pietra | FIXO: 77801\nData:: 22/09/2025 - 18:38:48"
+      },
+      {
+        "transactionId": "tx_1758753369702_xcq8yome0",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "semente_trigo ",
+        "quantity": 100,
+        "timestamp": "2025-09-24T22:36:09.702Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: semente_trigo x100\nAutor:: Sasa Pietra | FIXO: 77801\nData:: 24/09/2025 - 19:36:09"
+      },
+      {
+        "transactionId": "tx_1758843209123_uvp1a5458",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "Bulrush_Seed ",
+        "quantity": 100,
+        "timestamp": "2025-09-25T23:33:29.123Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush_Seed x100\nAutor:: Sasa Pietra | FIXO: 77801\nData:: 25/09/2025 - 20:33:28"
+      },
+      {
+        "transactionId": "tx_1758843229596_ro9145hrt",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 100,
+        "timestamp": "2025-09-25T23:33:49.596Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x100\nAutor:: Sasa Pietra | FIXO: 77801\nData:: 25/09/2025 - 20:33:48"
       }
     ],
     "openResponsibilities": {
@@ -5538,83 +6431,6 @@
     },
     "totalBoxesProcessed": 0,
     "totalRevenueGenerated": 0,
-    "totalRevenueReturned": 0,
-    "totalMoneyWithdrawn": 0,
-    "totalMoneyDeposited": 0,
-    "totalPaymentOwed": 0
-  },
-  {
-    "sessionId": "b763b6f9-34ec-4298-ab53-5d4d7f623b96",
-    "workerId": "614876929266417672",
-    "workerName": "Notorius Bowdin",
-    "role": "manager",
-    "status": "active",
-    "startTime": "2025-09-20T19:05:55.160Z",
-    "lastActivity": "2025-09-24T02:52:56.982Z",
-    "transactions": [
-      {
-        "transactionId": "tx_1758581234662_97udm4y0n",
-        "type": "REVENUE_COLLECTED",
-        "itemName": "company_withdrawal",
-        "quantity": 1,
-        "amount": 2000,
-        "timestamp": "2025-09-22T22:47:14.662Z",
-        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 2000\nAutor:: Notorius Bowdin | FIXO: 71896\nData:: 22/09/2025 - 19:47:14"
-      },
-      {
-        "transactionId": "tx_1758586395609_lvkvi2932",
-        "type": "REVENUE_COLLECTED",
-        "itemName": "company_withdrawal",
-        "quantity": 1,
-        "amount": 1000,
-        "timestamp": "2025-09-23T00:13:15.609Z",
-        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Notorius Bowdin | FIXO: 71896\nData:: 22/09/2025 - 21:13:15"
-      },
-      {
-        "transactionId": "tx_1758665736198_8x8gcwjb3",
-        "type": "REVENUE_COLLECTED",
-        "itemName": "company_withdrawal",
-        "quantity": 1,
-        "amount": 1000,
-        "timestamp": "2025-09-23T22:15:36.198Z",
-        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Notorius Bowdin | FIXO: 71896\nData:: 23/09/2025 - 19:15:36"
-      },
-      {
-        "transactionId": "tx_1758669425952_byjtayt1n",
-        "type": "REVENUE_COLLECTED",
-        "itemName": "company_withdrawal",
-        "quantity": 1,
-        "amount": 2000,
-        "timestamp": "2025-09-23T23:17:05.952Z",
-        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 2000\nAutor:: Notorius Bowdin | FIXO: 71896\nData:: 23/09/2025 - 20:17:05"
-      },
-      {
-        "transactionId": "tx_1758673226890_ksl8x2buv",
-        "type": "REVENUE_COLLECTED",
-        "itemName": "company_withdrawal",
-        "quantity": 1,
-        "amount": 2000,
-        "timestamp": "2025-09-24T00:20:26.890Z",
-        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 2000\nAutor:: Notorius Bowdin | FIXO: 71896\nData:: 23/09/2025 - 21:20:26"
-      },
-      {
-        "transactionId": "tx_1758682376977_xpwnn5i13",
-        "type": "REVENUE_COLLECTED",
-        "itemName": "company_withdrawal",
-        "quantity": 1,
-        "amount": 3000,
-        "timestamp": "2025-09-24T02:52:56.977Z",
-        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 3000\nAutor:: Notorius Bowdin | FIXO: 71896\nData:: 23/09/2025 - 23:52:56"
-      }
-    ],
-    "openResponsibilities": {
-      "boxesTaken": 0,
-      "moneyOwed": 0,
-      "dueDate": "2025-09-21T19:05:55.160Z",
-      "startDate": "2025-09-20T19:05:55.160Z"
-    },
-    "totalBoxesProcessed": 0,
-    "totalRevenueGenerated": 11000,
     "totalRevenueReturned": 0,
     "totalMoneyWithdrawn": 0,
     "totalMoneyDeposited": 0,
@@ -5737,7 +6553,7 @@
     "role": "worker",
     "status": "active",
     "startTime": "2025-09-20T23:23:41.452Z",
-    "lastActivity": "2025-09-24T06:11:03.924Z",
+    "lastActivity": "2025-09-26T04:34:47.056Z",
     "transactions": [
       {
         "transactionId": "tx_1758410621460_5q7xm22do",
@@ -5818,6 +6634,46 @@
         "quantity": 20,
         "timestamp": "2025-09-24T05:30:05.868Z",
         "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x20\nAutor:: Ale Beckham | FIXO: 637\nData:: 24/09/2025 - 02:30:05"
+      },
+      {
+        "transactionId": "tx_1758776521438_nvdt8jr7s",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "Bulrush_Seed ",
+        "quantity": 25,
+        "timestamp": "2025-09-25T05:02:01.438Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush_Seed x25\nAutor:: Ale Beckham | FIXO: 637\nData:: 25/09/2025 - 02:02:00"
+      },
+      {
+        "transactionId": "tx_1758858352579_f5vqpkra1",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "coffeeseeds ",
+        "quantity": 10,
+        "timestamp": "2025-09-26T03:45:52.579Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: coffeeseeds x10\nAutor:: Ale Beckham | FIXO: 637\nData:: 26/09/2025 - 00:45:52"
+      },
+      {
+        "transactionId": "tx_1758858370899_k664r38cy",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "cornseed ",
+        "quantity": 10,
+        "timestamp": "2025-09-26T03:46:10.899Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x10\nAutor:: Ale Beckham | FIXO: 637\nData:: 26/09/2025 - 00:46:10"
+      },
+      {
+        "transactionId": "tx_1758858832470_n4cguolxn",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "cornseed ",
+        "quantity": 25,
+        "timestamp": "2025-09-26T03:53:52.470Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x25\nAutor:: Ale Beckham | FIXO: 637\nData:: 26/09/2025 - 00:53:52"
+      },
+      {
+        "transactionId": "tx_1758859954537_t9yudh7qa",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "cornseed ",
+        "quantity": 5,
+        "timestamp": "2025-09-26T04:12:34.537Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x5\nAutor:: Ale Beckham | FIXO: 637\nData:: 26/09/2025 - 01:12:34"
       }
     ],
     "openResponsibilities": {
@@ -5830,126 +6686,6 @@
     "totalRevenueGenerated": 0,
     "totalRevenueReturned": 0,
     "totalMoneyWithdrawn": 0,
-    "totalMoneyDeposited": 0,
-    "totalPaymentOwed": 0
-  },
-  {
-    "sessionId": "a70e23d0-45e3-4244-b4b6-ef0f8692d1cc",
-    "workerId": "372161270176153601",
-    "workerName": "Jizar Stoffeliz",
-    "role": "manager",
-    "status": "completed",
-    "startTime": "2025-09-21T14:24:09.661Z",
-    "lastActivity": "2025-09-23T19:07:40.588Z",
-    "transactions": [
-      {
-        "transactionId": "tx_1758464792910_h4bddkwxn",
-        "type": "SEEDS_WITHDRAWN",
-        "itemName": "coffeeseeds ",
-        "quantity": 100,
-        "timestamp": "2025-09-21T14:26:32.910Z",
-        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: coffeeseeds x100\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 21/09/2025 - 11:26:32"
-      },
-      {
-        "transactionId": "d7d97b6a-3245-4322-adee-1f7c5920bc19",
-        "type": "MONEY_WITHDRAWN_FROM_FERROVIA",
-        "itemName": "Money",
-        "quantity": 1,
-        "amount": 1640,
-        "timestamp": "2025-09-21T17:06:58.990Z",
-        "originalMessage": "Manager jizarstoffel withdrew $1640 from Ferrovia"
-      },
-      {
-        "transactionId": "tx_1758485210142_bx9pwykdg",
-        "type": "PLANTS_WITHDRAWN",
-        "itemName": "Milk_Weed",
-        "quantity": 130,
-        "timestamp": "2025-09-21T20:06:50.142Z",
-        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Milk_Weed x130\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 21/09/2025 - 17:06:49"
-      },
-      {
-        "transactionId": "tx_1758485383982_oo175p9r2",
-        "type": "SEEDS_WITHDRAWN",
-        "itemName": "Oleander_Sage_Seed ",
-        "quantity": 50,
-        "timestamp": "2025-09-21T20:09:43.982Z",
-        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Oleander_Sage_Seed x50\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 21/09/2025 - 17:09:43"
-      },
-      {
-        "transactionId": "tx_1758485389198_m11jkykob",
-        "type": "SEEDS_WITHDRAWN",
-        "itemName": "Oregano_Seed ",
-        "quantity": 50,
-        "timestamp": "2025-09-21T20:09:49.198Z",
-        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Oregano_Seed x50\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 21/09/2025 - 17:09:48"
-      },
-      {
-        "transactionId": "tx_1758485400374_wsqlmablv",
-        "type": "SEEDS_WITHDRAWN",
-        "itemName": "Parasol_Mushroom_Seed ",
-        "quantity": 50,
-        "timestamp": "2025-09-21T20:10:00.374Z",
-        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Parasol_Mushroom_Seed x50\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 21/09/2025 - 17:09:59"
-      },
-      {
-        "transactionId": "tx_1758485411655_6fjbe60w7",
-        "type": "SEEDS_WITHDRAWN",
-        "itemName": "Black_Berry_Seed ",
-        "quantity": 50,
-        "timestamp": "2025-09-21T20:10:11.655Z",
-        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Black_Berry_Seed x50\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 21/09/2025 - 17:10:11"
-      },
-      {
-        "transactionId": "tx_1758489411178_0mniq8vfd",
-        "type": "SEEDS_WITHDRAWN",
-        "itemName": "Prairie_Poppy_Seed ",
-        "quantity": 50,
-        "timestamp": "2025-09-21T21:16:51.178Z",
-        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Prairie_Poppy_Seed x50\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 21/09/2025 - 18:16:50"
-      },
-      {
-        "transactionId": "tx_1758489424571_j4nii8xvs",
-        "type": "SEEDS_WITHDRAWN",
-        "itemName": "Parasol_Mushroom_Seed ",
-        "quantity": 50,
-        "timestamp": "2025-09-21T21:17:04.571Z",
-        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Parasol_Mushroom_Seed x50\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 21/09/2025 - 18:17:03"
-      },
-      {
-        "transactionId": "tx_1758545699994_ozvy8h1uc",
-        "type": "SEEDS_WITHDRAWN",
-        "itemName": "Red_Raspberry_Seed ",
-        "quantity": 200,
-        "timestamp": "2025-09-22T12:54:59.994Z",
-        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Red_Raspberry_Seed x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 22/09/2025 - 09:54:59"
-      },
-      {
-        "transactionId": "tx_1758567228862_6ozu5nies",
-        "type": "SEEDS_WITHDRAWN",
-        "itemName": "semente_trigo ",
-        "quantity": 200,
-        "timestamp": "2025-09-22T18:53:48.862Z",
-        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: semente_trigo x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 22/09/2025 - 15:53:48"
-      },
-      {
-        "transactionId": "tx_1758653996206_mmfjg80ot",
-        "type": "PLANTS_WITHDRAWN",
-        "itemName": "Milk_Weed",
-        "quantity": 130,
-        "timestamp": "2025-09-23T18:59:56.206Z",
-        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Milk_Weed x130\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 23/09/2025 - 15:59:55"
-      }
-    ],
-    "openResponsibilities": {
-      "boxesTaken": 0,
-      "moneyOwed": 0,
-      "dueDate": "2025-09-22T14:24:09.661Z",
-      "startDate": "2025-09-21T14:24:09.661Z"
-    },
-    "totalBoxesProcessed": 0,
-    "totalRevenueGenerated": 0,
-    "totalRevenueReturned": 0,
-    "totalMoneyWithdrawn": 1640,
     "totalMoneyDeposited": 0,
     "totalPaymentOwed": 0
   },
@@ -5999,7 +6735,7 @@
     "role": "manager",
     "status": "active",
     "startTime": "2025-09-22T00:34:07.773Z",
-    "lastActivity": "2025-09-22T22:31:53.927Z",
+    "lastActivity": "2025-09-26T11:15:34.134Z",
     "transactions": [
       {
         "transactionId": "tx_1758504685794_hrrg539iq",
@@ -6092,6 +6828,24 @@
         "amount": 12000,
         "timestamp": "2025-09-22T22:31:53.921Z",
         "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - DEPOSITOU\nEmpresa:: cooperativa_bowdin\nAção:: DEPOSITOU\nQuantia:: 12000\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 22/09/2025 - 19:31:53"
+      },
+      {
+        "transactionId": "tx_1758841433892_6k0vu9bft",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 7750,
+        "timestamp": "2025-09-25T23:03:53.892Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 7750\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 25/09/2025 - 20:03:53"
+      },
+      {
+        "transactionId": "tx_1758885334128_uoustfqgt",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 5000,
+        "timestamp": "2025-09-26T11:15:34.128Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 5000\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 26/09/2025 - 08:15:33"
       }
     ],
     "openResponsibilities": {
@@ -6101,7 +6855,7 @@
       "startDate": "2025-09-22T00:34:07.773Z"
     },
     "totalBoxesProcessed": 0,
-    "totalRevenueGenerated": 8000,
+    "totalRevenueGenerated": 20750,
     "totalRevenueReturned": 12000,
     "totalMoneyWithdrawn": 0,
     "totalMoneyDeposited": 0,
@@ -6231,7 +6985,7 @@
     "role": "worker",
     "status": "active",
     "startTime": "2025-09-23T02:27:56.687Z",
-    "lastActivity": "2025-09-24T03:34:17.660Z",
+    "lastActivity": "2025-09-25T12:04:45.829Z",
     "transactions": [
       {
         "transactionId": "tx_1758595774883_qd6p7otpf",
@@ -6272,6 +7026,22 @@
         "quantity": 100,
         "timestamp": "2025-09-24T02:17:47.119Z",
         "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: semente_trigo x100\nAutor:: yuri westside | FIXO: 78043\nData:: 23/09/2025 - 23:17:46"
+      },
+      {
+        "transactionId": "tx_1758774640495_6ngnr9mfc",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "Bulrush_Seed ",
+        "quantity": 100,
+        "timestamp": "2025-09-25T04:30:40.495Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush_Seed x100\nAutor:: yuri westside | FIXO: 78043\nData:: 25/09/2025 - 01:30:40"
+      },
+      {
+        "transactionId": "tx_1758797636212_bi36gg552",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "Bulrush_Seed ",
+        "quantity": 100,
+        "timestamp": "2025-09-25T10:53:56.212Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush_Seed x100\nAutor:: yuri westside | FIXO: 78043\nData:: 25/09/2025 - 07:53:55"
       }
     ],
     "openResponsibilities": {
@@ -6294,17 +7064,128 @@
     "role": "manager",
     "status": "active",
     "startTime": "2025-09-23T08:02:45.519Z",
-    "lastActivity": "2025-09-23T08:02:45.519Z",
-    "transactions": [],
+    "lastActivity": "2025-09-25T23:20:49.590Z",
+    "transactions": [
+      {
+        "transactionId": "tx_1758756620167_wl5bx8zlq",
+        "type": "BOXES_RETURNED",
+        "itemName": "caixadeverduras",
+        "quantity": 300,
+        "timestamp": "2025-09-24T23:30:20.167Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixadeverduras x300\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 24/09/2025 - 20:30:19"
+      },
+      {
+        "transactionId": "tx_1758756634109_z3g524ze0",
+        "type": "BOXES_RETURNED",
+        "itemName": "caixadeverduras",
+        "quantity": 500,
+        "timestamp": "2025-09-24T23:30:34.109Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixadeverduras x500\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 24/09/2025 - 20:30:33"
+      },
+      {
+        "transactionId": "tx_1758756662357_7bnmmkk4i",
+        "type": "BOXES_RETURNED",
+        "itemName": "caixadeverduras",
+        "quantity": 500,
+        "timestamp": "2025-09-24T23:31:02.357Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixadeverduras x500\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 24/09/2025 - 20:31:01"
+      },
+      {
+        "transactionId": "tx_1758756681888_tq0zwwixn",
+        "type": "BOXES_RETURNED",
+        "itemName": "caixadeverduras",
+        "quantity": 200,
+        "timestamp": "2025-09-24T23:31:21.888Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixadeverduras x200\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 24/09/2025 - 20:31:21"
+      },
+      {
+        "transactionId": "tx_1758756790525_c9lvg4w10",
+        "type": "BOXES_RETURNED",
+        "itemName": "caixadeverduras",
+        "quantity": 50,
+        "timestamp": "2025-09-24T23:33:10.525Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixadeverduras x50\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 24/09/2025 - 20:33:10"
+      },
+      {
+        "transactionId": "tx_1758757891948_a82goeexn",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-09-24T23:51:31.948Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 24/09/2025 - 20:51:31"
+      },
+      {
+        "transactionId": "tx_1758757913989_8pew94kvy",
+        "type": "BOXES_WITHDRAWN",
+        "itemName": "caixadeverduras",
+        "quantity": 200,
+        "timestamp": "2025-09-24T23:51:53.989Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x200\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 24/09/2025 - 20:51:53"
+      },
+      {
+        "transactionId": "tx_1758757916249_k2g6tldsn",
+        "type": "BOXES_WITHDRAWN",
+        "itemName": "caixadeverduras",
+        "quantity": 50,
+        "timestamp": "2025-09-24T23:51:56.249Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x50\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 24/09/2025 - 20:51:55"
+      },
+      {
+        "transactionId": "tx_1758757928461_u5hvkw0rx",
+        "type": "REVENUE_DISTRIBUTED",
+        "itemName": "bank_deposit",
+        "quantity": 1,
+        "amount": 500,
+        "timestamp": "2025-09-24T23:52:08.461Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $500\nAutor:: Cliff Dillimore | FIXO: 267\nSaldo após depósito:: $29719.4\nData:: 24/09/2025 - 20:52:07"
+      },
+      {
+        "transactionId": "tx_1758757933345_57nr07kb7",
+        "type": "REVENUE_DISTRIBUTED",
+        "itemName": "bank_deposit",
+        "quantity": 1,
+        "amount": 500,
+        "timestamp": "2025-09-24T23:52:13.345Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $500\nAutor:: Cliff Dillimore | FIXO: 267\nSaldo após depósito:: $30219.4\nData:: 24/09/2025 - 20:52:12"
+      },
+      {
+        "transactionId": "tx_1758840231959_7si1ok05h",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-09-25T22:43:51.959Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 25/09/2025 - 19:43:51"
+      },
+      {
+        "transactionId": "tx_1758841039047_5gq3ywwjk",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-09-25T22:57:19.047Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 25/09/2025 - 19:57:18"
+      },
+      {
+        "transactionId": "tx_1758842449582_kkt5yj5dl",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-09-25T23:20:49.582Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 25/09/2025 - 20:20:49"
+      }
+    ],
     "openResponsibilities": {
-      "boxesTaken": 0,
+      "boxesTaken": 250,
       "moneyOwed": 0,
       "dueDate": "2025-09-24T08:02:45.519Z",
       "startDate": "2025-09-23T08:02:45.519Z"
     },
     "totalBoxesProcessed": 0,
-    "totalRevenueGenerated": 0,
-    "totalRevenueReturned": 0,
+    "totalRevenueGenerated": 4000,
+    "totalRevenueReturned": 1000,
     "totalMoneyWithdrawn": 0,
     "totalMoneyDeposited": 0,
     "totalPaymentOwed": 0
@@ -6316,7 +7197,7 @@
     "role": "worker",
     "status": "active",
     "startTime": "2025-09-23T14:03:17.618Z",
-    "lastActivity": "2025-09-24T00:59:27.931Z",
+    "lastActivity": "2025-09-26T01:24:45.372Z",
     "transactions": [
       {
         "transactionId": "tx_1758636197624_1guj89kc9",
@@ -6349,6 +7230,38 @@
         "quantity": 1,
         "timestamp": "2025-09-24T00:38:47.875Z",
         "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x1\nAutor:: Nuka Mato | FIXO: 78109\nData:: 23/09/2025 - 21:38:47"
+      },
+      {
+        "transactionId": "tx_1758714499836_mofoscpm6",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "Bulrush_Seed ",
+        "quantity": 100,
+        "timestamp": "2025-09-24T11:48:19.836Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush_Seed x100\nAutor:: Nuka Mato | FIXO: 78109\nData:: 24/09/2025 - 08:48:19"
+      },
+      {
+        "transactionId": "tx_1758714525616_b7x1kamcr",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "semente_trigo ",
+        "quantity": 100,
+        "timestamp": "2025-09-24T11:48:45.616Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: semente_trigo x100\nAutor:: Nuka Mato | FIXO: 78109\nData:: 24/09/2025 - 08:48:45"
+      },
+      {
+        "transactionId": "tx_1758803940802_5t9ap6chn",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "cornseed ",
+        "quantity": 100,
+        "timestamp": "2025-09-25T12:39:00.802Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x100\nAutor:: Nuka Mato | FIXO: 78109\nData:: 25/09/2025 - 09:39:00"
+      },
+      {
+        "transactionId": "tx_1758844638345_tddsbwijd",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "semente_trigo ",
+        "quantity": 100,
+        "timestamp": "2025-09-25T23:57:18.345Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: semente_trigo x100\nAutor:: Nuka Mato | FIXO: 78109\nData:: 25/09/2025 - 20:57:17"
       }
     ],
     "openResponsibilities": {
@@ -6356,61 +7269,6 @@
       "moneyOwed": 0,
       "dueDate": "2025-09-24T14:03:17.618Z",
       "startDate": "2025-09-23T14:03:17.618Z"
-    },
-    "totalBoxesProcessed": 0,
-    "totalRevenueGenerated": 0,
-    "totalRevenueReturned": 0,
-    "totalMoneyWithdrawn": 0,
-    "totalMoneyDeposited": 0,
-    "totalPaymentOwed": 0
-  },
-  {
-    "sessionId": "a3e076ba-7aa7-4750-9378-dedf5e873e5d",
-    "workerId": "470361257497722886",
-    "workerName": "Kenai Comanches",
-    "role": "worker",
-    "status": "active",
-    "startTime": "2025-09-23T15:03:28.185Z",
-    "lastActivity": "2025-09-24T01:15:51.327Z",
-    "transactions": [
-      {
-        "transactionId": "tx_1758642464577_jcak5f9za",
-        "type": "SEEDS_WITHDRAWN",
-        "itemName": "Bulrush_Seed ",
-        "quantity": 100,
-        "timestamp": "2025-09-23T15:47:44.577Z",
-        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush_Seed x100\nAutor:: Kenai Comanches | FIXO: 78096\nData:: 23/09/2025 - 12:47:44"
-      },
-      {
-        "transactionId": "tx_1758663997547_00e5zmk1n",
-        "type": "SEEDS_WITHDRAWN",
-        "itemName": "Bulrush_Seed ",
-        "quantity": 100,
-        "timestamp": "2025-09-23T21:46:37.547Z",
-        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush_Seed x100\nAutor:: Kenai Comanches | FIXO: 78096\nData:: 23/09/2025 - 18:46:37"
-      },
-      {
-        "transactionId": "tx_1758668698539_kkx760clb",
-        "type": "SEEDS_WITHDRAWN",
-        "itemName": "cornseed ",
-        "quantity": 100,
-        "timestamp": "2025-09-23T23:04:58.539Z",
-        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x100\nAutor:: Kenai Comanches | FIXO: 78096\nData:: 23/09/2025 - 20:04:57"
-      },
-      {
-        "transactionId": "tx_1758668716223_wtbt50nuk",
-        "type": "SEEDS_WITHDRAWN",
-        "itemName": "cornseed ",
-        "quantity": 100,
-        "timestamp": "2025-09-23T23:05:16.223Z",
-        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x100\nAutor:: Kenai Comanches | FIXO: 78096\nData:: 23/09/2025 - 20:05:15"
-      }
-    ],
-    "openResponsibilities": {
-      "boxesTaken": 0,
-      "moneyOwed": 0,
-      "dueDate": "2025-09-24T15:03:28.185Z",
-      "startDate": "2025-09-23T15:03:28.185Z"
     },
     "totalBoxesProcessed": 0,
     "totalRevenueGenerated": 0,
@@ -6448,7 +7306,7 @@
     "role": "worker",
     "status": "active",
     "startTime": "2025-09-23T16:32:11.579Z",
-    "lastActivity": "2025-09-23T17:42:13.429Z",
+    "lastActivity": "2025-09-26T11:21:08.525Z",
     "transactions": [
       {
         "transactionId": "tx_1758645738133_aexwh8eod",
@@ -6457,6 +7315,38 @@
         "quantity": 100,
         "timestamp": "2025-09-23T16:42:18.133Z",
         "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush_Seed x100\nAutor:: Gaioto Silva | FIXO: 78121\nData:: 23/09/2025 - 13:42:17"
+      },
+      {
+        "transactionId": "tx_1758821219966_x6uozxz1h",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "cornseed ",
+        "quantity": 200,
+        "timestamp": "2025-09-25T17:26:59.966Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x200\nAutor:: Gaioto Silva | FIXO: 78121\nData:: 25/09/2025 - 14:26:59"
+      },
+      {
+        "transactionId": "tx_1758851663574_etyubu0hu",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "cornseed ",
+        "quantity": 1,
+        "timestamp": "2025-09-26T01:54:23.574Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x1\nAutor:: Gaioto Silva | FIXO: 78121\nData:: 25/09/2025 - 22:54:23"
+      },
+      {
+        "transactionId": "tx_1758854918223_61w9od5jm",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "semente_trigo ",
+        "quantity": 100,
+        "timestamp": "2025-09-26T02:48:38.223Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: semente_trigo x100\nAutor:: Gaioto Silva | FIXO: 78121\nData:: 25/09/2025 - 23:48:37"
+      },
+      {
+        "transactionId": "tx_1758885668525_1q23bbes6",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "cornseed ",
+        "quantity": 200,
+        "timestamp": "2025-09-26T11:21:08.525Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x200\nAutor:: Gaioto Silva | FIXO: 78121\nData:: 26/09/2025 - 08:21:08"
       }
     ],
     "openResponsibilities": {
@@ -6501,8 +7391,17 @@
     "role": "manager",
     "status": "active",
     "startTime": "2025-09-23T22:23:42.197Z",
-    "lastActivity": "2025-09-23T22:23:42.197Z",
-    "transactions": [],
+    "lastActivity": "2025-09-25T21:05:12.519Z",
+    "transactions": [
+      {
+        "transactionId": "tx_1758832448947_wmv0q45es",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "cornseed ",
+        "quantity": 100,
+        "timestamp": "2025-09-25T20:34:08.947Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x100\nAutor:: Izzynha Evans | FIXO: 2477\nData:: 25/09/2025 - 17:34:08"
+      }
+    ],
     "openResponsibilities": {
       "boxesTaken": 0,
       "moneyOwed": 0,
@@ -6523,7 +7422,7 @@
     "role": "worker",
     "status": "active",
     "startTime": "2025-09-23T23:50:08.539Z",
-    "lastActivity": "2025-09-24T01:05:33.877Z",
+    "lastActivity": "2025-09-26T00:36:55.035Z",
     "transactions": [
       {
         "transactionId": "tx_1758671408545_ocqlnh4la",
@@ -6532,6 +7431,14 @@
         "quantity": 100,
         "timestamp": "2025-09-23T23:50:08.545Z",
         "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x100\nAutor:: Richard Klein | FIXO: 78183\nData:: 23/09/2025 - 20:50:08"
+      },
+      {
+        "transactionId": "tx_1758842303949_sjvafbs67",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "cornseed ",
+        "quantity": 100,
+        "timestamp": "2025-09-25T23:18:23.949Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x100\nAutor:: Richard Klein | FIXO: 78183\nData:: 25/09/2025 - 20:18:23"
       }
     ],
     "openResponsibilities": {
@@ -6585,8 +7492,17 @@
     "role": "worker",
     "status": "active",
     "startTime": "2025-09-24T01:14:04.502Z",
-    "lastActivity": "2025-09-24T01:14:04.502Z",
-    "transactions": [],
+    "lastActivity": "2025-09-26T01:42:18.163Z",
+    "transactions": [
+      {
+        "transactionId": "tx_1758848700992_4egsjmsxj",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "cornseed ",
+        "quantity": 50,
+        "timestamp": "2025-09-26T01:05:00.992Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x50\nAutor:: Ubirajara Cauamb | FIXO: 1050\nData:: 25/09/2025 - 22:05:00"
+      }
+    ],
     "openResponsibilities": {
       "boxesTaken": 0,
       "moneyOwed": 0,
@@ -6607,8 +7523,17 @@
     "role": "manager",
     "status": "active",
     "startTime": "2025-09-24T02:22:41.605Z",
-    "lastActivity": "2025-09-24T02:22:41.605Z",
-    "transactions": [],
+    "lastActivity": "2025-09-24T17:07:40.637Z",
+    "transactions": [
+      {
+        "transactionId": "tx_1758733660629_qllrk292l",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "cornseed ",
+        "quantity": 100,
+        "timestamp": "2025-09-24T17:07:40.629Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x100\nAutor:: BONNIE BENNETT | FIXO: 74490\nData:: 24/09/2025 - 14:07:40"
+      }
+    ],
     "openResponsibilities": {
       "boxesTaken": 0,
       "moneyOwed": 0,
@@ -6629,7 +7554,7 @@
     "role": "manager",
     "status": "active",
     "startTime": "2025-09-24T02:42:35.985Z",
-    "lastActivity": "2025-09-24T02:43:11.633Z",
+    "lastActivity": "2025-09-26T07:14:13.957Z",
     "transactions": [
       {
         "transactionId": "tx_1758681755991_r6cdomfhg",
@@ -6710,6 +7635,231 @@
         "quantity": 20,
         "timestamp": "2025-09-24T02:43:11.629Z",
         "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Crows_Garlic_Seed x20\nAutor:: Chris Rubble | FIXO: 72751\nData:: 23/09/2025 - 23:43:11"
+      },
+      {
+        "transactionId": "tx_1758832551994_ldtwz6gvh",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "coffeeseeds ",
+        "quantity": 10,
+        "timestamp": "2025-09-25T20:35:51.994Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: coffeeseeds x10\nAutor:: Chris Rubble | FIXO: 72751\nData:: 25/09/2025 - 17:35:51"
+      },
+      {
+        "transactionId": "tx_1758832555913_j1ij7sj6p",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "Red_Raspberry_Seed ",
+        "quantity": 20,
+        "timestamp": "2025-09-25T20:35:55.913Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Red_Raspberry_Seed x20\nAutor:: Chris Rubble | FIXO: 72751\nData:: 25/09/2025 - 17:35:55"
+      },
+      {
+        "transactionId": "tx_1758832560599_dlsec3pxa",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "Black_Berry_Seed ",
+        "quantity": 10,
+        "timestamp": "2025-09-25T20:36:00.599Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Black_Berry_Seed x10\nAutor:: Chris Rubble | FIXO: 72751\nData:: 25/09/2025 - 17:36:00"
+      },
+      {
+        "transactionId": "tx_1758832570646_jrallkp4n",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "Oleander_Sage_Seed ",
+        "quantity": 10,
+        "timestamp": "2025-09-25T20:36:10.646Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Oleander_Sage_Seed x10\nAutor:: Chris Rubble | FIXO: 72751\nData:: 25/09/2025 - 17:36:10"
+      },
+      {
+        "transactionId": "tx_1758832597213_slq60ivbs",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "Parasol_Mushroom_Seed ",
+        "quantity": 109,
+        "timestamp": "2025-09-25T20:36:37.213Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Parasol_Mushroom_Seed x109\nAutor:: Chris Rubble | FIXO: 72751\nData:: 25/09/2025 - 17:36:36"
+      },
+      {
+        "transactionId": "tx_1758832610320_4ipmmkib0",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "Oregano_Seed ",
+        "quantity": 10,
+        "timestamp": "2025-09-25T20:36:50.320Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Oregano_Seed x10\nAutor:: Chris Rubble | FIXO: 72751\nData:: 25/09/2025 - 17:36:49"
+      },
+      {
+        "transactionId": "tx_1758832615844_i69ila76n",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "Prairie_Poppy_Seed ",
+        "quantity": 20,
+        "timestamp": "2025-09-25T20:36:55.844Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Prairie_Poppy_Seed x20\nAutor:: Chris Rubble | FIXO: 72751\nData:: 25/09/2025 - 17:36:55"
+      },
+      {
+        "transactionId": "tx_1758832649708_opn7hiev3",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "Black_Currant_Seed ",
+        "quantity": 10,
+        "timestamp": "2025-09-25T20:37:29.708Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Black_Currant_Seed x10\nAutor:: Chris Rubble | FIXO: 72751\nData:: 25/09/2025 - 17:37:29"
+      },
+      {
+        "transactionId": "tx_1758832661238_4xamy4ozh",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "Crows_Garlic_Seed ",
+        "quantity": 10,
+        "timestamp": "2025-09-25T20:37:41.238Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Crows_Garlic_Seed x10\nAutor:: Chris Rubble | FIXO: 72751\nData:: 25/09/2025 - 17:37:40"
+      },
+      {
+        "transactionId": "tx_1758832718388_x6tcrvo66",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "Creekplum_Seed ",
+        "quantity": 10,
+        "timestamp": "2025-09-25T20:38:38.388Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Creekplum_Seed x10\nAutor:: Chris Rubble | FIXO: 72751\nData:: 25/09/2025 - 17:38:37"
+      },
+      {
+        "transactionId": "tx_1758837072391_6bxoy0dl0",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 250,
+        "timestamp": "2025-09-25T21:51:12.391Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 250\nAutor:: Chris Rubble | FIXO: 72751\nData:: 25/09/2025 - 18:51:12"
+      },
+      {
+        "transactionId": "tx_1758839271096_mr6n78dxn",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "Bulrush_Seed ",
+        "quantity": 50,
+        "timestamp": "2025-09-25T22:27:51.096Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush_Seed x50\nAutor:: Chris Rubble | FIXO: 72751\nData:: 25/09/2025 - 19:27:50"
+      },
+      {
+        "transactionId": "tx_1758839281460_nuftqhwkj",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "semente_trigo ",
+        "quantity": 50,
+        "timestamp": "2025-09-25T22:28:01.460Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: semente_trigo x50\nAutor:: Chris Rubble | FIXO: 72751\nData:: 25/09/2025 - 19:28:00"
+      },
+      {
+        "transactionId": "tx_1758839299740_mikios6as",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "cornseed ",
+        "quantity": 100,
+        "timestamp": "2025-09-25T22:28:19.740Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x100\nAutor:: Chris Rubble | FIXO: 72751\nData:: 25/09/2025 - 19:28:18"
+      },
+      {
+        "transactionId": "tx_1758844730849_yalh18z5v",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "Bulrush",
+        "quantity": 200,
+        "timestamp": "2025-09-25T23:58:50.849Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x200\nAutor:: Chris Rubble | FIXO: 72751\nData:: 25/09/2025 - 20:58:50"
+      },
+      {
+        "transactionId": "tx_1758844734506_gkloclmd1",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "Bulrush",
+        "quantity": 50,
+        "timestamp": "2025-09-25T23:58:54.506Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x50\nAutor:: Chris Rubble | FIXO: 72751\nData:: 25/09/2025 - 20:58:54"
+      },
+      {
+        "transactionId": "tx_1758844740796_cfhr34xpy",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 200,
+        "timestamp": "2025-09-25T23:59:00.796Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x200\nAutor:: Chris Rubble | FIXO: 72751\nData:: 25/09/2025 - 20:59:00"
+      },
+      {
+        "transactionId": "tx_1758844744150_plwxb679e",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 50,
+        "timestamp": "2025-09-25T23:59:04.150Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x50\nAutor:: Chris Rubble | FIXO: 72751\nData:: 25/09/2025 - 20:59:03"
+      },
+      {
+        "transactionId": "tx_1758844771056_hwf9izkw0",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-09-25T23:59:31.056Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Chris Rubble | FIXO: 72751\nData:: 25/09/2025 - 20:59:30"
+      },
+      {
+        "transactionId": "tx_1758844775184_388kk4qfj",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-09-25T23:59:35.184Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Chris Rubble | FIXO: 72751\nData:: 25/09/2025 - 20:59:34"
+      },
+      {
+        "transactionId": "tx_1758844780599_51m95emk2",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 100,
+        "timestamp": "2025-09-25T23:59:40.599Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x100\nAutor:: Chris Rubble | FIXO: 72751\nData:: 25/09/2025 - 20:59:38"
+      },
+      {
+        "transactionId": "tx_1758844796043_nxwzdh60a",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 50,
+        "timestamp": "2025-09-25T23:59:56.043Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x50\nAutor:: Chris Rubble | FIXO: 72751\nData:: 25/09/2025 - 20:59:55"
+      },
+      {
+        "transactionId": "tx_1758844825768_ni5u28gz0",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 100,
+        "timestamp": "2025-09-26T00:00:25.768Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x100\nAutor:: Chris Rubble | FIXO: 72751\nData:: 25/09/2025 - 21:00:25"
+      },
+      {
+        "transactionId": "tx_1758870806623_w7hkqxrp4",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-09-26T07:13:26.623Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Chris Rubble | FIXO: 72751\nData:: 26/09/2025 - 04:13:26"
+      },
+      {
+        "transactionId": "tx_1758870810222_al2uq31rx",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-09-26T07:13:30.222Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Chris Rubble | FIXO: 72751\nData:: 26/09/2025 - 04:13:29"
+      },
+      {
+        "transactionId": "tx_1758870814671_wai8bt22c",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 100,
+        "timestamp": "2025-09-26T07:13:34.671Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x100\nAutor:: Chris Rubble | FIXO: 72751\nData:: 26/09/2025 - 04:13:34"
+      },
+      {
+        "transactionId": "tx_1758870849967_uma8xmj45",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "Bulrush",
+        "quantity": 200,
+        "timestamp": "2025-09-26T07:14:09.967Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x200\nAutor:: Chris Rubble | FIXO: 72751\nData:: 26/09/2025 - 04:14:09"
+      },
+      {
+        "transactionId": "tx_1758870853952_kzwo9hzu9",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "Bulrush",
+        "quantity": 50,
+        "timestamp": "2025-09-26T07:14:13.952Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x50\nAutor:: Chris Rubble | FIXO: 72751\nData:: 26/09/2025 - 04:14:13"
       }
     ],
     "openResponsibilities": {
@@ -6719,7 +7869,7 @@
       "startDate": "2025-09-24T02:42:35.985Z"
     },
     "totalBoxesProcessed": 0,
-    "totalRevenueGenerated": 0,
+    "totalRevenueGenerated": 250,
     "totalRevenueReturned": 0,
     "totalMoneyWithdrawn": 0,
     "totalMoneyDeposited": 0,
@@ -6732,8 +7882,17 @@
     "role": "worker",
     "status": "active",
     "startTime": "2025-09-24T02:42:46.566Z",
-    "lastActivity": "2025-09-24T02:42:46.566Z",
-    "transactions": [],
+    "lastActivity": "2025-09-26T02:29:38.593Z",
+    "transactions": [
+      {
+        "transactionId": "tx_1758847037535_53pt0arti",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "semente_trigo ",
+        "quantity": 200,
+        "timestamp": "2025-09-26T00:37:17.535Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: semente_trigo x200\nAutor:: Nathy Miller | FIXO: 77097\nData:: 25/09/2025 - 21:37:17"
+      }
+    ],
     "openResponsibilities": {
       "boxesTaken": 0,
       "moneyOwed": 0,
@@ -6754,17 +7913,304 @@
     "role": "manager",
     "status": "active",
     "startTime": "2025-09-24T03:05:17.893Z",
-    "lastActivity": "2025-09-24T03:05:17.893Z",
-    "transactions": [],
+    "lastActivity": "2025-09-26T02:32:00.495Z",
+    "transactions": [
+      {
+        "transactionId": "tx_1758749806922_xsyc815pi",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-09-24T21:36:46.922Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Thony Gustav | FIXO: 72363\nData:: 24/09/2025 - 18:36:46"
+      },
+      {
+        "transactionId": "tx_1758749886660_8lkpos91v",
+        "type": "REVENUE_DISTRIBUTED",
+        "itemName": "bank_deposit",
+        "quantity": 1,
+        "amount": 500,
+        "timestamp": "2025-09-24T21:38:06.660Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $500\nAutor:: Thony Gustav | FIXO: 72363\nSaldo após depósito:: $32719.4\nData:: 24/09/2025 - 18:38:06"
+      },
+      {
+        "transactionId": "tx_1758847094147_78wi8wjj3",
+        "type": "REVENUE_DISTRIBUTED",
+        "itemName": "bank_deposit",
+        "quantity": 1,
+        "amount": 320,
+        "timestamp": "2025-09-26T00:38:14.147Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $320\nAutor:: Thony Gustav | FIXO: 72363\nSaldo após depósito:: $37713.1\nData:: 25/09/2025 - 21:38:13"
+      },
+      {
+        "transactionId": "tx_1758850006761_sq8qo9ewm",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-09-26T01:26:46.761Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Thony Gustav | FIXO: 72363\nData:: 25/09/2025 - 22:26:46"
+      },
+      {
+        "transactionId": "tx_1758850014874_1b30kkygv",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-09-26T01:26:54.874Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Thony Gustav | FIXO: 72363\nData:: 25/09/2025 - 22:26:54"
+      },
+      {
+        "transactionId": "tx_1758850024262_uko2yr6it",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 100,
+        "timestamp": "2025-09-26T01:27:04.262Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x100\nAutor:: Thony Gustav | FIXO: 72363\nData:: 25/09/2025 - 22:27:03"
+      },
+      {
+        "transactionId": "tx_1758850117125_89okiy8tm",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "Bulrush",
+        "quantity": 200,
+        "timestamp": "2025-09-26T01:28:37.125Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x200\nAutor:: Thony Gustav | FIXO: 72363\nData:: 25/09/2025 - 22:28:36"
+      },
+      {
+        "transactionId": "tx_1758850124538_9e17ftaqs",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "Bulrush",
+        "quantity": 50,
+        "timestamp": "2025-09-26T01:28:44.538Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x50\nAutor:: Thony Gustav | FIXO: 72363\nData:: 25/09/2025 - 22:28:43"
+      },
+      {
+        "transactionId": "tx_1758850132929_6whevaqck",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 200,
+        "timestamp": "2025-09-26T01:28:52.929Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x200\nAutor:: Thony Gustav | FIXO: 72363\nData:: 25/09/2025 - 22:28:52"
+      },
+      {
+        "transactionId": "tx_1758850140041_j2fl7vv0z",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 50,
+        "timestamp": "2025-09-26T01:29:00.041Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x50\nAutor:: Thony Gustav | FIXO: 72363\nData:: 25/09/2025 - 22:28:59"
+      },
+      {
+        "transactionId": "tx_1758850238140_4ff79sr9z",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-09-26T01:30:38.140Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Thony Gustav | FIXO: 72363\nData:: 25/09/2025 - 22:30:37"
+      },
+      {
+        "transactionId": "tx_1758850245022_02ylopoh9",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-09-26T01:30:45.022Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Thony Gustav | FIXO: 72363\nData:: 25/09/2025 - 22:30:44"
+      },
+      {
+        "transactionId": "tx_1758850250504_r8c63443p",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 100,
+        "timestamp": "2025-09-26T01:30:50.504Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x100\nAutor:: Thony Gustav | FIXO: 72363\nData:: 25/09/2025 - 22:30:49"
+      },
+      {
+        "transactionId": "tx_1758850318388_tx6i41m0q",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 200,
+        "timestamp": "2025-09-26T01:31:58.388Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x200\nAutor:: Thony Gustav | FIXO: 72363\nData:: 25/09/2025 - 22:31:57"
+      },
+      {
+        "transactionId": "tx_1758850325300_pwfqrkimu",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 50,
+        "timestamp": "2025-09-26T01:32:05.300Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x50\nAutor:: Thony Gustav | FIXO: 72363\nData:: 25/09/2025 - 22:32:04"
+      },
+      {
+        "transactionId": "tx_1758850345698_q0zqjas05",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "Bulrush",
+        "quantity": 200,
+        "timestamp": "2025-09-26T01:32:25.698Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x200\nAutor:: Thony Gustav | FIXO: 72363\nData:: 25/09/2025 - 22:32:25"
+      },
+      {
+        "transactionId": "tx_1758850354706_6pcddrmib",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "Bulrush",
+        "quantity": 50,
+        "timestamp": "2025-09-26T01:32:34.706Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x50\nAutor:: Thony Gustav | FIXO: 72363\nData:: 25/09/2025 - 22:32:34"
+      },
+      {
+        "transactionId": "tx_1758850662540_xswl6vn1o",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-09-26T01:37:42.540Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Thony Gustav | FIXO: 72363\nData:: 25/09/2025 - 22:37:41"
+      },
+      {
+        "transactionId": "tx_1758850669909_qwh8lycq1",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-09-26T01:37:49.909Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Thony Gustav | FIXO: 72363\nData:: 25/09/2025 - 22:37:49"
+      },
+      {
+        "transactionId": "tx_1758850678326_qmf7bz4nu",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 100,
+        "timestamp": "2025-09-26T01:37:58.326Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x100\nAutor:: Thony Gustav | FIXO: 72363\nData:: 25/09/2025 - 22:37:57"
+      },
+      {
+        "transactionId": "tx_1758850744666_q731dbz1t",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 200,
+        "timestamp": "2025-09-26T01:39:04.666Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x200\nAutor:: Thony Gustav | FIXO: 72363\nData:: 25/09/2025 - 22:39:04"
+      },
+      {
+        "transactionId": "tx_1758850752853_e3q3l2qhz",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 50,
+        "timestamp": "2025-09-26T01:39:12.853Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x50\nAutor:: Thony Gustav | FIXO: 72363\nData:: 25/09/2025 - 22:39:12"
+      },
+      {
+        "transactionId": "tx_1758850765555_82bnlns9l",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "Bulrush",
+        "quantity": 200,
+        "timestamp": "2025-09-26T01:39:25.555Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x200\nAutor:: Thony Gustav | FIXO: 72363\nData:: 25/09/2025 - 22:39:25"
+      },
+      {
+        "transactionId": "tx_1758850774177_nuywrwyic",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "Bulrush",
+        "quantity": 50,
+        "timestamp": "2025-09-26T01:39:34.177Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x50\nAutor:: Thony Gustav | FIXO: 72363\nData:: 25/09/2025 - 22:39:33"
+      },
+      {
+        "transactionId": "tx_1758850885214_c8op3uz7n",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-09-26T01:41:25.214Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Thony Gustav | FIXO: 72363\nData:: 25/09/2025 - 22:41:24"
+      },
+      {
+        "transactionId": "tx_1758850895410_vk1dpo3ab",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-09-26T01:41:35.410Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Thony Gustav | FIXO: 72363\nData:: 25/09/2025 - 22:41:34"
+      },
+      {
+        "transactionId": "tx_1758850905491_plrsrvzt0",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 100,
+        "timestamp": "2025-09-26T01:41:45.491Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x00100\nAutor:: Thony Gustav | FIXO: 72363\nData:: 25/09/2025 - 22:41:44"
+      },
+      {
+        "transactionId": "tx_1758850990764_203szwgq3",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "Bulrush",
+        "quantity": 200,
+        "timestamp": "2025-09-26T01:43:10.764Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x200\nAutor:: Thony Gustav | FIXO: 72363\nData:: 25/09/2025 - 22:43:10"
+      },
+      {
+        "transactionId": "tx_1758850999559_02n8ddjtt",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "Bulrush",
+        "quantity": 50,
+        "timestamp": "2025-09-26T01:43:19.559Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x50\nAutor:: Thony Gustav | FIXO: 72363\nData:: 25/09/2025 - 22:43:19"
+      },
+      {
+        "transactionId": "tx_1758851011285_6tbi8cjsp",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 200,
+        "timestamp": "2025-09-26T01:43:31.285Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x200\nAutor:: Thony Gustav | FIXO: 72363\nData:: 25/09/2025 - 22:43:30"
+      },
+      {
+        "transactionId": "tx_1758851018820_a5yfxv7zg",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "trigo",
+        "quantity": 50,
+        "timestamp": "2025-09-26T01:43:38.820Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: trigo x50\nAutor:: Thony Gustav | FIXO: 72363\nData:: 25/09/2025 - 22:43:38"
+      },
+      {
+        "transactionId": "tx_1758851932878_r7k5xfbeq",
+        "type": "FERROVIA_MISSION_COMPLETED",
+        "itemName": "ferrovia_mission",
+        "quantity": 1,
+        "timestamp": "2025-09-26T01:58:52.878Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 1014\nRecompensa:: 1000\nAutor:: Thony Gustav | FIXO: 72363\nData:: 25/09/2025 - 22:58:52"
+      },
+      {
+        "transactionId": "tx_1758851953082_8m3lumptz",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-09-26T01:59:13.082Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Thony Gustav | FIXO: 72363\nData:: 25/09/2025 - 22:59:12"
+      },
+      {
+        "transactionId": "tx_1758853854471_564ltyr0d",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-09-26T02:30:54.471Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Thony Gustav | FIXO: 72363\nData:: 25/09/2025 - 23:30:54"
+      },
+      {
+        "transactionId": "tx_1758853920491_xf75iy3gz",
+        "type": "REVENUE_DISTRIBUTED",
+        "itemName": "bank_deposit",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-09-26T02:32:00.491Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $1000\nAutor:: Thony Gustav | FIXO: 72363\nSaldo após depósito:: $36620.6\nData:: 25/09/2025 - 23:31:59"
+      }
+    ],
     "openResponsibilities": {
       "boxesTaken": 0,
       "moneyOwed": 0,
       "dueDate": "2025-09-25T03:05:17.893Z",
       "startDate": "2025-09-24T03:05:17.893Z"
     },
-    "totalBoxesProcessed": 0,
-    "totalRevenueGenerated": 0,
-    "totalRevenueReturned": 0,
+    "totalBoxesProcessed": 1,
+    "totalRevenueGenerated": 3000,
+    "totalRevenueReturned": 1820,
     "totalMoneyWithdrawn": 0,
     "totalMoneyDeposited": 0,
     "totalPaymentOwed": 0
@@ -6807,7 +8253,7 @@
     "role": "manager",
     "status": "active",
     "startTime": "2025-09-24T07:01:26.648Z",
-    "lastActivity": "2025-09-24T07:28:09.591Z",
+    "lastActivity": "2025-09-26T01:10:25.265Z",
     "transactions": [
       {
         "transactionId": "tx_1758697969017_wj9lbmygx",
@@ -6840,6 +8286,14 @@
         "quantity": 500,
         "timestamp": "2025-09-24T07:28:09.585Z",
         "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: trigo x500\nAutor:: Johnny Rocks | FIXO: 77228\nData:: 24/09/2025 - 04:28:09"
+      },
+      {
+        "transactionId": "tx_1758849025258_l62z2ce7n",
+        "type": "PLANTS_DEPOSITED",
+        "itemName": "trigo",
+        "quantity": 100,
+        "timestamp": "2025-09-26T01:10:25.258Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: trigo x100\nAutor:: Johnny Rocks | FIXO: 77228\nData:: 25/09/2025 - 22:10:24"
       }
     ],
     "openResponsibilities": {
@@ -6862,13 +8316,546 @@
     "role": "manager",
     "status": "active",
     "startTime": "2025-09-24T07:49:39.393Z",
-    "lastActivity": "2025-09-24T07:49:39.393Z",
-    "transactions": [],
+    "lastActivity": "2025-09-26T08:33:15.425Z",
+    "transactions": [
+      {
+        "transactionId": "tx_1758729913871_vhqjvleby",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-09-24T16:05:13.871Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 24/09/2025 - 13:05:13"
+      },
+      {
+        "transactionId": "tx_1758806678991_jcxicjzt5",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-09-25T13:24:38.991Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 25/09/2025 - 10:24:38"
+      },
+      {
+        "transactionId": "tx_1758807550585_ssyy2acgb",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-09-25T13:39:10.585Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 25/09/2025 - 10:39:10"
+      },
+      {
+        "transactionId": "tx_1758808741049_lae2gyvlo",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-09-25T13:59:01.049Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 25/09/2025 - 10:59:00"
+      },
+      {
+        "transactionId": "tx_1758809712805_oezhy37zc",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-09-25T14:15:12.805Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 25/09/2025 - 11:15:12"
+      },
+      {
+        "transactionId": "tx_1758810740551_7uqh071mp",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-09-25T14:32:20.551Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 25/09/2025 - 11:32:20"
+      },
+      {
+        "transactionId": "tx_1758811515828_65tfgep6b",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-09-25T14:45:15.828Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 25/09/2025 - 11:45:15"
+      },
+      {
+        "transactionId": "tx_1758812194737_183c5neze",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-09-25T14:56:34.737Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 25/09/2025 - 11:56:34"
+      },
+      {
+        "transactionId": "tx_1758814165135_e7eyrpqom",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-09-25T15:29:25.135Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 25/09/2025 - 12:29:24"
+      },
+      {
+        "transactionId": "tx_1758814847257_u09pw7hn7",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-09-25T15:40:47.257Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 25/09/2025 - 12:40:46"
+      },
+      {
+        "transactionId": "tx_1758815707298_jai37af1a",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-09-25T15:55:07.298Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 25/09/2025 - 12:55:07"
+      },
+      {
+        "transactionId": "tx_1758816593356_n81j79890",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-09-25T16:09:53.356Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 25/09/2025 - 13:09:53"
+      },
+      {
+        "transactionId": "tx_1758839250344_vuwcu21ks",
+        "type": "FERROVIA_MISSION_COMPLETED",
+        "itemName": "ferrovia_mission",
+        "quantity": 1,
+        "timestamp": "2025-09-25T22:27:30.344Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 1008\nRecompensa:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 25/09/2025 - 19:27:30"
+      },
+      {
+        "transactionId": "tx_1758839270969_zgfpaln1y",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-09-25T22:27:50.969Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 25/09/2025 - 19:27:50"
+      },
+      {
+        "transactionId": "tx_1758839983077_ch14njo8v",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-09-25T22:39:43.077Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 25/09/2025 - 19:39:42"
+      },
+      {
+        "transactionId": "tx_1758840751489_yv1q07ze3",
+        "type": "FERROVIA_MISSION_COMPLETED",
+        "itemName": "ferrovia_mission",
+        "quantity": 1,
+        "timestamp": "2025-09-25T22:52:31.489Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 1011\nRecompensa:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 25/09/2025 - 19:52:31"
+      },
+      {
+        "transactionId": "tx_1758840764646_v1jv29euj",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-09-25T22:52:44.646Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 25/09/2025 - 19:52:44"
+      },
+      {
+        "transactionId": "tx_1758842501121_5ny9nd6c4",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "cornseed ",
+        "quantity": 200,
+        "timestamp": "2025-09-25T23:21:41.121Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x200\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 25/09/2025 - 20:21:40"
+      },
+      {
+        "transactionId": "tx_1758843641879_y75c9zcex",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "cornseed ",
+        "quantity": 100,
+        "timestamp": "2025-09-25T23:40:41.879Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x100\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 25/09/2025 - 20:40:41"
+      },
+      {
+        "transactionId": "tx_1758872742663_h3ltax665",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-09-26T07:45:42.663Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 26/09/2025 - 04:45:42"
+      },
+      {
+        "transactionId": "tx_1758873437397_2qxqyzxxk",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-09-26T07:57:17.397Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 26/09/2025 - 04:57:17"
+      },
+      {
+        "transactionId": "tx_1758874121401_u9i53u6jv",
+        "type": "FERROVIA_MISSION_COMPLETED",
+        "itemName": "ferrovia_mission",
+        "quantity": 1,
+        "timestamp": "2025-09-26T08:08:41.401Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 1023\nRecompensa:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 26/09/2025 - 05:08:41"
+      },
+      {
+        "transactionId": "tx_1758874137085_gb7povg9x",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-09-26T08:08:57.085Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 26/09/2025 - 05:08:56"
+      },
+      {
+        "transactionId": "tx_1758874914216_hb0dg3423",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-09-26T08:21:54.216Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 26/09/2025 - 05:21:54"
+      },
+      {
+        "transactionId": "tx_1758875595420_du2ebkght",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-09-26T08:33:15.420Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 26/09/2025 - 05:33:15"
+      }
+    ],
     "openResponsibilities": {
       "boxesTaken": 0,
       "moneyOwed": 0,
       "dueDate": "2025-09-25T07:49:39.393Z",
       "startDate": "2025-09-24T07:49:39.393Z"
+    },
+    "totalBoxesProcessed": 3,
+    "totalRevenueGenerated": 20000,
+    "totalRevenueReturned": 0,
+    "totalMoneyWithdrawn": 0,
+    "totalMoneyDeposited": 0,
+    "totalPaymentOwed": 0
+  },
+  {
+    "sessionId": "af5b5d52-4a2c-46d6-a8c8-e8326e8456b7",
+    "workerId": "1295901408264196181",
+    "workerName": "Maria Vitória",
+    "role": "worker",
+    "status": "active",
+    "startTime": "2025-09-25T00:00:06.208Z",
+    "lastActivity": "2025-09-26T00:42:15.024Z",
+    "transactions": [
+      {
+        "transactionId": "tx_1758758406217_7c2688drd",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "cornseed ",
+        "quantity": 10,
+        "timestamp": "2025-09-25T00:00:06.217Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x10\nAutor:: MARIA VITORIA | FIXO: 78112\nData:: 24/09/2025 - 21:00:05"
+      },
+      {
+        "transactionId": "tx_1758758418988_mg0bae03b",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "Bulrush_Seed ",
+        "quantity": 10,
+        "timestamp": "2025-09-25T00:00:18.988Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush_Seed x10\nAutor:: MARIA VITORIA | FIXO: 78112\nData:: 24/09/2025 - 21:00:18"
+      },
+      {
+        "transactionId": "tx_1758758429242_c4qvgkwsj",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "semente_trigo ",
+        "quantity": 10,
+        "timestamp": "2025-09-25T00:00:29.242Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: semente_trigo x10\nAutor:: MARIA VITORIA | FIXO: 78112\nData:: 24/09/2025 - 21:00:28"
+      },
+      {
+        "transactionId": "tx_1758837551124_3xgznqrmx",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "cornseed ",
+        "quantity": 20,
+        "timestamp": "2025-09-25T21:59:11.124Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x20\nAutor:: MARIA VITORIA | FIXO: 78112\nData:: 25/09/2025 - 18:59:10"
+      },
+      {
+        "transactionId": "tx_1758837559066_8adx93i21",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "hop_seed ",
+        "quantity": 20,
+        "timestamp": "2025-09-25T21:59:19.066Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: hop_seed x20\nAutor:: MARIA VITORIA | FIXO: 78112\nData:: 25/09/2025 - 18:59:18"
+      },
+      {
+        "transactionId": "tx_1758837578443_bbrei6f1i",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "Red_Raspberry_Seed ",
+        "quantity": 10,
+        "timestamp": "2025-09-25T21:59:38.443Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Red_Raspberry_Seed x10\nAutor:: MARIA VITORIA | FIXO: 78112\nData:: 25/09/2025 - 18:59:37"
+      },
+      {
+        "transactionId": "tx_1758837583586_iy65zk878",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "Bulrush_Seed ",
+        "quantity": 20,
+        "timestamp": "2025-09-25T21:59:43.586Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush_Seed x20\nAutor:: MARIA VITORIA | FIXO: 78112\nData:: 25/09/2025 - 18:59:43"
+      },
+      {
+        "transactionId": "tx_1758838134584_9o0rl17hr",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "cornseed ",
+        "quantity": 20,
+        "timestamp": "2025-09-25T22:08:54.584Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x20\nAutor:: MARIA VITORIA | FIXO: 78112\nData:: 25/09/2025 - 19:08:54"
+      },
+      {
+        "transactionId": "tx_1758838148323_z40cvwqk9",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "semente_trigo ",
+        "quantity": 30,
+        "timestamp": "2025-09-25T22:09:08.323Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: semente_trigo x30\nAutor:: MARIA VITORIA | FIXO: 78112\nData:: 25/09/2025 - 19:09:07"
+      },
+      {
+        "transactionId": "tx_1758840457959_20jz0luq7",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "semente_trigo ",
+        "quantity": 20,
+        "timestamp": "2025-09-25T22:47:37.959Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: semente_trigo x20\nAutor:: MARIA VITORIA | FIXO: 78112\nData:: 25/09/2025 - 19:47:37"
+      },
+      {
+        "transactionId": "tx_1758841217970_eatj5og9z",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "cornseed ",
+        "quantity": 20,
+        "timestamp": "2025-09-25T23:00:17.970Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x20\nAutor:: MARIA VITORIA | FIXO: 78112\nData:: 25/09/2025 - 20:00:17"
+      },
+      {
+        "transactionId": "tx_1758843495288_d64kkl4q7",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "cornseed ",
+        "quantity": 20,
+        "timestamp": "2025-09-25T23:38:15.288Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x20\nAutor:: MARIA VITORIA | FIXO: 78112\nData:: 25/09/2025 - 20:38:14"
+      },
+      {
+        "transactionId": "tx_1758843916489_8i6cgdvgi",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "semente_trigo ",
+        "quantity": 30,
+        "timestamp": "2025-09-25T23:45:16.489Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: semente_trigo x30\nAutor:: MARIA VITORIA | FIXO: 78112\nData:: 25/09/2025 - 20:45:15"
+      }
+    ],
+    "openResponsibilities": {
+      "boxesTaken": 0,
+      "moneyOwed": 0,
+      "dueDate": "2025-09-26T00:00:06.208Z",
+      "startDate": "2025-09-25T00:00:06.208Z"
+    },
+    "totalBoxesProcessed": 0,
+    "totalRevenueGenerated": 0,
+    "totalRevenueReturned": 0,
+    "totalMoneyWithdrawn": 0,
+    "totalMoneyDeposited": 0,
+    "totalPaymentOwed": 0
+  },
+  {
+    "sessionId": "4910c6cd-7aa5-4b29-a7ac-76f2e1ea77f9",
+    "workerId": "470361257497722886",
+    "workerName": "Kenai Comanches",
+    "role": "worker",
+    "status": "active",
+    "startTime": "2025-09-25T20:14:18.275Z",
+    "lastActivity": "2025-09-26T01:08:44.339Z",
+    "transactions": [
+      {
+        "transactionId": "tx_1758844215586_5dxa9lu4o",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "cornseed ",
+        "quantity": 100,
+        "timestamp": "2025-09-25T23:50:15.586Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x100\nAutor:: Kenai Comanches | FIXO: 78096\nData:: 25/09/2025 - 20:50:15"
+      }
+    ],
+    "openResponsibilities": {
+      "boxesTaken": 0,
+      "moneyOwed": 0,
+      "dueDate": "2025-09-26T20:14:18.276Z",
+      "startDate": "2025-09-25T20:14:18.276Z"
+    },
+    "totalBoxesProcessed": 0,
+    "totalRevenueGenerated": 0,
+    "totalRevenueReturned": 0,
+    "totalMoneyWithdrawn": 0,
+    "totalMoneyDeposited": 0,
+    "totalPaymentOwed": 0
+  },
+  {
+    "sessionId": "c858f50b-cd2a-4eb6-b310-bef15b8667f0",
+    "workerId": "372161270176153601",
+    "workerName": "Jizar Stoffeliz",
+    "role": "manager",
+    "status": "active",
+    "startTime": "2025-09-25T22:48:03.956Z",
+    "lastActivity": "2025-09-25T22:48:03.956Z",
+    "transactions": [],
+    "openResponsibilities": {
+      "boxesTaken": 0,
+      "moneyOwed": 0,
+      "dueDate": "2025-09-26T22:48:03.956Z",
+      "startDate": "2025-09-25T22:48:03.956Z"
+    },
+    "totalBoxesProcessed": 0,
+    "totalRevenueGenerated": 0,
+    "totalRevenueReturned": 0,
+    "totalMoneyWithdrawn": 0,
+    "totalMoneyDeposited": 0,
+    "totalPaymentOwed": 0
+  },
+  {
+    "sessionId": "971103d2-f8fa-4ac9-a034-12c8726eeeef",
+    "workerId": "726777646150582463",
+    "workerName": "jagunsso torres",
+    "role": "worker",
+    "status": "active",
+    "startTime": "2025-09-26T00:03:26.165Z",
+    "lastActivity": "2025-09-26T00:10:29.789Z",
+    "transactions": [
+      {
+        "transactionId": "tx_1758845006179_u4znjfq03",
+        "type": "PLANTS_DEPOSITED",
+        "itemName": "corn",
+        "quantity": 70,
+        "timestamp": "2025-09-26T00:03:26.179Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x70\nAutor:: JAGUNSSO TORRES | FIXO: 78260\nData:: 25/09/2025 - 21:03:25"
+      },
+      {
+        "transactionId": "tx_1758845424997_z0gr5issa",
+        "type": "PLANTS_DEPOSITED",
+        "itemName": "corn",
+        "quantity": 100,
+        "timestamp": "2025-09-26T00:10:24.997Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x100\nAutor:: JAGUNSSO TORRES | FIXO: 78260\nData:: 25/09/2025 - 21:10:24"
+      },
+      {
+        "transactionId": "tx_1758845429781_rllfud7p7",
+        "type": "PLANTS_DEPOSITED",
+        "itemName": "corn",
+        "quantity": 180,
+        "timestamp": "2025-09-26T00:10:29.781Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x180\nAutor:: JAGUNSSO TORRES | FIXO: 78260\nData:: 25/09/2025 - 21:10:29"
+      }
+    ],
+    "openResponsibilities": {
+      "boxesTaken": 0,
+      "moneyOwed": 0,
+      "dueDate": "2025-09-27T00:03:26.165Z",
+      "startDate": "2025-09-26T00:03:26.165Z"
+    },
+    "totalBoxesProcessed": 0,
+    "totalRevenueGenerated": 0,
+    "totalRevenueReturned": 0,
+    "totalMoneyWithdrawn": 0,
+    "totalMoneyDeposited": 0,
+    "totalPaymentOwed": 0
+  },
+  {
+    "sessionId": "f7a740f6-5f6f-45ff-b1c1-40b24e1f194f",
+    "workerId": "614876929266417672",
+    "workerName": "Notorius Bowdin",
+    "role": "manager",
+    "status": "active",
+    "startTime": "2025-09-26T00:19:40.614Z",
+    "lastActivity": "2025-09-26T00:19:40.614Z",
+    "transactions": [],
+    "openResponsibilities": {
+      "boxesTaken": 0,
+      "moneyOwed": 0,
+      "dueDate": "2025-09-27T00:19:40.614Z",
+      "startDate": "2025-09-26T00:19:40.614Z"
+    },
+    "totalBoxesProcessed": 0,
+    "totalRevenueGenerated": 0,
+    "totalRevenueReturned": 0,
+    "totalMoneyWithdrawn": 0,
+    "totalMoneyDeposited": 0,
+    "totalPaymentOwed": 0
+  },
+  {
+    "sessionId": "1f7b913e-7a45-4431-b125-605deeafb63d",
+    "workerId": "959122593523335188",
+    "workerName": "Ingrid Dangerous",
+    "role": "worker",
+    "status": "active",
+    "startTime": "2025-09-26T00:35:56.666Z",
+    "lastActivity": "2025-09-26T00:40:11.429Z",
+    "transactions": [
+      {
+        "transactionId": "tx_1758846956677_nwu67i0gn",
+        "type": "PLANTS_DEPOSITED",
+        "itemName": "corn",
+        "quantity": 100,
+        "timestamp": "2025-09-26T00:35:56.677Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x100\nAutor:: Ingrid Dangerous | FIXO: 78258\nData:: 25/09/2025 - 21:35:56"
+      },
+      {
+        "transactionId": "tx_1758846963717_mt6odlrli",
+        "type": "PLANTS_DEPOSITED",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-09-26T00:36:03.717Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x200\nAutor:: Ingrid Dangerous | FIXO: 78258\nData:: 25/09/2025 - 21:36:03"
+      },
+      {
+        "transactionId": "tx_1758846973730_h6bibz4lq",
+        "type": "PLANTS_DEPOSITED",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-09-26T00:36:13.730Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x200\nAutor:: Ingrid Dangerous | FIXO: 78258\nData:: 25/09/2025 - 21:36:13"
+      },
+      {
+        "transactionId": "tx_1758847204432_rxnm14mdn",
+        "type": "PLANTS_DEPOSITED",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-09-26T00:40:04.432Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x200\nAutor:: Ingrid Dangerous | FIXO: 78258\nData:: 25/09/2025 - 21:40:03"
+      },
+      {
+        "transactionId": "tx_1758847211418_to2lnw2ea",
+        "type": "PLANTS_DEPOSITED",
+        "itemName": "corn",
+        "quantity": 30,
+        "timestamp": "2025-09-26T00:40:11.418Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x30\nAutor:: Ingrid Dangerous | FIXO: 78258\nData:: 25/09/2025 - 21:40:10"
+      }
+    ],
+    "openResponsibilities": {
+      "boxesTaken": 0,
+      "moneyOwed": 0,
+      "dueDate": "2025-09-27T00:35:56.666Z",
+      "startDate": "2025-09-26T00:35:56.666Z"
     },
     "totalBoxesProcessed": 0,
     "totalRevenueGenerated": 0,

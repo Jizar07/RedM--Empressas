@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1758761582868_x15nt2",
+  "sessionId": "session_1758758406201_lxgsly",
+  "managerId": "584129725052747798",
+  "managerName": "Rodrigo",
+  "workerId": "1295901408264196181",
+  "workerName": "Maria Vitória",
+  "amountPaid": 238,
+  "paidAt": "2025-09-25T00:53:02.868Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-09-25T00:48:02.868Z",
+    "endTime": "2025-09-25T01:03:02.868Z"
+  }
+}

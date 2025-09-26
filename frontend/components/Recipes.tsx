@@ -1,8 +1,9 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { ChefHat, TrendingUp, DollarSign, Plus, Trash2, Edit, ShoppingCart, Mail, BarChart3 } from 'lucide-react';
+import { ChefHat, TrendingUp, DollarSign, Plus, Trash2, Edit, ShoppingCart, Mail, BarChart3, Calculator } from 'lucide-react';
 import ProductionDashboard from './ProductionDashboard';
+import RecipeCalculator from './RecipeCalculator';
 
 export interface Material {
   item: string;
@@ -728,6 +729,17 @@ const Recipes = () => {
             <BarChart3 className="h-4 w-4" />
             Otimização
           </button>
+          <button
+            onClick={() => setCurrentTab(3)}
+            className={`flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+              currentTab === 3
+                ? 'bg-white text-red-600 shadow-sm'
+                : 'text-gray-600 hover:text-gray-900'
+            }`}
+          >
+            <Calculator className="h-4 w-4" />
+            Calculadora
+          </button>
         </div>
 
         {currentTab === 0 && (
@@ -1056,6 +1068,12 @@ const Recipes = () => {
         {currentTab === 2 && (
           <div>
             <ProductionDashboard recipes={recipes} priceList={precos} />
+          </div>
+        )}
+
+        {currentTab === 3 && (
+          <div>
+            <RecipeCalculator />
           </div>
         )}
       </div>

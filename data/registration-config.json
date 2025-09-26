@@ -18,6 +18,24 @@
         ],
         "channelTopic": ""
       }
+    },
+    {
+      "id": "func_1758806802577",
+      "displayName": "Gerente",
+      "discordRoleId": "1274479410107646008",
+      "discordRoleName": "❪★❱ Gerentes",
+      "description": "",
+      "order": 1,
+      "active": true,
+      "categoryId": "1274521961908928533",
+      "categoryName": "📚| Gerentes",
+      "channelEmojiPrefix": "🧑‍💼・",
+      "channelPermissions": {
+        "allowedRoles": [
+          "1274479410107646006"
+        ],
+        "channelTopic": ""
+      }
     }
   ],
   "settings": {

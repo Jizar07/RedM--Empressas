@@ -1,0 +1,24 @@
+{
+  "workerId": "273987353456934913",
+  "workerName": "Souzz Ramirez",
+  "channelId": "1416760197329719306",
+  "sessionId": "session_1758577635813_fhylf3",
+  "startTime": "2025-09-22T21:47:15.813Z",
+  "lastActivity": "2025-09-22T21:47:15.814Z",
+  "status": "stale",
+  "plantTransactions": [
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758577635814_0sqrh",
+      "timestamp": "2025-09-22T21:47:15.814Z"
+    }
+  ],
+  "animalTransactions": [],
+  "totalCredits": 125,
+  "embedMessageId": "1419802253992267817",
+  "seedExpectations": [],
+  "completedAt": "2025-09-25T12:54:11.521Z",
+  "notes": "Auto-archived due to inactivity"
+}
