@@ -1,0 +1,76 @@
+{
+  "workerId": "141243288572264449",
+  "workerName": "Dexter Morgan",
+  "channelId": "1421167670170226729",
+  "sessionId": "session_1758903388759_7ckmjr",
+  "startTime": "2025-09-26T16:16:28.759Z",
+  "lastActivity": "2025-09-26T16:18:40.373Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Junco",
+      "quantity": 200,
+      "transactionId": "tx_1758903388761_8bi1xh",
+      "timestamp": "2025-09-26T16:16:28.761Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 10,
+      "transactionId": "tx_1758903511220_lrjfja",
+      "timestamp": "2025-09-26T16:18:31.220Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Porco",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1758903436756_3ilgf",
+      "timestamp": "2025-09-26T16:17:16.756Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Porco",
+      "quantity": 1,
+      "cost": 20,
+      "amount": 0,
+      "transactionId": "tx_1758903520373_7888jb",
+      "timestamp": "2025-09-26T16:18:40.373Z"
+    }
+  ],
+  "totalCredits": 2.5,
+  "embedMessageId": "1421169113337827500",
+  "seedExpectations": [
+    {
+      "seedType": "Semente de Junco",
+      "seedQuantity": 200,
+      "expectedPlantType": "Junco",
+      "expectedPlantQuantity": 2000,
+      "plantsFulfilled": 20,
+      "isComplete": false,
+      "transactionId": "tx_1758903388761_8bi1xh"
+    }
+  ],
+  "animalExpectations": [
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1758903436756_3ilgf",
+      "takenTimestamp": "2025-09-26T16:17:16.756Z"
+    },
+    {
+      "animalsTaken": 1,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1758903520373_7888jb",
+      "takenTimestamp": "2025-09-26T16:18:40.373Z"
+    }
+  ],
+  "completedAt": "2025-09-26T16:19:05.496Z",
+  "notes": "Pago por GM Stoffel (372161270176153601)"
+}

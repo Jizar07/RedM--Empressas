@@ -262,7 +262,7 @@ export async function handleWorkerEdit(interaction: ButtonInteraction): Promise<
     });
 
   } catch (error) {
-    console.error('❌ Error handling worker edit:', error);
+    console.error('❌ Error handling worker edit:', error instanceof Error ? error.message : String(error));
     if (!interaction.replied) {
       await interaction.reply({
         content: '❌ Erro interno.',

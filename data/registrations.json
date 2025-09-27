@@ -691,5 +691,16 @@
     "invitedBy": "Nina Vatore | 0000",
     "approved": true,
     "registeredAt": "2025-09-26T00:40:21.971Z"
+  },
+  {
+    "userId": "141243288572264449",
+    "username": "claitoncosta",
+    "ingameName": "Dexter Morgan",
+    "mailId": "0000",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "Nina Vatore | 0000",
+    "approved": true,
+    "registeredAt": "2025-09-26T16:12:56.060Z"
   }
 ]

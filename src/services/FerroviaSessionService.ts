@@ -603,8 +603,8 @@ export class FerroviaSessionService {
         const payment = this.calculateManagerPayment(missionCount);
 
         paymentSection = `**👔 CÁLCULO GERENTE:**\n`;
-        paymentSection += `• Missões para si: ${payment.personalMissions} × $500 = $${payment.personalEarnings.toFixed(2)}\n`;
-        paymentSection += `• Missões para depósito: ${payment.depositMissions} × $500 = $${payment.depositAmount.toFixed(2)}\n`;
+        paymentSection += `• Missões para si: ${payment.personalMissions} × $1000 = $${payment.personalEarnings.toFixed(2)}\n`;
+        paymentSection += `• Missões para depósito: ${payment.depositMissions} × $1000 = $${payment.depositAmount.toFixed(2)}\n`;
         paymentSection += `**💼 Total a receber:** $${payment.personalEarnings.toFixed(2)}\n`;
         paymentSection += `**🏦 Total a depositar:** $${payment.depositAmount.toFixed(2)}`;
 
@@ -748,13 +748,13 @@ export class FerroviaSessionService {
 
   /**
    * Calculate payment for manager role
-   * Managers take 50% of missions for themselves, deposit the rest
+   * Managers get $1000 per mission - take 50% for themselves, deposit the rest
    */
   private calculateManagerPayment(missionCount: number): { personalEarnings: number; depositAmount: number; personalMissions: number; depositMissions: number } {
     const personalMissions = Math.floor(missionCount * 0.5);
     const depositMissions = missionCount - personalMissions;
-    const personalEarnings = personalMissions * 500;
-    const depositAmount = depositMissions * 500;
+    const personalEarnings = personalMissions * 1000;
+    const depositAmount = depositMissions * 1000;
 
     return {
       personalEarnings,
@@ -763,6 +763,7 @@ export class FerroviaSessionService {
       depositMissions
     };
   }
+
 
   /**
    * Calculate payment for worker role
@@ -1109,7 +1110,7 @@ export class FerroviaSessionService {
           transactionId: `tx_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
           type: 'FERROVIA_MISSION_COMPLETED' as const,
           itemName: 'ferrovia_mission',
-          quantity: 1,
+          quantity: 250, // Each mission uses 250 boxes
           timestamp: new Date(),
           originalMessage: messageContent
         };
@@ -1244,8 +1245,10 @@ export class FerroviaSessionService {
         if (transaction.type === 'FERROVIA_MISSION_COMPLETED') {
           const missionCount = session.transactions.filter(t => t.type === 'FERROVIA_MISSION_COMPLETED').length;
 
-          // Update totalBoxesProcessed (each mission processes boxes)
-          session.totalBoxesProcessed = missionCount;
+          // Update totalBoxesProcessed (sum of all mission box quantities)
+          session.totalBoxesProcessed = session.transactions
+            .filter(t => t.type === 'FERROVIA_MISSION_COMPLETED')
+            .reduce((total, t) => total + (t.quantity || 0), 0);
 
           console.log(`🚂 MISSION COMPLETED! Total missions: ${missionCount} for ${workerName}`);
           console.log(`📦 Pre-updated totalBoxesProcessed to: ${session.totalBoxesProcessed}`);
@@ -1348,7 +1351,7 @@ export class FerroviaSessionService {
       // Recalculate totalBoxesProcessed from mission transactions
       const missionTransactions = session.transactions.filter(t => t.type === 'FERROVIA_MISSION_COMPLETED');
       const oldBoxesProcessed = session.totalBoxesProcessed;
-      session.totalBoxesProcessed = missionTransactions.length;
+      session.totalBoxesProcessed = missionTransactions.reduce((total, t) => total + (t.quantity || 0), 0);
 
       // Recalculate totalRevenueReturned from money deposit transactions
       const moneyDepositTransactions = session.transactions.filter(t => t.type === 'MONEY_DEPOSITED_TO_INVENTORY');

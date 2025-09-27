@@ -222,6 +222,60 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
   // Activity management modal state
   const [managementModalOpen, setManagementModalOpen] = useState(false);
   const [selectedActivity, setSelectedActivity] = useState<Activity | null>(null);
+
+  // Weekly sales state (for Bercario only)
+  const [weeklySales, setWeeklySales] = useState({ totalSales: 0, dateRange: '' });
+
+  // Calculate weekly sales from actual money activities (Bercario only)
+  useEffect(() => {
+    if (firm.id !== 'bercario') return;
+
+    const calculateWeeklySalesFromActivities = () => {
+      const now = new Date();
+      const dayOfWeek = now.getDay(); // 0 = Sunday
+      const weekStart = new Date(now);
+      weekStart.setDate(now.getDate() - dayOfWeek);
+      weekStart.setHours(0, 1, 0, 0); // Sunday 00:01
+
+      const weekEnd = new Date(weekStart);
+      weekEnd.setDate(weekStart.getDate() + 6);
+      weekEnd.setHours(23, 59, 59, 999); // Saturday 23:59
+
+      // Filter money activities to this week's Bercario purchases
+      const thisWeekPurchases = activities.filter(activity => {
+        console.log(`🔍 Activity check:`, {
+          categoria: activity.categoria,
+          tipo: activity.tipo,
+          valor: activity.valor,
+          descricao: activity.descricao?.substring(0, 50),
+          timestamp: activity.timestamp
+        });
+
+        if (activity.categoria !== 'financeiro' || activity.tipo !== 'compra') return false;
+        if (!activity.valor || !activity.descricao?.includes('na loja')) return false;
+
+        const activityDate = new Date(activity.timestamp);
+        return activityDate >= weekStart && activityDate <= weekEnd;
+      });
+
+      const totalSales = thisWeekPurchases.reduce((sum, purchase) => sum + (purchase.valor || 0), 0);
+
+      const dateRange = `${weekStart.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' })} - ${weekEnd.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' })}`;
+
+      setWeeklySales({
+        totalSales,
+        dateRange
+      });
+
+      console.log(`📊 Bercario weekly sales calculated from activities: $${totalSales.toFixed(2)} (${thisWeekPurchases.length} purchases this week)`);
+      console.log(`🔍 Debug: Total activities: ${activities.length}, Filtered purchases:`, thisWeekPurchases);
+      console.log(`🔍 Debug: Week range: ${weekStart.toISOString()} to ${weekEnd.toISOString()}`);
+    };
+
+    calculateWeeklySalesFromActivities();
+    const interval = setInterval(calculateWeeklySalesFromActivities, 60000); // Update every minute
+    return () => clearInterval(interval);
+  }, [firm.id, activities]);
   
   // Translation state
   const [itemTranslations, setItemTranslations] = useState<Record<string, string>>({});
@@ -300,6 +354,26 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
       window.removeEventListener('customizationUpdated', handleCustomizationUpdate);
     };
   }, []);
+
+  // Apply Portuguese translations to purchase descriptions (for Bercario only)
+  const translatePurchaseDescription = (description: string): string => {
+    if (firm.id !== 'bercario' || !description) return description;
+
+    // Pattern: "Comprou 30x common_portion na loja" or "Comprou 1x pig_male na loja"
+    const purchasePattern = /Comprou\s+(\d+)x\s+([^\s]+)\s+na\s+loja/;
+    const match = description.match(purchasePattern);
+
+    if (match) {
+      const quantity = match[1];
+      const itemId = match[2];
+      const translatedItem = getBestDisplayName(itemId);
+      console.log(`🔤 Translation: "${itemId}" → "${translatedItem}"`);
+      return description.replace(purchasePattern, `Comprou ${quantity}x ${translatedItem} na loja`);
+    }
+
+    console.log(`❌ No translation match for: "${description}"`);
+    return description;
+  };
 
   // Get best display name - customizations have absolute highest priority
   const getBestDisplayName = (itemId?: string): string => {
@@ -594,7 +668,7 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
 
       console.log('🔄 Editing activity:', { workerId, transactionId, newItemName });
 
-      const response = await fetch(`/api/worker-activity/transaction/${workerId}/${transactionId}`, {
+      const response = await fetch(`http://localhost:3050/api/worker-activity/transaction/${workerId}/${transactionId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -629,7 +703,7 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
 
       console.log('🗑️ Deleting activity:', { workerId, transactionId });
 
-      const response = await fetch(`/api/worker-activity/transaction/${workerId}/${transactionId}`, {
+      const response = await fetch(`http://localhost:3050/api/worker-activity/transaction/${workerId}/${transactionId}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -755,14 +829,25 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
       {showMetrics && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
           {metricCards.includes('revenue') && (
-            <MetricCard
-              title="Saldo do Banco"
-              value={formatCurrency(getCurrentBankBalance())}
-              icon={null}
-              color="green"
-              loading={loading}
-              subtitle="Último saldo registrado"
-            />
+            firm.id === 'bercario' ? (
+              <MetricCard
+                title="Vendas desta Semana"
+                value={formatCurrency(weeklySales.totalSales)}
+                icon={<DollarSign className="h-6 w-6" />}
+                color="green"
+                loading={loading}
+                subtitle={weeklySales.dateRange}
+              />
+            ) : (
+              <MetricCard
+                title="Saldo do Banco"
+                value={formatCurrency(getCurrentBankBalance())}
+                icon={null}
+                color="green"
+                loading={loading}
+                subtitle="Último saldo registrado"
+              />
+            )
           )}
           
           {metricCards.includes('activities') && (
@@ -931,7 +1016,7 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
                             {activity.descricao && activity.descricao !== 'Depósito direto' && activity.tipo !== 'saque' && (activity.descricao.trim() !== '' || (activity.tipo === 'venda' && activity.descricao.includes('animais'))) ? (
                               <>
                                 <span className="text-gray-600">
-                                  {activity.descricao}
+                                  {translatePurchaseDescription(activity.descricao)}
                                 </span>
                                 <span className="text-gray-600">por</span>
                                 <span className={`px-2 py-1 rounded text-xs font-medium ${

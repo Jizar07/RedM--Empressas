@@ -37,6 +37,7 @@ import workerRankingsRoutes from './routes/worker-rankings';
 import supplyChainRoutes, { initializeSupplyChainService } from './routes/supply-chain';
 import ferroviaUserMetricsRoutes from './routes/ferrovia-user-metrics';
 import globalWorkerAnalyticsRoutes from './routes/global-worker-analytics';
+import weeklySalesRoutes from './routes/weekly-sales';
 import FerroviaSessionService from '../services/FerroviaSessionService';
 import DiscordRoleService from '../services/DiscordRoleService';
 
@@ -175,6 +176,9 @@ export async function startApiServer(bot: BotClient): Promise<void> {
 
   // Global worker analytics and comprehensive tracking routes
   app.use('/api/global-worker-analytics', globalWorkerAnalyticsRoutes);
+
+  // Weekly sales tracking routes
+  app.use('/api/weekly-sales', weeklySalesRoutes);
 
   // Worker prices management routes
   app.use('/api', workerPricesRoutes);

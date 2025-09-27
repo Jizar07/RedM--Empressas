@@ -105,6 +105,27 @@ export function useInventoryManager({
     }
   }, [firm]);
 
+  // Load customizations (custom display names)
+  const loadCustomizations = useCallback(async () => {
+    try {
+      console.log('🎨 Loading custom display names...');
+      const response = await fetch('/api/customizations');
+      if (response.ok) {
+        const data = await response.json();
+        if (data.success && data.customizations) {
+          // Merge customizations with existing translations
+          setItemTranslations(prev => ({
+            ...prev,
+            ...data.customizations
+          }));
+          console.log('✅ Loaded', Object.keys(data.customizations).length, 'custom display names');
+        }
+      }
+    } catch (error) {
+      console.debug('Customizations not available:', error);
+    }
+  }, []);
+
   // Load price list data
   const loadPriceList = useCallback(async () => {
     try {
@@ -1017,8 +1038,17 @@ export function useInventoryManager({
   // Initialize and set up auto-refresh
   useEffect(() => {
     loadTranslations();
+    loadCustomizations(); // Load custom display names
     loadPriceList();
     loadRegisteredWorkers(); // Load all registered workers
+
+    // Listen for customization updates
+    const handleCustomizationUpdate = (event: CustomEvent) => {
+      console.log('🔄 Customization updated, reloading display names...', event.detail);
+      loadCustomizations();
+    };
+
+    window.addEventListener('customizationUpdated', handleCustomizationUpdate as EventListener);
 
     // Try loading from backup first for instant load
     const backupData = loadFromLocalStorage();
@@ -1027,7 +1057,12 @@ export function useInventoryManager({
       setLoading(false);
       console.log('📂 Loaded initial data from localStorage backup');
     }
-  }, [loadTranslations, loadPriceList, loadRegisteredWorkers, loadFromLocalStorage]);
+
+    // Cleanup event listener
+    return () => {
+      window.removeEventListener('customizationUpdated', handleCustomizationUpdate as EventListener);
+    };
+  }, [loadTranslations, loadCustomizations, loadPriceList, loadRegisteredWorkers, loadFromLocalStorage]);
 
   useEffect(() => {
     if (itemTranslations && Object.keys(itemTranslations).length > 0) {

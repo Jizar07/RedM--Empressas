@@ -296,6 +296,7 @@ When updating .md files:
 - **IF YOU DON'T KNOW, ASK** - Seek clarification rather than guessing
 - **🚨 CRITICAL: DO NOT FUCKING MAKE CHANGES OR RUN PROGRAMS WITHOUT EXPLICIT PERMISSION** - NEVER delete files, kill processes, modify code, or execute commands without the user's direct approval
 - **🚫 SERVER MANAGEMENT FORBIDDEN** - NEVER attempt to start, stop, restart, or kill servers/processes using pm2, npm run dev, node, or any other server commands
+- **🚫 NEVER RESTART SERVERS** - User runs servers in their own terminal in dev mode with automatic restart on file changes. NEVER attempt to restart, kill, or manage any server processes. They handle server management themselves.
 
 ## MANDATORY PRE-RESPONSE CHECKLIST
 

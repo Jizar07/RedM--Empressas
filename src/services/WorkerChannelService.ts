@@ -15,7 +15,7 @@ interface WorkerChannelMapping {
 
 interface TransactionData {
   workerName: string;
-  type: 'seed_taken' | 'plant_deposited' | 'animals_taken' | 'delivery_completed';
+  type: 'seed_taken' | 'plant_deposited' | 'animals_taken' | 'delivery_completed' | 'bercario_purchase';
   itemName?: string;
   animalType?: string;
   quantity: number;
@@ -301,7 +301,7 @@ export class WorkerChannelService {
             console.error('❌ Delivery transaction missing amount');
             return false;
           }
-          
+
           await this.activityService.addAnimalTransaction(
             workerMapping.workerId,
             workerMapping.workerName,
@@ -310,6 +310,26 @@ export class WorkerChannelService {
               type: 'delivery_completed',
               quantity: transaction.quantity,
               amount: transaction.amount
+            }
+          );
+          break;
+
+        case 'bercario_purchase':
+          if (!transaction.amount || !transaction.itemName) {
+            console.error('❌ Bercario purchase missing amount or item name');
+            return false;
+          }
+
+          await this.activityService.addFinancialTransaction(
+            workerMapping.workerId,
+            workerMapping.workerName,
+            workerMapping.channelId,
+            {
+              type: 'bercario_purchase',
+              itemName: transaction.itemName,
+              quantity: transaction.quantity,
+              amount: transaction.amount,
+              description: `Comprou ${transaction.quantity} ${transaction.itemName} no Berçário`
             }
           );
           break;
@@ -330,9 +350,33 @@ export class WorkerChannelService {
 
   public parseWorkerTransactionFromMessage(parsedMessage: any): TransactionData | null {
     try {
+      // Handle Bercario purchases: "Lion Clark comprou 40 common_portion_goat por $60.0"
+      if (parsedMessage.parseSuccess && parsedMessage.tipo === 'compra' &&
+          parsedMessage.categoria === 'financeiro' && parsedMessage.valor) {
+
+        const workerName = parsedMessage.autor;
+        const itemName = parsedMessage.item || 'item';
+        const quantity = parsedMessage.quantidade || 1;
+        const amount = parsedMessage.valor;
+
+        // Apply Portuguese translation to item name
+        const portugueseName = this.translationService.getPortugueseName(itemName);
+
+        console.log(`🛒 WorkerChannelService: Found Bercario purchase - ${workerName} bought ${quantity} ${itemName} (${portugueseName}) for $${amount}`);
+        return {
+          workerName,
+          type: 'bercario_purchase',
+          itemName: portugueseName, // Use Portuguese name for display
+          quantity,
+          amount,
+          timestamp: new Date(parsedMessage.timestamp || Date.now()),
+          originalMessage: parsedMessage
+        };
+      }
+
       // Handle delivery completions: "BONNIE BENNETT vendeu 4 animais no matadouro por $160"
-      if (parsedMessage.parseSuccess && parsedMessage.tipo === 'venda' && 
-          parsedMessage.descricao && parsedMessage.descricao.includes('vendeu') && 
+      if (parsedMessage.parseSuccess && parsedMessage.tipo === 'venda' &&
+          parsedMessage.descricao && parsedMessage.descricao.includes('vendeu') &&
           parsedMessage.descricao.includes('animais') && parsedMessage.descricao.includes('matadouro')) {
         
         const workerName = parsedMessage.autor;

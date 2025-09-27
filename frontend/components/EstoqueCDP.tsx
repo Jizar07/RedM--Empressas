@@ -413,39 +413,56 @@ export default function EstoqueCDP({ firm }: EstoqueCDPProps) {
 
   const handleSaveItem = async (itemData: Partial<InventoryItem>): Promise<boolean> => {
     console.log('🔧 handleSaveItem called with:', { editingItem: editingItem?.id, itemData });
-    
+
     let result = false;
-    
+
     if (editingItem) {
       console.log('🔧 Updating existing item:', editingItem.id);
       console.log('🔧 Update data:', itemData);
-      result = await updateItem(editingItem.id, itemData);
+
+      // Transform form data for proper API processing
+      // When user changes displayName, we need to send it as 'nome' for the customization system
+      const transformedData = { ...itemData };
+
+      // If displayName was changed and is different from the auto-generated name, send it as 'nome'
+      if (itemData.displayName && itemData.displayName.trim() !== '' &&
+          itemData.displayName !== getBestDisplayName(editingItem.id)) {
+        transformedData.nome = itemData.displayName.trim();
+        console.log('🔄 Transforming displayName change to nome for API:', itemData.displayName.trim());
+      }
+
+      result = await updateItem(editingItem.id, transformedData);
       console.log('🔧 Update result:', result);
     } else {
       console.log('🔧 Adding new item');
       result = await addItem(itemData);
       console.log('🔧 Add result:', result);
     }
-    
+
     // CRITICAL: Save to customization file for display name persistence
-    if (result && itemData.nome && itemData.nome.trim() !== '') {
+    // Use displayName for the customization if it was changed, otherwise use nome
+    const customDisplayName = itemData.displayName && itemData.displayName.trim() !== ''
+      ? itemData.displayName.trim()
+      : itemData.nome?.trim();
+
+    if (result && customDisplayName) {
       const itemId = editingItem?.id || itemData.id || itemData.nome;
-      if (itemId) {
+      if (itemId && customDisplayName !== getBestDisplayName(itemId)) {
         try {
           const customizationResponse = await fetch('/api/customizations', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
               itemId: itemId,
-              displayName: itemData.nome.trim()
+              displayName: customDisplayName
             })
           });
-          
+
           if (customizationResponse.ok) {
-            console.log('✅ SAVED TO CUSTOMIZATION FILE:', itemId, '→', itemData.nome);
+            console.log('✅ SAVED TO CUSTOMIZATION FILE:', itemId, '→', customDisplayName);
             // Dispatch event to notify dashboard that customizations have been updated
-            window.dispatchEvent(new CustomEvent('customizationUpdated', { 
-              detail: { itemId, displayName: itemData.nome.trim() }
+            window.dispatchEvent(new CustomEvent('customizationUpdated', {
+              detail: { itemId, displayName: customDisplayName }
             }));
           } else {
             console.warn('❌ Failed to save to customization file');
@@ -455,7 +472,7 @@ export default function EstoqueCDP({ firm }: EstoqueCDPProps) {
         }
       }
     }
-    
+
     return result;
   };
 

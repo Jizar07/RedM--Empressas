@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { BarChart3, TrendingUp, PieChart, Activity, Calendar } from 'lucide-react';
+import { BarChart3, TrendingUp, PieChart, Activity, Calendar, DollarSign } from 'lucide-react';
 import { FirmConfig } from '@/types/firms';
 
 interface BercarioAnalyticsProps {
@@ -16,6 +16,15 @@ interface AnalyticsData {
   monthlyTrends: { month: string; revenue: number; growth: number }[];
 }
 
+interface WeeklySalesData {
+  weekIdentifier: string;
+  weekStart: Date;
+  weekEnd: Date;
+  totalSales: number;
+  totalTransactions: number;
+  dateRange: string;
+}
+
 export default function BercarioAnalytics({ firm }: BercarioAnalyticsProps) {
   const [analyticsData, setAnalyticsData] = useState<AnalyticsData>({
     dailyRevenue: [],
@@ -23,6 +32,14 @@ export default function BercarioAnalytics({ firm }: BercarioAnalyticsProps) {
     topClients: [],
     hourlyDistribution: [],
     monthlyTrends: []
+  });
+  const [weeklySales, setWeeklySales] = useState<WeeklySalesData>({
+    weekIdentifier: '',
+    weekStart: new Date(),
+    weekEnd: new Date(),
+    totalSales: 0,
+    totalTransactions: 0,
+    dateRange: ''
   });
   const [loading, setLoading] = useState(true);
   const [timeRange, setTimeRange] = useState<'7d' | '30d' | '90d'>('30d');
@@ -162,6 +179,26 @@ export default function BercarioAnalytics({ firm }: BercarioAnalyticsProps) {
     return () => clearInterval(interval);
   }, [firm.channelId, timeRange]);
 
+  // Fetch weekly sales data
+  useEffect(() => {
+    const fetchWeeklySales = async () => {
+      try {
+        const response = await fetch('/api/weekly-sales/current');
+        const result = await response.json();
+
+        if (result.success) {
+          setWeeklySales(result.data);
+        }
+      } catch (error) {
+        console.error('Error fetching weekly sales:', error);
+      }
+    };
+
+    fetchWeeklySales();
+    const interval = setInterval(fetchWeeklySales, 60000); // Update every minute
+    return () => clearInterval(interval);
+  }, []);
+
   const totalRevenue = analyticsData.dailyRevenue.reduce((sum, day) => sum + day.revenue, 0);
   const totalTransactions = analyticsData.dailyRevenue.reduce((sum, day) => sum + day.transactions, 0);
   const avgDailyRevenue = analyticsData.dailyRevenue.length > 0 ? totalRevenue / analyticsData.dailyRevenue.length : 0;
@@ -173,8 +210,8 @@ export default function BercarioAnalytics({ firm }: BercarioAnalyticsProps) {
       <div className="space-y-6">
         <div className="animate-pulse">
           <div className="h-8 bg-gray-200 rounded w-1/4 mb-4"></div>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-            {[1,2,3,4].map(i => (
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
+            {[1,2,3,4,5].map(i => (
               <div key={i} className="h-24 bg-gray-200 rounded"></div>
             ))}
           </div>
@@ -204,7 +241,19 @@ export default function BercarioAnalytics({ firm }: BercarioAnalyticsProps) {
       </div>
 
       {/* Summary Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+        {/* Weekly Sales Card */}
+        <div className="bg-emerald-50 p-4 rounded-lg border border-emerald-200">
+          <div className="flex items-center">
+            <DollarSign className="h-8 w-8 text-emerald-600 mr-3" />
+            <div>
+              <p className="text-sm font-medium text-emerald-600">Vendas desta Semana</p>
+              <p className="text-2xl font-bold text-emerald-900">${weeklySales.totalSales.toFixed(2)}</p>
+              <p className="text-xs text-emerald-700">{weeklySales.dateRange}</p>
+            </div>
+          </div>
+        </div>
+
         <div className="bg-green-50 p-4 rounded-lg border border-green-200">
           <div className="flex items-center">
             <TrendingUp className="h-8 w-8 text-green-600 mr-3" />

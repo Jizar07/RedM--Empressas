@@ -27,9 +27,9 @@ interface WorkerProfile {
   addedBy: string;
 }
 
-export default function FazendaCDPWorkersManagement({ 
-  firm, 
-  onClose 
+export default function FazendaCDPWorkersManagement({
+  firm,
+  onClose
 }: FazendaCDPWorkersManagementProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedRole, setSelectedRole] = useState<'all' | WorkerRole>('all');
@@ -42,6 +42,8 @@ export default function FazendaCDPWorkersManagement({
   const [selectedWorker, setSelectedWorker] = useState<WorkerProfile | null>(null);
   const [selectedWorkerStats, setSelectedWorkerStats] = useState<WorkerInventoryStats | null>(null);
   const [workerProfiles, setWorkerProfiles] = useState<Map<string, WorkerProfile>>(new Map());
+  const [workerSessions, setWorkerSessions] = useState<any[]>([]);
+  const [sessionsLoading, setSessionsLoading] = useState(true);
 
   // Use the unified inventory manager hook
   const {
@@ -50,6 +52,38 @@ export default function FazendaCDPWorkersManagement({
     error,
     isReady
   } = useInventoryManager({ firm });
+
+  // Fetch worker sessions from WorkerActivityService
+  useEffect(() => {
+    const fetchWorkerSessions = async () => {
+      try {
+        const response = await fetch('http://localhost:3050/api/worker-activity/sessions', {
+          headers: {
+            'x-bot-token': process.env.NEXT_PUBLIC_DISCORD_TOKEN || ''
+          }
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          if (data.success) {
+            setWorkerSessions(data.sessions || []);
+            console.log(`✅ Loaded ${data.sessions?.length || 0} active worker sessions`);
+          }
+        } else {
+          console.error('Failed to fetch worker sessions:', response.status);
+        }
+      } catch (error) {
+        console.error('Error fetching worker sessions:', error);
+      } finally {
+        setSessionsLoading(false);
+      }
+    };
+
+    fetchWorkerSessions();
+    // Refresh sessions every 30 seconds
+    const interval = setInterval(fetchWorkerSessions, 30000);
+    return () => clearInterval(interval);
+  }, []);
 
   // Get worker data from inventory manager analytics
   const workerStats = useMemo(() => {
@@ -363,9 +397,12 @@ export default function FazendaCDPWorkersManagement({
             <div className="bg-green-50 rounded-lg p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-green-600">Total Transações</p>
+                  <p className="text-sm font-medium text-green-600">Sessões Ativas</p>
                   <p className="text-2xl font-bold text-green-900">
-                    {filteredWorkers.reduce((sum, w) => sum + w.totalTransactions, 0)}
+                    {workerSessions.length}
+                  </p>
+                  <p className="text-xs text-green-600">
+                    Total: ${workerSessions.reduce((sum, s) => sum + (s.totalCredits || 0), 0).toFixed(2)}
                   </p>
                 </div>
                 <Activity className="h-8 w-8 text-green-500" />
@@ -479,14 +516,16 @@ export default function FazendaCDPWorkersManagement({
                     {filteredWorkers.map((worker, index) => {
                       const profile = workerProfiles.get(worker.userId);
                       const role = getWorkerRole(worker.userId);
-                      
+                      // Check if worker has active session
+                      const activeSession = workerSessions.find(s => s.workerId === worker.userId);
+
                       return (
                         <tr key={worker.userId} className="hover:bg-gray-50">
                           <td className="px-6 py-4 whitespace-nowrap">
                             <div className="flex items-center">
                               <Star className={`h-4 w-4 mr-2 ${
-                                index === 0 ? 'text-yellow-500' : 
-                                index === 1 ? 'text-gray-400' : 
+                                index === 0 ? 'text-yellow-500' :
+                                index === 1 ? 'text-gray-400' :
                                 index === 2 ? 'text-amber-600' : 'text-gray-300'
                               }`} />
                               <span className="text-sm font-medium text-gray-900">#{index + 1}</span>
@@ -494,13 +533,24 @@ export default function FazendaCDPWorkersManagement({
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
                             <div className="flex items-center">
-                              <div className="flex-shrink-0 h-10 w-10">
+                              <div className="flex-shrink-0 h-10 w-10 relative">
                                 <div className="h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center">
                                   {getRoleIcon(role)}
                                 </div>
+                                {activeSession && (
+                                  <div className="absolute -top-1 -right-1 h-3 w-3 bg-green-500 rounded-full border-2 border-white animate-pulse"
+                                       title="Sessão Ativa" />
+                                )}
                               </div>
                               <div className="ml-4">
-                                <div className="text-sm font-medium text-gray-900">{worker.userName}</div>
+                                <div className="flex items-center gap-2">
+                                  <span className="text-sm font-medium text-gray-900">{worker.userName}</span>
+                                  {activeSession && (
+                                    <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800">
+                                      🌾 Ativo - ${activeSession.totalCredits?.toFixed(2) || '0.00'}
+                                    </span>
+                                  )}
+                                </div>
                                 <div className="text-sm text-gray-500">{worker.userId}</div>
                               </div>
                             </div>

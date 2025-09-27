@@ -14,11 +14,12 @@ const realTimeMonitoring = RealTimeMonitoringService.getInstance();
  */
 router.get('/overview', async (_req: Request, res: Response) => {
   try {
-    const analytics = globalTracker.getSmartAnalytics();
+    // Use enriched data that includes WorkerActivityService sync
+    const enrichedData = globalTracker.getEnrichedWorkerData();
 
     return res.json({
       success: true,
-      data: analytics,
+      data: enrichedData,
       timestamp: new Date().toISOString()
     });
   } catch (error) {

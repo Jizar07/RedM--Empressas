@@ -32,9 +32,79 @@
       "atualizado_em": "2025-09-24T14:00:21.521Z",
       "ultimo_autor": "Jizar Stoffeliz",
       "ativo": true
+    },
+    "alcoolindustrial": {
+      "id": "alcoolindustrial",
+      "nome": "alcool industrial",
+      "displayName": "Alcool Industrial",
+      "categoria": "produtos",
+      "quantidade": 216,
+      "criado_em": "2025-09-25T15:59:54.898Z",
+      "atualizado_em": "2025-09-25T15:42:22.554Z",
+      "ultimo_autor": "Jizar Stoffeliz",
+      "ativo": true
+    },
+    "aguasuja2": {
+      "id": "aguasuja2",
+      "nome": "aguasuja2",
+      "displayName": "Agua suja 2",
+      "categoria": "materiais",
+      "quantidade": 296,
+      "criado_em": "2025-09-24T15:39:31.091Z",
+      "atualizado_em": "2025-09-26T13:20:46.641Z",
+      "ultimo_autor": "API",
+      "ativo": true
     }
   },
   "transactions": [
+    {
+      "id": "1b937d1f-f99a-4a3c-8899-510b72c0417d",
+      "itemId": "aguasuja2",
+      "tipo": "editar",
+      "quantidade_anterior": 296,
+      "quantidade_posterior": 296,
+      "quantidade_mudanca": 0,
+      "autor": "API",
+      "timestamp": "2025-09-26T13:20:46.642Z",
+      "origem": "manual",
+      "detalhes": "Updated item Agua suja 2"
+    },
+    {
+      "id": "2d0240a4-7458-465d-8ca1-ce4dcd0e1020",
+      "itemId": "aguasuja2",
+      "tipo": "editar",
+      "quantidade_anterior": 296,
+      "quantidade_posterior": 296,
+      "quantidade_mudanca": 0,
+      "autor": "API",
+      "timestamp": "2025-09-26T13:20:21.499Z",
+      "origem": "manual",
+      "detalhes": "Updated item Agua suja"
+    },
+    {
+      "id": "f2b497cc-c5d3-444e-be03-3647835ebf4d",
+      "itemId": "aguasuja2",
+      "tipo": "criar",
+      "quantidade_anterior": 0,
+      "quantidade_posterior": 296,
+      "quantidade_mudanca": 296,
+      "autor": "API",
+      "timestamp": "2025-09-26T13:09:00.654Z",
+      "origem": "manual",
+      "detalhes": "Created item Agua suja"
+    },
+    {
+      "id": "0662d108-0153-4f15-a9de-600a4c4dbbdd",
+      "itemId": "alcoolindustrial",
+      "tipo": "criar",
+      "quantidade_anterior": 0,
+      "quantidade_posterior": 216,
+      "quantidade_mudanca": 216,
+      "autor": "API",
+      "timestamp": "2025-09-26T12:54:11.154Z",
+      "origem": "manual",
+      "detalhes": "Created item Alcool Industrial"
+    },
     {
       "id": "dce958f0-e882-47c1-af47-0114e975471c",
       "itemId": "mane_chicken",
@@ -241,19 +311,67 @@
     }
   ],
   "analytics": {
-    "totalItems": 3,
-    "totalQuantity": 144,
+    "totalItems": 5,
+    "totalQuantity": 656,
     "totalValue": 0,
     "categorias": {},
     "workers": [
       {
         "nome": "API",
-        "totalTransactions": 17,
-        "lastActivity": "2025-09-26T11:31:50.507Z",
+        "totalTransactions": 21,
+        "lastActivity": "2025-09-26T13:20:46.642Z",
         "averagePerDay": 0
       }
     ],
     "recentTransactions": [
+      {
+        "id": "1b937d1f-f99a-4a3c-8899-510b72c0417d",
+        "itemId": "aguasuja2",
+        "tipo": "editar",
+        "quantidade_anterior": 296,
+        "quantidade_posterior": 296,
+        "quantidade_mudanca": 0,
+        "autor": "API",
+        "timestamp": "2025-09-26T13:20:46.642Z",
+        "origem": "manual",
+        "detalhes": "Updated item Agua suja 2"
+      },
+      {
+        "id": "2d0240a4-7458-465d-8ca1-ce4dcd0e1020",
+        "itemId": "aguasuja2",
+        "tipo": "editar",
+        "quantidade_anterior": 296,
+        "quantidade_posterior": 296,
+        "quantidade_mudanca": 0,
+        "autor": "API",
+        "timestamp": "2025-09-26T13:20:21.499Z",
+        "origem": "manual",
+        "detalhes": "Updated item Agua suja"
+      },
+      {
+        "id": "f2b497cc-c5d3-444e-be03-3647835ebf4d",
+        "itemId": "aguasuja2",
+        "tipo": "criar",
+        "quantidade_anterior": 0,
+        "quantidade_posterior": 296,
+        "quantidade_mudanca": 296,
+        "autor": "API",
+        "timestamp": "2025-09-26T13:09:00.654Z",
+        "origem": "manual",
+        "detalhes": "Created item Agua suja"
+      },
+      {
+        "id": "0662d108-0153-4f15-a9de-600a4c4dbbdd",
+        "itemId": "alcoolindustrial",
+        "tipo": "criar",
+        "quantidade_anterior": 0,
+        "quantidade_posterior": 216,
+        "quantidade_mudanca": 216,
+        "autor": "API",
+        "timestamp": "2025-09-26T12:54:11.154Z",
+        "origem": "manual",
+        "detalhes": "Created item Alcool Industrial"
+      },
       {
         "id": "dce958f0-e882-47c1-af47-0114e975471c",
         "itemId": "mane_chicken",
@@ -476,7 +594,9 @@
     "unmatchedItems": [
       "Milk_Weed",
       "leather_donkey",
-      "mane_chicken"
+      "mane_chicken",
+      "alcoolindustrial",
+      "aguasuja2"
     ]
   },
   "settings": {
@@ -494,9 +614,9 @@
     "backupEnabled": true,
     "backupInterval": 24
   },
-  "lastUpdate": "2025-09-26T11:31:50.510Z",
-  "totalItems": 3,
-  "totalQuantity": 144,
+  "lastUpdate": "2025-09-26T13:20:46.644Z",
+  "totalItems": 5,
+  "totalQuantity": 656,
   "activeWorkers": [],
   "version": "1.0.0",
   "firmId": "fazenda-cabra-da-peste"

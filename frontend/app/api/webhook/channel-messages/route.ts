@@ -163,6 +163,48 @@ function extractWorkerTransactionData(parsedMessage: any): any {
       console.log(`❌ Message doesn't qualify for seed withdrawal check - parseSuccess: ${parsedMessage.parseSuccess}, categoria: ${parsedMessage.categoria}`);
     }
 
+    // Handle Bercario store purchases - relaxed conditions for better detection
+    if (parsedMessage.parseSuccess && parsedMessage.tipo === 'compra' && parsedMessage.valor &&
+        (parsedMessage.categoria === 'financeiro' || parsedMessage.content?.includes('na loja por'))) {
+
+      console.log(`🛒 BERCARIO PURCHASE DETECTED: ${parsedMessage.autor} bought ${parsedMessage.quantidade}x ${parsedMessage.item} for $${parsedMessage.valor}`);
+      console.log(`🔍 Debug purchase classification:`, {
+        parseSuccess: parsedMessage.parseSuccess,
+        tipo: parsedMessage.tipo,
+        categoria: parsedMessage.categoria,
+        autor: parsedMessage.autor,
+        item: parsedMessage.item,
+        quantidade: parsedMessage.quantidade,
+        valor: parsedMessage.valor,
+        fullMessage: JSON.stringify(parsedMessage, null, 2)
+      });
+
+      return {
+        workerName: parsedMessage.autor,
+        type: 'bercario_purchase',
+        itemName: parsedMessage.item,
+        quantity: parsedMessage.quantidade,
+        amount: parsedMessage.valor,
+        timestamp: parsedMessage.timestamp || new Date().toISOString(),
+        originalMessage: parsedMessage
+      };
+    }
+
+    // Debug: Log all messages that have money/purchase indicators but don't match
+    if ((parsedMessage.content && parsedMessage.content.includes('na loja por')) ||
+        (parsedMessage.content && parsedMessage.content.includes('Comprou')) ||
+        (parsedMessage.parseSuccess && parsedMessage.tipo === 'compra')) {
+      console.log(`🔍 MISSED PURCHASE DEBUG:`, {
+        parseSuccess: parsedMessage.parseSuccess,
+        tipo: parsedMessage.tipo,
+        categoria: parsedMessage.categoria,
+        valor: parsedMessage.valor,
+        content: parsedMessage.content?.substring(0, 200),
+        autor: parsedMessage.autor,
+        item: parsedMessage.item
+      });
+    }
+
     return null;
   } catch (error) {
     console.error('❌ Error extracting worker transaction data:', error);
@@ -576,9 +618,10 @@ function parseDiscordMessage(message: MessageData): any {
       };
     }
 
-    // Parse BERÇARIO BRAITHWHAITE shop purchases (Compra na Loja)
-    const shopPurchaseMatch = content.match(/REGISTRO - BERÇARIO BRAITHWHAITE(.+?)Compra na Loja\s*Item Comprado:\s*(.+?)\s*x(\d+)\s*Comprador:\s*(.+?)\s*\|\s*FIXO:\s*(\d+)\s*Preço Total:\s*\$([0-9,.]+)/s);
+    // Parse BERÇÁRIO shop purchases (Compra na Loja) - Updated pattern for "Berçário e Veterinária"
+    const shopPurchaseMatch = content.match(/REGISTRO - REGISTRO - (Berçário e Veterinária \w+)\s*Compra na Loja\s*Item Comprado::\s*(.+?)\s*x(\d+)\s*Comprador::\s*(.+?)\s*\|\s*FIXO:\s*(\d+)\s*Preço Total::\s*\$([0-9,.]+)/s);
     if (shopPurchaseMatch) {
+      const empresa = shopPurchaseMatch[1].trim(); // "Berçário e Veterinária Bowdin"
       const item = shopPurchaseMatch[2].trim();
       const quantidade = parseInt(shopPurchaseMatch[3]);
       const comprador = shopPurchaseMatch[4].trim();
@@ -593,6 +636,7 @@ function parseDiscordMessage(message: MessageData): any {
         quantidade: quantidade,
         valor: preco,
         autor: comprador,
+        empresa: empresa,
         descricao: `Comprou ${quantidade}x ${item} na loja`,
         displayText: `${comprador} comprou ${quantidade}x ${item} por $${preco.toFixed(2)}`,
         confidence: 'high'

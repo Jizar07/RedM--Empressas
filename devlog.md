@@ -4,6 +4,20 @@ This is a local timestamped file to track all development changes and prompts.
 
 ## Log Entries
 
+### 2025-09-27 01:22:44
+**Action**: Complete Bercario Global Naming System & Weekly Sales Tracking Implementation
+**Prompt**: User wanted to implement global naming system for Bercario purchases (replace internal names like "common_portion_pig", "pig_male" with Portuguese translations like "Ração Suíno", "Porco") and replace "Saldo do Banco US$ 0,00" with weekly sales tracking from Sunday 00:01 to Saturday 23:59, auto-reset weekly
+**Changes**:
+- **Portuguese Translation System**: Enhanced ItemTranslationService with missing translations (book → "Livro", common_portion_goat → "Ração Caprino", sheep_female → "Ovelha Femea")
+- **Frontend Translation Function**: Created `translatePurchaseDescription()` function in TemplateFirmDashboard.tsx that applies Portuguese translations to purchase descriptions for Bercario only
+- **Weekly Sales Calculation**: Replaced backend API dependency with direct calculation from activities data, filtering for `categoria: 'financeiro'`, `tipo: 'compra'` with "na loja" in description
+- **Bercario-Only Conditional Logic**: All changes isolated to `firm.id === 'bercario'` with proper fallbacks for other firms
+- **Real-time Updates**: Weekly sales recalculates every 60 seconds and updates automatically when activities change
+- **Pattern Matching Fix**: Corrected regex pattern from "na loja por" to "na loja" to match actual message format
+- **Result**: Money activities now display "Comprou 30x Ração Suíno na loja" instead of "common_portion_pig", weekly sales card shows correct total of all purchases from current week
+
+## Log Entries
+
 ### 2025-09-25 08:56:52
 **Action**: Complete Veterinaria Worker Material Flow Tracking System Implementation
 **Prompt**: User wanted to fix Veterinaria Worker management to show material flow tracking instead of all worker transactions, with eye icon modal interface

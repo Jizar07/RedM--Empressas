@@ -417,7 +417,18 @@ export default function InventoryEditor({ firm, className = '' }: InventoryEdito
 
   const handleSaveItem = async (itemData: Partial<InventoryItem>): Promise<boolean> => {
     if (editingItem) {
-      return await updateItem(editingItem.id, itemData);
+      // Transform form data for proper API processing
+      // When user changes displayName, we need to send it as 'nome' for the customization system
+      const transformedData = { ...itemData };
+
+      // If displayName was changed and is different from the auto-generated name, send it as 'nome'
+      if (itemData.displayName && itemData.displayName.trim() !== '' &&
+          itemData.displayName !== getBestDisplayName(editingItem.id)) {
+        transformedData.nome = itemData.displayName.trim();
+        console.log('🔄 Transforming displayName change to nome for API:', itemData.displayName.trim());
+      }
+
+      return await updateItem(editingItem.id, transformedData);
     } else {
       return await addItem(itemData);
     }

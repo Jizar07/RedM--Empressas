@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1758903545501_z8myil",
+  "sessionId": "session_1758903388759_7ckmjr",
+  "managerId": "372161270176153601",
+  "managerName": "GM Stoffel",
+  "workerId": "141243288572264449",
+  "workerName": "Dexter Morgan",
+  "amountPaid": 2.5,
+  "paidAt": "2025-09-26T16:19:05.501Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-09-26T16:14:05.501Z",
+    "endTime": "2025-09-26T16:29:05.501Z"
+  }
+}

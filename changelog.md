@@ -5,7 +5,14 @@ This file is synchronized with: https://github.com/Jizar07/RedM--Empressas
 
 ## Version History
 
-### [0.049] - 2025-09-25 **[CURRENT VERSION]**
+### [0.050] - 2025-09-27 **[CURRENT VERSION]**
+- **BERCARIO GLOBAL NAMING SYSTEM**: Complete Portuguese translation system for Bercario purchases (common_portion_pig → "Ração Suíno", pig_male → "Porco", sheep_female → "Ovelha Femea", book → "Livro")
+- **BERCARIO WEEKLY SALES TRACKING**: Replaced "Saldo do Banco" with real-time weekly sales calculation from Sunday 00:01 to Saturday 23:59 with auto-reset
+- **CONDITIONAL FIRM LOGIC**: All changes isolated to Bercario only (`firm.id === 'bercario'`) with proper fallbacks for other firms
+- **REAL-TIME CALCULATION**: Weekly sales calculated directly from activities data without backend dependency, updates every 60 seconds
+- **PATTERN MATCHING FIX**: Corrected message parsing to match actual Discord format ("na loja" vs "na loja por")
+
+### [0.049] - 2025-09-25
 - **VETERINARIA MATERIAL FLOW TRACKING**: Complete implementation of cross-channel material tracking system for Veterinaria workers
 - **WORKER NAME CONSOLIDATION**: Fixed worker duplicate issues by merging workers with same username but different user IDs
 - **REGEX PATTERN OPTIMIZATION**: Enhanced Discord message parsing with flexible patterns for "Item adicionado::" and "Item removido::" formats

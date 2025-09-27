@@ -57,12 +57,17 @@ export class ItemTranslationService {
     ['common_portion_chicken', { internal: 'common_portion_chicken', portuguese: 'Ração Avino', category: 'racoes' }],
     ['common_portion_cow', { internal: 'common_portion_cow', portuguese: 'Ração Bovino', category: 'racoes' }],
     ['common_portion_pig', { internal: 'common_portion_pig', portuguese: 'Ração Suíno', category: 'racoes' }],
-    
+    ['common_portion_goat', { internal: 'common_portion_goat', portuguese: 'Ração Caprino', category: 'racoes' }],
+
     // Materials
     ['wood', { internal: 'wood', portuguese: 'Madeira', category: 'materiais' }],
     ['iron', { internal: 'iron', portuguese: 'Ferro', category: 'materiais' }],
     ['coal', { internal: 'coal', portuguese: 'Carvão', category: 'materiais' }],
     ['cascalho', { internal: 'cascalho', portuguese: 'Cascalho', category: 'materiais' }],
+
+    // Books and Education
+    ['book', { internal: 'book', portuguese: 'Livro', category: 'educacao' }],
+    ['newspaper', { internal: 'newspaper', portuguese: 'Jornal', category: 'educacao' }],
     
     // Add reverse mappings (Portuguese to internal)
     ['semente de junco', { internal: 'Bulrush_Seed', portuguese: 'Semente de Junco', category: 'sementes', isBasicPlant: true }],

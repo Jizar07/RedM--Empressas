@@ -1,0 +1,45 @@
+{
+  "sessionId": "session_1758903388759_7ckmjr",
+  "workerId": "141243288572264449",
+  "workerName": "Dexter Morgan",
+  "amount": 2.5,
+  "paidBy": "372161270176153601",
+  "paidByName": "GM Stoffel",
+  "paidAt": "2025-09-26T16:19:05.500Z",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Junco",
+      "quantity": 200,
+      "transactionId": "tx_1758903388761_8bi1xh",
+      "timestamp": "2025-09-26T16:16:28.761Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 10,
+      "transactionId": "tx_1758903511220_lrjfja",
+      "timestamp": "2025-09-26T16:18:31.220Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Porco",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1758903436756_3ilgf",
+      "timestamp": "2025-09-26T16:17:16.756Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Porco",
+      "quantity": 1,
+      "cost": 20,
+      "amount": 0,
+      "transactionId": "tx_1758903520373_7888jb",
+      "timestamp": "2025-09-26T16:18:40.373Z"
+    }
+  ]
+}

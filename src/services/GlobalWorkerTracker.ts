@@ -688,4 +688,105 @@ export class GlobalWorkerTracker {
     // Convert to efficiency score (lower time = higher efficiency)
     return Math.max(0, 1 - (averageTimeWindow / 60)); // Normalize against 60 minutes
   }
+
+  /**
+   * Sync with WorkerActivityService data
+   * This method reads active worker sessions and converts them to GlobalWorkerTracker activities
+   */
+  public syncWithWorkerActivityService(): void {
+    try {
+      const fs = require('fs');
+      const path = require('path');
+
+      // Read active worker sessions
+      const activeSessionsPath = path.join(process.cwd(), 'data', 'worker-sessions', 'active-sessions.json');
+
+      if (!fs.existsSync(activeSessionsPath)) {
+        console.log('⚠️ GlobalWorkerTracker: No active sessions file found');
+        return;
+      }
+
+      const activeSessionsData = JSON.parse(fs.readFileSync(activeSessionsPath, 'utf8'));
+      let syncedActivities = 0;
+
+      // Process each active session
+      for (const sessionData of Object.values(activeSessionsData)) {
+        const session = sessionData as any;
+
+        // Process plant transactions (deposits = items added)
+        if (session.plantTransactions) {
+          for (const transaction of session.plantTransactions) {
+            if (transaction.type === 'plant_deposited') {
+              const activityId = `${session.workerId}_fazenda_${transaction.transactionId}`;
+
+              // Skip if we already have this activity
+              if (this.activities.has(activityId)) continue;
+
+              this.trackItemActivity({
+                workerId: session.workerId,
+                workerName: session.workerName,
+                firmId: 'fazenda-cabra-da-peste',
+                firmName: 'Fazenda Cabra da Peste',
+                activityType: 'item_added',
+                itemName: transaction.itemName || 'Unknown Plant',
+                quantity: transaction.quantity || 0,
+                timestamp: new Date(transaction.timestamp),
+                originalMessage: `${session.workerName} depositou ${transaction.quantity} ${transaction.itemName}`
+              });
+
+              syncedActivities++;
+            }
+          }
+        }
+
+        // Process animal transactions (deliveries = animals sold)
+        if (session.animalTransactions) {
+          for (const transaction of session.animalTransactions) {
+            if (transaction.type === 'delivery_completed') {
+              const activityId = `${session.workerId}_fazenda_${transaction.transactionId}`;
+
+              // Skip if we already have this activity
+              if (this.activities.has(activityId)) continue;
+
+              this.trackItemActivity({
+                workerId: session.workerId,
+                workerName: session.workerName,
+                firmId: 'fazenda-cabra-da-peste',
+                firmName: 'Fazenda Cabra da Peste',
+                activityType: 'item_removed', // Animals sold = removed from inventory
+                itemName: transaction.animalType || 'Unknown Animal',
+                quantity: 1, // Usually 1 animal per delivery
+                timestamp: new Date(transaction.timestamp),
+                originalMessage: `${session.workerName} vendeu ${transaction.animalType} no matadouro por $${transaction.amount}`
+              });
+
+              syncedActivities++;
+            }
+          }
+        }
+      }
+
+      if (syncedActivities > 0) {
+        console.log(`🔄 GlobalWorkerTracker: Synced ${syncedActivities} new activities from WorkerActivityService`);
+      }
+
+    } catch (error) {
+      console.error('❌ GlobalWorkerTracker: Error syncing with WorkerActivityService:', error);
+    }
+  }
+
+  /**
+   * Get enriched worker data combining GlobalWorkerTracker and WorkerActivityService
+   */
+  public getEnrichedWorkerData() {
+    // First sync with latest WorkerActivityService data
+    this.syncWithWorkerActivityService();
+
+    // Return enriched analytics
+    return {
+      profiles: Array.from(this.workerProfiles.values()),
+      analytics: this.getSmartAnalytics(),
+      lastSync: new Date().toISOString()
+    };
+  }
 }
