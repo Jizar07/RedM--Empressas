@@ -1,0 +1,51 @@
+{
+  "workerId": "198538680686608384",
+  "workerName": "Bartholomeu Dias",
+  "channelId": "1420774564291547148",
+  "sessionId": "session_1758842501114_lnr1lt",
+  "startTime": "2025-09-25T23:21:41.114Z",
+  "lastActivity": "2025-09-25T23:40:41.872Z",
+  "status": "stale",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 200,
+      "transactionId": "tx_1758842501117_xlxh1t",
+      "timestamp": "2025-09-25T23:21:41.117Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 100,
+      "transactionId": "tx_1758843641872_8ezssp",
+      "timestamp": "2025-09-25T23:40:41.872Z"
+    }
+  ],
+  "animalTransactions": [],
+  "totalCredits": 0,
+  "embedMessageId": "1420917965053755392",
+  "seedExpectations": [
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 200,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 2000,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1758842501117_xlxh1t"
+    },
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 100,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1758843641872_8ezssp"
+    }
+  ],
+  "financialTransactions": [],
+  "completedAt": "2025-09-29T11:36:38.744Z",
+  "notes": "Auto-archived due to inactivity"
+}

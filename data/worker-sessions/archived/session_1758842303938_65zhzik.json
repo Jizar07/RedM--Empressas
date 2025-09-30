@@ -1,0 +1,49 @@
+{
+  "workerId": "614201248551403590",
+  "workerName": "Richard Klein",
+  "channelId": "1420193988400513144",
+  "sessionId": "session_1758842303938_65zhzik",
+  "startTime": "2025-09-25T23:18:23.938Z",
+  "lastActivity": "2025-09-26T00:36:55.028Z",
+  "status": "stale",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 100,
+      "transactionId": "tx_1758842303940_o6gxde",
+      "timestamp": "2025-09-25T23:18:23.940Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758844696537_iypax",
+      "timestamp": "2025-09-25T23:58:16.537Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758847015028_wl99pn",
+      "timestamp": "2025-09-26T00:36:55.028Z"
+    }
+  ],
+  "animalTransactions": [],
+  "totalCredits": 250,
+  "embedMessageId": "1420932112285958176",
+  "seedExpectations": [
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 100,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 1000,
+      "isComplete": true,
+      "transactionId": "tx_1758842303940_o6gxde"
+    }
+  ],
+  "financialTransactions": [],
+  "completedAt": "2025-09-29T11:36:38.744Z",
+  "notes": "Auto-archived due to inactivity"
+}

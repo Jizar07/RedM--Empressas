@@ -217,14 +217,14 @@ export default function VeterinariaWorkers({ firm }: VeterinariaWorkersProps) {
     return (
       <div className="flex items-center justify-center py-12">
         <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600"></div>
-        <span className="ml-3 text-gray-600">Carregando dados da veterinária...</span>
+        <span className="ml-3 text-gray-600 dark:text-gray-300 dark:text-gray-300">Carregando dados da veterinária...</span>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+      <div className="bg-red-50 dark:bg-red-900/30 border border-red-200 rounded-lg p-4">
         <div className="flex items-center">
           <AlertCircle className="h-5 w-5 text-red-600 mr-2" />
           <span className="text-red-700">Erro ao carregar dados: {error}</span>
@@ -256,11 +256,11 @@ export default function VeterinariaWorkers({ firm }: VeterinariaWorkersProps) {
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-white rounded-lg border border-gray-200 p-4">
+        <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-600">Trabalhadores Ativos</p>
-              <p className="text-2xl font-bold text-gray-900">
+              <p className="text-sm text-gray-600 dark:text-gray-300 dark:text-gray-300">Trabalhadores Ativos</p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-white dark:text-white">
                 {filteredAndSortedWorkers.length}
               </p>
             </div>
@@ -268,11 +268,11 @@ export default function VeterinariaWorkers({ firm }: VeterinariaWorkersProps) {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg border border-gray-200 p-4">
+        <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-600">Total de Transações</p>
-              <p className="text-2xl font-bold text-gray-900">
+              <p className="text-sm text-gray-600 dark:text-gray-300 dark:text-gray-300">Total de Transações</p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-white dark:text-white">
                 {filteredAndSortedWorkers.reduce((acc, worker) => acc + worker.totalActivities, 0)}
               </p>
             </div>
@@ -280,11 +280,11 @@ export default function VeterinariaWorkers({ firm }: VeterinariaWorkersProps) {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg border border-gray-200 p-4">
+        <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-600">Total de Itens</p>
-              <p className="text-2xl font-bold text-gray-900">
+              <p className="text-sm text-gray-600 dark:text-gray-300 dark:text-gray-300">Total de Itens</p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-white dark:text-white">
                 {filteredAndSortedWorkers.reduce((acc, worker) => acc + worker.totalItems, 0)}
               </p>
             </div>
@@ -292,11 +292,11 @@ export default function VeterinariaWorkers({ firm }: VeterinariaWorkersProps) {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg border border-gray-200 p-4">
+        <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-600">Média de Itens</p>
-              <p className="text-2xl font-bold text-gray-900">
+              <p className="text-sm text-gray-600 dark:text-gray-300 dark:text-gray-300">Média de Itens</p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-white dark:text-white">
                 {filteredAndSortedWorkers.length > 0
                   ? Math.round(filteredAndSortedWorkers.reduce((acc, worker) => acc + worker.totalItems, 0) / filteredAndSortedWorkers.length)
                   : 0}
@@ -308,7 +308,7 @@ export default function VeterinariaWorkers({ firm }: VeterinariaWorkersProps) {
       </div>
 
       {/* Filters */}
-      <div className="bg-white rounded-lg border border-gray-200 p-4">
+      <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4">
         <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
           {/* Search */}
           <div className="flex-1">
@@ -319,7 +319,7 @@ export default function VeterinariaWorkers({ firm }: VeterinariaWorkersProps) {
                 placeholder="Buscar trabalhador..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                className="w-full pl-10 pr-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
               />
             </div>
           </div>
@@ -330,7 +330,7 @@ export default function VeterinariaWorkers({ firm }: VeterinariaWorkersProps) {
             <select
               value={selectedPeriod}
               onChange={(e) => setSelectedPeriod(e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
             >
               {periods.map(period => (
                 <option key={period.value} value={period.value}>
@@ -343,15 +343,15 @@ export default function VeterinariaWorkers({ firm }: VeterinariaWorkersProps) {
       </div>
 
       {/* Workers Table */}
-      <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
+      <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-50">
+          <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700 dark:divide-gray-700">
+            <thead className="bg-gray-50 dark:bg-gray-700">
               <tr>
                 <th className="px-6 py-3 text-left">
                   <button
                     onClick={() => handleSort('name')}
-                    className="flex items-center space-x-1 text-xs font-medium text-gray-500 uppercase tracking-wider hover:text-gray-700"
+                    className="flex items-center space-x-1 text-xs font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500 uppercase tracking-wider hover:text-gray-700"
                   >
                     <span>Trabalhador</span>
                     <SortIndicator column="name" />
@@ -360,7 +360,7 @@ export default function VeterinariaWorkers({ firm }: VeterinariaWorkersProps) {
                 <th className="px-6 py-3 text-center">
                   <button
                     onClick={() => handleSort('activities')}
-                    className="flex items-center justify-center space-x-1 text-xs font-medium text-gray-500 uppercase tracking-wider hover:text-gray-700 w-full"
+                    className="flex items-center justify-center space-x-1 text-xs font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500 uppercase tracking-wider hover:text-gray-700 dark:text-gray-300 w-full"
                   >
                     <span>Atividades</span>
                     <SortIndicator column="activities" />
@@ -369,7 +369,7 @@ export default function VeterinariaWorkers({ firm }: VeterinariaWorkersProps) {
                 <th className="px-6 py-3 text-center">
                   <button
                     onClick={() => handleSort('items')}
-                    className="flex items-center justify-center space-x-1 text-xs font-medium text-gray-500 uppercase tracking-wider hover:text-gray-700 w-full"
+                    className="flex items-center justify-center space-x-1 text-xs font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500 uppercase tracking-wider hover:text-gray-700 dark:text-gray-300 w-full"
                   >
                     <span>Total de Itens</span>
                     <SortIndicator column="items" />
@@ -378,21 +378,21 @@ export default function VeterinariaWorkers({ firm }: VeterinariaWorkersProps) {
                 <th className="px-6 py-3 text-center">
                   <button
                     onClick={() => handleSort('lastActivity')}
-                    className="flex items-center justify-center space-x-1 text-xs font-medium text-gray-500 uppercase tracking-wider hover:text-gray-700 w-full"
+                    className="flex items-center justify-center space-x-1 text-xs font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500 uppercase tracking-wider hover:text-gray-700 dark:text-gray-300 w-full"
                   >
                     <span>Última Atividade</span>
                     <SortIndicator column="lastActivity" />
                   </button>
                 </th>
-                <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500 uppercase tracking-wider">
                   Ações
                 </th>
               </tr>
             </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
+            <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700 dark:divide-gray-700">
               {filteredAndSortedWorkers.length === 0 ? (
                 <tr>
-                  <td colSpan={5} className="px-6 py-12 text-center text-gray-500">
+                  <td colSpan={5} className="px-6 py-12 text-center text-gray-500 dark:text-gray-400 dark:text-gray-500 dark:text-gray-400">
                     <Heart className="h-12 w-12 text-gray-300 mx-auto mb-4" />
                     <p className="text-lg font-medium">Nenhum trabalhador encontrado</p>
                     <p className="text-sm mt-1">Ajuste os filtros ou aguarde novas atividades</p>
@@ -400,30 +400,30 @@ export default function VeterinariaWorkers({ firm }: VeterinariaWorkersProps) {
                 </tr>
               ) : (
                 filteredAndSortedWorkers.map((worker, index) => (
-                  <tr key={worker.userId} className="hover:bg-gray-50">
+                  <tr key={worker.userId} className="hover:bg-gray-50 dark:hover:bg-gray-700 dark:bg-gray-700">
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
                         <div className="flex-shrink-0 h-10 w-10 bg-green-100 rounded-full flex items-center justify-center">
                           <User className="h-5 w-5 text-green-600" />
                         </div>
                         <div className="ml-4">
-                          <div className="text-sm font-medium text-gray-900">{worker.userName}</div>
-                          <div className="text-xs text-gray-500">ID: {worker.userId}</div>
+                          <div className="text-sm font-medium text-gray-900 dark:text-white dark:text-white">{worker.userName}</div>
+                          <div className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500 dark:text-gray-400">ID: {worker.userId}</div>
                         </div>
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-center">
-                      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300">
                         {worker.totalActivities}
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-center">
-                      <span className="text-sm font-medium text-gray-900">
+                      <span className="text-sm font-medium text-gray-900 dark:text-white dark:text-white">
                         {worker.totalItems} itens
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-center">
-                      <div className="flex items-center justify-center space-x-1 text-sm text-gray-500">
+                      <div className="flex items-center justify-center space-x-1 text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500 dark:text-gray-400">
                         <Clock className="h-4 w-4" />
                         <span>{formatDate(worker.lastActivity)}</span>
                       </div>
@@ -431,7 +431,7 @@ export default function VeterinariaWorkers({ firm }: VeterinariaWorkersProps) {
                     <td className="px-6 py-4 whitespace-nowrap text-center">
                       <button
                         onClick={() => handleViewWorkerDetails(worker.userId, worker.userName)}
-                        className="inline-flex items-center p-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors"
+                        className="inline-flex items-center p-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors"
                         title="Ver detalhes do fluxo de materiais"
                       >
                         <Eye className="h-4 w-4 text-green-600" />

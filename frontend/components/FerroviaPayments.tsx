@@ -90,17 +90,17 @@ export default function FerroviaPayments({ firm }: FerroviaPaymentsProps) {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-white rounded-lg shadow p-6">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
         <div className="flex items-center gap-3 mb-4">
           <DollarSign className="h-8 w-8 text-red-600" />
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">Saques da Cooperativa</h2>
-            <p className="text-gray-600">Histórico de saques realizados pelos trabalhadores</p>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white dark:text-white">Saques da Cooperativa</h2>
+            <p className="text-gray-600 dark:text-gray-300 dark:text-gray-300">Histórico de saques realizados pelos trabalhadores</p>
           </div>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="bg-red-50 p-4 rounded-lg border border-red-200">
+          <div className="bg-red-50 dark:bg-red-900/30 p-4 rounded-lg border border-red-200">
             <div className="flex items-center">
               <TrendingDown className="h-6 w-6 text-red-600" />
               <div className="ml-3">
@@ -110,7 +110,7 @@ export default function FerroviaPayments({ firm }: FerroviaPaymentsProps) {
             </div>
           </div>
           
-          <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
+          <div className="bg-orange-50 dark:bg-orange-900/30 p-4 rounded-lg border border-orange-200">
             <div className="flex items-center">
               <Minus className="h-6 w-6 text-orange-600" />
               <div className="ml-3">
@@ -120,7 +120,7 @@ export default function FerroviaPayments({ firm }: FerroviaPaymentsProps) {
             </div>
           </div>
           
-          <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
+          <div className="bg-purple-50 dark:bg-purple-900/30 p-4 rounded-lg border border-purple-200">
             <div className="flex items-center">
               <Users className="h-6 w-6 text-purple-600" />
               <div className="ml-3">
@@ -135,33 +135,33 @@ export default function FerroviaPayments({ firm }: FerroviaPaymentsProps) {
       </div>
 
       {/* Withdrawal Activities List */}
-      <div className="bg-white rounded-lg shadow">
+      <div className="bg-white dark:bg-gray-800 dark:bg-gray-800 rounded-lg shadow dark:border dark:border-gray-700 transition-colors">
         <div className="p-4 border-b">
           <h3 className="text-lg font-semibold">💰 Saques Realizados ({withdrawalActivities.length})</h3>
         </div>
         
         <div className="p-4 max-h-96 overflow-y-auto">
           {withdrawalActivities.length === 0 ? (
-            <p className="text-gray-500 text-center py-8">Nenhum saque capturado</p>
+            <p className="text-gray-500 dark:text-gray-400 dark:text-gray-500 text-center py-8">Nenhum saque capturado</p>
           ) : (
             <div className="space-y-2">
               {withdrawalActivities.map((activity) => (
-                <div key={activity.id} className="flex items-center gap-3 p-3 hover:bg-gray-50 rounded">
+                <div key={activity.id} className="flex items-center gap-3 p-3 hover:bg-gray-50 dark:hover:bg-gray-700 rounded">
                   <div className="flex-shrink-0">
                     <Minus className="h-5 w-5 text-red-600" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <span className="font-semibold text-gray-900">
+                      <span className="font-semibold text-gray-900 dark:text-white dark:text-white">
                         {activity.autor || 'Sistema'}
                       </span>
-                      <span className="text-gray-600">sacou</span>
-                      <span className="px-2 py-1 rounded text-xs font-medium bg-red-100 text-red-800">
+                      <span className="text-gray-600 dark:text-gray-300 dark:text-gray-300">sacou</span>
+                      <span className="px-2 py-1 rounded text-xs font-medium bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300">
                         ${typeof activity.valor === 'number' ? activity.valor.toFixed(2) : '0.00'}
                       </span>
-                      <span className="text-gray-600">da cooperativa</span>
+                      <span className="text-gray-600 dark:text-gray-300 dark:text-gray-300">da cooperativa</span>
                     </div>
-                    <p className="text-xs text-gray-500 mt-1">
+                    <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500 mt-1">
                       📅 {new Date(activity.timestamp).toLocaleString('pt-BR')}
                     </p>
                   </div>

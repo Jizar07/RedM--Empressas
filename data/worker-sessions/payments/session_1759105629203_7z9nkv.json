@@ -1,0 +1,54 @@
+{
+  "sessionId": "session_1759105629203_7z9nkv",
+  "workerId": "949397147030274059",
+  "workerName": "Izzynha Evans",
+  "amount": 320,
+  "paidBy": "949397147030274059",
+  "paidByName": "๖ۣۜζ͜͡ɪᴢᴢʏɴʜᴀ🎀",
+  "paidAt": "2025-09-29T22:48:30.880Z",
+  "plantTransactions": [],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Galo",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759105629206_98zohi",
+      "timestamp": "2025-09-29T00:27:09.206Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759181716452_cztma",
+      "timestamp": "2025-09-29T21:35:16.452Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Cabra",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759182059527_czxx2l",
+      "timestamp": "2025-09-29T21:40:59.527Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759185235676_20ovas",
+      "timestamp": "2025-09-29T22:33:55.676Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Mula",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759185416591_ad5df",
+      "timestamp": "2025-09-29T22:36:56.591Z"
+    }
+  ],
+  "financialTransactions": []
+}

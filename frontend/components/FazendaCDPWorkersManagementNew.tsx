@@ -234,14 +234,14 @@ export default function FazendaCDPWorkersManagement({
   const content = (
     <>
       {/* Tab Navigation */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 mb-6">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 mb-6">
         <div className="flex space-x-1 p-2">
           <button
             onClick={() => setActiveTab('management')}
             className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-200 ${
               activeTab === 'management'
                 ? 'bg-purple-100 text-purple-700 shadow-sm'
-                : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:text-white hover:bg-gray-50 dark:bg-gray-700'
             }`}
           >
             <Users className="w-4 h-4" />
@@ -252,7 +252,7 @@ export default function FazendaCDPWorkersManagement({
             className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-200 ${
               activeTab === 'rankings'
                 ? 'bg-purple-100 text-purple-700 shadow-sm'
-                : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:text-white hover:bg-gray-50 dark:bg-gray-700'
             }`}
           >
             <Trophy className="w-4 h-4" />
@@ -265,10 +265,10 @@ export default function FazendaCDPWorkersManagement({
       {activeTab === 'management' ? (
         <>
           {/* Controls */}
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Buscar Trabalhadores
             </label>
             <div className="relative">
@@ -284,7 +284,7 @@ export default function FazendaCDPWorkersManagement({
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Filtrar por Função
             </label>
             <select
@@ -299,7 +299,7 @@ export default function FazendaCDPWorkersManagement({
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Ordenar por
             </label>
             <select
@@ -381,7 +381,7 @@ export default function FazendaCDPWorkersManagement({
       </div>
 
       {/* Workers Table */}
-      <div className="bg-white rounded-lg shadow">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow">
         <div className="p-4 border-b">
           <h3 className="text-lg font-semibold">📊 Lista Completa de Trabalhadores ({filteredWorkers.length})</h3>
         </div>
@@ -390,10 +390,10 @@ export default function FazendaCDPWorkersManagement({
           {filteredWorkers.length === 0 ? (
             <div className="text-center py-12">
               <Users className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-              <h3 className="text-lg font-medium text-gray-900 mb-2">
+              <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
                 {searchTerm || selectedRole !== 'all' ? 'Nenhum trabalhador encontrado' : 'Nenhum trabalhador'}
               </h3>
-              <p className="text-gray-500 mb-4">
+              <p className="text-gray-500 dark:text-gray-400 mb-4">
                 {searchTerm || selectedRole !== 'all'
                   ? 'Tente ajustar os filtros de busca'
                   : 'Os trabalhadores aparecerão automaticamente quando houver atividades'
@@ -403,13 +403,13 @@ export default function FazendaCDPWorkersManagement({
           ) : (
             <div className="overflow-hidden">
               <table className="w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
+                <thead className="bg-gray-50 dark:bg-gray-700">
                   <tr>
-                    <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-16">
+                    <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider w-16">
                       Rank
                     </th>
                     <th
-                      className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100 transition-colors w-40"
+                      className="px-3 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider cursor-pointer hover:bg-gray-100 dark:bg-gray-700 transition-colors w-40"
                       onClick={() => handleSort('name')}
                     >
                       <div className="flex items-center gap-1">
@@ -418,7 +418,7 @@ export default function FazendaCDPWorkersManagement({
                       </div>
                     </th>
                     <th
-                      className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100 transition-colors w-32"
+                      className="px-3 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider cursor-pointer hover:bg-gray-100 dark:bg-gray-700 transition-colors w-32"
                       onClick={() => handleSort('role')}
                     >
                       <div className="flex items-center gap-1">
@@ -427,7 +427,7 @@ export default function FazendaCDPWorkersManagement({
                       </div>
                     </th>
                     <th
-                      className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100 transition-colors w-20"
+                      className="px-3 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider cursor-pointer hover:bg-gray-100 dark:bg-gray-700 transition-colors w-20"
                       onClick={() => handleSort('activities')}
                     >
                       <div className="flex items-center gap-1">
@@ -435,11 +435,11 @@ export default function FazendaCDPWorkersManagement({
                         <SortIndicator column="activities" />
                       </div>
                     </th>
-                    <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-20">
+                    <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider w-20">
                       Itens
                     </th>
                     <th
-                      className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100 transition-colors w-20"
+                      className="px-3 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider cursor-pointer hover:bg-gray-100 dark:bg-gray-700 transition-colors w-20"
                       onClick={() => handleSort('performance')}
                     >
                       <div className="flex items-center gap-1">
@@ -448,7 +448,7 @@ export default function FazendaCDPWorkersManagement({
                       </div>
                     </th>
                     <th
-                      className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100 transition-colors w-24"
+                      className="px-3 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider cursor-pointer hover:bg-gray-100 dark:bg-gray-700 transition-colors w-24"
                       onClick={() => handleSort('lastActivity')}
                     >
                       <div className="flex items-center gap-1">
@@ -456,18 +456,18 @@ export default function FazendaCDPWorkersManagement({
                         <SortIndicator column="lastActivity" />
                       </div>
                     </th>
-                    <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-24">
+                    <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider w-24">
                       Ações
                     </th>
                   </tr>
                 </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
+                <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200">
                   {filteredWorkers.map((worker, index) => {
                     const profile = workerProfiles.get(worker.userId);
                     const role = getWorkerRole(worker.userId);
 
                     return (
-                      <tr key={worker.userId} className="hover:bg-gray-50">
+                      <tr key={worker.userId} className="hover:bg-gray-50 dark:bg-gray-700">
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="flex items-center">
                             {(() => {
@@ -484,7 +484,7 @@ export default function FazendaCDPWorkersManagement({
                                       actualRank === 2 ? 'text-gray-400' :
                                       actualRank === 3 ? 'text-amber-600' : 'text-gray-300'
                                     }`} />
-                                    <span className="text-sm font-medium text-gray-900">#{actualRank}</span>
+                                    <span className="text-sm font-medium text-gray-900 dark:text-white">#{actualRank}</span>
                                   </>
                                 );
                               } else {
@@ -492,7 +492,7 @@ export default function FazendaCDPWorkersManagement({
                                 return (
                                   <>
                                     <User className="h-4 w-4 mr-2 text-gray-400" />
-                                    <span className="text-sm font-medium text-gray-900">#{actualRank}</span>
+                                    <span className="text-sm font-medium text-gray-900 dark:text-white">#{actualRank}</span>
                                   </>
                                 );
                               }
@@ -507,8 +507,8 @@ export default function FazendaCDPWorkersManagement({
                               </div>
                             </div>
                             <div className="ml-3 min-w-0 flex-1">
-                              <div className="text-sm font-medium text-gray-900">{worker.userName}</div>
-                              <div className="text-xs text-gray-500">{worker.userId}</div>
+                              <div className="text-sm font-medium text-gray-900 dark:text-white">{worker.userName}</div>
+                              <div className="text-xs text-gray-500 dark:text-gray-400">{worker.userId}</div>
                             </div>
                           </div>
                         </td>
@@ -521,7 +521,7 @@ export default function FazendaCDPWorkersManagement({
                           </span>
                         </td>
                         <td className="px-3 py-3 text-center">
-                          <span className="text-sm font-medium text-gray-900">{worker.totalTransactions}</span>
+                          <span className="text-sm font-medium text-gray-900 dark:text-white">{worker.totalTransactions}</span>
                         </td>
                         <td className="px-3 py-3 text-sm">
                           <div className="text-center">
@@ -530,13 +530,13 @@ export default function FazendaCDPWorkersManagement({
                               <span className="text-gray-400">/</span>
                               <span className="text-red-600">-{worker.itemsRemoved}</span>
                             </div>
-                            <div className="text-xs text-gray-500">Net: {worker.netItems}</div>
+                            <div className="text-xs text-gray-500 dark:text-gray-400">Net: {worker.netItems}</div>
                           </div>
                         </td>
                         <td className="px-3 py-3 text-center">
                           <span className="text-sm text-blue-600">{(worker.averagePerDay || 0).toFixed(1)}</span>
                         </td>
-                        <td className="px-3 py-3 text-center text-xs text-gray-500">
+                        <td className="px-3 py-3 text-center text-xs text-gray-500 dark:text-gray-400">
                           {worker.lastActivity
                             ? new Date(worker.lastActivity).toLocaleDateString('pt-BR', {
                                 month: 'short',
@@ -623,7 +623,7 @@ export default function FazendaCDPWorkersManagement({
   if (isModal) {
     return (
       <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-        <div className="bg-white rounded-lg max-w-7xl w-full max-h-[90vh] overflow-hidden flex flex-col">
+        <div className="bg-white dark:bg-gray-800 rounded-lg max-w-7xl w-full max-h-[90vh] overflow-hidden flex flex-col">
           {/* Modal Header */}
           <div className="bg-gradient-to-r from-purple-500 to-purple-600 text-white p-6">
             <div className="flex items-center justify-between">
@@ -633,7 +633,7 @@ export default function FazendaCDPWorkersManagement({
               </div>
               <button
                 onClick={onClose}
-                className="p-2 hover:bg-white hover:bg-opacity-20 rounded-lg transition-colors"
+                className="p-2 hover:bg-white dark:bg-gray-800 hover:bg-opacity-20 rounded-lg transition-colors"
               >
                 <X className="h-6 w-6" />
               </button>
@@ -667,16 +667,16 @@ function WorkerAnalyticsModal({ worker, workerProfile, onClose }: WorkerAnalytic
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-60 p-4">
-      <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col">
-        <div className="p-6 border-b border-gray-200 bg-purple-50">
+      <div className="bg-white dark:bg-gray-800 rounded-lg max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col">
+        <div className="p-6 border-b border-gray-200 dark:border-gray-700 bg-purple-50">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
               <div className="h-12 w-12 rounded-full bg-purple-100 flex items-center justify-center">
                 {role === 'manager' ? <Crown className="h-6 w-6 text-purple-600" /> : <User className="h-6 w-6 text-purple-600" />}
               </div>
               <div>
-                <h3 className="text-xl font-semibold text-gray-900">{worker.userName}</h3>
-                <p className="text-sm text-gray-600">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{worker.userName}</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-300">
                   {role === 'manager' ? 'Gerente' : 'Trabalhador'} • Analytics
                 </p>
               </div>
@@ -773,16 +773,16 @@ function WorkerDetailModal({ worker, workerProfile, onClose }: WorkerDetailModal
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-60 p-4">
-      <div className="bg-white rounded-lg max-w-6xl w-full max-h-[90vh] overflow-hidden flex flex-col">
-        <div className="p-6 border-b border-gray-200 bg-green-50">
+      <div className="bg-white dark:bg-gray-800 rounded-lg max-w-6xl w-full max-h-[90vh] overflow-hidden flex flex-col">
+        <div className="p-6 border-b border-gray-200 dark:border-gray-700 bg-green-50">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
               <div className="h-12 w-12 rounded-full bg-green-100 flex items-center justify-center">
                 <Eye className="h-6 w-6 text-green-600" />
               </div>
               <div>
-                <h3 className="text-xl font-semibold text-gray-900">{worker.userName}</h3>
-                <p className="text-sm text-gray-600">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{worker.userName}</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-300">
                   {role === 'manager' ? 'Gerente' : 'Trabalhador'} • Detalhes Completos & Discord Embeds
                 </p>
               </div>
@@ -799,7 +799,7 @@ function WorkerDetailModal({ worker, workerProfile, onClose }: WorkerDetailModal
         <div className="flex-1 overflow-y-auto p-6">
           {/* EXISTING WORKER DATA - Always show this first */}
           <div className="mb-6">
-            <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+            <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
               <BarChart3 className="h-5 w-5 text-blue-500 mr-2" />
               Dados do Sistema (Frontend)
             </h4>
@@ -848,26 +848,26 @@ function WorkerDetailModal({ worker, workerProfile, onClose }: WorkerDetailModal
             </div>
 
             {/* Activity Timeline */}
-            <div className="bg-gray-50 rounded-lg p-4">
+            <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
               <div className="grid grid-cols-2 gap-4 text-sm">
                 <div>
-                  <span className="text-gray-600">Primeira Atividade:</span>
+                  <span className="text-gray-600 dark:text-gray-300">Primeira Atividade:</span>
                   <p className="font-medium">
                     {worker.firstActivity ? new Date(worker.firstActivity).toLocaleDateString('pt-BR') : 'N/A'}
                   </p>
                 </div>
                 <div>
-                  <span className="text-gray-600">Última Atividade:</span>
+                  <span className="text-gray-600 dark:text-gray-300">Última Atividade:</span>
                   <p className="font-medium">
                     {worker.lastActivity ? new Date(worker.lastActivity).toLocaleDateString('pt-BR') : 'N/A'}
                   </p>
                 </div>
                 <div>
-                  <span className="text-gray-600">Saldo de Itens:</span>
+                  <span className="text-gray-600 dark:text-gray-300">Saldo de Itens:</span>
                   <p className="font-medium">{worker.netItems}</p>
                 </div>
                 <div>
-                  <span className="text-gray-600">Total de Categorias:</span>
+                  <span className="text-gray-600 dark:text-gray-300">Total de Categorias:</span>
                   <p className="font-medium">{Object.keys(worker.categorias || {}).length}</p>
                 </div>
               </div>
@@ -876,7 +876,7 @@ function WorkerDetailModal({ worker, workerProfile, onClose }: WorkerDetailModal
 
           {/* DISCORD BOT DATA - Show loading/error/data below the existing data */}
           <div className="border-t pt-6">
-            <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+            <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
               <Eye className="h-5 w-5 text-green-500 mr-2" />
               Dados do Discord Bot (Backend)
             </h4>
@@ -884,7 +884,7 @@ function WorkerDetailModal({ worker, workerProfile, onClose }: WorkerDetailModal
             {loading ? (
               <div className="flex items-center justify-center py-8">
                 <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-500"></div>
-                <span className="ml-3 text-gray-600">Carregando dados do Discord bot...</span>
+                <span className="ml-3 text-gray-600 dark:text-gray-300">Carregando dados do Discord bot...</span>
               </div>
             ) : error ? (
               <div className="bg-red-50 rounded-lg p-4">
@@ -904,23 +904,23 @@ function WorkerDetailModal({ worker, workerProfile, onClose }: WorkerDetailModal
               {/* Registration Information */}
               {detailData.registration && (
                 <div className="mb-6">
-                  <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
                     <Crown className="h-5 w-5 text-yellow-500 mr-2" />
                     Informações de Registro
                   </h4>
-                  <div className="bg-gray-50 rounded-lg p-4">
+                  <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
-                        <p className="text-sm font-medium text-gray-700">Nome no Jogo</p>
-                        <p className="text-gray-900">{detailData.registration.ingameName}</p>
+                        <p className="text-sm font-medium text-gray-700 dark:text-gray-300">Nome no Jogo</p>
+                        <p className="text-gray-900 dark:text-white">{detailData.registration.ingameName}</p>
                       </div>
                       <div>
-                        <p className="text-sm font-medium text-gray-700">Função</p>
-                        <p className="text-gray-900">{detailData.registration.functionName}</p>
+                        <p className="text-sm font-medium text-gray-700 dark:text-gray-300">Função</p>
+                        <p className="text-gray-900 dark:text-white">{detailData.registration.functionName}</p>
                       </div>
                       <div>
-                        <p className="text-sm font-medium text-gray-700">Registrado em</p>
-                        <p className="text-gray-900">
+                        <p className="text-sm font-medium text-gray-700 dark:text-gray-300">Registrado em</p>
+                        <p className="text-gray-900 dark:text-white">
                           {new Date(detailData.registration.registeredAt).toLocaleString('pt-BR')}
                         </p>
                       </div>
@@ -931,7 +931,7 @@ function WorkerDetailModal({ worker, workerProfile, onClose }: WorkerDetailModal
 
               {/* Statistics Summary */}
               <div className="mb-6">
-                <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
                   <BarChart3 className="h-5 w-5 text-blue-500 mr-2" />
                   Estatísticas Gerais
                 </h4>
@@ -954,9 +954,9 @@ function WorkerDetailModal({ worker, workerProfile, onClose }: WorkerDetailModal
                     <p className="text-sm font-medium text-yellow-600">Sessões</p>
                     <p className="text-xl font-bold text-yellow-900">{detailData.statistics.sessionsCount}</p>
                   </div>
-                  <div className="bg-gray-50 rounded-lg p-4">
-                    <p className="text-sm font-medium text-gray-600">Última Atividade</p>
-                    <p className="text-sm font-bold text-gray-900">
+                  <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                    <p className="text-sm font-medium text-gray-600 dark:text-gray-300">Última Atividade</p>
+                    <p className="text-sm font-bold text-gray-900 dark:text-white">
                       {detailData.statistics.lastActive
                         ? new Date(detailData.statistics.lastActive).toLocaleDateString('pt-BR')
                         : 'N/A'}
@@ -968,7 +968,7 @@ function WorkerDetailModal({ worker, workerProfile, onClose }: WorkerDetailModal
               {/* Active Session */}
               {detailData.activeSession && (
                 <div className="mb-6">
-                  <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
                     <Activity className="h-5 w-5 text-green-500 mr-2" />
                     Sessão Ativa (Discord Embed)
                   </h4>
@@ -976,17 +976,17 @@ function WorkerDetailModal({ worker, workerProfile, onClose }: WorkerDetailModal
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                       <div>
                         <p className="text-sm font-medium text-green-700">ID da Sessão</p>
-                        <p className="text-gray-900 font-mono text-sm">{detailData.activeSession.sessionId}</p>
+                        <p className="text-gray-900 dark:text-white font-mono text-sm">{detailData.activeSession.sessionId}</p>
                       </div>
                       <div>
                         <p className="text-sm font-medium text-green-700">Total de Créditos</p>
-                        <p className="text-gray-900 text-lg font-bold">
+                        <p className="text-gray-900 dark:text-white text-lg font-bold">
                           ${detailData.activeSession.totalCredits?.toFixed(2) || '0.00'}
                         </p>
                       </div>
                       <div>
                         <p className="text-sm font-medium text-green-700">Última Atividade</p>
-                        <p className="text-gray-900">
+                        <p className="text-gray-900 dark:text-white">
                           {new Date(detailData.activeSession.lastActivity).toLocaleString('pt-BR')}
                         </p>
                       </div>
@@ -995,16 +995,16 @@ function WorkerDetailModal({ worker, workerProfile, onClose }: WorkerDetailModal
                     {/* Plant Transactions */}
                     {detailData.activeSession.plantTransactions?.length > 0 && (
                       <div className="mb-4">
-                        <h5 className="font-medium text-gray-900 mb-2">🌾 Transações de Plantas</h5>
+                        <h5 className="font-medium text-gray-900 dark:text-white mb-2">🌾 Transações de Plantas</h5>
                         <div className="max-h-32 overflow-y-auto">
                           {detailData.activeSession.plantTransactions.map((transaction: any, index: number) => (
-                            <div key={index} className="text-sm text-gray-700 py-1">
+                            <div key={index} className="text-sm text-gray-700 dark:text-gray-300 py-1">
                               {transaction.type === 'seed_taken' ? '🌱' :
                                 transaction.itemName.toLowerCase().includes('junco') || transaction.itemName.toLowerCase().includes('bulrush') ? '🫘' :
                                 transaction.itemName.toLowerCase().includes('trigo') || transaction.itemName.toLowerCase().includes('wheat') ? '🌾' :
                                 transaction.itemName.toLowerCase().includes('milho') || transaction.itemName.toLowerCase().includes('corn') ? '🌽' :
                                 '🌾'} {transaction.itemName} x{transaction.quantity}
-                              <span className="text-gray-500 ml-2">
+                              <span className="text-gray-500 dark:text-gray-400 ml-2">
                                 {new Date(transaction.timestamp).toLocaleTimeString('pt-BR')}
                               </span>
                             </div>
@@ -1016,13 +1016,13 @@ function WorkerDetailModal({ worker, workerProfile, onClose }: WorkerDetailModal
                     {/* Animal Transactions */}
                     {detailData.activeSession.animalTransactions?.length > 0 && (
                       <div>
-                        <h5 className="font-medium text-gray-900 mb-2">🐄 Transações de Animais</h5>
+                        <h5 className="font-medium text-gray-900 dark:text-white mb-2">🐄 Transações de Animais</h5>
                         <div className="max-h-32 overflow-y-auto">
                           {detailData.activeSession.animalTransactions.map((transaction: any, index: number) => (
-                            <div key={index} className="text-sm text-gray-700 py-1">
+                            <div key={index} className="text-sm text-gray-700 dark:text-gray-300 py-1">
                               {transaction.type === 'animals_taken' ? '🚚' : '💰'} {transaction.quantity} animais
                               {transaction.amount && ` - $${transaction.amount.toFixed(2)}`}
-                              <span className="text-gray-500 ml-2">
+                              <span className="text-gray-500 dark:text-gray-400 ml-2">
                                 {new Date(transaction.timestamp).toLocaleTimeString('pt-BR')}
                               </span>
                             </div>
@@ -1037,24 +1037,24 @@ function WorkerDetailModal({ worker, workerProfile, onClose }: WorkerDetailModal
               {/* Payment History */}
               {detailData.history.payments.length > 0 && (
                 <div className="mb-6">
-                  <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
                     <DollarSign className="h-5 w-5 text-green-500 mr-2" />
                     Histórico de Pagamentos
                   </h4>
                   <div className="space-y-3">
                     {detailData.history.payments.slice(0, 5).map((payment: any, index: number) => (
-                      <div key={index} className="bg-gray-50 rounded-lg p-4">
+                      <div key={index} className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
                         <div className="flex justify-between items-center">
                           <div>
-                            <p className="font-medium text-gray-900">
+                            <p className="font-medium text-gray-900 dark:text-white">
                               ${payment.totalCredits?.toFixed(2) || '0.00'}
                             </p>
-                            <p className="text-sm text-gray-600">
+                            <p className="text-sm text-gray-600 dark:text-gray-300">
                               {new Date(payment.paidAt || payment.createdAt).toLocaleString('pt-BR')}
                             </p>
                           </div>
                           <div className="text-right">
-                            <p className="text-sm text-gray-600">
+                            <p className="text-sm text-gray-600 dark:text-gray-300">
                               Pago por: {payment.paidBy || 'Sistema'}
                             </p>
                           </div>
@@ -1067,18 +1067,18 @@ function WorkerDetailModal({ worker, workerProfile, onClose }: WorkerDetailModal
 
                 {/* No Data Message */}
                 {!detailData.activeSession && detailData.history.payments.length === 0 && (
-                  <div className="bg-gray-50 rounded-lg p-6 text-center">
+                  <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 text-center">
                     <Eye className="h-8 w-8 text-gray-400 mx-auto mb-2" />
-                    <p className="text-gray-600">
+                    <p className="text-gray-600 dark:text-gray-300">
                       Nenhuma sessão ativa ou pagamentos do Discord bot para este trabalhador.
                     </p>
                   </div>
                 )}
               </>
             ) : (
-              <div className="bg-gray-50 rounded-lg p-6 text-center">
+              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 text-center">
                 <Eye className="h-8 w-8 text-gray-400 mx-auto mb-2" />
-                <p className="text-gray-600">Nenhum dado do Discord bot disponível.</p>
+                <p className="text-gray-600 dark:text-gray-300">Nenhum dado do Discord bot disponível.</p>
               </div>
             )}
           </div>

@@ -4,7 +4,7 @@ const next = require('next');
 const { Server } = require('socket.io');
 
 const dev = process.env.NODE_ENV !== 'production';
-const hostname = 'localhost';
+const hostname = '0.0.0.0'; // Bind to all interfaces for Cloudflare tunnel
 const port = 3051;
 
 console.log('Starting server in', dev ? 'development' : 'production', 'mode');
@@ -96,9 +96,15 @@ app.prepare().then(() => {
     console.log('Initial server data fetched');
   });
 
-  server.listen(port, (err) => {
+  // Increase max header size to handle Cloudflare headers
+  server.maxHeadersCount = 200;
+  server.headersTimeout = 60000;
+  server.keepAliveTimeout = 65000;
+
+  server.listen(port, hostname, (err) => {
     if (err) throw err;
     console.log(`> Ready on http://${hostname}:${port}`);
     console.log('> Socket.io server running');
+    console.log('> Header limits increased for Cloudflare tunnel');
   });
 });

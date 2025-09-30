@@ -1,0 +1,25 @@
+{
+  "workerId": "845126525602365501",
+  "workerName": "Florencio Laffon",
+  "channelId": "1419094090339057735",
+  "sessionId": "session_1758806651328_9xchd",
+  "startTime": "2025-09-25T13:24:11.328Z",
+  "lastActivity": "2025-09-25T13:24:11.329Z",
+  "status": "stale",
+  "plantTransactions": [],
+  "animalTransactions": [
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758806651329_ro5m4l",
+      "timestamp": "2025-09-25T13:24:11.329Z"
+    }
+  ],
+  "totalCredits": 160,
+  "embedMessageId": "1420762814964043807",
+  "animalExpectations": [],
+  "financialTransactions": [],
+  "completedAt": "2025-09-27T14:17:05.481Z",
+  "notes": "Auto-archived due to inactivity"
+}

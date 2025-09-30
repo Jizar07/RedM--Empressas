@@ -55,7 +55,7 @@ const MetricCard: React.FC<MetricCardProps> = ({
 
   if (loading) {
     return (
-      <div className="bg-white rounded-lg shadow p-6 animate-pulse">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6 animate-pulse">
         <div className="flex items-center">
           <div className="w-12 h-12 bg-gray-200 rounded-lg"></div>
           <div className="ml-4 flex-1">
@@ -68,10 +68,10 @@ const MetricCard: React.FC<MetricCardProps> = ({
   }
 
   return (
-    <div className="bg-white rounded-lg shadow overflow-hidden">
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
       <div className={`bg-gradient-to-r ${colorClasses[color]} p-6 text-white`}>
         <div className="flex items-center">
-          <div className="p-2 bg-white bg-opacity-20 rounded-lg">
+          <div className="p-2 bg-white dark:bg-gray-800 bg-opacity-20 rounded-lg">
             {icon}
           </div>
           <div className="ml-4">
@@ -237,10 +237,10 @@ export default function FerroviaDashboard({ firm }: FerroviaDashboardProps) {
       {/* Header */}
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">{firm.name}</h1>
-          <p className="text-gray-600">Painel de controle da ferrovia</p>
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white dark:text-white">{firm.name}</h1>
+          <p className="text-gray-600 dark:text-gray-300 dark:text-gray-300">Painel de controle da ferrovia</p>
         </div>
-        <div className="text-right text-sm text-gray-500">
+        <div className="text-right text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500 dark:text-gray-400">
           <p>Última atualização:</p>
           <p>{lastUpdate ? new Date(lastUpdate).toLocaleString('pt-BR') : 'Nunca'}</p>
         </div>
@@ -284,7 +284,7 @@ export default function FerroviaDashboard({ firm }: FerroviaDashboardProps) {
       {/* Activities Feed */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Mission Activities */}
-        <div className="bg-white rounded-lg shadow">
+        <div className="bg-white dark:bg-gray-800 dark:bg-gray-800 rounded-lg shadow dark:border dark:border-gray-700 transition-colors">
           <div className="p-4 border-b">
             <h3 className="text-lg font-semibold">
               🚂 Missões Completas ({missionActivities.length})
@@ -297,33 +297,33 @@ export default function FerroviaDashboard({ firm }: FerroviaDashboardProps) {
                 <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
               </div>
             ) : missionActivities.length === 0 ? (
-              <p className="text-gray-500 text-center py-8">Nenhuma missão completa capturada</p>
+              <p className="text-gray-500 dark:text-gray-400 dark:text-gray-500 text-center py-8">Nenhuma missão completa capturada</p>
             ) : (
               <div className="space-y-2">
                 {missionActivities.map((activity) => (
-                  <div key={activity.id} className="flex items-center gap-3 p-3 hover:bg-gray-50 rounded">
+                  <div key={activity.id} className="flex items-center gap-3 p-3 hover:bg-gray-50 dark:hover:bg-gray-700 rounded">
                     <div className="flex-shrink-0">{getActivityIcon(activity)}</div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 flex-wrap">
-                        <span className="font-semibold text-gray-900">
+                        <span className="font-semibold text-gray-900 dark:text-white dark:text-white">
                           {activity.autor || 'Sistema'}
                         </span>
-                        <span className="text-gray-600">completou missão</span>
+                        <span className="text-gray-600 dark:text-gray-300 dark:text-gray-300">completou missão</span>
                         {activity.missao && (
-                          <span className="px-2 py-1 rounded text-xs font-medium bg-blue-100 text-blue-800">
+                          <span className="px-2 py-1 rounded text-xs font-medium bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300">
                             #{activity.missao}
                           </span>
                         )}
-                        <span className="text-gray-600">com</span>
-                        <span className="px-2 py-1 rounded text-xs font-medium bg-green-100 text-green-800">
+                        <span className="text-gray-600 dark:text-gray-300 dark:text-gray-300">com</span>
+                        <span className="px-2 py-1 rounded text-xs font-medium bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300">
                           {activity.boxesDelivered || activity.quantidade || 0} caixas
                         </span>
-                        <span className="text-gray-600">por</span>
-                        <span className="px-2 py-1 rounded text-xs font-medium bg-yellow-100 text-yellow-800">
+                        <span className="text-gray-600 dark:text-gray-300 dark:text-gray-300">por</span>
+                        <span className="px-2 py-1 rounded text-xs font-medium bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-300">
                           ${typeof activity.valor === 'number' ? activity.valor.toFixed(2) : '0.00'}
                         </span>
                       </div>
-                      <p className="text-xs text-gray-500 mt-1">
+                      <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500 mt-1">
                         📅 {new Date(activity.timestamp).toLocaleString('pt-BR')}
                       </p>
                     </div>
@@ -335,7 +335,7 @@ export default function FerroviaDashboard({ firm }: FerroviaDashboardProps) {
         </div>
 
         {/* Money Activities */}
-        <div className="bg-white rounded-lg shadow">
+        <div className="bg-white dark:bg-gray-800 dark:bg-gray-800 rounded-lg shadow dark:border dark:border-gray-700 transition-colors">
           <div className="p-4 border-b">
             <h3 className="text-lg font-semibold">
               💰 Atividades de Dinheiro ({withdrawalActivities.length})
@@ -344,24 +344,24 @@ export default function FerroviaDashboard({ firm }: FerroviaDashboardProps) {
           
           <div className="p-4 max-h-96 overflow-y-auto">
             {withdrawalActivities.length === 0 ? (
-              <p className="text-gray-500 text-center py-8">Nenhum saque capturado</p>
+              <p className="text-gray-500 dark:text-gray-400 dark:text-gray-500 text-center py-8">Nenhum saque capturado</p>
             ) : (
               <div className="space-y-2">
                 {withdrawalActivities.map((activity) => (
-                  <div key={activity.id} className="flex items-center gap-3 p-3 hover:bg-gray-50 rounded">
+                  <div key={activity.id} className="flex items-center gap-3 p-3 hover:bg-gray-50 dark:hover:bg-gray-700 rounded">
                     <div className="flex-shrink-0">{getActivityIcon(activity)}</div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 flex-wrap">
-                        <span className="font-semibold text-gray-900">
+                        <span className="font-semibold text-gray-900 dark:text-white dark:text-white">
                           {activity.autor || 'Sistema'}
                         </span>
-                        <span className="text-gray-600">sacou</span>
-                        <span className="px-2 py-1 rounded text-xs font-medium bg-red-100 text-red-800">
+                        <span className="text-gray-600 dark:text-gray-300 dark:text-gray-300">sacou</span>
+                        <span className="px-2 py-1 rounded text-xs font-medium bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300">
                           ${typeof activity.valor === 'number' ? activity.valor.toFixed(2) : '0.00'}
                         </span>
-                        <span className="text-gray-600">da cooperativa</span>
+                        <span className="text-gray-600 dark:text-gray-300 dark:text-gray-300">da cooperativa</span>
                       </div>
-                      <p className="text-xs text-gray-500 mt-1">
+                      <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500 mt-1">
                         📅 {new Date(activity.timestamp).toLocaleString('pt-BR')}
                       </p>
                     </div>

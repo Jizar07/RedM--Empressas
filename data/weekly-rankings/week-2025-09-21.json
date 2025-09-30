@@ -469,7 +469,7 @@
   "ferroviaRankings": [
     {
       "workerId": "unknown",
-      "workerName": "Smith Ramirez",
+      "workerName": "Bartholomeu Dias",
       "plants": {
         "thisWeek": 0,
         "allTime": 0
@@ -479,10 +479,10 @@
         "allTime": 0
       },
       "ferrovia": {
-        "thisWeek": 175,
-        "allTime": 269
+        "thisWeek": 224,
+        "allTime": 318
       },
-      "lastActivity": "2025-09-27T03:59:59.516Z"
+      "lastActivity": "2025-09-27T23:34:29.434Z"
     },
     {
       "workerId": "273987353456934913",
@@ -570,5 +570,5 @@
       "lastActivity": "2025-09-23T11:02:26.470Z"
     }
   ],
-  "lastUpdated": "2025-09-27T03:59:59.516Z"
+  "lastUpdated": "2025-09-27T23:34:29.434Z"
 }

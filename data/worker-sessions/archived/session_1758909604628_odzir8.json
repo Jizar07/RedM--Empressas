@@ -1,0 +1,65 @@
+{
+  "workerId": "1204772480305209384",
+  "workerName": "BONNIE BENNETT",
+  "channelId": "1416502543990915132",
+  "sessionId": "session_1758909604628_odzir8",
+  "startTime": "2025-09-26T18:00:04.628Z",
+  "lastActivity": "2025-09-26T19:16:58.234Z",
+  "status": "stale",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Junco",
+      "quantity": 200,
+      "transactionId": "tx_1758909604630_sjxpuw",
+      "timestamp": "2025-09-26T18:00:04.630Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 19,
+      "transactionId": "tx_1758909948335_01hy4",
+      "timestamp": "2025-09-26T18:05:48.335Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 50,
+      "transactionId": "tx_1758912208975_vyzp1r6",
+      "timestamp": "2025-09-26T18:43:28.975Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1758914218234_kxsfqm",
+      "timestamp": "2025-09-26T19:16:58.234Z"
+    }
+  ],
+  "animalTransactions": [],
+  "totalCredits": 129.75,
+  "embedMessageId": "1421213983108501585",
+  "seedExpectations": [
+    {
+      "seedType": "Semente de Junco",
+      "seedQuantity": 200,
+      "expectedPlantType": "Junco",
+      "expectedPlantQuantity": 2000,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1758909604630_sjxpuw"
+    },
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 50,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 500,
+      "plantsFulfilled": 500,
+      "isComplete": true,
+      "transactionId": "tx_1758912208975_vyzp1r6"
+    }
+  ],
+  "financialTransactions": [],
+  "completedAt": "2025-09-29T11:36:38.746Z",
+  "notes": "Auto-archived due to inactivity"
+}

@@ -1,0 +1,151 @@
+{
+  "workerId": "141243288572264449",
+  "workerName": "Dexter Morgan",
+  "channelId": "1421167670170226729",
+  "sessionId": "session_1758932568801_thezrf",
+  "startTime": "2025-09-27T00:22:48.801Z",
+  "lastActivity": "2025-09-27T01:12:50.346Z",
+  "status": "stale",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Junco",
+      "quantity": 100,
+      "transactionId": "tx_1758932645984_b7atsp",
+      "timestamp": "2025-09-27T00:24:05.984Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 200,
+      "transactionId": "tx_1758935406150_wjo3jp",
+      "timestamp": "2025-09-27T01:10:06.150Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 200,
+      "transactionId": "tx_1758935411359_q5h82d",
+      "timestamp": "2025-09-27T01:10:11.359Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 100,
+      "transactionId": "tx_1758935416296_vkslas",
+      "timestamp": "2025-09-27T01:10:16.296Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 200,
+      "transactionId": "tx_1758935561806_htb5o8",
+      "timestamp": "2025-09-27T01:12:41.806Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 200,
+      "transactionId": "tx_1758935565547_djqwnv",
+      "timestamp": "2025-09-27T01:12:45.547Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 100,
+      "transactionId": "tx_1758935570346_l50pmb",
+      "timestamp": "2025-09-27T01:12:50.346Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Ovelha Macho",
+      "quantity": 1,
+      "cost": 20,
+      "amount": 0,
+      "transactionId": "tx_1758932568803_meiygn",
+      "timestamp": "2025-09-27T00:22:48.803Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Ovelha Macho",
+      "quantity": 1,
+      "cost": 20,
+      "amount": 0,
+      "transactionId": "tx_1758932572210_yabuu",
+      "timestamp": "2025-09-27T00:22:52.210Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Ovelha Macho",
+      "quantity": 1,
+      "cost": 20,
+      "amount": 0,
+      "transactionId": "tx_1758932575624_dksqou",
+      "timestamp": "2025-09-27T00:22:55.624Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Ovelha Macho",
+      "quantity": 1,
+      "cost": 20,
+      "amount": 0,
+      "transactionId": "tx_1758932582664_jg0ei",
+      "timestamp": "2025-09-27T00:23:02.664Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758934590973_vr9gfo",
+      "timestamp": "2025-09-27T00:56:30.973Z"
+    }
+  ],
+  "totalCredits": 410,
+  "embedMessageId": "1421303540315586601",
+  "animalExpectations": [
+    {
+      "animalsTaken": 1,
+      "animalsDelivered": 1,
+      "isComplete": true,
+      "transactionId": "tx_1758932568803_meiygn",
+      "takenTimestamp": "2025-09-27T00:22:48.803Z"
+    },
+    {
+      "animalsTaken": 1,
+      "animalsDelivered": 1,
+      "isComplete": true,
+      "transactionId": "tx_1758932572210_yabuu",
+      "takenTimestamp": "2025-09-27T00:22:52.210Z"
+    },
+    {
+      "animalsTaken": 1,
+      "animalsDelivered": 1,
+      "isComplete": true,
+      "transactionId": "tx_1758932575624_dksqou",
+      "takenTimestamp": "2025-09-27T00:22:55.624Z"
+    },
+    {
+      "animalsTaken": 1,
+      "animalsDelivered": 1,
+      "isComplete": true,
+      "transactionId": "tx_1758932582664_jg0ei",
+      "takenTimestamp": "2025-09-27T00:23:02.664Z"
+    }
+  ],
+  "seedExpectations": [
+    {
+      "seedType": "Semente de Junco",
+      "seedQuantity": 100,
+      "expectedPlantType": "Junco",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 1000,
+      "isComplete": true,
+      "transactionId": "tx_1758932645984_b7atsp"
+    }
+  ],
+  "financialTransactions": [],
+  "completedAt": "2025-09-29T11:36:38.746Z",
+  "notes": "Auto-archived due to inactivity"
+}

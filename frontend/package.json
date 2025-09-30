@@ -3,10 +3,10 @@
   "version": "0.002",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3051",
+    "dev": "node server.js",
     "socket": "node socket-server.js",
     "build": "next build",
-    "start": "next start -p 3051",
+    "start": "NODE_ENV=production node server.js",
     "lint": "next lint",
     "type-check": "tsc --noEmit"
   },

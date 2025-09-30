@@ -103,15 +103,15 @@ export default function BercarioClients({ firm }: BercarioClientsProps) {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-gray-900">👥 Clientes do Berçário</h2>
-        <div className="text-sm text-gray-500">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white dark:text-white">👥 Clientes do Berçário</h2>
+        <div className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500 dark:text-gray-400">
           Última atualização: {new Date().toLocaleTimeString('pt-BR')}
         </div>
       </div>
 
       {/* Summary Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+        <div className="bg-blue-50 dark:bg-blue-900/30 p-4 rounded-lg border border-blue-200">
           <div className="flex items-center">
             <Users className="h-8 w-8 text-blue-600 mr-3" />
             <div>
@@ -121,7 +121,7 @@ export default function BercarioClients({ firm }: BercarioClientsProps) {
           </div>
         </div>
 
-        <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+        <div className="bg-green-50 dark:bg-green-900/30 p-4 rounded-lg border border-green-200">
           <div className="flex items-center">
             <DollarSign className="h-8 w-8 text-green-600 mr-3" />
             <div>
@@ -131,7 +131,7 @@ export default function BercarioClients({ firm }: BercarioClientsProps) {
           </div>
         </div>
 
-        <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
+        <div className="bg-purple-50 dark:bg-purple-900/30 p-4 rounded-lg border border-purple-200">
           <div className="flex items-center">
             <TrendingUp className="h-8 w-8 text-purple-600 mr-3" />
             <div>
@@ -141,7 +141,7 @@ export default function BercarioClients({ firm }: BercarioClientsProps) {
           </div>
         </div>
 
-        <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
+        <div className="bg-orange-50 dark:bg-orange-900/30 p-4 rounded-lg border border-orange-200">
           <div className="flex items-center">
             <Package className="h-8 w-8 text-orange-600 mr-3" />
             <div>
@@ -153,34 +153,34 @@ export default function BercarioClients({ firm }: BercarioClientsProps) {
       </div>
 
       {/* Client List */}
-      <div className="bg-white rounded-lg border border-gray-200">
-        <div className="px-6 py-4 border-b border-gray-200">
-          <h3 className="text-lg font-semibold text-gray-900">Lista de Clientes</h3>
+      <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 dark:border-gray-700">
+        <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700 dark:border-gray-700">
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white dark:text-white">Lista de Clientes</h3>
         </div>
         
         <div className="overflow-x-auto">
           {clientData.length > 0 ? (
             <table className="w-full">
-              <thead className="bg-gray-50">
+              <thead className="bg-gray-50 dark:bg-gray-700">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500 uppercase tracking-wider">
                     Cliente
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500 uppercase tracking-wider">
                     Total Gasto
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500 uppercase tracking-wider">
                     Compras
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500 uppercase tracking-wider">
                     Última Compra
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500 uppercase tracking-wider">
                     Itens Favoritos
                   </th>
                 </tr>
               </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
+              <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700 dark:divide-gray-700">
                 {clientData.map((client, index) => (
                   <tr key={client.name} className={index === 0 ? 'bg-green-50' : ''}>
                     <td className="px-6 py-4 whitespace-nowrap">
@@ -193,7 +193,7 @@ export default function BercarioClients({ firm }: BercarioClientsProps) {
                           {index + 1}
                         </div>
                         <div>
-                          <div className="text-sm font-medium text-gray-900">{client.name}</div>
+                          <div className="text-sm font-medium text-gray-900 dark:text-white dark:text-white">{client.name}</div>
                           {index === 0 && (
                             <div className="text-xs text-green-600 font-medium">👑 Melhor Cliente</div>
                           )}
@@ -204,17 +204,17 @@ export default function BercarioClients({ firm }: BercarioClientsProps) {
                       <div className="text-sm font-bold text-green-600">${client.totalSpent.toFixed(2)}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">{client.totalPurchases}</div>
+                      <div className="text-sm text-gray-900 dark:text-white dark:text-white">{client.totalPurchases}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">
+                      <div className="text-sm text-gray-900 dark:text-white dark:text-white">
                         {client.lastPurchase.toLocaleDateString('pt-BR')}
                       </div>
                     </td>
                     <td className="px-6 py-4">
                       <div className="flex flex-wrap gap-1">
                         {client.favoriteItems.slice(0, 3).map((item, i) => (
-                          <span key={i} className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                          <span key={i} className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300">
                             {item}
                           </span>
                         ))}
@@ -232,8 +232,8 @@ export default function BercarioClients({ firm }: BercarioClientsProps) {
           ) : (
             <div className="text-center py-12">
               <Users className="mx-auto h-12 w-12 text-gray-400" />
-              <h3 className="mt-2 text-sm font-medium text-gray-900">Nenhum cliente encontrado</h3>
-              <p className="mt-1 text-sm text-gray-500">
+              <h3 className="mt-2 text-sm font-medium text-gray-900 dark:text-white dark:text-white">Nenhum cliente encontrado</h3>
+              <p className="mt-1 text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500 dark:text-gray-400">
                 Quando os clientes começarem a comprar animais, eles aparecerão aqui.
               </p>
             </div>

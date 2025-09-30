@@ -702,5 +702,60 @@
     "invitedBy": "Nina Vatore | 0000",
     "approved": true,
     "registeredAt": "2025-09-26T16:12:56.060Z"
+  },
+  {
+    "userId": "398270963969425408",
+    "username": "fabianooliveira0333",
+    "ingameName": "John Weslley",
+    "mailId": "111",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "smith ramirez | 1025",
+    "approved": true,
+    "registeredAt": "2025-09-27T21:16:19.074Z"
+  },
+  {
+    "userId": "329313844503773184",
+    "username": "j0nsus",
+    "ingameName": "John Winchester",
+    "mailId": "nao",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "smith ramirez | 1025",
+    "approved": true,
+    "registeredAt": "2025-09-28T18:12:52.648Z"
+  },
+  {
+    "userId": "381598369556070402",
+    "username": "jubiscleia_sz",
+    "ingameName": "jubiscleia gilbert",
+    "mailId": "5404",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "Nathy Miller | 5264",
+    "approved": true,
+    "registeredAt": "2025-09-29T04:04:17.435Z"
+  },
+  {
+    "userId": "1330634479621902456",
+    "username": "cordivaldo22_86826",
+    "ingameName": "cordivaldo stoffliz",
+    "mailId": "4250",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "Jizar Stoffeliz | 4222",
+    "approved": true,
+    "registeredAt": "2025-09-29T23:11:49.956Z"
+  },
+  {
+    "userId": "1330634479621902456",
+    "username": "cordivaldo22_86826",
+    "ingameName": "cordivaldo stoffeliz",
+    "mailId": "4250",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "Jizar Stoffeliz | 4222",
+    "approved": true,
+    "registeredAt": "2025-09-29T23:13:23.568Z"
   }
 ]

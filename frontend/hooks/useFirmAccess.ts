@@ -44,7 +44,7 @@ const getMockUserRoles = async (): Promise<string[]> => {
   ];
 };
 
-export function useFirmAccess(): FirmAccess {
+export function useFirmAccess(shouldFetch: boolean = true): FirmAccess {
   const [accessibleFirms, setAccessibleFirms] = useState<FirmConfig[]>([]);
   const [loading, setLoading] = useState(false); // Start as false - don't block initial render
   const [error, setError] = useState<string | null>(null);
@@ -106,14 +106,18 @@ export function useFirmAccess(): FirmAccess {
   };
 
   useEffect(() => {
-    // DEFER API call until after initial render
-    // This prevents blocking the UI on page load
+    if (!shouldFetch) {
+      // DON'T fetch if not needed - prevents flicker
+      return;
+    }
+
+    // Fetch firms in background without blocking UI
     const deferredFetch = setTimeout(() => {
       fetchAccessibleFirms();
-    }, 50); // Small delay to allow UI to render first
+    }, 100);
 
     return () => clearTimeout(deferredFetch);
-  }, [selectedServerId]);
+  }, [selectedServerId, shouldFetch]);
 
   return {
     accessibleFirms,

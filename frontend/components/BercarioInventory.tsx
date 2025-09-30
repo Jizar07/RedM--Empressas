@@ -118,7 +118,7 @@ export default function BercarioInventory({ firm }: BercarioInventoryProps) {
 
       {/* Summary Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+        <div className="bg-blue-50 dark:bg-blue-900/30 p-4 rounded-lg border border-blue-200">
           <div className="flex items-center">
             <Package className="h-8 w-8 text-blue-600 mr-3" />
             <div>
@@ -128,7 +128,7 @@ export default function BercarioInventory({ firm }: BercarioInventoryProps) {
           </div>
         </div>
 
-        <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+        <div className="bg-green-50 dark:bg-green-900/30 p-4 rounded-lg border border-green-200">
           <div className="flex items-center">
             <TrendingUp className="h-8 w-8 text-green-600 mr-3" />
             <div>
@@ -138,7 +138,7 @@ export default function BercarioInventory({ firm }: BercarioInventoryProps) {
           </div>
         </div>
 
-        <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+        <div className="bg-yellow-50 dark:bg-yellow-900/30 p-4 rounded-lg border border-yellow-200">
           <div className="flex items-center">
             <AlertTriangle className="h-8 w-8 text-yellow-600 mr-3" />
             <div>
@@ -148,7 +148,7 @@ export default function BercarioInventory({ firm }: BercarioInventoryProps) {
           </div>
         </div>
 
-        <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
+        <div className="bg-purple-50 dark:bg-purple-900/30 p-4 rounded-lg border border-purple-200">
           <div className="flex items-center">
             <Plus className="h-8 w-8 text-purple-600 mr-3" />
             <div>
@@ -160,44 +160,44 @@ export default function BercarioInventory({ firm }: BercarioInventoryProps) {
       </div>
 
       {/* Inventory List */}
-      <div className="bg-white rounded-lg border border-gray-200">
+      <div className="bg-white dark:bg-gray-800 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 dark:border-gray-700 transition-colors">
         <div className="px-6 py-4 border-b border-gray-200">
-          <h3 className="text-lg font-semibold text-gray-900">Estoque de Animais</h3>
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white dark:text-white">Estoque de Animais</h3>
         </div>
         
         <div className="overflow-x-auto">
           {inventoryData.length > 0 ? (
             <table className="w-full">
-              <thead className="bg-gray-50">
+              <thead className="bg-gray-50 dark:bg-gray-700">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500 dark:text-gray-400 dark:text-gray-500 uppercase tracking-wider">
                     Animal
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500 dark:text-gray-400 dark:text-gray-500 uppercase tracking-wider">
                     Quantidade Atual
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500 dark:text-gray-400 dark:text-gray-500 uppercase tracking-wider">
                     Adicionados
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500 dark:text-gray-400 dark:text-gray-500 uppercase tracking-wider">
                     Removidos/Vendidos
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500 dark:text-gray-400 dark:text-gray-500 uppercase tracking-wider">
                     Mudança Líquida
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500 dark:text-gray-400 dark:text-gray-500 uppercase tracking-wider">
                     Última Atualização
                   </th>
                 </tr>
               </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
+              <tbody className="bg-white dark:bg-gray-800 dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700 dark:divide-gray-700">
                 {inventoryData.map((item) => (
                   <tr key={item.name} className={item.quantity < 5 ? 'bg-yellow-50' : ''}>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
-                        <Package className="h-5 w-5 text-gray-400 mr-3" />
+                        <Package className="h-5 w-5 text-gray-400 dark:text-gray-500 mr-3" />
                         <div>
-                          <div className="text-sm font-medium text-gray-900">{item.name}</div>
+                          <div className="text-sm font-medium text-gray-900 dark:text-white dark:text-white">{item.name}</div>
                           {item.quantity < 5 && (
                             <div className="text-xs text-yellow-600 font-medium">⚠️ Estoque Baixo</div>
                           )}
@@ -233,7 +233,7 @@ export default function BercarioInventory({ firm }: BercarioInventoryProps) {
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">
+                      <div className="text-sm text-gray-900 dark:text-white dark:text-white">
                         {item.lastUpdate.toLocaleDateString('pt-BR')} {item.lastUpdate.toLocaleTimeString('pt-BR')}
                       </div>
                     </td>

@@ -1,0 +1,25 @@
+{
+  "workerId": "414405166079672323",
+  "workerName": "mixel laffon",
+  "channelId": "1419098099648954399",
+  "sessionId": "session_1758807172047_17vim",
+  "startTime": "2025-09-25T13:32:52.047Z",
+  "lastActivity": "2025-09-25T13:32:52.048Z",
+  "status": "stale",
+  "plantTransactions": [],
+  "animalTransactions": [
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1758807172048_xgmqrq",
+      "timestamp": "2025-09-25T13:32:52.048Z"
+    }
+  ],
+  "totalCredits": 160,
+  "embedMessageId": "1420764997880909905",
+  "animalExpectations": [],
+  "financialTransactions": [],
+  "completedAt": "2025-09-27T14:17:05.483Z",
+  "notes": "Auto-archived due to inactivity"
+}

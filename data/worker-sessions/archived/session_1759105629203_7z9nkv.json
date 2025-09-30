@@ -1,0 +1,81 @@
+{
+  "workerId": "949397147030274059",
+  "workerName": "Izzynha Evans",
+  "channelId": "1418756866430730382",
+  "sessionId": "session_1759105629203_7z9nkv",
+  "startTime": "2025-09-29T00:27:09.203Z",
+  "lastActivity": "2025-09-29T22:36:56.591Z",
+  "status": "paid",
+  "plantTransactions": [],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Galo",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759105629206_98zohi",
+      "timestamp": "2025-09-29T00:27:09.206Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759181716452_cztma",
+      "timestamp": "2025-09-29T21:35:16.452Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Cabra",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759182059527_czxx2l",
+      "timestamp": "2025-09-29T21:40:59.527Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759185235676_20ovas",
+      "timestamp": "2025-09-29T22:33:55.676Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Mula",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759185416591_ad5df",
+      "timestamp": "2025-09-29T22:36:56.591Z"
+    }
+  ],
+  "financialTransactions": [],
+  "totalCredits": 320,
+  "embedMessageId": "1422351473886367774",
+  "animalExpectations": [
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759105629206_98zohi",
+      "takenTimestamp": "2025-09-29T00:27:09.206Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759182059527_czxx2l",
+      "takenTimestamp": "2025-09-29T21:40:59.528Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759185416591_ad5df",
+      "takenTimestamp": "2025-09-29T22:36:56.591Z"
+    }
+  ],
+  "completedAt": "2025-09-29T22:48:30.878Z",
+  "notes": "Pago por ๖ۣۜζ͜͡ɪᴢᴢʏɴʜᴀ🎀 (949397147030274059)"
+}

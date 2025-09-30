@@ -1,0 +1,44 @@
+{
+  "sessionId": "session_1759193470585_9e6k9n",
+  "workerId": "1117649799181783130",
+  "workerName": "Ubirajara Cauamb",
+  "amount": 285,
+  "paidBy": "949397147030274059",
+  "paidByName": "๖ۣۜζ͜͡ɪᴢᴢʏɴʜᴀ🎀",
+  "paidAt": "2025-09-30T01:47:29.240Z",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 50,
+      "transactionId": "tx_1759193489523_u8tltm",
+      "timestamp": "2025-09-30T00:51:29.523Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1759196479374_ki984e",
+      "timestamp": "2025-09-30T01:41:19.374Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Galo",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759193470586_1bvrs",
+      "timestamp": "2025-09-30T00:51:10.586Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759195480494_y94vr",
+      "timestamp": "2025-09-30T01:24:40.494Z"
+    }
+  ],
+  "financialTransactions": []
+}

@@ -40,6 +40,7 @@ import { healthCheck, botApi, serverApi } from '@/lib/api';
 import { BotStats, ServerInfo } from '@/types';
 import { useFirmAccess } from '@/hooks/useFirmAccess';
 import { FirmConfig } from '@/types/firms';
+import ThemeToggle from '@/components/ThemeToggle';
 
 // Disable static generation for this page since it uses dynamic content
 export const dynamic = 'force-dynamic';
@@ -58,7 +59,42 @@ export default function HomePage() {
   const [isPending, startTransition] = useTransition();
   const { selectedServerId, selectedServerName, setSelectedServer } = useServer();
   const { canAccessChannelParser, isAdmin } = useAuth();
-  const { accessibleFirms, loading: firmsLoading } = useFirmAccess();
+  const { accessibleFirms, loading: firmsLoading } = useFirmAccess(true);
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
+  const [translationsLoaded, setTranslationsLoaded] = useState(false);
+
+  // Load translations BEFORE showing page
+  useEffect(() => {
+    const loadTranslations = async () => {
+      try {
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3050/api';
+        const response = await fetch(`${apiUrl}/localization/translations`);
+        if (response.ok) {
+          const data = await response.json();
+          if (data.success && data.data?.custom_overrides) {
+            (window as any).__translationsCache = data.data.custom_overrides;
+          }
+        }
+      } catch (error) {
+        console.debug('Failed to load translations:', error);
+      } finally {
+        setTranslationsLoaded(true);
+      }
+    };
+
+    loadTranslations();
+  }, []);
+
+  // Wait for all APIs to complete before showing content
+  useEffect(() => {
+    if (!firmsLoading && accessibleFirms.length > 0 && translationsLoaded) {
+      // Small delay to ensure all state updates are done
+      const timer = setTimeout(() => {
+        setIsInitialLoad(false);
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [firmsLoading, accessibleFirms, translationsLoaded]);
   
   // Temporary: Always show admin tabs for testing
   const showAdminTabs = true;
@@ -95,14 +131,15 @@ export default function HomePage() {
     }
   }, [searchParams]);
 
+  // DON'T fetch stats on main page - causes flicker
+  // Only fetch when user clicks on dashboard tab
   useEffect(() => {
-    // Remove mounted check - fetch immediately on mount
-    // This runs in background, won't block render
+    // Only fetch if on dashboard tab
+    if (activeTab !== 'dashboard') return;
 
     const fetchBotStats = async () => {
       try {
-        // Load these in background WITHOUT blocking UI render
-        // Wrap ALL state updates in startTransition to prevent flicker
+        // Only fetch quick APIs
         Promise.all([
           healthCheck().then(health => {
             startTransition(() => setHealthStatus(health));
@@ -111,11 +148,6 @@ export default function HomePage() {
             startTransition(() => setBotStats(stats));
           }).catch(() => {
             startTransition(() => setBotStats(null));
-          }),
-          serverApi.getStatus().then(server => {
-            startTransition(() => setServerInfo(server));
-          }).catch(() => {
-            startTransition(() => setServerInfo(null));
           })
         ]);
       } catch (error) {
@@ -123,19 +155,14 @@ export default function HomePage() {
       }
     };
 
-    // DEFER initial fetch to allow UI to render first
-    const deferredFetch = setTimeout(() => {
-      fetchBotStats();
-    }, 100);
-
-    // Refresh every minute in background
+    const deferredFetch = setTimeout(fetchBotStats, 500);
     const interval = setInterval(fetchBotStats, 60000);
 
     return () => {
       clearTimeout(deferredFetch);
       clearInterval(interval);
     };
-  }, []); // Remove mounted dependency
+  }, [activeTab]); // Only run when tab changes
 
   // Generate dynamic tabs including firm tabs
   const generateTabs = () => {
@@ -273,49 +300,74 @@ export default function HomePage() {
     return baseTabs;
   };
 
-  const tabs = generateTabs();
+  // Memoize tabs to prevent regeneration on every render
+  // Only regenerate when accessibleFirms actually changes
+  const tabs = useMemo(() => generateTabs(), [accessibleFirms, canAccessChannelParser, showAdminTabs]);
 
   // Show splash page for unauthenticated users ONLY
-  // Don't block on loading states - render UI immediately
   if (status === 'unauthenticated' || (!session && status !== 'loading')) {
     return <SplashPage botStats={botStats} />;
   }
 
-  // For loading state or authenticated, render the main UI immediately
-  // Data will load in background and populate progressively
-  // This prevents any flickering since the UI structure never changes
+  // CRITICAL: Wait for initial firms load to prevent flicker
+  // Show a minimal loading state while firms are being fetched
+  // This prevents the massive re-render when accessibleFirms loads
+  if (status === 'loading' || isInitialLoad) {
+    return (
+      <div className="min-h-screen bg-gray-50">
+        <header className="bg-white shadow-sm border-b border-gray-200">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between h-16">
+              <div className="flex items-center space-x-3">
+                <div className="p-2 bg-red-600 rounded-lg">
+                  <Server className="h-6 w-6 text-white" />
+                </div>
+                <h1 className="text-xl font-bold text-gray-900">Loading...</h1>
+              </div>
+            </div>
+          </div>
+        </header>
+        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="animate-pulse space-y-4">
+            <div className="h-12 bg-gray-200 rounded"></div>
+            <div className="h-64 bg-gray-200 rounded"></div>
+          </div>
+        </main>
+      </div>
+    );
+  }
 
   return (
     // <ProtectedRoute>
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b border-gray-200">
+      <header className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-3">
-              <div className="p-2 bg-red-600 rounded-lg">
+              <div className="p-2 bg-red-600 dark:bg-red-700 rounded-lg transition-colors">
                 <Server className="h-6 w-6 text-white" />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-gray-900">
+                <h1 className="text-xl font-bold text-gray-900 dark:text-white transition-colors">
                   {selectedServerName || 'RedM Empresas'}
                 </h1>
-                <p className="text-sm text-gray-500">Gerenciador de Empresas</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400 transition-colors">Gerenciador de Empresas</p>
               </div>
             </div>
 
-            {/* Bot Status, Server Selector and User Menu */}
+            {/* Bot Status, Server Selector, Theme Toggle and User Menu */}
             <div className="flex items-center space-x-4">
               <ServerDropdown />
               <AuthButton />
-              {botStats && (
-                <div className="flex items-center space-x-2 text-sm">
-                  <div className={`w-2 h-2 rounded-full ${botStats.ready ? 'bg-green-500' : 'bg-red-500'}`}></div>
-                  <span className="text-gray-600">Bot {botStats.ready ? 'Online' : 'Offline'}</span>
-                  <span className="text-gray-400">•</span>
-                  <span className="text-gray-600">{botStats.ping}ms</span>
-                </div>
-              )}
+              {/* Always reserve space, fade in when data loads - prevents layout shift/flicker */}
+              <div className={`flex items-center space-x-2 text-sm transition-opacity duration-300 ${botStats ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+                <div className={`w-2 h-2 rounded-full ${botStats?.ready ? 'bg-green-500' : 'bg-red-500'}`}></div>
+                <span className="text-gray-600 dark:text-gray-300">Bot {botStats?.ready ? 'Online' : 'Offline'}</span>
+                <span className="text-gray-400">•</span>
+                <span className="text-gray-600 dark:text-gray-300">{botStats?.ping || 0}ms</span>
+              </div>
+              <ThemeToggle />
               <SimpleUserMenu />
             </div>
           </div>
@@ -323,7 +375,7 @@ export default function HomePage() {
       </header>
 
       {/* Navigation Tabs */}
-      <div className="bg-white border-b border-gray-200">
+      <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="flex space-x-8">
             {tabs.map((tab) => {
@@ -338,8 +390,8 @@ export default function HomePage() {
                   onClick={() => changeTab(tab.id)}
                   className={`flex items-center space-x-2 py-4 px-1 border-b-2 font-medium text-sm transition-colors ${
                     isActive
-                      ? 'border-red-600 text-red-600'
-                      : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                      ? 'border-red-600 dark:border-red-500 text-red-600 dark:text-red-500'
+                      : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 hover:border-gray-300 dark:hover:border-gray-600'
                   }`}
                 >
                   <Icon className="h-4 w-4" />
@@ -356,32 +408,32 @@ export default function HomePage() {
         {activeTab === 'dashboard' && (
           <div className="space-y-8">
             {/* Dashboard Overview */}
-            <div className="card p-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            <div className="card p-6 bg-white dark:bg-gray-800 transition-colors">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 transition-colors">
                 {selectedServerName ? `${selectedServerName} Dashboard` : 'RedM Empresas Dashboard'}
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="bg-gradient-to-r from-red-500 to-red-600 p-6 rounded-lg text-white">
+                <div className="bg-gradient-to-r from-red-500 to-red-600 p-6 rounded-lg text-white transition-all duration-300">
                   <h3 className="text-lg font-semibold mb-2">Server Players</h3>
-                  <p className="text-3xl font-bold">
+                  <p className="text-3xl font-bold transition-all duration-300">
                     {serverInfo?.players || 0}
                   </p>
-                  <p className="text-red-100 text-sm">
+                  <p className="text-red-100 text-sm transition-all duration-300">
                     Max: {serverInfo?.maxPlayers || 0}
                   </p>
                 </div>
-                <div className="bg-gradient-to-r from-green-500 to-green-600 p-6 rounded-lg text-white">
+                <div className="bg-gradient-to-r from-green-500 to-green-600 p-6 rounded-lg text-white transition-all duration-300">
                   <h3 className="text-lg font-semibold mb-2">Bot Status</h3>
-                  <p className="text-3xl font-bold">
+                  <p className="text-3xl font-bold transition-all duration-300">
                     {botStats?.ready ? 'Online' : 'Offline'}
                   </p>
-                  <p className="text-green-100 text-sm">
+                  <p className="text-green-100 text-sm transition-all duration-300">
                     {botStats ? `${botStats.ping}ms ping` : 'Connecting...'}
                   </p>
                 </div>
-                <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-6 rounded-lg text-white">
+                <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-6 rounded-lg text-white transition-all duration-300">
                   <h3 className="text-lg font-semibold mb-2">Active Firms</h3>
-                  <p className="text-3xl font-bold">
+                  <p className="text-3xl font-bold transition-all duration-300">
                     {accessibleFirms.length}
                   </p>
                   <p className="text-blue-100 text-sm">Accessible to you</p>
@@ -764,11 +816,11 @@ export default function HomePage() {
                 {/* Firm Navigation Menu */}
                 <div className="card p-4">
                   <div className="flex items-center justify-between mb-4">
-                    <h2 className="text-xl font-bold text-gray-900">{firm.name}</h2>
-                    <span className="text-sm text-gray-500">{firm.description || 'Sistema de gestão'}</span>
+                    <h2 className="text-xl font-bold text-gray-900 dark:text-white">{firm.name}</h2>
+                    <span className="text-sm text-gray-500 dark:text-gray-400">{firm.description || 'Sistema de gestão'}</span>
                   </div>
-                  
-                  <nav className="flex space-x-1 bg-gray-100 p-1 rounded-lg">
+
+                  <nav className="flex space-x-1 bg-gray-100 dark:bg-gray-700 p-1 rounded-lg">
                     {firmActiveComponents
                       .filter(comp => comp.enabled)
                       .map((comp) => {
@@ -781,8 +833,8 @@ export default function HomePage() {
                             onClick={() => changeTab(`${firm.id}-${comp.id}`)}
                             className={`flex items-center space-x-2 px-4 py-2 rounded-md text-sm font-medium transition-colors ${
                               isActive
-                                ? 'bg-white text-red-600 shadow-sm'
-                                : 'text-gray-600 hover:text-gray-900 hover:bg-white/50'
+                                ? 'bg-white dark:bg-gray-600 text-red-600 dark:text-red-400 shadow-sm'
+                                : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-gray-600/50'
                             }`}
                           >
                             <Icon className="h-4 w-4" />
@@ -802,14 +854,14 @@ export default function HomePage() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-white border-t border-gray-200 mt-16">
+      <footer className="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 mt-16 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center justify-between text-sm text-gray-500">
+          <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400">
             <div>
               Stoffeltech v0.046 - Gerenciador de Empresas no RedM
             </div>
             <div className="flex items-center space-x-4">
-              {mounted && healthStatus && (
+              {healthStatus && (
                 <span className={healthStatus.status === 'healthy' ? 'text-green-600' : 'text-red-600'}>
                   API: {healthStatus.status}
                 </span>

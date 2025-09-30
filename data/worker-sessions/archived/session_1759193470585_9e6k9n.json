@@ -1,0 +1,68 @@
+{
+  "workerId": "1117649799181783130",
+  "workerName": "Ubirajara Cauamb",
+  "channelId": "1419493917547823216",
+  "sessionId": "session_1759193470585_9e6k9n",
+  "startTime": "2025-09-30T00:51:10.585Z",
+  "lastActivity": "2025-09-30T01:41:19.374Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 50,
+      "transactionId": "tx_1759193489523_u8tltm",
+      "timestamp": "2025-09-30T00:51:29.523Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1759196479374_ki984e",
+      "timestamp": "2025-09-30T01:41:19.374Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Galo",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759193470586_1bvrs",
+      "timestamp": "2025-09-30T00:51:10.586Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759195480494_y94vr",
+      "timestamp": "2025-09-30T01:24:40.494Z"
+    }
+  ],
+  "financialTransactions": [],
+  "totalCredits": 285,
+  "embedMessageId": "1422397873714368582",
+  "animalExpectations": [
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759193470586_1bvrs",
+      "takenTimestamp": "2025-09-30T00:51:10.586Z"
+    }
+  ],
+  "seedExpectations": [
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 50,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 500,
+      "plantsFulfilled": 500,
+      "isComplete": true,
+      "transactionId": "tx_1759193489523_u8tltm"
+    }
+  ],
+  "completedAt": "2025-09-30T01:47:29.238Z",
+  "notes": "Pago por ๖ۣۜζ͜͡ɪᴢᴢʏɴʜᴀ🎀 (949397147030274059)"
+}

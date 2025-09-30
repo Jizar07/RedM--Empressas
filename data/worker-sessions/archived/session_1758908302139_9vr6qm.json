@@ -1,0 +1,53 @@
+{
+  "workerId": "476911115561992192",
+  "workerName": "Quase Nada",
+  "channelId": "1420931237454938185",
+  "sessionId": "session_1758908302139_9vr6qm",
+  "startTime": "2025-09-26T17:38:22.139Z",
+  "lastActivity": "2025-09-26T17:38:58.629Z",
+  "status": "stale",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Creekplum Semente",
+      "quantity": 60,
+      "transactionId": "tx_1758908338629_95r56t",
+      "timestamp": "2025-09-26T17:38:58.629Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Porca",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1758908302141_0tnmg",
+      "timestamp": "2025-09-26T17:38:22.141Z"
+    }
+  ],
+  "totalCredits": 0,
+  "animalExpectations": [
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1758908302141_0tnmg",
+      "takenTimestamp": "2025-09-26T17:38:22.141Z"
+    }
+  ],
+  "seedExpectations": [
+    {
+      "seedType": "Creekplum Semente",
+      "seedQuantity": 60,
+      "expectedPlantType": "Creekplum Semente",
+      "expectedPlantQuantity": 600,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1758908338629_95r56t"
+    }
+  ],
+  "financialTransactions": [],
+  "completedAt": "2025-09-29T11:36:38.745Z",
+  "notes": "Auto-archived due to inactivity"
+}

@@ -5,7 +5,26 @@ This file is synchronized with: https://github.com/Jizar07/RedM--Empressas
 
 ## Version History
 
-### [0.051] - 2025-09-30 **[CURRENT VERSION]**
+### [0.052] - 2025-09-30 **[CURRENT VERSION]**
+- **UNIVERSAL DARK MODE IMPLEMENTATION**: Complete dark mode coverage across all frontend firm components
+- **SYSTEMATIC APPROACH**: Identified and fixed 10+ components with batch sed commands for efficiency
+- **COMPREHENSIVE PATTERNS**: Applied consistent dark mode styling for backgrounds, text, borders, badges
+- **HOVER STATE FIX**: Resolved user-reported issue where light backgrounds appeared on mouse hover
+- **COMPONENTS UPDATED**:
+  - Bercário: Inventory, Clients, Analytics, Payments
+  - Fazenda: Workers, Analytics, Dashboard Template
+  - Ferrovia: Dashboard, Payments, Workers
+  - Veterinária: Workers
+- **STYLING PATTERNS**:
+  - Backgrounds: `bg-white dark:bg-gray-800`, `bg-gray-50 dark:bg-gray-700`
+  - Text: `text-gray-900 dark:text-white`, `text-gray-600 dark:text-gray-300`
+  - Borders: `border-gray-200 dark:border-gray-700`
+  - Badges: `bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300`
+  - Hovers: `hover:bg-gray-50 dark:hover:bg-gray-700`
+- **FILES MODIFIED**: BercarioInventory.tsx, BercarioClients.tsx, BercarioAnalytics.tsx, BercarioPayments.tsx, FazendaWorkers.tsx, FerroviaDashboard.tsx, FerroviaPayments.tsx, FerroviaWorkers.tsx, VeterinariaWorkers.tsx, TemplateFirmDashboard.tsx
+- **RESULT**: Complete dark mode support across entire frontend with no light backgrounds in dark mode
+
+### [0.051] - 2025-09-30
 - **TEMPLATE SYSTEM OVERHAUL**: Complete replacement of generic templates with working system templates from Cabra da Peste
 - **4 NEW FIRM TEMPLATES**: Created Fazenda (🌾), Ferrovia (🚂), Berçário (🐣), Veterinária (🏥) templates based on proven working systems
 - **FERROVIA TEMPLATE ACCURACY**: Correctly configured without inventory component, matching actual working system

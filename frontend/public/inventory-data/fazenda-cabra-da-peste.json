@@ -54,9 +54,80 @@
       "atualizado_em": "2025-09-26T13:20:46.641Z",
       "ultimo_autor": "API",
       "ativo": true
+    },
+    "caixadelegumes": {
+      "id": "caixadelegumes",
+      "nome": "Caixa de legumes",
+      "displayName": "Caixa de legumes",
+      "categoria": "caixas",
+      "quantidade": 1500,
+      "criado_em": "2025-09-28T20:42:49.129Z",
+      "atualizado_em": "2025-09-30T14:22:45.680Z",
+      "ultimo_autor": "API",
+      "ativo": true
     }
   },
   "transactions": [
+    {
+      "id": "234f3f4e-12b7-4672-a7de-f9d980c1146a",
+      "itemId": "caixadelegumes",
+      "tipo": "editar",
+      "quantidade_anterior": 1500,
+      "quantidade_posterior": 1500,
+      "quantidade_mudanca": 0,
+      "autor": "API",
+      "timestamp": "2025-09-30T14:22:45.680Z",
+      "origem": "manual",
+      "detalhes": "Updated item Caixa de legumes"
+    },
+    {
+      "id": "d1c3ff0a-0c24-41d0-af23-82c584e1ff1d",
+      "itemId": "caixadelegumes",
+      "tipo": "editar",
+      "quantidade_anterior": 1500,
+      "quantidade_posterior": 1500,
+      "quantidade_mudanca": 0,
+      "autor": "API",
+      "timestamp": "2025-09-30T14:16:42.263Z",
+      "origem": "manual",
+      "detalhes": "Updated item Caixa de Legumes"
+    },
+    {
+      "id": "af99a4a0-7400-456d-8d55-5ebe46fd5d4a",
+      "itemId": "caixadelegumes",
+      "tipo": "editar",
+      "quantidade_anterior": 1500,
+      "quantidade_posterior": 1500,
+      "quantidade_mudanca": 0,
+      "autor": "API",
+      "timestamp": "2025-09-30T14:14:35.728Z",
+      "origem": "manual",
+      "detalhes": "Updated item Caixa de legumes"
+    },
+    {
+      "id": "b0545889-643b-4ae7-b4f4-fdf1f56b924b",
+      "itemId": "caixadelegumes",
+      "tipo": "editar",
+      "quantidade_anterior": 1500,
+      "quantidade_posterior": 1500,
+      "quantidade_mudanca": 0,
+      "autor": "API",
+      "timestamp": "2025-09-30T14:08:32.866Z",
+      "origem": "manual",
+      "detalhes": "Updated item Caixa de legumes"
+    },
+    {
+      "id": "0c0f6afc-463b-445d-ae64-a5c46194b330",
+      "itemId": "caixadelegumes",
+      "tipo": "criar",
+      "quantidade_anterior": 0,
+      "quantidade_posterior": 1500,
+      "quantidade_mudanca": 1500,
+      "autor": "API",
+      "timestamp": "2025-09-30T13:14:33.827Z",
+      "origem": "manual",
+      "detalhes": "Created item Caixa De Legumes"
+    },
     {
       "id": "1b937d1f-f99a-4a3c-8899-510b72c0417d",
       "itemId": "aguasuja2",
@@ -311,19 +382,79 @@
     }
   ],
   "analytics": {
-    "totalItems": 5,
-    "totalQuantity": 656,
+    "totalItems": 6,
+    "totalQuantity": 2156,
     "totalValue": 0,
     "categorias": {},
     "workers": [
       {
         "nome": "API",
-        "totalTransactions": 21,
-        "lastActivity": "2025-09-26T13:20:46.642Z",
+        "totalTransactions": 26,
+        "lastActivity": "2025-09-30T14:22:45.680Z",
         "averagePerDay": 0
       }
     ],
     "recentTransactions": [
+      {
+        "id": "234f3f4e-12b7-4672-a7de-f9d980c1146a",
+        "itemId": "caixadelegumes",
+        "tipo": "editar",
+        "quantidade_anterior": 1500,
+        "quantidade_posterior": 1500,
+        "quantidade_mudanca": 0,
+        "autor": "API",
+        "timestamp": "2025-09-30T14:22:45.680Z",
+        "origem": "manual",
+        "detalhes": "Updated item Caixa de legumes"
+      },
+      {
+        "id": "d1c3ff0a-0c24-41d0-af23-82c584e1ff1d",
+        "itemId": "caixadelegumes",
+        "tipo": "editar",
+        "quantidade_anterior": 1500,
+        "quantidade_posterior": 1500,
+        "quantidade_mudanca": 0,
+        "autor": "API",
+        "timestamp": "2025-09-30T14:16:42.263Z",
+        "origem": "manual",
+        "detalhes": "Updated item Caixa de Legumes"
+      },
+      {
+        "id": "af99a4a0-7400-456d-8d55-5ebe46fd5d4a",
+        "itemId": "caixadelegumes",
+        "tipo": "editar",
+        "quantidade_anterior": 1500,
+        "quantidade_posterior": 1500,
+        "quantidade_mudanca": 0,
+        "autor": "API",
+        "timestamp": "2025-09-30T14:14:35.728Z",
+        "origem": "manual",
+        "detalhes": "Updated item Caixa de legumes"
+      },
+      {
+        "id": "b0545889-643b-4ae7-b4f4-fdf1f56b924b",
+        "itemId": "caixadelegumes",
+        "tipo": "editar",
+        "quantidade_anterior": 1500,
+        "quantidade_posterior": 1500,
+        "quantidade_mudanca": 0,
+        "autor": "API",
+        "timestamp": "2025-09-30T14:08:32.866Z",
+        "origem": "manual",
+        "detalhes": "Updated item Caixa de legumes"
+      },
+      {
+        "id": "0c0f6afc-463b-445d-ae64-a5c46194b330",
+        "itemId": "caixadelegumes",
+        "tipo": "criar",
+        "quantidade_anterior": 0,
+        "quantidade_posterior": 1500,
+        "quantidade_mudanca": 1500,
+        "autor": "API",
+        "timestamp": "2025-09-30T13:14:33.827Z",
+        "origem": "manual",
+        "detalhes": "Created item Caixa De Legumes"
+      },
       {
         "id": "1b937d1f-f99a-4a3c-8899-510b72c0417d",
         "itemId": "aguasuja2",
@@ -596,7 +727,8 @@
       "leather_donkey",
       "mane_chicken",
       "alcoolindustrial",
-      "aguasuja2"
+      "aguasuja2",
+      "caixadelegumes"
     ]
   },
   "settings": {
@@ -614,9 +746,9 @@
     "backupEnabled": true,
     "backupInterval": 24
   },
-  "lastUpdate": "2025-09-26T13:20:46.644Z",
-  "totalItems": 5,
-  "totalQuantity": 656,
+  "lastUpdate": "2025-09-30T14:22:45.682Z",
+  "totalItems": 6,
+  "totalQuantity": 2156,
   "activeWorkers": [],
   "version": "1.0.0",
   "firmId": "fazenda-cabra-da-peste"

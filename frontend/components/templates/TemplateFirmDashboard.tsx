@@ -99,13 +99,13 @@ const ActivityManagementModal: React.FC<ActivityManagementModalProps> = ({
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-lg max-w-md w-full">
-        <div className="p-4 border-b">
+      <div className="bg-white dark:bg-gray-800 rounded-lg max-w-md w-full transition-colors">
+        <div className="p-4 border-b border-gray-200 dark:border-gray-700">
           <div className="flex items-center justify-between">
             <h2 className="text-lg font-semibold">🔧 Gerenciar Atividade</h2>
             <button
               onClick={onClose}
-              className="text-gray-400 hover:text-gray-600 transition-colors"
+              className="text-gray-400 hover:text-gray-600 dark:text-gray-300 transition-colors"
             >
               <X size={20} />
             </button>
@@ -114,13 +114,13 @@ const ActivityManagementModal: React.FC<ActivityManagementModalProps> = ({
 
         <div className="p-4 space-y-4">
           <div>
-            <p className="text-sm text-gray-600 mb-2">
+            <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">
               <strong>Autor:</strong> {activity.autor}
             </p>
-            <p className="text-sm text-gray-600 mb-2">
+            <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">
               <strong>Tipo:</strong> {activity.tipo === 'adicionar' ? 'Adicionou' : 'Removeu'}
             </p>
-            <p className="text-sm text-gray-600 mb-4">
+            <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
               <strong>Data:</strong> {new Date(activity.timestamp).toLocaleString('pt-BR')}
             </p>
           </div>
@@ -136,7 +136,7 @@ const ActivityManagementModal: React.FC<ActivityManagementModalProps> = ({
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="Digite o novo nome do item"
             />
-            <p className="text-xs text-gray-500 mt-1">
+            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
               Nome atual: {getBestDisplayName(activity.item || '')}
             </p>
           </div>
@@ -333,6 +333,7 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
   };
 
   useEffect(() => {
+    // Load translations from global cache (already preloaded)
     loadCustomizationsAndTranslations().then(() => {
       // Only fetch activities AFTER customizations are loaded
       fetchActivities();
@@ -619,7 +620,7 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
       return <Package className={color} size={20} />;
     }
 
-    return <Activity className="text-gray-500" size={20} />;
+    return <Activity className="text-gray-500 dark:text-gray-400" size={20} />;
   };
 
   const formatCurrency = (value: number): string => {
@@ -834,17 +835,17 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
   const metricCards = dashboardComponent?.settings?.metricCards || ['revenue', 'activities', 'workers'];
 
   return (
-    <div className="space-y-6" style={{ backgroundColor: template.theme.backgroundColor }}>
+    <div className="space-y-6">
       {/* Header */}
-      <div className="bg-white rounded-lg shadow p-6">
-        <div className="flex items-center justify-between mb-4">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6 transition-colors">
+        <div className="flex items-center justify-between mb-4 text-gray-900 dark:text-white dark:text-white transition-colors">
           <div>
-            <h1 className="text-3xl font-bold" style={{ color: template.theme.primaryColor }}>
+            <h1 className="text-3xl font-bold text-green-600 dark:text-green-400">
               {firm.name}
             </h1>
-            <p className="text-gray-600">Template: {template.name}</p>
+            <p className="text-gray-600 dark:text-gray-300">Template: {template.name}</p>
             {lastUpdate && (
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-gray-500 dark:text-gray-400">
                 Última atualização: {lastUpdate}
               </p>
             )}
@@ -852,7 +853,7 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
           <div className="flex items-center space-x-2">
             <div className="flex items-center space-x-1">
               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-              <span className="text-sm text-gray-600">Monitorando</span>
+              <span className="text-sm text-gray-600 dark:text-gray-300">Monitorando</span>
             </div>
           </div>
         </div>
@@ -933,8 +934,8 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
       {dashboardComponent?.settings?.showRecentActivity && (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Item Activities */}
-          <div className="bg-white rounded-lg shadow">
-            <div className="p-4 border-b">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow transition-colors">
+            <div className="p-4 border-b border-gray-200 dark:border-gray-700">
               <h3 className="text-lg font-semibold">
                 📦 Atividades de Itens ({getItemActivities().length})
               </h3>
@@ -946,19 +947,19 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
                   <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
                 </div>
               ) : getItemActivities().length === 0 ? (
-                <p className="text-gray-500 text-center py-8">Nenhuma atividade de itens capturada</p>
+                <p className="text-gray-500 dark:text-gray-400 text-center py-8">Nenhuma atividade de itens capturada</p>
               ) : (
                 <div className="space-y-2">
                   {getItemActivities().map((activity) => (
-                    <div key={activity.id} className="flex items-center gap-3 p-3 hover:bg-gray-50 rounded">
+                    <div key={activity.id} className="flex items-center gap-3 p-3 hover:bg-gray-50 dark:hover:bg-gray-700 rounded">
                       <div className="flex-shrink-0">{getActivityIcon(activity)}</div>
                       <div className="flex-1 min-w-0">
                         {activity.parseSuccess && activity.tipo && activity.item && activity.quantidade ? (
                           <div className="flex items-center gap-2 flex-wrap">
-                            <span className="font-semibold text-gray-900">
+                            <span className="font-semibold text-gray-900 dark:text-white">
                               {activity.autor || 'Sistema'}
                             </span>
-                            <span className="text-gray-600">
+                            <span className="text-gray-600 dark:text-gray-300">
                               {activity.tipo === 'adicionar' ? 'adicionou' : 'removeu'}
                             </span>
                             <span className={`px-2 py-1 rounded text-xs font-medium ${
@@ -968,14 +969,14 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
                             }`}>
                               {activity.quantidade}x
                             </span>
-                            <span className="font-medium text-gray-900">
+                            <span className="font-medium text-gray-900 dark:text-white">
                               {getBestDisplayName(activity.item)}
                             </span>
                           </div>
                         ) : (
                           <div className="text-sm text-gray-700 leading-relaxed">
                             <div className="flex items-center gap-2">
-                              <span className="font-medium text-gray-900">
+                              <span className="font-medium text-gray-900 dark:text-white">
                                 {activity.autor || 'Sistema'}
                               </span>
                               {!activity.parseSuccess && (
@@ -984,13 +985,13 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
                                 </span>
                               )}
                             </div>
-                            <div className="mt-1 text-gray-600">
+                            <div className="mt-1 text-gray-600 dark:text-gray-300">
                               {activity.displayText || activity.content.substring(0, 150) + 
                                 (activity.content.length > 150 ? '...' : '')}
                             </div>
                           </div>
                         )}
-                        <p className="text-xs text-gray-500 mt-1">
+                        <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                           {new Date(activity.timestamp).toLocaleString('pt-BR')}
                         </p>
                       </div>
@@ -1025,8 +1026,8 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
           </div>
 
           {/* Money Activities */}
-          <div className="bg-white rounded-lg shadow">
-            <div className="p-4 border-b">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow transition-colors">
+            <div className="p-4 border-b border-gray-200 dark:border-gray-700">
               <h3 className="text-lg font-semibold">
                 💰 Atividades de Dinheiro ({getMoneyActivities().length})
               </h3>
@@ -1034,24 +1035,24 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
             
             <div className="p-4 max-h-96 overflow-y-auto">
               {getMoneyActivities().length === 0 ? (
-                <p className="text-gray-500 text-center py-8">Nenhuma atividade financeira capturada</p>
+                <p className="text-gray-500 dark:text-gray-400 text-center py-8">Nenhuma atividade financeira capturada</p>
               ) : (
                 <div className="space-y-2">
                   {getMoneyActivities().map((activity) => (
-                    <div key={activity.id} className="flex items-center gap-3 p-3 hover:bg-gray-50 rounded">
+                    <div key={activity.id} className="flex items-center gap-3 p-3 hover:bg-gray-50 dark:hover:bg-gray-700 rounded">
                       <div className="flex-shrink-0">{getActivityIcon(activity)}</div>
                       <div className="flex-1 min-w-0">
                         {activity.parseSuccess && activity.categoria === 'financeiro' && (activity.tipo || activity.valor) ? (
                           <div className="flex items-center gap-2 flex-wrap">
-                            <span className="font-semibold text-gray-900">
+                            <span className="font-semibold text-gray-900 dark:text-white">
                               {activity.autor || 'Sistema'}
                             </span>
                             {activity.descricao && activity.descricao !== 'Depósito direto' && activity.tipo !== 'saque' && (activity.descricao.trim() !== '' || (activity.tipo === 'venda' && activity.descricao.includes('animais'))) ? (
                               <>
-                                <span className="text-gray-600">
+                                <span className="text-gray-600 dark:text-gray-300">
                                   {translatePurchaseDescription(activity.descricao)}
                                 </span>
-                                <span className="text-gray-600">por</span>
+                                <span className="text-gray-600 dark:text-gray-300">por</span>
                                 <span className={`px-2 py-1 rounded text-xs font-medium ${
                                   activity.tipo === 'deposito' || activity.tipo === 'venda' || activity.tipo === 'compra'
                                     ? 'bg-green-100 text-green-800' 
@@ -1062,7 +1063,7 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
                               </>
                             ) : (
                               <>
-                                <span className="text-gray-600">
+                                <span className="text-gray-600 dark:text-gray-300">
                                   {activity.tipo === 'deposito' ? 'depositou' : 
                                    activity.tipo === 'saque' ? 'sacou' :
                                    activity.tipo === 'compra' ? 'gastou' :
@@ -1087,7 +1088,7 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
                         ) : (
                           <div className="text-sm text-gray-700 leading-relaxed">
                             <div className="flex items-center gap-2">
-                              <span className="font-medium text-gray-900">
+                              <span className="font-medium text-gray-900 dark:text-white">
                                 {activity.autor || 'Sistema'}
                               </span>
                               {!activity.parseSuccess && (
@@ -1096,13 +1097,13 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
                                 </span>
                               )}
                             </div>
-                            <div className="mt-1 text-gray-600">
+                            <div className="mt-1 text-gray-600 dark:text-gray-300">
                               {activity.displayText || activity.content.substring(0, 150) + 
                                 (activity.content.length > 150 ? '...' : '')}
                             </div>
                           </div>
                         )}
-                        <p className="text-xs text-gray-500 mt-1">
+                        <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                           📅 {new Date(activity.timestamp).toLocaleString('pt-BR')}
                         </p>
                       </div>

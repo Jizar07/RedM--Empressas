@@ -1,0 +1,20 @@
+{
+  "sessionId": "session_1759187288345_wtlnyk",
+  "workerId": "949397147030274059",
+  "workerName": "Izzynha Evans",
+  "amount": 160,
+  "paidBy": "949397147030274059",
+  "paidByName": "๖ۣۜζ͜͡ɪᴢᴢʏɴʜᴀ🎀",
+  "paidAt": "2025-09-29T23:19:37.558Z",
+  "plantTransactions": [],
+  "animalTransactions": [
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759187288347_yuvzph",
+      "timestamp": "2025-09-29T23:08:08.347Z"
+    }
+  ],
+  "financialTransactions": []
+}

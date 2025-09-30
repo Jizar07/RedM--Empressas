@@ -129,13 +129,17 @@ export function useInventoryManager({
       const response = await fetch('/api/customizations');
       if (response.ok) {
         const data = await response.json();
-        if (data.success && data.customizations) {
+        if (data.success && data.data?.display_names) {
           // Merge customizations with existing translations
-          setItemTranslations(prev => ({
-            ...prev,
-            ...data.customizations
-          }));
-          console.log('✅ Loaded', Object.keys(data.customizations).length, 'custom display names');
+          setItemTranslations(prev => {
+            const newTranslations = {
+              ...prev,
+              ...data.data.display_names
+            };
+            console.log('✅ Loaded', Object.keys(data.data.display_names).length, 'custom display names');
+            console.log('🔍 Sample customizations:', Object.entries(data.data.display_names).slice(0, 5));
+            return newTranslations;
+          });
         }
       }
     } catch (error) {
@@ -1062,18 +1066,21 @@ export function useInventoryManager({
       console.log('📂 Loaded initial data from localStorage backup');
     }
 
-    // DEFER API calls until after initial render using setTimeout
-    // This ensures the UI renders first, THEN we fetch fresh data
+    // DON'T load anything on initial mount - causes flicker
+    // Load ONLY when component is actually visible/needed
+    // Use a much longer delay to ensure page is stable
     const deferredLoad = setTimeout(() => {
       Promise.all([
-        loadTranslations(),
         loadCustomizations(), // Load custom display names
         loadPriceList(),
-        loadRegisteredWorkers() // Load all registered workers in background
+        loadTranslations() // Load from cached global translations
       ]).catch(error => {
         console.warn('Some resources failed to load:', error);
       });
-    }, 100); // 100ms delay ensures UI renders first
+
+      // DON'T load workers on initial mount - causes flicker
+      // Workers will be loaded when actually needed by inventory components
+    }, 500); // Longer delay ensures page is fully stable
 
     // Listen for customization updates
     const handleCustomizationUpdate = (event: CustomEvent) => {

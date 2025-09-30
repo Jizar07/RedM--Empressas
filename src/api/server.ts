@@ -119,7 +119,8 @@ export async function startApiServer(bot: BotClient): Promise<void> {
       },
     });
   });
-  
+
+
   // API Routes
   app.use('/api/auth', authRoutes);
   app.use('/api/status', statusRoutes);

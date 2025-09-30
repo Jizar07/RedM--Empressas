@@ -1,8 +1,788 @@
 {
   "channelId": "1419341131459723324",
-  "lastUpdated": "2025-09-27T04:10:37.221Z",
-  "messageCount": 337,
+  "lastUpdated": "2025-09-29T23:51:53.648Z",
+  "messageCount": 415,
   "messages": [
+    {
+      "id": "1422370333398401044",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: coffeebeans x210\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 29/09/2025 - 20:51:53",
+      "timestamp": "2025-09-29T23:51:53.845Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: coffeebeans x210\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 29/09/2025 - 20:51:53",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1422369798926368768",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: coffeebeans x500\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 29/09/2025 - 20:49:46",
+      "timestamp": "2025-09-29T23:49:46.417Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: coffeebeans x500\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 29/09/2025 - 20:49:46",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1422359664821141525",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: coffeeseeds x50\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 29/09/2025 - 20:09:30",
+      "timestamp": "2025-09-29T23:09:30.258Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: coffeeseeds x50\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 29/09/2025 - 20:09:30",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1422058286743683122",
+      "author": "Cliff Dillimore",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: LibidgelSuino x9\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 29/09/2025 - 00:11:54",
+      "timestamp": "2025-09-29T03:11:56.125Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: LibidgelSuino x9\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 29/09/2025 - 00:11:54",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1422056395486007407",
+      "author": "Cliff Dillimore",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: seringadevidro x4\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 29/09/2025 - 00:04:25",
+      "timestamp": "2025-09-29T03:04:25.214Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: seringadevidro x4\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 29/09/2025 - 00:04:25",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1422056375617323051",
+      "author": "Cliff Dillimore",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: capsulaplastica x20\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 29/09/2025 - 00:04:20",
+      "timestamp": "2025-09-29T03:04:20.477Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: capsulaplastica x20\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 29/09/2025 - 00:04:20",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1422056358429196371",
+      "author": "Cliff Dillimore",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: embalagem x20\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 29/09/2025 - 00:04:16",
+      "timestamp": "2025-09-29T03:04:16.379Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: embalagem x20\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 29/09/2025 - 00:04:16",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1422056294168395848",
+      "author": "Cliff Dillimore",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: rotulo x20\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 29/09/2025 - 00:04:01",
+      "timestamp": "2025-09-29T03:04:01.058Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: rotulo x20\nAutor:: Cliff Dillimore | FIXO: 267\nData:: 29/09/2025 - 00:04:01",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421906582345613322",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: common_portion_pig x100\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 14:09:06",
+      "timestamp": "2025-09-28T17:09:06.978Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: common_portion_pig x100\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 14:09:06",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421906552104943637",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: common_portion_pig x100\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 14:08:59",
+      "timestamp": "2025-09-28T17:08:59.768Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: common_portion_pig x100\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 14:08:59",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421901196876316714",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: seringadevidro x10\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 13:47:42",
+      "timestamp": "2025-09-28T16:47:42.982Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: seringadevidro x10\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 13:47:42",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421900970505273558",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: seringadevidro x30\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 13:46:48",
+      "timestamp": "2025-09-28T16:46:49.011Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: seringadevidro x30\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 13:46:48",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421900947373822065",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: rotulo x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 13:46:43",
+      "timestamp": "2025-09-28T16:46:43.496Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: rotulo x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 13:46:43",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421900922069450933",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: embalagem x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 13:46:37",
+      "timestamp": "2025-09-28T16:46:37.463Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: embalagem x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 13:46:37",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421900894101966869",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: capsulaplastica x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 13:46:30",
+      "timestamp": "2025-09-28T16:46:30.795Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: capsulaplastica x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 13:46:30",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421900571132297377",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: LibidgelOvino x25\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 13:45:13",
+      "timestamp": "2025-09-28T16:45:13.793Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: LibidgelOvino x25\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 13:45:13",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421900562164748429",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: LibidgelAsneiro x125\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 13:45:11",
+      "timestamp": "2025-09-28T16:45:11.655Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: LibidgelAsneiro x125\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 13:45:11",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421900501443805305",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: creekplum x110\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 13:44:57",
+      "timestamp": "2025-09-28T16:44:57.178Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: creekplum x110\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 13:44:57",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421900483232137317",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: snaket x3\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 13:44:52",
+      "timestamp": "2025-09-28T16:44:52.836Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: snaket x3\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 13:44:52",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421900472356307097",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: coffeebeans x10\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 13:44:50",
+      "timestamp": "2025-09-28T16:44:50.243Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: coffeebeans x10\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 13:44:50",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421900088837410896",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: creekplum x360\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 13:43:18",
+      "timestamp": "2025-09-28T16:43:18.805Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: creekplum x360\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 13:43:18",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421899978128887939",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: coffeebeans x50\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 13:42:52",
+      "timestamp": "2025-09-28T16:42:52.410Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: coffeebeans x50\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 13:42:52",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421899676289990876",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: creekplum x100\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 13:41:40",
+      "timestamp": "2025-09-28T16:41:40.446Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: creekplum x100\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 13:41:40",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421899656090091740",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: creekplum x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 13:41:35",
+      "timestamp": "2025-09-28T16:41:35.630Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: creekplum x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 13:41:35",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421899637970829423",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: creekplum x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 13:41:31",
+      "timestamp": "2025-09-28T16:41:31.310Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: creekplum x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 13:41:31",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421899200601395262",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: coffeeseeds x50\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 13:39:46",
+      "timestamp": "2025-09-28T16:39:47.033Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: coffeeseeds x50\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 13:39:46",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421899187817287680",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: coffeebeans x50\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 13:39:43",
+      "timestamp": "2025-09-28T16:39:43.985Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: coffeebeans x50\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 13:39:43",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421896234381082634",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: creekplum x50\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 13:27:59",
+      "timestamp": "2025-09-28T16:27:59.831Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: creekplum x50\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 13:27:59",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421896217763250300",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: creekplum x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 13:27:55",
+      "timestamp": "2025-09-28T16:27:55.869Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: creekplum x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 13:27:55",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421896200268812370",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: creekplum x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 13:27:51",
+      "timestamp": "2025-09-28T16:27:51.698Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: creekplum x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 13:27:51",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421889267461783693",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: garrafadevidro x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 13:00:18",
+      "timestamp": "2025-09-28T16:00:18.788Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: garrafadevidro x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 13:00:18",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421889130371219678",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: Wintergreen_Berry x400\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 12:59:45",
+      "timestamp": "2025-09-28T15:59:46.103Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: Wintergreen_Berry x400\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 12:59:45",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421882292657324154",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: Prairie_Poppy x100\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 12:32:35",
+      "timestamp": "2025-09-28T15:32:35.865Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: Prairie_Poppy x100\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 12:32:35",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421882275771191347",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: Prairie_Poppy x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 12:32:31",
+      "timestamp": "2025-09-28T15:32:31.839Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: Prairie_Poppy x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 12:32:31",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421882258146463957",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: Prairie_Poppy x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 12:32:27",
+      "timestamp": "2025-09-28T15:32:27.637Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: Prairie_Poppy x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 12:32:27",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421882153091989565",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: Red_Raspberry x100\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 12:32:02",
+      "timestamp": "2025-09-28T15:32:02.590Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: Red_Raspberry x100\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 12:32:02",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421882132778713139",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: Red_Raspberry x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 12:31:57",
+      "timestamp": "2025-09-28T15:31:57.747Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: Red_Raspberry x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 12:31:57",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421882117062922241",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: Red_Raspberry x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 12:31:53",
+      "timestamp": "2025-09-28T15:31:54.000Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: Red_Raspberry x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 12:31:53",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421882040776921300",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: Wintergreen_Berry x500\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 12:31:35",
+      "timestamp": "2025-09-28T15:31:35.812Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: Wintergreen_Berry x500\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 12:31:35",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421881780583272468",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: Prairie_Poppy x500\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 12:30:33",
+      "timestamp": "2025-09-28T15:30:33.777Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: Prairie_Poppy x500\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 12:30:33",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421881768293695578",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: Wintergreen_Berry x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 12:30:30",
+      "timestamp": "2025-09-28T15:30:30.847Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: Wintergreen_Berry x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 12:30:30",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421879335807225878",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: creekplum x500\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 12:20:50",
+      "timestamp": "2025-09-28T15:20:50.897Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: creekplum x500\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 12:20:50",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421879318476230827",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: Black_Currant x320\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 12:20:46",
+      "timestamp": "2025-09-28T15:20:46.765Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: Black_Currant x320\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 12:20:46",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421878352188538900",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: Red_Raspberry x500\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 12:16:56",
+      "timestamp": "2025-09-28T15:16:56.384Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: Red_Raspberry x500\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 12:16:56",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421878010948227143",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: Red_Raspberry x500\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 12:15:34",
+      "timestamp": "2025-09-28T15:15:35.026Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: Red_Raspberry x500\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 12:15:34",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421877786989035601",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: creekplum x500\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 12:14:41",
+      "timestamp": "2025-09-28T15:14:41.630Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: creekplum x500\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 12:14:41",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421847696129396856",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: embalagem x500\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 10:15:07",
+      "timestamp": "2025-09-28T13:15:07.410Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: embalagem x500\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 10:15:07",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421847680027590818",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: capsulaplastica x500\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 10:15:03",
+      "timestamp": "2025-09-28T13:15:03.571Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: capsulaplastica x500\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 10:15:03",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421847501480136744",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: pedrasilica x500\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 10:14:20",
+      "timestamp": "2025-09-28T13:14:21.002Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: pedrasilica x500\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 10:14:20",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421838470317346868",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: caixa_veterinaria x100\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 09:38:27",
+      "timestamp": "2025-09-28T12:38:27.805Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: caixa_veterinaria x100\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 09:38:27",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421838452445417545",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: caixa_veterinaria x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 09:38:23",
+      "timestamp": "2025-09-28T12:38:23.544Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: caixa_veterinaria x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 09:38:23",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421838435336851529",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: caixa_veterinaria x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 09:38:19",
+      "timestamp": "2025-09-28T12:38:19.465Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: caixa_veterinaria x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 28/09/2025 - 09:38:19",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421542973484826715",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: capsulaplastica x500\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 14:04:15",
+      "timestamp": "2025-09-27T17:04:15.870Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: capsulaplastica x500\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 14:04:15",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421542914928021534",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: capsulaplastica x500\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 14:04:01",
+      "timestamp": "2025-09-27T17:04:01.909Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: capsulaplastica x500\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 14:04:01",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421542788297920664",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: rotulo x320\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 14:03:31",
+      "timestamp": "2025-09-27T17:03:31.718Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: rotulo x320\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 14:03:31",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421536498385293324",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: LibidgelAsneiro x110\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 13:38:32",
+      "timestamp": "2025-09-27T16:38:32.086Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: LibidgelAsneiro x110\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 13:38:32",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421495903088410726",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: common_portion_pig x10\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 10:57:13",
+      "timestamp": "2025-09-27T13:57:13.413Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: common_portion_pig x10\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 10:57:13",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421493918419386529",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: caixa_veterinaria x300\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 10:49:20",
+      "timestamp": "2025-09-27T13:49:20.231Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: caixa_veterinaria x300\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 10:49:20",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421493685115289622",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: common_portion_pig x10\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 10:48:24",
+      "timestamp": "2025-09-27T13:48:24.607Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: common_portion_pig x10\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 10:48:24",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421493633231618058",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: caixa_veterinaria x500\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 10:48:12",
+      "timestamp": "2025-09-27T13:48:12.237Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: caixa_veterinaria x500\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 10:48:12",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421489202083659928",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: coffeebeans x300\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 10:30:35",
+      "timestamp": "2025-09-27T13:30:35.769Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: coffeebeans x300\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 10:30:35",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421489187000942695",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: creekplum x100\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 10:30:32",
+      "timestamp": "2025-09-27T13:30:32.173Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: creekplum x100\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 10:30:32",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421489168478900294",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: creekplum x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 10:30:27",
+      "timestamp": "2025-09-27T13:30:27.757Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: creekplum x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 10:30:27",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421487659087560860",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: coffeebeans x100\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 10:24:27",
+      "timestamp": "2025-09-27T13:24:27.890Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: coffeebeans x100\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 10:24:27",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421487643111325749",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: coffeebeans x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 10:24:23",
+      "timestamp": "2025-09-27T13:24:24.081Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: coffeebeans x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 10:24:23",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421487627152130110",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: coffeebeans x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 10:24:20",
+      "timestamp": "2025-09-27T13:24:20.276Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: coffeebeans x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 10:24:20",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421487591810793623",
+      "author": "Santiago Bowdin",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: creekplum x120\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 27/09/2025 - 10:24:11",
+      "timestamp": "2025-09-27T13:24:11.850Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: creekplum x120\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 27/09/2025 - 10:24:11",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421487433588932648",
+      "author": "Santiago Bowdin",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: creekplum x380\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 27/09/2025 - 10:23:33",
+      "timestamp": "2025-09-27T13:23:34.127Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: creekplum x380\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 27/09/2025 - 10:23:33",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421487136976146433",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: creekplum x100\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 10:22:23",
+      "timestamp": "2025-09-27T13:22:23.409Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: creekplum x100\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 10:22:23",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421487111550402717",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: creekplum x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 10:22:17",
+      "timestamp": "2025-09-27T13:22:17.347Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: creekplum x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 10:22:17",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421487095448338552",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: creekplum x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 10:22:13",
+      "timestamp": "2025-09-27T13:22:13.508Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: creekplum x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 10:22:13",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421487059096571913",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: coffeebeans x100\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 10:22:04",
+      "timestamp": "2025-09-27T13:22:04.841Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: coffeebeans x100\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 10:22:04",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421487041572634758",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: coffeebeans x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 10:22:00",
+      "timestamp": "2025-09-27T13:22:00.663Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: coffeebeans x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 10:22:00",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421487024682307656",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: coffeebeans x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 10:21:56",
+      "timestamp": "2025-09-27T13:21:56.636Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: coffeebeans x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 10:21:56",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421486977576079392",
+      "author": "Santiago Bowdin",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: creekplum x500\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 27/09/2025 - 10:21:45",
+      "timestamp": "2025-09-27T13:21:45.405Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: creekplum x500\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 27/09/2025 - 10:21:45",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421486811099693076",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: coffeebeans x100\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 10:21:05",
+      "timestamp": "2025-09-27T13:21:05.714Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: coffeebeans x100\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 10:21:05",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421486790501466142",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: coffeebeans x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 10:21:00",
+      "timestamp": "2025-09-27T13:21:00.803Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: coffeebeans x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 10:21:00",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421486772742787152",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: coffeebeans x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 10:20:56",
+      "timestamp": "2025-09-27T13:20:56.569Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: coffeebeans x200\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 27/09/2025 - 10:20:56",
+      "rawEmbeds": []
+    },
     {
       "id": "1421348278980706436",
       "author": "Jizar Stoffeliz",

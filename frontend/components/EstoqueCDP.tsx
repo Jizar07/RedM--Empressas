@@ -84,14 +84,15 @@ const EditItemModal: React.FC<EditItemModalProps> = ({
     if (formData.nome) {
       setFormData(prev => ({
         ...prev,
-        displayName: getBestDisplayName(prev.nome || ''),
+        // Only set displayName if it's empty or not manually edited
+        displayName: prev.displayName || getBestDisplayName(prev.nome || ''),
         categoria: prev.categoria || getCategoryForItem(prev.nome || '')
       }));
-      
+
       const pricing = matchPrice(formData.nome);
       setPriceData(pricing);
     }
-  }, [formData.nome, getBestDisplayName, getCategoryForItem, matchPrice]);
+  }, [formData.nome, getCategoryForItem, matchPrice]); // Removed getBestDisplayName from deps to prevent resetting
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -122,7 +123,7 @@ const EditItemModal: React.FC<EditItemModalProps> = ({
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+      <div className="bg-white dark:bg-gray-800 rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         <div className="p-6 border-b">
           <div className="flex items-center justify-between">
             <h2 className="text-xl font-semibold">
@@ -130,7 +131,7 @@ const EditItemModal: React.FC<EditItemModalProps> = ({
             </h2>
             <button
               onClick={onClose}
-              className="text-gray-400 hover:text-gray-600 transition-colors"
+              className="text-gray-400 hover:text-gray-600 dark:text-gray-300 transition-colors"
             >
               <X size={24} />
             </button>
@@ -140,7 +141,7 @@ const EditItemModal: React.FC<EditItemModalProps> = ({
         <form onSubmit={handleSubmit} className="p-6 space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 ID/Nome Original *
               </label>
               <input
@@ -154,7 +155,7 @@ const EditItemModal: React.FC<EditItemModalProps> = ({
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Nome de Exibição
               </label>
               <input
@@ -164,13 +165,13 @@ const EditItemModal: React.FC<EditItemModalProps> = ({
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 placeholder="Nome traduzido (auto-preenchido)"
               />
-              <p className="text-xs text-gray-500 mt-1">
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                 Auto-traduzido do sistema global de nomes
               </p>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Categoria *
               </label>
               <select
@@ -186,7 +187,7 @@ const EditItemModal: React.FC<EditItemModalProps> = ({
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Quantidade *
               </label>
               <input
@@ -211,15 +212,15 @@ const EditItemModal: React.FC<EditItemModalProps> = ({
               </div>
               <div className="grid grid-cols-3 gap-4 text-sm">
                 <div>
-                  <span className="text-gray-600">Mínimo:</span>
+                  <span className="text-gray-600 dark:text-gray-300">Mínimo:</span>
                   <span className="ml-2 font-medium">${priceData.min.toFixed(2)}</span>
                 </div>
                 <div>
-                  <span className="text-gray-600">Máximo:</span>
+                  <span className="text-gray-600 dark:text-gray-300">Máximo:</span>
                   <span className="ml-2 font-medium">${priceData.max.toFixed(2)}</span>
                 </div>
                 <div>
-                  <span className="text-gray-600">Média:</span>
+                  <span className="text-gray-600 dark:text-gray-300">Média:</span>
                   <span className="ml-2 font-medium">${priceData.average.toFixed(2)}</span>
                 </div>
               </div>
@@ -228,7 +229,7 @@ const EditItemModal: React.FC<EditItemModalProps> = ({
 
           {/* Notes */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Notas (opcional)
             </label>
             <textarea
@@ -249,7 +250,7 @@ const EditItemModal: React.FC<EditItemModalProps> = ({
               onChange={(e) => setFormData(prev => ({ ...prev, ativo: e.target.checked }))}
               className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
             />
-            <label htmlFor="ativo" className="ml-2 text-sm text-gray-700">
+            <label htmlFor="ativo" className="ml-2 text-sm text-gray-700 dark:text-gray-300">
               Item ativo no inventário
             </label>
           </div>
@@ -259,7 +260,7 @@ const EditItemModal: React.FC<EditItemModalProps> = ({
               type="button"
               onClick={onClose}
               disabled={saving}
-              className="px-4 py-2 text-gray-700 bg-gray-200 rounded-md hover:bg-gray-300 transition-colors disabled:opacity-50"
+              className="px-4 py-2 text-gray-700 dark:text-gray-300 bg-gray-200 rounded-md hover:bg-gray-300 transition-colors disabled:opacity-50"
             >
               Cancelar
             </button>
@@ -464,6 +465,10 @@ export default function EstoqueCDP({ firm }: EstoqueCDPProps) {
             window.dispatchEvent(new CustomEvent('customizationUpdated', {
               detail: { itemId, displayName: customDisplayName }
             }));
+
+            // Force refresh to update display immediately
+            await refresh();
+            console.log('🔄 Forced refresh after customization update');
           } else {
             console.warn('❌ Failed to save to customization file');
           }
@@ -511,14 +516,14 @@ export default function EstoqueCDP({ firm }: EstoqueCDPProps) {
           <div className="flex items-center gap-4">
             <button
               onClick={refresh}
-              className="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-lg transition-colors flex items-center gap-2"
+              className="bg-white dark:bg-gray-800/20 hover:bg-white/30 text-white px-4 py-2 rounded-lg transition-colors flex items-center gap-2"
             >
               <Settings size={16} />
               Atualizar
             </button>
             <button
               onClick={handleAdd}
-              className="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-lg transition-colors flex items-center gap-2"
+              className="bg-white dark:bg-gray-800/20 hover:bg-white/30 text-white px-4 py-2 rounded-lg transition-colors flex items-center gap-2"
             >
               <Plus size={16} />
               Adicionar Item
@@ -569,13 +574,13 @@ export default function EstoqueCDP({ firm }: EstoqueCDPProps) {
       </div>
 
       {/* Status */}
-      <div className={`rounded-lg p-4 ${totalItems > 0 ? 'bg-green-100' : 'bg-blue-100'}`}>
+      <div className={`rounded-lg p-4 ${totalItems > 0 ? 'bg-green-100 dark:bg-green-900/30' : 'bg-blue-100 dark:bg-blue-900/30'}`}>
         <div className="flex items-center gap-2">
           <h2 className="text-lg font-semibold">
             🤖 Status: {totalItems > 0 ? 'Inventário carregado do bot Discord' : 'Carregando inventário...'}
           </h2>
           {totalItems > 0 && (
-            <span className="px-2 py-1 bg-green-500 text-white text-sm rounded">
+            <span className="px-2 py-1 bg-green-500 dark:bg-green-600 text-white text-sm rounded">
               {totalItems} tipos de itens processados
             </span>
           )}
@@ -583,10 +588,10 @@ export default function EstoqueCDP({ firm }: EstoqueCDPProps) {
       </div>
 
       {/* Search and Filters */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Buscar Items
             </label>
             <div className="relative">
@@ -602,7 +607,7 @@ export default function EstoqueCDP({ firm }: EstoqueCDPProps) {
           </div>
           
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Categoria
             </label>
             <select
@@ -618,7 +623,7 @@ export default function EstoqueCDP({ firm }: EstoqueCDPProps) {
           </div>
           
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Opções
             </label>
             <div className="flex items-center space-x-4">
@@ -629,7 +634,7 @@ export default function EstoqueCDP({ firm }: EstoqueCDPProps) {
                   onChange={(e) => setShowZeroQuantity(e.target.checked)}
                   className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
                 />
-                <span className="ml-2 text-sm text-gray-600">Mostrar itens zerados</span>
+                <span className="ml-2 text-sm text-gray-600 dark:text-gray-300">Mostrar itens zerados</span>
               </label>
             </div>
           </div>
@@ -637,43 +642,43 @@ export default function EstoqueCDP({ firm }: EstoqueCDPProps) {
       </div>
 
       {/* Inventory Table */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-        <div className="px-6 py-4 border-b border-gray-200">
-          <h3 className="text-lg font-semibold text-gray-900">📦 Lista de Estoque</h3>
-          <p className="text-sm text-gray-500">{paginatedItems.length} itens</p>
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
+        <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white">📦 Lista de Estoque</h3>
+          <p className="text-sm text-gray-500 dark:text-gray-400">{paginatedItems.length} itens</p>
         </div>
         
         <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-50">
+            <thead className="bg-gray-50 dark:bg-gray-700">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider cursor-pointer">
                   Nome do Item
                   {sortColumn === 'nome' && (
                     sortDirection === 'asc' ? <ChevronUp className="inline h-4 w-4" /> : <ChevronDown className="inline h-4 w-4" />
                   )}
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                   Categoria
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider cursor-pointer">
                   Quantidade
                   {sortColumn === 'quantidade' && (
                     sortDirection === 'asc' ? <ChevronUp className="inline h-4 w-4" /> : <ChevronDown className="inline h-4 w-4" />
                   )}
                 </th>
-                <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                   Ações
                 </th>
               </tr>
             </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
+            <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200">
               {paginatedItems.map((item) => (
-                <tr key={item.id} className="hover:bg-gray-50">
+                <tr key={item.id} className="hover:bg-gray-50 dark:bg-gray-700">
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div>
-                      <div className="text-sm font-medium text-gray-900">{getBestDisplayName(item.id)}</div>
-                      <div className="text-xs text-gray-500">ID: {item.id}</div>
+                      <div className="text-sm font-medium text-gray-900 dark:text-white">{getBestDisplayName(item.id)}</div>
+                      <div className="text-xs text-gray-500 dark:text-gray-400">ID: {item.id}</div>
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
@@ -682,7 +687,7 @@ export default function EstoqueCDP({ firm }: EstoqueCDPProps) {
                     </span>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900">
+                    <div className="text-sm text-gray-900 dark:text-white">
                       <span className={`font-medium ${item.quantidade === 0 ? 'text-red-600' : 'text-green-600'}`}>
                         {item.quantidade}
                       </span>
@@ -714,8 +719,8 @@ export default function EstoqueCDP({ firm }: EstoqueCDPProps) {
         
         {/* Pagination */}
         {totalPages > 1 && (
-          <div className="px-6 py-3 border-t border-gray-200 flex items-center justify-between">
-            <div className="text-sm text-gray-500">
+          <div className="px-6 py-3 border-t border-gray-200 dark:border-gray-700 flex items-center justify-between">
+            <div className="text-sm text-gray-500 dark:text-gray-400">
               Página {currentPage} de {totalPages}
             </div>
             <div className="flex space-x-1">

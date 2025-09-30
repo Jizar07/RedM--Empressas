@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1759121564472_2r2kkz",
+  "sessionId": "session_1759119785246_7vif7",
+  "managerId": "198538680686608384",
+  "managerName": "Barth",
+  "workerId": "381598369556070402",
+  "workerName": "jubiscleia gilbert",
+  "amountPaid": 156.8,
+  "paidAt": "2025-09-29T04:52:44.472Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-09-29T04:47:44.472Z",
+    "endTime": "2025-09-29T05:02:44.472Z"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "workerId": "940279402145669241",
+  "workerName": "Tereza Mcfell",
+  "channelId": "1419738529801699369",
+  "sessionId": "session_1758855349731_2gg9at",
+  "startTime": "2025-09-26T02:55:49.731Z",
+  "lastActivity": "2025-09-26T03:33:54.033Z",
+  "status": "stale",
+  "plantTransactions": [],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Ovelha Femea",
+      "quantity": 3,
+      "cost": 60,
+      "amount": 0,
+      "transactionId": "tx_1758855349732_wzv9nm",
+      "timestamp": "2025-09-26T02:55:49.732Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 3,
+      "amount": 120,
+      "transactionId": "tx_1758857634033_dzo1i7",
+      "timestamp": "2025-09-26T03:33:54.033Z"
+    }
+  ],
+  "totalCredits": 120,
+  "embedMessageId": "1420976651830956072",
+  "animalExpectations": [
+    {
+      "animalsTaken": 3,
+      "animalsDelivered": 3,
+      "isComplete": true,
+      "transactionId": "tx_1758855349732_wzv9nm",
+      "takenTimestamp": "2025-09-26T02:55:49.732Z"
+    }
+  ],
+  "financialTransactions": [],
+  "completedAt": "2025-09-29T00:36:38.137Z",
+  "notes": "Auto-archived due to inactivity"
+}

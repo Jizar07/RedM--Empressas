@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1759113889170_nuip2e",
+  "sessionId": "session_1759107171573_xjzck",
+  "managerId": "584129725052747798",
+  "managerName": "Rodrigo",
+  "workerId": "940279402145669241",
+  "workerName": "Tereza Mcfell",
+  "amountPaid": 445,
+  "paidAt": "2025-09-29T02:44:49.170Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-09-29T02:39:49.170Z",
+    "endTime": "2025-09-29T02:54:49.170Z"
+  }
+}

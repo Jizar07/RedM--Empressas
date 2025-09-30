@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1759123356355_29r6l1",
+  "sessionId": "session_1759115380402_shstpf",
+  "managerId": "198538680686608384",
+  "managerName": "Barth",
+  "workerId": "333664599549411329",
+  "workerName": "Johnny Rocks",
+  "amountPaid": 125,
+  "paidAt": "2025-09-29T05:22:36.355Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-09-29T05:17:36.355Z",
+    "endTime": "2025-09-29T05:32:36.355Z"
+  }
+}

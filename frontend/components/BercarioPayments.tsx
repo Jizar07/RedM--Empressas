@@ -116,8 +116,8 @@ export default function BercarioPayments({ firm }: BercarioPaymentsProps) {
 
   const getTypeColor = (type: string) => {
     switch (type) {
-      case 'compra': return 'bg-green-100 text-green-800';
-      case 'venda': return 'bg-blue-100 text-blue-800';
+      case 'compra': return 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300';
+      case 'venda': return 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300';
       case 'deposito': return 'bg-purple-100 text-purple-800';
       default: return 'bg-gray-100 text-gray-800';
     }
@@ -150,14 +150,14 @@ export default function BercarioPayments({ firm }: BercarioPaymentsProps) {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-gray-900">💰 Vendas e Pagamentos</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white dark:text-white">💰 Vendas e Pagamentos</h2>
         <div className="flex items-center space-x-4">
           <div className="flex items-center space-x-2">
-            <Filter className="h-4 w-4 text-gray-500" />
+            <Filter className="h-4 w-4 text-gray-500 dark:text-gray-400 dark:text-gray-500 dark:text-gray-400" />
             <select
               value={filter}
               onChange={(e) => setFilter(e.target.value as any)}
-              className="text-sm border border-gray-300 rounded px-2 py-1"
+              className="text-sm border border-gray-300 dark:border-gray-600 rounded px-2 py-1"
             >
               <option value="all">Todos os períodos</option>
               <option value="today">Hoje</option>
@@ -165,7 +165,7 @@ export default function BercarioPayments({ firm }: BercarioPaymentsProps) {
               <option value="month">Último mês</option>
             </select>
           </div>
-          <div className="text-sm text-gray-500">
+          <div className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500 dark:text-gray-400">
             Última atualização: {new Date().toLocaleTimeString('pt-BR')}
           </div>
         </div>
@@ -173,7 +173,7 @@ export default function BercarioPayments({ firm }: BercarioPaymentsProps) {
 
       {/* Summary Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+        <div className="bg-green-50 dark:bg-green-900/30 p-4 rounded-lg border border-green-200">
           <div className="flex items-center">
             <DollarSign className="h-8 w-8 text-green-600 mr-3" />
             <div>
@@ -183,7 +183,7 @@ export default function BercarioPayments({ firm }: BercarioPaymentsProps) {
           </div>
         </div>
 
-        <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+        <div className="bg-blue-50 dark:bg-blue-900/30 p-4 rounded-lg border border-blue-200">
           <div className="flex items-center">
             <Receipt className="h-8 w-8 text-blue-600 mr-3" />
             <div>
@@ -193,7 +193,7 @@ export default function BercarioPayments({ firm }: BercarioPaymentsProps) {
           </div>
         </div>
 
-        <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
+        <div className="bg-purple-50 dark:bg-purple-900/30 p-4 rounded-lg border border-purple-200">
           <div className="flex items-center">
             <TrendingUp className="h-8 w-8 text-purple-600 mr-3" />
             <div>
@@ -203,7 +203,7 @@ export default function BercarioPayments({ firm }: BercarioPaymentsProps) {
           </div>
         </div>
 
-        <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
+        <div className="bg-orange-50 dark:bg-orange-900/30 p-4 rounded-lg border border-orange-200">
           <div className="flex items-center">
             <Calendar className="h-8 w-8 text-orange-600 mr-3" />
             <div>
@@ -215,61 +215,61 @@ export default function BercarioPayments({ firm }: BercarioPaymentsProps) {
       </div>
 
       {/* Payments Table */}
-      <div className="bg-white rounded-lg border border-gray-200">
-        <div className="px-6 py-4 border-b border-gray-200">
-          <h3 className="text-lg font-semibold text-gray-900">Histórico de Vendas</h3>
+      <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 dark:border-gray-700">
+        <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700 dark:border-gray-700">
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white dark:text-white">Histórico de Vendas</h3>
         </div>
         
         <div className="overflow-x-auto">
           {filteredPayments.length > 0 ? (
             <table className="w-full">
-              <thead className="bg-gray-50">
+              <thead className="bg-gray-50 dark:bg-gray-700">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500 uppercase tracking-wider">
                     Data/Hora
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500 uppercase tracking-wider">
                     Cliente
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500 uppercase tracking-wider">
                     Item/Serviço
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500 uppercase tracking-wider">
                     Quantidade
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500 uppercase tracking-wider">
                     Preço Unitário
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500 uppercase tracking-wider">
                     Total
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500 uppercase tracking-wider">
                     Tipo
                   </th>
                 </tr>
               </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
+              <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700 dark:divide-gray-700">
                 {filteredPayments.map((payment) => (
-                  <tr key={payment.id} className="hover:bg-gray-50">
+                  <tr key={payment.id} className="hover:bg-gray-50 dark:hover:bg-gray-700 dark:hover:bg-gray-700">
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">
+                      <div className="text-sm text-gray-900 dark:text-white dark:text-white">
                         {payment.date.toLocaleDateString('pt-BR')}
                       </div>
-                      <div className="text-xs text-gray-500">
+                      <div className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500 dark:text-gray-400">
                         {payment.date.toLocaleTimeString('pt-BR')}
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm font-medium text-gray-900">{payment.clientName}</div>
+                      <div className="text-sm font-medium text-gray-900 dark:text-white dark:text-white">{payment.clientName}</div>
                     </td>
                     <td className="px-6 py-4">
-                      <div className="text-sm text-gray-900">{payment.itemName}</div>
+                      <div className="text-sm text-gray-900 dark:text-white dark:text-white">{payment.itemName}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">{payment.quantity}</div>
+                      <div className="text-sm text-gray-900 dark:text-white dark:text-white">{payment.quantity}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">${payment.unitPrice.toFixed(2)}</div>
+                      <div className="text-sm text-gray-900 dark:text-white dark:text-white">${payment.unitPrice.toFixed(2)}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="text-sm font-bold text-green-600">${payment.totalAmount.toFixed(2)}</div>
@@ -286,8 +286,8 @@ export default function BercarioPayments({ firm }: BercarioPaymentsProps) {
           ) : (
             <div className="text-center py-12">
               <Receipt className="mx-auto h-12 w-12 text-gray-400" />
-              <h3 className="mt-2 text-sm font-medium text-gray-900">Nenhuma venda registrada</h3>
-              <p className="mt-1 text-sm text-gray-500">
+              <h3 className="mt-2 text-sm font-medium text-gray-900 dark:text-white dark:text-white">Nenhuma venda registrada</h3>
+              <p className="mt-1 text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500 dark:text-gray-400">
                 Quando as vendas começarem a ser realizadas, elas aparecerão aqui com detalhes itemizados.
               </p>
             </div>

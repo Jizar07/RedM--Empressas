@@ -1,0 +1,27 @@
+{
+  "sessionId": "session_1759115380402_shstpf",
+  "workerId": "333664599549411329",
+  "workerName": "Johnny Rocks",
+  "amount": 125,
+  "paidBy": "198538680686608384",
+  "paidByName": "Barth",
+  "paidAt": "2025-09-29T05:22:36.355Z",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente Trigo",
+      "quantity": 50,
+      "transactionId": "tx_1759115380403_l73gf",
+      "timestamp": "2025-09-29T03:09:40.403Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1759117193180_sly2ytj",
+      "timestamp": "2025-09-29T03:39:53.180Z"
+    }
+  ],
+  "animalTransactions": [],
+  "financialTransactions": []
+}

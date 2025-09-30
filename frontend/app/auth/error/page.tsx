@@ -10,15 +10,36 @@ export default function AuthError() {
   const error = searchParams.get('error');
 
   useEffect(() => {
+    // Clear potentially problematic cookies on auth error
+    if (typeof window !== 'undefined') {
+      // Clear all next-auth cookies to resolve header size issues
+      document.cookie.split(';').forEach((cookie) => {
+        const eqPos = cookie.indexOf('=');
+        const name = eqPos > -1 ? cookie.substr(0, eqPos).trim() : cookie.trim();
+        if (name.startsWith('next-auth') || name.startsWith('__Secure-next-auth')) {
+          // Clear cookie for current domain and path
+          document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.stoffeltech.com`;
+          document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/`;
+        }
+      });
+
+      console.log('Auth error page - Cleared auth cookies due to error:', error);
+    }
+
     // If we're on localhost, redirect to the correct domain
     if (window.location.hostname === 'localhost') {
       const newUrl = `https://fazenda.stoffeltech.com${window.location.pathname}${window.location.search}`;
       console.log('Redirecting from localhost to:', newUrl);
       window.location.href = newUrl;
     }
-  }, []);
+  }, [error]);
 
   const getErrorMessage = (error: string | null) => {
+    // Check for HTTP 431 error specifically
+    if (error && (error.includes('431') || error === 'RequestHeaderFieldsTooLarge')) {
+      return 'Request headers too large. Cookies have been cleared. Please try logging in again.';
+    }
+
     switch (error) {
       case 'Configuration':
         return 'There is a problem with the server configuration.';
@@ -27,7 +48,7 @@ export default function AuthError() {
       case 'Verification':
         return 'The verification token has expired or been used already.';
       default:
-        return 'An unexpected error occurred during authentication.';
+        return 'An unexpected error occurred during authentication. Cookies have been cleared, please try again.';
     }
   };
 
@@ -62,14 +83,28 @@ export default function AuthError() {
               <div className="text-sm text-blue-700">
                 <p className="font-medium mb-2">Need access?</p>
                 <p>Join the Atlanta Server Discord first:</p>
-                <a 
-                  href="https://discord.gg/condadoatlanta" 
-                  target="_blank" 
+                <a
+                  href="https://discord.gg/condadoatlanta"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-600 hover:underline font-medium"
                 >
                   discord.gg/condadoatlanta
                 </a>
+              </div>
+            </div>
+          )}
+
+          {(error?.includes('431') || error === 'RequestHeaderFieldsTooLarge') && (
+            <div className="bg-yellow-50 border border-yellow-200 rounded-md p-4">
+              <div className="text-sm text-yellow-700">
+                <p className="font-medium mb-2">How to fix this issue:</p>
+                <ul className="list-disc list-inside space-y-1">
+                  <li>Clear your browser cookies and cache</li>
+                  <li>Try using an incognito/private window</li>
+                  <li>Use a different browser</li>
+                  <li>If problem persists, contact support</li>
+                </ul>
               </div>
             </div>
           )}

@@ -1,0 +1,77 @@
+{
+  "workerId": "614115703229775904",
+  "workerName": "Sasa Pietra",
+  "channelId": "1418756632652808313",
+  "sessionId": "session_1759029054239_wdbq6",
+  "startTime": "2025-09-28T03:10:54.239Z",
+  "lastActivity": "2025-09-28T04:56:16.633Z",
+  "status": "stale",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Creekplum Semente",
+      "quantity": 100,
+      "transactionId": "tx_1759029112128_qgxpie",
+      "timestamp": "2025-09-28T03:11:52.128Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Red Raspberry Semente",
+      "quantity": 100,
+      "transactionId": "tx_1759029116409_s4qwru",
+      "timestamp": "2025-09-28T03:11:56.409Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Ovelha Femea",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759029054240_pk0y4s",
+      "timestamp": "2025-09-28T03:10:54.240Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759035376633_5weo6d",
+      "timestamp": "2025-09-28T04:56:16.633Z"
+    }
+  ],
+  "financialTransactions": [],
+  "totalCredits": 160,
+  "embedMessageId": "1421722158643675306",
+  "animalExpectations": [
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759029054240_pk0y4s",
+      "takenTimestamp": "2025-09-28T03:10:54.240Z"
+    }
+  ],
+  "seedExpectations": [
+    {
+      "seedType": "Creekplum Semente",
+      "seedQuantity": 100,
+      "expectedPlantType": "Creekplum Semente",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759029112128_qgxpie"
+    },
+    {
+      "seedType": "Red Raspberry Semente",
+      "seedQuantity": 100,
+      "expectedPlantType": "Red Raspberry Semente",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759029116409_s4qwru"
+    }
+  ],
+  "completedAt": "2025-09-30T04:58:31.585Z",
+  "notes": "Auto-archived due to inactivity"
+}

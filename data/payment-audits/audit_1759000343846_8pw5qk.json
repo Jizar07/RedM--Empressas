@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1759000343846_8pw5qk",
+  "sessionId": "session_1758869821418_j4ndjf",
+  "managerId": "141250620593012736",
+  "managerName": "r3dley",
+  "workerId": "398270963969425408",
+  "workerName": "john Weslley",
+  "amountPaid": 0,
+  "paidAt": "2025-09-27T19:12:23.846Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-09-27T19:07:23.846Z",
+    "endTime": "2025-09-27T19:22:23.846Z"
+  }
+}

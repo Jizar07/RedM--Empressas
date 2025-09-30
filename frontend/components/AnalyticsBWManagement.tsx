@@ -149,7 +149,7 @@ export default function AnalyticsBWManagement({ recentActivity, usuarios, invent
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
           <BarChart3 size={28} />
           📊 Analytics & Relatórios
         </h2>
@@ -157,7 +157,7 @@ export default function AnalyticsBWManagement({ recentActivity, usuarios, invent
           <select
             value={selectedPeriod}
             onChange={(e) => setSelectedPeriod(e.target.value as any)}
-            className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             <option value="7d">Últimos 7 dias</option>
             <option value="30d">Últimos 30 dias</option>
@@ -167,8 +167,8 @@ export default function AnalyticsBWManagement({ recentActivity, usuarios, invent
       </div>
 
       {/* Navigation Tabs */}
-      <div className="bg-white rounded-lg shadow">
-        <div className="border-b border-gray-200">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow transition-colors">
+        <div className="border-b border-gray-200 dark:border-gray-700">
           <nav className="-mb-px flex space-x-8 px-6">
             {tabs.map((tab) => {
               const Icon = tab.icon;
@@ -178,8 +178,8 @@ export default function AnalyticsBWManagement({ recentActivity, usuarios, invent
                   onClick={() => setCurrentTab(tab.id as any)}
                   className={`py-4 px-1 border-b-2 font-medium text-sm flex items-center gap-2 transition-colors ${
                     currentTab === tab.id
-                      ? 'border-blue-500 text-blue-600'
-                      : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                      ? 'border-blue-500 text-blue-600 dark:text-blue-400'
+                      : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600'
                   }`}
                 >
                   <Icon size={16} />
@@ -193,7 +193,7 @@ export default function AnalyticsBWManagement({ recentActivity, usuarios, invent
         <div className="p-6">
           {currentTab === 'overview' && (
             <div className="space-y-6">
-              <h3 className="text-lg font-semibold">📈 Visão Geral do Sistema</h3>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">📈 Visão Geral do Sistema</h3>
               
               {/* Overview Stats */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -229,29 +229,29 @@ export default function AnalyticsBWManagement({ recentActivity, usuarios, invent
 
               {/* System Health */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <div className="bg-white rounded-lg border p-4">
-                  <h4 className="font-semibold mb-4">🎯 Indicadores de Saúde do Sistema</h4>
+                <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4 transition-colors">
+                  <h4 className="font-semibold mb-4 text-gray-900 dark:text-white">🎯 Indicadores de Saúde do Sistema</h4>
                   <div className="space-y-3">
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between text-gray-900 dark:text-gray-300">
                       <span>Usuários Ativos</span>
                       <span className={`px-2 py-1 rounded text-sm ${
-                        overviewStats.activeUsers > overviewStats.totalUsers * 0.8 ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'
+                        overviewStats.activeUsers > overviewStats.totalUsers * 0.8 ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300' : 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-300'
                       }`}>
                         {((overviewStats.activeUsers / overviewStats.totalUsers) * 100 || 0).toFixed(1)}%
                       </span>
                     </div>
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between text-gray-900 dark:text-gray-300">
                       <span>Itens com Estoque</span>
                       <span className={`px-2 py-1 rounded text-sm ${
-                        overviewStats.itemsWithStock > overviewStats.totalItems * 0.7 ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'
+                        overviewStats.itemsWithStock > overviewStats.totalItems * 0.7 ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300' : 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-300'
                       }`}>
                         {((overviewStats.itemsWithStock / overviewStats.totalItems) * 100 || 0).toFixed(1)}%
                       </span>
                     </div>
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between text-gray-900 dark:text-gray-300">
                       <span>Pagamentos Processados</span>
                       <span className={`px-2 py-1 rounded text-sm ${
-                        paymentAnalytics.byStatus.pago > paymentAnalytics.total * 0.8 ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'
+                        paymentAnalytics.byStatus.pago > paymentAnalytics.total * 0.8 ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300' : 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-300'
                       }`}>
                         {((paymentAnalytics.byStatus.pago / paymentAnalytics.total) * 100 || 0).toFixed(1)}%
                       </span>
@@ -259,8 +259,8 @@ export default function AnalyticsBWManagement({ recentActivity, usuarios, invent
                   </div>
                 </div>
 
-                <div className="bg-white rounded-lg border p-4">
-                  <h4 className="font-semibold mb-4">⚠️ Alertas & Atenção</h4>
+                <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4 transition-colors">
+                  <h4 className="font-semibold mb-4 text-gray-900 dark:text-white">⚠️ Alertas & Atenção</h4>
                   <div className="space-y-2">
                     {overviewStats.zeroStockItems > 0 && (
                       <div className="flex items-center gap-2 text-yellow-600">

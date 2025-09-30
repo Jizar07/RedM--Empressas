@@ -11,9 +11,6 @@ import {
   DEFAULT_GENERIC_TEMPLATE
 } from '@/types/firmTemplates';
 import TemplateFirmDashboard from './templates/TemplateFirmDashboard';
-import FazendaBW from './FazendaBW'; // Legacy component
-import EstoqueBW from './EstoqueBW'; // Legacy component
-import TrabalhadoresBW from './TrabalhadoresBW'; // Legacy component
 import BercarioInventory from './BercarioInventory';
 import BercarioClients from './BercarioClients';
 import BercarioAnalytics from './BercarioAnalytics';
@@ -82,11 +79,7 @@ export default function FirmTemplateRenderer({ firm, activeComponent }: FirmTemp
 
   const templateConfig = getTemplateConfig();
   const templateType = firm.template?.type || 'fazenda';
-  
-  // For backward compatibility, if firm doesn't have template config but is the original Fazenda BW,
-  // render the legacy components
-  const isLegacyFazendaBW = !firm.template && firm.id === 'fazenda-bw';
-  
+
   // Special handling for Fazenda
   const isFazendaCabraDaPeste = firm.id === 'fazenda-cabra-da-peste';
 
@@ -95,20 +88,6 @@ export default function FirmTemplateRenderer({ firm, activeComponent }: FirmTemp
     const component = templateConfig.components.find(c => c.id === componentId);
     return component?.enabled ?? false;
   };
-
-  // Legacy rendering for existing Fazenda BW
-  if (isLegacyFazendaBW) {
-    switch (activeComponent) {
-      case 'dashboard':
-        return <FazendaBW />;
-      case 'inventory':
-        return <EstoqueBW />;
-      case 'workers':
-        return <TrabalhadoresBW />;
-      default:
-        return <FazendaBW />;
-    }
-  }
 
   // Special rendering for Fazenda
   if (isFazendaCabraDaPeste) {

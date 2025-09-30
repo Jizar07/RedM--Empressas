@@ -1,0 +1,25 @@
+{
+  "workerId": "381598369556070402",
+  "workerName": "jubiscleia gilbert",
+  "channelId": "1422071465578070066",
+  "sessionId": "session_1759119785246_7vif7",
+  "startTime": "2025-09-29T04:23:05.246Z",
+  "lastActivity": "2025-09-29T04:23:05.247Z",
+  "status": "paid",
+  "plantTransactions": [],
+  "animalTransactions": [
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 156.8,
+      "transactionId": "tx_1759119785247_6gqf8a",
+      "timestamp": "2025-09-29T04:23:05.247Z"
+    }
+  ],
+  "financialTransactions": [],
+  "totalCredits": 156.8,
+  "embedMessageId": "1422076192944554125",
+  "animalExpectations": [],
+  "completedAt": "2025-09-29T04:52:44.470Z",
+  "notes": "Pago por Barth (198538680686608384)"
+}

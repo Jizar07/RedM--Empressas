@@ -1,0 +1,42 @@
+{
+  "workerId": "333664599549411329",
+  "workerName": "Johnny Rocks",
+  "channelId": "1416535914196504787",
+  "sessionId": "session_1759115380402_shstpf",
+  "startTime": "2025-09-29T03:09:40.402Z",
+  "lastActivity": "2025-09-29T03:39:53.180Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente Trigo",
+      "quantity": 50,
+      "transactionId": "tx_1759115380403_l73gf",
+      "timestamp": "2025-09-29T03:09:40.403Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1759117193180_sly2ytj",
+      "timestamp": "2025-09-29T03:39:53.180Z"
+    }
+  ],
+  "animalTransactions": [],
+  "financialTransactions": [],
+  "totalCredits": 125,
+  "embedMessageId": "1422065321984135258",
+  "seedExpectations": [
+    {
+      "seedType": "Semente Trigo",
+      "seedQuantity": 50,
+      "expectedPlantType": "Trigo",
+      "expectedPlantQuantity": 500,
+      "plantsFulfilled": 500,
+      "isComplete": true,
+      "transactionId": "tx_1759115380403_l73gf"
+    }
+  ],
+  "completedAt": "2025-09-29T05:22:36.353Z",
+  "notes": "Pago por Barth (198538680686608384)"
+}

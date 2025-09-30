@@ -287,11 +287,11 @@ function FazendaWorkersOLD({ firm }: FazendaWorkersProps) {
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
+        <div className="bg-white dark:bg-gray-800 dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700 dark:border-gray-700">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">Trabalhadores Ativos</p>
-              <p className="text-2xl font-bold text-gray-900">{totalWorkers}</p>
+              <p className="text-sm font-medium text-gray-600 dark:text-gray-300 dark:text-gray-300">Trabalhadores Ativos</p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-white dark:text-white">{totalWorkers}</p>
             </div>
             <div className="p-3 bg-green-100 rounded-full">
               <Users className="h-6 w-6 text-green-600" />
@@ -299,11 +299,11 @@ function FazendaWorkersOLD({ firm }: FazendaWorkersProps) {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
+        <div className="bg-white dark:bg-gray-800 dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700 dark:border-gray-700">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">Total a Pagar</p>
-              <p className="text-2xl font-bold text-gray-900">R$ {totalPayment.toFixed(2)}</p>
+              <p className="text-sm font-medium text-gray-600 dark:text-gray-300 dark:text-gray-300">Total a Pagar</p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-white dark:text-white">R$ {totalPayment.toFixed(2)}</p>
             </div>
             <div className="p-3 bg-blue-100 rounded-full">
               <DollarSign className="h-6 w-6 text-blue-600" />
@@ -311,11 +311,11 @@ function FazendaWorkersOLD({ firm }: FazendaWorkersProps) {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
+        <div className="bg-white dark:bg-gray-800 dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700 dark:border-gray-700">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">Total de Atividades</p>
-              <p className="text-2xl font-bold text-gray-900">{totalActivities}</p>
+              <p className="text-sm font-medium text-gray-600 dark:text-gray-300 dark:text-gray-300">Total de Atividades</p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-white dark:text-white">{totalActivities}</p>
             </div>
             <div className="p-3 bg-orange-100 rounded-full">
               <Activity className="h-6 w-6 text-orange-600" />
@@ -323,11 +323,11 @@ function FazendaWorkersOLD({ firm }: FazendaWorkersProps) {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
+        <div className="bg-white dark:bg-gray-800 dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700 dark:border-gray-700">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">Média por Trabalhador</p>
-              <p className="text-2xl font-bold text-gray-900">R$ {avgPaymentPerWorker.toFixed(2)}</p>
+              <p className="text-sm font-medium text-gray-600 dark:text-gray-300 dark:text-gray-300">Média por Trabalhador</p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-white dark:text-white">R$ {avgPaymentPerWorker.toFixed(2)}</p>
             </div>
             <div className="p-3 bg-purple-100 rounded-full">
               <BarChart3 className="h-6 w-6 text-purple-600" />
@@ -337,16 +337,16 @@ function FazendaWorkersOLD({ firm }: FazendaWorkersProps) {
       </div>
 
       {/* Filters and Settings */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
         <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Período de Análise
             </label>
             <select
               value={selectedPeriod}
               onChange={(e) => setSelectedPeriod(e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             >
               {periods.map(period => (
                 <option key={period.value} value={period.value}>
@@ -369,53 +369,53 @@ function FazendaWorkersOLD({ firm }: FazendaWorkersProps) {
         
         {/* Price Settings Panel */}
         {showSettings && (
-          <div className="mt-6 pt-6 border-t border-gray-200">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">⚙️ Configuração de Preços</h3>
+          <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700 dark:border-gray-700">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">⚙️ Configuração de Preços</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   💰 Preço por Planta Depositada
                 </label>
                 <div className="relative">
-                  <span className="absolute left-3 top-2 text-gray-500">R$</span>
+                  <span className="absolute left-3 top-2 text-gray-500 dark:text-gray-400 dark:text-gray-500 dark:text-gray-400">R$</span>
                   <input
                     type="number"
                     step="0.01"
                     min="0"
                     value={plantPrice}
                     onChange={(e) => handlePlantPriceChange(parseFloat(e.target.value) || 0)}
-                    className="pl-8 pr-3 py-2 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    className="pl-8 pr-3 py-2 w-full border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                     placeholder="2.50"
                   />
                 </div>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500 mt-1">
                   Valor pago por cada item de planta (bulrush, corn, etc) depositado
                 </p>
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   🐄 Preço por Animal Entregue
                 </label>
                 <div className="relative">
-                  <span className="absolute left-3 top-2 text-gray-500">R$</span>
+                  <span className="absolute left-3 top-2 text-gray-500 dark:text-gray-400 dark:text-gray-500 dark:text-gray-400">R$</span>
                   <input
                     type="number"
                     step="0.01"
                     min="0"
                     value={animalPrice}
                     onChange={(e) => handleAnimalPriceChange(parseFloat(e.target.value) || 0)}
-                    className="pl-8 pr-3 py-2 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    className="pl-8 pr-3 py-2 w-full border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                     placeholder="40.00"
                   />
                 </div>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500 mt-1">
                   Valor pago por cada animal entregue no matadouro
                 </p>
               </div>
             </div>
             
-            <div className="mt-4 p-3 bg-blue-50 rounded-lg">
+            <div className="mt-4 p-3 bg-blue-50 dark:bg-blue-900/30 rounded-lg">
               <div className="flex items-start gap-2">
                 <div className="p-1 bg-blue-100 rounded-full">
                   <DollarSign className="h-3 w-3 text-blue-600" />
@@ -438,7 +438,7 @@ function FazendaWorkersOLD({ firm }: FazendaWorkersProps) {
                 className={`px-4 py-2 rounded-lg transition-colors ${
                   pricesChanged 
                     ? 'bg-purple-500 hover:bg-purple-600 text-white' 
-                    : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                    : 'bg-gray-200 text-gray-400 dark:text-gray-500 cursor-not-allowed'
                 }`}
               >
                 {pricesChanged ? '💾 Salvar Preços' : '✅ Preços Salvos'}
@@ -449,10 +449,10 @@ function FazendaWorkersOLD({ firm }: FazendaWorkersProps) {
       </div>
 
       {/* Workers Table */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200">
-        <div className="p-6 border-b border-gray-200">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 dark:border-gray-700">
+        <div className="p-6 border-b border-gray-200 dark:border-gray-700 dark:border-gray-700">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-semibold text-gray-900">
+            <h2 className="text-lg font-semibold text-gray-900 dark:text-white dark:text-white">
               Lista de Trabalhadores de {firm.name}
             </h2>
           </div>
@@ -460,29 +460,29 @@ function FazendaWorkersOLD({ firm }: FazendaWorkersProps) {
           {/* Search and Filter Controls */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Buscar Trabalhadores
               </label>
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500 h-4 w-4" />
                 <input
                   type="text"
                   placeholder="Nome ou ID..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Filtrar por Função
               </label>
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value as any)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
               >
                 <option value="all">Todas as Funções</option>
                 <option value="active">Trabalhadores</option>
@@ -490,13 +490,13 @@ function FazendaWorkersOLD({ firm }: FazendaWorkersProps) {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Ordenar por
               </label>
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as any)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
               >
                 <option value="transactions">Atividades</option>
                 <option value="name">Nome</option>
@@ -506,7 +506,7 @@ function FazendaWorkersOLD({ firm }: FazendaWorkersProps) {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Direção
               </label>
               <div className="flex gap-2">
@@ -515,7 +515,7 @@ function FazendaWorkersOLD({ firm }: FazendaWorkersProps) {
                   className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                     sortDirection === 'desc'
                       ? 'bg-purple-500 text-white'
-                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                      : 'bg-gray-200 text-gray-700 dark:text-gray-300 hover:bg-gray-300'
                   }`}
                 >
                   <ArrowDown className="h-4 w-4 mx-auto" />
@@ -525,7 +525,7 @@ function FazendaWorkersOLD({ firm }: FazendaWorkersProps) {
                   className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                     sortDirection === 'asc'
                       ? 'bg-purple-500 text-white'
-                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                      : 'bg-gray-200 text-gray-700 dark:text-gray-300 hover:bg-gray-300'
                   }`}
                 >
                   <ArrowUp className="h-4 w-4 mx-auto" />
@@ -535,29 +535,29 @@ function FazendaWorkersOLD({ firm }: FazendaWorkersProps) {
           </div>
 
           {/* Results Summary */}
-          <div className="text-sm text-gray-600 mb-4">
+          <div className="text-sm text-gray-600 dark:text-gray-300 mb-4">
             Mostrando {workerStats.length} de {Object.keys(inventoryData.analytics.workers || {}).length} trabalhadores
           </div>
         </div>
         
         {workerStats.length === 0 ? (
           <div className="p-8 text-center">
-            <Users className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-            <h3 className="text-lg font-medium text-gray-900 mb-2">Nenhum Trabalhador Encontrado</h3>
-            <p className="text-gray-500 mb-4">
+            <Users className="h-12 w-12 text-gray-400 dark:text-gray-500 mx-auto mb-4" />
+            <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">Nenhum Trabalhador Encontrado</h3>
+            <p className="text-gray-500 dark:text-gray-400 dark:text-gray-500 mb-4">
               Os trabalhadores aparecerão aqui quando houver atividades no canal #{firm.channelId}.
             </p>
           </div>
         ) : (
           <div className="overflow-x-auto">
-            <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-gray-50">
+            <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700 dark:divide-gray-700">
+              <thead className="bg-gray-50 dark:bg-gray-700">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500 uppercase tracking-wider">
                     Rank
                   </th>
                   <th
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100 transition-colors"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
                     onClick={() => handleSort('name')}
                   >
                     <div className="flex items-center gap-1">
@@ -565,11 +565,11 @@ function FazendaWorkersOLD({ firm }: FazendaWorkersProps) {
                       <SortIndicator column="name" />
                     </div>
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500 uppercase tracking-wider">
                     Função
                   </th>
                   <th
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100 transition-colors"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
                     onClick={() => handleSort('transactions')}
                   >
                     <div className="flex items-center gap-1">
@@ -577,11 +577,11 @@ function FazendaWorkersOLD({ firm }: FazendaWorkersProps) {
                       <SortIndicator column="transactions" />
                     </div>
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500 uppercase tracking-wider">
                     Itens +/-
                   </th>
                   <th
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100 transition-colors"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
                     onClick={() => handleSort('performance')}
                   >
                     <div className="flex items-center gap-1">
@@ -589,15 +589,15 @@ function FazendaWorkersOLD({ firm }: FazendaWorkersProps) {
                       <SortIndicator column="performance" />
                     </div>
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500 uppercase tracking-wider">
                     Última Atividade
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500 uppercase tracking-wider">
                     Ações
                   </th>
                 </tr>
               </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
+              <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700 dark:divide-gray-700">
               
               {workerStats.map((worker, index) => {
                 // Calculate dynamic rank based on sort criteria
@@ -628,11 +628,11 @@ function FazendaWorkersOLD({ firm }: FazendaWorkersProps) {
                 };
 
                 return (
-                  <tr key={worker.userId} className="hover:bg-gray-50">
+                  <tr key={worker.userId} className="hover:bg-gray-50 dark:hover:bg-gray-700 dark:bg-gray-700">
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
                         {getRankIcon()}
-                        <span className="text-sm font-medium text-gray-900 ml-2">{getRankDisplay()}</span>
+                        <span className="text-sm font-medium text-gray-900 dark:text-white ml-2">{getRankDisplay()}</span>
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
@@ -643,13 +643,13 @@ function FazendaWorkersOLD({ firm }: FazendaWorkersProps) {
                           </div>
                         </div>
                         <div className="ml-4">
-                          <div className="text-sm font-medium text-gray-900">{worker.userName}</div>
-                          <div className="text-sm text-gray-500">{worker.userId}</div>
+                          <div className="text-sm font-medium text-gray-900 dark:text-white dark:text-white">{worker.userName}</div>
+                          <div className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500 dark:text-gray-400">{worker.userId}</div>
                         </div>
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300">
                         <User className="h-3 w-3 mr-1" />
                         Trabalhador
                       </span>
@@ -657,7 +657,7 @@ function FazendaWorkersOLD({ firm }: FazendaWorkersProps) {
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
                         <Activity className="h-4 w-4 mr-2 text-orange-500" />
-                        <span className="text-sm font-medium text-gray-900">{worker.totalTransactions}</span>
+                        <span className="text-sm font-medium text-gray-900 dark:text-white dark:text-white">{worker.totalTransactions}</span>
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm">
@@ -665,7 +665,7 @@ function FazendaWorkersOLD({ firm }: FazendaWorkersProps) {
                         <span className="text-green-600">+{worker.itemsAdded}</span> /
                         <span className="text-red-600 ml-1">-{worker.itemsRemoved}</span>
                       </div>
-                      <div className="text-xs text-gray-500">Net: {worker.netItems}</div>
+                      <div className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500 dark:text-gray-400">Net: {worker.netItems}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm">
                       <div className="flex items-center">
@@ -676,7 +676,7 @@ function FazendaWorkersOLD({ firm }: FazendaWorkersProps) {
                     <td className="px-6 py-4 whitespace-nowrap text-sm">
                       <div className="flex items-center">
                         <Clock className="h-4 w-4 mr-2 text-gray-400" />
-                        <span className="text-gray-500">
+                        <span className="text-gray-500 dark:text-gray-400 dark:text-gray-500 dark:text-gray-400">
                           {worker.lastActivity ?
                             new Date(worker.lastActivity).toLocaleDateString('pt-BR', {
                               month: 'short',
@@ -711,7 +711,7 @@ function FazendaWorkersOLD({ firm }: FazendaWorkersProps) {
           </div>
         )}
         
-        <div className="mt-6 bg-purple-50 rounded-lg p-4 max-w-md mx-auto">
+        <div className="mt-6 bg-purple-50 dark:bg-purple-900/30 rounded-lg p-4 max-w-md mx-auto">
           <div className="flex items-start space-x-3">
             <div className="p-1 bg-purple-100 rounded-full mt-0.5">
               <Users className="h-4 w-4 text-purple-600" />
@@ -727,9 +727,9 @@ function FazendaWorkersOLD({ firm }: FazendaWorkersProps) {
       </div>
 
       {/* Top Performers */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-semibold text-gray-900">🏆 Top Performers</h3>
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white dark:text-white">🏆 Top Performers</h3>
           <button
             onClick={() => setShowAdvancedManagement(true)}
             className="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors flex items-center gap-2"
@@ -744,7 +744,7 @@ function FazendaWorkersOLD({ firm }: FazendaWorkersProps) {
             return (
               <div key={worker.userId} className={`p-4 rounded-lg border-2 ${
                 rank === 1 ? 'border-yellow-200 bg-yellow-50' :
-                rank === 2 ? 'border-gray-200 bg-gray-50' :
+                rank === 2 ? 'border-gray-200 dark:border-gray-700 bg-gray-50' :
                 'border-amber-200 bg-amber-50'
               }`}>
                 <div className="flex items-center space-x-3">
@@ -756,9 +756,9 @@ function FazendaWorkersOLD({ firm }: FazendaWorkersProps) {
                     <Award className="h-5 w-5 text-amber-600" />
                   )}
                   <div className="flex-1">
-                    <p className="font-medium text-gray-900">#{rank} {worker.userName}</p>
-                    <p className="text-sm text-gray-600">{worker.totalTransactions} transações</p>
-                    <p className="text-sm font-medium text-gray-700 mt-1">
+                    <p className="font-medium text-gray-900 dark:text-white dark:text-white">#{rank} {worker.userName}</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 dark:text-gray-300">{worker.totalTransactions} transações</p>
+                    <p className="text-sm font-medium text-gray-700 dark:text-gray-300 mt-1">
                       {(worker.averagePerDay || 0).toFixed(1)} ativ/dia
                     </p>
                   </div>
@@ -769,13 +769,13 @@ function FazendaWorkersOLD({ firm }: FazendaWorkersProps) {
           
           {/* Fill empty spots if less than 3 workers */}
           {Array.from({ length: Math.max(0, 3 - workerStats.length) }).map((_, index) => (
-            <div key={`empty-${index}`} className="p-4 rounded-lg border-2 border-gray-200 bg-gray-50">
+            <div key={`empty-${index}`} className="p-4 rounded-lg border-2 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700">
               <div className="flex items-center space-x-3">
                 <Award className="h-5 w-5 text-gray-400" />
                 <div className="flex-1">
                   <p className="font-medium text-gray-400">#{workerStats.length + index + 1} --</p>
                   <p className="text-sm text-gray-400">Aguardando dados</p>
-                  <p className="text-sm font-medium text-gray-400 mt-1">-- ativ/dia</p>
+                  <p className="text-sm font-medium text-gray-400 dark:text-gray-500 mt-1">-- ativ/dia</p>
                 </div>
               </div>
             </div>
@@ -784,31 +784,31 @@ function FazendaWorkersOLD({ firm }: FazendaWorkersProps) {
       </div>
 
       {/* Configuration */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Configuração dos Trabalhadores</h3>
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Configuração dos Trabalhadores</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="bg-gray-50 rounded-lg p-4">
+          <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
             <div className="flex items-center space-x-2 mb-2">
               <Users className="h-5 w-5 text-gray-600" />
-              <span className="text-sm font-medium text-gray-900">Roles Permitidas</span>
+              <span className="text-sm font-medium text-gray-900 dark:text-white dark:text-white">Roles Permitidas</span>
             </div>
-            <p className="text-sm text-gray-600">{firm.allowedRoles.length} roles configuradas</p>
+            <p className="text-sm text-gray-600 dark:text-gray-300 dark:text-gray-300">{firm.allowedRoles.length} roles configuradas</p>
           </div>
           
-          <div className="bg-gray-50 rounded-lg p-4">
+          <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
             <div className="flex items-center space-x-2 mb-2">
               <Activity className="h-5 w-5 text-gray-600" />
-              <span className="text-sm font-medium text-gray-900">Canal</span>
+              <span className="text-sm font-medium text-gray-900 dark:text-white dark:text-white">Canal</span>
             </div>
-            <p className="text-sm text-gray-600">#{firm.channelId}</p>
+            <p className="text-sm text-gray-600 dark:text-gray-300 dark:text-gray-300">#{firm.channelId}</p>
           </div>
           
-          <div className="bg-gray-50 rounded-lg p-4">
+          <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
             <div className="flex items-center space-x-2 mb-2">
               <BarChart3 className="h-5 w-5 text-gray-600" />
-              <span className="text-sm font-medium text-gray-900">Status</span>
+              <span className="text-sm font-medium text-gray-900 dark:text-white dark:text-white">Status</span>
             </div>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-gray-600 dark:text-gray-300 dark:text-gray-300">
               {firm.monitoring.enabled ? 'Monitoramento Ativo' : 'Monitoramento Inativo'}
             </p>
           </div>
@@ -820,9 +820,9 @@ function FazendaWorkersOLD({ firm }: FazendaWorkersProps) {
       {/* Individual Worker Edit Modal */}
       {showEditWorkerModal && selectedWorkerForEdit && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+          <div className="bg-white dark:bg-gray-800 dark:bg-gray-800 rounded-lg p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-bold text-gray-900">
+              <h2 className="text-xl font-bold text-gray-900 dark:text-white dark:text-white">
                 ✏️ Editar Trabalhador: {selectedWorkerForEdit.userName}
               </h2>
               <button
@@ -830,7 +830,7 @@ function FazendaWorkersOLD({ firm }: FazendaWorkersProps) {
                   setShowEditWorkerModal(false);
                   setSelectedWorkerForEdit(null);
                 }}
-                className="text-gray-400 hover:text-gray-600"
+                className="text-gray-400 dark:text-gray-500 hover:text-gray-600"
               >
                 ✕
               </button>
@@ -838,22 +838,22 @@ function FazendaWorkersOLD({ firm }: FazendaWorkersProps) {
             
             <div className="space-y-6">
               {/* Quick Stats Overview */}
-              <div className="bg-gray-50 rounded-lg p-4">
-                <h3 className="font-semibold text-gray-900 mb-3">📊 Estatísticas Atuais</h3>
+              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                <h3 className="font-semibold text-gray-900 dark:text-white mb-3">📊 Estatísticas Atuais</h3>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
                   <div className="text-center">
                     <div className="text-lg font-bold text-blue-600">{selectedWorkerForEdit.totalTransactions}</div>
-                    <div className="text-gray-600">Total Transações</div>
+                    <div className="text-gray-600 dark:text-gray-300 dark:text-gray-300">Total Transações</div>
                   </div>
                   <div className="text-center">
                     <div className="text-lg font-bold text-purple-600">{(selectedWorkerForEdit.averagePerDay || 0).toFixed(1)}</div>
-                    <div className="text-gray-600">Média/Dia</div>
+                    <div className="text-gray-600 dark:text-gray-300 dark:text-gray-300">Média/Dia</div>
                   </div>
                   <div className="text-center">
                     <div className={`text-lg font-bold ${selectedWorkerForEdit.netItems >= 0 ? 'text-green-600' : 'text-red-600'}`}>
                       {selectedWorkerForEdit.netItems > 0 ? '+' : ''}{selectedWorkerForEdit.netItems}
                     </div>
-                    <div className="text-gray-600">Itens Líquidos</div>
+                    <div className="text-gray-600 dark:text-gray-300 dark:text-gray-300">Itens Líquidos</div>
                   </div>
                   <div className="text-center">
                     <div className="text-lg font-bold text-orange-600">
@@ -862,14 +862,14 @@ function FazendaWorkersOLD({ firm }: FazendaWorkersProps) {
                         : '--'
                       }
                     </div>
-                    <div className="text-gray-600">Última Atividade</div>
+                    <div className="text-gray-600 dark:text-gray-300 dark:text-gray-300">Última Atividade</div>
                   </div>
                 </div>
               </div>
 
               {/* Worker Settings Section */}
-              <div className="bg-white border border-gray-200 rounded-lg p-4">
-                <h3 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+              <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
+                <h3 className="font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
                   <Settings className="h-5 w-5 text-purple-600" />
                   Configurações do Trabalhador
                 </h3>
@@ -877,10 +877,10 @@ function FazendaWorkersOLD({ firm }: FazendaWorkersProps) {
                 {/* Worker Status */}
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                       Status do Trabalhador
                     </label>
-                    <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                    <select className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
                       <option value="active">🟢 Ativo</option>
                       <option value="inactive">🔴 Inativo</option>
                       <option value="on-vacation">🏖️ De Férias</option>
@@ -890,10 +890,10 @@ function FazendaWorkersOLD({ firm }: FazendaWorkersProps) {
 
                   {/* Role Assignment */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                       Cargo/Função
                     </label>
-                    <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                    <select className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
                       <option value="worker">👷 Trabalhador</option>
                       <option value="supervisor">👨‍💼 Supervisor</option>
                       <option value="manager">🧑‍💻 Gerente</option>
@@ -903,7 +903,7 @@ function FazendaWorkersOLD({ firm }: FazendaWorkersProps) {
 
                   {/* Performance Rating */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                       Avaliação de Performance
                     </label>
                     <div className="flex items-center gap-2">
@@ -916,17 +916,17 @@ function FazendaWorkersOLD({ firm }: FazendaWorkersProps) {
                           ⭐
                         </button>
                       ))}
-                      <span className="ml-2 text-sm text-gray-600">(4.2/5)</span>
+                      <span className="ml-2 text-sm text-gray-600 dark:text-gray-300 dark:text-gray-300">(4.2/5)</span>
                     </div>
                   </div>
 
                   {/* Notes Section */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                       Notas do Supervisor
                     </label>
                     <textarea
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                       rows={3}
                       placeholder="Adicione notas sobre o desempenho, comportamento ou observações do trabalhador..."
                     />
@@ -935,8 +935,8 @@ function FazendaWorkersOLD({ firm }: FazendaWorkersProps) {
               </div>
 
               {/* Activity Settings */}
-              <div className="bg-white border border-gray-200 rounded-lg p-4">
-                <h3 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+              <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
+                <h3 className="font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
                   <Activity className="h-5 w-5 text-orange-600" />
                   Configurações de Atividade
                 </h3>
@@ -946,10 +946,10 @@ function FazendaWorkersOLD({ firm }: FazendaWorkersProps) {
                   <div className="flex items-center justify-between">
                     <div>
                       <label className="text-sm font-medium text-gray-700">Rastreamento de Atividade</label>
-                      <p className="text-xs text-gray-500">Monitorar todas as ações deste trabalhador</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500 dark:text-gray-400">Monitorar todas as ações deste trabalhador</p>
                     </div>
                     <button className="relative inline-flex h-6 w-11 items-center rounded-full bg-green-500 transition-colors">
-                      <span className="inline-block h-4 w-4 transform rounded-full bg-white transition-transform translate-x-6" />
+                      <span className="inline-block h-4 w-4 transform rounded-full bg-white dark:bg-gray-800 transition-transform translate-x-6" />
                     </button>
                   </div>
 
@@ -957,10 +957,10 @@ function FazendaWorkersOLD({ firm }: FazendaWorkersProps) {
                   <div className="flex items-center justify-between">
                     <div>
                       <label className="text-sm font-medium text-gray-700">Notificações de Inatividade</label>
-                      <p className="text-xs text-gray-500">Alertar se ficar inativo por mais de 3 dias</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500 dark:text-gray-400">Alertar se ficar inativo por mais de 3 dias</p>
                     </div>
                     <button className="relative inline-flex h-6 w-11 items-center rounded-full bg-gray-300 transition-colors">
-                      <span className="inline-block h-4 w-4 transform rounded-full bg-white transition-transform translate-x-1" />
+                      <span className="inline-block h-4 w-4 transform rounded-full bg-white dark:bg-gray-800 transition-transform translate-x-1" />
                     </button>
                   </div>
 
@@ -968,10 +968,10 @@ function FazendaWorkersOLD({ firm }: FazendaWorkersProps) {
                   <div className="flex items-center justify-between">
                     <div>
                       <label className="text-sm font-medium text-gray-700">Alertas de Performance</label>
-                      <p className="text-xs text-gray-500">Notificar se performance cair abaixo de 2.0/dia</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500 dark:text-gray-400">Notificar se performance cair abaixo de 2.0/dia</p>
                     </div>
                     <button className="relative inline-flex h-6 w-11 items-center rounded-full bg-green-500 transition-colors">
-                      <span className="inline-block h-4 w-4 transform rounded-full bg-white transition-transform translate-x-6" />
+                      <span className="inline-block h-4 w-4 transform rounded-full bg-white dark:bg-gray-800 transition-transform translate-x-6" />
                     </button>
                   </div>
                 </div>

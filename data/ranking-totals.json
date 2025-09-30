@@ -528,7 +528,7 @@
   },
   "unknown": {
     "workerId": "unknown",
-    "workerName": "Smith Ramirez",
+    "workerName": "Bartholomeu Dias",
     "plants": {
       "thisWeek": 0,
       "allTime": 0
@@ -539,9 +539,9 @@
     },
     "ferrovia": {
       "thisWeek": 2,
-      "allTime": 269
+      "allTime": 471
     },
-    "lastActivity": "2025-09-27T03:59:59.516Z"
+    "lastActivity": "2025-09-30T15:35:47.380Z"
   },
   "266262427329495041": {
     "workerId": "266262427329495041",

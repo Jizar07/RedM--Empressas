@@ -306,14 +306,14 @@ export default function FazendaCDPAnalytics({ firm }: FazendaCDPAnalyticsProps) 
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
           🐐 Fazenda - Analytics
         </h2>
         <div className="flex gap-2">
           <select
             value={selectedPeriod}
             onChange={(e) => setSelectedPeriod(e.target.value as any)}
-            className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+            className="px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
           >
             <option value="7d">Últimos 7 dias</option>
             <option value="30d">Últimos 30 dias</option>
@@ -323,8 +323,8 @@ export default function FazendaCDPAnalytics({ firm }: FazendaCDPAnalyticsProps) 
       </div>
 
       {/* Tab Navigation */}
-      <div className="bg-white rounded-lg shadow">
-        <div className="border-b border-gray-200">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow transition-colors">
+        <div className="border-b border-gray-200 dark:border-gray-700">
           <nav className="-mb-px flex space-x-8 px-6">
             {tabs.map((tab) => {
               const Icon = tab.icon;
@@ -334,8 +334,8 @@ export default function FazendaCDPAnalytics({ firm }: FazendaCDPAnalyticsProps) 
                   onClick={() => setCurrentTab(tab.id as any)}
                   className={`py-4 px-1 border-b-2 font-medium text-sm flex items-center gap-2 transition-colors ${
                     currentTab === tab.id
-                      ? 'border-green-500 text-green-600'
-                      : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                      ? 'border-green-500 text-green-600 dark:text-green-400'
+                      : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600'
                   }`}
                 >
                   <Icon size={16} />
@@ -390,31 +390,31 @@ export default function FazendaCDPAnalytics({ firm }: FazendaCDPAnalyticsProps) 
 
               {/* Secondary Metrics */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="bg-white rounded-lg border p-6">
+                <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6 transition-colors">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm text-gray-600">Trabalhadores Ativos</p>
-                      <p className="text-2xl font-bold">{analytics.activeWorkers}</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">Trabalhadores Ativos</p>
+                      <p className="text-2xl font-bold text-gray-900 dark:text-white">{analytics.activeWorkers}</p>
                     </div>
                     <Users className="text-blue-500" size={32} />
                   </div>
                 </div>
                 
-                <div className="bg-white rounded-lg border p-6">
+                <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6 transition-colors">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm text-gray-600">Total de Atividades</p>
-                      <p className="text-2xl font-bold">{analytics.totalActivities}</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">Total de Atividades</p>
+                      <p className="text-2xl font-bold text-gray-900 dark:text-white">{analytics.totalActivities}</p>
                     </div>
                     <Activity className="text-purple-500" size={32} />
                   </div>
                 </div>
                 
-                <div className="bg-white rounded-lg border p-6">
+                <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6 transition-colors">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm text-gray-600">Despesas Totais</p>
-                      <p className="text-2xl font-bold">${analytics.totalExpenses.toFixed(2)}</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">Despesas Totais</p>
+                      <p className="text-2xl font-bold text-gray-900 dark:text-white">${analytics.totalExpenses.toFixed(2)}</p>
                     </div>
                     <PiggyBank className="text-red-500" size={32} />
                   </div>
@@ -422,13 +422,13 @@ export default function FazendaCDPAnalytics({ firm }: FazendaCDPAnalyticsProps) 
               </div>
 
               {/* Daily Activity Chart */}
-              <div className="bg-white rounded-lg border p-6">
-                <h3 className="text-lg font-semibold mb-4">📅 Atividade Diária</h3>
+              <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6 transition-colors">
+                <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">📅 Atividade Diária</h3>
                 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-2">
                   {Object.entries(analytics.dailyActivity).slice(-7).map(([date, data]: any) => (
-                    <div key={date} className="text-center p-3 bg-gray-50 rounded">
-                      <div className="text-xs text-gray-600">{date}</div>
-                      <div className="text-lg font-bold mt-1">{data.count}</div>
+                    <div key={date} className="text-center p-3 bg-gray-50 dark:bg-gray-700 rounded">
+                      <div className="text-xs text-gray-600 dark:text-gray-400">{date}</div>
+                      <div className="text-lg font-bold mt-1 text-gray-900 dark:text-white">{data.count}</div>
                       <div className="text-xs text-green-600">${data.revenue.toFixed(0)}</div>
                     </div>
                   ))}
@@ -439,29 +439,29 @@ export default function FazendaCDPAnalytics({ firm }: FazendaCDPAnalyticsProps) 
 
           {currentTab === 'farm' && (
             <div className="space-y-6">
-              <h3 className="text-lg font-semibold">🚜 Gestão da Fazenda</h3>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">🚜 Gestão da Fazenda</h3>
               
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {/* Animal Management */}
-                <div className="bg-white rounded-lg border p-6">
-                  <h4 className="font-semibold mb-4">🐄 Gestão de Animais</h4>
+                <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6 transition-colors">
+                  <h4 className="font-semibold mb-4 text-gray-900 dark:text-white">🐄 Gestão de Animais</h4>
                   <div className="space-y-3">
                     {Object.entries(analytics.animalStats).slice(0, 5).map(([animal, stats]: any) => (
-                      <div key={animal} className="flex items-center justify-between p-3 bg-green-50 rounded-lg">
+                      <div key={animal} className="flex items-center justify-between p-3 bg-green-50 dark:bg-green-900/30 rounded-lg">
                         <div>
-                          <div className="font-medium capitalize">{animal.replace(/_/g, ' ')}</div>
-                          <div className="text-sm text-gray-600">
+                          <div className="font-medium capitalize text-gray-900 dark:text-white">{animal.replace(/_/g, ' ')}</div>
+                          <div className="text-sm text-gray-600 dark:text-gray-400">
                             +{stats.added} | -{stats.removed}
                           </div>
                         </div>
                         <div className="text-right">
                           <div className="font-bold text-green-600">{stats.current}</div>
-                          <div className="text-xs text-gray-500">atual</div>
+                          <div className="text-xs text-gray-500 dark:text-gray-400">atual</div>
                         </div>
                       </div>
                     ))}
                     {Object.keys(analytics.animalStats).length === 0 && (
-                      <p className="text-gray-500 text-center py-4">
+                      <p className="text-gray-500 dark:text-gray-400 text-center py-4">
                         Nenhuma atividade animal registrada
                       </p>
                     )}
@@ -469,25 +469,25 @@ export default function FazendaCDPAnalytics({ firm }: FazendaCDPAnalyticsProps) 
                 </div>
 
                 {/* Crop Management */}
-                <div className="bg-white rounded-lg border p-6">
-                  <h4 className="font-semibold mb-4">🌾 Gestão de Cultivos</h4>
+                <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6 transition-colors">
+                  <h4 className="font-semibold mb-4 text-gray-900 dark:text-white">🌾 Gestão de Cultivos</h4>
                   <div className="space-y-3">
                     {Object.entries(analytics.cropStats).slice(0, 5).map(([crop, stats]: any) => (
-                      <div key={crop} className="flex items-center justify-between p-3 bg-yellow-50 rounded-lg">
+                      <div key={crop} className="flex items-center justify-between p-3 bg-yellow-50 dark:bg-yellow-900/30 rounded-lg">
                         <div>
-                          <div className="font-medium capitalize">{crop.replace(/_/g, ' ')}</div>
-                          <div className="text-sm text-gray-600">
+                          <div className="font-medium capitalize text-gray-900 dark:text-white">{crop.replace(/_/g, ' ')}</div>
+                          <div className="text-sm text-gray-600 dark:text-gray-400">
                             {stats.planted} plantado | {stats.harvested} colhido
                           </div>
                         </div>
                         <div className="text-right">
                           <div className="font-bold text-yellow-600">{stats.inField}</div>
-                          <div className="text-xs text-gray-500">em campo</div>
+                          <div className="text-xs text-gray-500 dark:text-gray-400">em campo</div>
                         </div>
                       </div>
                     ))}
                     {Object.keys(analytics.cropStats).length === 0 && (
-                      <p className="text-gray-500 text-center py-4">
+                      <p className="text-gray-500 dark:text-gray-400 text-center py-4">
                         Nenhuma atividade de cultivo registrada
                       </p>
                     )}
@@ -499,21 +499,21 @@ export default function FazendaCDPAnalytics({ firm }: FazendaCDPAnalyticsProps) 
 
           {currentTab === 'workers' && (
             <div className="space-y-6">
-              <h3 className="text-lg font-semibold">👨‍🌾 Analytics de Trabalhadores</h3>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">👨‍🌾 Analytics de Trabalhadores</h3>
               
               {/* Top Workers */}
-              <div className="bg-white rounded-lg border p-6">
-                <h4 className="font-semibold mb-4">🏆 Top Trabalhadores</h4>
+              <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6 transition-colors">
+                <h4 className="font-semibold mb-4 text-gray-900 dark:text-white">🏆 Top Trabalhadores</h4>
                 <div className="space-y-3">
                   {analytics.topWorkers.map(([worker, stats]: any, index) => (
-                    <div key={worker} className="flex items-center justify-between p-4 bg-blue-50 rounded-lg">
+                    <div key={worker} className="flex items-center justify-between p-4 bg-blue-50 dark:bg-blue-900/30 rounded-lg">
                       <div className="flex items-center gap-3">
                         <div className="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold">
                           {index + 1}
                         </div>
                         <div>
-                          <div className="font-medium">{worker}</div>
-                          <div className="text-sm text-gray-600">
+                          <div className="font-medium text-gray-900 dark:text-white">{worker}</div>
+                          <div className="text-sm text-gray-600 dark:text-gray-400">
                             🐄 {stats.animals} | 🌾 {stats.crops} | 💰 ${stats.revenue.toFixed(2)}
                           </div>
                         </div>
@@ -525,7 +525,7 @@ export default function FazendaCDPAnalytics({ firm }: FazendaCDPAnalyticsProps) 
                     </div>
                   ))}
                   {analytics.topWorkers.length === 0 && (
-                    <p className="text-gray-500 text-center py-4">
+                    <p className="text-gray-500 dark:text-gray-400 text-center py-4">
                       Nenhuma atividade de trabalhador registrada
                     </p>
                   )}
@@ -535,23 +535,23 @@ export default function FazendaCDPAnalytics({ firm }: FazendaCDPAnalyticsProps) 
               {/* Worker Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {Object.entries(analytics.workerStats).map(([worker, stats]: any) => (
-                  <div key={worker} className="bg-white rounded-lg border p-4">
-                    <div className="font-medium mb-3">{worker}</div>
+                  <div key={worker} className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4 transition-colors">
+                    <div className="font-medium mb-3 text-gray-900 dark:text-white">{worker}</div>
                     <div className="space-y-2 text-sm">
                       <div className="flex justify-between">
-                        <span>Atividades:</span>
-                        <span className="font-medium">{stats.activities}</span>
+                        <span className="text-gray-600 dark:text-gray-400">Atividades:</span>
+                        <span className="font-medium text-gray-900 dark:text-white">{stats.activities}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span>Animais:</span>
-                        <span className="font-medium">{stats.animals}</span>
+                        <span className="text-gray-600 dark:text-gray-400">Animais:</span>
+                        <span className="font-medium text-gray-900 dark:text-white">{stats.animals}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span>Cultivos:</span>
-                        <span className="font-medium">{stats.crops}</span>
+                        <span className="text-gray-600 dark:text-gray-400">Cultivos:</span>
+                        <span className="font-medium text-gray-900 dark:text-white">{stats.crops}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span>Receita:</span>
+                        <span className="text-gray-600 dark:text-gray-400">Receita:</span>
                         <span className="font-medium text-green-600">${stats.revenue.toFixed(2)}</span>
                       </div>
                     </div>
@@ -563,7 +563,7 @@ export default function FazendaCDPAnalytics({ firm }: FazendaCDPAnalyticsProps) 
 
           {currentTab === 'production' && (
             <div className="space-y-6">
-              <h3 className="text-lg font-semibold">📦 Analytics de Produção</h3>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">📦 Analytics de Produção</h3>
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 <MetricCard
@@ -600,28 +600,28 @@ export default function FazendaCDPAnalytics({ firm }: FazendaCDPAnalyticsProps) 
               </div>
 
               {/* Detailed Production Stats */}
-              <div className="bg-white rounded-lg border p-6">
-                <h4 className="font-semibold mb-4">📈 Detalhes de Produção</h4>
+              <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6 transition-colors">
+                <h4 className="font-semibold mb-4 text-gray-900 dark:text-white">📈 Detalhes de Produção</h4>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  <div className="text-center p-4 bg-gray-50 rounded">
+                  <div className="text-center p-4 bg-gray-50 dark:bg-gray-700 rounded">
                     <div className="text-2xl mb-2">🐄</div>
-                    <div className="font-bold">{Object.keys(analytics.animalStats).length}</div>
-                    <div className="text-xs text-gray-600">Tipos de Animais</div>
+                    <div className="font-bold text-gray-900 dark:text-white">{Object.keys(analytics.animalStats).length}</div>
+                    <div className="text-xs text-gray-600 dark:text-gray-400">Tipos de Animais</div>
                   </div>
-                  <div className="text-center p-4 bg-gray-50 rounded">
+                  <div className="text-center p-4 bg-gray-50 dark:bg-gray-700 rounded">
                     <div className="text-2xl mb-2">🌾</div>
-                    <div className="font-bold">{Object.keys(analytics.cropStats).length}</div>
-                    <div className="text-xs text-gray-600">Tipos de Cultivos</div>
+                    <div className="font-bold text-gray-900 dark:text-white">{Object.keys(analytics.cropStats).length}</div>
+                    <div className="text-xs text-gray-600 dark:text-gray-400">Tipos de Cultivos</div>
                   </div>
-                  <div className="text-center p-4 bg-gray-50 rounded">
+                  <div className="text-center p-4 bg-gray-50 dark:bg-gray-700 rounded">
                     <div className="text-2xl mb-2">👨‍🌾</div>
-                    <div className="font-bold">{analytics.activeWorkers}</div>
-                    <div className="text-xs text-gray-600">Trabalhadores</div>
+                    <div className="font-bold text-gray-900 dark:text-white">{analytics.activeWorkers}</div>
+                    <div className="text-xs text-gray-600 dark:text-gray-400">Trabalhadores</div>
                   </div>
-                  <div className="text-center p-4 bg-gray-50 rounded">
+                  <div className="text-center p-4 bg-gray-50 dark:bg-gray-700 rounded">
                     <div className="text-2xl mb-2">📊</div>
-                    <div className="font-bold">{analytics.totalActivities}</div>
-                    <div className="text-xs text-gray-600">Atividades</div>
+                    <div className="font-bold text-gray-900 dark:text-white">{analytics.totalActivities}</div>
+                    <div className="text-xs text-gray-600 dark:text-gray-400">Atividades</div>
                   </div>
                 </div>
               </div>
@@ -630,7 +630,7 @@ export default function FazendaCDPAnalytics({ firm }: FazendaCDPAnalyticsProps) 
 
           {currentTab === 'financial' && (
             <div className="space-y-6">
-              <h3 className="text-lg font-semibold">💰 Analytics Financeiro</h3>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">💰 Analytics Financeiro</h3>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <MetricCard
@@ -659,15 +659,15 @@ export default function FazendaCDPAnalytics({ firm }: FazendaCDPAnalyticsProps) 
               </div>
 
               {/* Revenue by Worker */}
-              <div className="bg-white rounded-lg border p-6">
-                <h4 className="font-semibold mb-4">💰 Receita por Trabalhador</h4>
+              <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6 transition-colors">
+                <h4 className="font-semibold mb-4 text-gray-900 dark:text-white">💰 Receita por Trabalhador</h4>
                 <div className="space-y-3">
                   {Object.entries(analytics.workerStats)
                     .sort(([,a]: any, [,b]: any) => b.revenue - a.revenue)
                     .slice(0, 10)
                     .map(([worker, stats]: any) => (
-                      <div key={worker} className="flex items-center justify-between p-3 bg-green-50 rounded">
-                        <span className="font-medium">{worker}</span>
+                      <div key={worker} className="flex items-center justify-between p-3 bg-green-50 dark:bg-green-900/30 rounded">
+                        <span className="font-medium text-gray-900 dark:text-white">{worker}</span>
                         <span className="font-bold text-green-600">${stats.revenue.toFixed(2)}</span>
                       </div>
                     ))

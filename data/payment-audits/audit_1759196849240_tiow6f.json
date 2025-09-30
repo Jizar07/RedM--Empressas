@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1759196849240_tiow6f",
+  "sessionId": "session_1759193470585_9e6k9n",
+  "managerId": "949397147030274059",
+  "managerName": "๖ۣۜζ͜͡ɪᴢᴢʏɴʜᴀ🎀",
+  "workerId": "1117649799181783130",
+  "workerName": "Ubirajara Cauamb",
+  "amountPaid": 285,
+  "paidAt": "2025-09-30T01:47:29.240Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-09-30T01:42:29.240Z",
+    "endTime": "2025-09-30T01:57:29.240Z"
+  }
+}

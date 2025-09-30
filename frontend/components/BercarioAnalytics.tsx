@@ -223,18 +223,18 @@ export default function BercarioAnalytics({ firm }: BercarioAnalyticsProps) {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-gray-900">📊 Analytics do Berçário</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white dark:text-white">📊 Analytics do Berçário</h2>
         <div className="flex items-center space-x-4">
           <select
             value={timeRange}
             onChange={(e) => setTimeRange(e.target.value as any)}
-            className="text-sm border border-gray-300 rounded px-3 py-1"
+            className="text-sm border border-gray-300 dark:border-gray-600 rounded px-3 py-1"
           >
             <option value="7d">Últimos 7 dias</option>
             <option value="30d">Últimos 30 dias</option>
             <option value="90d">Últimos 90 dias</option>
           </select>
-          <div className="text-sm text-gray-500">
+          <div className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500 dark:text-gray-400">
             Última atualização: {new Date().toLocaleTimeString('pt-BR')}
           </div>
         </div>
@@ -254,7 +254,7 @@ export default function BercarioAnalytics({ firm }: BercarioAnalyticsProps) {
           </div>
         </div>
 
-        <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+        <div className="bg-green-50 dark:bg-green-900/30 p-4 rounded-lg border border-green-200">
           <div className="flex items-center">
             <TrendingUp className="h-8 w-8 text-green-600 mr-3" />
             <div>
@@ -264,7 +264,7 @@ export default function BercarioAnalytics({ firm }: BercarioAnalyticsProps) {
           </div>
         </div>
 
-        <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+        <div className="bg-blue-50 dark:bg-blue-900/30 p-4 rounded-lg border border-blue-200">
           <div className="flex items-center">
             <BarChart3 className="h-8 w-8 text-blue-600 mr-3" />
             <div>
@@ -274,7 +274,7 @@ export default function BercarioAnalytics({ firm }: BercarioAnalyticsProps) {
           </div>
         </div>
 
-        <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
+        <div className="bg-purple-50 dark:bg-purple-900/30 p-4 rounded-lg border border-purple-200">
           <div className="flex items-center">
             <Calendar className="h-8 w-8 text-purple-600 mr-3" />
             <div>
@@ -284,7 +284,7 @@ export default function BercarioAnalytics({ firm }: BercarioAnalyticsProps) {
           </div>
         </div>
 
-        <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
+        <div className="bg-orange-50 dark:bg-orange-900/30 p-4 rounded-lg border border-orange-200">
           <div className="flex items-center">
             <Activity className="h-8 w-8 text-orange-600 mr-3" />
             <div>
@@ -298,8 +298,8 @@ export default function BercarioAnalytics({ firm }: BercarioAnalyticsProps) {
       {/* Charts Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Top Items */}
-        <div className="bg-white rounded-lg border border-gray-200 p-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">🐄 Animais Mais Vendidos</h3>
+        <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">🐄 Animais Mais Vendidos</h3>
           {analyticsData.topItems.length > 0 ? (
             <div className="space-y-3">
               {analyticsData.topItems.slice(0, 5).map((item, index) => (
@@ -313,8 +313,8 @@ export default function BercarioAnalytics({ firm }: BercarioAnalyticsProps) {
                       {index + 1}
                     </div>
                     <div>
-                      <div className="text-sm font-medium text-gray-900">{item.name}</div>
-                      <div className="text-xs text-gray-500">{item.quantity} vendidos</div>
+                      <div className="text-sm font-medium text-gray-900 dark:text-white dark:text-white">{item.name}</div>
+                      <div className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500 dark:text-gray-400">{item.quantity} vendidos</div>
                     </div>
                   </div>
                   <div className="text-sm font-bold text-green-600">${item.revenue.toFixed(2)}</div>
@@ -322,7 +322,7 @@ export default function BercarioAnalytics({ firm }: BercarioAnalyticsProps) {
               ))}
             </div>
           ) : (
-            <div className="text-center text-gray-500 py-8">
+            <div className="text-center text-gray-500 dark:text-gray-400 dark:text-gray-500 py-8">
               <PieChart className="mx-auto h-12 w-12 mb-2" />
               <p>Nenhuma venda registrada</p>
             </div>
@@ -330,8 +330,8 @@ export default function BercarioAnalytics({ firm }: BercarioAnalyticsProps) {
         </div>
 
         {/* Top Clients */}
-        <div className="bg-white rounded-lg border border-gray-200 p-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">👑 Melhores Clientes</h3>
+        <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">👑 Melhores Clientes</h3>
           {analyticsData.topClients.length > 0 ? (
             <div className="space-y-3">
               {analyticsData.topClients.slice(0, 5).map((client, index) => (
@@ -345,8 +345,8 @@ export default function BercarioAnalytics({ firm }: BercarioAnalyticsProps) {
                       {index + 1}
                     </div>
                     <div>
-                      <div className="text-sm font-medium text-gray-900">{client.name}</div>
-                      <div className="text-xs text-gray-500">{client.purchaseCount} compras</div>
+                      <div className="text-sm font-medium text-gray-900 dark:text-white dark:text-white">{client.name}</div>
+                      <div className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500 dark:text-gray-400">{client.purchaseCount} compras</div>
                     </div>
                   </div>
                   <div className="text-sm font-bold text-green-600">${client.totalSpent.toFixed(2)}</div>
@@ -354,7 +354,7 @@ export default function BercarioAnalytics({ firm }: BercarioAnalyticsProps) {
               ))}
             </div>
           ) : (
-            <div className="text-center text-gray-500 py-8">
+            <div className="text-center text-gray-500 dark:text-gray-400 dark:text-gray-500 py-8">
               <BarChart3 className="mx-auto h-12 w-12 mb-2" />
               <p>Nenhum cliente registrado</p>
             </div>
@@ -363,8 +363,8 @@ export default function BercarioAnalytics({ firm }: BercarioAnalyticsProps) {
       </div>
 
       {/* Recent Performance */}
-      <div className="bg-white rounded-lg border border-gray-200 p-6">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">📈 Performance Recente</h3>
+      <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">📈 Performance Recente</h3>
         {analyticsData.dailyRevenue.length > 0 ? (
           <div className="overflow-x-auto">
             <div className="flex items-end space-x-2 h-32">
@@ -376,18 +376,18 @@ export default function BercarioAnalytics({ firm }: BercarioAnalyticsProps) {
                       height: `${Math.max(10, (day.revenue / Math.max(...analyticsData.dailyRevenue.map(d => d.revenue))) * 100)}%`
                     }}
                   ></div>
-                  <div className="text-xs text-gray-500 mt-1 transform -rotate-45 origin-left">
+                  <div className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500 mt-1 transform -rotate-45 origin-left">
                     {new Date(day.date).toLocaleDateString('pt-BR').split('/').slice(0, 2).join('/')}
                   </div>
                 </div>
               ))}
             </div>
-            <div className="mt-4 text-xs text-gray-500 text-center">
+            <div className="mt-4 text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500 text-center">
               Receita diária dos últimos 14 dias
             </div>
           </div>
         ) : (
-          <div className="text-center text-gray-500 py-8">
+          <div className="text-center text-gray-500 dark:text-gray-400 dark:text-gray-500 py-8">
             <TrendingUp className="mx-auto h-12 w-12 mb-2" />
             <p>Nenhum dado de performance disponível</p>
           </div>

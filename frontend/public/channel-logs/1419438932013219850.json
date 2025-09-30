@@ -1,8 +1,368 @@
 {
   "channelId": "1419438932013219850",
-  "lastUpdated": "2025-09-27T04:51:03.546Z",
-  "messageCount": 87,
+  "lastUpdated": "2025-09-30T02:26:11.831Z",
+  "messageCount": 123,
   "messages": [
+    {
+      "id": "1422409163627298947",
+      "author": "Bartholomeu Dias",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: ammoshotgunnormal x15\nFuncionario:: Bartholomeu Dias | FIXO: 76312\nData:: 29/09/2025 -  23:26:11",
+      "timestamp": "2025-09-30T02:26:11.693Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: ammoshotgunnormal x15\nFuncionario:: Bartholomeu Dias | FIXO: 76312\nData:: 29/09/2025 -  23:26:11",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1422388098368667649",
+      "author": "Polly Lima",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: ammoshotgunnormal x4\nFuncionario:: Polly Lima | FIXO: 2009\nData:: 29/09/2025 -  22:02:29",
+      "timestamp": "2025-09-30T01:02:29.344Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: ammoshotgunnormal x4\nFuncionario:: Polly Lima | FIXO: 2009\nData:: 29/09/2025 -  22:02:29",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1422388060892430507",
+      "author": "Polly Lima",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: ammorifleexpress x11\nAutor:: Polly Lima | FIXO: 2009\nData:: 29/09/2025 - 22:02:20",
+      "timestamp": "2025-09-30T01:02:20.409Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: ammorifleexpress x11\nAutor:: Polly Lima | FIXO: 2009\nData:: 29/09/2025 - 22:02:20",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1422386715963953214",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorifleexpress x5\nComprador:: Draven Lima | FIXO: 77729\nPreço Total:: $65\nData:: 29/09/2025 -  21:56:59",
+      "timestamp": "2025-09-30T00:56:59.753Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorifleexpress x5\nComprador:: Draven Lima | FIXO: 77729\nPreço Total:: $65\nData:: 29/09/2025 -  21:56:59",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1422386679435497573",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammoshotgunnormal x5\nComprador:: Draven Lima | FIXO: 77729\nPreço Total:: $12.25\nData:: 29/09/2025 -  21:56:50",
+      "timestamp": "2025-09-30T00:56:51.044Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammoshotgunnormal x5\nComprador:: Draven Lima | FIXO: 77729\nPreço Total:: $12.25\nData:: 29/09/2025 -  21:56:50",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1422386281010303168",
+      "author": "Bartholomeu Dias",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: ammorifleexpress x25\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 29/09/2025 - 21:55:15",
+      "timestamp": "2025-09-30T00:55:16.052Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: ammorifleexpress x25\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 29/09/2025 - 21:55:15",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1422385888960184431",
+      "author": "Bartholomeu Dias",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: ammorifleexpress x10\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 29/09/2025 - 21:53:42",
+      "timestamp": "2025-09-30T00:53:42.580Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: ammorifleexpress x10\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 29/09/2025 - 21:53:42",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1422342669836881980",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorifleexpress x15\nComprador:: Cliff Dillimore | FIXO: 267\nPreço Total:: $195\nData:: 29/09/2025 -  19:01:57",
+      "timestamp": "2025-09-29T22:01:58.338Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorifleexpress x15\nComprador:: Cliff Dillimore | FIXO: 267\nPreço Total:: $195\nData:: 29/09/2025 -  19:01:57",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1422342658604662785",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorifleexpress x20\nComprador:: Cliff Dillimore | FIXO: 267\nPreço Total:: $260\nData:: 29/09/2025 -  19:01:55",
+      "timestamp": "2025-09-29T22:01:55.660Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorifleexpress x20\nComprador:: Cliff Dillimore | FIXO: 267\nPreço Total:: $260\nData:: 29/09/2025 -  19:01:55",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1422264100565811221",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorifleexpress x10\nComprador:: Bernardo Chaves | FIXO: 77865\nPreço Total:: $130\nData:: 29/09/2025 -  13:49:45",
+      "timestamp": "2025-09-29T16:49:45.964Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorifleexpress x10\nComprador:: Bernardo Chaves | FIXO: 77865\nPreço Total:: $130\nData:: 29/09/2025 -  13:49:45",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1422099695932801034",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorifleexpress x5\nComprador:: Manoel Jackson | FIXO: 75326\nPreço Total:: $65\nData:: 29/09/2025 -  02:56:28",
+      "timestamp": "2025-09-29T05:56:28.845Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorifleexpress x5\nComprador:: Manoel Jackson | FIXO: 75326\nPreço Total:: $65\nData:: 29/09/2025 -  02:56:28",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1422099666346184736",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammopistolexpress x4\nComprador:: Manoel Jackson | FIXO: 75326\nPreço Total:: $40\nData:: 29/09/2025 -  02:56:21",
+      "timestamp": "2025-09-29T05:56:21.791Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammopistolexpress x4\nComprador:: Manoel Jackson | FIXO: 75326\nPreço Total:: $40\nData:: 29/09/2025 -  02:56:21",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1422069155363819635",
+      "author": "Polly Lima",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: segurofechada x1\nFuncionario:: Polly Lima | FIXO: 2009\nData:: 29/09/2025 -  00:55:07",
+      "timestamp": "2025-09-29T03:55:07.406Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: segurofechada x1\nFuncionario:: Polly Lima | FIXO: 2009\nData:: 29/09/2025 -  00:55:07",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1422069132001546431",
+      "author": "Polly Lima",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: segurorua x1\nFuncionario:: Polly Lima | FIXO: 2009\nData:: 29/09/2025 -  00:55:01",
+      "timestamp": "2025-09-29T03:55:01.836Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: segurorua x1\nFuncionario:: Polly Lima | FIXO: 2009\nData:: 29/09/2025 -  00:55:01",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1422069111302652018",
+      "author": "Polly Lima",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: segurofechada x1\nFuncionario:: Polly Lima | FIXO: 2009\nData:: 29/09/2025 -  00:54:56",
+      "timestamp": "2025-09-29T03:54:56.901Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: segurofechada x1\nFuncionario:: Polly Lima | FIXO: 2009\nData:: 29/09/2025 -  00:54:56",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1422069077777580122",
+      "author": "Polly Lima",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: ammorifleexpress x40\nAutor:: Polly Lima | FIXO: 2009\nData:: 29/09/2025 - 00:54:48",
+      "timestamp": "2025-09-29T03:54:48.908Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: ammorifleexpress x40\nAutor:: Polly Lima | FIXO: 2009\nData:: 29/09/2025 - 00:54:48",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1422068977974382592",
+      "author": "Polly Lima",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: ammorifleexpress x50\nFuncionario:: Polly Lima | FIXO: 2009\nData:: 29/09/2025 -  00:54:24",
+      "timestamp": "2025-09-29T03:54:25.113Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: ammorifleexpress x50\nFuncionario:: Polly Lima | FIXO: 2009\nData:: 29/09/2025 -  00:54:24",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1422066978943668308",
+      "author": "Polly Lima",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: ammorifleexpress x60\nAutor:: Polly Lima | FIXO: 2009\nData:: 29/09/2025 - 00:46:28",
+      "timestamp": "2025-09-29T03:46:28.507Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: ammorifleexpress x60\nAutor:: Polly Lima | FIXO: 2009\nData:: 29/09/2025 - 00:46:28",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1422066937378242714",
+      "author": "Polly Lima",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: ammorifleexpress x70\nFuncionario:: Polly Lima | FIXO: 2009\nData:: 29/09/2025 -  00:46:18",
+      "timestamp": "2025-09-29T03:46:18.597Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: ammorifleexpress x70\nFuncionario:: Polly Lima | FIXO: 2009\nData:: 29/09/2025 -  00:46:18",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1422066923276996658",
+      "author": "Polly Lima",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: ammorifleexpress x70\nAutor:: Polly Lima | FIXO: 2009\nData:: 29/09/2025 - 00:46:15",
+      "timestamp": "2025-09-29T03:46:15.235Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: ammorifleexpress x70\nAutor:: Polly Lima | FIXO: 2009\nData:: 29/09/2025 - 00:46:15",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1422060026230738994",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammoshotgunnormal x8\nComprador:: Cliff Dillimore | FIXO: 267\nPreço Total:: $19.6\nData:: 29/09/2025 -  00:18:50",
+      "timestamp": "2025-09-29T03:18:50.851Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammoshotgunnormal x8\nComprador:: Cliff Dillimore | FIXO: 267\nPreço Total:: $19.6\nData:: 29/09/2025 -  00:18:50",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1422059985478881321",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammoshotgunnormal x10\nComprador:: Kenai Comanches | FIXO: 78096\nPreço Total:: $24.5\nData:: 29/09/2025 -  00:18:41",
+      "timestamp": "2025-09-29T03:18:41.135Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammoshotgunnormal x10\nComprador:: Kenai Comanches | FIXO: 78096\nPreço Total:: $24.5\nData:: 29/09/2025 -  00:18:41",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1422008496630530060",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorepeaterexpress x5\nComprador:: Thony Gustav | FIXO: 72363\nPreço Total:: $65\nData:: 28/09/2025 -  20:54:05",
+      "timestamp": "2025-09-28T23:54:05.237Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorepeaterexpress x5\nComprador:: Thony Gustav | FIXO: 72363\nPreço Total:: $65\nData:: 28/09/2025 -  20:54:05",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421994003330498771",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammopistolexpress x10\nComprador:: Cliff Dillimore | FIXO: 267\nPreço Total:: $100\nData:: 28/09/2025 -  19:56:29",
+      "timestamp": "2025-09-28T22:56:29.765Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammopistolexpress x10\nComprador:: Cliff Dillimore | FIXO: 267\nPreço Total:: $100\nData:: 28/09/2025 -  19:56:29",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421993935194292296",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammoriflenormal x10\nComprador:: Cliff Dillimore | FIXO: 267\nPreço Total:: $24.5\nData:: 28/09/2025 -  19:56:13",
+      "timestamp": "2025-09-28T22:56:13.520Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammoriflenormal x10\nComprador:: Cliff Dillimore | FIXO: 267\nPreço Total:: $24.5\nData:: 28/09/2025 -  19:56:13",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421993891858747525",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorifleexpress x2\nComprador:: Cliff Dillimore | FIXO: 267\nPreço Total:: $26\nData:: 28/09/2025 -  19:56:03",
+      "timestamp": "2025-09-28T22:56:03.188Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorifleexpress x2\nComprador:: Cliff Dillimore | FIXO: 267\nPreço Total:: $26\nData:: 28/09/2025 -  19:56:03",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421993868831887441",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorifleexpress x20\nComprador:: Cliff Dillimore | FIXO: 267\nPreço Total:: $260\nData:: 28/09/2025 -  19:55:57",
+      "timestamp": "2025-09-28T22:55:57.698Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorifleexpress x20\nComprador:: Cliff Dillimore | FIXO: 267\nPreço Total:: $260\nData:: 28/09/2025 -  19:55:57",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421993846622912582",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorifleexpress x20\nComprador:: Cliff Dillimore | FIXO: 267\nPreço Total:: $260\nData:: 28/09/2025 -  19:55:52",
+      "timestamp": "2025-09-28T22:55:52.403Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorifleexpress x20\nComprador:: Cliff Dillimore | FIXO: 267\nPreço Total:: $260\nData:: 28/09/2025 -  19:55:52",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421696059637235793",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorifleexpress x10\nComprador:: Victor Lincoln | FIXO: 74265\nPreço Total:: $130\nData:: 28/09/2025 -  00:12:34",
+      "timestamp": "2025-09-28T03:12:34.453Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorifleexpress x10\nComprador:: Victor Lincoln | FIXO: 74265\nPreço Total:: $130\nData:: 28/09/2025 -  00:12:34",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421696043321524336",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammopistolexpress x5\nComprador:: Victor Lincoln | FIXO: 74265\nPreço Total:: $50\nData:: 28/09/2025 -  00:12:30",
+      "timestamp": "2025-09-28T03:12:30.563Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammopistolexpress x5\nComprador:: Victor Lincoln | FIXO: 74265\nPreço Total:: $50\nData:: 28/09/2025 -  00:12:30",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421681530853396500",
+      "author": "Bartholomeu Dias",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: ammorifleexpress x10\nFuncionario:: Bartholomeu Dias | FIXO: 76312\nData:: 27/09/2025 -  23:14:50",
+      "timestamp": "2025-09-28T02:14:50.521Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: ammorifleexpress x10\nFuncionario:: Bartholomeu Dias | FIXO: 76312\nData:: 27/09/2025 -  23:14:50",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421646141220716757",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammopistolexpress x1\nComprador:: Flaco Guzman | FIXO: 76843\nPreço Total:: $10\nData:: 27/09/2025 -  20:54:12",
+      "timestamp": "2025-09-27T23:54:12.975Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammopistolexpress x1\nComprador:: Flaco Guzman | FIXO: 76843\nPreço Total:: $10\nData:: 27/09/2025 -  20:54:12",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421646101982871633",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorifleexpress x3\nComprador:: Flaco Guzman | FIXO: 76843\nPreço Total:: $39\nData:: 27/09/2025 -  20:54:03",
+      "timestamp": "2025-09-27T23:54:03.620Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorifleexpress x3\nComprador:: Flaco Guzman | FIXO: 76843\nPreço Total:: $39\nData:: 27/09/2025 -  20:54:03",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421579442366582825",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorepeaterexpress x10\nComprador:: John Weslley | FIXO: 550\nPreço Total:: $130\nData:: 27/09/2025 -  16:29:10",
+      "timestamp": "2025-09-27T19:29:10.729Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorepeaterexpress x10\nComprador:: John Weslley | FIXO: 550\nPreço Total:: $130\nData:: 27/09/2025 -  16:29:10",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421409433849692211",
+      "author": "Bartholomeu Dias",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: ammoshotgunnormal x10\nFuncionario:: Bartholomeu Dias | FIXO: 76312\nData:: 27/09/2025 -  05:13:37",
+      "timestamp": "2025-09-27T08:13:37.540Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: ammoshotgunnormal x10\nFuncionario:: Bartholomeu Dias | FIXO: 76312\nData:: 27/09/2025 -  05:13:37",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1421383124323012618",
+      "author": "Bartholomeu Dias",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: ammorifleexpress x5\nFuncionario:: Bartholomeu Dias | FIXO: 76312\nData:: 27/09/2025 -  03:29:04",
+      "timestamp": "2025-09-27T06:29:04.860Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: ammorifleexpress x5\nFuncionario:: Bartholomeu Dias | FIXO: 76312\nData:: 27/09/2025 -  03:29:04",
+      "rawEmbeds": []
+    },
     {
       "id": "1421358455670706197",
       "author": "Bartholomeu Dias",

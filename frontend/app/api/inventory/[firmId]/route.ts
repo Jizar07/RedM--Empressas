@@ -133,7 +133,7 @@ function calculateAnalytics(items: Record<string, InventoryItem>, transactions: 
   const totalItems = Object.keys(items).length;
   const totalQuantity = Object.values(items).reduce((sum, item) => sum + item.quantidade, 0);
   const totalValue = Object.values(items).reduce((sum, item) => {
-    const avgPrice = item.preco_medio || (item.preco_min + item.preco_max) / 2 || 0;
+    const avgPrice = item.preco_medio || ((item.preco_min ?? 0) + (item.preco_max ?? 0)) / 2 || 0;
     return sum + (avgPrice * item.quantidade);
   }, 0);
 

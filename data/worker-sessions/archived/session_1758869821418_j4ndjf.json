@@ -1,0 +1,51 @@
+{
+  "workerId": "398270963969425408",
+  "workerName": "john Weslley",
+  "channelId": "1416880519165120542",
+  "sessionId": "session_1758869821418_j4ndjf",
+  "startTime": "2025-09-26T06:57:01.418Z",
+  "lastActivity": "2025-09-26T06:57:04.023Z",
+  "status": "paid",
+  "plantTransactions": [],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Porco",
+      "quantity": 3,
+      "cost": 60,
+      "amount": 0,
+      "transactionId": "tx_1758869821419_tfv9gm",
+      "timestamp": "2025-09-26T06:57:01.419Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Porca",
+      "quantity": 1,
+      "cost": 20,
+      "amount": 0,
+      "transactionId": "tx_1758869824023_bcbpf9",
+      "timestamp": "2025-09-26T06:57:04.023Z"
+    }
+  ],
+  "totalCredits": 0,
+  "embedMessageId": "1421027780451373107",
+  "animalExpectations": [
+    {
+      "animalsTaken": 3,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1758869821419_tfv9gm",
+      "takenTimestamp": "2025-09-26T06:57:01.419Z"
+    },
+    {
+      "animalsTaken": 1,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1758869824023_bcbpf9",
+      "takenTimestamp": "2025-09-26T06:57:04.023Z"
+    }
+  ],
+  "financialTransactions": [],
+  "completedAt": "2025-09-27T19:12:23.840Z",
+  "notes": "Pago por r3dley (141250620593012736)"
+}

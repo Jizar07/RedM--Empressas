@@ -225,7 +225,7 @@ export default function FerroviaWorkers({ firm }: FerroviaWorkersProps) {
     <div className="space-y-6">
       {/* Summary Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+        <div className="bg-blue-50 dark:bg-blue-900/30 p-4 rounded-lg border border-blue-200">
           <div className="flex items-center">
             <Package className="h-8 w-8 text-blue-600" />
             <div className="ml-3">
@@ -235,7 +235,7 @@ export default function FerroviaWorkers({ firm }: FerroviaWorkersProps) {
           </div>
         </div>
 
-        <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+        <div className="bg-green-50 dark:bg-green-900/30 p-4 rounded-lg border border-green-200">
           <div className="flex items-center">
             <MapPin className="h-8 w-8 text-green-600" />
             <div className="ml-3">
@@ -245,7 +245,7 @@ export default function FerroviaWorkers({ firm }: FerroviaWorkersProps) {
           </div>
         </div>
 
-        <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
+        <div className="bg-purple-50 dark:bg-purple-900/30 p-4 rounded-lg border border-purple-200">
           <div className="flex items-center">
             <TrendingDown className="h-8 w-8 text-purple-600" />
             <div className="ml-3">
@@ -255,7 +255,7 @@ export default function FerroviaWorkers({ firm }: FerroviaWorkersProps) {
           </div>
         </div>
 
-        <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+        <div className="bg-yellow-50 dark:bg-yellow-900/30 p-4 rounded-lg border border-yellow-200">
           <div className="flex items-center">
             <TrendingUp className="h-8 w-8 text-yellow-600" />
             <div className="ml-3">
@@ -267,48 +267,48 @@ export default function FerroviaWorkers({ firm }: FerroviaWorkersProps) {
       </div>
 
       {/* Worker Stats Table */}
-      <div className="bg-white rounded-lg shadow overflow-hidden">
-        <div className="px-6 py-4 border-b border-gray-200">
-          <h3 className="text-lg font-medium text-gray-900">Análise de Trabalhadores da Cadeia de Suprimentos</h3>
-          <p className="text-sm text-gray-500">Comparação entre remoção de inventário, entregas e pagamentos</p>
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
+        <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700 dark:border-gray-700">
+          <h3 className="text-lg font-medium text-gray-900 dark:text-white dark:text-white">Análise de Trabalhadores da Cadeia de Suprimentos</h3>
+          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500 dark:text-gray-400">Comparação entre remoção de inventário, entregas e pagamentos</p>
         </div>
         
         <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-50">
+          <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700 dark:divide-gray-700">
+            <thead className="bg-gray-50 dark:bg-gray-700">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500 uppercase tracking-wider">
                   Trabalhador
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500 uppercase tracking-wider">
                   Caixas Removidas
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500 uppercase tracking-wider">
                   Caixas Entregues
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500 uppercase tracking-wider">
                   Pagamento Trabalhador
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500 uppercase tracking-wider">
                   Lucro Ferrovia
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500 uppercase tracking-wider">
                   Eficiência
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500 uppercase tracking-wider">
                   Status
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500 uppercase tracking-wider">
                   Ações
                 </th>
               </tr>
             </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
+            <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700 dark:divide-gray-700">
               {workerStats.map((worker) => (
-                <tr key={worker.name} className="hover:bg-gray-50">
+                <tr key={worker.name} className="hover:bg-gray-50 dark:hover:bg-gray-700 dark:bg-gray-700">
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm font-medium text-gray-900">{worker.name}</div>
-                    <div className="text-sm text-gray-500">
+                    <div className="text-sm font-medium text-gray-900 dark:text-white dark:text-white">{worker.name}</div>
+                    <div className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500 dark:text-gray-400">
                       Última atividade: {new Date(worker.lastActivity).toLocaleDateString()}
                     </div>
                   </td>
@@ -325,7 +325,7 @@ export default function FerroviaWorkers({ firm }: FerroviaWorkersProps) {
                     ${worker.ferroviaProfit.toFixed(2)}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <span className="text-sm font-medium text-gray-900">
+                    <span className="text-sm font-medium text-gray-900 dark:text-white dark:text-white">
                       {worker.efficiency.toFixed(1)}%
                     </span>
                   </td>
@@ -335,7 +335,7 @@ export default function FerroviaWorkers({ firm }: FerroviaWorkersProps) {
                       <span className="ml-1 capitalize">{worker.status}</span>
                     </span>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500 dark:text-gray-400">
                     <button
                       onClick={() => setSelectedWorker(selectedWorker === worker.name ? null : worker.name)}
                       className="text-blue-600 hover:text-blue-900"
@@ -352,9 +352,9 @@ export default function FerroviaWorkers({ firm }: FerroviaWorkersProps) {
 
       {/* Worker Details Modal */}
       {selectedWorker && (
-        <div className="bg-white rounded-lg shadow overflow-hidden">
-          <div className="px-6 py-4 border-b border-gray-200">
-            <h3 className="text-lg font-medium text-gray-900">
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
+          <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700 dark:border-gray-700">
+            <h3 className="text-lg font-medium text-gray-900 dark:text-white dark:text-white">
               Atividade Detalhada - {selectedWorker}
             </h3>
           </div>
@@ -363,15 +363,15 @@ export default function FerroviaWorkers({ firm }: FerroviaWorkersProps) {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               {/* Inventory Removals */}
               <div>
-                <h4 className="text-md font-medium text-gray-900 mb-3">📦 Remoções do Inventário</h4>
+                <h4 className="text-md font-medium text-gray-900 dark:text-white mb-3">📦 Remoções do Inventário</h4>
                 <div className="space-y-2 max-h-64 overflow-y-auto">
                   {getWorkerDetails(selectedWorker).inventoryRemovals.map((activity, index) => (
-                    <div key={index} className="bg-blue-50 p-3 rounded border border-blue-200">
+                    <div key={index} className="bg-blue-50 dark:bg-blue-900/30 p-3 rounded border border-blue-200">
                       <div className="text-sm">
                         <span className="font-medium">
                           {activity.quantidade}x {activity.item}
                         </span>
-                        <div className="text-gray-500 text-xs mt-1">
+                        <div className="text-gray-500 dark:text-gray-400 dark:text-gray-500 text-xs mt-1">
                           {new Date(activity.timestamp).toLocaleString()}
                         </div>
                       </div>
@@ -382,15 +382,15 @@ export default function FerroviaWorkers({ firm }: FerroviaWorkersProps) {
 
               {/* Deliveries */}
               <div>
-                <h4 className="text-md font-medium text-gray-900 mb-3">🚂 Entregas Realizadas</h4>
+                <h4 className="text-md font-medium text-gray-900 dark:text-white mb-3">🚂 Entregas Realizadas</h4>
                 <div className="space-y-2 max-h-64 overflow-y-auto">
                   {getWorkerDetails(selectedWorker).deliveries.map((activity, index) => (
-                    <div key={index} className="bg-green-50 p-3 rounded border border-green-200">
+                    <div key={index} className="bg-green-50 dark:bg-green-900/30 p-3 rounded border border-green-200">
                       <div className="text-sm">
                         <span className="font-medium">
                           Missão #{activity.missao}: {activity.boxesDelivered} caixas
                         </span>
-                        <div className="text-gray-500 text-xs mt-1">
+                        <div className="text-gray-500 dark:text-gray-400 dark:text-gray-500 text-xs mt-1">
                           ${activity.valor?.toFixed(2)} - {new Date(activity.timestamp).toLocaleString()}
                         </div>
                       </div>
@@ -401,15 +401,15 @@ export default function FerroviaWorkers({ firm }: FerroviaWorkersProps) {
 
               {/* Payments */}
               <div>
-                <h4 className="text-md font-medium text-gray-900 mb-3">💰 Saques Realizados</h4>
+                <h4 className="text-md font-medium text-gray-900 dark:text-white mb-3">💰 Saques Realizados</h4>
                 <div className="space-y-2 max-h-64 overflow-y-auto">
                   {getWorkerDetails(selectedWorker).payments.map((activity, index) => (
-                    <div key={index} className="bg-purple-50 p-3 rounded border border-purple-200">
+                    <div key={index} className="bg-purple-50 dark:bg-purple-900/30 p-3 rounded border border-purple-200">
                       <div className="text-sm">
                         <span className="font-medium">
                           ${activity.valor?.toFixed(2)}
                         </span>
-                        <div className="text-gray-500 text-xs mt-1">
+                        <div className="text-gray-500 dark:text-gray-400 dark:text-gray-500 text-xs mt-1">
                           {new Date(activity.timestamp).toLocaleString()}
                         </div>
                       </div>
