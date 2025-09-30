@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useState, useEffect, useCallback, useMemo, useTransition } from 'react';
 import { 
   InventoryItem, 
   InventoryTransaction, 
@@ -60,6 +60,7 @@ export function useInventoryManager({
   const [itemTranslations, setItemTranslations] = useState<Record<string, string>>({});
   const [priceList, setPriceList] = useState<Record<string, PriceListItem>>({});
   const [registeredWorkers, setRegisteredWorkers] = useState<any[]>([]);
+  const [isPending, startTransition] = useTransition();
 
   // Load registered workers from backend
   const loadRegisteredWorkers = useCallback(async () => {
@@ -73,7 +74,10 @@ export function useInventoryManager({
       if (response.ok) {
         const data = await response.json();
         if (data.success) {
-          setRegisteredWorkers(data.workers);
+          // Wrap in startTransition to prevent flicker when this slow API completes
+          startTransition(() => {
+            setRegisteredWorkers(data.workers);
+          });
           console.log(`✅ Loaded ${data.workers.length} registered workers`);
         }
       } else {
@@ -105,7 +109,10 @@ export function useInventoryManager({
           if (data.success && data.data?.custom_overrides) {
             // Cache translations in memory to prevent duplicate API calls
             (window as any).__translationsCache = data.data.custom_overrides;
-            setItemTranslations(data.data.custom_overrides);
+            // Wrap in startTransition to prevent flicker
+            startTransition(() => {
+              setItemTranslations(data.data.custom_overrides);
+            });
             console.log('✅ Loaded', Object.keys(data.data.custom_overrides).length, 'global translations');
           }
         }
