@@ -4,6 +4,23 @@ This is a local timestamped file to track all development changes and prompts.
 
 ## Log Entries
 
+### 2025-09-30 08:45:43
+**Action**: Template System Overhaul - Replaced Generic Templates with Working System Templates
+**Prompt**: User wanted to replace generic templates (fazenda-bw, generic, custom) with 4 templates based on working systems from Cabra da Peste server: Fazenda, Ferrovia, Berçário, Veterinária. Templates should copy structure/configuration only, NO data from original systems.
+**Changes**:
+- **Created 4 New Templates** in `frontend/types/firmTemplates.ts`:
+  - `FAZENDA_TEMPLATE` - Based on Fazenda Cabra da Peste working system (Dashboard, Estoque, Trabalhadores, Análises)
+  - `FERROVIA_TEMPLATE` - Based on Ferrovia working system (Dashboard, Trabalhadores, Análises, Pagamentos) - NO inventory component
+  - `BERCARIO_TEMPLATE` - Based on Berçário working system (Dashboard, Inventário, Trabalhadores, Análises, Pagamentos)
+  - `VETERINARIA_TEMPLATE` - Based on Veterinária working system (Dashboard, Estoque, Trabalhadores, Análises)
+- **Removed Old Templates**: Deleted fazenda-bw, generic, custom templates
+- **Updated Template Types**: Changed from `'fazenda-bw' | 'generic' | 'custom'` to `'fazenda' | 'ferrovia' | 'bercario' | 'veterinaria'`
+- **Updated Template Presets**: New icons 🌾 (Fazenda), 🚂 (Ferrovia), 🐣 (Berçário), 🏥 (Veterinária)
+- **Updated FirmTemplateRenderer.tsx**: Refactored to use new templates, updated imports and switch statements
+- **Updated EnhancedFirmConfigModal.tsx**: Changed default template type from 'fazenda-bw' to 'fazenda', updated interfaces
+- **Data Preservation**: Original working firms in `data/firms-config.json` NOT modified - templates are clean copies with NO data
+**Result**: Template system now uses proven working structures from Cabra da Peste as templates for new firm creation. Each template is data-free and ready for multi-server deployment.
+
 ### 2025-09-27 01:22:44
 **Action**: Complete Bercario Global Naming System & Weekly Sales Tracking Implementation
 **Prompt**: User wanted to implement global naming system for Bercario purchases (replace internal names like "common_portion_pig", "pig_male" with Portuguese translations like "Ração Suíno", "Porco") and replace "Saldo do Banco US$ 0,00" with weekly sales tracking from Sunday 00:01 to Saturday 23:59, auto-reset weekly

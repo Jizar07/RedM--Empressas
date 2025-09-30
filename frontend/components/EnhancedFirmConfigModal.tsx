@@ -9,7 +9,7 @@ import { TEMPLATE_PRESETS, TemplatePreset } from '../types/firmTemplates';
 
 interface EnhancedCreateFirmRequest extends CreateFirmRequest {
   template?: {
-    type: 'fazenda-bw' | 'generic' | 'custom';
+    type: 'fazenda' | 'ferrovia' | 'bercario' | 'veterinaria';
     version: string;
     customConfig?: Record<string, any>;
     enabledComponents?: string[];
@@ -48,9 +48,9 @@ export default function EnhancedFirmConfigModal({ firm, onSave, onCancel }: Enha
       }
     },
     template: {
-      type: 'fazenda-bw',
+      type: 'fazenda',
       version: '1.0.0',
-      enabledComponents: ['dashboard', 'inventory', 'workers', 'analytics', 'payments']
+      enabledComponents: ['dashboard', 'inventory', 'workers', 'analytics']
     }
   });
   
@@ -101,9 +101,9 @@ export default function EnhancedFirmConfigModal({ firm, onSave, onCancel }: Enha
         monitoring: firm.monitoring,
         display: firm.display,
         template: firm.template || {
-          type: 'fazenda-bw',
+          type: 'fazenda',
           version: '1.0.0',
-          enabledComponents: ['dashboard', 'inventory', 'workers', 'analytics', 'payments']
+          enabledComponents: ['dashboard', 'inventory', 'workers', 'analytics']
         }
       });
       

@@ -5,7 +5,27 @@ This file is synchronized with: https://github.com/Jizar07/RedM--Empressas
 
 ## Version History
 
-### [0.050] - 2025-09-27 **[CURRENT VERSION]**
+### [0.051] - 2025-09-30 **[CURRENT VERSION]**
+- **TEMPLATE SYSTEM OVERHAUL**: Complete replacement of generic templates with working system templates from Cabra da Peste
+- **4 NEW FIRM TEMPLATES**: Created Fazenda (🌾), Ferrovia (🚂), Berçário (🐣), Veterinária (🏥) templates based on proven working systems
+- **FERROVIA TEMPLATE ACCURACY**: Correctly configured without inventory component, matching actual working system
+- **TEMPLATE STRUCTURE**: Each template includes proper components, theme colors, features, and data mapping
+- **DATA PRESERVATION**: Original working firms remain untouched - templates are clean structure-only copies
+- **MULTI-SERVER READY**: Templates prepared for deployment across multiple Discord servers with clean slate data
+- **REMOVED OLD TEMPLATES**: Deleted fazenda-bw, generic, custom templates in favor of real working system templates
+- **KEY FEATURES**:
+  - FAZENDA_TEMPLATE: Dashboard, Estoque, Trabalhadores, Análises (green theme #16a34a)
+  - FERROVIA_TEMPLATE: Dashboard, Trabalhadores, Análises, Pagamentos (emerald theme #059669) - NO inventory
+  - BERCARIO_TEMPLATE: Dashboard, Inventário, Trabalhadores, Análises, Pagamentos (green theme)
+  - VETERINARIA_TEMPLATE: Dashboard, Estoque, Trabalhadores, Análises (green theme)
+- **TECHNICAL CHANGES**:
+  - Updated `frontend/types/firmTemplates.ts` with 4 new template configurations
+  - Modified `frontend/components/FirmTemplateRenderer.tsx` to handle new template types
+  - Updated `frontend/components/EnhancedFirmConfigModal.tsx` interface and default values
+  - Changed template type union from `'fazenda-bw' | 'generic' | 'custom'` to `'fazenda' | 'ferrovia' | 'bercario' | 'veterinaria'`
+- **RESULT**: Template system now uses battle-tested structures from production server, ready for multi-server firm creation
+
+### [0.050] - 2025-09-27
 - **BERCARIO GLOBAL NAMING SYSTEM**: Complete Portuguese translation system for Bercario purchases (common_portion_pig → "Ração Suíno", pig_male → "Porco", sheep_female → "Ovelha Femea", book → "Livro")
 - **BERCARIO WEEKLY SALES TRACKING**: Replaced "Saldo do Banco" with real-time weekly sales calculation from Sunday 00:01 to Saturday 23:59 with auto-reset
 - **CONDITIONAL FIRM LOGIC**: All changes isolated to Bercario only (`firm.id === 'bercario'`) with proper fallbacks for other firms

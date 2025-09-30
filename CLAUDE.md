@@ -97,7 +97,26 @@ When you see "/update" command from the user, perform the following actions:
 3. Update changelog.md if there are version-worthy changes
 4. Update CLAUDE.md if there are architectural or command changes
 
-## Recent Major Updates (v0.042) **[CURRENT VERSION]**
+## Recent Major Updates (v0.051) **[CURRENT VERSION]**
+
+### Template System Overhaul - 4 Working System Templates (v0.051)
+- **Template System Revolution**: Replaced generic templates (fazenda-bw, generic, custom) with 4 real working system templates from Cabra da Peste server
+- **4 Production-Ready Templates**:
+  - **Fazenda Template (🌾)**: Complete farm management with Dashboard, Estoque, Trabalhadores, Análises
+  - **Ferrovia Template (🚂)**: Railway management with Dashboard, Trabalhadores, Análises, Pagamentos (NO inventory - as per working system)
+  - **Berçário Template (🐣)**: Nursery management with Dashboard, Inventário, Trabalhadores, Análises, Pagamentos
+  - **Veterinária Template (🏥)**: Veterinary clinic with Dashboard, Estoque, Trabalhadores, Análises
+- **Template Structure**: Each template is a data-free copy with proper components, theme colors, features, and data mapping
+- **Multi-Server Architecture**: Templates ready for deployment across multiple Discord servers with isolated data
+- **Data Preservation**: Original Cabra da Peste firms remain untouched - templates copy structure only, NO data
+- **Technical Implementation**:
+  - Updated `frontend/types/firmTemplates.ts` with 4 new template configurations
+  - Modified `FirmTemplateRenderer.tsx` to handle new template types
+  - Updated `EnhancedFirmConfigModal.tsx` with new template interface
+  - Template type union: `'fazenda' | 'ferrovia' | 'bercario' | 'veterinaria'`
+- **Result**: Battle-tested production templates enable reliable multi-server firm creation with proven working systems
+
+## Recent Major Updates (v0.050)
 
 ### Complete Payment System and Pin Message Cleanup Fix (v0.042)
 - **Payment Calculation Fixed**: Workers now paid for ALL plants deposited, not just those matching seed expectations

@@ -2,7 +2,14 @@
 
 import React from 'react';
 import { FirmConfig } from '@/types/firms';
-import { FirmTemplateConfig, DEFAULT_FAZENDA_BW_TEMPLATE, DEFAULT_GENERIC_TEMPLATE } from '@/types/firmTemplates';
+import {
+  FirmTemplateConfig,
+  FAZENDA_TEMPLATE,
+  FERROVIA_TEMPLATE,
+  BERCARIO_TEMPLATE,
+  VETERINARIA_TEMPLATE,
+  DEFAULT_GENERIC_TEMPLATE
+} from '@/types/firmTemplates';
 import TemplateFirmDashboard from './templates/TemplateFirmDashboard';
 import FazendaBW from './FazendaBW'; // Legacy component
 import EstoqueBW from './EstoqueBW'; // Legacy component
@@ -27,72 +34,54 @@ interface FirmTemplateRendererProps {
 export default function FirmTemplateRenderer({ firm, activeComponent }: FirmTemplateRendererProps) {
   // Get template configuration
   const getTemplateConfig = (): FirmTemplateConfig => {
-    const templateType = firm.template?.type || 'fazenda-bw'; // Default to fazenda-bw for backward compatibility
-    
+    const templateType = firm.template?.type || 'fazenda'; // Default to fazenda for backward compatibility
+
+    let baseTemplate: FirmTemplateConfig;
+
     switch (templateType) {
-      case 'fazenda-bw':
-        return {
-          ...DEFAULT_FAZENDA_BW_TEMPLATE,
-          // Override with firm's custom settings if any
-          ...(firm.template?.customConfig || {}),
-          theme: {
-            ...DEFAULT_FAZENDA_BW_TEMPLATE.theme,
-            // Override theme with firm's display theme
-            primaryColor: firm.display?.theme?.primaryColor || DEFAULT_FAZENDA_BW_TEMPLATE.theme.primaryColor,
-            secondaryColor: firm.display?.theme?.secondaryColor || DEFAULT_FAZENDA_BW_TEMPLATE.theme.secondaryColor,
-            accentColor: firm.display?.theme?.accentColor,
-            backgroundColor: firm.display?.theme?.backgroundColor,
-            textColor: firm.display?.theme?.textColor,
-            iconStyle: firm.display?.theme?.iconStyle
-          },
-          components: DEFAULT_FAZENDA_BW_TEMPLATE.components.map(comp => ({
-            ...comp,
-            enabled: firm.template?.enabledComponents?.includes(comp.id) ?? comp.enabled,
-            settings: {
-              ...comp.settings,
-              ...(firm.template?.componentSettings?.[comp.id] || {})
-            }
-          }))
-        };
-        
-      case 'generic':
-        return {
-          ...DEFAULT_GENERIC_TEMPLATE,
-          ...(firm.template?.customConfig || {}),
-          theme: {
-            ...DEFAULT_GENERIC_TEMPLATE.theme,
-            primaryColor: firm.display?.theme?.primaryColor || DEFAULT_GENERIC_TEMPLATE.theme.primaryColor,
-            secondaryColor: firm.display?.theme?.secondaryColor || DEFAULT_GENERIC_TEMPLATE.theme.secondaryColor,
-            accentColor: firm.display?.theme?.accentColor,
-            backgroundColor: firm.display?.theme?.backgroundColor,
-            textColor: firm.display?.theme?.textColor,
-            iconStyle: firm.display?.theme?.iconStyle
-          }
-        };
-        
-      case 'custom':
-        // For custom templates, use the custom config or fallback to generic
-        return {
-          ...DEFAULT_GENERIC_TEMPLATE,
-          ...(firm.template?.customConfig || {}),
-          theme: {
-            ...DEFAULT_GENERIC_TEMPLATE.theme,
-            primaryColor: firm.display?.theme?.primaryColor || DEFAULT_GENERIC_TEMPLATE.theme.primaryColor,
-            secondaryColor: firm.display?.theme?.secondaryColor || DEFAULT_GENERIC_TEMPLATE.theme.secondaryColor,
-            accentColor: firm.display?.theme?.accentColor,
-            backgroundColor: firm.display?.theme?.backgroundColor,
-            textColor: firm.display?.theme?.textColor,
-            iconStyle: firm.display?.theme?.iconStyle
-          }
-        };
-        
+      case 'fazenda':
+        baseTemplate = FAZENDA_TEMPLATE;
+        break;
+      case 'ferrovia':
+        baseTemplate = FERROVIA_TEMPLATE;
+        break;
+      case 'bercario':
+        baseTemplate = BERCARIO_TEMPLATE;
+        break;
+      case 'veterinaria':
+        baseTemplate = VETERINARIA_TEMPLATE;
+        break;
       default:
-        return DEFAULT_FAZENDA_BW_TEMPLATE;
+        baseTemplate = FAZENDA_TEMPLATE; // Fallback to fazenda
     }
+
+    return {
+      ...baseTemplate,
+      // Override with firm's custom settings if any
+      ...(firm.template?.customConfig || {}),
+      theme: {
+        ...baseTemplate.theme,
+        // Override theme with firm's display theme
+        primaryColor: firm.display?.theme?.primaryColor || baseTemplate.theme.primaryColor,
+        secondaryColor: firm.display?.theme?.secondaryColor || baseTemplate.theme.secondaryColor,
+        accentColor: firm.display?.theme?.accentColor || baseTemplate.theme.accentColor,
+        backgroundColor: firm.display?.theme?.backgroundColor || baseTemplate.theme.backgroundColor,
+        textColor: firm.display?.theme?.textColor || baseTemplate.theme.textColor,
+        iconStyle: firm.display?.theme?.iconStyle || baseTemplate.theme.iconStyle
+      },
+      components: baseTemplate.components.map(comp => ({
+        ...comp,
+        enabled: firm.template?.enabledComponents?.includes(comp.id) ?? comp.enabled,
+        settings: {
+          ...comp.settings,
+          ...(firm.template?.componentSettings?.[comp.id] || {})
+        }
+      }))
+    };
   };
 
   const templateConfig = getTemplateConfig();
-  const templateType = firm.template?.type || 'fazenda-bw';
+  const templateType = firm.template?.type || 'fazenda';
   
   // For backward compatibility, if firm doesn't have template config but is the original Fazenda BW,
   // render the legacy components
@@ -217,21 +206,24 @@ export default function FirmTemplateRenderer({ firm, activeComponent }: FirmTemp
 
 // Helper function to get available components for a firm
 export function getAvailableComponents(firm: FirmConfig): Array<{id: string, name: string, icon: string, enabled: boolean}> {
-  const templateType = firm.template?.type || 'fazenda-bw';
-  
+  const templateType = firm.template?.type || 'fazenda';
+
   let baseComponents;
   switch (templateType) {
-    case 'fazenda-bw':
-      baseComponents = DEFAULT_FAZENDA_BW_TEMPLATE.components;
+    case 'fazenda':
+      baseComponents = FAZENDA_TEMPLATE.components;
       break;
-    case 'generic':
-      baseComponents = DEFAULT_GENERIC_TEMPLATE.components;
+    case 'ferrovia':
+      baseComponents = FERROVIA_TEMPLATE.components;
       break;
-    case 'custom':
-      baseComponents = firm.template?.customConfig?.components || DEFAULT_GENERIC_TEMPLATE.components;
+    case 'bercario':
+      baseComponents = BERCARIO_TEMPLATE.components;
+      break;
+    case 'veterinaria':
+      baseComponents = VETERINARIA_TEMPLATE.components;
       break;
     default:
-      baseComponents = DEFAULT_FAZENDA_BW_TEMPLATE.components;
+      baseComponents = FAZENDA_TEMPLATE.components;
   }
 
   let availableComponents = baseComponents.map(comp => ({
