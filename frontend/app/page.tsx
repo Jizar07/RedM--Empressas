@@ -55,7 +55,6 @@ export default function HomePage() {
   const [botStats, setBotStats] = useState<BotStats | null>(null);
   const [healthStatus, setHealthStatus] = useState<any>(null);
   const [serverInfo, setServerInfo] = useState<ServerInfo | null>(null);
-  const [mounted, setMounted] = useState(false);
   const [isPending, startTransition] = useTransition();
   const { selectedServerId, selectedServerName, setSelectedServer } = useServer();
   const { canAccessChannelParser, isAdmin } = useAuth();
@@ -89,8 +88,6 @@ export default function HomePage() {
   };
 
   useEffect(() => {
-    setMounted(true);
-    
     // Get tab from URL parameter on page load
     const tabFromUrl = searchParams.get('tab');
     if (tabFromUrl) {
@@ -99,7 +96,8 @@ export default function HomePage() {
   }, [searchParams]);
 
   useEffect(() => {
-    if (!mounted) return;
+    // Remove mounted check - fetch immediately on mount
+    // This runs in background, won't block render
 
     const fetchBotStats = async () => {
       try {
@@ -137,7 +135,7 @@ export default function HomePage() {
       clearTimeout(deferredFetch);
       clearInterval(interval);
     };
-  }, [mounted]);
+  }, []); // Remove mounted dependency
 
   // Generate dynamic tabs including firm tabs
   const generateTabs = () => {
@@ -277,22 +275,15 @@ export default function HomePage() {
 
   const tabs = generateTabs();
 
-  // Show splash page for unauthenticated users
-  // Only show loader if not mounted - don't block on auth loading
-  if (!mounted) {
-    return <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-      <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-indigo-600"></div>
-    </div>;
-  }
-
-  // If still loading auth, show splash page (but don't block mounted state)
-  if (status === 'loading') {
+  // Show splash page for unauthenticated users ONLY
+  // Don't block on loading states - render UI immediately
+  if (status === 'unauthenticated' || (!session && status !== 'loading')) {
     return <SplashPage botStats={botStats} />;
   }
 
-  if (status === 'unauthenticated' || !session) {
-    return <SplashPage botStats={botStats} />;
-  }
+  // For loading state or authenticated, render the main UI immediately
+  // Data will load in background and populate progressively
+  // This prevents any flickering since the UI structure never changes
 
   return (
     // <ProtectedRoute>
