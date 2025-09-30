@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useTransition } from 'react';
 import { FirmConfig } from '@/types/firms';
 import { useServer } from '@/contexts/ServerContext';
 
@@ -46,25 +46,29 @@ const getMockUserRoles = async (): Promise<string[]> => {
 
 export function useFirmAccess(): FirmAccess {
   const [accessibleFirms, setAccessibleFirms] = useState<FirmConfig[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false); // Start as false - don't block initial render
   const [error, setError] = useState<string | null>(null);
+  const [isPending, startTransition] = useTransition();
   const { selectedServerId } = useServer();
 
   const fetchAccessibleFirms = async () => {
     try {
-      setLoading(true);
+      // DON'T set loading immediately - render UI first
       setError(null);
-      
+
       // Only fetch firms if a server is selected
       if (!selectedServerId) {
         setAccessibleFirms([]);
         setLoading(false);
         return;
       }
-      
-      // Get user roles (mock implementation)
+
+      // Set loading AFTER initial check
+      setLoading(true);
+
+      // Get user roles (mock implementation) - runs in background
       const userRoles = await getMockUserRoles();
-      
+
       // Call firms API with user roles to get accessible firms - server filtering will be added automatically by axios interceptor
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3050/api';
       const response = await fetch(`${apiUrl}/firms-config/accessible?serverId=${selectedServerId}`, {
@@ -72,11 +76,15 @@ export function useFirmAccess(): FirmAccess {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userRoles, serverId: selectedServerId })
       });
-      
+
       const data = await response.json();
-      
+
       if (data.success) {
-        setAccessibleFirms(data.firms);
+        // Use startTransition to make this update non-blocking
+        // This prevents the flicker by marking this as a low-priority update
+        startTransition(() => {
+          setAccessibleFirms(data.firms);
+        });
       } else {
         throw new Error(data.error || 'Failed to fetch accessible firms');
       }
@@ -98,7 +106,13 @@ export function useFirmAccess(): FirmAccess {
   };
 
   useEffect(() => {
-    fetchAccessibleFirms();
+    // DEFER API call until after initial render
+    // This prevents blocking the UI on page load
+    const deferredFetch = setTimeout(() => {
+      fetchAccessibleFirms();
+    }, 50); // Small delay to allow UI to render first
+
+    return () => clearTimeout(deferredFetch);
   }, [selectedServerId]);
 
   return {

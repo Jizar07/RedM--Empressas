@@ -668,7 +668,8 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
 
       console.log('🔄 Editing activity:', { workerId, transactionId, newItemName });
 
-      const response = await fetch(`http://localhost:3050/api/worker-activity/transaction/${workerId}/${transactionId}`, {
+      // 1. Update the specific activity in the backend
+      const activityResponse = await fetch(`http://localhost:3050/api/worker-activity/transaction/${workerId}/${transactionId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -677,18 +678,50 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
         body: JSON.stringify({ newItemName })
       });
 
-      if (response.ok) {
-        const result = await response.json();
-        console.log('✅ Activity updated successfully:', result);
-        
-        // Refresh activities to show changes
-        await fetchActivities();
-        return true;
-      } else {
-        const error = await response.json();
+      if (!activityResponse.ok) {
+        const error = await activityResponse.json();
         console.error('❌ Failed to update activity:', error);
         return false;
       }
+
+      const activityResult = await activityResponse.json();
+      console.log('✅ Activity updated successfully:', activityResult);
+
+      // 2. Save to GLOBAL naming system (custom_display_names.json)
+      // This ensures ALL future instances of this item use the new name
+      const originalItemId = selectedActivity?.item || '';
+      if (originalItemId) {
+        console.log('💾 Saving to global naming system:', { itemId: originalItemId, displayName: newItemName });
+
+        const customizationResponse = await fetch('/api/customizations', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            itemId: originalItemId,
+            displayName: newItemName
+          })
+        });
+
+        if (customizationResponse.ok) {
+          const customizationResult = await customizationResponse.json();
+          console.log('✅ Global customization saved:', customizationResult);
+
+          // 3. Update local customizations state for immediate UI update
+          setCustomizations(prev => ({
+            ...prev,
+            [originalItemId]: newItemName
+          }));
+        } else {
+          console.warn('⚠️ Failed to save global customization (activity still updated)');
+        }
+      }
+
+      // 4. Refresh activities to show changes everywhere
+      await fetchActivities();
+      return true;
+
     } catch (error) {
       console.error('❌ Error updating activity:', error);
       return false;

@@ -86,15 +86,25 @@ export function useInventoryManager({
     }
   }, []);
 
-  // Load global translations
+  // Load global translations with caching
   const loadTranslations = useCallback(async () => {
     try {
       if (firm?.display?.itemTranslations === "global") {
+        // Check if translations are already cached in memory
+        const cachedTranslations = (window as any).__translationsCache;
+        if (cachedTranslations) {
+          setItemTranslations(cachedTranslations);
+          console.log('✅ Loaded', Object.keys(cachedTranslations).length, 'translations from cache');
+          return;
+        }
+
         console.log('🌍 Loading global translations for', firm.name);
         const response = await fetch('http://localhost:3050/api/localization/translations');
         if (response.ok) {
           const data = await response.json();
           if (data.success && data.data?.custom_overrides) {
+            // Cache translations in memory to prevent duplicate API calls
+            (window as any).__translationsCache = data.data.custom_overrides;
             setItemTranslations(data.data.custom_overrides);
             console.log('✅ Loaded', Object.keys(data.data.custom_overrides).length, 'global translations');
           }
@@ -1037,10 +1047,26 @@ export function useInventoryManager({
 
   // Initialize and set up auto-refresh
   useEffect(() => {
-    loadTranslations();
-    loadCustomizations(); // Load custom display names
-    loadPriceList();
-    loadRegisteredWorkers(); // Load all registered workers
+    // Try loading from backup FIRST for INSTANT load (synchronous)
+    const backupData = loadFromLocalStorage();
+    if (backupData) {
+      setInventoryData(backupData);
+      setLoading(false);
+      console.log('📂 Loaded initial data from localStorage backup');
+    }
+
+    // DEFER API calls until after initial render using setTimeout
+    // This ensures the UI renders first, THEN we fetch fresh data
+    const deferredLoad = setTimeout(() => {
+      Promise.all([
+        loadTranslations(),
+        loadCustomizations(), // Load custom display names
+        loadPriceList(),
+        loadRegisteredWorkers() // Load all registered workers in background
+      ]).catch(error => {
+        console.warn('Some resources failed to load:', error);
+      });
+    }, 100); // 100ms delay ensures UI renders first
 
     // Listen for customization updates
     const handleCustomizationUpdate = (event: CustomEvent) => {
@@ -1050,16 +1076,9 @@ export function useInventoryManager({
 
     window.addEventListener('customizationUpdated', handleCustomizationUpdate as EventListener);
 
-    // Try loading from backup first for instant load
-    const backupData = loadFromLocalStorage();
-    if (backupData) {
-      setInventoryData(backupData);
-      setLoading(false);
-      console.log('📂 Loaded initial data from localStorage backup');
-    }
-
-    // Cleanup event listener
+    // Cleanup
     return () => {
+      clearTimeout(deferredLoad);
       window.removeEventListener('customizationUpdated', handleCustomizationUpdate as EventListener);
     };
   }, [loadTranslations, loadCustomizations, loadPriceList, loadRegisteredWorkers, loadFromLocalStorage]);

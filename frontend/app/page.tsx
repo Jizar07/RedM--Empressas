@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo, useTransition } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { useServer } from '@/contexts/ServerContext';
@@ -56,6 +56,7 @@ export default function HomePage() {
   const [healthStatus, setHealthStatus] = useState<any>(null);
   const [serverInfo, setServerInfo] = useState<ServerInfo | null>(null);
   const [mounted, setMounted] = useState(false);
+  const [isPending, startTransition] = useTransition();
   const { selectedServerId, selectedServerName, setSelectedServer } = useServer();
   const { canAccessChannelParser, isAdmin } = useAuth();
   const { accessibleFirms, loading: firmsLoading } = useFirmAccess();
@@ -99,26 +100,43 @@ export default function HomePage() {
 
   useEffect(() => {
     if (!mounted) return;
-    
+
     const fetchBotStats = async () => {
       try {
-        const [health, stats, server] = await Promise.all([
-          healthCheck(),
-          botApi.getStats().catch(() => null), // Don't fail if bot stats fail
-          serverApi.getStatus().catch(() => null) // Don't fail if server status fails
+        // Load these in background WITHOUT blocking UI render
+        // Wrap ALL state updates in startTransition to prevent flicker
+        Promise.all([
+          healthCheck().then(health => {
+            startTransition(() => setHealthStatus(health));
+          }).catch(console.error),
+          botApi.getStats().then(stats => {
+            startTransition(() => setBotStats(stats));
+          }).catch(() => {
+            startTransition(() => setBotStats(null));
+          }),
+          serverApi.getStatus().then(server => {
+            startTransition(() => setServerInfo(server));
+          }).catch(() => {
+            startTransition(() => setServerInfo(null));
+          })
         ]);
-        setHealthStatus(health);
-        setBotStats(stats);
-        setServerInfo(server);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     };
 
-    fetchBotStats();
-    const interval = setInterval(fetchBotStats, 60000); // Update every minute
+    // DEFER initial fetch to allow UI to render first
+    const deferredFetch = setTimeout(() => {
+      fetchBotStats();
+    }, 100);
 
-    return () => clearInterval(interval);
+    // Refresh every minute in background
+    const interval = setInterval(fetchBotStats, 60000);
+
+    return () => {
+      clearTimeout(deferredFetch);
+      clearInterval(interval);
+    };
   }, [mounted]);
 
   // Generate dynamic tabs including firm tabs
@@ -260,10 +278,16 @@ export default function HomePage() {
   const tabs = generateTabs();
 
   // Show splash page for unauthenticated users
-  if (!mounted || status === 'loading') {
+  // Only show loader if not mounted - don't block on auth loading
+  if (!mounted) {
     return <div className="min-h-screen bg-gray-50 flex items-center justify-center">
       <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-indigo-600"></div>
     </div>;
+  }
+
+  // If still loading auth, show splash page (but don't block mounted state)
+  if (status === 'loading') {
+    return <SplashPage botStats={botStats} />;
   }
 
   if (status === 'unauthenticated' || !session) {
