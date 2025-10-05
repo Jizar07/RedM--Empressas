@@ -3,6 +3,9 @@
  * Provides consistent item name translations between internal and Portuguese names
  */
 
+import fs from 'fs';
+import path from 'path';
+
 export interface TranslatedItem {
   internal: string;
   portuguese: string;
@@ -12,6 +15,10 @@ export interface TranslatedItem {
 
 export class ItemTranslationService {
   private static instance: ItemTranslationService;
+
+  // Category customizations loaded from file
+  private categoryCustomizations: Map<string, string> = new Map();
+  private readonly CATEGORY_FILE_PATH = path.join(process.cwd(), 'data', 'custom_item_categories.json');
 
   // Comprehensive item translation map
   private readonly itemTranslations: Map<string, TranslatedItem> = new Map([
@@ -80,13 +87,80 @@ export class ItemTranslationService {
     ['balde', { internal: 'bucket', portuguese: 'Balde', category: 'ferramentas' }],
   ]);
 
-  private constructor() {}
+  private constructor() {
+    // Load category customizations on initialization
+    this.loadCategoryCustomizations();
+  }
 
   public static getInstance(): ItemTranslationService {
     if (!ItemTranslationService.instance) {
       ItemTranslationService.instance = new ItemTranslationService();
     }
     return ItemTranslationService.instance;
+  }
+
+  /**
+   * Load category customizations from file
+   */
+  private loadCategoryCustomizations(): void {
+    try {
+      if (fs.existsSync(this.CATEGORY_FILE_PATH)) {
+        const data = fs.readFileSync(this.CATEGORY_FILE_PATH, 'utf-8');
+        const parsed = JSON.parse(data);
+
+        if (parsed.categories && typeof parsed.categories === 'object') {
+          Object.entries(parsed.categories).forEach(([itemId, category]) => {
+            const normalizedId = this.normalizeItemName(itemId);
+            this.categoryCustomizations.set(normalizedId, category as string);
+          });
+
+          console.log(`✅ Loaded ${this.categoryCustomizations.size} category customizations`);
+        }
+      }
+    } catch (error) {
+      console.warn('⚠️ Could not load category customizations:', error);
+    }
+  }
+
+  /**
+   * Save a category customization
+   */
+  public setCategoryCustomization(itemId: string, category: string): void {
+    const normalizedId = this.normalizeItemName(itemId);
+    this.categoryCustomizations.set(normalizedId, category);
+
+    // Save to file
+    this.saveCategoryCustomizations();
+  }
+
+  /**
+   * Save category customizations to file
+   */
+  private saveCategoryCustomizations(): void {
+    try {
+      const categories: Record<string, string> = {};
+      this.categoryCustomizations.forEach((category, itemId) => {
+        categories[itemId] = category;
+      });
+
+      const data = {
+        categories,
+        ultima_atualizacao: new Date().toISOString()
+      };
+
+      fs.writeFileSync(this.CATEGORY_FILE_PATH, JSON.stringify(data, null, 2));
+      console.log(`✅ Saved ${this.categoryCustomizations.size} category customizations`);
+    } catch (error) {
+      console.error('❌ Error saving category customizations:', error);
+    }
+  }
+
+  /**
+   * Reload category customizations from file
+   */
+  public reloadCategoryCustomizations(): void {
+    this.categoryCustomizations.clear();
+    this.loadCategoryCustomizations();
   }
 
   /**
@@ -134,13 +208,20 @@ export class ItemTranslationService {
    */
   public getCategory(itemName: string): string {
     const normalizedName = this.normalizeItemName(itemName);
+
+    // Priority 1: Check category customizations (highest priority)
+    const customCategory = this.categoryCustomizations.get(normalizedName);
+    if (customCategory) {
+      return customCategory;
+    }
+
+    // Priority 2: Check hardcoded translations
     const translation = this.itemTranslations.get(normalizedName);
-    
     if (translation) {
       return translation.category;
     }
-    
-    // Fallback category detection
+
+    // Priority 3: Fallback category detection
     return this.detectCategory(itemName);
   }
 

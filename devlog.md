@@ -4,6 +4,44 @@ This is a local timestamped file to track all development changes and prompts.
 
 ## Log Entries
 
+### 2025-10-04 20:15:46
+**Action**: Worker Payment System Enhancements - Unregistered Plant Detection & Auto Channel Cleanup
+**Prompt**: User requested three major improvements: (1) Fix frontend inventory category persistence issue, (2) Retroactively detect and pay for plants that were deposited before being categorized, (3) Auto-clear worker channels on payment keeping only pinned receipts
+**Changes**:
+- **Category Persistence Fix (Frontend)**:
+  - Modified `useInventoryManager.ts` fetchInventoryData to merge persistent categories with Discord data
+  - Implemented 3-step process: Load persistent file → Process Discord → Merge with category preservation
+  - Fixed item categorization so changes like "Alho" (outros → plantas) persist across refreshes
+  - Updated both regular and fallback item creation flows to preserve categories
+- **Global Category Customization System (Backend)**:
+  - Created `data/custom_item_categories.json` for persistent category overrides
+  - Enhanced ItemTranslationService to load and prioritize category customizations
+  - Added `setCategoryCustomization()` method for dynamic category updates
+  - Created API endpoints: `POST /api/localization/category` and `POST /api/localization/reload-categories`
+  - Frontend now syncs category changes to backend via customization API
+- **Unregistered Plant Detection**:
+  - Created `scanForUnregisteredPlants()` method in WorkerActivityService
+  - Scans ALL channel messages since session start (not just 24 hours)
+  - Uses current `isPlant()` logic to detect historically deposited but uncategorized plants
+  - Adds found plants to new `unregisteredPlants` array in WorkerSession
+  - Updated `recalculateSessionCredits()` to include unregistered plant payments
+  - Modified embed display to show two sections: "Registradas" and "Detectadas Hoje (não registradas)"
+  - Applied to both active embeds and payment receipts
+- **Auto Channel Cleanup on Payment**:
+  - Created `clearWorkerChannel()` method to clean channels after payment
+  - Fetches up to 100 messages and filters out pinned ones (receipts)
+  - Uses Discord bulk delete API for efficient cleanup
+  - Integrated into `payWorker()` flow after receipt creation
+  - Added 1-second delay to ensure receipt is pinned before cleanup
+- **Bug Fixes**:
+  - Fixed Discord API limit error (changed from 200 to 100 messages max)
+  - Fixed timing issue with embed pin completion before cleanup
+- **Files Modified**:
+  - Frontend: `useInventoryManager.ts` (inventory merge logic), `lib/itemUtils.ts` (utility functions)
+  - Backend: `ItemTranslationService.ts` (category system), `WorkerActivityService.ts` (plant detection + cleanup), `src/api/routes/localization.ts` (category API)
+  - Data: `custom_item_categories.json` (category storage)
+**Result**: Workers now get paid for ALL plants deposited during session regardless of when categorized. Channels auto-clean on payment showing only pinned receipts. Category changes persist correctly across all systems.
+
 ### 2025-09-30 11:47:15
 **Action**: Complete Dark Mode Implementation Across All Frontend Components
 **Prompt**: User requested comprehensive dark mode fixes across ALL menus and tabs, applying the same patterns used in Fazenda components universally

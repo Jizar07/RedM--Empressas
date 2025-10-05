@@ -1,0 +1,58 @@
+{
+  "workerId": "1330634479621902456",
+  "workerName": "cordivaldo stoffeliz",
+  "channelId": "1422360647278268497",
+  "sessionId": "session_1759187796915_skce9m",
+  "startTime": "2025-09-29T23:16:36.915Z",
+  "lastActivity": "2025-09-29T23:16:50.641Z",
+  "status": "stale",
+  "plantTransactions": [
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 100,
+      "transactionId": "tx_1759187796917_sq2qx",
+      "timestamp": "2025-09-29T23:16:36.917Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 1688,
+      "transactionId": "tx_1759187799993_n3cycs",
+      "timestamp": "2025-09-29T23:16:39.993Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 100,
+      "transactionId": "tx_1759187810641_pxbs1k",
+      "timestamp": "2025-09-29T23:16:50.641Z"
+    }
+  ],
+  "animalTransactions": [],
+  "financialTransactions": [],
+  "totalCredits": 25,
+  "embedMessageId": "1422361516321276046",
+  "seedExpectations": [
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 1688,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 16880,
+      "plantsFulfilled": 200,
+      "isComplete": false,
+      "transactionId": "tx_1759187799993_n3cycs"
+    },
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 100,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759187810641_pxbs1k"
+    }
+  ],
+  "completedAt": "2025-10-04T13:40:50.232Z",
+  "notes": "Auto-archived due to inactivity"
+}

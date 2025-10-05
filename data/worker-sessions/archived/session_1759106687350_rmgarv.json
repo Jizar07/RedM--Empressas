@@ -1,0 +1,49 @@
+{
+  "workerId": "808461479040909322",
+  "workerName": "Alehzinho Beckham",
+  "channelId": "1418895237585174620",
+  "sessionId": "session_1759106687350_rmgarv",
+  "startTime": "2025-09-29T00:44:47.350Z",
+  "lastActivity": "2025-09-29T01:11:43.932Z",
+  "status": "stale",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Junco",
+      "quantity": 30,
+      "transactionId": "tx_1759106687351_7ex1pq",
+      "timestamp": "2025-09-29T00:44:47.351Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 150,
+      "transactionId": "tx_1759108300937_lupmea",
+      "timestamp": "2025-09-29T01:11:40.937Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 150,
+      "transactionId": "tx_1759108303932_yooirc",
+      "timestamp": "2025-09-29T01:11:43.932Z"
+    }
+  ],
+  "animalTransactions": [],
+  "financialTransactions": [],
+  "totalCredits": 75,
+  "embedMessageId": "1422028038635261997",
+  "seedExpectations": [
+    {
+      "seedType": "Semente de Junco",
+      "seedQuantity": 30,
+      "expectedPlantType": "Junco",
+      "expectedPlantQuantity": 300,
+      "plantsFulfilled": 300,
+      "isComplete": true,
+      "transactionId": "tx_1759106687351_7ex1pq"
+    }
+  ],
+  "completedAt": "2025-10-04T13:40:50.231Z",
+  "notes": "Auto-archived due to inactivity"
+}

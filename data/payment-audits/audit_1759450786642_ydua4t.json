@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1759450786642_ydua4t",
+  "sessionId": "session_1759448828990_dinnxo",
+  "managerId": "1204772480305209384",
+  "managerName": "𝑻𝒐́𝒙𝒊𝒄𝒂 𓆩♡𓆪",
+  "workerId": "726777646150582463",
+  "workerName": "jagunsso torres",
+  "amountPaid": 97.5,
+  "paidAt": "2025-10-03T00:19:46.642Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-03T00:14:46.642Z",
+    "endTime": "2025-10-03T00:29:46.642Z"
+  }
+}

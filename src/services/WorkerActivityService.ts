@@ -4,6 +4,7 @@ import path from 'path';
 import PaymentAuditService from './PaymentAuditService';
 import { SessionCleanupService } from '../utils/SessionCleanupService';
 import WeeklySalesService from './WeeklySalesService';
+import ItemTranslationService from './ItemTranslationService';
 
 interface PlantTransaction {
   type: 'seed_taken' | 'plant_deposited';
@@ -64,6 +65,7 @@ interface WorkerSession {
   financialTransactions?: FinancialTransaction[]; // Track financial transactions like Bercario purchases
   seedExpectations?: SeedExpectation[]; // Track seed-to-plant expectations
   animalExpectations?: AnimalExpectation[]; // Track animal-taking expectations
+  unregisteredPlants?: PlantTransaction[]; // Plants detected from historical messages (today only, unpaid sessions)
   totalCredits: number;
   embedMessageId?: string;
   notes?: string;
@@ -94,6 +96,7 @@ export class WorkerActivityService {
   private paymentAuditService: PaymentAuditService;
   private cleanupService: SessionCleanupService;
   private weeklySalesService: WeeklySalesService;
+  private translationService: ItemTranslationService;
 
   constructor(client: Client) {
     this.client = client;
@@ -101,6 +104,7 @@ export class WorkerActivityService {
     this.paymentAuditService = PaymentAuditService.getInstance();
     this.cleanupService = new SessionCleanupService();
     this.weeklySalesService = WeeklySalesService.getInstance();
+    this.translationService = ItemTranslationService.getInstance();
     this.ensureDataDirectory();
     this.loadServiceConfig();
     this.loadActiveSessions();
@@ -622,18 +626,27 @@ export class WorkerActivityService {
     let totalCredits = 0;
     let totalCosts = 0;
 
-    // Calculate plant credits - Pay for ALL plants deposited
+    // Calculate plant credits - Pay for ALL registered plants deposited
     session.plantTransactions
       .filter(t => t.type === 'plant_deposited')
       .forEach(transaction => {
         // Pay for ALL plants deposited regardless of seed expectations
         const plantCredit = transaction.quantity * prices.plantPrice;
         totalCredits += plantCredit;
-        console.log(`💰 Plant payment: ${transaction.quantity} ${transaction.itemName} = $${plantCredit.toFixed(2)}`);
+        console.log(`💰 Plant payment (registered): ${transaction.quantity} ${transaction.itemName} = $${plantCredit.toFixed(2)}`);
 
         // Still update seed expectations for tracking purposes
         this.updateSeedExpectations(session, transaction.itemName, transaction.quantity);
       });
+
+    // Calculate unregistered plant credits - Pay for ALL unregistered plants detected
+    if (session.unregisteredPlants && session.unregisteredPlants.length > 0) {
+      session.unregisteredPlants.forEach(transaction => {
+        const plantCredit = transaction.quantity * prices.plantPrice;
+        totalCredits += plantCredit;
+        console.log(`💰 Plant payment (unregistered): ${transaction.quantity} ${transaction.itemName} = $${plantCredit.toFixed(2)}`);
+      });
+    }
 
     // Calculate animal deliveries
     const animalsTaken = session.animalTransactions
@@ -660,6 +673,97 @@ export class WorkerActivityService {
     }
 
     session.totalCredits = Math.max(0, totalCredits - totalCosts);
+  }
+
+  /**
+   * Scan worker channel for unregistered plant deposits (ALL messages since session start, unpaid sessions only)
+   * This detects plants that were deposited but not tracked because they weren't categorized at the time
+   */
+  private async scanForUnregisteredPlants(session: WorkerSession): Promise<void> {
+    // Only scan for unpaid sessions
+    if (session.status === 'paid' || session.status === 'rejected') {
+      console.log(`⏭️ Skipping unregistered plant scan for ${session.status} session: ${session.workerName}`);
+      return;
+    }
+
+    try {
+      const channel = await this.client.channels.fetch(session.channelId) as TextChannel;
+      if (!channel) {
+        console.warn(`⚠️ Channel ${session.channelId} not found for unregistered plant scan`);
+        return;
+      }
+
+      // Fetch messages (Discord limit 100) to catch historical deposits
+      const messages = await channel.messages.fetch({ limit: 100 });
+
+      const unregisteredPlants: PlantTransaction[] = [];
+      const processedTransactionIds = new Set<string>();
+
+      // Build set of already registered plant transaction IDs for quick lookup
+      session.plantTransactions.forEach(t => {
+        if (t.type === 'plant_deposited') {
+          processedTransactionIds.add(t.transactionId);
+        }
+      });
+
+      console.log(`🔍 Scanning ${messages.size} messages since session start (${session.startTime.toLocaleString('pt-BR')}) for unregistered plants in ${session.workerName}'s channel...`);
+
+      for (const message of messages.values()) {
+        // Skip messages from BEFORE the session started (don't include previous paid sessions)
+        if (message.createdAt < session.startTime) continue;
+
+        const content = message.content || '';
+
+        // Pattern: "Item adicionado:: Crows_Garlic x150"
+        const itemAdicionadoPattern = /Item adicionado::?\s*\n?\s*([^x]+)\s*x(\d+)/is;
+        const match = content.match(itemAdicionadoPattern);
+
+        if (match) {
+          const itemName = match[1].trim();
+          const quantity = parseInt(match[2]);
+
+          // Check if this item is a plant using translation service
+          if (this.translationService.isPlant(itemName)) {
+            // Create a unique transaction ID based on message timestamp + item
+            const messageTransactionId = `${message.createdTimestamp}_${itemName}_${quantity}`;
+
+            // Check if we already tracked this transaction
+            const alreadyTracked = session.plantTransactions.some(t =>
+              t.type === 'plant_deposited' &&
+              t.itemName === this.translationService.getPortugueseName(itemName) &&
+              Math.abs(new Date(t.timestamp).getTime() - message.createdTimestamp) < 5000 // Within 5 seconds
+            );
+
+            if (!alreadyTracked && !processedTransactionIds.has(messageTransactionId)) {
+              const portugueseName = this.translationService.getPortugueseName(itemName);
+
+              unregisteredPlants.push({
+                type: 'plant_deposited',
+                itemName: portugueseName,
+                quantity,
+                timestamp: message.createdAt,
+                transactionId: messageTransactionId
+              });
+
+              processedTransactionIds.add(messageTransactionId);
+              console.log(`🌾 Found unregistered plant: ${quantity} ${itemName} (${portugueseName}) deposited at ${message.createdAt.toLocaleString('pt-BR')}`);
+            }
+          }
+        }
+      }
+
+      // Update session with unregistered plants
+      if (unregisteredPlants.length > 0) {
+        session.unregisteredPlants = unregisteredPlants;
+        console.log(`✅ Added ${unregisteredPlants.length} unregistered plant transactions for ${session.workerName}`);
+      } else {
+        session.unregisteredPlants = undefined; // Clear if none found
+        console.log(`ℹ️ No unregistered plants found for ${session.workerName}`);
+      }
+
+    } catch (error) {
+      console.error(`❌ Error scanning for unregistered plants in ${session.workerName}'s channel:`, error);
+    }
   }
 
   public getOrCreateSession(workerId: string, workerName: string, channelId: string): WorkerSession {
@@ -864,6 +968,9 @@ export class WorkerActivityService {
         return;
       }
 
+      // Scan for unregistered plants before creating embed
+      await this.scanForUnregisteredPlants(session);
+
       const channel = await this.client.channels.fetch(session.channelId) as TextChannel;
       if (!channel) {
         console.error(`❌ Channel ${session.channelId} not found for worker ${session.workerName}`);
@@ -1035,21 +1142,49 @@ export class WorkerActivityService {
 
     // Add plants deposited section with grouping by type
     const plantsDeposited = session.plantTransactions.filter(t => t.type === 'plant_deposited');
-    if (plantsDeposited.length > 0) {
-      const groupedPlants = await this.groupPlantTransactionsByTypeAsync(plantsDeposited);
+    const unregisteredPlants = session.unregisteredPlants || [];
+
+    if (plantsDeposited.length > 0 || unregisteredPlants.length > 0) {
       const plantLines: string[] = [];
       let totalPlantCredits = 0;
+      let totalPlants = 0;
 
-      Object.entries(groupedPlants).forEach(([itemName, data]) => {
-        totalPlantCredits += data.credits;
-        if (data.count === 1) {
-          plantLines.push(`• ${data.quantity} ${itemName} ($${data.credits.toFixed(2)})`);
-        } else {
-          plantLines.push(`• ${data.quantity} ${itemName} (${data.count} depósitos) ($${data.credits.toFixed(2)})`);
+      // Add registered plants
+      if (plantsDeposited.length > 0) {
+        const groupedPlants = await this.groupPlantTransactionsByTypeAsync(plantsDeposited);
+        plantLines.push('**Registradas:**');
+
+        Object.entries(groupedPlants).forEach(([itemName, data]) => {
+          totalPlantCredits += data.credits;
+          totalPlants += data.quantity;
+          if (data.count === 1) {
+            plantLines.push(`• ${data.quantity} ${itemName} ($${data.credits.toFixed(2)})`);
+          } else {
+            plantLines.push(`• ${data.quantity} ${itemName} (${data.count} depósitos) ($${data.credits.toFixed(2)})`);
+          }
+        });
+      }
+
+      // Add unregistered plants (detected today)
+      if (unregisteredPlants.length > 0) {
+        const groupedUnregistered = await this.groupPlantTransactionsByTypeAsync(unregisteredPlants);
+        if (plantsDeposited.length > 0) {
+          plantLines.push(''); // Empty line separator
         }
-      });
+        plantLines.push('**Detectadas Hoje (não registradas):**');
 
-      const totalPlants = plantsDeposited.reduce((sum, t) => sum + t.quantity, 0);
+        Object.entries(groupedUnregistered).forEach(([itemName, data]) => {
+          totalPlantCredits += data.credits;
+          totalPlants += data.quantity;
+          if (data.count === 1) {
+            plantLines.push(`• ${data.quantity} ${itemName} ($${data.credits.toFixed(2)})`);
+          } else {
+            plantLines.push(`• ${data.quantity} ${itemName} (${data.count} depósitos) ($${data.credits.toFixed(2)})`);
+          }
+        });
+      }
+
+      plantLines.push(''); // Empty line before total
       plantLines.push(`**Total: ${totalPlants} plantas = $${totalPlantCredits.toFixed(2)}**`);
 
       embed.addFields({
@@ -1253,21 +1388,49 @@ export class WorkerActivityService {
 
     // Add plants deposited section (same as active embed)
     const plantsDeposited = session.plantTransactions.filter(t => t.type === 'plant_deposited');
-    if (plantsDeposited.length > 0) {
-      const groupedPlants = await this.groupPlantTransactionsByTypeAsync(plantsDeposited);
+    const unregisteredPlants = session.unregisteredPlants || [];
+
+    if (plantsDeposited.length > 0 || unregisteredPlants.length > 0) {
       const plantLines: string[] = [];
       let totalPlantCredits = 0;
+      let totalPlants = 0;
 
-      Object.entries(groupedPlants).forEach(([itemName, data]) => {
-        totalPlantCredits += data.credits;
-        if (data.count === 1) {
-          plantLines.push(`• ${data.quantity} ${itemName} ($${data.credits.toFixed(2)})`);
-        } else {
-          plantLines.push(`• ${data.quantity} ${itemName} (${data.count} depósitos) ($${data.credits.toFixed(2)})`);
+      // Add registered plants
+      if (plantsDeposited.length > 0) {
+        const groupedPlants = await this.groupPlantTransactionsByTypeAsync(plantsDeposited);
+        plantLines.push('**Registradas:**');
+
+        Object.entries(groupedPlants).forEach(([itemName, data]) => {
+          totalPlantCredits += data.credits;
+          totalPlants += data.quantity;
+          if (data.count === 1) {
+            plantLines.push(`• ${data.quantity} ${itemName} ($${data.credits.toFixed(2)})`);
+          } else {
+            plantLines.push(`• ${data.quantity} ${itemName} (${data.count} depósitos) ($${data.credits.toFixed(2)})`);
+          }
+        });
+      }
+
+      // Add unregistered plants (detected today)
+      if (unregisteredPlants.length > 0) {
+        const groupedUnregistered = await this.groupPlantTransactionsByTypeAsync(unregisteredPlants);
+        if (plantsDeposited.length > 0) {
+          plantLines.push(''); // Empty line separator
         }
-      });
+        plantLines.push('**Detectadas Hoje (não registradas):**');
 
-      const totalPlants = plantsDeposited.reduce((sum, t) => sum + t.quantity, 0);
+        Object.entries(groupedUnregistered).forEach(([itemName, data]) => {
+          totalPlantCredits += data.credits;
+          totalPlants += data.quantity;
+          if (data.count === 1) {
+            plantLines.push(`• ${data.quantity} ${itemName} ($${data.credits.toFixed(2)})`);
+          } else {
+            plantLines.push(`• ${data.quantity} ${itemName} (${data.count} depósitos) ($${data.credits.toFixed(2)})`);
+          }
+        });
+      }
+
+      plantLines.push(''); // Empty line before total
       plantLines.push(`**Total: ${totalPlants} plantas = $${totalPlantCredits.toFixed(2)}**`);
 
       embed.addFields({
@@ -1432,8 +1595,11 @@ export class WorkerActivityService {
 
     console.log(`📋 Payment processed - embed transformed into permanent receipt for ${session.workerName}`);
 
-    // Wait a moment to ensure embed is updated before archiving
-    await new Promise(resolve => setTimeout(resolve, 500));
+    // Wait a moment to ensure embed is pinned before cleaning channel
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    // Clear worker channel (keep pinned receipt only)
+    await this.clearWorkerChannel(session.channelId, session.workerName);
 
     // Mark session as paid BEFORE archiving
     session.status = 'paid';
@@ -1484,8 +1650,51 @@ export class WorkerActivityService {
     // Session was already deleted and saved in archiveSession() - no need for redundant operations
     console.log(`✅ Successfully paid worker ${session.workerName} $${session.totalCredits.toFixed(2)} - Session archived and cleaned up`);
     console.log(`📋 Payment completed by ${managerName} (${managerId}) - Receipt saved as ${session.sessionId}`);
-    
+
     return true;
+  }
+
+  /**
+   * Clear worker channel of all messages except pinned ones (receipts)
+   * Called after payment to keep channel clean with only receipt visible
+   */
+  private async clearWorkerChannel(channelId: string, workerName: string): Promise<void> {
+    try {
+      const channel = await this.client.channels.fetch(channelId) as TextChannel;
+      if (!channel) {
+        console.warn(`⚠️ Channel ${channelId} not found for cleanup after payment`);
+        return;
+      }
+
+      console.log(`🧹 Clearing worker channel for ${workerName} (keeping pinned messages)...`);
+
+      // Fetch messages (up to 100 at a time - Discord limit)
+      const messages = await channel.messages.fetch({ limit: 100 });
+
+      // Filter out pinned messages (keep receipts and any other pinned content)
+      const messagesToDelete = messages.filter(msg => !msg.pinned);
+
+      if (messagesToDelete.size === 0) {
+        console.log(`ℹ️ No messages to delete in ${workerName}'s channel (all messages are pinned)`);
+        return;
+      }
+
+      console.log(`🗑️ Found ${messagesToDelete.size} messages to delete (${messages.size - messagesToDelete.size} pinned messages will be kept)`);
+
+      // Bulk delete (automatically filters out messages older than 14 days)
+      const deleted = await channel.bulkDelete(messagesToDelete, true);
+
+      console.log(`✅ Cleared ${deleted.size} messages from ${workerName}'s channel (kept ${messages.size - deleted.size} pinned messages)`);
+
+      // If there are more messages to delete (hit the 100 limit), log a warning
+      if (deleted.size >= 100) {
+        console.log(`⚠️ Channel may have more messages to delete (hit 100 message limit) - consider running cleanup again`);
+      }
+
+    } catch (error) {
+      console.error(`❌ Error clearing worker channel for ${workerName}:`, error);
+      // Don't throw - cleanup failure shouldn't block payment
+    }
   }
 
   private async archiveSession(session: WorkerSession, finalStatus: string, notes?: string): Promise<void> {

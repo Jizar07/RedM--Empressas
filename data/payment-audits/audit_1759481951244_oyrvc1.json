@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1759481951244_oyrvc1",
+  "sessionId": "session_1759003928957_s2wkji",
+  "managerId": "372161270176153601",
+  "managerName": "GM Stoffel",
+  "workerId": "695109023741116496",
+  "workerName": "yuri westside",
+  "amountPaid": 2210,
+  "paidAt": "2025-10-03T08:59:11.244Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-03T08:54:11.244Z",
+    "endTime": "2025-10-03T09:09:11.244Z"
+  }
+}

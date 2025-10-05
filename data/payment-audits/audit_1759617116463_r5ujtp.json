@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1759617116463_r5ujtp",
+  "sessionId": "session_1759615486421_vch71",
+  "managerId": "940279402145669241",
+  "managerName": "𝑱𝒖𝒍𝒊𝒏𝒉𝒂 👺",
+  "workerId": "473199499490230273",
+  "workerName": "Nathy Miller",
+  "amountPaid": 160,
+  "paidAt": "2025-10-04T22:31:56.463Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-04T22:26:56.463Z",
+    "endTime": "2025-10-04T22:41:56.463Z"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "workerId": "141250620593012736",
+  "workerName": "Santiago Bowdin",
+  "channelId": "1420777319194169474",
+  "sessionId": "session_1759437526371_k3ayu9",
+  "startTime": "2025-10-02T20:38:46.371Z",
+  "lastActivity": "2025-10-02T20:38:46.373Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente Trigo",
+      "quantity": 1,
+      "transactionId": "tx_1759437526373_fxif1k",
+      "timestamp": "2025-10-02T20:38:46.373Z"
+    }
+  ],
+  "animalTransactions": [],
+  "financialTransactions": [],
+  "totalCredits": 0,
+  "embedMessageId": "1423408896403308635",
+  "seedExpectations": [
+    {
+      "seedType": "Semente Trigo",
+      "seedQuantity": 1,
+      "expectedPlantType": "Trigo",
+      "expectedPlantQuantity": 10,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759437526373_fxif1k"
+    }
+  ],
+  "completedAt": "2025-10-02T20:39:57.645Z",
+  "notes": "Pago por r3dley (141250620593012736)"
+}

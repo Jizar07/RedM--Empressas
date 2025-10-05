@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1759424409212_g0cyr9",
+  "sessionId": "session_1759005728107_xt73ev",
+  "managerId": "470361257497722886",
+  "managerName": "Gordo caramelo",
+  "workerId": "470361257497722886",
+  "workerName": "Kenai Comanches",
+  "amountPaid": 2605,
+  "paidAt": "2025-10-02T17:00:09.212Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-02T16:55:09.212Z",
+    "endTime": "2025-10-02T17:10:09.212Z"
+  }
+}

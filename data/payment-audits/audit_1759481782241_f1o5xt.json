@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1759481782241_f1o5xt",
+  "sessionId": "session_1759172522140_wfbnm",
+  "managerId": "372161270176153601",
+  "managerName": "GM Stoffel",
+  "workerId": "1295901408264196181",
+  "workerName": "Maria Vitória",
+  "amountPaid": 250,
+  "paidAt": "2025-10-03T08:56:22.241Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-03T08:51:22.241Z",
+    "endTime": "2025-10-03T09:06:22.241Z"
+  }
+}

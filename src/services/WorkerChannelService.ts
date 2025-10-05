@@ -1,5 +1,5 @@
 import { Client } from 'discord.js';
-import fs from 'fs';
+import { promises as fs } from 'fs';
 import path from 'path';
 import WorkerActivityService from './WorkerActivityService';
 import ItemTranslationService from './ItemTranslationService';
@@ -38,10 +38,16 @@ export class WorkerChannelService {
   private constructor(client: Client) {
     this.client = client;
     this.dataDir = path.join(process.cwd(), 'data', 'worker-channels');
-    this.ensureDataDirectory();
-    this.loadWorkerMappings();
     this.activityService = new WorkerActivityService(client);
     this.translationService = ItemTranslationService.getInstance();
+
+    // Initialize async operations
+    this.initialize();
+  }
+
+  private async initialize(): Promise<void> {
+    await this.ensureDataDirectory();
+    await this.loadWorkerMappings();
   }
 
   public static getInstance(client?: Client): WorkerChannelService {
@@ -55,18 +61,24 @@ export class WorkerChannelService {
     return WorkerChannelService.instance;
   }
 
-  private ensureDataDirectory(): void {
-    if (!fs.existsSync(this.dataDir)) {
-      fs.mkdirSync(this.dataDir, { recursive: true });
+  private async ensureDataDirectory(): Promise<void> {
+    try {
+      await fs.mkdir(this.dataDir, { recursive: true });
       console.log('📁 Created worker channels directory');
+    } catch (error) {
+      // Directory already exists or other error
+      if ((error as any).code !== 'EEXIST') {
+        console.error('❌ Error creating worker channels directory:', error);
+      }
     }
   }
 
-  private loadWorkerMappings(): void {
+  private async loadWorkerMappings(): Promise<void> {
     try {
       const mappingsFile = path.join(this.dataDir, 'worker-mappings.json');
-      if (fs.existsSync(mappingsFile)) {
-        const data = fs.readFileSync(mappingsFile, 'utf8');
+
+      try {
+        const data = await fs.readFile(mappingsFile, 'utf8');
         const mappings = JSON.parse(data);
 
         // Clear existing mappings before reloading
@@ -82,6 +94,12 @@ export class WorkerChannelService {
         });
 
         console.log(`🗺️ Loaded ${this.workerMappings.size} worker channel mappings`);
+      } catch (error: any) {
+        if (error.code === 'ENOENT') {
+          console.log('📝 No existing worker mappings file, starting fresh');
+        } else {
+          throw error;
+        }
       }
     } catch (error) {
       console.error('❌ Error loading worker mappings:', error);
@@ -91,17 +109,22 @@ export class WorkerChannelService {
   /**
    * Reload worker mappings from file - useful after new registrations
    */
-  public reloadMappings(): void {
+  public async reloadMappings(): Promise<void> {
     console.log('🔄 Reloading worker mappings from file...');
-    this.loadWorkerMappings();
+    await this.loadWorkerMappings();
     console.log(`✅ Reloaded ${this.workerMappings.size} worker mappings`);
   }
 
-  private saveWorkerMappings(): void {
+  private async saveWorkerMappings(): Promise<void> {
     try {
       const mappingsFile = path.join(this.dataDir, 'worker-mappings.json');
+      const tempFile = mappingsFile + '.tmp';
       const mappings = Object.fromEntries(this.workerMappings);
-      fs.writeFileSync(mappingsFile, JSON.stringify(mappings, null, 2));
+
+      // Write to temp file first, then atomic rename
+      await fs.writeFile(tempFile, JSON.stringify(mappings, null, 2));
+      await fs.rename(tempFile, mappingsFile);
+
       console.log('💾 Saved worker mappings to file');
     } catch (error) {
       console.error('❌ Error saving worker mappings:', error);
@@ -122,7 +145,7 @@ export class WorkerChannelService {
       .replace(/^-|-$/g, '');         // Remove leading/trailing hyphens
   }
 
-  public registerWorkerChannel(workerId: string, workerName: string, channelId: string, registrationId?: string): void {
+  public async registerWorkerChannel(workerId: string, workerName: string, channelId: string, registrationId?: string): Promise<void> {
     const mapping: WorkerChannelMapping = {
       workerId,
       workerName,
@@ -132,12 +155,12 @@ export class WorkerChannelService {
     };
 
     this.workerMappings.set(workerId, mapping);
-    this.saveWorkerMappings();
+    await this.saveWorkerMappings();
 
     console.log(`📝 Registered worker channel: ${workerName} (${workerId}) → ${channelId}`);
 
     // Reload mappings to ensure all instances have the latest data
-    this.reloadMappings();
+    await this.reloadMappings();
     console.log(`🔄 Mappings reloaded after registration - now tracking ${this.workerMappings.size} workers`);
   }
 
@@ -239,7 +262,8 @@ export class WorkerChannelService {
 
       // Update last active timestamp
       workerMapping.lastActive = new Date();
-      this.saveWorkerMappings();
+      // Fire and forget - don't wait for save to complete
+      this.saveWorkerMappings().catch(err => console.error('Error saving mappings:', err));
 
       console.log(`✅ Found channel mapping: ${workerMapping.workerName} → ${workerMapping.channelId}`);
 

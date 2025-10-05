@@ -1,0 +1,49 @@
+{
+  "workerId": "949397147030274059",
+  "workerName": "Izzynha Evans",
+  "channelId": "1422627698060034098",
+  "sessionId": "session_1759615117466_cfp96f",
+  "startTime": "2025-10-04T21:58:37.466Z",
+  "lastActivity": "2025-10-04T23:07:54.921Z",
+  "status": "paid",
+  "plantTransactions": [],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Ovelha Femea",
+      "quantity": 2,
+      "cost": 40,
+      "amount": 0,
+      "transactionId": "tx_1759615117468_6fslsc",
+      "timestamp": "2025-10-04T21:58:37.468Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759617269568_4hsgki",
+      "timestamp": "2025-10-04T22:34:29.568Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759619274921_7lp0n",
+      "timestamp": "2025-10-04T23:07:54.921Z"
+    }
+  ],
+  "financialTransactions": [],
+  "totalCredits": 320,
+  "embedMessageId": "1424171207455932548",
+  "animalExpectations": [
+    {
+      "animalsTaken": 2,
+      "animalsDelivered": 2,
+      "isComplete": true,
+      "transactionId": "tx_1759615117468_6fslsc",
+      "takenTimestamp": "2025-10-04T21:58:37.468Z"
+    }
+  ],
+  "completedAt": "2025-10-04T23:10:43.267Z",
+  "notes": "Pago por ๖ۣۜζ͜͡ɪᴢᴢʏɴʜᴀ🎀 (949397147030274059)"
+}

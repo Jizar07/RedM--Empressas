@@ -1,0 +1,67 @@
+{
+  "sessionId": "session_1759437925961_a8o6f5",
+  "workerId": "389921931337400332",
+  "workerName": "Rebeca Lopez",
+  "amount": 170,
+  "paidBy": "141250620593012736",
+  "paidByName": "r3dley",
+  "paidAt": "2025-10-04T01:28:22.520Z",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 50,
+      "transactionId": "tx_1759537217543_tdxi8l",
+      "timestamp": "2025-10-04T00:20:17.543Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 50,
+      "transactionId": "tx_1759538337753_uiq45j",
+      "timestamp": "2025-10-04T00:38:57.753Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1759539849752_hvxd1n",
+      "timestamp": "2025-10-04T01:04:09.752Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1759540871261_6694v",
+      "timestamp": "2025-10-04T01:21:11.261Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759437925963_kb6iww",
+      "timestamp": "2025-10-02T20:45:25.963Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Porca",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759509773415_1nmx8j",
+      "timestamp": "2025-10-03T16:42:53.415Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Ovelha Macho",
+      "quantity": 8,
+      "cost": 160,
+      "amount": 0,
+      "transactionId": "tx_1759509797349_si59ud",
+      "timestamp": "2025-10-03T16:43:17.349Z"
+    }
+  ],
+  "financialTransactions": []
+}

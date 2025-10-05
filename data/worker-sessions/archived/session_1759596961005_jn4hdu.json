@@ -1,0 +1,149 @@
+{
+  "workerId": "311732968806678529",
+  "workerName": "Bob Eastwood",
+  "channelId": "1424077079569502299",
+  "sessionId": "session_1759596961005_jn4hdu",
+  "startTime": "2025-10-04T16:56:01.005Z",
+  "lastActivity": "2025-10-04T19:12:53.318Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Parasol Mushroom Semente",
+      "quantity": 50,
+      "transactionId": "tx_1759597258076_31izja",
+      "timestamp": "2025-10-04T17:00:58.076Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Junco",
+      "quantity": 100,
+      "transactionId": "tx_1759597269772_neika",
+      "timestamp": "2025-10-04T17:01:09.772Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 500,
+      "transactionId": "tx_1759602094521_yzpohz8",
+      "timestamp": "2025-10-04T18:21:34.521Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 210,
+      "transactionId": "tx_1759602194559_86sh6",
+      "timestamp": "2025-10-04T18:23:14.559Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 490,
+      "transactionId": "tx_1759604100649_xzqwaa",
+      "timestamp": "2025-10-04T18:55:00.649Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 240,
+      "transactionId": "tx_1759604258314_ggzmdf",
+      "timestamp": "2025-10-04T18:57:38.314Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 140,
+      "transactionId": "tx_1759604749052_if5mg",
+      "timestamp": "2025-10-04T19:05:49.052Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 160,
+      "transactionId": "tx_1759604941172_k6iou",
+      "timestamp": "2025-10-04T19:09:01.172Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Porco",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759596961006_0k58fe",
+      "timestamp": "2025-10-04T16:56:01.006Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759597939246_69ondu",
+      "timestamp": "2025-10-04T17:12:19.246Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759602506555_4kgxj",
+      "timestamp": "2025-10-04T18:28:26.555Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Porco",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759603059899_0g4i5b",
+      "timestamp": "2025-10-04T18:37:39.899Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759605173318_7pbt1",
+      "timestamp": "2025-10-04T19:12:53.318Z"
+    }
+  ],
+  "financialTransactions": [],
+  "totalCredits": 915,
+  "embedMessageId": "1424112058755977348",
+  "animalExpectations": [
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759596961006_0k58fe",
+      "takenTimestamp": "2025-10-04T16:56:01.006Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759603059899_0g4i5b",
+      "takenTimestamp": "2025-10-04T18:37:39.899Z"
+    }
+  ],
+  "seedExpectations": [
+    {
+      "seedType": "Parasol Mushroom Semente",
+      "seedQuantity": 50,
+      "expectedPlantType": "Parasol Mushroom Semente",
+      "expectedPlantQuantity": 500,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759597258076_31izja"
+    },
+    {
+      "seedType": "Semente de Junco",
+      "seedQuantity": 100,
+      "expectedPlantType": "Junco",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 1000,
+      "isComplete": true,
+      "transactionId": "tx_1759597269772_neika"
+    }
+  ],
+  "completedAt": "2025-10-04T21:46:29.921Z",
+  "notes": "Pago por r3dley (141250620593012736)"
+}

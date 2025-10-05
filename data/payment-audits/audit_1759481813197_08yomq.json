@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1759481813197_08yomq",
+  "sessionId": "session_1759450966418_ph14sc",
+  "managerId": "372161270176153601",
+  "managerName": "GM Stoffel",
+  "workerId": "1204772480305209384",
+  "workerName": "BONNIE BENNETT",
+  "amountPaid": 0,
+  "paidAt": "2025-10-03T08:56:53.197Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-03T08:51:53.197Z",
+    "endTime": "2025-10-03T09:06:53.197Z"
+  }
+}

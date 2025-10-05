@@ -1,0 +1,20 @@
+{
+  "sessionId": "session_1759615486421_vch71",
+  "workerId": "473199499490230273",
+  "workerName": "Nathy Miller",
+  "amount": 160,
+  "paidBy": "940279402145669241",
+  "paidByName": "𝑱𝒖𝒍𝒊𝒏𝒉𝒂 👺",
+  "paidAt": "2025-10-04T22:31:56.463Z",
+  "plantTransactions": [],
+  "animalTransactions": [
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759615486422_ni2fje",
+      "timestamp": "2025-10-04T22:04:46.422Z"
+    }
+  ],
+  "financialTransactions": []
+}

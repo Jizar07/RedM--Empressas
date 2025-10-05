@@ -1,0 +1,92 @@
+{
+  "sessionId": "session_1759465469616_em7dn",
+  "workerId": "590207324845637642",
+  "workerName": "Margarida Versace",
+  "amount": 492.5,
+  "paidBy": "949397147030274059",
+  "paidByName": "๖ۣۜζ͜͡ɪᴢᴢʏɴʜᴀ🎀",
+  "paidAt": "2025-10-03T06:44:49.010Z",
+  "plantTransactions": [
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 50,
+      "transactionId": "tx_1759466096184_w7ynaw",
+      "timestamp": "2025-10-03T04:34:56.184Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Red Raspberry Semente",
+      "quantity": 50,
+      "transactionId": "tx_1759466129697_efpapv",
+      "timestamp": "2025-10-03T04:35:29.697Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Creekplum Semente",
+      "quantity": 50,
+      "transactionId": "tx_1759468940583_60djk",
+      "timestamp": "2025-10-03T05:22:20.583Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Bode",
+      "quantity": 1,
+      "cost": 20,
+      "amount": 0,
+      "transactionId": "tx_1759465469617_abh8sh",
+      "timestamp": "2025-10-03T04:24:29.617Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Cabra",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759465498037_k9h5mo",
+      "timestamp": "2025-10-03T04:24:58.037Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759467314127_mvg2g9",
+      "timestamp": "2025-10-03T04:55:14.127Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Galinha",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759468038714_y5q7va",
+      "timestamp": "2025-10-03T05:07:18.714Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759470013025_383va8",
+      "timestamp": "2025-10-03T05:40:13.025Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Porca",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759471199252_ndfi0v",
+      "timestamp": "2025-10-03T05:59:59.252Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759473629603_q98o1n",
+      "timestamp": "2025-10-03T06:40:29.603Z"
+    }
+  ],
+  "financialTransactions": []
+}

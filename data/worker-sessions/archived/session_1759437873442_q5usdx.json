@@ -1,0 +1,51 @@
+{
+  "workerId": "372161270176153601",
+  "workerName": "Jizar Stoffeliz",
+  "channelId": "1420763696560476240",
+  "sessionId": "session_1759437873442_q5usdx",
+  "startTime": "2025-10-02T20:44:33.442Z",
+  "lastActivity": "2025-10-02T22:38:12.494Z",
+  "status": "stale",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Milk Weed Semente",
+      "quantity": 100,
+      "transactionId": "tx_1759437873443_yv5rh",
+      "timestamp": "2025-10-02T20:44:33.443Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "SugarcaneSemente",
+      "quantity": 200,
+      "transactionId": "tx_1759444692494_em48ae",
+      "timestamp": "2025-10-02T22:38:12.494Z"
+    }
+  ],
+  "animalTransactions": [],
+  "financialTransactions": [],
+  "totalCredits": 0,
+  "embedMessageId": "1423438953939337288",
+  "seedExpectations": [
+    {
+      "seedType": "Milk Weed Semente",
+      "seedQuantity": 100,
+      "expectedPlantType": "Milk Weed Semente",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759437873443_yv5rh"
+    },
+    {
+      "seedType": "SugarcaneSemente",
+      "seedQuantity": 200,
+      "expectedPlantType": "SugarcaneSemente",
+      "expectedPlantQuantity": 2000,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759444692494_em48ae"
+    }
+  ],
+  "completedAt": "2025-10-04T22:52:01.316Z",
+  "notes": "Auto-archived due to inactivity"
+}

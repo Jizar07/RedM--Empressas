@@ -1,0 +1,45 @@
+{
+  "sessionId": "session_1759466566727_xbun3",
+  "workerId": "206587400703574019",
+  "workerName": "Cosmo Versace",
+  "amount": 320,
+  "paidBy": "949397147030274059",
+  "paidByName": "๖ۣۜζ͜͡ɪᴢᴢʏɴʜᴀ🎀",
+  "paidAt": "2025-10-03T06:01:44.449Z",
+  "plantTransactions": [],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Porco",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759466566729_lempg",
+      "timestamp": "2025-10-03T04:42:46.729Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759468353111_l0hmqs",
+      "timestamp": "2025-10-03T05:12:33.111Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Ovelha Macho",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759468453065_njtzkq",
+      "timestamp": "2025-10-03T05:14:13.065Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759470207367_3r29uc",
+      "timestamp": "2025-10-03T05:43:27.367Z"
+    }
+  ],
+  "financialTransactions": []
+}

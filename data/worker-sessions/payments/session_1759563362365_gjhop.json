@@ -1,0 +1,29 @@
+{
+  "sessionId": "session_1759563362365_gjhop",
+  "workerId": "949397147030274059",
+  "workerName": "Izzynha Evans",
+  "amount": 156.8,
+  "paidBy": "949397147030274059",
+  "paidByName": "๖ۣۜζ͜͡ɪᴢᴢʏɴʜᴀ🎀",
+  "paidAt": "2025-10-04T07:39:29.816Z",
+  "plantTransactions": [],
+  "animalTransactions": [
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 156.8,
+      "transactionId": "tx_1759563362367_f7tnok",
+      "timestamp": "2025-10-04T07:36:02.367Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Porco",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759563439970_nrskec",
+      "timestamp": "2025-10-04T07:37:19.970Z"
+    }
+  ],
+  "financialTransactions": []
+}

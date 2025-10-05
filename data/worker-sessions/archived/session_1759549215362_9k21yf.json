@@ -1,0 +1,75 @@
+{
+  "workerId": "862576444740075530",
+  "workerName": "jurandi labareda",
+  "channelId": "1423873737672884267",
+  "sessionId": "session_1759549215362_9k21yf",
+  "startTime": "2025-10-04T03:40:15.362Z",
+  "lastActivity": "2025-10-04T04:55:30.520Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 100,
+      "transactionId": "tx_1759549259706_553v3",
+      "timestamp": "2025-10-04T03:40:59.706Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1759552742261_dwew",
+      "timestamp": "2025-10-04T04:39:02.261Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1759553149596_d2cz9",
+      "timestamp": "2025-10-04T04:45:49.596Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Galinha",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759551957883_4qj5wg",
+      "timestamp": "2025-10-04T04:25:57.883Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759553730520_r7yb9k",
+      "timestamp": "2025-10-04T04:55:30.520Z"
+    }
+  ],
+  "financialTransactions": [],
+  "totalCredits": 410,
+  "embedMessageId": "1423896292287053948",
+  "seedExpectations": [
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 100,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 1000,
+      "isComplete": true,
+      "transactionId": "tx_1759549259706_553v3"
+    }
+  ],
+  "animalExpectations": [
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759551957883_4qj5wg",
+      "takenTimestamp": "2025-10-04T04:25:57.883Z"
+    }
+  ],
+  "completedAt": "2025-10-04T05:00:52.731Z",
+  "notes": "Pago por éoKs (333664599549411329)"
+}

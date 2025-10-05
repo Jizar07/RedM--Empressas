@@ -1,0 +1,90 @@
+{
+  "sessionId": "session_1759465812456_yqyw5d",
+  "workerId": "845711436730597417",
+  "workerName": "Anthony Versace",
+  "amount": 730,
+  "paidBy": "949397147030274059",
+  "paidByName": "๖ۣۜζ͜͡ɪᴢᴢʏɴʜᴀ🎀",
+  "paidAt": "2025-10-03T06:45:27.513Z",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 50,
+      "transactionId": "tx_1759466198404_2r2grb",
+      "timestamp": "2025-10-03T04:36:38.404Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1759468540943_6ggb31",
+      "timestamp": "2025-10-03T05:15:40.943Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 50,
+      "transactionId": "tx_1759468623177_ovn3if",
+      "timestamp": "2025-10-03T05:17:03.177Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1759470630278_7im6",
+      "timestamp": "2025-10-03T05:50:30.278Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Mula",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759465812457_9k28l1",
+      "timestamp": "2025-10-03T04:30:12.457Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759468359939_h88ry",
+      "timestamp": "2025-10-03T05:12:39.939Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Cabra",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759468590933_xzlq0n",
+      "timestamp": "2025-10-03T05:16:30.933Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759470400301_3bq0yr",
+      "timestamp": "2025-10-03T05:46:40.301Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Cabra",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759470719133_xsdoxmq",
+      "timestamp": "2025-10-03T05:51:59.133Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759472476929_vpihz",
+      "timestamp": "2025-10-03T06:21:16.929Z"
+    }
+  ],
+  "financialTransactions": []
+}

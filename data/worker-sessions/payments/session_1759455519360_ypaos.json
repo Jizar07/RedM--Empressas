@@ -1,0 +1,53 @@
+{
+  "sessionId": "session_1759455519360_ypaos",
+  "workerId": "1117649799181783130",
+  "workerName": "Ubirajara Cauamb",
+  "amount": 285,
+  "paidBy": "588934801508270082",
+  "paidByName": "chrisbam",
+  "paidAt": "2025-10-03T02:18:22.476Z",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 50,
+      "transactionId": "tx_1759455542837_wa0xu",
+      "timestamp": "2025-10-03T01:39:02.837Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1759457812738_37lx1n",
+      "timestamp": "2025-10-03T02:16:52.738Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Galo",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759455519361_2k7l5w",
+      "timestamp": "2025-10-03T01:38:39.361Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Ovelha Femea",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759455594776_hvr8vq",
+      "timestamp": "2025-10-03T01:39:54.776Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759457768875_exl9l3",
+      "timestamp": "2025-10-03T02:16:08.876Z"
+    }
+  ],
+  "financialTransactions": []
+}

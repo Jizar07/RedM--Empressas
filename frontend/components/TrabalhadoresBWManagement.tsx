@@ -48,122 +48,130 @@ export default function TrabalhadoresBWManagement({
     return itemId.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
   });
 
-  // Get user transactions from recentActivity with deduplication (memoized)
-  const getUserTransactions = React.useMemo(() => (username: string) => {
-    const transactions = recentActivity.filter(activity => 
-      activity.autor === username && 
-      (activity.categoria === 'financeiro' || activity.categoria === 'inventario')
-    );
-    
-    // Deduplicate by unique activity ID
-    const uniqueTransactions = transactions.reduce((acc, current) => {
-      const exists = acc.find((item: any) => item.id === current.id);
-      if (!exists) {
-        acc.push(current);
-      }
-      return acc;
-    }, [] as any[]);
-    
-    return uniqueTransactions.sort((a: any, b: any) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
-  }, [recentActivity]);
+  // Combined user data functions (single memoization to prevent cascade re-renders)
+  const userDataFunctions = React.useMemo(() => {
+    // Pre-process and deduplicate all transactions once
+    const activityByUser = new Map<string, any[]>();
 
-  // Get user analytics (memoized to prevent infinite loops)
-  const getUserAnalytics = React.useMemo(() => (username: string) => {
-    const transactions = getUserTransactions(username);
-    
-    const analytics = {
-      totalTransactions: transactions.length,
-      financialTransactions: 0,
-      inventoryTransactions: 0,
-      totalDeposited: 0,
-      totalWithdrawn: 0,
-      totalSales: 0,
-      netFinancial: 0,
-      itemsAdded: 0,
-      itemsRemoved: 0,
-      netItems: 0,
-      mostActiveDay: '',
-      firstActivity: '',
-      lastActivity: '',
-      averagePerDay: 0
+    recentActivity.forEach(activity => {
+      if (activity.autor && (activity.categoria === 'financeiro' || activity.categoria === 'inventario')) {
+        if (!activityByUser.has(activity.autor)) {
+          activityByUser.set(activity.autor, []);
+        }
+        const userActivities = activityByUser.get(activity.autor)!;
+        // Deduplicate by ID
+        if (!userActivities.some(a => a.id === activity.id)) {
+          userActivities.push(activity);
+        }
+      }
+    });
+
+    // Sort each user's transactions once
+    activityByUser.forEach((activities, user) => {
+      activities.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
+    });
+
+    return {
+      getUserTransactions: (username: string) => {
+        return activityByUser.get(username) || [];
+      },
+
+      getUserAnalytics: (username: string) => {
+        const transactions = activityByUser.get(username) || [];
+
+        const analytics = {
+          totalTransactions: transactions.length,
+          financialTransactions: 0,
+          inventoryTransactions: 0,
+          totalDeposited: 0,
+          totalWithdrawn: 0,
+          totalSales: 0,
+          netFinancial: 0,
+          itemsAdded: 0,
+          itemsRemoved: 0,
+          netItems: 0,
+          mostActiveDay: '',
+          firstActivity: '',
+          lastActivity: '',
+          averagePerDay: 0
+        };
+
+        const dailyActivity: Record<string, number> = {};
+
+        transactions.forEach((transaction: any) => {
+          const day = new Date(transaction.timestamp).toDateString();
+          dailyActivity[day] = (dailyActivity[day] || 0) + 1;
+
+          if (transaction.categoria === 'financeiro') {
+            analytics.financialTransactions++;
+            if (transaction.tipo === 'deposito') {
+              analytics.totalDeposited += transaction.valor || 0;
+            } else if (transaction.tipo === 'saque') {
+              analytics.totalWithdrawn += transaction.valor || 0;
+            } else if (transaction.tipo === 'venda') {
+              analytics.totalSales += transaction.valor || 0;
+            }
+          } else if (transaction.categoria === 'inventario') {
+            analytics.inventoryTransactions++;
+            if (transaction.tipo === 'adicionar') {
+              analytics.itemsAdded += transaction.quantidade || 0;
+            } else if (transaction.tipo === 'remover') {
+              analytics.itemsRemoved += transaction.quantidade || 0;
+            }
+          }
+        });
+
+        analytics.netFinancial = analytics.totalDeposited + analytics.totalSales - analytics.totalWithdrawn;
+        analytics.netItems = analytics.itemsAdded - analytics.itemsRemoved;
+
+        const maxDay = Object.entries(dailyActivity).reduce((a, b) =>
+          dailyActivity[a[0]] > dailyActivity[b[0]] ? a : b, ['', 0]
+        );
+        analytics.mostActiveDay = maxDay[0] ? `${maxDay[0]} (${maxDay[1]} atividades)` : 'N/A';
+
+        if (transactions.length > 0) {
+          analytics.firstActivity = new Date(transactions[transactions.length - 1].timestamp).toLocaleDateString('pt-BR');
+          analytics.lastActivity = new Date(transactions[0].timestamp).toLocaleDateString('pt-BR');
+
+          const daysDiff = Math.max(1, Math.ceil(
+            (new Date(transactions[0].timestamp).getTime() - new Date(transactions[transactions.length - 1].timestamp).getTime())
+            / (1000 * 60 * 60 * 24)
+          ));
+          analytics.averagePerDay = parseFloat((transactions.length / daysDiff).toFixed(1));
+        }
+
+        return analytics;
+      },
+
+      getUserInventoryDetails: (username: string) => {
+        const transactions = (activityByUser.get(username) || []).filter((t: any) => t.categoria === 'inventario');
+        const itemTotals: Record<string, { added: number; removed: number; net: number }> = {};
+
+        transactions.forEach((transaction: any) => {
+          const itemName = getBestDisplayName(transaction.item) || 'Item Desconhecido';
+
+          if (!itemTotals[itemName]) {
+            itemTotals[itemName] = { added: 0, removed: 0, net: 0 };
+          }
+
+          if (transaction.tipo === 'adicionar') {
+            itemTotals[itemName].added += transaction.quantidade || 0;
+          } else if (transaction.tipo === 'remover') {
+            itemTotals[itemName].removed += transaction.quantidade || 0;
+          }
+
+          itemTotals[itemName].net = itemTotals[itemName].added - itemTotals[itemName].removed;
+        });
+
+        return Object.entries(itemTotals)
+          .sort(([,a], [,b]) => Math.abs(b.net) - Math.abs(a.net))
+          .slice(0, 10);
+      }
     };
-
-    // Daily activity counter
-    const dailyActivity: Record<string, number> = {};
-    
-    transactions.forEach((transaction: any) => {
-      const day = new Date(transaction.timestamp).toDateString();
-      dailyActivity[day] = (dailyActivity[day] || 0) + 1;
-      
-      if (transaction.categoria === 'financeiro') {
-        analytics.financialTransactions++;
-        if (transaction.tipo === 'deposito') {
-          analytics.totalDeposited += transaction.valor || 0;
-        } else if (transaction.tipo === 'saque') {
-          analytics.totalWithdrawn += transaction.valor || 0;
-        } else if (transaction.tipo === 'venda') {
-          analytics.totalSales += transaction.valor || 0;
-        }
-      } else if (transaction.categoria === 'inventario') {
-        analytics.inventoryTransactions++;
-        if (transaction.tipo === 'adicionar') {
-          analytics.itemsAdded += transaction.quantidade || 0;
-        } else if (transaction.tipo === 'remover') {
-          analytics.itemsRemoved += transaction.quantidade || 0;
-        }
-      }
-    });
-
-    analytics.netFinancial = analytics.totalDeposited + analytics.totalSales - analytics.totalWithdrawn;
-    analytics.netItems = analytics.itemsAdded - analytics.itemsRemoved;
-
-    // Find most active day
-    const maxDay = Object.entries(dailyActivity).reduce((a, b) => 
-      dailyActivity[a[0]] > dailyActivity[b[0]] ? a : b, ['', 0]
-    );
-    analytics.mostActiveDay = maxDay[0] ? `${maxDay[0]} (${maxDay[1]} atividades)` : 'N/A';
-
-    // First and last activity
-    if (transactions.length > 0) {
-      analytics.firstActivity = new Date(transactions[transactions.length - 1].timestamp).toLocaleDateString('pt-BR');
-      analytics.lastActivity = new Date(transactions[0].timestamp).toLocaleDateString('pt-BR');
-      
-      // Calculate average per day
-      const daysDiff = Math.max(1, Math.ceil(
-        (new Date(transactions[0].timestamp).getTime() - new Date(transactions[transactions.length - 1].timestamp).getTime()) 
-        / (1000 * 60 * 60 * 24)
-      ));
-      analytics.averagePerDay = parseFloat((transactions.length / daysDiff).toFixed(1));
-    }
-
-    return analytics;
-  }, [recentActivity]);
-
-  // Get detailed inventory breakdown by item type (memoized)
-  const getUserInventoryDetails = React.useMemo(() => (username: string) => {
-    const transactions = getUserTransactions(username).filter((t: any) => t.categoria === 'inventario');
-    const itemTotals: Record<string, { added: number; removed: number; net: number }> = {};
-    
-    transactions.forEach((transaction: any) => {
-      const itemName = getBestDisplayName(transaction.item) || 'Item Desconhecido';
-      
-      if (!itemTotals[itemName]) {
-        itemTotals[itemName] = { added: 0, removed: 0, net: 0 };
-      }
-      
-      if (transaction.tipo === 'adicionar') {
-        itemTotals[itemName].added += transaction.quantidade || 0;
-      } else if (transaction.tipo === 'remover') {
-        itemTotals[itemName].removed += transaction.quantidade || 0;
-      }
-      
-      itemTotals[itemName].net = itemTotals[itemName].added - itemTotals[itemName].removed;
-    });
-    
-    return Object.entries(itemTotals)
-      .sort(([,a], [,b]) => Math.abs(b.net) - Math.abs(a.net))
-      .slice(0, 10); // Top 10 most significant items
   }, [recentActivity, parentItemTranslations, getBestDisplayName]);
+
+  // Destructure for backward compatibility
+  const { getUserTransactions, getUserAnalytics, getUserInventoryDetails } = userDataFunctions;
 
   // Handle column sorting
   const handleSort = (column: 'name' | 'role' | 'created' | 'activity') => {

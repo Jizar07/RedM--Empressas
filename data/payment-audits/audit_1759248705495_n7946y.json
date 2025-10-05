@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1759248705495_n7946y",
+  "sessionId": "session_1759029054239_wdbq6",
+  "managerId": "198538680686608384",
+  "managerName": "Barth",
+  "workerId": "614115703229775904",
+  "workerName": "Sasa Pietra",
+  "amountPaid": 160,
+  "paidAt": "2025-09-30T16:11:45.495Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-09-30T16:06:45.495Z",
+    "endTime": "2025-09-30T16:21:45.495Z"
+  }
+}

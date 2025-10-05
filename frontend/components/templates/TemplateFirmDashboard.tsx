@@ -456,18 +456,30 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
             const inventoryResponse = await fetch(`/api/inventory/${firm.id}`);
             if (inventoryResponse.ok) {
               const inventoryData = await inventoryResponse.json();
-              if (inventoryData.success && inventoryData.data) {
-                // Create mapping of item IDs to updated names
-                Object.values(inventoryData.data.items || {}).forEach((item: any) => {
-                  if (item.id && item.nome) {
-                    // Map item ID (e.g., "Milk_Weed") to custom name (e.g., "Asclepias")
-                    inventoryOverrides[item.id] = item.nome;
-                    // Also try the display name format
-                    if (item.displayName && item.displayName !== item.nome) {
-                      inventoryOverrides[item.displayName] = item.nome;
+              if (inventoryData?.success && inventoryData?.data?.items) {
+                // Create mapping of item IDs to updated names with proper typing
+                const items = inventoryData.data.items;
+                if (typeof items === 'object' && items !== null) {
+                  Object.values(items).forEach((item: unknown) => {
+                    // Type guard for item structure
+                    if (
+                      item &&
+                      typeof item === 'object' &&
+                      'id' in item &&
+                      'nome' in item &&
+                      typeof (item as any).id === 'string' &&
+                      typeof (item as any).nome === 'string'
+                    ) {
+                      const typedItem = item as { id: string; nome: string; displayName?: string };
+                      // Map item ID (e.g., "Milk_Weed") to custom name (e.g., "Asclepias")
+                      inventoryOverrides[typedItem.id] = typedItem.nome;
+                      // Also try the display name format
+                      if (typedItem.displayName && typedItem.displayName !== typedItem.nome) {
+                        inventoryOverrides[typedItem.displayName] = typedItem.nome;
+                      }
                     }
-                  }
-                });
+                  });
+                }
                 console.log('📊 Loaded inventory overrides:', inventoryOverrides);
                 // Store in component state for getBestDisplayName to use
                 setPersistentInventoryOverrides(inventoryOverrides);
@@ -477,12 +489,13 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
             console.debug('No persistent inventory data found');
           }
           
-          // Apply inventory overrides to activities
+          // Apply inventory overrides to activities with null safety
           const enhancedMessages = firmMessages.map((activity: Activity) => {
-            if (activity.categoria === 'inventario' && activity.item) {
+            if (activity?.categoria === 'inventario' && activity?.item && typeof activity.item === 'string') {
               // Check if there's a persistent inventory override for this item
-              const override = inventoryOverrides[activity.item] || inventoryOverrides[activity.item.toLowerCase()];
-              if (override) {
+              const itemLower = activity.item.toLowerCase();
+              const override = inventoryOverrides[activity.item] || inventoryOverrides[itemLower];
+              if (override && typeof override === 'string') {
                 console.log(`🔄 Applying inventory override: ${activity.item} → ${override}`);
                 return {
                   ...activity,
@@ -763,27 +776,21 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
     }
   };
 
-  // Filter activities by type - get last 100 of each type separately
-  const getItemActivities = (): Activity[] => {
-    // Filter all item activities from the entire activities array (already sorted newest first)
-    const itemActivities = activities.filter(activity => 
+  // Filter activities by type - memoized to prevent re-computation on every render
+  const { itemActivities, moneyActivities } = React.useMemo(() => {
+    const itemActivities = activities.filter(activity =>
       activity.categoria === 'inventario' &&
       (activity.tipo && ['adicionar', 'remover'].includes(activity.tipo))
     );
-    // Return ALL item activities - no limits
-    return itemActivities;
-  };
 
-  const getMoneyActivities = (): Activity[] => {
-    // Filter all money activities from the entire activities array (already sorted newest first)  
     const moneyActivities = activities.filter(activity => {
       return activity.categoria === 'financeiro' &&
              (activity.tipo && ['deposito', 'saque', 'venda', 'compra'].includes(activity.tipo) ||
               (activity.valor !== undefined && activity.valor !== null));
     });
-    // Return ALL money activities - no limits
-    return moneyActivities;
-  };
+
+    return { itemActivities, moneyActivities };
+  }, [activities]);
 
   // Get unique inventory managers (people who add/remove animals)
   const getInventoryManagers = (): Set<string> => {
@@ -937,7 +944,7 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow transition-colors">
             <div className="p-4 border-b border-gray-200 dark:border-gray-700">
               <h3 className="text-lg font-semibold">
-                📦 Atividades de Itens ({getItemActivities().length})
+                📦 Atividades de Itens ({itemActivities.length})
               </h3>
             </div>
             
@@ -946,11 +953,11 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
                 <div className="flex justify-center py-8">
                   <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
                 </div>
-              ) : getItemActivities().length === 0 ? (
+              ) : itemActivities.length === 0 ? (
                 <p className="text-gray-500 dark:text-gray-400 text-center py-8">Nenhuma atividade de itens capturada</p>
               ) : (
                 <div className="space-y-2">
-                  {getItemActivities().map((activity) => (
+                  {itemActivities.map((activity) => (
                     <div key={activity.id} className="flex items-center gap-3 p-3 hover:bg-gray-50 dark:hover:bg-gray-700 rounded">
                       <div className="flex-shrink-0">{getActivityIcon(activity)}</div>
                       <div className="flex-1 min-w-0">
@@ -1029,16 +1036,16 @@ export default function TemplateFirmDashboard({ firm, template }: TemplateFirmDa
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow transition-colors">
             <div className="p-4 border-b border-gray-200 dark:border-gray-700">
               <h3 className="text-lg font-semibold">
-                💰 Atividades de Dinheiro ({getMoneyActivities().length})
+                💰 Atividades de Dinheiro ({moneyActivities.length})
               </h3>
             </div>
             
             <div className="p-4 max-h-96 overflow-y-auto">
-              {getMoneyActivities().length === 0 ? (
+              {moneyActivities.length === 0 ? (
                 <p className="text-gray-500 dark:text-gray-400 text-center py-8">Nenhuma atividade financeira capturada</p>
               ) : (
                 <div className="space-y-2">
-                  {getMoneyActivities().map((activity) => (
+                  {moneyActivities.map((activity) => (
                     <div key={activity.id} className="flex items-center gap-3 p-3 hover:bg-gray-50 dark:hover:bg-gray-700 rounded">
                       <div className="flex-shrink-0">{getActivityIcon(activity)}</div>
                       <div className="flex-1 min-w-0">

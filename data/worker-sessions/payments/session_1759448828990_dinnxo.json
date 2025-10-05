@@ -1,0 +1,48 @@
+{
+  "sessionId": "session_1759448828990_dinnxo",
+  "workerId": "726777646150582463",
+  "workerName": "jagunsso torres",
+  "amount": 97.5,
+  "paidBy": "1204772480305209384",
+  "paidByName": "𝑻𝒐́𝒙𝒊𝒄𝒂 𓆩♡𓆪",
+  "paidAt": "2025-10-03T00:19:46.641Z",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 33,
+      "transactionId": "tx_1759448828991_4kscte",
+      "timestamp": "2025-10-02T23:47:08.991Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 100,
+      "transactionId": "tx_1759450231288_tllhfe",
+      "timestamp": "2025-10-03T00:10:31.288Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 100,
+      "transactionId": "tx_1759450641454_k235lc",
+      "timestamp": "2025-10-03T00:17:21.454Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 100,
+      "transactionId": "tx_1759450644994_2o672mp",
+      "timestamp": "2025-10-03T00:17:24.994Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 90,
+      "transactionId": "tx_1759450647580_ecvstt",
+      "timestamp": "2025-10-03T00:17:27.580Z"
+    }
+  ],
+  "animalTransactions": [],
+  "financialTransactions": []
+}

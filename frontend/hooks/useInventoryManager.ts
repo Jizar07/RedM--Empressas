@@ -675,26 +675,64 @@ export function useInventoryManager({
     try {
       setLoading(true);
       setError(null);
-      
+
+      // STEP 1: Load persistent inventory file first (contains category customizations)
+      let persistentItems: Record<string, InventoryItem> = {};
+      try {
+        const persistentResponse = await fetch(`/api/inventory/${firm.id}`);
+        if (persistentResponse.ok) {
+          const persistentData = await persistentResponse.json();
+          if (persistentData.success && persistentData.data?.items) {
+            persistentItems = persistentData.data.items;
+            console.log('📂 Loaded', Object.keys(persistentItems).length, 'items from persistent storage with customized categories');
+          }
+        }
+      } catch (error) {
+        console.warn('⚠️ Could not load persistent inventory, will use Discord data only');
+      }
+
+      // STEP 2: Fetch Discord activities
       const response = await fetch(`/api/webhook/channel-messages?channelId=${firm.channelId}`, {
         headers: { 'Content-Type': 'application/json' }
       });
-      
+
       if (response.ok) {
         const data = await response.json();
-        
+
         if (data.success && data.messages && Array.isArray(data.messages)) {
-          const activities = data.messages.filter((msg: ParsedActivity) => 
+          const activities = data.messages.filter((msg: ParsedActivity) =>
             msg.channelId === firm.channelId
           );
-          
+
           console.log('📨 Found', activities.length, 'activities for', firm.name);
-          
+
           const { itemCounts, transactions, financialTransactions } = processActivities(activities);
-          const analytics = calculateAnalytics(itemCounts, transactions, financialTransactions);
-          
+
+          // STEP 3: Merge persistent customizations with Discord data
+          const mergedItems: Record<string, InventoryItem> = {};
+          Object.entries(itemCounts).forEach(([itemId, discordItem]) => {
+            const persistentItem = persistentItems[itemId];
+
+            if (persistentItem) {
+              // Item exists in persistent storage - preserve customizations
+              mergedItems[itemId] = {
+                ...discordItem,
+                categoria: persistentItem.categoria, // PRESERVE custom category
+                displayName: persistentItem.displayName || discordItem.displayName,
+                nome: persistentItem.nome || discordItem.nome,
+                notas: persistentItem.notas || discordItem.notas
+              };
+              console.log(`🔗 Merged ${itemId}: preserved category "${persistentItem.categoria}"`);
+            } else {
+              // New item from Discord - use auto-detected category
+              mergedItems[itemId] = discordItem;
+            }
+          });
+
+          const analytics = calculateAnalytics(mergedItems, transactions, financialTransactions);
+
           const newInventoryData: InventoryData = {
-            items: itemCounts,
+            items: mergedItems,
             transactions: [...transactions, ...financialTransactions],
             analytics,
             settings: inventoryData.settings,
@@ -703,12 +741,12 @@ export function useInventoryManager({
             totalQuantity: analytics.totalQuantity,
             activeWorkers: [...new Set(transactions.map(t => t.autor))]
           };
-          
+
           setInventoryData(newInventoryData);
-          
+
           // Backup to localStorage after successful fetch
           backupToLocalStorage(newInventoryData);
-          
+
           console.log('📦 Updated inventory:', analytics.totalItems, 'items,', analytics.totalQuantity, 'total quantity,', analytics.workers.length, 'workers with activities');
         }
       } else {
@@ -886,7 +924,33 @@ export function useInventoryManager({
               if (createResponse.ok) {
                 const createResult = await createResponse.json();
                 console.log('✅ Item created successfully:', createResult);
-                await fetchInventoryData();
+
+                // Update local state directly to preserve the category change
+                setInventoryData(prev => ({
+                  ...prev,
+                  items: { ...prev.items, [itemId]: createResult.item }
+                }));
+
+                // Save category to backend if it was changed
+                if (updates.categoria && updates.categoria.trim() !== '') {
+                  try {
+                    await fetch('http://localhost:3050/api/localization/category', {
+                      method: 'POST',
+                      headers: {
+                        'Content-Type': 'application/json',
+                        'x-bot-token': process.env.NEXT_PUBLIC_DISCORD_TOKEN || ''
+                      },
+                      body: JSON.stringify({
+                        itemId: itemId,
+                        category: updates.categoria.trim()
+                      })
+                    });
+                    console.log('✅ Category saved to backend after item creation');
+                  } catch (err) {
+                    console.warn('⚠️ Failed to save category after creation:', err);
+                  }
+                }
+
                 return true;
               } else {
                 console.error('❌ Failed to create item as fallback');
@@ -921,7 +985,7 @@ export function useInventoryManager({
                 displayName: updates.nome.trim()
               })
             });
-            
+
             if (customizationResponse.ok) {
               console.log('✅ Added to customization file:', itemId, '→', updates.nome);
             }
@@ -929,7 +993,34 @@ export function useInventoryManager({
             console.warn('Failed to update customization file:', customizationError);
           }
         }
-        
+
+        // SAVE CATEGORY TO BACKEND: If category was changed, update backend ItemTranslationService
+        if (updates.categoria && updates.categoria.trim() !== '') {
+          try {
+            const categoryResponse = await fetch('http://localhost:3050/api/localization/category', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'x-bot-token': process.env.NEXT_PUBLIC_DISCORD_TOKEN || ''
+              },
+              body: JSON.stringify({
+                itemId: itemId,
+                category: updates.categoria.trim()
+              })
+            });
+
+            if (categoryResponse.ok) {
+              const categoryResult = await categoryResponse.json();
+              console.log('✅ Category saved to backend:', itemId, '→', updates.categoria);
+              console.log('🌾 Backend now recognizes as plant:', categoryResult.data?.isPlant);
+            } else {
+              console.warn('⚠️ Failed to save category to backend:', await categoryResponse.text());
+            }
+          } catch (categoryError) {
+            console.warn('⚠️ Failed to update category on backend:', categoryError);
+          }
+        }
+
         // Trigger global refresh for dashboard activities (notify other components)
         window.dispatchEvent(new CustomEvent('inventoryChanged', { 
           detail: { firmId: firm.id, itemId, updates, updatedItem: result.item } 

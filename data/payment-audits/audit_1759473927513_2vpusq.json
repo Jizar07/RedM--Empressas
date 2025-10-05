@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1759473927513_2vpusq",
+  "sessionId": "session_1759465812456_yqyw5d",
+  "managerId": "949397147030274059",
+  "managerName": "๖ۣۜζ͜͡ɪᴢᴢʏɴʜᴀ🎀",
+  "workerId": "845711436730597417",
+  "workerName": "Anthony Versace",
+  "amountPaid": 730,
+  "paidAt": "2025-10-03T06:45:27.513Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-03T06:40:27.513Z",
+    "endTime": "2025-10-03T06:55:27.513Z"
+  }
+}

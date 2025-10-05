@@ -113,12 +113,17 @@ export class GlobalWorkerTracker {
   private static instance: GlobalWorkerTracker | null = null;
   private recipeService: MultiSourceRecipeService;
   private realTimeMonitoring: RealTimeMonitoringService | null = null;
+  private initializationTimeout: NodeJS.Timeout | null = null;
 
   // Data storage
   private activities: Map<string, ItemActivity> = new Map(); // activityId -> activity
   private workerProfiles: Map<string, WorkerGlobalProfile> = new Map(); // workerId -> profile
   private activeRecipeAttempts: Map<string, RecipeAttempt[]> = new Map(); // workerId -> attempts
   private crossFirmTransfers: Map<string, CrossFirmTransfer> = new Map(); // transferId -> transfer
+
+  // Performance optimization: Indexed lookups for cross-firm transfer detection
+  // Maps: workerId -> array of recent item_removed activities
+  private recentRemovals: Map<string, ItemActivity[]> = new Map();
 
   // Configuration
   private readonly RECIPE_ATTEMPT_TIMEOUT = 30 * 60 * 1000; // 30 minutes
@@ -127,10 +132,11 @@ export class GlobalWorkerTracker {
   constructor() {
     this.recipeService = MultiSourceRecipeService.getInstance();
 
-    // Initialize real-time monitoring
-    setTimeout(() => {
+    // Initialize real-time monitoring with tracked timeout
+    this.initializationTimeout = setTimeout(() => {
       this.realTimeMonitoring = RealTimeMonitoringService.getInstance();
       console.log('🔥 GlobalWorkerTracker: Real-time monitoring initialized');
+      this.initializationTimeout = null;
     }, 1000); // Delay to avoid circular dependency
   }
 
@@ -159,6 +165,20 @@ export class GlobalWorkerTracker {
 
     // Store activity
     this.activities.set(activityId, enhancedActivity);
+
+    // Update indexed removals for faster cross-firm detection
+    if (enhancedActivity.activityType === 'item_removed') {
+      if (!this.recentRemovals.has(activity.workerId)) {
+        this.recentRemovals.set(activity.workerId, []);
+      }
+      const removals = this.recentRemovals.get(activity.workerId)!;
+      removals.push(enhancedActivity);
+
+      // Keep only recent removals within detection window
+      const cutoffTime = Date.now() - this.CROSS_FIRM_DETECTION_WINDOW;
+      const filtered = removals.filter(r => r.timestamp.getTime() > cutoffTime);
+      this.recentRemovals.set(activity.workerId, filtered);
+    }
 
     // Update worker profile
     this.updateWorkerProfile(enhancedActivity);
@@ -421,16 +441,18 @@ export class GlobalWorkerTracker {
   }
 
   /**
-   * Detect cross-firm transfers
+   * Detect cross-firm transfers - optimized with indexed lookups O(1) instead of O(n)
    */
   private detectCrossFirmTransfer(activity: ItemActivity): void {
     if (activity.activityType !== 'item_added') return;
 
-    // Look for recent item removals of the same item from other firms by the same worker
-    const recentActivities = Array.from(this.activities.values())
+    // Use indexed lookups for O(1) worker lookup instead of O(n) scan
+    const workerRemovals = this.recentRemovals.get(activity.workerId);
+    if (!workerRemovals || workerRemovals.length === 0) return;
+
+    // Filter only matching items from different firms
+    const recentActivities = workerRemovals
       .filter(a =>
-        a.workerId === activity.workerId &&
-        a.activityType === 'item_removed' &&
         a.itemName === activity.itemName &&
         a.firmId !== activity.firmId &&
         activity.timestamp.getTime() - a.timestamp.getTime() <= this.CROSS_FIRM_DETECTION_WINDOW &&
@@ -788,5 +810,27 @@ export class GlobalWorkerTracker {
       analytics: this.getSmartAnalytics(),
       lastSync: new Date().toISOString()
     };
+  }
+
+  /**
+   * Shutdown and cleanup resources
+   */
+  public shutdown(): void {
+    console.log('🛑 GlobalWorkerTracker: Shutting down...');
+
+    // Clear initialization timeout if still pending
+    if (this.initializationTimeout) {
+      clearTimeout(this.initializationTimeout);
+      this.initializationTimeout = null;
+      console.log('✅ Cleared pending initialization timeout');
+    }
+
+    // Shutdown real-time monitoring if initialized
+    if (this.realTimeMonitoring) {
+      this.realTimeMonitoring.shutdown();
+      this.realTimeMonitoring = null;
+    }
+
+    console.log('✅ GlobalWorkerTracker: Shutdown complete');
   }
 }

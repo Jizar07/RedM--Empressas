@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1759550812242_xsd53s",
+  "sessionId": "session_1759439585209_ltapyd",
+  "managerId": "470361257497722886",
+  "managerName": "Gordo caramelo",
+  "workerId": "522217368500568082",
+  "workerName": "Nico Chimichurri",
+  "amountPaid": 1912.5,
+  "paidAt": "2025-10-04T04:06:52.242Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-04T04:01:52.242Z",
+    "endTime": "2025-10-04T04:16:52.242Z"
+  }
+}

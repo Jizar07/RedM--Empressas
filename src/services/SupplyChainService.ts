@@ -2,6 +2,35 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import { v4 as uuidv4 } from 'uuid';
 
+// File write queue to prevent race conditions
+class FileWriteQueue {
+  private queue: Map<string, Promise<void>> = new Map();
+
+  async enqueue<T>(key: string, operation: () => Promise<T>): Promise<T> {
+    // Wait for any existing operation on this file to complete
+    const existing = this.queue.get(key);
+
+    const promise = (async () => {
+      if (existing) {
+        await existing.catch(() => {}); // Ignore errors from previous operations
+      }
+      return operation();
+    })();
+
+    this.queue.set(key, promise as Promise<void>);
+
+    try {
+      const result = await promise;
+      return result;
+    } finally {
+      // Clean up completed promise if it's still the current one
+      if (this.queue.get(key) === promise) {
+        this.queue.delete(key);
+      }
+    }
+  }
+}
+
 // Types for supply chain management
 export type SupplyChainTransactionType =
   | 'PLANTS_WITHDRAWN'          // Plants taken from inventory for box making
@@ -160,6 +189,7 @@ export interface RevenueDistribution {
 
 export class SupplyChainService {
   private static instance: SupplyChainService | null = null;
+  private static writeQueue: FileWriteQueue = new FileWriteQueue();
   private sessionsFilePath: string;
   private archivedSessionsPath: string;
   private activeSessions: Map<string, SupplyChainSession> = new Map();
@@ -640,21 +670,23 @@ export class SupplyChainService {
 
   // Enhanced saveActiveSessions with better error handling and file locking
   private async saveActiveSessions(): Promise<void> {
-    try {
-      const sessions = Array.from(this.activeSessions.values());
-      const tempFile = this.sessionsFilePath + '.tmp';
-      
-      // Write to temporary file first
-      await fs.writeFile(tempFile, JSON.stringify(sessions, null, 2));
-      
-      // Atomic rename to avoid corruption
-      await fs.rename(tempFile, this.sessionsFilePath);
-      
-      console.log(`💾 Saved ${sessions.length} active supply chain sessions`);
-    } catch (error) {
-      console.error('❌ Error saving active sessions:', error);
-      throw error;
-    }
+    return SupplyChainService.writeQueue.enqueue(this.sessionsFilePath, async () => {
+      try {
+        const sessions = Array.from(this.activeSessions.values());
+        const tempFile = this.sessionsFilePath + '.tmp';
+
+        // Write to temporary file first
+        await fs.writeFile(tempFile, JSON.stringify(sessions, null, 2));
+
+        // Atomic rename to avoid corruption
+        await fs.rename(tempFile, this.sessionsFilePath);
+
+        console.log(`💾 Saved ${sessions.length} active supply chain sessions`);
+      } catch (error) {
+        console.error('❌ Error saving active sessions:', error);
+        throw error;
+      }
+    });
   }
 
   // Create plant expectation when plants are withdrawn for box making

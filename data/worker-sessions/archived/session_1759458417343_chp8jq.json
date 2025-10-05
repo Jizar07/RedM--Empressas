@@ -1,0 +1,58 @@
+{
+  "workerId": "949397147030274059",
+  "workerName": "Izzynha Evans",
+  "channelId": "1422627698060034098",
+  "sessionId": "session_1759458417343_chp8jq",
+  "startTime": "2025-10-03T02:26:57.343Z",
+  "lastActivity": "2025-10-04T06:43:03.677Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 150,
+      "transactionId": "tx_1759458417345_mq9rq",
+      "timestamp": "2025-10-03T02:26:57.345Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 100,
+      "transactionId": "tx_1759459514544_unit3",
+      "timestamp": "2025-10-03T02:45:14.544Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 100,
+      "transactionId": "tx_1759560183677_8nvte",
+      "timestamp": "2025-10-04T06:43:03.677Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Ovelha Femea",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759559823363_7d0n9a",
+      "timestamp": "2025-10-04T06:37:03.363Z"
+    }
+  ],
+  "financialTransactions": [],
+  "totalCredits": 87.5,
+  "embedMessageId": "1423923358646665226",
+  "seedExpectations": [],
+  "animalExpectations": [
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759559823363_7d0n9a",
+      "takenTimestamp": "2025-10-04T06:37:03.363Z"
+    }
+  ],
+  "completedAt": "2025-10-04T07:33:08.496Z",
+  "notes": "Pago por ๖ۣۜζ͜͡ɪᴢᴢʏɴʜᴀ🎀 (949397147030274059)"
+}

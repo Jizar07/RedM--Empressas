@@ -5,7 +5,40 @@ This file is synchronized with: https://github.com/Jizar07/RedM--Empressas
 
 ## Version History
 
-### [0.052] - 2025-09-30 **[CURRENT VERSION]**
+### [0.053] - 2025-10-04 **[CURRENT VERSION]**
+- **WORKER PAYMENT ENHANCEMENT**: Complete unregistered plant detection and retroactive payment system
+- **CATEGORY PERSISTENCE FIX**: Frontend inventory category changes now persist across refreshes
+- **AUTO CHANNEL CLEANUP**: Worker channels automatically cleared on payment, keeping only pinned receipts
+- **GLOBAL CATEGORY SYSTEM**: Comprehensive category customization with file-based persistence
+- **RETROACTIVE PLANT DETECTION**: Scans Discord history to find plants deposited before categorization
+- **KEY FEATURES**:
+  - Frontend 3-step merge process preserves category customizations during inventory refresh
+  - Backend ItemTranslationService with priority-based category system (customizations → hardcoded → detection)
+  - scanForUnregisteredPlants() detects historical plant deposits using current categorization
+  - clearWorkerChannel() bulk-deletes unpinned messages on payment completion
+  - Unregistered plants displayed in separate "Detectadas Hoje" section in worker embeds
+  - Payment calculations include both registered and unregistered plant transactions
+- **TECHNICAL IMPLEMENTATION**:
+  - Created `data/custom_item_categories.json` for persistent category overrides
+  - Enhanced `useInventoryManager.ts` with 3-step merge (persistent file → Discord → merge)
+  - Modified `ItemTranslationService.ts` with category customization loading and priority system
+  - Added `/api/localization/category` POST endpoint for dynamic category updates
+  - Updated `WorkerSession` interface with `unregisteredPlants` property
+  - Implemented historical message scanning from session.startTime (up to 100 messages)
+  - Integrated channel cleanup into payment flow with timing delay for embed pinning
+- **BUG FIXES**:
+  - Fixed category changes reverting on refresh (inventory rebuild was overwriting customizations)
+  - Fixed Discord API limit error (changed limit from 200 to 100 messages)
+  - Fixed category save in fallback creation path with direct state update
+  - Fixed 404 errors when updating non-existent items by creating and saving category
+- **FILES MODIFIED**:
+  - frontend/hooks/useInventoryManager.ts - 3-step merge process and category preservation
+  - src/services/ItemTranslationService.ts - Category customization system with file loading
+  - src/api/routes/localization.ts - Category POST and reload endpoints
+  - src/services/WorkerActivityService.ts - Unregistered plant detection, credit calculation, embed display, channel cleanup
+- **RESULT**: Workers now get paid for ALL deposited plants (registered + historical) with automatic channel cleanup keeping only receipts
+
+### [0.052] - 2025-09-30
 - **UNIVERSAL DARK MODE IMPLEMENTATION**: Complete dark mode coverage across all frontend firm components
 - **SYSTEMATIC APPROACH**: Identified and fixed 10+ components with batch sed commands for efficiency
 - **COMPREHENSIVE PATTERNS**: Applied consistent dark mode styling for backgrounds, text, borders, badges

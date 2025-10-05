@@ -1,0 +1,77 @@
+{
+  "workerId": "590207324845637642",
+  "workerName": "Margarida Versace",
+  "channelId": "1423525150338580531",
+  "sessionId": "session_1759560798903_47uwhe",
+  "startTime": "2025-10-04T06:53:18.903Z",
+  "lastActivity": "2025-10-04T07:41:53.080Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Prairie Poppy Semente",
+      "quantity": 50,
+      "transactionId": "tx_1759560832636_tvdn9",
+      "timestamp": "2025-10-04T06:53:52.636Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Creekplum Semente",
+      "quantity": 50,
+      "transactionId": "tx_1759560991829_zzpyu",
+      "timestamp": "2025-10-04T06:56:31.829Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Porco",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759560798904_sd8vur",
+      "timestamp": "2025-10-04T06:53:18.904Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759563713080_2ns2bs",
+      "timestamp": "2025-10-04T07:41:53.080Z"
+    }
+  ],
+  "financialTransactions": [],
+  "totalCredits": 160,
+  "embedMessageId": "1423938162865995816",
+  "animalExpectations": [
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759560798904_sd8vur",
+      "takenTimestamp": "2025-10-04T06:53:18.904Z"
+    }
+  ],
+  "seedExpectations": [
+    {
+      "seedType": "Prairie Poppy Semente",
+      "seedQuantity": 50,
+      "expectedPlantType": "Prairie Poppy Semente",
+      "expectedPlantQuantity": 500,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759560832636_tvdn9"
+    },
+    {
+      "seedType": "Creekplum Semente",
+      "seedQuantity": 50,
+      "expectedPlantType": "Creekplum Semente",
+      "expectedPlantQuantity": 500,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759560991829_zzpyu"
+    }
+  ],
+  "completedAt": "2025-10-04T07:44:52.724Z",
+  "notes": "Pago por ๖ۣۜζ͜͡ɪᴢᴢʏɴʜᴀ🎀 (949397147030274059)"
+}

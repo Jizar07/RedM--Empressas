@@ -18,6 +18,44 @@ interface FerroviaSessionEmbed {
   lastUpdated: Date;
 }
 
+// Discord rate limit helper with exponential backoff
+class DiscordRateLimiter {
+  private static async sleep(ms: number): Promise<void> {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  static async executeWithBackoff<T>(
+    operation: () => Promise<T>,
+    maxRetries = 3,
+    baseDelay = 1000
+  ): Promise<T | null> {
+    for (let attempt = 0; attempt <= maxRetries; attempt++) {
+      try {
+        return await operation();
+      } catch (error: any) {
+        // Check for rate limit errors (429) or other retriable errors
+        if (error.code === 50013 || error.code === 10008) {
+          // Permission errors or unknown message - don't retry
+          console.warn(`⚠️ Non-retriable Discord error ${error.code}: ${error.message}`);
+          return null;
+        }
+
+        if (attempt < maxRetries && (error.httpStatus === 429 || error.code === 'RATE_LIMITED')) {
+          const delay = baseDelay * Math.pow(2, attempt);
+          console.log(`⏳ Rate limited, retrying in ${delay}ms (attempt ${attempt + 1}/${maxRetries})`);
+          await this.sleep(delay);
+        } else if (attempt >= maxRetries) {
+          console.error(`❌ Max retries reached for Discord operation`);
+          throw error;
+        } else {
+          throw error;
+        }
+      }
+    }
+    return null;
+  }
+}
+
 export class FerroviaSessionService {
   private static instance: FerroviaSessionService | null = null;
   private client: Client;
@@ -30,6 +68,14 @@ export class FerroviaSessionService {
   private boxOriginAnalyzer: BoxOriginAnalyzer;
   private activeEmbeds: Map<string, FerroviaSessionEmbed> = new Map();
   private dataDir: string;
+
+  // Constants - extracted magic numbers for clarity and maintainability
+  private readonly PIN_MESSAGE_WAIT_TIME_MS = 1000;
+  private readonly PIN_MESSAGE_FETCH_LIMIT = 15;
+  private readonly MESSAGE_DELETE_DELAY_MS = 150;
+  private readonly BOXES_PER_MISSION = 250;
+  private readonly MANAGER_MISSION_PERCENTAGE = 0.50; // 50% for managers
+  private readonly WORKER_MISSION_PERCENTAGE = 0.25;  // 25% for workers
 
   private constructor(client: Client) {
     this.client = client;
@@ -211,10 +257,10 @@ export class FerroviaSessionService {
         // Delete ALL "pinned a message" system messages - same as Farm embed system
         try {
           // Wait longer for the system message to appear
-          await new Promise(resolve => setTimeout(resolve, 1000));
+          await new Promise(resolve => setTimeout(resolve, this.PIN_MESSAGE_WAIT_TIME_MS));
 
           // Fetch recent messages to find all pin system messages
-          const recentMessages = await channel.messages.fetch({ limit: 15 });
+          const recentMessages = await channel.messages.fetch({ limit: this.PIN_MESSAGE_FETCH_LIMIT });
           const systemMessages = recentMessages.filter(msg =>
             msg.type === 6 && // CHANNEL_PINNED_MESSAGE type
             msg.author.id === this.client.user?.id
@@ -223,26 +269,18 @@ export class FerroviaSessionService {
           if (systemMessages.size > 0) {
             console.log(`🗑️ Found ${systemMessages.size} pin system messages to delete for Ferrovia ${embedData.workerName}`);
 
-            // Delete all found system messages
+            // Delete all found system messages with rate limiting
             for (const systemMessage of systemMessages.values()) {
-              try {
-                await systemMessage.delete();
-                console.log(`🗑️ Deleted Ferrovia pin system message (ID: ${systemMessage.id})`);
-                // Small delay between deletions to avoid rate limits
-                await new Promise(resolve => setTimeout(resolve, 100));
-              } catch (individualDeleteError: any) {
-                // Handle specific Discord API errors gracefully
-                if (individualDeleteError.code === 10008) {
-                  // Error 10008 = Unknown Message (already deleted)
-                  console.log(`ℹ️ Ferrovia pin message ${systemMessage.id} already deleted (this is normal)`);
-                } else if (individualDeleteError.code === 50013) {
-                  // Error 50013 = Missing Permissions
-                  console.warn(`⚠️ Missing permissions to delete Ferrovia pin message ${systemMessage.id}`);
-                } else {
-                  // Other unexpected errors
-                  console.warn(`⚠️ Could not delete Ferrovia pin message ${systemMessage.id}:`, individualDeleteError.message || individualDeleteError);
-                }
-              }
+              await DiscordRateLimiter.executeWithBackoff(
+                async () => {
+                  await systemMessage.delete();
+                  console.log(`🗑️ Deleted Ferrovia pin system message (ID: ${systemMessage.id})`);
+                },
+                2, // Max retries
+                200 // Base delay in ms
+              );
+              // Delay between deletions to avoid rate limits
+              await new Promise(resolve => setTimeout(resolve, this.MESSAGE_DELETE_DELAY_MS));
             }
           } else {
             console.log(`ℹ️ No pin system messages found to delete for Ferrovia ${embedData.workerName}`);
@@ -523,12 +561,39 @@ export class FerroviaSessionService {
     }
 
     if (missions.length > 0) {
-      const missionSummary = missions.map((t, index) => {
-        const timeStr = `<t:${Math.floor(t.timestamp.getTime() / 1000)}:t>`;
-        const isRecent = (Date.now() - t.timestamp.getTime()) < 5 * 60 * 1000; // Last 5 minutes
-        const recentTag = isRecent ? ' ✅ **CONCLUÍDA!**' : '';
-        return `• **Missão ${index + 1}:** ${timeStr} - ${t.quantity} caixas usadas${recentTag}`;
-      });
+      let missionSummary: string[];
+
+      // Discord embed field limit is 1024 characters - need to truncate if too many missions
+      if (missions.length > 15) {
+        // Show first 5 and last 5 missions with summary in between
+        const firstFive = missions.slice(0, 5).map((t, index) => {
+          const timeStr = `<t:${Math.floor(t.timestamp.getTime() / 1000)}:t>`;
+          return `• **Missão ${index + 1}:** ${timeStr} - ${t.quantity} caixas`;
+        });
+
+        const lastFive = missions.slice(-5).map((t, index) => {
+          const actualIndex = missions.length - 5 + index;
+          const timeStr = `<t:${Math.floor(t.timestamp.getTime() / 1000)}:t>`;
+          const isRecent = (Date.now() - t.timestamp.getTime()) < 5 * 60 * 1000;
+          const recentTag = isRecent ? ' ✅ **CONCLUÍDA!**' : '';
+          return `• **Missão ${actualIndex + 1}:** ${timeStr} - ${t.quantity} caixas${recentTag}`;
+        });
+
+        const middleCount = missions.length - 10;
+        missionSummary = [
+          ...firstFive,
+          `\n... **${middleCount} missões anteriores** ...\n`,
+          ...lastFive
+        ];
+      } else {
+        // Show all missions if under limit
+        missionSummary = missions.map((t, index) => {
+          const timeStr = `<t:${Math.floor(t.timestamp.getTime() / 1000)}:t>`;
+          const isRecent = (Date.now() - t.timestamp.getTime()) < 5 * 60 * 1000;
+          const recentTag = isRecent ? ' ✅ **CONCLUÍDA!**' : '';
+          return `• **Missão ${index + 1}:** ${timeStr} - ${t.quantity} caixas usadas${recentTag}`;
+        });
+      }
 
       embed.addFields({
         name: `🚂 Missões da Ferrovia Completadas (${missions.length})`,

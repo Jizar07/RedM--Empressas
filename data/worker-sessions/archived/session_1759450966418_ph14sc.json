@@ -1,0 +1,35 @@
+{
+  "workerId": "1204772480305209384",
+  "workerName": "BONNIE BENNETT",
+  "channelId": "1416502543990915132",
+  "sessionId": "session_1759450966418_ph14sc",
+  "startTime": "2025-10-03T00:22:46.418Z",
+  "lastActivity": "2025-10-03T00:22:46.420Z",
+  "status": "paid",
+  "plantTransactions": [],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Galo",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759450966420_rsj218",
+      "timestamp": "2025-10-03T00:22:46.420Z"
+    }
+  ],
+  "financialTransactions": [],
+  "totalCredits": 0,
+  "embedMessageId": "1423465267777896559",
+  "animalExpectations": [
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759450966420_rsj218",
+      "takenTimestamp": "2025-10-03T00:22:46.420Z"
+    }
+  ],
+  "completedAt": "2025-10-03T08:56:53.194Z",
+  "notes": "Pago por GM Stoffel (372161270176153601)"
+}

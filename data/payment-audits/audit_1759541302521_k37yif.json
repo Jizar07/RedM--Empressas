@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1759541302521_k37yif",
+  "sessionId": "session_1759437925961_a8o6f5",
+  "managerId": "141250620593012736",
+  "managerName": "r3dley",
+  "workerId": "389921931337400332",
+  "workerName": "Rebeca Lopez",
+  "amountPaid": 170,
+  "paidAt": "2025-10-04T01:28:22.521Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-04T01:23:22.521Z",
+    "endTime": "2025-10-04T01:38:22.521Z"
+  }
+}

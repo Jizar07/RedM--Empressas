@@ -1,0 +1,137 @@
+{
+  "workerId": "845711436730597417",
+  "workerName": "Anthony Versace",
+  "channelId": "1423525103769092096",
+  "sessionId": "session_1759465812456_yqyw5d",
+  "startTime": "2025-10-03T04:30:12.456Z",
+  "lastActivity": "2025-10-03T06:21:16.929Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 50,
+      "transactionId": "tx_1759466198404_2r2grb",
+      "timestamp": "2025-10-03T04:36:38.404Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1759468540943_6ggb31",
+      "timestamp": "2025-10-03T05:15:40.943Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 50,
+      "transactionId": "tx_1759468623177_ovn3if",
+      "timestamp": "2025-10-03T05:17:03.177Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1759470630278_7im6",
+      "timestamp": "2025-10-03T05:50:30.278Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Mula",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759465812457_9k28l1",
+      "timestamp": "2025-10-03T04:30:12.457Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759468359939_h88ry",
+      "timestamp": "2025-10-03T05:12:39.939Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Cabra",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759468590933_xzlq0n",
+      "timestamp": "2025-10-03T05:16:30.933Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759470400301_3bq0yr",
+      "timestamp": "2025-10-03T05:46:40.301Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Cabra",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759470719133_xsdoxmq",
+      "timestamp": "2025-10-03T05:51:59.133Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759472476929_vpihz",
+      "timestamp": "2025-10-03T06:21:16.929Z"
+    }
+  ],
+  "financialTransactions": [],
+  "totalCredits": 730,
+  "embedMessageId": "1423555490109194270",
+  "animalExpectations": [
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759465812457_9k28l1",
+      "takenTimestamp": "2025-10-03T04:30:12.457Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759468590933_xzlq0n",
+      "takenTimestamp": "2025-10-03T05:16:30.933Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759470719133_xsdoxmq",
+      "takenTimestamp": "2025-10-03T05:51:59.133Z"
+    }
+  ],
+  "seedExpectations": [
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 50,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 500,
+      "plantsFulfilled": 500,
+      "isComplete": true,
+      "transactionId": "tx_1759466198404_2r2grb"
+    },
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 50,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 500,
+      "plantsFulfilled": 500,
+      "isComplete": true,
+      "transactionId": "tx_1759468623177_ovn3if"
+    }
+  ],
+  "completedAt": "2025-10-03T06:45:27.511Z",
+  "notes": "Pago por ๖ۣۜζ͜͡ɪᴢᴢʏɴʜᴀ🎀 (949397147030274059)"
+}

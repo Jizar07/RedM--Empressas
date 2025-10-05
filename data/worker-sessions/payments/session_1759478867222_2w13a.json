@@ -1,0 +1,151 @@
+{
+  "sessionId": "session_1759478867222_2w13a",
+  "workerId": "590207324845637642",
+  "workerName": "Margarida Versace",
+  "amount": 41.799999999999955,
+  "paidBy": "949397147030274059",
+  "paidByName": "๖ۣۜζ͜͡ɪᴢᴢʏɴʜᴀ🎀",
+  "paidAt": "2025-10-04T03:37:59.791Z",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Oregano Semente",
+      "quantity": 50,
+      "transactionId": "tx_1759521617087_7vuxn",
+      "timestamp": "2025-10-03T20:00:17.087Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Crows Garlic Semente",
+      "quantity": 50,
+      "transactionId": "tx_1759525892227_8pkz1o",
+      "timestamp": "2025-10-03T21:11:32.227Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Milk Weed Semente",
+      "quantity": 50,
+      "transactionId": "tx_1759546275974_h5qxr",
+      "timestamp": "2025-10-04T02:51:15.974Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Algodão",
+      "quantity": 500,
+      "transactionId": "tx_1759548717657_5qy43",
+      "timestamp": "2025-10-04T03:31:57.657Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Galinha",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759478867224_0u4py",
+      "timestamp": "2025-10-03T08:07:47.224Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 156.8,
+      "transactionId": "tx_1759480852294_j4mmv8",
+      "timestamp": "2025-10-03T08:40:52.294Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Porca",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759521544683_bs1ug",
+      "timestamp": "2025-10-03T19:59:04.683Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Mula",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759522235028_0uoumv",
+      "timestamp": "2025-10-03T20:10:35.028Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759524058962_9zgxk",
+      "timestamp": "2025-10-03T20:40:58.962Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Galo",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759525910170_pag9vh",
+      "timestamp": "2025-10-03T21:11:50.170Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759527731354_0m8vfi",
+      "timestamp": "2025-10-03T21:42:11.354Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759530337889_d0tuta",
+      "timestamp": "2025-10-03T22:25:37.889Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Galinha",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759546187860_ll5aio",
+      "timestamp": "2025-10-04T02:49:47.860Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Galo",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759546263581_ud0ota",
+      "timestamp": "2025-10-04T02:51:03.581Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Porca",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759546366956_6nn8",
+      "timestamp": "2025-10-04T02:52:46.956Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Cabra",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759546444035_lvfirf",
+      "timestamp": "2025-10-04T02:54:04.035Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Porca",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759547848728_2gmjdy",
+      "timestamp": "2025-10-04T03:17:28.728Z"
+    }
+  ],
+  "financialTransactions": []
+}

@@ -55,7 +55,7 @@ export class RealTimeMonitoringService extends EventEmitter {
   private anomalyCheckInterval: NodeJS.Timeout | null = null;
   private alertCleanupInterval: NodeJS.Timeout | null = null;
 
-  // Activity tracking for metrics
+  // Activity tracking for metrics - using circular buffers for bounded memory
   private activityHistory: { timestamp: Date; count: number }[] = [];
   private transferHistory: { timestamp: Date; count: number }[] = [];
   private recipeHistory: { timestamp: Date; count: number }[] = [];
@@ -67,6 +67,7 @@ export class RealTimeMonitoringService extends EventEmitter {
   private readonly ALERT_CLEANUP_INTERVAL = 24 * 60 * 60 * 1000; // 24 hours
   private readonly HISTORY_RETENTION_MINUTES = 60;
   private readonly MAX_RESPONSE_TIME_SAMPLES = 100;
+  private readonly MAX_HISTORY_ENTRIES = 120; // Max entries before forcing cleanup (2x retention period)
 
   constructor() {
     super();
@@ -475,18 +476,30 @@ export class RealTimeMonitoringService extends EventEmitter {
   }
 
   /**
-   * Helper functions for metrics calculation
+   * Helper functions for metrics calculation - with circular buffer limits
    */
   private updateActivityHistory(): void {
     this.activityHistory.push({ timestamp: new Date(), count: 1 });
+    // Enforce max size to prevent unbounded growth
+    if (this.activityHistory.length > this.MAX_HISTORY_ENTRIES) {
+      this.cleanupHistory();
+    }
   }
 
   private updateTransferHistory(): void {
     this.transferHistory.push({ timestamp: new Date(), count: 1 });
+    // Enforce max size to prevent unbounded growth
+    if (this.transferHistory.length > this.MAX_HISTORY_ENTRIES) {
+      this.cleanupHistory();
+    }
   }
 
   private updateRecipeHistory(): void {
     this.recipeHistory.push({ timestamp: new Date(), count: 1 });
+    // Enforce max size to prevent unbounded growth
+    if (this.recipeHistory.length > this.MAX_HISTORY_ENTRIES) {
+      this.cleanupHistory();
+    }
   }
 
   private calculateRateFromHistory(history: { timestamp: Date; count: number }[]): number {

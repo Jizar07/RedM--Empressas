@@ -1,0 +1,107 @@
+{
+  "workerId": "389921931337400332",
+  "workerName": "Rebeca Lopez",
+  "channelId": "1423043516975550496",
+  "sessionId": "session_1759437925961_a8o6f5",
+  "startTime": "2025-10-02T20:45:25.961Z",
+  "lastActivity": "2025-10-04T01:21:11.261Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 50,
+      "transactionId": "tx_1759537217543_tdxi8l",
+      "timestamp": "2025-10-04T00:20:17.543Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 50,
+      "transactionId": "tx_1759538337753_uiq45j",
+      "timestamp": "2025-10-04T00:38:57.753Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1759539849752_hvxd1n",
+      "timestamp": "2025-10-04T01:04:09.752Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1759540871261_6694v",
+      "timestamp": "2025-10-04T01:21:11.261Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759437925963_kb6iww",
+      "timestamp": "2025-10-02T20:45:25.963Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Porca",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759509773415_1nmx8j",
+      "timestamp": "2025-10-03T16:42:53.415Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Ovelha Macho",
+      "quantity": 8,
+      "cost": 160,
+      "amount": 0,
+      "transactionId": "tx_1759509797349_si59ud",
+      "timestamp": "2025-10-03T16:43:17.349Z"
+    }
+  ],
+  "financialTransactions": [],
+  "totalCredits": 170,
+  "embedMessageId": "1423842357140389898",
+  "animalExpectations": [
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759509773415_1nmx8j",
+      "takenTimestamp": "2025-10-03T16:42:53.415Z"
+    },
+    {
+      "animalsTaken": 8,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759509797349_si59ud",
+      "takenTimestamp": "2025-10-03T16:43:17.349Z"
+    }
+  ],
+  "seedExpectations": [
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 50,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 500,
+      "plantsFulfilled": 500,
+      "isComplete": true,
+      "transactionId": "tx_1759537217543_tdxi8l"
+    },
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 50,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 500,
+      "plantsFulfilled": 500,
+      "isComplete": true,
+      "transactionId": "tx_1759538337753_uiq45j"
+    }
+  ],
+  "completedAt": "2025-10-04T01:28:22.515Z",
+  "notes": "Pago por r3dley (141250620593012736)"
+}

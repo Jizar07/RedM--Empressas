@@ -1,49 +1,51 @@
 'use client';
 
 import { useState, useEffect, useMemo, useTransition } from 'react';
+import dynamic from 'next/dynamic';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { useServer } from '@/contexts/ServerContext';
 import { Server, Users, Bot, Activity, MessageSquare, Settings, BarChart3, Shield, Package, Truck, Send, FileText, Gavel, ChefHat, DollarSign, Building, Receipt } from 'lucide-react';
-import ServerStatusCard from '@/components/ServerStatusCard';
-import EnhancedServerStatus from '@/components/EnhancedServerStatus';
-import PlayerManagement from '@/components/PlayerManagement';
-import KnownPlayersCard from '@/components/KnownPlayersCard';
-import ChannelParser from '@/components/ChannelParser';
-import RegistrationSettings from '@/components/RegistrationSettings';
-import RegistrationAnalytics from '@/components/RegistrationAnalytics';
-import OrdersSettings from '@/components/OrdersSettings';
-import OrdersManagement from '@/components/OrdersManagement';
-import OrdersDashboard from '@/components/OrdersDashboard';
-import ChannelLogsConfig from '@/components/ChannelLogsConfig';
-import DiscordCommands from '@/components/DiscordCommands';
-import ModerationSettings from '@/components/ModerationSettings';
-import Recipes from '@/components/Recipes';
-import PriceList from '@/components/PriceList';
-import FazendaBW from '@/components/FazendaBW';
-import EstoqueBW from '@/components/EstoqueBW';
-import TrabalhadoresBW from '@/components/TrabalhadoresBW';
-import FirmManagement from '@/components/FirmManagement';
-import PaymentSettings from '@/components/PaymentSettings';
-import WorkerPaymentReceipts from '@/components/WorkerPaymentReceipts';
-import GenericFirmDashboard from '@/components/GenericFirmDashboard';
-import FirmTemplateRenderer, { getAvailableComponents } from '@/components/FirmTemplateRenderer';
 import ProtectedRoute from '@/components/ProtectedRoute';
-import UserMenu from '@/components/UserMenu';
-import SimpleUserMenu from '@/components/SimpleUserMenu';
 import AuthButton from '@/components/AuthButton';
 import ServerDropdown from '@/components/ServerDropdown';
 import SplashPage from '@/components/SplashPage';
 import RoleGuard from '@/components/RoleGuard';
+import ThemeToggle from '@/components/ThemeToggle';
 import { useAuth } from '@/lib/auth';
 import { healthCheck, botApi, serverApi } from '@/lib/api';
 import { BotStats, ServerInfo } from '@/types';
 import { useFirmAccess } from '@/hooks/useFirmAccess';
 import { FirmConfig } from '@/types/firms';
-import ThemeToggle from '@/components/ThemeToggle';
 
-// Disable static generation for this page since it uses dynamic content
-export const dynamic = 'force-dynamic';
+// Dynamic imports for heavy components - loaded only when needed
+const ServerStatusCard = dynamic(() => import('@/components/ServerStatusCard'), { ssr: false });
+const EnhancedServerStatus = dynamic(() => import('@/components/EnhancedServerStatus'), { ssr: false });
+const PlayerManagement = dynamic(() => import('@/components/PlayerManagement'), { ssr: false });
+const KnownPlayersCard = dynamic(() => import('@/components/KnownPlayersCard'), { ssr: false });
+const ChannelParser = dynamic(() => import('@/components/ChannelParser'), { ssr: false });
+const RegistrationSettings = dynamic(() => import('@/components/RegistrationSettings'), { ssr: false });
+const RegistrationAnalytics = dynamic(() => import('@/components/RegistrationAnalytics'), { ssr: false });
+const OrdersSettings = dynamic(() => import('@/components/OrdersSettings'), { ssr: false });
+const OrdersManagement = dynamic(() => import('@/components/OrdersManagement'), { ssr: false });
+const OrdersDashboard = dynamic(() => import('@/components/OrdersDashboard'), { ssr: false });
+const ChannelLogsConfig = dynamic(() => import('@/components/ChannelLogsConfig'), { ssr: false });
+const DiscordCommands = dynamic(() => import('@/components/DiscordCommands'), { ssr: false });
+const ModerationSettings = dynamic(() => import('@/components/ModerationSettings'), { ssr: false });
+const Recipes = dynamic(() => import('@/components/Recipes'), { ssr: false });
+const PriceList = dynamic(() => import('@/components/PriceList'), { ssr: false });
+const EstoqueBW = dynamic(() => import('@/components/EstoqueBW'), { ssr: false });
+const TrabalhadoresBW = dynamic(() => import('@/components/TrabalhadoresBW'), { ssr: false });
+const FirmManagement = dynamic(() => import('@/components/FirmManagement'), { ssr: false });
+const PaymentSettings = dynamic(() => import('@/components/PaymentSettings'), { ssr: false });
+const WorkerPaymentReceipts = dynamic(() => import('@/components/WorkerPaymentReceipts'), { ssr: false });
+const GenericFirmDashboard = dynamic(() => import('@/components/GenericFirmDashboard'), { ssr: false });
+const FirmTemplateRenderer = dynamic(() => import('@/components/FirmTemplateRenderer'), { ssr: false });
+const UserMenu = dynamic(() => import('@/components/UserMenu'), { ssr: false });
+const SimpleUserMenu = dynamic(() => import('@/components/SimpleUserMenu'), { ssr: false });
+
+// Import getAvailableComponents separately since it's used in logic
+import { getAvailableComponents } from '@/components/FirmTemplateRenderer';
 
 export default function HomePage() {
   const router = useRouter();

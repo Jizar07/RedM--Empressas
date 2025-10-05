@@ -1,5 +1,6 @@
 import { Router, Request, Response } from 'express';
 import LocalizationService from '../../services/LocalizationService';
+import ItemTranslationService from '../../services/ItemTranslationService';
 
 const router = Router();
 
@@ -117,10 +118,10 @@ router.delete('/override/:itemId', (req: Request, res: Response): void => {
 router.get('/preview/:itemId', (req: Request, res: Response): void => {
   try {
     const { itemId } = req.params;
-    
+
     const displayName = LocalizationService.getBestDisplayName(itemId);
     const customOverride = LocalizationService.getCustomDisplayName(itemId);
-    
+
     res.json({
       success: true,
       data: {
@@ -136,6 +137,66 @@ router.get('/preview/:itemId', (req: Request, res: Response): void => {
     res.status(500).json({
       success: false,
       error: 'Error previewing item'
+    });
+  }
+});
+
+/**
+ * POST /api/localization/category
+ * Set category customization for an item
+ */
+router.post('/category', (req: Request, res: Response): void => {
+  try {
+    const { itemId, category } = req.body;
+
+    if (!itemId || !category) {
+      res.status(400).json({
+        success: false,
+        error: 'itemId and category are required'
+      });
+      return;
+    }
+
+    const translationService = ItemTranslationService.getInstance();
+    translationService.setCategoryCustomization(itemId, category);
+
+    res.json({
+      success: true,
+      message: `Category customization saved: ${itemId} -> ${category}`,
+      data: {
+        itemId,
+        category,
+        isPlant: translationService.isPlant(itemId),
+        isSeed: translationService.isSeed(itemId)
+      }
+    });
+  } catch (error) {
+    console.error('Error setting category customization:', error);
+    res.status(500).json({
+      success: false,
+      error: 'Error setting category customization'
+    });
+  }
+});
+
+/**
+ * POST /api/localization/reload-categories
+ * Reload category customizations from file
+ */
+router.post('/reload-categories', (_req: Request, res: Response): void => {
+  try {
+    const translationService = ItemTranslationService.getInstance();
+    translationService.reloadCategoryCustomizations();
+
+    res.json({
+      success: true,
+      message: 'Category customizations reloaded successfully'
+    });
+  } catch (error) {
+    console.error('Error reloading category customizations:', error);
+    res.status(500).json({
+      success: false,
+      error: 'Error reloading category customizations'
     });
   }
 });

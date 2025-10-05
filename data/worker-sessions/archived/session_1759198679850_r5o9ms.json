@@ -1,0 +1,35 @@
+{
+  "workerId": "141243288572264449",
+  "workerName": "Dexter Morgan",
+  "channelId": "1421167670170226729",
+  "sessionId": "session_1759198679850_r5o9ms",
+  "startTime": "2025-09-30T02:17:59.850Z",
+  "lastActivity": "2025-09-30T02:17:59.851Z",
+  "status": "stale",
+  "plantTransactions": [],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Vaca",
+      "quantity": 2,
+      "cost": 40,
+      "amount": 0,
+      "transactionId": "tx_1759198679851_j9rc4",
+      "timestamp": "2025-09-30T02:17:59.851Z"
+    }
+  ],
+  "financialTransactions": [],
+  "totalCredits": 0,
+  "embedMessageId": "1422407101560651866",
+  "animalExpectations": [
+    {
+      "animalsTaken": 2,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759198679851_j9rc4",
+      "takenTimestamp": "2025-09-30T02:17:59.851Z"
+    }
+  ],
+  "completedAt": "2025-10-02T21:40:46.999Z",
+  "notes": "Auto-archived due to inactivity"
+}

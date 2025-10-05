@@ -1,0 +1,51 @@
+{
+  "workerId": "1127730801182777355",
+  "workerName": "Thony Gustav",
+  "channelId": "1420791388882206803",
+  "sessionId": "session_1759182821410_kh9f7o",
+  "startTime": "2025-09-29T21:53:41.410Z",
+  "lastActivity": "2025-09-29T21:53:47.833Z",
+  "status": "stale",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Junco",
+      "quantity": 200,
+      "transactionId": "tx_1759182821411_egdbpt",
+      "timestamp": "2025-09-29T21:53:41.411Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Junco",
+      "quantity": 50,
+      "transactionId": "tx_1759182827833_24d7eo",
+      "timestamp": "2025-09-29T21:53:47.833Z"
+    }
+  ],
+  "animalTransactions": [],
+  "financialTransactions": [],
+  "totalCredits": 0,
+  "embedMessageId": "1422340615731155065",
+  "seedExpectations": [
+    {
+      "seedType": "Semente de Junco",
+      "seedQuantity": 200,
+      "expectedPlantType": "Junco",
+      "expectedPlantQuantity": 2000,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759182821411_egdbpt"
+    },
+    {
+      "seedType": "Semente de Junco",
+      "seedQuantity": 50,
+      "expectedPlantType": "Junco",
+      "expectedPlantQuantity": 500,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759182827833_24d7eo"
+    }
+  ],
+  "completedAt": "2025-10-04T13:40:50.232Z",
+  "notes": "Auto-archived due to inactivity"
+}

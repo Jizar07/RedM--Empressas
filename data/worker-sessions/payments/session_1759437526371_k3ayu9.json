@@ -1,0 +1,20 @@
+{
+  "sessionId": "session_1759437526371_k3ayu9",
+  "workerId": "141250620593012736",
+  "workerName": "Santiago Bowdin",
+  "amount": 0,
+  "paidBy": "141250620593012736",
+  "paidByName": "r3dley",
+  "paidAt": "2025-10-02T20:39:57.651Z",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente Trigo",
+      "quantity": 1,
+      "transactionId": "tx_1759437526373_fxif1k",
+      "timestamp": "2025-10-02T20:38:46.373Z"
+    }
+  ],
+  "animalTransactions": [],
+  "financialTransactions": []
+}

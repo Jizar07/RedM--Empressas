@@ -1,0 +1,84 @@
+{
+  "workerId": "1117649799181783130",
+  "workerName": "Ubirajara Cauamb",
+  "channelId": "1419493917547823216",
+  "sessionId": "session_1759455519360_ypaos",
+  "startTime": "2025-10-03T01:38:39.360Z",
+  "lastActivity": "2025-10-03T02:16:52.738Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 50,
+      "transactionId": "tx_1759455542837_wa0xu",
+      "timestamp": "2025-10-03T01:39:02.837Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1759457812738_37lx1n",
+      "timestamp": "2025-10-03T02:16:52.738Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Galo",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759455519361_2k7l5w",
+      "timestamp": "2025-10-03T01:38:39.361Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Ovelha Femea",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759455594776_hvr8vq",
+      "timestamp": "2025-10-03T01:39:54.776Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759457768875_exl9l3",
+      "timestamp": "2025-10-03T02:16:08.876Z"
+    }
+  ],
+  "financialTransactions": [],
+  "totalCredits": 285,
+  "embedMessageId": "1423493984218517604",
+  "animalExpectations": [
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759455519361_2k7l5w",
+      "takenTimestamp": "2025-10-03T01:38:39.361Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759455594776_hvr8vq",
+      "takenTimestamp": "2025-10-03T01:39:54.776Z"
+    }
+  ],
+  "seedExpectations": [
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 50,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 500,
+      "plantsFulfilled": 500,
+      "isComplete": true,
+      "transactionId": "tx_1759455542837_wa0xu"
+    }
+  ],
+  "completedAt": "2025-10-03T02:18:22.474Z",
+  "notes": "Pago por chrisbam (588934801508270082)"
+}

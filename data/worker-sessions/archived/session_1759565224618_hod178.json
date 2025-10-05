@@ -1,0 +1,25 @@
+{
+  "workerId": "949397147030274059",
+  "workerName": "Izzynha Evans",
+  "channelId": "1422627698060034098",
+  "sessionId": "session_1759565224618_hod178",
+  "startTime": "2025-10-04T08:07:04.618Z",
+  "lastActivity": "2025-10-04T08:07:04.620Z",
+  "status": "paid",
+  "plantTransactions": [],
+  "animalTransactions": [
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759565224620_ymwohp",
+      "timestamp": "2025-10-04T08:07:04.620Z"
+    }
+  ],
+  "financialTransactions": [],
+  "totalCredits": 160,
+  "embedMessageId": "1423944501315108937",
+  "animalExpectations": [],
+  "completedAt": "2025-10-04T08:09:07.704Z",
+  "notes": "Pago por ๖ۣۜζ͜͡ɪᴢᴢʏɴʜᴀ🎀 (949397147030274059)"
+}

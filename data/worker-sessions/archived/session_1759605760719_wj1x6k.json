@@ -1,0 +1,65 @@
+{
+  "workerId": "949397147030274059",
+  "workerName": "Izzynha Evans",
+  "channelId": "1422627698060034098",
+  "sessionId": "session_1759605760719_wj1x6k",
+  "startTime": "2025-10-04T19:22:40.719Z",
+  "lastActivity": "2025-10-04T20:22:27.712Z",
+  "status": "paid",
+  "plantTransactions": [],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Porco",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759605760721_uruy2i",
+      "timestamp": "2025-10-04T19:22:40.721Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759607512315_gidmx",
+      "timestamp": "2025-10-04T19:51:52.315Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Porco",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759607607723_9svb7l",
+      "timestamp": "2025-10-04T19:53:27.723Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759609347712_8b2y2",
+      "timestamp": "2025-10-04T20:22:27.712Z"
+    }
+  ],
+  "financialTransactions": [],
+  "totalCredits": 320,
+  "embedMessageId": "1424129568263901387",
+  "animalExpectations": [
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759605760721_uruy2i",
+      "takenTimestamp": "2025-10-04T19:22:40.721Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759607607723_9svb7l",
+      "takenTimestamp": "2025-10-04T19:53:27.723Z"
+    }
+  ],
+  "completedAt": "2025-10-04T20:24:40.015Z",
+  "notes": "Pago por ๖ۣۜζ͜͡ɪᴢᴢʏɴʜᴀ🎀 (949397147030274059)"
+}

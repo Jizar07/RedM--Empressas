@@ -1,0 +1,44 @@
+{
+  "sessionId": "session_1759560798903_47uwhe",
+  "workerId": "590207324845637642",
+  "workerName": "Margarida Versace",
+  "amount": 160,
+  "paidBy": "949397147030274059",
+  "paidByName": "๖ۣۜζ͜͡ɪᴢᴢʏɴʜᴀ🎀",
+  "paidAt": "2025-10-04T07:44:52.726Z",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Prairie Poppy Semente",
+      "quantity": 50,
+      "transactionId": "tx_1759560832636_tvdn9",
+      "timestamp": "2025-10-04T06:53:52.636Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Creekplum Semente",
+      "quantity": 50,
+      "transactionId": "tx_1759560991829_zzpyu",
+      "timestamp": "2025-10-04T06:56:31.829Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Porco",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759560798904_sd8vur",
+      "timestamp": "2025-10-04T06:53:18.904Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759563713080_2ns2bs",
+      "timestamp": "2025-10-04T07:41:53.080Z"
+    }
+  ],
+  "financialTransactions": []
+}
