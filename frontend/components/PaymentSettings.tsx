@@ -8,10 +8,12 @@ interface PaymentConfig {
   defaultPrices: {
     plants: {
       unitPrice: number;
+      costPerUnit: number;
       description: string;
     };
     animals: {
       unitPrice: number;
+      costPerUnit: number;
       description: string;
     };
     ferrovia: {
@@ -36,10 +38,12 @@ const defaultConfig: PaymentConfig = {
   defaultPrices: {
     plants: {
       unitPrice: 0.25,
+      costPerUnit: 0,
       description: 'Preço padrão por planta depositada'
     },
     animals: {
       unitPrice: 160.00,
+      costPerUnit: 23.00,
       description: 'Preço padrão por serviço animal concluído'
     },
     ferrovia: {
@@ -168,6 +172,19 @@ export default function PaymentSettings() {
     }));
   };
 
+  const updateDefaultCost = (service: 'plants' | 'animals', cost: number) => {
+    setConfig(prev => ({
+      ...prev,
+      defaultPrices: {
+        ...prev.defaultPrices,
+        [service]: {
+          ...prev.defaultPrices[service],
+          costPerUnit: cost
+        }
+      }
+    }));
+  };
+
   const updateInventoryVerification = (field: string, value: any) => {
     setConfig(prev => ({
       ...prev,
@@ -252,65 +269,120 @@ export default function PaymentSettings() {
             These values will appear as defaults in the payment modal. Users can still override them.
           </p>
 
-          <div className="grid md:grid-cols-3 gap-4">
-            {/* Plants */}
-            <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">
-                🌾 Plants (per unit)
-              </label>
-              <div className="relative">
-                <span className="absolute left-3 top-2 text-gray-500">$</span>
-                <input
-                  type="number"
-                  step="0.01"
-                  min="0"
-                  value={config.defaultPrices.plants.unitPrice}
-                  onChange={(e) => updateDefaultPrice('plants', parseFloat(e.target.value) || 0)}
-                  className="pl-8 w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  placeholder="0.25"
-                />
+          <div className="space-y-6">
+            {/* Worker Payment Rates */}
+            <div>
+              <h3 className="text-sm font-semibold text-gray-700 mb-3">Worker Payment Rates</h3>
+              <div className="grid md:grid-cols-3 gap-4">
+                {/* Plants */}
+                <div className="space-y-2">
+                  <label className="block text-sm font-medium text-gray-700">
+                    🌾 Plants (per unit)
+                  </label>
+                  <div className="relative">
+                    <span className="absolute left-3 top-2 text-gray-500">$</span>
+                    <input
+                      type="number"
+                      step="0.01"
+                      min="0"
+                      value={config.defaultPrices.plants.unitPrice}
+                      onChange={(e) => updateDefaultPrice('plants', parseFloat(e.target.value) || 0)}
+                      className="pl-8 w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      placeholder="0.25"
+                    />
+                  </div>
+                  <p className="text-xs text-gray-500">{config.defaultPrices.plants.description}</p>
+                </div>
+
+                {/* Animals */}
+                <div className="space-y-2">
+                  <label className="block text-sm font-medium text-gray-700">
+                    🐄 Animals (per service)
+                  </label>
+                  <div className="relative">
+                    <span className="absolute left-3 top-2 text-gray-500">$</span>
+                    <input
+                      type="number"
+                      step="0.01"
+                      min="0"
+                      value={config.defaultPrices.animals.unitPrice}
+                      onChange={(e) => updateDefaultPrice('animals', parseFloat(e.target.value) || 0)}
+                      className="pl-8 w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      placeholder="160.00"
+                    />
+                  </div>
+                  <p className="text-xs text-gray-500">{config.defaultPrices.animals.description}</p>
+                </div>
+
+                {/* Ferrovia */}
+                <div className="space-y-2">
+                  <label className="block text-sm font-medium text-gray-700">
+                    🚂 Ferrovia (per mission)
+                  </label>
+                  <div className="relative">
+                    <span className="absolute left-3 top-2 text-gray-500">$</span>
+                    <input
+                      type="number"
+                      step="0.01"
+                      min="0"
+                      value={config.defaultPrices.ferrovia.unitPrice}
+                      onChange={(e) => updateDefaultPrice('ferrovia', parseFloat(e.target.value) || 0)}
+                      className="pl-8 w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      placeholder="250.00"
+                    />
+                  </div>
+                  <p className="text-xs text-gray-500">{config.defaultPrices.ferrovia.description}</p>
+                </div>
               </div>
-              <p className="text-xs text-gray-500">{config.defaultPrices.plants.description}</p>
             </div>
 
-            {/* Animals */}
-            <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">
-                🐄 Animals (per service)
-              </label>
-              <div className="relative">
-                <span className="absolute left-3 top-2 text-gray-500">$</span>
-                <input
-                  type="number"
-                  step="0.01"
-                  min="0"
-                  value={config.defaultPrices.animals.unitPrice}
-                  onChange={(e) => updateDefaultPrice('animals', parseFloat(e.target.value) || 0)}
-                  className="pl-8 w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  placeholder="160.00"
-                />
-              </div>
-              <p className="text-xs text-gray-500">{config.defaultPrices.animals.description}</p>
-            </div>
+            {/* Raising Costs */}
+            <div>
+              <h3 className="text-sm font-semibold text-gray-700 mb-3">Raising Costs (for Analytics)</h3>
+              <p className="text-xs text-gray-600 mb-3">
+                Cost to raise each item (animals, seeds, feed). Used to calculate profit margins in analytics.
+              </p>
+              <div className="grid md:grid-cols-2 gap-4">
+                {/* Plant Cost */}
+                <div className="space-y-2">
+                  <label className="block text-sm font-medium text-gray-700">
+                    🌱 Plant Cost (per unit)
+                  </label>
+                  <div className="relative">
+                    <span className="absolute left-3 top-2 text-gray-500">$</span>
+                    <input
+                      type="number"
+                      step="0.01"
+                      min="0"
+                      value={config.defaultPrices.plants.costPerUnit}
+                      onChange={(e) => updateDefaultCost('plants', parseFloat(e.target.value) || 0)}
+                      className="pl-8 w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      placeholder="0.00"
+                    />
+                  </div>
+                  <p className="text-xs text-gray-500">Cost of seeds (usually negligible)</p>
+                </div>
 
-            {/* Ferrovia */}
-            <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">
-                🚂 Ferrovia (per mission)
-              </label>
-              <div className="relative">
-                <span className="absolute left-3 top-2 text-gray-500">$</span>
-                <input
-                  type="number"
-                  step="0.01"
-                  min="0"
-                  value={config.defaultPrices.ferrovia.unitPrice}
-                  onChange={(e) => updateDefaultPrice('ferrovia', parseFloat(e.target.value) || 0)}
-                  className="pl-8 w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  placeholder="250.00"
-                />
+                {/* Animal Cost */}
+                <div className="space-y-2">
+                  <label className="block text-sm font-medium text-gray-700">
+                    🐄 Animal Cost (per animal)
+                  </label>
+                  <div className="relative">
+                    <span className="absolute left-3 top-2 text-gray-500">$</span>
+                    <input
+                      type="number"
+                      step="0.01"
+                      min="0"
+                      value={config.defaultPrices.animals.costPerUnit}
+                      onChange={(e) => updateDefaultCost('animals', parseFloat(e.target.value) || 0)}
+                      className="pl-8 w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      placeholder="23.00"
+                    />
+                  </div>
+                  <p className="text-xs text-gray-500">Cost to raise (animals + feed). Default: $23/animal ($92 per 4 animals)</p>
+                </div>
               </div>
-              <p className="text-xs text-gray-500">{config.defaultPrices.ferrovia.description}</p>
             </div>
           </div>
         </div>

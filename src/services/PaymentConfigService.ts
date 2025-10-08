@@ -6,10 +6,12 @@ export interface PaymentConfig {
   defaultPrices: {
     plants: {
       unitPrice: number;
+      costPerUnit: number;
       description: string;
     };
     animals: {
       unitPrice: number;
+      costPerUnit: number;
       description: string;
     };
     ferrovia: {
@@ -34,10 +36,12 @@ const defaultConfig: PaymentConfig = {
   defaultPrices: {
     plants: {
       unitPrice: 0.25,
+      costPerUnit: 0,
       description: 'Preço padrão por planta depositada'
     },
     animals: {
       unitPrice: 160.00,
+      costPerUnit: 23.00,
       description: 'Preço padrão por serviço animal concluído'
     },
     ferrovia: {

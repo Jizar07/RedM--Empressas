@@ -5,7 +5,39 @@ This file is synchronized with: https://github.com/Jizar07/RedM--Empressas
 
 ## Version History
 
-### [0.053] - 2025-10-04 **[CURRENT VERSION]**
+### [0.055] - 2025-10-08 **[CURRENT VERSION]**
+- **CONFIGURABLE COST SETTINGS**: Server-specific raising costs for accurate profit calculations
+- **PLANT REVENUE CALCULATION FIX**: Corrected 2000 plants = $1000 mission (was 4000 incorrectly)
+- **ANALYTICS ACCURACY**: Comprehensive analytics now account for server-specific Berçário/Veterinária costs
+- **KEY FEATURES**:
+  - PaymentConfig interface extended with costPerUnit fields (plants, animals)
+  - Payment Settings UI with "Raising Costs" section for seed and animal feed costs
+  - Backend analytics subtract configurable raising costs from material profit
+  - Frontend analytics use dynamic costs fetched from payment config API
+  - Multi-server support: Standard servers ($0 seeds, $23 animals) vs servers with farms ($0.01 seeds, $3.50 animals)
+- **CALCULATION CORRECTIONS**:
+  - Fixed plant divisor from 4000 to 2000 in comprehensive-analytics.ts:243
+  - Workers now correctly profit $0.125/plant ($0.375 revenue - $0.25 payment)
+  - Managers break even at $0.25/plant ($0.25 revenue - $0.25 payment)
+  - Animal profit calculation: materialValue - (quantity × animalCostPerUnit)
+  - Cost display: (totalPlants × plantCost) + (totalAnimals × animalCost)
+- **TECHNICAL IMPLEMENTATION**:
+  - Extended PaymentConfigService interface with costPerUnit for plants and animals
+  - Created frontend API proxy routes: /api/payment-config and /api/payment-config/reset
+  - Added config loading in comprehensive-analytics route handler
+  - Enhanced frontend with loadPaymentConfig() to fetch costs on mount
+  - Added validation for costPerUnit fields (must be non-negative)
+- **FILES MODIFIED**:
+  - src/services/PaymentConfigService.ts - Interface and default cost values
+  - src/api/routes/payment-config.ts - Cost validation
+  - src/api/routes/comprehensive-analytics.ts - Plant divisor fix, config loading, cost subtraction
+  - frontend/components/PaymentSettings.tsx - Cost input fields UI
+  - frontend/components/ComprehensiveAnalytics.tsx - Dynamic cost calculation
+  - frontend/app/api/payment-config/route.ts - Proxy endpoint
+  - frontend/app/api/payment-config/reset/route.ts - Reset endpoint
+- **RESULT**: Analytics accurately reflect profit margins with server-specific costs. Servers with Berçário/Veterinária show higher profitability ($3.50 vs $23 animal costs). Plant revenue doubled from correction.
+
+### [0.053] - 2025-10-04
 - **WORKER PAYMENT ENHANCEMENT**: Complete unregistered plant detection and retroactive payment system
 - **CATEGORY PERSISTENCE FIX**: Frontend inventory category changes now persist across refreshes
 - **AUTO CHANNEL CLEANUP**: Worker channels automatically cleared on payment, keeping only pinned receipts

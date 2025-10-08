@@ -1777,3 +1777,62 @@ All farm service functionality operational with complete audit trail, role-based
 - Adubo3 removed from seed expectations list (shows only in "Materiais Retirados" section)
 - Payment history displays "por r3dley" instead of "por 1127730801182777355"
 - Both frontend modal and backend Discord embeds show accurate financial calculations
+
+### 2025-10-08 15:48:26
+**Action**: Configurable Cost Settings & Comprehensive Analytics Calculation Fix
+**Prompt**: User identified plant revenue calculation bug (4000 → 2000 plants per mission) and requested configurable raising costs since different servers have different expenses (Berçário/Veterinária reduce animal costs from $23 to $3.50)
+**Changes**:
+- **Plant Revenue Calculation Fix (Backend)**:
+  - Fixed `src/api/routes/comprehensive-analytics.ts` line 243
+  - Changed from `totalPlantsDeposited / 4000` to `totalPlantsDeposited / 2000`
+  - Corrected revenue per mission: 2000 plants = $1000 mission (not 4000)
+  - Workers now correctly earn $0.375/plant revenue, pay $0.25, net $0.125 profit/plant
+  - Managers break even at $0.25/plant revenue and $0.25 payment
+- **Configurable Cost Settings System**:
+  - **Backend (PaymentConfigService.ts)**:
+    - Added `costPerUnit` field to plants and animals in PaymentConfig interface
+    - Set default values: plants $0, animals $23 (standard $92 per 4 animals)
+    - Backend comprehensive-analytics now loads config and subtracts `animalCostPerUnit` from material profit
+  - **Frontend (PaymentSettings.tsx)**:
+    - Added "Raising Costs (for Analytics)" section with 2 new input fields
+    - Plant Cost input: For seed costs (configurable, not always $0)
+    - Animal Cost input: For raising costs (animals + feed)
+    - Organized UI into "Worker Payment Rates" and "Raising Costs" sections
+  - **Backend Analytics (comprehensive-analytics.ts)**:
+    - Loads payment config on every request
+    - Calculates: `netProfit = materialValue - (quantity × animalCostPerUnit)`
+    - Passes config cost to processSession function
+  - **Frontend Analytics (ComprehensiveAnalytics.tsx)**:
+    - Fetches payment config on component mount
+    - Uses dynamic costs instead of hardcoded values
+    - Cost calculation: `(totalPlants × plantCost) + (totalAnimals × animalCost)`
+  - **API Routes**:
+    - Created `frontend/app/api/payment-config/route.ts` (GET/POST proxy)
+    - Created `frontend/app/api/payment-config/reset/route.ts` (POST proxy)
+    - Updated backend validation to check `costPerUnit` fields
+- **Production Configuration**:
+  - User's server: plantCost = $0.01 (seeds not free), animalCost = $3.50 (Berçário/Veterinária)
+  - Standard servers: plantCost = $0, animalCost = $23 ($80 animals + $12 ração)
+- **Calculation Verification**:
+  - Traced through Johnny Rocks example: 41,320 plants + 36 animals
+  - Plant revenue: 41,320 ÷ 2,000 × $750 = $15,495
+  - Animal profit: $748.44 (net after $3.50/animal costs)
+  - Expected cost: (41,320 × $0.01) + (36 × $3.50) = $539.20
+  - Lucro Esperado: $16,243.44 - $539.20 = $15,704.24 ✓
+**Files Modified**:
+- Backend:
+  - `src/services/PaymentConfigService.ts` - Added costPerUnit fields to interface and defaults
+  - `src/api/routes/payment-config.ts` - Added costPerUnit validation
+  - `src/api/routes/comprehensive-analytics.ts` - Fixed plant divisor, added config cost loading, subtracted raising costs
+- Frontend:
+  - `frontend/components/PaymentSettings.tsx` - Added cost input fields and updateDefaultCost handler
+  - `frontend/components/ComprehensiveAnalytics.tsx` - Added config fetching and dynamic cost calculation
+  - `frontend/app/api/payment-config/route.ts` - Created proxy route
+  - `frontend/app/api/payment-config/reset/route.ts` - Created reset proxy route
+**Result**: 
+- Analytics show accurate profit margins accounting for server-specific costs
+- Multi-server deployment supports different cost structures
+- Servers with Berçário/Veterinária benefit from lower animal costs ($3.50 vs $23)
+- Plant revenue doubled (corrected from 4000 to 2000 plants/mission)
+- All calculations verified and working correctly with real data
+

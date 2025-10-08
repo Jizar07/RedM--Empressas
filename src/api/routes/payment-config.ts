@@ -48,6 +48,15 @@ router.post('/', async (req: Request, res: Response) => {
       });
     }
 
+    // Validate cost values
+    if (config.defaultPrices.plants.costPerUnit < 0 ||
+        config.defaultPrices.animals.costPerUnit < 0) {
+      return res.status(400).json({
+        success: false,
+        error: 'Cost per unit must be non-negative'
+      });
+    }
+
     // Validate inventory verification settings
     if (config.inventoryVerification.timeWindowMinutes < 1 ||
         config.inventoryVerification.timeWindowMinutes > 1440) { // max 24 hours

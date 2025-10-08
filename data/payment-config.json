@@ -3,10 +3,12 @@
   "defaultPrices": {
     "plants": {
       "unitPrice": 0.25,
+      "costPerUnit": 0.01,
       "description": "Preço padrão por planta depositada"
     },
     "animals": {
       "unitPrice": 160,
+      "costPerUnit": 3.5,
       "description": "Preço padrão por serviço animal concluído"
     },
     "ferrovia": {
@@ -28,5 +30,5 @@
       "1274479410107646006"
     ]
   },
-  "lastUpdated": "2025-09-22T00:26:04.912Z"
+  "lastUpdated": "2025-10-08T19:30:45.972Z"
 }

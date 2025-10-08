@@ -97,7 +97,27 @@ When you see "/update" command from the user, perform the following actions:
 3. Update changelog.md if there are version-worthy changes
 4. Update CLAUDE.md if there are architectural or command changes
 
-## Recent Major Updates (v0.054) **[CURRENT VERSION]**
+## Recent Major Updates (v0.055) **[CURRENT VERSION]**
+
+### Configurable Cost Settings & Analytics Calculation Fix (v0.055)
+- **Plant Revenue Fix**: Corrected plant divisor from 4000 to 2000 (2000 plants = $1000 mission)
+- **Configurable Costs**: Added server-specific raising cost settings to payment configuration
+- **Multi-Server Support**: Different servers can configure their own costs:
+  - Standard: $0 seeds, $23 animals ($80 animals + $12 ração)
+  - With Berçário/Veterinária: $0.01 seeds, $3.50 animals (lower costs)
+- **Technical Implementation**:
+  - Extended PaymentConfig interface with `costPerUnit` fields
+  - Backend subtracts configurable costs from animal material profit
+  - Frontend fetches and uses dynamic costs from payment-config API
+  - Created proxy routes: `/api/payment-config` and `/api/payment-config/reset`
+  - Added "Raising Costs" section in Payment Settings UI
+- **Calculation Updates**:
+  - Workers: $0.375 revenue - $0.25 payment = $0.125 profit per plant
+  - Managers: $0.25 revenue - $0.25 payment = break even
+  - Animal profit: materialValue - (quantity × animalCostPerUnit)
+- **Result**: Accurate profit margins accounting for server-specific Berçário/Veterinária benefits
+
+## Previous Major Updates (v0.054)
 
 ### Adubo3 Deduction System & Payment Display Fixes (v0.054)
 - **Adubo3 Financial Transparency**: Complete implementation of itemized Adubo3 cost deductions in worker payment system
