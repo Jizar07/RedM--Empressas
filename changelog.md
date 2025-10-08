@@ -5,7 +5,23 @@ This file is synchronized with: https://github.com/Jizar07/RedM--Empressas
 
 ## Version History
 
-### [0.055] - 2025-10-08 **[CURRENT VERSION]**
+### [0.056] - 2025-10-08 **[CURRENT VERSION]**
+- **CRITICAL BUG FIX**: Adubo3 double-deduction causing worker underpayment by $225+ per session
+- **PAYMENT ACCURACY**: Workers now correctly paid for all work minus single Adubo3 deduction
+- **KEY FIX**:
+  - Removed duplicate Adubo3 cost deduction from `recalculateSessionCredits()` function
+  - Previously: Adubo3 deducted twice (once from aduboCost in calculation, again in embed display)
+  - Now: Single deduction in embed by counting all Adubo3 plantTransactions
+  - Example: Romano Delaerva was paid $3675.75, correct amount is $3900.75 ($225 difference)
+- **TECHNICAL DETAILS**:
+  - Removed lines 710-718 from WorkerActivityService.ts that deducted `expectation.aduboCost`
+  - Embed display calculation (lines 1440-1448) remains as the single source of truth
+  - Workers with seedExpectations containing aduboCost were systematically underpaid
+- **FILES MODIFIED**:
+  - src/services/WorkerActivityService.ts - Removed duplicate aduboCost deduction logic
+- **IMPACT**: Past sessions with Adubo3 usage were underpaid. Future sessions calculate correctly.
+
+### [0.055] - 2025-10-08
 - **CONFIGURABLE COST SETTINGS**: Server-specific raising costs for accurate profit calculations
 - **PLANT REVENUE CALCULATION FIX**: Corrected 2000 plants = $1000 mission (was 4000 incorrectly)
 - **ANALYTICS ACCURACY**: Comprehensive analytics now account for server-specific Berçário/Veterinária costs

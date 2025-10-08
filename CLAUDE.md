@@ -97,7 +97,26 @@ When you see "/update" command from the user, perform the following actions:
 3. Update changelog.md if there are version-worthy changes
 4. Update CLAUDE.md if there are architectural or command changes
 
-## Recent Major Updates (v0.055) **[CURRENT VERSION]**
+## Recent Major Updates (v0.056) **[CURRENT VERSION]**
+
+### Adubo3 Double-Deduction Bug Fix (v0.056)
+- **Critical Payment Bug**: Fixed systematic worker underpayment due to Adubo3 costs being deducted twice
+- **Root Cause**: Two separate deductions in payment calculation flow:
+  1. `recalculateSessionCredits()` deducted `expectation.aduboCost` from totalCosts
+  2. Embed display deducted all Adubo3 again by counting plantTransactions
+- **Impact Example**: Romano Delaerva paid $3675.75 instead of correct $3900.75 (underpaid $225)
+- **Technical Fix**:
+  - Removed duplicate aduboCost deduction from `recalculateSessionCredits()` (lines 710-718)
+  - Embed display remains single source of truth for Adubo3 calculations
+  - Workers with seedExpectations containing aduboCost were systematically underpaid
+- **Calculation Flow (Corrected)**:
+  - Plants: quantity × $0.25 = plantCredits
+  - Animals: deliveryAmount (if >= cost)
+  - totalCredits = plantCredits + animalCredits (no premature Adubo3 deduction)
+  - Display total = totalCredits - (Adubo3Taken × $0.75)
+- **Result**: All future payments correctly deduct Adubo3 costs once. Past underpaid sessions can be identified and compensated.
+
+## Previous Major Updates (v0.055)
 
 ### Configurable Cost Settings & Analytics Calculation Fix (v0.055)
 - **Plant Revenue Fix**: Corrected plant divisor from 4000 to 2000 (2000 plants = $1000 mission)

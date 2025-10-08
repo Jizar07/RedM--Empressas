@@ -34,6 +34,15 @@ interface FinancialTransaction {
   transactionId: string;
 }
 
+interface InventoryTransaction {
+  type: 'inventory_added' | 'inventory_removed';
+  itemName: string;
+  itemCategory: string; // plantas, materiais, produtos, caixas, animais, sementes, outros
+  quantity: number;
+  timestamp: Date;
+  transactionId: string;
+}
+
 interface SeedExpectation {
   seedType: string;
   seedQuantity: number;
@@ -65,6 +74,7 @@ interface WorkerSession {
   plantTransactions: PlantTransaction[];
   animalTransactions: AnimalTransaction[];
   financialTransactions?: FinancialTransaction[]; // Track financial transactions like Bercario purchases
+  inventoryTransactions?: InventoryTransaction[]; // Track inventory additions/removals by category
   seedExpectations?: SeedExpectation[]; // Track seed-to-plant expectations
   animalExpectations?: AnimalExpectation[]; // Track animal-taking expectations
   unregisteredPlants?: PlantTransaction[]; // Plants detected from historical messages (today only, unpaid sessions)
@@ -197,6 +207,16 @@ export class WorkerActivityService {
             }));
           } else {
             session.financialTransactions = [];
+          }
+
+          // Initialize and restore inventory transactions
+          if (session.inventoryTransactions) {
+            session.inventoryTransactions = session.inventoryTransactions.map((t: any) => ({
+              ...t,
+              timestamp: new Date(t.timestamp)
+            }));
+          } else {
+            session.inventoryTransactions = [];
           }
 
           // Restore animal expectations with Date objects
@@ -687,15 +707,8 @@ export class WorkerActivityService {
       });
     }
 
-    // Deduct Adubo3 costs from seed expectations
-    if (session.seedExpectations && session.seedExpectations.length > 0) {
-      session.seedExpectations.forEach(expectation => {
-        if (expectation.aduboCost && expectation.aduboCost > 0) {
-          totalCosts += expectation.aduboCost;
-          console.log(`🌿 Adubo3 cost: ${expectation.aduboUsed} units = -$${expectation.aduboCost.toFixed(2)}`);
-        }
-      });
-    }
+    // NOTE: Adubo3 costs are deducted in embed display by counting plantTransactions
+    // Removed duplicate deduction from here to prevent double-charging workers
 
     // Calculate animal deliveries
     const animalsTaken = session.animalTransactions
@@ -850,6 +863,7 @@ export class WorkerActivityService {
         plantTransactions: [],
         animalTransactions: [],
         financialTransactions: [],
+        inventoryTransactions: [],
         totalCredits: 0,
         // Explicitly set embedMessageId to undefined to force new embed creation
         embedMessageId: undefined
@@ -1011,6 +1025,40 @@ export class WorkerActivityService {
     this.saveActiveSessions();
 
     console.log(`🛒 Added financial transaction for ${workerName}: ${transaction.type} - ${transaction.quantity} ${transaction.itemName} for $${transaction.amount}`);
+
+    // Update the embed
+    this.updateWorkerEmbed(session);
+  }
+
+  public async addInventoryTransaction(workerId: string, workerName: string, channelId: string, transaction: Omit<InventoryTransaction, 'transactionId' | 'timestamp'>): Promise<void> {
+    // Check for paid session and cleanup if needed
+    const existingSession = this.activeSessions.get(workerId);
+    if (existingSession && !this.isSessionActive(existingSession)) {
+      console.log(`⚠️ Attempting to add inventory transaction to non-active session (${existingSession.status}) for ${workerName}, cleaning up...`);
+      await this.cleanupPaidSession(workerId);
+    }
+
+    const session = this.getOrCreateSession(workerId, workerName, channelId);
+
+    // Initialize inventoryTransactions array if it doesn't exist
+    if (!session.inventoryTransactions) {
+      session.inventoryTransactions = [];
+    }
+
+    const inventoryTransaction: InventoryTransaction = {
+      ...transaction,
+      transactionId: this.generateTransactionId(),
+      timestamp: new Date()
+    };
+
+    session.inventoryTransactions.push(inventoryTransaction);
+    session.lastActivity = new Date();
+
+    this.saveActiveSessions();
+
+    const actionIcon = transaction.type === 'inventory_added' ? '📦' : '📤';
+    const actionText = transaction.type === 'inventory_added' ? 'adicionou' : 'removeu';
+    console.log(`${actionIcon} Added inventory transaction for ${workerName}: ${actionText} ${transaction.quantity}x ${transaction.itemName} (${transaction.itemCategory})`);
 
     // Update the embed
     this.updateWorkerEmbed(session);

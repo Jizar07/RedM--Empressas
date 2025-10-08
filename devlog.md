@@ -4,6 +4,35 @@ This is a local timestamped file to track all development changes and prompts.
 
 ## Log Entries
 
+### 2025-10-08 18:09:25
+**Action**: Fix Adubo3 Double-Deduction Bug in Worker Payment System
+**Prompt**: User reported incorrect payment calculation in Romano Delaerva's payment embed showing $3675.75 instead of expected $3900.75
+**Changes**:
+- **Bug Identified**: Adubo3 costs were being deducted TWICE from worker payments:
+  1. First deduction in `recalculateSessionCredits()` (lines 710-718) from `seedExpectations.aduboCost`
+  2. Second deduction in embed display (lines 1440-1448) by counting all Adubo3 `plantTransactions`
+- **Root Cause Analysis**:
+  - Session had one seed expectation with `aduboCost: $225` (300 Adubo3 × $0.75)
+  - This $225 was deducted from totalCredits during calculation
+  - Then ALL 709 Adubo3 ($531.75) were deducted again during embed display
+  - Worker was double-charged: $225 in calculation + $531.75 in display = $756.75 total deduction
+  - Should only be charged $531.75 ONCE
+- **Calculation Breakdown** (Romano Delaerva example):
+  - Expected: Plants ($2992.50) + Animals ($1440.00) - Adubo3 ($531.75) = $3900.75
+  - Actual (broken): [$4432.50 - $225] = $4207.50, then [$4207.50 - $531.75] = $3675.75
+  - Difference: $225.00 (the duplicate aduboCost deduction)
+- **Fix Applied**:
+  - Removed lines 710-718 from `recalculateSessionCredits()` that deducted aduboCost from totalCosts
+  - Replaced with comment explaining Adubo3 costs are deducted in embed display
+  - Now calculation happens in ONE place (embed) by counting ALL Adubo3 taken
+- **Files Modified**:
+  - `src/services/WorkerActivityService.ts` - Removed duplicate aduboCost deduction logic
+- **Impact**:
+  - All future payments will correctly deduct Adubo3 costs only once
+  - Past sessions with aduboCost in seedExpectations were underpaid by that amount
+  - When sessions are recalculated, totalCredits will increase by the previously deducted aduboCost value
+**Result**: Worker payments now correctly deduct Adubo3 costs once. Romano Delaerva's corrected payment: $3900.75 (was $3675.75, difference $225.00).
+
 ### 2025-10-04 20:15:46
 **Action**: Worker Payment System Enhancements - Unregistered Plant Detection & Auto Channel Cleanup
 **Prompt**: User requested three major improvements: (1) Fix frontend inventory category persistence issue, (2) Retroactively detect and pay for plants that were deposited before being categorized, (3) Auto-clear worker channels on payment keeping only pinned receipts
