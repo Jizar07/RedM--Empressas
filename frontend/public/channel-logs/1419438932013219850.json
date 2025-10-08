@@ -1,8 +1,68 @@
 {
   "channelId": "1419438932013219850",
-  "lastUpdated": "2025-10-08T04:57:58.828Z",
-  "messageCount": 334,
+  "lastUpdated": "2025-10-08T14:16:01.449Z",
+  "messageCount": 340,
   "messages": [
+    {
+      "id": "1425486900407566346",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: ammoshotgunnormal x10\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 08/10/2025 -  11:16:00",
+      "timestamp": "2025-10-08T14:16:01.323Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: ammoshotgunnormal x10\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 08/10/2025 -  11:16:00",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425486862109118516",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorepeaterexpress x2\nComprador:: Fernanda Silva | FIXO: 78633\nPreço Total:: $26\nData:: 08/10/2025 -  11:15:52",
+      "timestamp": "2025-10-08T14:15:52.192Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorepeaterexpress x2\nComprador:: Fernanda Silva | FIXO: 78633\nPreço Total:: $26\nData:: 08/10/2025 -  11:15:52",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425486712775250041",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: WEAPON_REPEATER_WINCHESTER x1\nComprador:: Fernanda Silva | FIXO: 78633\nPreço Total:: $290\nData:: 08/10/2025 -  11:15:16",
+      "timestamp": "2025-10-08T14:15:16.588Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: WEAPON_REPEATER_WINCHESTER x1\nComprador:: Fernanda Silva | FIXO: 78633\nPreço Total:: $290\nData:: 08/10/2025 -  11:15:16",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425457639965327413",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: WEAPON_PISTOL_MAUSER x1\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 08/10/2025 -  09:19:45",
+      "timestamp": "2025-10-08T12:19:45.090Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: WEAPON_PISTOL_MAUSER x1\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 08/10/2025 -  09:19:45",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425457632390549515",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: WEAPON_PISTOL_MAUSER x1\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 08/10/2025 -  09:19:43",
+      "timestamp": "2025-10-08T12:19:43.284Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: WEAPON_PISTOL_MAUSER x1\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 08/10/2025 -  09:19:43",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425457600073306256",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: ammorifleexpress x10\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 08/10/2025 -  09:19:35",
+      "timestamp": "2025-10-08T12:19:35.579Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: ammorifleexpress x10\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 08/10/2025 -  09:19:35",
+      "rawEmbeds": []
+    },
     {
       "id": "1425346463843749928",
       "author": "Armaria",

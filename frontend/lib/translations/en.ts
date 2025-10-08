@@ -174,6 +174,159 @@ export const en = {
     bot: 'Bot',
     healthy: 'healthy',
   },
+
+  // Registration Settings
+  registration: {
+    // Header
+    title: 'Registration Form Configuration',
+    refreshDiscordData: 'Refresh Discord Data',
+    saveConfiguration: 'Save Configuration',
+    saving: 'Saving...',
+
+    // Tabs
+    tabCommand: 'Command',
+    tabDisplay: 'Form Display',
+    tabSteps: 'Registration Steps',
+    tabPost: 'Post-Registration',
+    tabFunctions: 'Functions/Roles',
+
+    // Command Settings
+    commandConfiguration: 'Command Configuration',
+    commandName: 'Command Name',
+    commandDescription: 'Command Description',
+    requiredPermission: 'Required Permission',
+    permissionAdministrator: 'Administrator',
+    permissionManageGuild: 'Manage Server',
+    permissionManageRoles: 'Manage Roles',
+    permissionModerateMembers: 'Moderate Members',
+
+    // Form Display
+    formDisplayConfiguration: 'Form Display Configuration',
+    embedTitle: 'Embed Title',
+    footerText: 'Footer Text',
+    embedDescription: 'Embed Description',
+    buttonText: 'Button Text',
+    buttonEmoji: 'Button Emoji',
+    buttonStyle: 'Button Style',
+    embedColor: 'Embed Color',
+    buttonStylePrimary: 'Primary (Blue)',
+    buttonStyleSecondary: 'Secondary (Gray)',
+    buttonStyleSuccess: 'Success (Green)',
+    buttonStyleDanger: 'Danger (Red)',
+
+    // Registration Steps
+    stepsConfiguration: 'Registration Steps Configuration',
+    step1Title: 'Step 1 - Info Collection Modal',
+    step2Title: 'Step 2 - Function Selection',
+    step3Title: 'Step 3 - Inviter Selection',
+    modalTitle: 'Modal Title',
+    nameLabel: 'Name Field Label',
+    namePlaceholder: 'Name Field Placeholder',
+    pomboLabel: 'Pombo Field Label',
+    embedTitleField: 'Embed Title',
+    embedDescriptionField: 'Embed Description',
+
+    // Post-Registration
+    postRegistrationActions: 'Post-Registration Actions',
+    nicknameFormat: 'Nickname Format',
+    availableVariables: 'Available variables: {ingameName}, {pombo}, {functionName}',
+    sendDirectMessage: 'Send Direct Message',
+    automaticallyAssignRoles: 'Automatically Assign Roles',
+    sendWelcomeChannelMessage: 'Send Welcome Channel Message',
+    createPersonalChannel: 'Create Personal Channel',
+    dmTitle: 'DM Title',
+    channelNameFormat: 'Channel Name Format',
+    dmMessageTemplate: 'DM Message Template',
+    messageVariables: 'Variables: {ingameName}, {pombo}, {functionName}, {serverIP}, {serverPort}, {inviterName}',
+    messageTemplates: 'Message Templates',
+    alreadyRegisteredMessage: 'Already Registered Message',
+    sessionExpiredMessage: 'Session Expired Message',
+    registrationSuccessMessage: 'Registration Success Message',
+    genericErrorMessage: 'Generic Error Message',
+    legacySettings: 'Legacy Settings',
+    welcomeMessage: 'Welcome Message',
+    legacyEmbedColor: 'Legacy Embed Color',
+
+    // Functions/Roles
+    availableFunctions: 'Available Functions/Roles',
+    addFunction: 'Add Function',
+    displayName: 'Display Name',
+    discordRole: 'Discord Role',
+    descriptionOptional: 'Description (Optional)',
+    channelCategoryOptional: 'Channel Category (Optional)',
+    channelEmojiPrefixOptional: 'Channel Emoji Prefix (Optional)',
+    channelTopicTemplateOptional: 'Channel Topic Template (Optional)',
+    allowedRoles: 'Allowed Roles (Who can access the channel)',
+    add: 'Add',
+    saveChanges: 'Save Changes',
+    editFunction: 'Edit Function',
+    deleteFunction: 'Delete Function',
+
+    // Table Headers
+    tableOrder: 'Order',
+    tableDisplayName: 'Display Name',
+    tableDiscordRole: 'Discord Role',
+    tableCategory: 'Category',
+    tableDescription: 'Description',
+    tableApproval: 'Approval',
+    tableStatus: 'Status',
+    tableActions: 'Actions',
+
+    // Status
+    autoApproved: 'Auto-approved',
+
+    // Placeholders
+    placeholderPoliceOfficer: 'e.g., Police Officer',
+    placeholderBriefDescription: 'Brief description...',
+    placeholderEnterEmoji: 'Enter emoji with separator',
+    placeholderChannelTopic: 'Personal channel for {functionName} member',
+    placeholderWelcomeMessage: 'Welcome message for new registrations...',
+
+    // Dropdowns
+    loadingRoles: 'Loading roles...',
+    selectServerFirst: 'Select a server first',
+    noRolesFound: 'No roles found',
+    selectRole: 'Select a role...',
+    noCategory: 'No category (won\'t create channel)',
+
+    // Help Text
+    emojiPrefixHelp: 'Emoji prefix for channel names (e.g., 💰・, 🚢・, 🌾・)',
+    allowedRolesHelp: 'Hold Ctrl/Cmd to select multiple roles. Channel owner always has access.',
+    addMiddleDot: 'Add middle dot (・)',
+
+    // Messages
+    noFunctionsConfigured: 'No functions configured. Click "Add Function" to get started.',
+    selectServerMessage: 'Please select a Discord server to configure registration settings.',
+    useServerDropdown: 'Use the server dropdown in the top navigation.',
+    loadingConfiguration: 'Loading configuration...',
+    failedToLoadConfiguration: 'Failed to load configuration',
+
+    // Alerts
+    configurationSaved: 'Configuration saved successfully!',
+    failedToSaveConfiguration: 'Failed to save configuration',
+    errorSavingConfiguration: 'Error saving configuration',
+    fillRequiredFields: 'Please fill in all required fields',
+    functionSavedAutomatically: 'Function saved automatically',
+    failedToSaveFunction: 'Failed to save function automatically',
+    errorSavingFunction: 'Error saving function',
+    functionRemovedAndSaved: 'Function removed and saved automatically',
+    failedToSaveAfterRemoval: 'Failed to save after removing function',
+    errorSavingAfterRemoval: 'Error saving after removing function',
+    functionEditedAndSaved: 'Function edited and saved automatically',
+    failedToSaveEditedFunction: 'Failed to save edited function',
+    errorSavingEditedFunction: 'Error saving edited function',
+    functionToggleSaved: 'Function toggle saved automatically',
+    errorSavingToggle: 'Error auto-saving toggle',
+    functionOrderSaved: 'Function order saved automatically',
+    errorSavingOrder: 'Error auto-saving order',
+
+    // Role/Category Display
+    roleWithMembers: '@{name} ({count} members)',
+    categoryWithChannels: '{name} ({count} channels)',
+
+    // Edit Form
+    editFunctionTitle: 'Edit Function: {name}',
+  },
 };
 
 export type TranslationKeys = typeof en;

@@ -1743,3 +1743,37 @@ All farm service functionality operational with complete audit trail, role-based
     - Lines 399-545: Added Firm cards, Admin Tools section, streamlined Quick Actions
     - Lines 574-583: Simplified admin tool component rendering
 - **Result**: Professional bilingual dashboard with USA/Brazil flag toggle, no more Admin tab, prominent firm access cards, all admin tools visible on main page, better space utilization, organized sections, and reduced navigation requirements
+### 2025-10-08 12:05:49
+**Action**: Adubo3 Deduction System Implementation & Payment Display Fixes
+**Prompt**: User identified two issues: (1) Adubo3 costs not appearing in financial breakdown deductions section, (2) Payment history showing Discord IDs instead of usernames
+**Changes**:
+- **Frontend Adubo3 Deduction Fix**:
+  - Modified `FazendaCDPWorkersManagementNew.tsx` Aguardando Pagamento tab
+  - Changed deductions calculation from reading non-existent `seedExpectations.aduboCost` to scanning `plantTransactions`
+  - Lines 1736-1753: Calculate Adubo3 deductions from `plantTransactions` where `type === 'seed_taken'` and `itemName` contains "Adubo3"
+  - Lines 2024-2073: Build deductions list from actual transaction data with timestamps
+  - Lines 1747: Subtract deductions from totalCredits for accurate "Total a Pagar"
+  - Each Adubo3 transaction shows: quantity, timestamp, and cost ($0.75 per unit)
+- **Backend Discord Embed Fixes**:
+  - Modified `src/services/WorkerActivityService.ts` in 4 locations
+  - Lines 1217-1245: Filter Adubo3 from "Expectativas de Sementes" (active embed) - they're materials, not plant services
+  - Lines 1385-1402: Calculate and subtract Adubo3 deductions from "Total a Receber" (active embed)
+  - Lines 1531-1553: Filter Adubo3 from "Expectativas de Sementes (Finalizadas)" (paid embed)
+  - Lines 1686-1702: Calculate and subtract Adubo3 deductions from "Total Pago/Total Verificado" (paid embed)
+  - Adubo3 deductions calculated same way: scan `plantTransactions`, sum quantities × $0.75
+- **Payment Display Username Fix**:
+  - Modified `frontend/components/FazendaCDPWorkersManagementNew.tsx` in 4 locations
+  - Line 1290: Visão Geral tab - Changed to `paidByName || paidBy || 'Sistema'`
+  - Line 2133: Paid Archive search filter - Changed to `paidByName || paidBy`
+  - Line 2241: Paid Archive payment amount - Changed to `paidByName || paidBy`
+  - Line 2271: Paid Archive expanded details - Changed to `paidByName || paidBy || 'Desconhecido'`
+  - Payment data already contained both fields, just needed to prioritize username display
+- **Files Modified**:
+  - Frontend: `frontend/components/FazendaCDPWorkersManagementNew.tsx` (deductions calculation, payment display)
+  - Backend: `src/services/WorkerActivityService.ts` (embed deductions, seed expectations filter)
+**Result**: 
+- Adubo3 deductions now properly display in "Resumo Financeiro Completo" with timestamps
+- Total a Pagar correctly shows: Credits ($2650.00) - Adubo3 ($306.75) = $2343.25
+- Adubo3 removed from seed expectations list (shows only in "Materiais Retirados" section)
+- Payment history displays "por r3dley" instead of "por 1127730801182777355"
+- Both frontend modal and backend Discord embeds show accurate financial calculations

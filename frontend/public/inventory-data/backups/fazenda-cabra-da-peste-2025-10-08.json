@@ -321,32 +321,9 @@
       "atualizado_em": "2025-10-08T13:39:57.420Z",
       "ultimo_autor": "Romano Delaerva",
       "ativo": true
-    },
-    "paocommatega": {
-      "id": "paocommatega",
-      "nome": "Pao com matega",
-      "displayName": "Pao com matega",
-      "categoria": "comidas",
-      "quantidade": 0,
-      "criado_em": "2025-10-08T13:05:15.161Z",
-      "atualizado_em": "2025-10-08T13:05:15.161Z",
-      "ultimo_autor": "Ragnar Lothbrok",
-      "ativo": true
     }
   },
   "transactions": [
-    {
-      "id": "e6df2220-c6d9-4186-900a-abb482f604a2",
-      "itemId": "paocommatega",
-      "tipo": "criar",
-      "quantidade_anterior": 0,
-      "quantidade_posterior": 0,
-      "quantidade_mudanca": 0,
-      "autor": "API",
-      "timestamp": "2025-10-08T14:10:17.640Z",
-      "origem": "manual",
-      "detalhes": "Created item Pao com matega"
-    },
     {
       "id": "27c749b9-ede7-46fc-8b44-71e83b88d91e",
       "itemId": "sucodelemon",
@@ -1045,31 +1022,19 @@
     }
   ],
   "analytics": {
-    "totalItems": 30,
+    "totalItems": 29,
     "totalQuantity": 7360,
     "totalValue": 100,
     "categorias": {},
     "workers": [
       {
         "nome": "API",
-        "totalTransactions": 59,
-        "lastActivity": "2025-10-08T14:10:17.640Z",
+        "totalTransactions": 58,
+        "lastActivity": "2025-10-08T14:09:54.376Z",
         "averagePerDay": 0
       }
     ],
     "recentTransactions": [
-      {
-        "id": "e6df2220-c6d9-4186-900a-abb482f604a2",
-        "itemId": "paocommatega",
-        "tipo": "criar",
-        "quantidade_anterior": 0,
-        "quantidade_posterior": 0,
-        "quantidade_mudanca": 0,
-        "autor": "API",
-        "timestamp": "2025-10-08T14:10:17.640Z",
-        "origem": "manual",
-        "detalhes": "Created item Pao com matega"
-      },
       {
         "id": "27c749b9-ede7-46fc-8b44-71e83b88d91e",
         "itemId": "sucodelemon",
@@ -1657,6 +1622,18 @@
         "timestamp": "2025-09-12T19:24:05.271Z",
         "origem": "manual",
         "detalhes": "Updated item Asclepias"
+      },
+      {
+        "id": "cc89a8ef-6990-4523-a927-c5249175c51b",
+        "itemId": "Milk_Weed",
+        "tipo": "editar",
+        "quantidade_anterior": 0,
+        "quantidade_posterior": 0,
+        "quantidade_mudanca": 0,
+        "autor": "API",
+        "timestamp": "2025-09-12T19:18:19.454Z",
+        "origem": "manual",
+        "detalhes": "Updated item Asclepias"
       }
     ],
     "lowStockAlerts": [
@@ -1802,17 +1779,6 @@
         "atualizado_em": "2025-10-08T13:39:57.420Z",
         "ultimo_autor": "Romano Delaerva",
         "ativo": true
-      },
-      {
-        "id": "paocommatega",
-        "nome": "Pao com matega",
-        "displayName": "Pao com matega",
-        "categoria": "comidas",
-        "quantidade": 0,
-        "criado_em": "2025-10-08T13:05:15.161Z",
-        "atualizado_em": "2025-10-08T13:05:15.161Z",
-        "ultimo_autor": "Ragnar Lothbrok",
-        "ativo": true
       }
     ],
     "priceMatches": 1,
@@ -1844,8 +1810,7 @@
       "caixarustica",
       "Oleander_Sage",
       "Black_Berry",
-      "sucodelemon",
-      "paocommatega"
+      "sucodelemon"
     ]
   },
   "settings": {
@@ -1863,8 +1828,8 @@
     "backupEnabled": true,
     "backupInterval": 24
   },
-  "lastUpdate": "2025-10-08T14:10:17.642Z",
-  "totalItems": 30,
+  "lastUpdate": "2025-10-08T14:09:54.378Z",
+  "totalItems": 29,
   "totalQuantity": 7360,
   "activeWorkers": [],
   "version": "1.0.0",

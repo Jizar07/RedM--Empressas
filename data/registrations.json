@@ -1296,5 +1296,16 @@
     "invitedBy": "Garcia Jidoki | 832",
     "approved": true,
     "registeredAt": "2025-10-08T04:23:38.958Z"
+  },
+  {
+    "userId": "431957051275739156",
+    "username": "phatombyte",
+    "ingameName": "Fernanda Silva",
+    "mailId": "6086",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "Barth",
+    "approved": true,
+    "registeredAt": "2025-10-08T14:26:18.067Z"
   }
 ]

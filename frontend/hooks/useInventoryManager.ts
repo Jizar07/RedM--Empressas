@@ -1164,13 +1164,11 @@ export function useInventoryManager({
       Promise.all([
         loadCustomizations(), // Load custom display names
         loadPriceList(),
-        loadTranslations() // Load from cached global translations
+        loadTranslations(), // Load from cached global translations
+        loadRegisteredWorkers() // Load all registered workers with payment history
       ]).catch(error => {
         console.warn('Some resources failed to load:', error);
       });
-
-      // DON'T load workers on initial mount - causes flicker
-      // Workers will be loaded when actually needed by inventory components
     }, 500); // Longer delay ensures page is fully stable
 
     // Listen for customization updates

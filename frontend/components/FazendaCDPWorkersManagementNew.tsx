@@ -5,7 +5,9 @@ import {
   Users, Search, Plus, Edit, Trash2, Eye, Crown, User,
   Activity, DollarSign, Package, TrendingUp, Clock,
   X, Save, AlertTriangle, BarChart3, Award, Star,
-  ArrowUp, ArrowDown, ChevronsUpDown, Trophy
+  ArrowUp, ArrowDown, ChevronsUpDown, Trophy, List,
+  History, FolderOpen, PieChart, TrendingDown, Calendar,
+  Filter, Download, ChevronDown, ChevronUp, Sprout, CheckCircle
 } from 'lucide-react';
 import { FirmConfig } from '@/types/firms';
 import { useInventoryManager } from '@/hooks/useInventoryManager';
@@ -740,6 +742,14 @@ function WorkerDetailModal({ worker, workerProfile, onClose }: WorkerDetailModal
   const [detailData, setDetailData] = React.useState<WorkerDetailData | null>(null);
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState<string | null>(null);
+  const [activeTab, setActiveTab] = React.useState<'overview' | 'active-services' | 'awaiting-payment' | 'paid-archive' | 'categories' | 'performance'>('overview');
+  const [transactionSearch, setTransactionSearch] = React.useState('');
+  const [transactionType, setTransactionType] = React.useState<'all' | 'plant' | 'animal' | 'financial'>('all');
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const [expandedSessions, setExpandedSessions] = React.useState<Set<string>>(new Set());
+  const [expandedPayments, setExpandedPayments] = React.useState<Set<string>>(new Set());
+  const [paymentSearchTerm, setPaymentSearchTerm] = React.useState('');
+  const itemsPerPage = 50;
   const role = workerProfile?.role || 'worker';
 
   React.useEffect(() => {
@@ -771,6 +781,141 @@ function WorkerDetailModal({ worker, workerProfile, onClose }: WorkerDetailModal
     }
   };
 
+  // Aggregate all transactions from active and archived sessions
+  const allTransactions = React.useMemo(() => {
+    if (!detailData) return [];
+
+    const transactions: any[] = [];
+
+    // Active session transactions
+    if (detailData.activeSession) {
+      if (detailData.activeSession.plantTransactions) {
+        detailData.activeSession.plantTransactions.forEach((t: any) => {
+          transactions.push({
+            ...t,
+            sessionId: detailData.activeSession.sessionId,
+            category: 'plant',
+            sessionStatus: 'active'
+          });
+        });
+      }
+      if (detailData.activeSession.animalTransactions) {
+        detailData.activeSession.animalTransactions.forEach((t: any) => {
+          transactions.push({
+            ...t,
+            sessionId: detailData.activeSession.sessionId,
+            category: 'animal',
+            sessionStatus: 'active'
+          });
+        });
+      }
+      if (detailData.activeSession.financialTransactions) {
+        detailData.activeSession.financialTransactions.forEach((t: any) => {
+          transactions.push({
+            ...t,
+            sessionId: detailData.activeSession.sessionId,
+            category: 'financial',
+            sessionStatus: 'active'
+          });
+        });
+      }
+    }
+
+    // Archived session transactions
+    if (detailData.history.archivedSessions) {
+      detailData.history.archivedSessions.forEach((session: any) => {
+        if (session.plantTransactions) {
+          session.plantTransactions.forEach((t: any) => {
+            transactions.push({
+              ...t,
+              sessionId: session.sessionId,
+              category: 'plant',
+              sessionStatus: session.status
+            });
+          });
+        }
+        if (session.animalTransactions) {
+          session.animalTransactions.forEach((t: any) => {
+            transactions.push({
+              ...t,
+              sessionId: session.sessionId,
+              category: 'animal',
+              sessionStatus: session.status
+            });
+          });
+        }
+        if (session.financialTransactions) {
+          session.financialTransactions.forEach((t: any) => {
+            transactions.push({
+              ...t,
+              sessionId: session.sessionId,
+              category: 'financial',
+              sessionStatus: session.status
+            });
+          });
+        }
+      });
+    }
+
+    // Sort by timestamp descending (most recent first)
+    return transactions.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
+  }, [detailData]);
+
+  // Filter transactions based on search and type
+  const filteredTransactions = React.useMemo(() => {
+    let filtered = allTransactions;
+
+    // Filter by type
+    if (transactionType !== 'all') {
+      filtered = filtered.filter(t => t.category === transactionType);
+    }
+
+    // Filter by search term
+    if (transactionSearch) {
+      const search = transactionSearch.toLowerCase();
+      filtered = filtered.filter(t =>
+        t.itemName?.toLowerCase().includes(search) ||
+        t.type?.toLowerCase().includes(search) ||
+        t.sessionId?.toLowerCase().includes(search)
+      );
+    }
+
+    return filtered;
+  }, [allTransactions, transactionType, transactionSearch]);
+
+  // Paginate transactions
+  const paginatedTransactions = React.useMemo(() => {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    return filteredTransactions.slice(startIndex, endIndex);
+  }, [filteredTransactions, currentPage, itemsPerPage]);
+
+  const totalPages = Math.ceil(filteredTransactions.length / itemsPerPage);
+
+  // Category analysis from frontend data
+  const categoryAnalysis = React.useMemo(() => {
+    const categories = worker.categorias || {};
+    const analysis = Object.entries(categories).map(([name, data]: [string, any]) => ({
+      name,
+      added: data.added || 0,
+      removed: data.removed || 0,
+      net: (data.added || 0) - (data.removed || 0)
+    }));
+
+    return analysis.sort((a, b) => Math.abs(b.net) - Math.abs(a.net));
+  }, [worker.categorias]);
+
+  // Toggle session expansion
+  const toggleSession = (sessionId: string) => {
+    const newExpanded = new Set(expandedSessions);
+    if (newExpanded.has(sessionId)) {
+      newExpanded.delete(sessionId);
+    } else {
+      newExpanded.add(sessionId);
+    }
+    setExpandedSessions(newExpanded);
+  };
+
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-60 p-4">
       <div className="bg-white dark:bg-gray-800 rounded-lg max-w-6xl w-full max-h-[90vh] overflow-hidden flex flex-col">
@@ -796,7 +941,94 @@ function WorkerDetailModal({ worker, workerProfile, onClose }: WorkerDetailModal
           </div>
         </div>
 
+        {/* Tab Navigation */}
+        <div className="border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900">
+          <div className="flex overflow-x-auto">
+            <button
+              onClick={() => setActiveTab('overview')}
+              className={`px-4 py-3 text-sm font-medium whitespace-nowrap transition-colors ${
+                activeTab === 'overview'
+                  ? 'border-b-2 border-green-500 text-green-600 dark:text-green-400'
+                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
+              }`}
+            >
+              <div className="flex items-center space-x-2">
+                <Eye className="h-4 w-4" />
+                <span>Visão Geral</span>
+              </div>
+            </button>
+            <button
+              onClick={() => setActiveTab('active-services')}
+              className={`px-4 py-3 text-sm font-medium whitespace-nowrap transition-colors ${
+                activeTab === 'active-services'
+                  ? 'border-b-2 border-green-500 text-green-600 dark:text-green-400'
+                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
+              }`}
+            >
+              <div className="flex items-center space-x-2">
+                <Activity className="h-4 w-4" />
+                <span>Serviços Ativos</span>
+              </div>
+            </button>
+            <button
+              onClick={() => setActiveTab('awaiting-payment')}
+              className={`px-4 py-3 text-sm font-medium whitespace-nowrap transition-colors ${
+                activeTab === 'awaiting-payment'
+                  ? 'border-b-2 border-green-500 text-green-600 dark:text-green-400'
+                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
+              }`}
+            >
+              <div className="flex items-center space-x-2">
+                <Clock className="h-4 w-4" />
+                <span>Aguardando Pagamento</span>
+              </div>
+            </button>
+            <button
+              onClick={() => setActiveTab('paid-archive')}
+              className={`px-4 py-3 text-sm font-medium whitespace-nowrap transition-colors ${
+                activeTab === 'paid-archive'
+                  ? 'border-b-2 border-green-500 text-green-600 dark:text-green-400'
+                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
+              }`}
+            >
+              <div className="flex items-center space-x-2">
+                <History className="h-4 w-4" />
+                <span>Histórico Pago</span>
+              </div>
+            </button>
+            <button
+              onClick={() => setActiveTab('categories')}
+              className={`px-4 py-3 text-sm font-medium whitespace-nowrap transition-colors ${
+                activeTab === 'categories'
+                  ? 'border-b-2 border-green-500 text-green-600 dark:text-green-400'
+                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
+              }`}
+            >
+              <div className="flex items-center space-x-2">
+                <PieChart className="h-4 w-4" />
+                <span>Categorias</span>
+              </div>
+            </button>
+            <button
+              onClick={() => setActiveTab('performance')}
+              className={`px-4 py-3 text-sm font-medium whitespace-nowrap transition-colors ${
+                activeTab === 'performance'
+                  ? 'border-b-2 border-green-500 text-green-600 dark:text-green-400'
+                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
+              }`}
+            >
+              <div className="flex items-center space-x-2">
+                <TrendingUp className="h-4 w-4" />
+                <span>Performance</span>
+              </div>
+            </button>
+          </div>
+        </div>
+
         <div className="flex-1 overflow-y-auto p-6">
+          {/* TAB CONTENT */}
+          {activeTab === 'overview' && (
+          <div>
           {/* EXISTING WORKER DATA - Always show this first */}
           <div className="mb-6">
             <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
@@ -1055,7 +1287,7 @@ function WorkerDetailModal({ worker, workerProfile, onClose }: WorkerDetailModal
                           </div>
                           <div className="text-right">
                             <p className="text-sm text-gray-600 dark:text-gray-300">
-                              Pago por: {payment.paidBy || 'Sistema'}
+                              Pago por: {payment.paidByName || payment.paidBy || 'Sistema'}
                             </p>
                           </div>
                         </div>
@@ -1082,6 +1314,1726 @@ function WorkerDetailModal({ worker, workerProfile, onClose }: WorkerDetailModal
               </div>
             )}
           </div>
+          </div>
+          )}
+
+          {/* Active Services Tab */}
+          {activeTab === 'active-services' && (
+            <div>
+              <h3 className="text-lg font-semibold mb-4">🟢 Serviços Ativos & Monitoramento</h3>
+
+              {loading ? (
+                <div className="flex items-center justify-center py-8">
+                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-500"></div>
+                  <span className="ml-3 text-gray-600">Carregando serviços ativos...</span>
+                </div>
+              ) : detailData?.activeSession ? (
+                <div className="space-y-6">
+                  {/* Plant Services */}
+                  {detailData.activeSession.seedExpectations && detailData.activeSession.seedExpectations.length > 0 && (
+                    <div>
+                      <h4 className="font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
+                        <Sprout className="h-5 w-5 mr-2 text-green-600" />
+                        🌾 Serviços de Plantas
+                      </h4>
+                      <div className="space-y-3">
+                        {detailData.activeSession.seedExpectations
+                          .filter((exp: any) => {
+                            // Filter out Adubo3 - it's a material, not a plant service
+                            const seedTypeLower = (exp.seedType || '').toLowerCase();
+                            return !(seedTypeLower.includes('adubo3') || seedTypeLower.includes('adubo 3'));
+                          })
+                          .map((expectation: any, idx: number) => {
+                          const expectedPlants = expectation.expectedPlantQuantity || 0;
+                          const actualPlants = expectation.plantsFulfilled || 0;
+                          const completionRate = expectedPlants > 0 ? (actualPlants / expectedPlants) * 100 : 0;
+                          const isComplete = expectation.isComplete || completionRate >= 100;
+                          const isPending = completionRate === 0;
+                          const isIncomplete = completionRate > 0 && completionRate < 100;
+
+                          // Find the timestamp from plantTransactions using transactionId
+                          const seedTransaction = detailData.activeSession.plantTransactions?.find(
+                            (t: any) => t.transactionId === expectation.transactionId
+                          );
+                          const takenTimestamp = seedTransaction?.timestamp;
+
+                          // Calculate completion timestamp by simulating FIFO fulfillment
+                          let completedTimestamp = null;
+                          if (isComplete && detailData.activeSession.seedExpectations && detailData.activeSession.plantTransactions) {
+                            // Get all expectations for this plant type in order
+                            const allExpectations = detailData.activeSession.seedExpectations
+                              .filter((exp: any) => exp.expectedPlantType === expectation.expectedPlantType)
+                              .sort((a: any, b: any) => {
+                                const aIdx = detailData.activeSession.plantTransactions.findIndex((t: any) => t.transactionId === a.transactionId);
+                                const bIdx = detailData.activeSession.plantTransactions.findIndex((t: any) => t.transactionId === b.transactionId);
+                                return aIdx - bIdx;
+                              });
+
+                            // Find index of current expectation
+                            const currentIdx = allExpectations.findIndex((exp: any) => exp.transactionId === expectation.transactionId);
+
+                            // Get all plant deposits for this type
+                            const plantDeposits = detailData.activeSession.plantTransactions
+                              .filter((t: any) => t.type === 'plant_deposited' && t.itemName === expectation.expectedPlantType)
+                              .sort((a: any, b: any) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime());
+
+                            // Simulate FIFO fulfillment to find which deposit completed this expectation
+                            let remainingToFulfill = expectation.expectedPlantQuantity;
+                            for (let i = 0; i < currentIdx; i++) {
+                              remainingToFulfill += allExpectations[i].expectedPlantQuantity;
+                            }
+
+                            let fulfilled = 0;
+                            for (const deposit of plantDeposits) {
+                              fulfilled += deposit.quantity;
+                              if (fulfilled >= remainingToFulfill) {
+                                completedTimestamp = deposit.timestamp;
+                                break;
+                              }
+                            }
+                          }
+
+                          let statusColor = 'gray';
+                          let statusBadge = '⏳ Pendente';
+                          let borderColor = 'border-gray-300 dark:border-gray-600';
+
+                          if (isComplete) {
+                            statusColor = 'green';
+                            statusBadge = '✅ Completo';
+                            borderColor = 'border-green-500';
+                          } else if (isIncomplete) {
+                            statusColor = 'orange';
+                            statusBadge = '⚠️ Incompleto';
+                            borderColor = 'border-orange-500';
+                          }
+
+                          return (
+                            <div key={idx} className={`border-l-4 ${borderColor} bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm`}>
+                              <div className="flex justify-between items-start mb-3">
+                                <div className="flex-1">
+                                  <div className="flex items-center space-x-2 mb-1">
+                                    <span className="font-medium text-gray-900 dark:text-white">
+                                      {expectation.seedType || 'Semente'}
+                                    </span>
+                                    <span className={`text-xs px-2 py-1 rounded-full bg-${statusColor}-100 text-${statusColor}-800 dark:bg-${statusColor}-900/20 dark:text-${statusColor}-300`}>
+                                      {statusBadge}
+                                    </span>
+                                  </div>
+                                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                                    Sementes retiradas: <span className="font-semibold">{expectation.seedQuantity}</span>
+                                    {expectation.aduboUsed && (
+                                      <span className="ml-2 text-green-600 dark:text-green-400">
+                                        + {expectation.aduboUsed} Adubo3 🌿
+                                      </span>
+                                    )}
+                                  </p>
+                                  <div className="flex items-center gap-4 mt-1 text-xs">
+                                    {takenTimestamp && (
+                                      <p className="text-gray-500 dark:text-gray-400">
+                                        🔽 Retirado: {new Date(takenTimestamp).toLocaleString('pt-BR', {
+                                          day: '2-digit',
+                                          month: '2-digit',
+                                          hour: '2-digit',
+                                          minute: '2-digit'
+                                        })}
+                                      </p>
+                                    )}
+                                    {completedTimestamp && (
+                                      <p className="text-green-600 dark:text-green-400">
+                                        ✅ Completo: {new Date(completedTimestamp).toLocaleString('pt-BR', {
+                                          day: '2-digit',
+                                          month: '2-digit',
+                                          hour: '2-digit',
+                                          minute: '2-digit'
+                                        })}
+                                      </p>
+                                    )}
+                                  </div>
+                                  {expectation.aduboCost && expectation.aduboCost > 0 && (
+                                    <p className="text-xs text-orange-600 dark:text-orange-400 mt-1">
+                                      Custo Adubo3: -${expectation.aduboCost.toFixed(2)}
+                                    </p>
+                                  )}
+                                </div>
+                                <div className="text-right">
+                                  <p className="text-2xl font-bold text-gray-900 dark:text-white">
+                                    {completionRate.toFixed(0)}%
+                                  </p>
+                                  <p className="text-xs text-gray-500 dark:text-gray-400">Taxa de Conclusão</p>
+                                </div>
+                              </div>
+
+                              {/* Progress Bar */}
+                              <div className="mb-3">
+                                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                  <div
+                                    className={`h-2.5 rounded-full ${
+                                      isComplete ? 'bg-green-500' : isIncomplete ? 'bg-orange-500' : 'bg-gray-400'
+                                    }`}
+                                    style={{ width: `${Math.min(completionRate, 100)}%` }}
+                                  ></div>
+                                </div>
+                              </div>
+
+                              {/* Details */}
+                              <div className="grid grid-cols-3 gap-3 text-sm">
+                                <div className="bg-blue-50 dark:bg-blue-900/20 rounded p-2">
+                                  <p className="text-xs text-blue-600 dark:text-blue-400 mb-1">
+                                    Esperado {expectation.aduboUsed ? '(com Adubo3)' : ''}
+                                  </p>
+                                  <p className="font-semibold text-blue-900 dark:text-blue-300">{expectedPlants} plantas</p>
+                                  {expectation.aduboUsed && (
+                                    <p className="text-xs text-green-600 dark:text-green-400 mt-1">×2 rendimento</p>
+                                  )}
+                                </div>
+                                <div className="bg-green-50 dark:bg-green-900/20 rounded p-2">
+                                  <p className="text-xs text-green-600 dark:text-green-400 mb-1">Depositado</p>
+                                  <p className="font-semibold text-green-900 dark:text-green-300">{actualPlants} plantas</p>
+                                </div>
+                                <div className={`bg-${isComplete ? 'green' : isIncomplete ? 'orange' : 'gray'}-50 dark:bg-${isComplete ? 'green' : isIncomplete ? 'orange' : 'gray'}-900/20 rounded p-2`}>
+                                  <p className={`text-xs text-${isComplete ? 'green' : isIncomplete ? 'orange' : 'gray'}-600 dark:text-${isComplete ? 'green' : isIncomplete ? 'orange' : 'gray'}-400 mb-1`}>
+                                    {isComplete ? 'Completo' : 'Faltando'}
+                                  </p>
+                                  <p className={`font-semibold text-${isComplete ? 'green' : isIncomplete ? 'orange' : 'gray'}-900 dark:text-${isComplete ? 'green' : isIncomplete ? 'orange' : 'gray'}-300`}>
+                                    {isComplete ? '0 plantas' : `${expectedPlants - actualPlants} plantas`}
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Animal Services */}
+                  {detailData.activeSession.animalExpectations && detailData.activeSession.animalExpectations.length > 0 && (
+                    <div>
+                      <h4 className="font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
+                        <DollarSign className="h-5 w-5 mr-2 text-yellow-600" />
+                        🐄 Serviços de Animais
+                      </h4>
+                      <div className="space-y-3">
+                        {detailData.activeSession.animalExpectations.map((expectation: any, idx: number) => {
+                          const animalsTaken = expectation.animalsTaken || 0;
+                          const animalsDelivered = expectation.animalsDelivered || 0;
+                          const completionRate = animalsTaken > 0 ? (animalsDelivered / animalsTaken) * 100 : 0;
+                          const isComplete = expectation.isComplete || completionRate >= 100;
+                          const isPending = completionRate === 0;
+                          const isIncomplete = completionRate > 0 && completionRate < 100;
+
+                          // Find timestamps from animalTransactions
+                          const takenTransaction = detailData.activeSession.animalTransactions?.find(
+                            (t: any) => t.transactionId === expectation.transactionId && t.type === 'animals_taken'
+                          );
+                          const takenTimestamp = takenTransaction?.timestamp || expectation.takenTimestamp;
+
+                          // Find delivery completed timestamp for this specific expectation
+                          let deliveryTimestamp = null;
+                          if (isComplete && detailData.activeSession.animalTransactions) {
+                            const deliveries = detailData.activeSession.animalTransactions
+                              .filter((t: any) => t.type === 'delivery_completed')
+                              .sort((a: any, b: any) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime());
+
+                            // Find which delivery completed this expectation
+                            let animalsToFulfill = animalsTaken;
+                            let deliveredSoFar = 0;
+                            for (const delivery of deliveries) {
+                              deliveredSoFar += delivery.quantity;
+                              if (deliveredSoFar >= animalsToFulfill) {
+                                deliveryTimestamp = delivery.timestamp;
+                                break;
+                              }
+                            }
+                          }
+
+                          let statusColor = 'gray';
+                          let statusBadge = '⏳ Pendente';
+                          let borderColor = 'border-gray-300 dark:border-gray-600';
+
+                          if (isComplete) {
+                            statusColor = 'green';
+                            statusBadge = '✅ Completo';
+                            borderColor = 'border-green-500';
+                          } else if (isIncomplete) {
+                            statusColor = 'orange';
+                            statusBadge = '⚠️ Incompleto';
+                            borderColor = 'border-orange-500';
+                          }
+
+                          return (
+                            <div key={idx} className={`border-l-4 ${borderColor} bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm`}>
+                              <div className="flex justify-between items-start mb-3">
+                                <div className="flex-1">
+                                  <div className="flex items-center space-x-2 mb-1">
+                                    <span className="font-medium text-gray-900 dark:text-white">
+                                      Serviço de Animais
+                                    </span>
+                                    <span className={`text-xs px-2 py-1 rounded-full bg-${statusColor}-100 text-${statusColor}-800 dark:bg-${statusColor}-900/20 dark:text-${statusColor}-300`}>
+                                      {statusBadge}
+                                    </span>
+                                  </div>
+                                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                                    Animais retirados: <span className="font-semibold">{animalsTaken}</span>
+                                  </p>
+                                  <div className="flex items-center gap-4 mt-1 text-xs">
+                                    {takenTimestamp && (
+                                      <p className="text-gray-500 dark:text-gray-400">
+                                        🔽 Retirado: {new Date(takenTimestamp).toLocaleString('pt-BR', {
+                                          day: '2-digit',
+                                          month: '2-digit',
+                                          hour: '2-digit',
+                                          minute: '2-digit'
+                                        })}
+                                      </p>
+                                    )}
+                                    {deliveryTimestamp && (
+                                      <p className="text-green-600 dark:text-green-400">
+                                        ✅ Entregues: {new Date(deliveryTimestamp).toLocaleString('pt-BR', {
+                                          day: '2-digit',
+                                          month: '2-digit',
+                                          hour: '2-digit',
+                                          minute: '2-digit'
+                                        })}
+                                      </p>
+                                    )}
+                                  </div>
+                                </div>
+                                <div className="text-right">
+                                  <p className="text-2xl font-bold text-gray-900 dark:text-white">
+                                    {completionRate.toFixed(0)}%
+                                  </p>
+                                  <p className="text-xs text-gray-500 dark:text-gray-400">Taxa de Conclusão</p>
+                                </div>
+                              </div>
+
+                              {/* Progress Bar */}
+                              <div className="mb-3">
+                                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                  <div
+                                    className={`h-2.5 rounded-full ${
+                                      isComplete ? 'bg-green-500' : isIncomplete ? 'bg-orange-500' : 'bg-gray-400'
+                                    }`}
+                                    style={{ width: `${Math.min(completionRate, 100)}%` }}
+                                  ></div>
+                                </div>
+                              </div>
+
+                              {/* Details */}
+                              <div className="grid grid-cols-3 gap-3 text-sm">
+                                <div className="bg-blue-50 dark:bg-blue-900/20 rounded p-2">
+                                  <p className="text-xs text-blue-600 dark:text-blue-400 mb-1">Retirados</p>
+                                  <p className="font-semibold text-blue-900 dark:text-blue-300">{animalsTaken} animais</p>
+                                </div>
+                                <div className="bg-green-50 dark:bg-green-900/20 rounded p-2">
+                                  <p className="text-xs text-green-600 dark:text-green-400 mb-1">Entregues</p>
+                                  <p className="font-semibold text-green-900 dark:text-green-300">{animalsDelivered} animais</p>
+                                </div>
+                                <div className={`bg-${isComplete ? 'green' : isIncomplete ? 'orange' : 'gray'}-50 dark:bg-${isComplete ? 'green' : isIncomplete ? 'orange' : 'gray'}-900/20 rounded p-2`}>
+                                  <p className={`text-xs text-${isComplete ? 'green' : isIncomplete ? 'orange' : 'gray'}-600 dark:text-${isComplete ? 'green' : isIncomplete ? 'orange' : 'gray'}-400 mb-1`}>
+                                    {isComplete ? 'Completo' : 'Faltando'}
+                                  </p>
+                                  <p className={`font-semibold text-${isComplete ? 'green' : isIncomplete ? 'orange' : 'gray'}-900 dark:text-${isComplete ? 'green' : isIncomplete ? 'orange' : 'gray'}-300`}>
+                                    {isComplete ? '0 animais' : `${animalsTaken - animalsDelivered} animais`}
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Ferrovia/Unregistered Plants */}
+                  {detailData.activeSession.unregisteredPlants && detailData.activeSession.unregisteredPlants.length > 0 && (
+                    <div>
+                      <h4 className="font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
+                        <Package className="h-5 w-5 mr-2 text-purple-600" />
+                        🚂 Serviços Ferrovia / Caixas
+                      </h4>
+                      <div className="space-y-3">
+                        {detailData.activeSession.unregisteredPlants.map((plant: any, idx: number) => {
+                          return (
+                            <div key={idx} className="border-l-4 border-purple-500 bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm">
+                              <div className="flex justify-between items-start">
+                                <div className="flex-1">
+                                  <div className="flex items-center space-x-2 mb-1">
+                                    <span className="font-medium text-gray-900 dark:text-white">
+                                      {plant.plantType || 'Planta Não Registrada'}
+                                    </span>
+                                    <span className="text-xs px-2 py-1 rounded-full bg-purple-100 text-purple-800 dark:bg-purple-900/20 dark:text-purple-300">
+                                      ⏳ Aguardando Caixas/Dinheiro
+                                    </span>
+                                  </div>
+                                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                                    Quantidade retirada: <span className="font-semibold">{plant.quantity}</span>
+                                  </p>
+                                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                                    Sistema espera caixas ou dinheiro depositado para completar este serviço
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* No Active Services Message */}
+                  {(() => {
+                    const filteredSeeds = (detailData.activeSession.seedExpectations || []).filter((exp: any) => {
+                      const seedTypeLower = (exp.seedType || '').toLowerCase();
+                      return !(seedTypeLower.includes('adubo3') || seedTypeLower.includes('adubo 3'));
+                    });
+
+                    const hasActiveServices =
+                      filteredSeeds.length > 0 ||
+                      (detailData.activeSession.animalExpectations && detailData.activeSession.animalExpectations.length > 0) ||
+                      (detailData.activeSession.unregisteredPlants && detailData.activeSession.unregisteredPlants.length > 0);
+
+                    if (hasActiveServices) return null;
+
+                    return (
+                      <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-8 text-center">
+                        <Activity className="h-12 w-12 text-blue-500 mx-auto mb-3" />
+                        <p className="text-blue-900 dark:text-blue-300 font-medium mb-1">
+                          Nenhum serviço ativo no momento
+                        </p>
+                        <p className="text-sm text-blue-700 dark:text-blue-400">
+                          Serviços aparecerão aqui quando o trabalhador retirar sementes, animais ou plantas
+                        </p>
+                      </div>
+                    );
+                  })()}
+                </div>
+              ) : (
+                <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-8 text-center">
+                  <Activity className="h-12 w-12 text-gray-400 mx-auto mb-3" />
+                  <p className="text-gray-600 dark:text-gray-300">Nenhuma sessão ativa</p>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Awaiting Payment Tab */}
+          {activeTab === 'awaiting-payment' && (
+            <div>
+              <h3 className="text-lg font-semibold mb-4 flex items-center">
+                <Clock className="h-5 w-5 mr-2 text-yellow-600" />
+                🟡 Aguardando Pagamento
+              </h3>
+
+              {loading ? (
+                <div className="flex items-center justify-center py-8">
+                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-yellow-500"></div>
+                  <span className="ml-3 text-gray-600">Carregando sessão atual...</span>
+                </div>
+              ) : detailData?.activeSession ? (() => {
+                const session = detailData.activeSession;
+
+                // Calculate deductions FIRST (ONLY Adubo3) - from plantTransactions
+                let totalDeductions = 0;
+                if (session.plantTransactions) {
+                  session.plantTransactions.forEach((t: any) => {
+                    if (t.type === 'seed_taken' && t.itemName && t.itemName.toLowerCase().includes('adubo3')) {
+                      totalDeductions += t.quantity * 0.75; // $0.75 per Adubo3
+                    }
+                  });
+                }
+
+                // Total amount AFTER deductions
+                const totalAmount = (session.totalCredits || 0) - totalDeductions;
+
+                // Count services
+                const plantServices = (session.seedExpectations || []).filter((exp: any) => {
+                  const seedTypeLower = (exp.seedType || '').toLowerCase();
+                  return !(seedTypeLower.includes('adubo3') || seedTypeLower.includes('adubo 3'));
+                }).length;
+                const animalServices = (session.animalExpectations || []).length;
+                const ferroviaServices = (session.unregisteredPlants || []).length;
+
+                return (
+                  <div className="space-y-6">
+                    {/* Summary Card */}
+                    <div className="bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-lg p-6 border border-yellow-300 dark:border-yellow-700">
+                      <div className="flex justify-between items-start mb-4">
+                        <div>
+                          <h4 className="text-lg font-bold text-yellow-900 dark:text-yellow-300 mb-2">
+                            Sessão Atual - Resumo Completo
+                          </h4>
+                          <p className="text-sm text-yellow-700 dark:text-yellow-400">
+                            Iniciada: {new Date(session.startTime).toLocaleString('pt-BR')}
+                          </p>
+                        </div>
+                        <div className="text-right">
+                          <p className="text-3xl font-bold text-yellow-900 dark:text-yellow-300">
+                            ${totalAmount.toFixed(2)}
+                          </p>
+                          <p className="text-xs text-yellow-700 dark:text-yellow-400">Total a Pagar</p>
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-4 gap-3 text-sm">
+                        <div className="bg-white dark:bg-gray-800 rounded p-3">
+                          <p className="text-xs text-gray-600 dark:text-gray-400 mb-1">🌾 Plantas</p>
+                          <p className="font-semibold text-gray-900 dark:text-white">{plantServices} serviços</p>
+                        </div>
+                        <div className="bg-white dark:bg-gray-800 rounded p-3">
+                          <p className="text-xs text-gray-600 dark:text-gray-400 mb-1">🐄 Animais</p>
+                          <p className="font-semibold text-gray-900 dark:text-white">{animalServices} serviços</p>
+                        </div>
+                        <div className="bg-white dark:bg-gray-800 rounded p-3">
+                          <p className="text-xs text-gray-600 dark:text-gray-400 mb-1">🚂 Ferrovia</p>
+                          <p className="font-semibold text-gray-900 dark:text-white">{ferroviaServices} serviços</p>
+                        </div>
+                        <div className="bg-white dark:bg-gray-800 rounded p-3">
+                          <p className="text-xs text-gray-600 dark:text-gray-400 mb-1">💸 Deduções</p>
+                          <p className="font-semibold text-orange-600 dark:text-orange-400">-${totalDeductions.toFixed(2)}</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Service Details - Reusing Active Services Display */}
+                    <div className="space-y-6">
+                      {/* Plant Services */}
+                      {session.seedExpectations && session.seedExpectations.length > 0 && (
+                        <div>
+                          <h4 className="font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
+                            <Sprout className="h-5 w-5 mr-2 text-green-600" />
+                            🌾 Serviços de Plantas
+                          </h4>
+                          <div className="space-y-3">
+                            {session.seedExpectations
+                              .filter((exp: any) => {
+                                const seedTypeLower = (exp.seedType || '').toLowerCase();
+                                return !(seedTypeLower.includes('adubo3') || seedTypeLower.includes('adubo 3'));
+                              })
+                              .map((expectation: any, idx: number) => {
+                                const expectedPlants = expectation.expectedPlantQuantity || 0;
+                                const actualPlants = expectation.plantsFulfilled || 0;
+                                const completionRate = expectedPlants > 0 ? (actualPlants / expectedPlants) * 100 : 0;
+                                const isComplete = expectation.isComplete || completionRate >= 100;
+
+                                // Find timestamps
+                                const seedTransaction = session.plantTransactions?.find(
+                                  (t: any) => t.transactionId === expectation.transactionId
+                                );
+                                const takenTimestamp = seedTransaction?.timestamp;
+
+                                return (
+                                  <div key={idx} className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                                    <div className="flex justify-between items-start mb-2">
+                                      <div className="flex-1">
+                                        <p className="font-medium text-gray-900 dark:text-white">
+                                          {expectation.seedType || 'Semente'}
+                                        </p>
+                                        <p className="text-sm text-gray-600 dark:text-gray-400">
+                                          {expectation.seedQuantity} sementes
+                                          {expectation.aduboUsed && (
+                                            <span className="text-green-600 dark:text-green-400"> + {expectation.aduboUsed} Adubo3</span>
+                                          )}
+                                        </p>
+                                        {takenTimestamp && (
+                                          <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                                            🔽 {new Date(takenTimestamp).toLocaleString('pt-BR', {
+                                              day: '2-digit',
+                                              month: '2-digit',
+                                              hour: '2-digit',
+                                              minute: '2-digit'
+                                            })}
+                                          </p>
+                                        )}
+                                        {expectation.aduboCost && (
+                                          <p className="text-xs text-orange-600 dark:text-orange-400 mt-1">
+                                            Custo Adubo3: -${expectation.aduboCost.toFixed(2)}
+                                          </p>
+                                        )}
+                                      </div>
+                                      <div className="text-right">
+                                        <p className={`text-lg font-bold ${isComplete ? 'text-green-600' : 'text-orange-600'}`}>
+                                          {actualPlants}/{expectedPlants}
+                                        </p>
+                                        <p className="text-xs text-gray-500">
+                                          {isComplete ? '✅ Completo' : `⚠️ Faltam ${expectedPlants - actualPlants}`}
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                );
+                              })}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Animal Services */}
+                      {session.animalExpectations && session.animalExpectations.length > 0 && (
+                        <div>
+                          <h4 className="font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
+                            <DollarSign className="h-5 w-5 mr-2 text-yellow-600" />
+                            🐄 Serviços de Animais
+                          </h4>
+                          <div className="space-y-3">
+                            {session.animalExpectations.map((expectation: any, idx: number) => {
+                              const animalsTaken = expectation.animalsTaken || 0;
+                              const animalsDelivered = expectation.animalsDelivered || 0;
+                              const completionRate = animalsTaken > 0 ? (animalsDelivered / animalsTaken) * 100 : 0;
+                              const isComplete = expectation.isComplete || completionRate >= 100;
+
+                              // Find timestamps
+                              const takenTransaction = session.animalTransactions?.find(
+                                (t: any) => t.transactionId === expectation.transactionId && t.type === 'animals_taken'
+                              );
+                              const takenTimestamp = takenTransaction?.timestamp || expectation.takenTimestamp;
+
+                              return (
+                                <div key={idx} className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                                  <div className="flex justify-between items-start mb-2">
+                                    <div className="flex-1">
+                                      <p className="font-medium text-gray-900 dark:text-white">
+                                        Serviço de Animais
+                                      </p>
+                                      <p className="text-sm text-gray-600 dark:text-gray-400">
+                                        {animalsTaken} animais retirados
+                                      </p>
+                                      {takenTimestamp && (
+                                        <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                                          🔽 {new Date(takenTimestamp).toLocaleString('pt-BR', {
+                                            day: '2-digit',
+                                            month: '2-digit',
+                                            hour: '2-digit',
+                                            minute: '2-digit'
+                                          })}
+                                        </p>
+                                      )}
+                                    </div>
+                                    <div className="text-right">
+                                      <p className={`text-lg font-bold ${isComplete ? 'text-green-600' : 'text-orange-600'}`}>
+                                        {animalsDelivered}/{animalsTaken}
+                                      </p>
+                                      <p className="text-xs text-gray-500">
+                                        {isComplete ? '✅ Completo' : `⚠️ Faltam ${animalsTaken - animalsDelivered}`}
+                                      </p>
+                                    </div>
+                                  </div>
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Ferrovia Services */}
+                      {session.unregisteredPlants && session.unregisteredPlants.length > 0 && (
+                        <div>
+                          <h4 className="font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
+                            <Package className="h-5 w-5 mr-2 text-purple-600" />
+                            🚂 Serviços Ferrovia / Caixas
+                          </h4>
+                          <div className="space-y-3">
+                            {session.unregisteredPlants.map((plant: any, idx: number) => (
+                              <div key={idx} className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                                <p className="font-medium text-gray-900 dark:text-white">
+                                  {plant.plantType || 'Planta Não Registrada'}
+                                </p>
+                                <p className="text-sm text-gray-600 dark:text-gray-400">
+                                  Quantidade: {plant.quantity}
+                                </p>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Financial Breakdown */}
+                    <div className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-750 rounded-lg p-6 border-2 border-gray-300 dark:border-gray-600">
+                      <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+                        <DollarSign className="h-5 w-5 mr-2" />
+                        💰 Resumo Financeiro Completo
+                      </h4>
+
+                      {/* Credits Section */}
+                      <div className="mb-4 pb-4 border-b border-gray-300 dark:border-gray-600">
+                        <p className="font-semibold text-gray-700 dark:text-gray-300 mb-2">Créditos</p>
+                        {(() => {
+                          const prices = { plantPrice: 0.25, animalPrice: 40 };
+                          let plantTotal = 0;
+                          let animalTotal = 0;
+                          let ferroviaTotal = 0;
+
+                          // Calculate plant credits
+                          if (session.plantTransactions) {
+                            session.plantTransactions.forEach((t: any) => {
+                              if (t.type === 'plant_deposited') {
+                                plantTotal += t.quantity * prices.plantPrice;
+                              }
+                            });
+                          }
+
+                          // Calculate animal credits
+                          if (session.animalTransactions) {
+                            session.animalTransactions.forEach((t: any) => {
+                              if (t.type === 'delivery_completed' && t.amount) {
+                                animalTotal += t.amount;
+                              }
+                            });
+                          }
+
+                          // Calculate ferrovia credits
+                          if (session.unregisteredPlants) {
+                            session.unregisteredPlants.forEach((p: any) => {
+                              ferroviaTotal += p.quantity * prices.plantPrice;
+                            });
+                          }
+
+                          return (
+                            <div className="space-y-2 text-sm">
+                              {plantTotal > 0 && (
+                                <div className="flex justify-between items-center">
+                                  <span className="text-gray-600 dark:text-gray-400">🌾 Serviços de Plantas</span>
+                                  <span className="font-semibold text-green-600 dark:text-green-400">+${plantTotal.toFixed(2)}</span>
+                                </div>
+                              )}
+                              {animalTotal > 0 && (
+                                <div className="flex justify-between items-center">
+                                  <span className="text-gray-600 dark:text-gray-400">🐄 Serviços de Animais</span>
+                                  <span className="font-semibold text-green-600 dark:text-green-400">+${animalTotal.toFixed(2)}</span>
+                                </div>
+                              )}
+                              {ferroviaTotal > 0 && (
+                                <div className="flex justify-between items-center">
+                                  <span className="text-gray-600 dark:text-gray-400">🚂 Serviços Ferrovia</span>
+                                  <span className="font-semibold text-green-600 dark:text-green-400">+${ferroviaTotal.toFixed(2)}</span>
+                                </div>
+                              )}
+                              <div className="flex justify-between items-center pt-2 border-t border-gray-200 dark:border-gray-700">
+                                <span className="font-semibold text-gray-900 dark:text-white">Subtotal Créditos</span>
+                                <span className="font-bold text-green-600 dark:text-green-400">+${(plantTotal + animalTotal + ferroviaTotal).toFixed(2)}</span>
+                              </div>
+                            </div>
+                          );
+                        })()}
+                      </div>
+
+                      {/* Deductions Section */}
+                      <div className="mb-4 pb-4 border-b border-gray-300 dark:border-gray-600">
+                        <p className="font-semibold text-gray-700 dark:text-gray-300 mb-2">Deduções</p>
+                        {(() => {
+                          const deductions: { label: string; amount: number; timestamp?: string }[] = [];
+
+                          // Adubo3 costs - ONLY DEDUCTION - from plantTransactions
+                          if (session.plantTransactions) {
+                            session.plantTransactions.forEach((t: any) => {
+                              if (t.type === 'seed_taken' && t.itemName && t.itemName.toLowerCase().includes('adubo3')) {
+                                const cost = t.quantity * 0.75;
+                                deductions.push({
+                                  label: `🌿 Adubo3: ${t.quantity} unidades`,
+                                  amount: cost,
+                                  timestamp: t.timestamp
+                                });
+                              }
+                            });
+                          }
+
+                          const totalDeductions = deductions.reduce((sum, d) => sum + d.amount, 0);
+
+                          if (deductions.length === 0) {
+                            return (
+                              <p className="text-sm text-gray-500 dark:text-gray-400 italic">Nenhuma dedução</p>
+                            );
+                          }
+
+                          return (
+                            <div className="space-y-2 text-sm">
+                              {deductions.map((deduction, idx) => (
+                                <div key={idx} className="flex justify-between items-center">
+                                  <div className="flex flex-col">
+                                    <span className="text-gray-600 dark:text-gray-400">{deduction.label}</span>
+                                    {deduction.timestamp && (
+                                      <span className="text-xs text-gray-500 dark:text-gray-500 mt-0.5">
+                                        {new Date(deduction.timestamp).toLocaleString('pt-BR', {
+                                          day: '2-digit',
+                                          month: '2-digit',
+                                          hour: '2-digit',
+                                          minute: '2-digit'
+                                        })}
+                                      </span>
+                                    )}
+                                  </div>
+                                  <span className="font-semibold text-orange-600 dark:text-orange-400">-${deduction.amount.toFixed(2)}</span>
+                                </div>
+                              ))}
+                              <div className="flex justify-between items-center pt-2 border-t border-gray-200 dark:border-gray-700">
+                                <span className="font-semibold text-gray-900 dark:text-white">Subtotal Deduções</span>
+                                <span className="font-bold text-orange-600 dark:text-orange-400">-${totalDeductions.toFixed(2)}</span>
+                              </div>
+                            </div>
+                          );
+                        })()}
+                      </div>
+
+                      {/* Final Total */}
+                      <div className="bg-yellow-50 dark:bg-yellow-900/20 rounded-lg p-4 border border-yellow-300 dark:border-yellow-700">
+                        <div className="flex justify-between items-center">
+                          <span className="text-xl font-bold text-gray-900 dark:text-white">Total a Pagar</span>
+                          <span className="text-3xl font-bold text-yellow-900 dark:text-yellow-300">${totalAmount.toFixed(2)}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })() : (
+                <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-8 text-center">
+                  <Activity className="h-12 w-12 text-gray-400 mx-auto mb-3" />
+                  <p className="text-gray-600 dark:text-gray-300">Nenhuma sessão ativa</p>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Paid Archive Tab */}
+          {activeTab === 'paid-archive' && (
+            <div>
+              <h3 className="text-lg font-semibold mb-4 flex items-center">
+                <History className="h-5 w-5 mr-2 text-blue-600" />
+                📦 Histórico Pago
+              </h3>
+
+              {loading ? (
+                <div className="flex items-center justify-center py-8">
+                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
+                  <span className="ml-3 text-gray-600">Carregando histórico de pagamentos...</span>
+                </div>
+              ) : (() => {
+                // Get paid sessions and payments
+                const paidSessions = detailData?.history?.archivedSessions?.filter(
+                  (session: any) => session.status === 'paid'
+                ) || [];
+
+                const payments = detailData?.history?.payments || [];
+
+                const togglePayment = (paymentId: string) => {
+                  const newExpanded = new Set(expandedPayments);
+                  if (newExpanded.has(paymentId)) {
+                    newExpanded.delete(paymentId);
+                  } else {
+                    newExpanded.add(paymentId);
+                  }
+                  setExpandedPayments(newExpanded);
+                };
+
+                // Filter payments by search
+                const filteredPayments = payments.filter((payment: any) => {
+                  if (!paymentSearchTerm) return true;
+                  const search = paymentSearchTerm.toLowerCase();
+                  const amount = payment.amount?.toString() || '';
+                  const date = new Date(payment.timestamp).toLocaleDateString('pt-BR');
+                  const paidBy = payment.paidByName || payment.paidBy || '';
+                  return amount.includes(search) || date.includes(search) || paidBy.toLowerCase().includes(search);
+                });
+
+                if (payments.length === 0) {
+                  return (
+                    <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-8 text-center">
+                      <DollarSign className="h-12 w-12 text-gray-400 mx-auto mb-3" />
+                      <p className="text-gray-600 dark:text-gray-300 font-medium mb-1">
+                        Nenhum pagamento registrado
+                      </p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">
+                        Pagamentos concluídos aparecerão aqui
+                      </p>
+                    </div>
+                  );
+                }
+
+                // Calculate totals
+                const totalPaid = payments.reduce((sum: number, p: any) => sum + (p.amount || 0), 0);
+                const totalPayments = payments.length;
+
+                return (
+                  <div className="space-y-6">
+                    {/* Summary Stats */}
+                    <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg p-6 border border-blue-300 dark:border-blue-700">
+                      <div className="grid grid-cols-2 gap-4">
+                        <div>
+                          <p className="text-sm text-blue-700 dark:text-blue-400 mb-1">Total Pago (Histórico)</p>
+                          <p className="text-3xl font-bold text-blue-900 dark:text-blue-300">
+                            ${totalPaid.toFixed(2)}
+                          </p>
+                        </div>
+                        <div>
+                          <p className="text-sm text-blue-700 dark:text-blue-400 mb-1">Total de Pagamentos</p>
+                          <p className="text-3xl font-bold text-blue-900 dark:text-blue-300">
+                            {totalPayments}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Search */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                        Buscar Pagamentos
+                      </label>
+                      <div className="relative">
+                        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                        <input
+                          type="text"
+                          value={paymentSearchTerm}
+                          onChange={(e) => setPaymentSearchTerm(e.target.value)}
+                          placeholder="Data, valor, ou quem pagou..."
+                          className="pl-10 w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Payment Accordion */}
+                    <div className="space-y-3">
+                      <h4 className="font-semibold text-gray-900 dark:text-white">
+                        Histórico de Pagamentos ({filteredPayments.length})
+                      </h4>
+
+                      {filteredPayments.length === 0 ? (
+                        <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 text-center">
+                          <p className="text-gray-600 dark:text-gray-300">
+                            Nenhum pagamento encontrado para "{paymentSearchTerm}"
+                          </p>
+                        </div>
+                      ) : (
+                        filteredPayments.map((payment: any, idx: number) => {
+                          const isExpanded = expandedPayments.has(payment.paymentId || idx.toString());
+                          const paymentDate = new Date(payment.timestamp).toLocaleString('pt-BR');
+
+                          // Find associated sessions for this payment
+                          const paymentSessions = paidSessions.filter(
+                            (session: any) => session.paymentId === payment.paymentId
+                          );
+
+                          return (
+                            <div key={payment.paymentId || idx} className="border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm">
+                              {/* Accordion Header */}
+                              <button
+                                onClick={() => togglePayment(payment.paymentId || idx.toString())}
+                                className="w-full px-5 py-4 flex justify-between items-center hover:bg-gray-50 dark:hover:bg-gray-750 transition-colors"
+                              >
+                                <div className="flex items-center space-x-3">
+                                  <div className="bg-green-100 dark:bg-green-900/20 p-2 rounded">
+                                    <CheckCircle className="h-5 w-5 text-green-600 dark:text-green-400" />
+                                  </div>
+                                  <div className="text-left">
+                                    <p className="font-semibold text-gray-900 dark:text-white">
+                                      Pagamento #{(payment.paymentId || '').slice(-6) || idx}
+                                    </p>
+                                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                                      {paymentDate}
+                                    </p>
+                                  </div>
+                                </div>
+                                <div className="flex items-center space-x-4">
+                                  <div className="text-right">
+                                    <p className="text-xl font-bold text-green-600 dark:text-green-400">
+                                      ${payment.amount?.toFixed(2) || '0.00'}
+                                    </p>
+                                    {(payment.paidByName || payment.paidBy) && (
+                                      <p className="text-xs text-gray-500 dark:text-gray-400">
+                                        por {payment.paidByName || payment.paidBy}
+                                      </p>
+                                    )}
+                                  </div>
+                                  {isExpanded ? (
+                                    <ChevronUp className="h-5 w-5 text-gray-400" />
+                                  ) : (
+                                    <ChevronDown className="h-5 w-5 text-gray-400" />
+                                  )}
+                                </div>
+                              </button>
+
+                              {/* Accordion Content */}
+                              {isExpanded && (
+                                <div className="px-5 py-4 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-750">
+                                  {/* Payment Details */}
+                                  <div className="mb-4 pb-4 border-b border-gray-200 dark:border-gray-700">
+                                    <h5 className="font-semibold text-gray-900 dark:text-white mb-2">
+                                      Detalhes do Pagamento
+                                    </h5>
+                                    <div className="grid grid-cols-2 gap-3 text-sm">
+                                      <div>
+                                        <p className="text-gray-600 dark:text-gray-400">ID do Pagamento</p>
+                                        <p className="font-mono text-xs text-gray-900 dark:text-white">
+                                          {payment.paymentId || 'N/A'}
+                                        </p>
+                                      </div>
+                                      <div>
+                                        <p className="text-gray-600 dark:text-gray-400">Pago por</p>
+                                        <p className="font-semibold text-gray-900 dark:text-white">
+                                          {payment.paidByName || payment.paidBy || 'Desconhecido'}
+                                        </p>
+                                      </div>
+                                      <div>
+                                        <p className="text-gray-600 dark:text-gray-400">Data/Hora</p>
+                                        <p className="font-semibold text-gray-900 dark:text-white">
+                                          {paymentDate}
+                                        </p>
+                                      </div>
+                                      <div>
+                                        <p className="text-gray-600 dark:text-gray-400">Valor Total</p>
+                                        <p className="font-bold text-green-600 dark:text-green-400">
+                                          ${payment.amount?.toFixed(2) || '0.00'}
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  {/* Associated Sessions */}
+                                  {paymentSessions.length > 0 && (
+                                    <div>
+                                      <h5 className="font-semibold text-gray-900 dark:text-white mb-3">
+                                        Sessões Incluídas ({paymentSessions.length})
+                                      </h5>
+                                      <div className="space-y-3">
+                                        {paymentSessions.map((session: any, sIdx: number) => (
+                                          <div key={sIdx} className="bg-white dark:bg-gray-800 rounded p-3 text-sm">
+                                            <p className="font-semibold text-gray-900 dark:text-white mb-2">
+                                              Sessão #{(session.sessionId || '').slice(-6)}
+                                            </p>
+
+                                            {/* Plant Services */}
+                                            {session.seedExpectations && session.seedExpectations.length > 0 && (
+                                              <div className="mb-2">
+                                                <p className="text-xs text-gray-600 dark:text-gray-400 mb-1">
+                                                  🌾 Plantas: {session.seedExpectations.filter((exp: any) => {
+                                                    const seedTypeLower = (exp.seedType || '').toLowerCase();
+                                                    return !(seedTypeLower.includes('adubo3') || seedTypeLower.includes('adubo 3'));
+                                                  }).length} serviço(s)
+                                                </p>
+                                                {session.seedExpectations
+                                                  .filter((exp: any) => {
+                                                    // Filter out Adubo3 - it's a material, not a plant service
+                                                    const seedTypeLower = (exp.seedType || '').toLowerCase();
+                                                    return !(seedTypeLower.includes('adubo3') || seedTypeLower.includes('adubo 3'));
+                                                  })
+                                                  .map((exp: any, eIdx: number) => (
+                                                  <p key={eIdx} className="text-xs text-gray-500 dark:text-gray-400 ml-4">
+                                                    • {exp.seedType}: {exp.plantsFulfilled || 0}/{exp.expectedPlantQuantity || 0} plantas
+                                                    {exp.aduboUsed && (
+                                                      <span className="text-green-600 dark:text-green-400"> (+{exp.aduboUsed} Adubo3, -${(exp.aduboCost || 0).toFixed(2)})</span>
+                                                    )}
+                                                  </p>
+                                                ))}
+                                              </div>
+                                            )}
+
+                                            {/* Animal Services */}
+                                            {session.animalExpectations && session.animalExpectations.length > 0 && (
+                                              <div className="mb-2">
+                                                <p className="text-xs text-gray-600 dark:text-gray-400 mb-1">
+                                                  🐄 Animais: {session.animalExpectations.length} serviço(s)
+                                                </p>
+                                                {session.animalExpectations.map((exp: any, eIdx: number) => (
+                                                  <p key={eIdx} className="text-xs text-gray-500 dark:text-gray-400 ml-4">
+                                                    • {exp.animalsTaken} animais retirados → {exp.animalsDelivered} entregues
+                                                  </p>
+                                                ))}
+                                              </div>
+                                            )}
+
+                                            {/* Ferrovia Services */}
+                                            {session.unregisteredPlants && session.unregisteredPlants.length > 0 && (
+                                              <div>
+                                                <p className="text-xs text-gray-600 dark:text-gray-400 mb-1">
+                                                  🚂 Ferrovia: {session.unregisteredPlants.length} serviço(s)
+                                                </p>
+                                                {session.unregisteredPlants.map((plant: any, pIdx: number) => (
+                                                  <p key={pIdx} className="text-xs text-gray-500 dark:text-gray-400 ml-4">
+                                                    • {plant.plantType}: {plant.quantity} unidades
+                                                  </p>
+                                                ))}
+                                              </div>
+                                            )}
+                                          </div>
+                                        ))}
+                                      </div>
+                                    </div>
+                                  )}
+
+                                  {paymentSessions.length === 0 && (
+                                    <p className="text-sm text-gray-500 dark:text-gray-400 italic">
+                                      Nenhuma sessão associada encontrada
+                                    </p>
+                                  )}
+                                </div>
+                              )}
+                            </div>
+                          );
+                        })
+                      )}
+                    </div>
+                  </div>
+                );
+              })()}
+            </div>
+          )}
+
+          {/* OLD CONTENT BELOW - REMOVE THIS COMMENT BLOCK */}
+          {false && (
+            <div>
+              <div className="mb-6">
+                <h3>OLD TRANSACTION TAB</h3>
+
+                {/* Filters */}
+                <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 mb-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {/* Search */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                        Buscar
+                      </label>
+                      <div className="relative">
+                        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                        <input
+                          type="text"
+                          value={transactionSearch}
+                          onChange={(e) => {
+                            setTransactionSearch(e.target.value);
+                            setCurrentPage(1); // Reset to first page on search
+                          }}
+                          placeholder="Item, tipo, sessão..."
+                          className="pl-10 w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Type Filter */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                        Tipo
+                      </label>
+                      <select
+                        value={transactionType}
+                        onChange={(e) => {
+                          setTransactionType(e.target.value as any);
+                          setCurrentPage(1);
+                        }}
+                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800"
+                      >
+                        <option value="all">Todas</option>
+                        <option value="plant">🌾 Plantas</option>
+                        <option value="animal">🐄 Animais</option>
+                        <option value="financial">💰 Financeiro</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Transaction Count */}
+                <div className="flex justify-between items-center mb-4">
+                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                    {filteredTransactions.length} transação{filteredTransactions.length !== 1 ? 'ões' : ''} encontrada{filteredTransactions.length !== 1 ? 's' : ''}
+                    {transactionSearch || transactionType !== 'all' ? ` (filtrado de ${allTransactions.length} total)` : ''}
+                  </p>
+                </div>
+              </div>
+
+              {loading ? (
+                <div className="flex items-center justify-center py-8">
+                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-500"></div>
+                  <span className="ml-3 text-gray-600">Carregando transações...</span>
+                </div>
+              ) : paginatedTransactions.length > 0 ? (
+                <div>
+                  {/* Transaction List */}
+                  <div className="space-y-2">
+                    {paginatedTransactions.map((transaction, index) => (
+                      <div key={index} className="bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg p-3">
+                        <div className="flex justify-between items-start">
+                          <div className="flex-1">
+                            <div className="flex items-center space-x-2 mb-1">
+                              {/* Icon based on type */}
+                              {transaction.category === 'plant' && (
+                                <span className="text-lg">
+                                  {transaction.type === 'seed_taken' ? '🌱' :
+                                   transaction.itemName?.toLowerCase().includes('junco') || transaction.itemName?.toLowerCase().includes('bulrush') ? '🫘' :
+                                   transaction.itemName?.toLowerCase().includes('trigo') || transaction.itemName?.toLowerCase().includes('wheat') ? '🌾' :
+                                   transaction.itemName?.toLowerCase().includes('milho') || transaction.itemName?.toLowerCase().includes('corn') ? '🌽' : '🌾'}
+                                </span>
+                              )}
+                              {transaction.category === 'animal' && <span className="text-lg">{transaction.type === 'animals_taken' ? '🚚' : '💰'}</span>}
+                              {transaction.category === 'financial' && <span className="text-lg">💵</span>}
+
+                              {/* Transaction Details */}
+                              <div>
+                                <p className="font-medium text-gray-900 dark:text-white">
+                                  {transaction.itemName ? (
+                                    <>
+                                      {transaction.itemName}
+                                      {transaction.quantity && <span className="text-gray-600 dark:text-gray-300"> x{transaction.quantity}</span>}
+                                    </>
+                                  ) : transaction.category === 'animal' ? (
+                                    `${transaction.quantity} animais`
+                                  ) : transaction.category === 'financial' ? (
+                                    'Transação Financeira'
+                                  ) : (
+                                    `Item x${transaction.quantity}`
+                                  )}
+                                  {transaction.amount && <span className="text-green-600 font-bold"> ${transaction.amount.toFixed(2)}</span>}
+                                </p>
+                                <p className="text-xs text-gray-500 dark:text-gray-400">
+                                  {transaction.type?.replace(/_/g, ' ')} • {new Date(transaction.timestamp).toLocaleString('pt-BR')}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Session Badge */}
+                          <div className="text-right ml-4">
+                            <span className={`inline-block px-2 py-1 text-xs rounded-full ${
+                              transaction.sessionStatus === 'active' ? 'bg-green-100 text-green-800' :
+                              transaction.sessionStatus === 'paid' ? 'bg-blue-100 text-blue-800' :
+                              'bg-gray-100 text-gray-800'
+                            }`}>
+                              {transaction.sessionStatus === 'active' ? 'Ativa' :
+                               transaction.sessionStatus === 'paid' ? 'Pago' : transaction.sessionStatus}
+                            </span>
+                            <p className="text-xs text-gray-500 font-mono mt-1">{transaction.sessionId?.slice(-8)}</p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Pagination */}
+                  {totalPages > 1 && (
+                    <div className="flex justify-center items-center space-x-2 mt-6">
+                      <button
+                        onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                        disabled={currentPage === 1}
+                        className="px-3 py-1 rounded border border-gray-300 dark:border-gray-600 disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
+                        Anterior
+                      </button>
+                      <span className="text-sm text-gray-600 dark:text-gray-300">
+                        Página {currentPage} de {totalPages}
+                      </span>
+                      <button
+                        onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                        disabled={currentPage === totalPages}
+                        className="px-3 py-1 rounded border border-gray-300 dark:border-gray-600 disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
+                        Próxima
+                      </button>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-8 text-center">
+                  <List className="h-12 w-12 text-gray-400 mx-auto mb-3" />
+                  <p className="text-gray-600 dark:text-gray-300">
+                    {transactionSearch || transactionType !== 'all'
+                      ? 'Nenhuma transação encontrada com os filtros aplicados'
+                      : 'Nenhuma transação disponível'
+                    }
+                  </p>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Sessions Tab */}
+          {activeTab === 'sessions' && (
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Sessões de Trabalho</h3>
+              {loading ? (
+                <div className="flex items-center justify-center py-8">
+                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-500"></div>
+                  <span className="ml-3 text-gray-600">Carregando sessões...</span>
+                </div>
+              ) : detailData ? (
+                <div className="space-y-6">
+                  {/* Active Session */}
+                  {detailData.activeSession && (
+                    <div className="bg-green-50 rounded-lg p-6">
+                      <h4 className="font-semibold text-green-900 mb-4 flex items-center">
+                        <Activity className="h-5 w-5 mr-2" />
+                        Sessão Ativa
+                      </h4>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                          <p className="text-sm text-green-700">ID da Sessão</p>
+                          <p className="font-mono text-sm">{detailData.activeSession.sessionId}</p>
+                        </div>
+                        <div>
+                          <p className="text-sm text-green-700">Créditos Acumulados</p>
+                          <p className="text-lg font-bold">${detailData.activeSession.totalCredits?.toFixed(2) || '0.00'}</p>
+                        </div>
+                        <div>
+                          <p className="text-sm text-green-700">Status</p>
+                          <p className="font-medium">{detailData.activeSession.status}</p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Archived Sessions */}
+                  <div>
+                    <h4 className="font-semibold text-gray-900 dark:text-white mb-4">
+                      Sessões Arquivadas ({detailData.history.archivedSessions?.length || 0})
+                    </h4>
+                    {detailData.history.archivedSessions?.length > 0 ? (
+                      <div className="space-y-3">
+                        {detailData.history.archivedSessions.map((session: any, index: number) => {
+                          const isExpanded = expandedSessions.has(session.sessionId);
+                          return (
+                          <div key={index} className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                            <div className="flex justify-between items-start mb-2">
+                              <div className="flex-1">
+                                <p className="font-mono text-sm text-gray-600 dark:text-gray-300">{session.sessionId}</p>
+                                <p className="text-sm text-gray-500">
+                                  {new Date(session.startTime).toLocaleDateString('pt-BR')} → {new Date(session.completedAt || session.lastActivity).toLocaleDateString('pt-BR')}
+                                </p>
+                              </div>
+                              <div className="text-right">
+                                <p className="font-bold text-green-600">${session.totalCredits?.toFixed(2) || '0.00'}</p>
+                                <p className="text-sm text-gray-500">{session.status}</p>
+                              </div>
+                            </div>
+                            <div className="mt-2 grid grid-cols-3 gap-2 text-sm mb-2">
+                              <p className="text-gray-600 dark:text-gray-300">
+                                🌾 {session.plantTransactions?.length || 0} plantas
+                              </p>
+                              <p className="text-gray-600 dark:text-gray-300">
+                                🐄 {session.animalTransactions?.length || 0} animais
+                              </p>
+                              <p className="text-gray-600 dark:text-gray-300">
+                                💰 {session.financialTransactions?.length || 0} financeiro
+                              </p>
+                            </div>
+
+                            {/* Expand/Collapse Button */}
+                            <button
+                              onClick={() => toggleSession(session.sessionId)}
+                              className="w-full flex items-center justify-center space-x-2 text-sm text-green-600 dark:text-green-400 hover:underline mt-2 pt-2 border-t border-gray-200 dark:border-gray-600"
+                            >
+                              {isExpanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+                              <span>{isExpanded ? 'Ocultar Detalhes' : 'Ver Detalhes'}</span>
+                            </button>
+
+                            {/* Expanded Transaction Details */}
+                            {isExpanded && (
+                              <div className="mt-4 space-y-3 border-t border-gray-200 dark:border-gray-600 pt-3">
+                                {session.plantTransactions?.length > 0 && (
+                                  <div>
+                                    <h6 className="font-medium text-sm text-gray-900 dark:text-white mb-2">🌾 Transações de Plantas</h6>
+                                    <div className="space-y-1 max-h-40 overflow-y-auto">
+                                      {session.plantTransactions.map((t: any, tIndex: number) => (
+                                        <div key={tIndex} className="text-xs text-gray-600 dark:text-gray-300 bg-white dark:bg-gray-800 p-2 rounded">
+                                          <span className="font-medium">{t.itemName}</span> x{t.quantity} • {t.type?.replace(/_/g, ' ')} • {new Date(t.timestamp).toLocaleTimeString('pt-BR')}
+                                        </div>
+                                      ))}
+                                    </div>
+                                  </div>
+                                )}
+
+                                {session.animalTransactions?.length > 0 && (
+                                  <div>
+                                    <h6 className="font-medium text-sm text-gray-900 dark:text-white mb-2">🐄 Transações de Animais</h6>
+                                    <div className="space-y-1 max-h-40 overflow-y-auto">
+                                      {session.animalTransactions.map((t: any, tIndex: number) => (
+                                        <div key={tIndex} className="text-xs text-gray-600 dark:text-gray-300 bg-white dark:bg-gray-800 p-2 rounded">
+                                          {t.quantity} animais{t.amount && ` • $${t.amount.toFixed(2)}`} • {t.type?.replace(/_/g, ' ')} • {new Date(t.timestamp).toLocaleTimeString('pt-BR')}
+                                        </div>
+                                      ))}
+                                    </div>
+                                  </div>
+                                )}
+
+                                {session.financialTransactions?.length > 0 && (
+                                  <div>
+                                    <h6 className="font-medium text-sm text-gray-900 dark:text-white mb-2">💰 Transações Financeiras</h6>
+                                    <div className="space-y-1 max-h-40 overflow-y-auto">
+                                      {session.financialTransactions.map((t: any, tIndex: number) => (
+                                        <div key={tIndex} className="text-xs text-gray-600 dark:text-gray-300 bg-white dark:bg-gray-800 p-2 rounded">
+                                          ${t.amount?.toFixed(2)} • {t.type?.replace(/_/g, ' ')} • {new Date(t.timestamp).toLocaleTimeString('pt-BR')}
+                                        </div>
+                                      ))}
+                                    </div>
+                                  </div>
+                                )}
+                              </div>
+                            )}
+                          </div>
+                        )})}
+                      </div>
+                    ) : (
+                      <p className="text-gray-600 dark:text-gray-300">Nenhuma sessão arquivada</p>
+                    )}
+                  </div>
+                </div>
+              ) : (
+                <p className="text-gray-600">Nenhuma sessão disponível</p>
+              )}
+            </div>
+          )}
+
+          {/* Payments Tab */}
+          {activeTab === 'payments' && (
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Histórico Completo de Pagamentos</h3>
+              {loading ? (
+                <div className="flex items-center justify-center py-8">
+                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-500"></div>
+                  <span className="ml-3 text-gray-600">Carregando pagamentos...</span>
+                </div>
+              ) : detailData && detailData.history.payments.length > 0 ? (
+                <div>
+                  {/* Summary Card */}
+                  <div className="bg-green-50 rounded-lg p-6 mb-6">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <div>
+                        <p className="text-sm text-green-700">Total Ganho</p>
+                        <p className="text-2xl font-bold text-green-900">${detailData.statistics.totalEarnings.toFixed(2)}</p>
+                      </div>
+                      <div>
+                        <p className="text-sm text-green-700">Total de Pagamentos</p>
+                        <p className="text-2xl font-bold text-green-900">{detailData.history.payments.length}</p>
+                      </div>
+                      <div>
+                        <p className="text-sm text-green-700">Média por Pagamento</p>
+                        <p className="text-2xl font-bold text-green-900">
+                          ${(detailData.statistics.totalEarnings / detailData.history.payments.length).toFixed(2)}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Payment List - ALL PAYMENTS, NOT LIMITED */}
+                  <div className="space-y-3">
+                    {detailData.history.payments.map((payment: any, index: number) => (
+                      <div key={index} className="bg-white dark:bg-gray-700 rounded-lg p-4 border border-gray-200 dark:border-gray-600">
+                        <div className="flex justify-between items-center">
+                          <div>
+                            <p className="font-bold text-lg text-green-600">${payment.totalCredits?.toFixed(2) || payment.amount?.toFixed(2) || '0.00'}</p>
+                            <p className="text-sm text-gray-600 dark:text-gray-300">
+                              {new Date(payment.paidAt || payment.createdAt).toLocaleString('pt-BR')}
+                            </p>
+                          </div>
+                          <div className="text-right">
+                            <p className="text-sm font-medium text-gray-900 dark:text-white">
+                              Pago por: {payment.paidByName || payment.paidBy || 'Sistema'}
+                            </p>
+                            <p className="text-xs text-gray-500 font-mono">{payment.sessionId || 'N/A'}</p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 text-center">
+                  <DollarSign className="h-8 w-8 text-gray-400 mx-auto mb-2" />
+                  <p className="text-gray-600 dark:text-gray-300">Nenhum pagamento registrado</p>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Categories Tab */}
+          {activeTab === 'categories' && (
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Análise por Categoria</h3>
+
+              {categoryAnalysis.length > 0 ? (
+                <div>
+                  {/* Summary Cards */}
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                    <div className="bg-green-50 rounded-lg p-4">
+                      <p className="text-sm font-medium text-green-700">Total Adicionado</p>
+                      <p className="text-2xl font-bold text-green-900">
+                        {categoryAnalysis.reduce((sum, cat) => sum + cat.added, 0).toLocaleString()}
+                      </p>
+                    </div>
+                    <div className="bg-red-50 rounded-lg p-4">
+                      <p className="text-sm font-medium text-red-700">Total Removido</p>
+                      <p className="text-2xl font-bold text-red-900">
+                        {categoryAnalysis.reduce((sum, cat) => sum + cat.removed, 0).toLocaleString()}
+                      </p>
+                    </div>
+                    <div className="bg-purple-50 rounded-lg p-4">
+                      <p className="text-sm font-medium text-purple-700">Saldo Total</p>
+                      <p className="text-2xl font-bold text-purple-900">
+                        {categoryAnalysis.reduce((sum, cat) => sum + cat.net, 0).toLocaleString()}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Category Breakdown */}
+                  <div className="space-y-3">
+                    {categoryAnalysis.map((category, index) => {
+                      const totalActivity = category.added + category.removed;
+                      const addedPercentage = totalActivity > 0 ? (category.added / totalActivity) * 100 : 0;
+                      const removedPercentage = totalActivity > 0 ? (category.removed / totalActivity) * 100 : 0;
+
+                      return (
+                        <div key={index} className="bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg p-4">
+                          <div className="flex justify-between items-start mb-3">
+                            <div>
+                              <h4 className="font-semibold text-gray-900 dark:text-white">{category.name}</h4>
+                              <p className="text-sm text-gray-600 dark:text-gray-300">
+                                {totalActivity.toLocaleString()} atividades totais
+                              </p>
+                            </div>
+                            <div className={`text-lg font-bold ${
+                              category.net > 0 ? 'text-green-600' :
+                              category.net < 0 ? 'text-red-600' :
+                              'text-gray-600'
+                            }`}>
+                              {category.net > 0 ? '+' : ''}{category.net.toLocaleString()}
+                            </div>
+                          </div>
+
+                          {/* Stats Grid */}
+                          <div className="grid grid-cols-2 gap-4 mb-3">
+                            <div className="bg-green-50 dark:bg-green-900/20 rounded p-3">
+                              <p className="text-xs font-medium text-green-700 dark:text-green-400">Adicionado</p>
+                              <p className="text-lg font-bold text-green-900 dark:text-green-300">{category.added.toLocaleString()}</p>
+                            </div>
+                            <div className="bg-red-50 dark:bg-red-900/20 rounded p-3">
+                              <p className="text-xs font-medium text-red-700 dark:text-red-400">Removido</p>
+                              <p className="text-lg font-bold text-red-900 dark:text-red-300">{category.removed.toLocaleString()}</p>
+                            </div>
+                          </div>
+
+                          {/* Progress Bar */}
+                          <div className="flex h-2 rounded-full overflow-hidden bg-gray-200 dark:bg-gray-600">
+                            <div
+                              className="bg-green-500"
+                              style={{ width: `${addedPercentage}%` }}
+                              title={`${addedPercentage.toFixed(1)}% adicionado`}
+                            />
+                            <div
+                              className="bg-red-500"
+                              style={{ width: `${removedPercentage}%` }}
+                              title={`${removedPercentage.toFixed(1)}% removido`}
+                            />
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              ) : (
+                <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-8 text-center">
+                  <PieChart className="h-12 w-12 text-gray-400 mx-auto mb-3" />
+                  <p className="text-gray-600 dark:text-gray-300">Nenhuma categoria disponível</p>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Performance Tab */}
+          {activeTab === 'performance' && (
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Análise de Performance</h3>
+
+              {/* Performance Overview Cards */}
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                <div className="bg-blue-50 rounded-lg p-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <p className="text-sm font-medium text-blue-700">Total Transações</p>
+                    <Activity className="h-5 w-5 text-blue-500" />
+                  </div>
+                  <p className="text-2xl font-bold text-blue-900">{worker.totalTransactions}</p>
+                  <p className="text-xs text-blue-600 mt-1">Desde {new Date(worker.firstActivity).toLocaleDateString('pt-BR')}</p>
+                </div>
+
+                <div className="bg-purple-50 rounded-lg p-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <p className="text-sm font-medium text-purple-700">Média por Dia</p>
+                    <TrendingUp className="h-5 w-5 text-purple-500" />
+                  </div>
+                  <p className="text-2xl font-bold text-purple-900">{worker.averagePerDay.toFixed(1)}</p>
+                  <p className="text-xs text-purple-600 mt-1">Transações diárias</p>
+                </div>
+
+                <div className="bg-green-50 rounded-lg p-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <p className="text-sm font-medium text-green-700">Total Ganho</p>
+                    <DollarSign className="h-5 w-5 text-green-500" />
+                  </div>
+                  <p className="text-2xl font-bold text-green-900">
+                    ${detailData?.statistics.totalEarnings.toFixed(2) || '0.00'}
+                  </p>
+                  <p className="text-xs text-green-600 mt-1">
+                    {detailData?.history.payments.length || 0} pagamentos
+                  </p>
+                </div>
+
+                <div className="bg-orange-50 rounded-lg p-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <p className="text-sm font-medium text-orange-700">Sessões</p>
+                    <FolderOpen className="h-5 w-5 text-orange-500" />
+                  </div>
+                  <p className="text-2xl font-bold text-orange-900">
+                    {detailData?.statistics.sessionsCount || 0}
+                  </p>
+                  <p className="text-xs text-orange-600 mt-1">Trabalhos completados</p>
+                </div>
+              </div>
+
+              {/* Activity Breakdown */}
+              <div className="mb-6">
+                <h4 className="font-semibold text-gray-900 dark:text-white mb-4">Distribuição de Atividades</h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg p-4">
+                    <h5 className="font-medium text-gray-900 dark:text-white mb-3">Movimentação de Itens</h5>
+                    <div className="space-y-3">
+                      <div>
+                        <div className="flex justify-between text-sm mb-1">
+                          <span className="text-gray-600 dark:text-gray-300">Adicionados</span>
+                          <span className="font-bold text-green-600">{worker.itemsAdded.toLocaleString()}</span>
+                        </div>
+                        <div className="h-2 bg-gray-200 dark:bg-gray-600 rounded-full overflow-hidden">
+                          <div
+                            className="h-full bg-green-500"
+                            style={{
+                              width: `${worker.itemsAdded + worker.itemsRemoved > 0
+                                ? (worker.itemsAdded / (worker.itemsAdded + worker.itemsRemoved)) * 100
+                                : 0}%`
+                            }}
+                          />
+                        </div>
+                      </div>
+                      <div>
+                        <div className="flex justify-between text-sm mb-1">
+                          <span className="text-gray-600 dark:text-gray-300">Removidos</span>
+                          <span className="font-bold text-red-600">{worker.itemsRemoved.toLocaleString()}</span>
+                        </div>
+                        <div className="h-2 bg-gray-200 dark:bg-gray-600 rounded-full overflow-hidden">
+                          <div
+                            className="h-full bg-red-500"
+                            style={{
+                              width: `${worker.itemsAdded + worker.itemsRemoved > 0
+                                ? (worker.itemsRemoved / (worker.itemsAdded + worker.itemsRemoved)) * 100
+                                : 0}%`
+                            }}
+                          />
+                        </div>
+                      </div>
+                      <div className="pt-3 border-t border-gray-200 dark:border-gray-600">
+                        <div className="flex justify-between">
+                          <span className="text-sm font-medium text-gray-900 dark:text-white">Saldo Líquido</span>
+                          <span className={`font-bold ${
+                            worker.netItems > 0 ? 'text-green-600' :
+                            worker.netItems < 0 ? 'text-red-600' :
+                            'text-gray-600'
+                          }`}>
+                            {worker.netItems > 0 ? '+' : ''}{worker.netItems.toLocaleString()}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg p-4">
+                    <h5 className="font-medium text-gray-900 dark:text-white mb-3">Produção</h5>
+                    <div className="space-y-3">
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm text-gray-600 dark:text-gray-300">🌾 Plantas</span>
+                        <span className="text-lg font-bold text-gray-900 dark:text-white">
+                          {detailData?.statistics.totalPlants || 0}
+                        </span>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm text-gray-600 dark:text-gray-300">🐄 Animais</span>
+                        <span className="text-lg font-bold text-gray-900 dark:text-white">
+                          {detailData?.statistics.totalAnimals || 0}
+                        </span>
+                      </div>
+                      <div className="flex justify-between items-center pt-3 border-t border-gray-200 dark:border-gray-600">
+                        <span className="text-sm font-medium text-gray-900 dark:text-white">Categorias Ativas</span>
+                        <span className="text-lg font-bold text-purple-600">
+                          {Object.keys(worker.categorias || {}).length}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Timeline Information */}
+              <div className="bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 rounded-lg p-6">
+                <h4 className="font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
+                  <Clock className="h-5 w-5 mr-2 text-green-600" />
+                  Linha do Tempo
+                </h4>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div>
+                    <p className="text-sm text-gray-600 dark:text-gray-300">Primeira Atividade</p>
+                    <p className="font-medium text-gray-900 dark:text-white">
+                      {new Date(worker.firstActivity).toLocaleDateString('pt-BR', {
+                        day: '2-digit',
+                        month: 'long',
+                        year: 'numeric'
+                      })}
+                    </p>
+                    <p className="text-xs text-gray-500 mt-1">
+                      {Math.floor((Date.now() - new Date(worker.firstActivity).getTime()) / (1000 * 60 * 60 * 24))} dias atrás
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-600 dark:text-gray-300">Última Atividade</p>
+                    <p className="font-medium text-gray-900 dark:text-white">
+                      {new Date(worker.lastActivity).toLocaleDateString('pt-BR', {
+                        day: '2-digit',
+                        month: 'long',
+                        year: 'numeric'
+                      })}
+                    </p>
+                    <p className="text-xs text-gray-500 mt-1">
+                      {Math.floor((Date.now() - new Date(worker.lastActivity).getTime()) / (1000 * 60 * 60 * 24))} dias atrás
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-600 dark:text-gray-300">Período Ativo</p>
+                    <p className="font-medium text-gray-900 dark:text-white">
+                      {Math.floor((new Date(worker.lastActivity).getTime() - new Date(worker.firstActivity).getTime()) / (1000 * 60 * 60 * 24))} dias
+                    </p>
+                    <p className="text-xs text-gray-500 mt-1">
+                      {worker.averagePerDay.toFixed(1)} transações/dia
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Payment Performance */}
+              {detailData && detailData.history.payments.length > 0 && (
+                <div className="mt-6 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg p-6">
+                  <h4 className="font-semibold text-gray-900 dark:text-white mb-4">Performance de Pagamentos</h4>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                      <p className="text-sm text-gray-600 dark:text-gray-300">Média por Pagamento</p>
+                      <p className="text-xl font-bold text-green-600">
+                        ${(detailData.statistics.totalEarnings / detailData.history.payments.length).toFixed(2)}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-600 dark:text-gray-300">Maior Pagamento</p>
+                      <p className="text-xl font-bold text-blue-600">
+                        ${Math.max(...detailData.history.payments.map((p: any) => p.totalCredits || p.amount || 0)).toFixed(2)}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-600 dark:text-gray-300">Pagamentos por Sessão</p>
+                      <p className="text-xl font-bold text-purple-600">
+                        {(detailData.statistics.totalEarnings / detailData.statistics.sessionsCount).toFixed(2)}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>

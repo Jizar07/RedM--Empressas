@@ -2,30 +2,12 @@
   "formId": "registration_form",
   "functions": [
     {
-      "id": "func_1757681433033",
-      "displayName": "Funcionario",
-      "discordRoleId": "1274479410107646009",
-      "discordRoleName": "👨🏻‍🌾│Funcionários",
-      "description": "",
-      "order": 0,
-      "active": true,
-      "categoryId": "1415217611939119125",
-      "categoryName": "FUNCIONARIOS 2.0",
-      "channelEmojiPrefix": "🌾・",
-      "channelPermissions": {
-        "allowedRoles": [
-          "1274479410107646008"
-        ],
-        "channelTopic": ""
-      }
-    },
-    {
       "id": "func_1758806802577",
       "displayName": "Gerente",
       "discordRoleId": "1274479410107646008",
       "discordRoleName": "❪★❱ Gerentes",
       "description": "",
-      "order": 1,
+      "order": 0,
       "active": true,
       "categoryId": "1274521961908928533",
       "categoryName": "📚| Gerentes",
@@ -33,6 +15,24 @@
       "channelPermissions": {
         "allowedRoles": [
           "1274479410107646006"
+        ],
+        "channelTopic": ""
+      }
+    },
+    {
+      "id": "func_1757681433033",
+      "displayName": "Funcionario",
+      "discordRoleId": "1274479410107646009",
+      "discordRoleName": "👨🏻‍🌾│Funcionários",
+      "description": "",
+      "order": 1,
+      "active": true,
+      "categoryId": "1415217611939119125",
+      "categoryName": "FUNCIONARIOS 2.0",
+      "channelEmojiPrefix": "🌾・",
+      "channelPermissions": {
+        "allowedRoles": [
+          "1274479410107646008"
         ],
         "channelTopic": ""
       }
@@ -84,7 +84,7 @@
   },
   "postRegistration": {
     "nicknameFormat": "{ingameName} | {pombo}",
-    "sendDM": false,
+    "sendDM": true,
     "dmTitle": "Bem-vindo à Fazenda Cabra da Peste!",
     "dmMessage": "Olá {ingameName},\n\nSeu registro como **{functionName}** foi aprovado!\n\nAgora você tem acesso aos canais específicos da sua função.\n\nAproveite seu tempo na Fazenda Cabra da Peste!",
     "assignRoles": true,

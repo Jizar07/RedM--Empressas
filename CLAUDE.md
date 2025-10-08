@@ -99,6 +99,16 @@ When you see "/update" command from the user, perform the following actions:
 
 ## Recent Major Updates (v0.054) **[CURRENT VERSION]**
 
+### Adubo3 Deduction System & Payment Display Fixes (v0.054)
+- **Adubo3 Financial Transparency**: Complete implementation of itemized Adubo3 cost deductions in worker payment system
+- **Payment Display Enhancement**: Fixed payment history to show Discord usernames instead of numerical IDs
+- **Frontend Deduction Calculation**: Changed to scan plantTransactions for actual Adubo3 withdrawals instead of reading non-existent fields
+- **Backend Embed Fixes**: Filtered Adubo3 from seed expectations section (they're materials, not services) across both active and paid embeds
+- **Accurate Total Calculations**: Both frontend and backend now subtract Adubo3 costs from totals ($2650.00 - $306.75 = $2343.25)
+- **Deduction Details**: Each Adubo3 withdrawal shows timestamp, quantity, and cost ($0.75 per unit)
+- **Username Resolution**: Payment history uses paidByName field with fallback to paidBy for proper display
+- **Result**: Complete financial transparency with itemized deductions and readable payment history
+
 ### Language Switcher & Dashboard Reorganization (v0.054)
 - **Bilingual System**: Complete English/Portuguese translation with USA 🇺🇸 / Brazil 🇧🇷 flag toggle in header
   - **LanguageContext**: Global language state with localStorage persistence (default: pt-BR)

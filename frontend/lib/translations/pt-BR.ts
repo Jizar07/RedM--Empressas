@@ -174,4 +174,157 @@ export const ptBR = {
     bot: 'Bot',
     healthy: 'saudável',
   },
+
+  // Registration Settings
+  registration: {
+    // Header
+    title: 'Configuração do Formulário de Registro',
+    refreshDiscordData: 'Atualizar Dados do Discord',
+    saveConfiguration: 'Salvar Configuração',
+    saving: 'Salvando...',
+
+    // Tabs
+    tabCommand: 'Comando',
+    tabDisplay: 'Exibição do Formulário',
+    tabSteps: 'Etapas de Registro',
+    tabPost: 'Pós-Registro',
+    tabFunctions: 'Funções/Roles',
+
+    // Command Settings
+    commandConfiguration: 'Configuração do Comando',
+    commandName: 'Nome do Comando',
+    commandDescription: 'Descrição do Comando',
+    requiredPermission: 'Permissão Necessária',
+    permissionAdministrator: 'Administrador',
+    permissionManageGuild: 'Gerenciar Servidor',
+    permissionManageRoles: 'Gerenciar Roles',
+    permissionModerateMembers: 'Moderar Membros',
+
+    // Form Display
+    formDisplayConfiguration: 'Configuração de Exibição do Formulário',
+    embedTitle: 'Título do Embed',
+    footerText: 'Texto do Rodapé',
+    embedDescription: 'Descrição do Embed',
+    buttonText: 'Texto do Botão',
+    buttonEmoji: 'Emoji do Botão',
+    buttonStyle: 'Estilo do Botão',
+    embedColor: 'Cor do Embed',
+    buttonStylePrimary: 'Primário (Azul)',
+    buttonStyleSecondary: 'Secundário (Cinza)',
+    buttonStyleSuccess: 'Sucesso (Verde)',
+    buttonStyleDanger: 'Perigo (Vermelho)',
+
+    // Registration Steps
+    stepsConfiguration: 'Configuração das Etapas de Registro',
+    step1Title: 'Etapa 1 - Modal de Coleta de Informações',
+    step2Title: 'Etapa 2 - Seleção de Função',
+    step3Title: 'Etapa 3 - Seleção de Quem Convidou',
+    modalTitle: 'Título do Modal',
+    nameLabel: 'Label do Campo Nome',
+    namePlaceholder: 'Placeholder do Campo Nome',
+    pomboLabel: 'Label do Campo Pombo',
+    embedTitleField: 'Título do Embed',
+    embedDescriptionField: 'Descrição do Embed',
+
+    // Post-Registration
+    postRegistrationActions: 'Ações Pós-Registro',
+    nicknameFormat: 'Formato do Apelido',
+    availableVariables: 'Variáveis disponíveis: {ingameName}, {pombo}, {functionName}',
+    sendDirectMessage: 'Enviar Mensagem Direta',
+    automaticallyAssignRoles: 'Atribuir Roles Automaticamente',
+    sendWelcomeChannelMessage: 'Enviar Mensagem de Boas-Vindas no Canal',
+    createPersonalChannel: 'Criar Canal Pessoal',
+    dmTitle: 'Título da DM',
+    channelNameFormat: 'Formato do Nome do Canal',
+    dmMessageTemplate: 'Template de Mensagem DM',
+    messageVariables: 'Variáveis: {ingameName}, {pombo}, {functionName}, {serverIP}, {serverPort}, {inviterName}',
+    messageTemplates: 'Templates de Mensagens',
+    alreadyRegisteredMessage: 'Mensagem Já Registrado',
+    sessionExpiredMessage: 'Mensagem Sessão Expirada',
+    registrationSuccessMessage: 'Mensagem Registro Bem-Sucedido',
+    genericErrorMessage: 'Mensagem de Erro Genérica',
+    legacySettings: 'Configurações Legadas',
+    welcomeMessage: 'Mensagem de Boas-Vindas',
+    legacyEmbedColor: 'Cor do Embed Legado',
+
+    // Functions/Roles
+    availableFunctions: 'Funções/Roles Disponíveis',
+    addFunction: 'Adicionar Função',
+    displayName: 'Nome de Exibição',
+    discordRole: 'Role do Discord',
+    descriptionOptional: 'Descrição (Opcional)',
+    channelCategoryOptional: 'Categoria do Canal (Opcional)',
+    channelEmojiPrefixOptional: 'Prefixo Emoji do Canal (Opcional)',
+    channelTopicTemplateOptional: 'Template de Tópico do Canal (Opcional)',
+    allowedRoles: 'Roles Permitidos (Quem pode acessar o canal)',
+    add: 'Adicionar',
+    saveChanges: 'Salvar Alterações',
+    editFunction: 'Editar Função',
+    deleteFunction: 'Deletar Função',
+
+    // Table Headers
+    tableOrder: 'Ordem',
+    tableDisplayName: 'Nome de Exibição',
+    tableDiscordRole: 'Role do Discord',
+    tableCategory: 'Categoria',
+    tableDescription: 'Descrição',
+    tableApproval: 'Aprovação',
+    tableStatus: 'Status',
+    tableActions: 'Ações',
+
+    // Status
+    autoApproved: 'Auto-aprovado',
+
+    // Placeholders
+    placeholderPoliceOfficer: 'ex., Policial',
+    placeholderBriefDescription: 'Breve descrição...',
+    placeholderEnterEmoji: 'Digite emoji com separador',
+    placeholderChannelTopic: 'Canal pessoal para membro {functionName}',
+    placeholderWelcomeMessage: 'Mensagem de boas-vindas para novos registros...',
+
+    // Dropdowns
+    loadingRoles: 'Carregando roles...',
+    selectServerFirst: 'Selecione um servidor primeiro',
+    noRolesFound: 'Nenhum role encontrado',
+    selectRole: 'Selecione um role...',
+    noCategory: 'Nenhuma categoria (não criará canal)',
+
+    // Help Text
+    emojiPrefixHelp: 'Prefixo emoji para nomes de canais (ex., 💰・, 🚢・, 🌾・)',
+    allowedRolesHelp: 'Segure Ctrl/Cmd para selecionar múltiplos roles. O dono do canal sempre tem acesso.',
+    addMiddleDot: 'Adicionar ponto médio (・)',
+
+    // Messages
+    noFunctionsConfigured: 'Nenhuma função configurada. Clique em "Adicionar Função" para começar.',
+    selectServerMessage: 'Por favor, selecione um servidor Discord para configurar as definições de registro.',
+    useServerDropdown: 'Use o menu suspenso de servidor na navegação superior.',
+    loadingConfiguration: 'Carregando configuração...',
+    failedToLoadConfiguration: 'Falha ao carregar configuração',
+
+    // Alerts
+    configurationSaved: 'Configuração salva com sucesso!',
+    failedToSaveConfiguration: 'Falha ao salvar configuração',
+    errorSavingConfiguration: 'Erro ao salvar configuração',
+    fillRequiredFields: 'Por favor, preencha todos os campos obrigatórios',
+    functionSavedAutomatically: 'Função salva automaticamente',
+    failedToSaveFunction: 'Falha ao salvar função automaticamente',
+    errorSavingFunction: 'Erro ao salvar função',
+    functionRemovedAndSaved: 'Função removida e salva automaticamente',
+    failedToSaveAfterRemoval: 'Falha ao salvar após remover função',
+    errorSavingAfterRemoval: 'Erro ao salvar após remover função',
+    functionEditedAndSaved: 'Função editada e salva automaticamente',
+    failedToSaveEditedFunction: 'Falha ao salvar função editada',
+    errorSavingEditedFunction: 'Erro ao salvar função editada',
+    functionToggleSaved: 'Alternância de função salva automaticamente',
+    errorSavingToggle: 'Erro ao salvar alternância automaticamente',
+    functionOrderSaved: 'Ordem das funções salva automaticamente',
+    errorSavingOrder: 'Erro ao salvar ordem automaticamente',
+
+    // Role/Category Display
+    roleWithMembers: '@{name} ({count} membros)',
+    categoryWithChannels: '{name} ({count} canais)',
+
+    // Edit Form
+    editFunctionTitle: 'Editar Função: {name}',
+  },
 };

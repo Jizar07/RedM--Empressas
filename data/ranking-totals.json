@@ -528,7 +528,7 @@
   },
   "unknown": {
     "workerId": "unknown",
-    "workerName": "Endo D. Barth",
+    "workerName": "Santiago Bowdin",
     "plants": {
       "thisWeek": 0,
       "allTime": 0
@@ -539,9 +539,9 @@
     },
     "ferrovia": {
       "thisWeek": 2,
-      "allTime": 904
+      "allTime": 914
     },
-    "lastActivity": "2025-10-08T12:12:15.423Z"
+    "lastActivity": "2025-10-08T15:10:05.041Z"
   },
   "266262427329495041": {
     "workerId": "266262427329495041",

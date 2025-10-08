@@ -1,8 +1,708 @@
 {
   "channelId": "1412325130926948362",
-  "lastUpdated": "2025-10-08T12:16:21.857Z",
-  "messageCount": 163,
+  "lastUpdated": "2025-10-08T16:03:05.350Z",
+  "messageCount": 233,
   "messages": [
+    {
+      "id": "1425513843852836865",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: Creekplum_Seed x50\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 08/10/2025 - 13:03:04",
+      "timestamp": "2025-10-08T16:03:05.141Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: Creekplum_Seed x50\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 08/10/2025 - 13:03:04",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425509251308191775",
+      "author": "Santiago Bowdin",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: satchel x50\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 12:44:49",
+      "timestamp": "2025-10-08T15:44:50.193Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: satchel x50\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 12:44:49",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425509234048503810",
+      "author": "Santiago Bowdin",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: common_portion_pig x64\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 12:44:45",
+      "timestamp": "2025-10-08T15:44:46.078Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: common_portion_pig x64\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 12:44:45",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425509224795996293",
+      "author": "Santiago Bowdin",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: common_portion_sheep x60\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 12:44:43",
+      "timestamp": "2025-10-08T15:44:43.872Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: common_portion_sheep x60\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 12:44:43",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425509217447448636",
+      "author": "Santiago Bowdin",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: common_portion_donkey x60\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 12:44:41",
+      "timestamp": "2025-10-08T15:44:42.120Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: common_portion_donkey x60\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 12:44:41",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425509210182909992",
+      "author": "Santiago Bowdin",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: common_portion x50\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 12:44:39",
+      "timestamp": "2025-10-08T15:44:40.388Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: common_portion x50\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 12:44:39",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425509206517088369",
+      "author": "Santiago Bowdin",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: common_portion_goat x120\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 12:44:38",
+      "timestamp": "2025-10-08T15:44:39.514Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: common_portion_goat x120\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 12:44:38",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425509187454111837",
+      "author": "Santiago Bowdin",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixarustica x150\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 12:44:34",
+      "timestamp": "2025-10-08T15:44:34.969Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixarustica x150\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 12:44:34",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425508778622714030",
+      "author": "Spidey Bot",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $160.0\nAção:: Romano Delaerva vendeu 4 animais no matadouro\nSaldo após depósito:: $16272.5\nData:: 08/10/2025 - 12:42:57",
+      "timestamp": "2025-10-08T15:42:57.496Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $160.0\nAção:: Romano Delaerva vendeu 4 animais no matadouro\nSaldo após depósito:: $16272.5\nData:: 08/10/2025 - 12:42:57",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425507452534652990",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Creekplum_Seed x50\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 08/10/2025 - 12:37:40",
+      "timestamp": "2025-10-08T15:37:41.332Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Creekplum_Seed x50\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 08/10/2025 - 12:37:40",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425506995401916600",
+      "author": "Jizar Stoffeliz",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: sugarcaneseed x100\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 08/10/2025 - 12:35:51",
+      "timestamp": "2025-10-08T15:35:52.343Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: sugarcaneseed x100\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 08/10/2025 - 12:35:51",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425505070211928135",
+      "author": "Nico Chimichurri",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: semente_trigo x200\nAutor:: Nico Chimichurri | FIXO: 78456\nData:: 08/10/2025 - 12:28:12",
+      "timestamp": "2025-10-08T15:28:13.342Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: semente_trigo x200\nAutor:: Nico Chimichurri | FIXO: 78456\nData:: 08/10/2025 - 12:28:12",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425501707433148568",
+      "author": "Santiago Bowdin",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - SAQUE\nValor sacado:: $3000\nAutor:: Santiago Bowdin | FIXO: 71809\nSaldo após saque:: $16112.5\nData:: 08/10/2025 - 12:14:51",
+      "timestamp": "2025-10-08T15:14:51.593Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - SAQUE\nValor sacado:: $3000\nAutor:: Santiago Bowdin | FIXO: 71809\nSaldo após saque:: $16112.5\nData:: 08/10/2025 - 12:14:51",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425501402557448193",
+      "author": "Romano Delaerva",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: common_portion_pig x8\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 08/10/2025 - 12:13:38",
+      "timestamp": "2025-10-08T15:13:38.905Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: common_portion_pig x8\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 08/10/2025 - 12:13:38",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425501368957009971",
+      "author": "Romano Delaerva",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: pig_female x4\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 08/10/2025 - 12:13:30",
+      "timestamp": "2025-10-08T15:13:30.894Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: pig_female x4\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 08/10/2025 - 12:13:30",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425501020078739458",
+      "author": "Santiago Bowdin",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: cow_female x9\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 12:12:07",
+      "timestamp": "2025-10-08T15:12:07.715Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: cow_female x9\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 12:12:07",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425501005021450430",
+      "author": "Santiago Bowdin",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: sheep_male x8\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 12:12:03",
+      "timestamp": "2025-10-08T15:12:04.125Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: sheep_male x8\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 12:12:03",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425500965108453487",
+      "author": "Santiago Bowdin",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: pig_male x8\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 12:11:54",
+      "timestamp": "2025-10-08T15:11:54.609Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: pig_male x8\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 12:11:54",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425500954660180090",
+      "author": "Santiago Bowdin",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: pig_female x12\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 12:11:51",
+      "timestamp": "2025-10-08T15:11:52.118Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: pig_female x12\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 12:11:51",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425500938352726126",
+      "author": "Santiago Bowdin",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: chicken_female x26\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 12:11:47",
+      "timestamp": "2025-10-08T15:11:48.230Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: chicken_female x26\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 12:11:47",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425500929331040407",
+      "author": "Santiago Bowdin",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: chicken_male x19\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 12:11:45",
+      "timestamp": "2025-10-08T15:11:46.079Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: chicken_male x19\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 12:11:45",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425500918362935346",
+      "author": "Santiago Bowdin",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: chicken_male x10\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 12:11:43",
+      "timestamp": "2025-10-08T15:11:43.464Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: chicken_male x10\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 12:11:43",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425500911761100861",
+      "author": "Santiago Bowdin",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: chicken_female x10\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 12:11:41",
+      "timestamp": "2025-10-08T15:11:41.890Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: chicken_female x10\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 12:11:41",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425500905708585021",
+      "author": "Santiago Bowdin",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: goat_female x9\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 12:11:39",
+      "timestamp": "2025-10-08T15:11:40.447Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: goat_female x9\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 12:11:39",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425500898586656960",
+      "author": "Santiago Bowdin",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: cow_male x10\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 12:11:38",
+      "timestamp": "2025-10-08T15:11:38.749Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: cow_male x10\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 12:11:38",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425500892261515356",
+      "author": "Santiago Bowdin",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: goat_male x11\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 12:11:36",
+      "timestamp": "2025-10-08T15:11:37.241Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: goat_male x11\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 12:11:36",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425500575432315082",
+      "author": "Santiago Bowdin",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $9000\nAutor:: Santiago Bowdin | FIXO: 71809\nSaldo após depósito:: $18952.5\nData:: 08/10/2025 - 12:10:21",
+      "timestamp": "2025-10-08T15:10:21.703Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $9000\nAutor:: Santiago Bowdin | FIXO: 71809\nSaldo após depósito:: $18952.5\nData:: 08/10/2025 - 12:10:21",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425497177853001801",
+      "author": "Fernanda Silva",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x100\nAutor:: Fernanda Silva | FIXO: 78633\nData:: 08/10/2025 - 11:56:49",
+      "timestamp": "2025-10-08T14:56:51.657Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x100\nAutor:: Fernanda Silva | FIXO: 78633\nData:: 08/10/2025 - 11:56:49",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425497154864152597",
+      "author": "Fernanda Silva",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x200\nAutor:: Fernanda Silva | FIXO: 78633\nData:: 08/10/2025 - 11:56:45",
+      "timestamp": "2025-10-08T14:56:46.176Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x200\nAutor:: Fernanda Silva | FIXO: 78633\nData:: 08/10/2025 - 11:56:45",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425497138296782961",
+      "author": "Fernanda Silva",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x200\nAutor:: Fernanda Silva | FIXO: 78633\nData:: 08/10/2025 - 11:56:41",
+      "timestamp": "2025-10-08T14:56:42.226Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x200\nAutor:: Fernanda Silva | FIXO: 78633\nData:: 08/10/2025 - 11:56:41",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425491898407194624",
+      "author": "Romano Delaerva",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: common_portion_pig x8\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 08/10/2025 - 11:35:52",
+      "timestamp": "2025-10-08T14:35:52.939Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: common_portion_pig x8\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 08/10/2025 - 11:35:52",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425491883752296600",
+      "author": "Romano Delaerva",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: pig_male x2\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 08/10/2025 - 11:35:49",
+      "timestamp": "2025-10-08T14:35:49.445Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: pig_male x2\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 08/10/2025 - 11:35:49",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425491873325383861",
+      "author": "Romano Delaerva",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: pig_female x2\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 08/10/2025 - 11:35:46",
+      "timestamp": "2025-10-08T14:35:46.959Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: pig_female x2\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 08/10/2025 - 11:35:46",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425491721424339004",
+      "author": "Spidey Bot",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $160.0\nAção:: Romano Delaerva vendeu 4 animais no matadouro\nSaldo após depósito:: $9952.5\nData:: 08/10/2025 - 11:35:10",
+      "timestamp": "2025-10-08T14:35:10.743Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $160.0\nAção:: Romano Delaerva vendeu 4 animais no matadouro\nSaldo após depósito:: $9952.5\nData:: 08/10/2025 - 11:35:10",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425489039037042709",
+      "author": "Fernanda Silva",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x100\nAutor:: Fernanda Silva | FIXO: 78633\nData:: 08/10/2025 - 11:24:30",
+      "timestamp": "2025-10-08T14:24:31.212Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x100\nAutor:: Fernanda Silva | FIXO: 78633\nData:: 08/10/2025 - 11:24:30",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425489025762070658",
+      "author": "Fernanda Silva",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x200\nAutor:: Fernanda Silva | FIXO: 78633\nData:: 08/10/2025 - 11:24:27",
+      "timestamp": "2025-10-08T14:24:28.047Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x200\nAutor:: Fernanda Silva | FIXO: 78633\nData:: 08/10/2025 - 11:24:27",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425489011996098590",
+      "author": "Fernanda Silva",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x200\nAutor:: Fernanda Silva | FIXO: 78633\nData:: 08/10/2025 - 11:24:24",
+      "timestamp": "2025-10-08T14:24:24.765Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x200\nAutor:: Fernanda Silva | FIXO: 78633\nData:: 08/10/2025 - 11:24:24",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425488580985229347",
+      "author": "Spidey Bot",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $160.0\nAção:: Ragnar Lothbrok vendeu 4 animais no matadouro\nSaldo após depósito:: $9792.5\nData:: 08/10/2025 - 11:22:41",
+      "timestamp": "2025-10-08T14:22:42.004Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $160.0\nAção:: Ragnar Lothbrok vendeu 4 animais no matadouro\nSaldo após depósito:: $9792.5\nData:: 08/10/2025 - 11:22:41",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425484312664473722",
+      "author": "Romano Delaerva",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: common_portion_pig x8\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 08/10/2025 - 11:05:43",
+      "timestamp": "2025-10-08T14:05:44.357Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: common_portion_pig x8\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 08/10/2025 - 11:05:43",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425484299121065984",
+      "author": "Romano Delaerva",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: pig_female x4\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 08/10/2025 - 11:05:40",
+      "timestamp": "2025-10-08T14:05:41.128Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: pig_female x4\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 08/10/2025 - 11:05:40",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425484031365087304",
+      "author": "Spidey Bot",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $160.0\nAção:: Romano Delaerva vendeu 4 animais no matadouro\nSaldo após depósito:: $9632.5\nData:: 08/10/2025 - 11:04:36",
+      "timestamp": "2025-10-08T14:04:37.290Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $160.0\nAção:: Romano Delaerva vendeu 4 animais no matadouro\nSaldo após depósito:: $9632.5\nData:: 08/10/2025 - 11:04:36",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425480408727949443",
+      "author": "Ragnar Lothbrok",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x30\nAutor:: Ragnar Lothbrok | FIXO: 1264\nData:: 08/10/2025 - 10:50:13",
+      "timestamp": "2025-10-08T13:50:13.586Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x30\nAutor:: Ragnar Lothbrok | FIXO: 1264\nData:: 08/10/2025 - 10:50:13",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425480249382146238",
+      "author": "Ragnar Lothbrok",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: common_portion_goat x8\nAutor:: Ragnar Lothbrok | FIXO: 1264\nData:: 08/10/2025 - 10:49:35",
+      "timestamp": "2025-10-08T13:49:35.595Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: common_portion_goat x8\nAutor:: Ragnar Lothbrok | FIXO: 1264\nData:: 08/10/2025 - 10:49:35",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425480167895339048",
+      "author": "Ragnar Lothbrok",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: goat_male x4\nAutor:: Ragnar Lothbrok | FIXO: 1264\nData:: 08/10/2025 - 10:49:15",
+      "timestamp": "2025-10-08T13:49:16.167Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: goat_male x4\nAutor:: Ragnar Lothbrok | FIXO: 1264\nData:: 08/10/2025 - 10:49:15",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425477824340295773",
+      "author": "Romano Delaerva",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: sucodelemon x4\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 08/10/2025 - 10:39:57",
+      "timestamp": "2025-10-08T13:39:57.420Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: sucodelemon x4\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 08/10/2025 - 10:39:57",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425477811208065146",
+      "author": "Romano Delaerva",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: sucocenouraselvagem x4\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 08/10/2025 - 10:39:53",
+      "timestamp": "2025-10-08T13:39:54.289Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: sucocenouraselvagem x4\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 08/10/2025 - 10:39:53",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425477778005954753",
+      "author": "Romano Delaerva",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: sucodeamora x5\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 08/10/2025 - 10:39:45",
+      "timestamp": "2025-10-08T13:39:46.373Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: sucodeamora x5\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 08/10/2025 - 10:39:45",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425475447138816140",
+      "author": "Romano Delaerva",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: common_portion_pig x8\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 08/10/2025 - 10:30:30",
+      "timestamp": "2025-10-08T13:30:30.651Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: common_portion_pig x8\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 08/10/2025 - 10:30:30",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425475436607180841",
+      "author": "Romano Delaerva",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: pig_female x4\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 08/10/2025 - 10:30:27",
+      "timestamp": "2025-10-08T13:30:28.140Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: pig_female x4\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 08/10/2025 - 10:30:27",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425475229530067156",
+      "author": "Spidey Bot",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $160.0\nAção:: Romano Delaerva vendeu 4 animais no matadouro\nSaldo após depósito:: $9472.5\nData:: 08/10/2025 - 10:29:38",
+      "timestamp": "2025-10-08T13:29:38.769Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $160.0\nAção:: Romano Delaerva vendeu 4 animais no matadouro\nSaldo após depósito:: $9472.5\nData:: 08/10/2025 - 10:29:38",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425474632055656448",
+      "author": "Ragnar Lothbrok",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: semente_trigo x50\nAutor:: Ragnar Lothbrok | FIXO: 1264\nData:: 08/10/2025 - 10:27:15",
+      "timestamp": "2025-10-08T13:27:16.320Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: semente_trigo x50\nAutor:: Ragnar Lothbrok | FIXO: 1264\nData:: 08/10/2025 - 10:27:15",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425473958320537630",
+      "author": "Ragnar Lothbrok",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: torta_cereja x5\nAutor:: Ragnar Lothbrok | FIXO: 1264\nData:: 08/10/2025 - 10:24:35",
+      "timestamp": "2025-10-08T13:24:35.689Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: torta_cereja x5\nAutor:: Ragnar Lothbrok | FIXO: 1264\nData:: 08/10/2025 - 10:24:35",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425473933095862426",
+      "author": "Ragnar Lothbrok",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: sucodeamora x5\nAutor:: Ragnar Lothbrok | FIXO: 1264\nData:: 08/10/2025 - 10:24:29",
+      "timestamp": "2025-10-08T13:24:29.675Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: sucodeamora x5\nAutor:: Ragnar Lothbrok | FIXO: 1264\nData:: 08/10/2025 - 10:24:29",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425473911239213237",
+      "author": "Ragnar Lothbrok",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: sucocenouraselvagem x5\nAutor:: Ragnar Lothbrok | FIXO: 1264\nData:: 08/10/2025 - 10:24:23",
+      "timestamp": "2025-10-08T13:24:24.464Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: sucocenouraselvagem x5\nAutor:: Ragnar Lothbrok | FIXO: 1264\nData:: 08/10/2025 - 10:24:23",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425473863155843195",
+      "author": "Ragnar Lothbrok",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: palhaitaliana x5\nAutor:: Ragnar Lothbrok | FIXO: 1264\nData:: 08/10/2025 - 10:24:12",
+      "timestamp": "2025-10-08T13:24:13.000Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: palhaitaliana x5\nAutor:: Ragnar Lothbrok | FIXO: 1264\nData:: 08/10/2025 - 10:24:12",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425469185194197124",
+      "author": "Ragnar Lothbrok",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: torta_cereja x2\nAutor:: Ragnar Lothbrok | FIXO: 1264\nData:: 08/10/2025 - 10:05:37",
+      "timestamp": "2025-10-08T13:05:37.687Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: torta_cereja x2\nAutor:: Ragnar Lothbrok | FIXO: 1264\nData:: 08/10/2025 - 10:05:37",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425469134556364861",
+      "author": "Ragnar Lothbrok",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: sucocenouraselvagem x2\nAutor:: Ragnar Lothbrok | FIXO: 1264\nData:: 08/10/2025 - 10:05:25",
+      "timestamp": "2025-10-08T13:05:25.614Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: sucocenouraselvagem x2\nAutor:: Ragnar Lothbrok | FIXO: 1264\nData:: 08/10/2025 - 10:05:25",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425469090713174066",
+      "author": "Ragnar Lothbrok",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: paocommatega x2\nAutor:: Ragnar Lothbrok | FIXO: 1264\nData:: 08/10/2025 - 10:05:14",
+      "timestamp": "2025-10-08T13:05:15.161Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: paocommatega x2\nAutor:: Ragnar Lothbrok | FIXO: 1264\nData:: 08/10/2025 - 10:05:14",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425465544085209180",
+      "author": "Romano Delaerva",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: common_portion_pig x8\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 08/10/2025 - 09:51:08",
+      "timestamp": "2025-10-08T12:51:09.579Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: common_portion_pig x8\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 08/10/2025 - 09:51:08",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425465519989063804",
+      "author": "Romano Delaerva",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: pig_female x4\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 08/10/2025 - 09:51:03",
+      "timestamp": "2025-10-08T12:51:03.834Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: pig_female x4\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 08/10/2025 - 09:51:03",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425465305714655304",
+      "author": "Spidey Bot",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $160.0\nAção:: Romano Delaerva vendeu 4 animais no matadouro\nSaldo após depósito:: $9312.5\nData:: 08/10/2025 - 09:50:12",
+      "timestamp": "2025-10-08T12:50:12.747Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $160.0\nAção:: Romano Delaerva vendeu 4 animais no matadouro\nSaldo após depósito:: $9312.5\nData:: 08/10/2025 - 09:50:12",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425462093163004004",
+      "author": "Ragnar Lothbrok",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x100\nAutor:: Ragnar Lothbrok | FIXO: 1264\nData:: 08/10/2025 - 09:37:26",
+      "timestamp": "2025-10-08T12:37:26.815Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x100\nAutor:: Ragnar Lothbrok | FIXO: 1264\nData:: 08/10/2025 - 09:37:26",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425462067107987569",
+      "author": "Ragnar Lothbrok",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x200\nAutor:: Ragnar Lothbrok | FIXO: 1264\nData:: 08/10/2025 - 09:37:20",
+      "timestamp": "2025-10-08T12:37:20.603Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x200\nAutor:: Ragnar Lothbrok | FIXO: 1264\nData:: 08/10/2025 - 09:37:20",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425462039425323120",
+      "author": "Ragnar Lothbrok",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x200\nAutor:: Ragnar Lothbrok | FIXO: 1264\nData:: 08/10/2025 - 09:37:13",
+      "timestamp": "2025-10-08T12:37:14.003Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x200\nAutor:: Ragnar Lothbrok | FIXO: 1264\nData:: 08/10/2025 - 09:37:13",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425459550420729988",
+      "author": "Romano Delaerva",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: palhaitaliana x8\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 08/10/2025 - 09:27:20",
+      "timestamp": "2025-10-08T12:27:20.578Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: palhaitaliana x8\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 08/10/2025 - 09:27:20",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425457802993860771",
+      "author": "Romano Delaerva",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: common_portion_goat x8\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 08/10/2025 - 09:20:23",
+      "timestamp": "2025-10-08T12:20:23.959Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: common_portion_goat x8\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 08/10/2025 - 09:20:23",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425457728188317727",
+      "author": "Romano Delaerva",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: goat_male x4\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 08/10/2025 - 09:20:05",
+      "timestamp": "2025-10-08T12:20:06.124Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: goat_male x4\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 08/10/2025 - 09:20:05",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425457617970397235",
+      "author": "Romano Delaerva",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x100\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 08/10/2025 - 09:19:39",
+      "timestamp": "2025-10-08T12:19:39.846Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x100\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 08/10/2025 - 09:19:39",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425457605391941673",
+      "author": "Romano Delaerva",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x200\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 08/10/2025 - 09:19:36",
+      "timestamp": "2025-10-08T12:19:36.847Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x200\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 08/10/2025 - 09:19:36",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425457593538707717",
+      "author": "Romano Delaerva",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x200\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 08/10/2025 - 09:19:33",
+      "timestamp": "2025-10-08T12:19:34.021Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixadeverduras x200\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 08/10/2025 - 09:19:33",
+      "rawEmbeds": []
+    },
     {
       "id": "1425456787334762608",
       "author": "Santiago Bowdin",

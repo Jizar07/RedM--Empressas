@@ -2531,7 +2531,7 @@
     "channelId": "1424077184339017811",
     "sessionId": "session_1759837073735_8mvhvo",
     "startTime": "2025-10-07T11:37:53.735Z",
-    "lastActivity": "2025-10-07T21:40:36.473Z",
+    "lastActivity": "2025-10-08T15:42:57.575Z",
     "status": "active",
     "plantTransactions": [
       {
@@ -2710,10 +2710,109 @@
         "timestamp": "2025-10-07T21:40:36.473Z"
       }
     ],
-    "animalTransactions": [],
+    "animalTransactions": [
+      {
+        "type": "animals_taken",
+        "animalType": "Bode",
+        "quantity": 4,
+        "cost": 80,
+        "amount": 0,
+        "transactionId": "tx_1759926006150_em7gkj",
+        "timestamp": "2025-10-08T12:20:06.150Z"
+      },
+      {
+        "type": "delivery_completed",
+        "quantity": 4,
+        "amount": 160,
+        "transactionId": "tx_1759927812837_9vlked",
+        "timestamp": "2025-10-08T12:50:12.837Z"
+      },
+      {
+        "type": "animals_taken",
+        "animalType": "Porca",
+        "quantity": 4,
+        "cost": 80,
+        "amount": 0,
+        "transactionId": "tx_1759927863866_exyh69",
+        "timestamp": "2025-10-08T12:51:03.866Z"
+      },
+      {
+        "type": "delivery_completed",
+        "quantity": 4,
+        "amount": 160,
+        "transactionId": "tx_1759930178828_wfxtwg",
+        "timestamp": "2025-10-08T13:29:38.828Z"
+      },
+      {
+        "type": "animals_taken",
+        "animalType": "Porca",
+        "quantity": 4,
+        "cost": 80,
+        "amount": 0,
+        "transactionId": "tx_1759930228227_pld5ef",
+        "timestamp": "2025-10-08T13:30:28.227Z"
+      },
+      {
+        "type": "delivery_completed",
+        "quantity": 4,
+        "amount": 160,
+        "transactionId": "tx_1759932277318_5bnp2y",
+        "timestamp": "2025-10-08T14:04:37.318Z"
+      },
+      {
+        "type": "animals_taken",
+        "animalType": "Porca",
+        "quantity": 4,
+        "cost": 80,
+        "amount": 0,
+        "transactionId": "tx_1759932341166_m6fxdy",
+        "timestamp": "2025-10-08T14:05:41.166Z"
+      },
+      {
+        "type": "delivery_completed",
+        "quantity": 4,
+        "amount": 160,
+        "transactionId": "tx_1759934110769_brigl",
+        "timestamp": "2025-10-08T14:35:10.769Z"
+      },
+      {
+        "type": "animals_taken",
+        "animalType": "Porca",
+        "quantity": 2,
+        "cost": 40,
+        "amount": 0,
+        "transactionId": "tx_1759934147098_l7dkae",
+        "timestamp": "2025-10-08T14:35:47.098Z"
+      },
+      {
+        "type": "animals_taken",
+        "animalType": "Porco",
+        "quantity": 2,
+        "cost": 40,
+        "amount": 0,
+        "transactionId": "tx_1759934149509_bekab8",
+        "timestamp": "2025-10-08T14:35:49.509Z"
+      },
+      {
+        "type": "animals_taken",
+        "animalType": "Porca",
+        "quantity": 4,
+        "cost": 80,
+        "amount": 0,
+        "transactionId": "tx_1759936410970_b2a6b6",
+        "timestamp": "2025-10-08T15:13:30.970Z"
+      },
+      {
+        "type": "delivery_completed",
+        "quantity": 4,
+        "amount": 160,
+        "transactionId": "tx_1759938177575_xgqls",
+        "timestamp": "2025-10-08T15:42:57.575Z"
+      }
+    ],
     "financialTransactions": [],
-    "totalCredits": 2010,
-    "embedMessageId": "1425236398725796000",
+    "totalCredits": 2810,
+    "embedMessageId": "1425508780858151084",
     "seedExpectations": [
       {
         "seedType": "Adubo3",
@@ -2786,6 +2885,57 @@
         "plantsFulfilled": 1000,
         "isComplete": true,
         "transactionId": "tx_1759868652816_2eqvqe"
+      }
+    ],
+    "animalExpectations": [
+      {
+        "animalsTaken": 4,
+        "animalsDelivered": 4,
+        "isComplete": true,
+        "transactionId": "tx_1759926006150_em7gkj",
+        "takenTimestamp": "2025-10-08T12:20:06.150Z"
+      },
+      {
+        "animalsTaken": 4,
+        "animalsDelivered": 4,
+        "isComplete": true,
+        "transactionId": "tx_1759927863866_exyh69",
+        "takenTimestamp": "2025-10-08T12:51:03.866Z"
+      },
+      {
+        "animalsTaken": 4,
+        "animalsDelivered": 4,
+        "isComplete": true,
+        "transactionId": "tx_1759930228227_pld5ef",
+        "takenTimestamp": "2025-10-08T13:30:28.227Z"
+      },
+      {
+        "animalsTaken": 4,
+        "animalsDelivered": 4,
+        "isComplete": true,
+        "transactionId": "tx_1759932341166_m6fxdy",
+        "takenTimestamp": "2025-10-08T14:05:41.166Z"
+      },
+      {
+        "animalsTaken": 2,
+        "animalsDelivered": 2,
+        "isComplete": true,
+        "transactionId": "tx_1759934147098_l7dkae",
+        "takenTimestamp": "2025-10-08T14:35:47.098Z"
+      },
+      {
+        "animalsTaken": 2,
+        "animalsDelivered": 2,
+        "isComplete": true,
+        "transactionId": "tx_1759934149509_bekab8",
+        "takenTimestamp": "2025-10-08T14:35:49.509Z"
+      },
+      {
+        "animalsTaken": 4,
+        "animalsDelivered": 0,
+        "isComplete": false,
+        "transactionId": "tx_1759936410970_b2a6b6",
+        "takenTimestamp": "2025-10-08T15:13:30.970Z"
       }
     ]
   },
@@ -3108,7 +3258,7 @@
     "channelId": "1420777319194169474",
     "sessionId": "session_1759882937132_ior4e",
     "startTime": "2025-10-08T00:22:17.132Z",
-    "lastActivity": "2025-10-08T00:40:59.928Z",
+    "lastActivity": "2025-10-08T15:11:48.240Z",
     "status": "active",
     "plantTransactions": [
       {
@@ -3126,11 +3276,46 @@
         "timestamp": "2025-10-08T00:40:59.928Z"
       }
     ],
-    "animalTransactions": [],
+    "animalTransactions": [
+      {
+        "type": "animals_taken",
+        "animalType": "Galo",
+        "quantity": 19,
+        "cost": 380,
+        "amount": 0,
+        "transactionId": "tx_1759936306096_nr7a7o",
+        "timestamp": "2025-10-08T15:11:46.096Z"
+      },
+      {
+        "type": "animals_taken",
+        "animalType": "Galinha",
+        "quantity": 26,
+        "cost": 520,
+        "amount": 0,
+        "transactionId": "tx_1759936308240_3t5jlv",
+        "timestamp": "2025-10-08T15:11:48.240Z"
+      }
+    ],
     "financialTransactions": [],
     "totalCredits": 130,
-    "embedMessageId": "1425281795443658762",
-    "seedExpectations": []
+    "embedMessageId": "1425500941511163946",
+    "seedExpectations": [],
+    "animalExpectations": [
+      {
+        "animalsTaken": 19,
+        "animalsDelivered": 0,
+        "isComplete": false,
+        "transactionId": "tx_1759936306096_nr7a7o",
+        "takenTimestamp": "2025-10-08T15:11:46.096Z"
+      },
+      {
+        "animalsTaken": 26,
+        "animalsDelivered": 0,
+        "isComplete": false,
+        "transactionId": "tx_1759936308240_3t5jlv",
+        "takenTimestamp": "2025-10-08T15:11:48.240Z"
+      }
+    ]
   },
   "470361257497722886": {
     "workerId": "470361257497722886",
@@ -3234,7 +3419,7 @@
     "channelId": "1423151074994290769",
     "sessionId": "session_1759888377825_fwjjb",
     "startTime": "2025-10-08T01:52:57.825Z",
-    "lastActivity": "2025-10-08T04:52:39.487Z",
+    "lastActivity": "2025-10-08T15:28:13.393Z",
     "status": "active",
     "plantTransactions": [
       {
@@ -3278,6 +3463,13 @@
         "quantity": 500,
         "transactionId": "tx_1759897517976_iderw8",
         "timestamp": "2025-10-08T04:25:17.976Z"
+      },
+      {
+        "type": "seed_taken",
+        "itemName": "Semente Trigo",
+        "quantity": 200,
+        "transactionId": "tx_1759937293393_1rvvi",
+        "timestamp": "2025-10-08T15:28:13.393Z"
       }
     ],
     "animalTransactions": [
@@ -3316,7 +3508,7 @@
     ],
     "financialTransactions": [],
     "totalCredits": 820,
-    "embedMessageId": "1425345127357874178",
+    "embedMessageId": "1425505073923887208",
     "animalExpectations": [
       {
         "animalsTaken": 4,
@@ -3351,6 +3543,15 @@
         "plantsFulfilled": 1000,
         "isComplete": true,
         "transactionId": "tx_1759894568219_sypt9f"
+      },
+      {
+        "seedType": "Semente Trigo",
+        "seedQuantity": 200,
+        "expectedPlantType": "Trigo",
+        "expectedPlantQuantity": 2000,
+        "plantsFulfilled": 2000,
+        "isComplete": true,
+        "transactionId": "tx_1759937293393_1rvvi"
       }
     ]
   },
@@ -3360,7 +3561,7 @@
     "channelId": "1425188689906241606",
     "sessionId": "session_1759888978400_v1gyi",
     "startTime": "2025-10-08T02:02:58.400Z",
-    "lastActivity": "2025-10-08T04:31:36.573Z",
+    "lastActivity": "2025-10-08T14:22:42.147Z",
     "status": "active",
     "plantTransactions": [
       {
@@ -3481,12 +3682,43 @@
         "quantity": 100,
         "transactionId": "tx_1759897896573_wi9rkp",
         "timestamp": "2025-10-08T04:31:36.573Z"
+      },
+      {
+        "type": "seed_taken",
+        "itemName": "Semente Trigo",
+        "quantity": 50,
+        "transactionId": "tx_1759930036373_np2309",
+        "timestamp": "2025-10-08T13:27:16.373Z"
+      },
+      {
+        "type": "seed_taken",
+        "itemName": "Semente de Milho",
+        "quantity": 30,
+        "transactionId": "tx_1759931413690_p5aun8",
+        "timestamp": "2025-10-08T13:50:13.690Z"
       }
     ],
-    "animalTransactions": [],
+    "animalTransactions": [
+      {
+        "type": "animals_taken",
+        "animalType": "Bode",
+        "quantity": 4,
+        "cost": 80,
+        "amount": 0,
+        "transactionId": "tx_1759931356195_4ifiz3",
+        "timestamp": "2025-10-08T13:49:16.195Z"
+      },
+      {
+        "type": "delivery_completed",
+        "quantity": 4,
+        "amount": 160,
+        "transactionId": "tx_1759933362147_wwkivm",
+        "timestamp": "2025-10-08T14:22:42.147Z"
+      }
+    ],
     "financialTransactions": [],
-    "totalCredits": 542.5,
-    "embedMessageId": "1425339830963015692",
+    "totalCredits": 702.5,
+    "embedMessageId": "1425488586890936321",
     "seedExpectations": [
       {
         "seedType": "Adubo3",
@@ -3541,6 +3773,33 @@
         "plantsFulfilled": 0,
         "isComplete": false,
         "transactionId": "tx_1759890799464_xaazdt"
+      },
+      {
+        "seedType": "Semente Trigo",
+        "seedQuantity": 50,
+        "expectedPlantType": "Trigo",
+        "expectedPlantQuantity": 500,
+        "plantsFulfilled": 0,
+        "isComplete": false,
+        "transactionId": "tx_1759930036373_np2309"
+      },
+      {
+        "seedType": "Semente de Milho",
+        "seedQuantity": 30,
+        "expectedPlantType": "Milho",
+        "expectedPlantQuantity": 300,
+        "plantsFulfilled": 300,
+        "isComplete": true,
+        "transactionId": "tx_1759931413690_p5aun8"
+      }
+    ],
+    "animalExpectations": [
+      {
+        "animalsTaken": 4,
+        "animalsDelivered": 4,
+        "isComplete": true,
+        "transactionId": "tx_1759931356195_4ifiz3",
+        "takenTimestamp": "2025-10-08T13:49:16.195Z"
       }
     ]
   },
@@ -4108,6 +4367,39 @@
         "plantsFulfilled": 1000,
         "isComplete": true,
         "transactionId": "tx_1759903422308_tepse"
+      }
+    ]
+  },
+  "372161270176153601": {
+    "workerId": "372161270176153601",
+    "workerName": "Jizar Stoffeliz",
+    "channelId": "1420763696560476240",
+    "sessionId": "session_1759937861381_ahrcgo",
+    "startTime": "2025-10-08T15:37:41.381Z",
+    "lastActivity": "2025-10-08T15:37:41.383Z",
+    "status": "active",
+    "plantTransactions": [
+      {
+        "type": "seed_taken",
+        "itemName": "Creekplum Semente",
+        "quantity": 50,
+        "transactionId": "tx_1759937861383_99uje1",
+        "timestamp": "2025-10-08T15:37:41.383Z"
+      }
+    ],
+    "animalTransactions": [],
+    "financialTransactions": [],
+    "totalCredits": 0,
+    "embedMessageId": "1425507454732468255",
+    "seedExpectations": [
+      {
+        "seedType": "Creekplum Semente",
+        "seedQuantity": 50,
+        "expectedPlantType": "Creekplum Semente",
+        "expectedPlantQuantity": 500,
+        "plantsFulfilled": 0,
+        "isComplete": false,
+        "transactionId": "tx_1759937861383_99uje1"
       }
     ]
   }

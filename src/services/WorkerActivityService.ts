@@ -42,6 +42,8 @@ interface SeedExpectation {
   plantsFulfilled: number;
   isComplete: boolean;
   transactionId: string;
+  aduboUsed?: number; // Adubo3 quantity used (doubles plant yield)
+  aduboCost?: number; // Cost of Adubo3 used ($0.75 per unit)
 }
 
 interface AnimalExpectation {
@@ -274,8 +276,8 @@ export class WorkerActivityService {
   }
 
   // Convert seed name to expected plant name and calculate expected quantity
-  private createSeedExpectation(seedType: string, seedQuantity: number, transactionId: string): SeedExpectation {
-    // Seed to plant conversion mapping (1 seed typically produces 10 plants)
+  private createSeedExpectation(seedType: string, seedQuantity: number, transactionId: string, aduboQuantity: number = 0): SeedExpectation {
+    // Seed to plant conversion mapping (1 seed typically produces 10 plants, 20 with Adubo3)
     const seedToPlantMap: { [key: string]: { plantType: string; multiplier: number } } = {
       'Semente de Milho': { plantType: 'Milho', multiplier: 10 },
       'Semente de Trigo': { plantType: 'Trigo', multiplier: 10 },
@@ -286,15 +288,52 @@ export class WorkerActivityService {
 
     const mapping = seedToPlantMap[seedType] || { plantType: seedType.replace('Semente de ', '').replace('Semente ', ''), multiplier: 10 };
 
+    // If Adubo3 is used, double the multiplier (10 → 20)
+    const effectiveMultiplier = aduboQuantity > 0 ? mapping.multiplier * 2 : mapping.multiplier;
+    const aduboCost = aduboQuantity * 0.75; // $0.75 per Adubo3
+
     return {
       seedType,
       seedQuantity,
       expectedPlantType: mapping.plantType,
-      expectedPlantQuantity: seedQuantity * mapping.multiplier,
+      expectedPlantQuantity: seedQuantity * effectiveMultiplier,
       plantsFulfilled: 0,
       isComplete: false,
-      transactionId
+      transactionId,
+      aduboUsed: aduboQuantity > 0 ? aduboQuantity : undefined,
+      aduboCost: aduboCost > 0 ? aduboCost : undefined
     };
+  }
+
+  // Add Adubo3 to the most recent incomplete seed expectation
+  private addAduboToLastExpectation(session: WorkerSession, aduboQuantity: number): boolean {
+    if (!session.seedExpectations || session.seedExpectations.length === 0) {
+      console.log(`⚠️ No seed expectations found to add Adubo3 to for worker ${session.workerName}`);
+      return false;
+    }
+
+    // Find the most recent incomplete seed expectation
+    const incompleteExpectations = session.seedExpectations.filter(exp => !exp.isComplete);
+    if (incompleteExpectations.length === 0) {
+      console.log(`⚠️ No incomplete seed expectations found to add Adubo3 to for worker ${session.workerName}`);
+      return false;
+    }
+
+    // Add Adubo3 to the most recent incomplete expectation
+    const lastExpectation = incompleteExpectations[incompleteExpectations.length - 1];
+
+    // If Adubo3 already added, combine quantities
+    const previousAdubo = lastExpectation.aduboUsed || 0;
+    const totalAdubo = previousAdubo + aduboQuantity;
+
+    // Recalculate expected plants with Adubo3 (double the yield)
+    const baseMultiplier = 10;
+    lastExpectation.aduboUsed = totalAdubo;
+    lastExpectation.aduboCost = totalAdubo * 0.75;
+    lastExpectation.expectedPlantQuantity = lastExpectation.seedQuantity * (baseMultiplier * 2); // Double yield with Adubo3
+
+    console.log(`🌿 Added ${aduboQuantity} Adubo3 to ${lastExpectation.seedType} expectation (total: ${totalAdubo}). New expected: ${lastExpectation.expectedPlantQuantity} plants`);
+    return true;
   }
 
   // Update seed expectations when plants are deposited
@@ -648,6 +687,16 @@ export class WorkerActivityService {
       });
     }
 
+    // Deduct Adubo3 costs from seed expectations
+    if (session.seedExpectations && session.seedExpectations.length > 0) {
+      session.seedExpectations.forEach(expectation => {
+        if (expectation.aduboCost && expectation.aduboCost > 0) {
+          totalCosts += expectation.aduboCost;
+          console.log(`🌿 Adubo3 cost: ${expectation.aduboUsed} units = -$${expectation.aduboCost.toFixed(2)}`);
+        }
+      });
+    }
+
     // Calculate animal deliveries
     const animalsTaken = session.animalTransactions
       .filter(t => t.type === 'animals_taken')
@@ -835,17 +884,31 @@ export class WorkerActivityService {
 
     // Handle seed expectation tracking
     if (plantTransaction.type === 'seed_taken') {
-      // Create new seed expectation
-      if (!session.seedExpectations) {
-        session.seedExpectations = [];
+      const itemNameLower = plantTransaction.itemName.toLowerCase();
+
+      // Check if this is Adubo3
+      if (itemNameLower.includes('adubo3') || itemNameLower.includes('adubo 3')) {
+        // Add Adubo3 to the most recent incomplete seed expectation
+        if (!session.seedExpectations) {
+          session.seedExpectations = [];
+        }
+        const aduboAdded = this.addAduboToLastExpectation(session, plantTransaction.quantity);
+        if (!aduboAdded) {
+          console.log(`⚠️ Adubo3 withdrawn but no seed expectation to apply it to. Worker may have taken Adubo3 before seeds.`);
+        }
+      } else {
+        // Regular seed - create new seed expectation
+        if (!session.seedExpectations) {
+          session.seedExpectations = [];
+        }
+        const seedExpectation = this.createSeedExpectation(
+          plantTransaction.itemName,
+          plantTransaction.quantity,
+          plantTransaction.transactionId
+        );
+        session.seedExpectations.push(seedExpectation);
+        console.log(`🌱 Created seed expectation: ${seedExpectation.seedQuantity} ${seedExpectation.seedType} → expecting ${seedExpectation.expectedPlantQuantity} ${seedExpectation.expectedPlantType}`);
       }
-      const seedExpectation = this.createSeedExpectation(
-        plantTransaction.itemName,
-        plantTransaction.quantity,
-        plantTransaction.transactionId
-      );
-      session.seedExpectations.push(seedExpectation);
-      console.log(`🌱 Created seed expectation: ${seedExpectation.seedQuantity} ${seedExpectation.seedType} → expecting ${seedExpectation.expectedPlantQuantity} ${seedExpectation.expectedPlantType}`);
     }
 
     await this.recalculateSessionCredits(session);
@@ -1094,8 +1157,14 @@ export class WorkerActivityService {
       inline: false
     });
 
-    // Add seeds taken section with timestamps
-    const seedsTaken = session.plantTransactions.filter(t => t.type === 'seed_taken');
+    // Add seeds taken section with timestamps (exclude Adubo3 - it's a material, not a seed)
+    const seedsTaken = session.plantTransactions.filter(t => {
+      if (t.type !== 'seed_taken') return false;
+      const itemNameLower = t.itemName.toLowerCase();
+      // Exclude Adubo3 from seeds display
+      return !(itemNameLower.includes('adubo3') || itemNameLower.includes('adubo 3'));
+    });
+
     if (seedsTaken.length > 0) {
       const seedsDisplay = this.formatTransactionsWithSummarization(
         seedsTaken,
@@ -1115,21 +1184,65 @@ export class WorkerActivityService {
       });
     }
 
+    // Add materials taken section (Adubo3)
+    const materialsTaken = session.plantTransactions.filter(t => {
+      if (t.type !== 'seed_taken') return false;
+      const itemNameLower = t.itemName.toLowerCase();
+      return itemNameLower.includes('adubo3') || itemNameLower.includes('adubo 3');
+    });
+
+    if (materialsTaken.length > 0) {
+      const materialsDisplay = this.formatTransactionsWithSummarization(
+        materialsTaken,
+        '🌿 Materiais Retirados',
+        (t) => `${t.quantity} ${t.itemName}`,
+        800
+      );
+
+      const totalMaterials = materialsTaken.reduce((sum, t) => sum + t.quantity, 0);
+      const totalCost = totalMaterials * 0.75;
+      const materialsSummary = `${materialsDisplay}\n**Total: ${totalMaterials} unidades → Custo: -$${totalCost.toFixed(2)}**`;
+
+      embed.addFields({
+        name: '🌿 Materiais Retirados (Adubo3)',
+        value: this.truncateFieldValue(materialsSummary),
+        inline: false
+      });
+    }
+
     // Add seed expectations with strikethrough for completed
     if (session.seedExpectations && session.seedExpectations.length > 0) {
       const expectationLines: string[] = [];
 
-      session.seedExpectations.forEach(exp => {
-        const progress = `${exp.plantsFulfilled}/${exp.expectedPlantQuantity}`;
-        const statusIcon = exp.isComplete ? '✅' : '⏳';
-        const seedLine = `${exp.seedQuantity} ${exp.seedType} → ${exp.expectedPlantQuantity} ${exp.expectedPlantType}`;
+      // Filter out Adubo3 entries - they're materials, not plant services
+      session.seedExpectations
+        .filter(exp => {
+          const seedTypeLower = (exp.seedType || '').toLowerCase();
+          return !(seedTypeLower.includes('adubo3') || seedTypeLower.includes('adubo 3'));
+        })
+        .forEach(exp => {
+          const progress = `${exp.plantsFulfilled}/${exp.expectedPlantQuantity}`;
+          const statusIcon = exp.isComplete ? '✅' : '⏳';
+          let seedLine = `${exp.seedQuantity} ${exp.seedType}`;
 
-        if (exp.isComplete) {
-          expectationLines.push(`~~${seedLine}~~ ${statusIcon}`);
-        } else {
-          expectationLines.push(`${seedLine} (${progress}) ${statusIcon}`);
-        }
-      });
+          // Add Adubo3 indicator if used
+          if (exp.aduboUsed && exp.aduboUsed > 0) {
+            seedLine += ` + ${exp.aduboUsed} Adubo3 🌿`;
+          }
+
+          seedLine += ` → ${exp.expectedPlantQuantity} ${exp.expectedPlantType}`;
+
+          // Add cost indicator if Adubo3 was used
+          if (exp.aduboCost && exp.aduboCost > 0) {
+            seedLine += ` (-$${exp.aduboCost.toFixed(2)})`;
+          }
+
+          if (exp.isComplete) {
+            expectationLines.push(`~~${seedLine}~~ ${statusIcon}`);
+          } else {
+            expectationLines.push(`${seedLine} (${progress}) ${statusIcon}`);
+          }
+        });
 
       if (expectationLines.length > 0) {
         embed.addFields({
@@ -1269,10 +1382,22 @@ export class WorkerActivityService {
 
     // Add totals section
     if (session.totalCredits > 0) {
+      // Calculate Adubo3 deductions from plantTransactions
+      let adubo3Deductions = 0;
+      if (session.plantTransactions) {
+        session.plantTransactions.forEach(t => {
+          if (t.type === 'seed_taken' && t.itemName && t.itemName.toLowerCase().includes('adubo3')) {
+            adubo3Deductions += t.quantity * 0.75; // $0.75 per Adubo3
+          }
+        });
+      }
+
+      const totalAfterDeductions = session.totalCredits - adubo3Deductions;
       const isSessionPaid = session.status === 'paid';
+
       embed.addFields({
         name: isSessionPaid ? '💰 Total Pago' : '💰 Total a Receber',
-        value: `**$${session.totalCredits.toFixed(2)}**`,
+        value: `**$${totalAfterDeductions.toFixed(2)}**`,
         inline: true
       });
     }
@@ -1347,17 +1472,22 @@ export class WorkerActivityService {
       inline: false
     });
 
-    // Add seeds taken section (same as active embed)
-    const seedsTaken = session.plantTransactions.filter(t => t.type === 'seed_taken');
-    if (seedsTaken.length > 0) {
+    // Add seeds taken section (exclude Adubo3 - it's a material, not a seed)
+    const seedsTakenReceipt = session.plantTransactions.filter(t => {
+      if (t.type !== 'seed_taken') return false;
+      const itemNameLower = t.itemName.toLowerCase();
+      return !(itemNameLower.includes('adubo3') || itemNameLower.includes('adubo 3'));
+    });
+
+    if (seedsTakenReceipt.length > 0) {
       const seedsDisplay = this.formatTransactionsWithSummarization(
-        seedsTaken,
+        seedsTakenReceipt,
         '🌱 Sementes Retiradas',
         (t) => `${t.quantity} ${t.itemName}`,
         800
       );
 
-      const totalSeeds = seedsTaken.reduce((sum, t) => sum + t.quantity, 0);
+      const totalSeeds = seedsTakenReceipt.reduce((sum, t) => sum + t.quantity, 0);
       const expectedPlants = totalSeeds * 10;
       const seedsSummary = `${seedsDisplay}\n**Total: ${totalSeeds} sementes → Esperado: ${expectedPlants} plantas**`;
 
@@ -1368,14 +1498,59 @@ export class WorkerActivityService {
       });
     }
 
+    // Add materials taken section (Adubo3)
+    const materialsTakenReceipt = session.plantTransactions.filter(t => {
+      if (t.type !== 'seed_taken') return false;
+      const itemNameLower = t.itemName.toLowerCase();
+      return itemNameLower.includes('adubo3') || itemNameLower.includes('adubo 3');
+    });
+
+    if (materialsTakenReceipt.length > 0) {
+      const materialsDisplay = this.formatTransactionsWithSummarization(
+        materialsTakenReceipt,
+        '🌿 Materiais Retirados',
+        (t) => `${t.quantity} ${t.itemName}`,
+        800
+      );
+
+      const totalMaterials = materialsTakenReceipt.reduce((sum, t) => sum + t.quantity, 0);
+      const totalCost = totalMaterials * 0.75;
+      const materialsSummary = `${materialsDisplay}\n**Total: ${totalMaterials} unidades → Custo: -$${totalCost.toFixed(2)}**`;
+
+      embed.addFields({
+        name: '🌿 Materiais Retirados (Adubo3)',
+        value: this.truncateFieldValue(materialsSummary),
+        inline: false
+      });
+    }
+
     // Add completed seed expectations (all as strikethrough since it's a receipt)
     if (session.seedExpectations && session.seedExpectations.length > 0) {
       const expectationLines: string[] = [];
 
-      session.seedExpectations.forEach(exp => {
-        const seedLine = `${exp.seedQuantity} ${exp.seedType} → ${exp.expectedPlantQuantity} ${exp.expectedPlantType}`;
-        expectationLines.push(`~~${seedLine}~~ ✅`);
-      });
+      // Filter out Adubo3 entries - they're materials, not plant services
+      session.seedExpectations
+        .filter(exp => {
+          const seedTypeLower = (exp.seedType || '').toLowerCase();
+          return !(seedTypeLower.includes('adubo3') || seedTypeLower.includes('adubo 3'));
+        })
+        .forEach(exp => {
+          let seedLine = `${exp.seedQuantity} ${exp.seedType}`;
+
+          // Add Adubo3 indicator if used
+          if (exp.aduboUsed && exp.aduboUsed > 0) {
+            seedLine += ` + ${exp.aduboUsed} Adubo3 🌿`;
+          }
+
+          seedLine += ` → ${exp.expectedPlantQuantity} ${exp.expectedPlantType}`;
+
+          // Add cost indicator if Adubo3 was used
+          if (exp.aduboCost && exp.aduboCost > 0) {
+            seedLine += ` (-$${exp.aduboCost.toFixed(2)})`;
+          }
+
+          expectationLines.push(`~~${seedLine}~~ ✅`);
+        });
 
       if (expectationLines.length > 0) {
         embed.addFields({
@@ -1508,9 +1683,21 @@ export class WorkerActivityService {
 
     // Add final total section
     if (session.totalCredits > 0) {
+      // Calculate Adubo3 deductions from plantTransactions
+      let adubo3Deductions = 0;
+      if (session.plantTransactions) {
+        session.plantTransactions.forEach(t => {
+          if (t.type === 'seed_taken' && t.itemName && t.itemName.toLowerCase().includes('adubo3')) {
+            adubo3Deductions += t.quantity * 0.75; // $0.75 per Adubo3
+          }
+        });
+      }
+
+      const totalAfterDeductions = session.totalCredits - adubo3Deductions;
+
       embed.addFields({
         name: status === 'paid' ? '💰 Total Pago' : '💰 Total Verificado',
-        value: `**$${session.totalCredits.toFixed(2)}**`,
+        value: `**$${totalAfterDeductions.toFixed(2)}**`,
         inline: true
       });
     }

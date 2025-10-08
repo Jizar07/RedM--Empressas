@@ -818,3 +818,37 @@ This file is synchronized with: https://github.com/Jizar07/RedM--Empressas
 
 ---
 *Note: This changelog is used for code reverts in case of problems. Each version should be tagged in the repository.*
+### [0.054] - 2025-10-08 **[CURRENT VERSION]**
+- **ADUBO3 DEDUCTION SYSTEM FIX**: Complete implementation of Adubo3 cost deductions in financial calculations
+- **PAYMENT DISPLAY ENHANCEMENT**: Payment history now shows Discord usernames instead of user IDs
+- **FINANCIAL TRANSPARENCY**: Complete itemized breakdown with timestamps for all Adubo3 deductions
+- **KEY FEATURES**:
+  - Frontend calculates Adubo3 deductions from plantTransactions instead of non-existent seedExpectations fields
+  - Backend Discord embeds filter out Adubo3 from seed expectations (they're materials, not services)
+  - Both active and paid embeds subtract Adubo3 costs from total amounts
+  - Payment records display paidByName with fallback to paidBy for username resolution
+  - Deductions section shows individual Adubo3 withdrawals with timestamps and costs
+- **TECHNICAL IMPLEMENTATION**:
+  - Modified `FazendaCDPWorkersManagementNew.tsx` Aguardando Pagamento tab:
+    - Lines 1736-1753: Calculate deductions by scanning plantTransactions for seed_taken Adubo3
+    - Lines 2024-2073: Build itemized deductions list with timestamps from actual transactions
+    - Line 1747: Subtract totalDeductions from totalCredits for accurate payment total
+  - Modified `WorkerActivityService.ts` Discord embeds (4 locations):
+    - Lines 1217-1245, 1531-1553: Filter Adubo3 from seed expectations display
+    - Lines 1385-1402, 1686-1702: Calculate and subtract Adubo3 deductions from totals
+  - Modified payment display in 4 frontend locations to use paidByName || paidBy pattern
+  - Adubo3 cost calculation: quantity × $0.75 per unit
+- **BUG FIXES**:
+  - Fixed deductions not appearing because code looked for aduboCost field that didn't exist in data
+  - Fixed Total a Receber showing credits without subtracting deductions
+  - Fixed payment history showing Discord IDs (1127730801182777355) instead of usernames (r3dley)
+  - Fixed Adubo3 entries cluttering seed expectations section
+- **DISPLAY IMPROVEMENTS**:
+  - Deductions show as: "🌿 Adubo3: 200 unidades" with timestamp "07/10, 07:37" and cost "-$150.00"
+  - Subtotal Deduções displays total of all Adubo3 costs
+  - Total a Pagar correctly shows: Credits - Deductions = Final Amount
+  - Payment history displays: "Pagamento #0 por r3dley $2987.50" with proper username
+- **FILES MODIFIED**:
+  - `frontend/components/FazendaCDPWorkersManagementNew.tsx` (deduction calculation, payment display)
+  - `src/services/WorkerActivityService.ts` (embed filtering and total calculations)
+- **RESULT**: Workers and managers see accurate financial breakdown with complete Adubo3 cost transparency, proper deductions from payment totals, and readable payment history with Discord usernames

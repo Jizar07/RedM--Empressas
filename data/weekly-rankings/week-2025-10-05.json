@@ -469,7 +469,7 @@
   "ferroviaRankings": [
     {
       "workerId": "unknown",
-      "workerName": "Endo D. Barth",
+      "workerName": "Santiago Bowdin",
       "plants": {
         "thisWeek": 0,
         "allTime": 0
@@ -479,10 +479,10 @@
         "allTime": 0
       },
       "ferrovia": {
-        "thisWeek": 216,
-        "allTime": 904
+        "thisWeek": 226,
+        "allTime": 914
       },
-      "lastActivity": "2025-10-08T12:12:15.423Z"
+      "lastActivity": "2025-10-08T15:10:05.041Z"
     },
     {
       "workerId": "273987353456934913",
@@ -570,5 +570,5 @@
       "lastActivity": "2025-09-23T11:02:26.470Z"
     }
   ],
-  "lastUpdated": "2025-10-08T12:12:15.423Z"
+  "lastUpdated": "2025-10-08T15:10:05.041Z"
 }
