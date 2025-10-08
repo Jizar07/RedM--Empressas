@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1759882531902_t9ae8r",
+  "sessionId": "session_1759803587950_ccal0tf",
+  "managerId": "198538680686608384",
+  "managerName": "Barth",
+  "workerId": "1083891336614248478",
+  "workerName": "Jeovan Westphal",
+  "amountPaid": 1350,
+  "paidAt": "2025-10-08T00:15:31.902Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-08T00:10:31.902Z",
+    "endTime": "2025-10-08T00:25:31.902Z"
+  }
+}

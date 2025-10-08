@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1759710023080_p92wr4",
+  "sessionId": "session_1759615213412_gap2em",
+  "managerId": "470361257497722886",
+  "managerName": "Gordo caramelo",
+  "workerId": "324682324614578179",
+  "workerName": "Garcia Jidoki",
+  "amountPaid": 2791.6000000000004,
+  "paidAt": "2025-10-06T00:20:23.080Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-06T00:15:23.080Z",
+    "endTime": "2025-10-06T00:30:23.080Z"
+  }
+}

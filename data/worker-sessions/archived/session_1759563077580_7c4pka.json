@@ -1,0 +1,25 @@
+{
+  "workerId": "206587400703574019",
+  "workerName": "Cosmo Versace",
+  "channelId": "1423043541701230804",
+  "sessionId": "session_1759563077580_7c4pka",
+  "startTime": "2025-10-04T07:31:17.580Z",
+  "lastActivity": "2025-10-04T07:31:17.581Z",
+  "status": "paid",
+  "plantTransactions": [],
+  "animalTransactions": [
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759563077581_pdhwgl",
+      "timestamp": "2025-10-04T07:31:17.581Z"
+    }
+  ],
+  "financialTransactions": [],
+  "totalCredits": 160,
+  "embedMessageId": "1423935495985037444",
+  "animalExpectations": [],
+  "completedAt": "2025-10-05T00:59:25.142Z",
+  "notes": "Pago por ๖ۣۜζ͜͡ɪᴢᴢʏɴʜᴀ🎀 (949397147030274059)"
+}

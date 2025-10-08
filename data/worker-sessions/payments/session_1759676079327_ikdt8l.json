@@ -1,0 +1,95 @@
+{
+  "sessionId": "session_1759676079327_ikdt8l",
+  "workerId": "949397147030274059",
+  "workerName": "Izzynha Evans",
+  "amount": 640,
+  "paidBy": "949397147030274059",
+  "paidByName": "๖ۣۜζ͜͡ɪᴢᴢʏɴʜᴀ🎀",
+  "paidAt": "2025-10-05T20:36:33.889Z",
+  "plantTransactions": [],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Cabra",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759676079330_50jpa",
+      "timestamp": "2025-10-05T14:54:39.330Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759678897830_ttxdl8",
+      "timestamp": "2025-10-05T15:41:37.830Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Bode",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759679033884_xrftd",
+      "timestamp": "2025-10-05T15:43:53.884Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759682395468_tg7tce",
+      "timestamp": "2025-10-05T16:39:55.468Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Porco",
+      "quantity": 2,
+      "cost": 40,
+      "amount": 0,
+      "transactionId": "tx_1759693721280_w3w13m",
+      "timestamp": "2025-10-05T19:48:41.280Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Porca",
+      "quantity": 2,
+      "cost": 40,
+      "amount": 0,
+      "transactionId": "tx_1759693725282_441tto",
+      "timestamp": "2025-10-05T19:48:45.282Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759693935667_adc1ii",
+      "timestamp": "2025-10-05T19:52:15.667Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Ovelha Femea",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759693976199_c5m3a",
+      "timestamp": "2025-10-05T19:52:56.199Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759695966882_v2w8ea",
+      "timestamp": "2025-10-05T20:26:06.882Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Ovelha Femea",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759696056143_nz42zm",
+      "timestamp": "2025-10-05T20:27:36.143Z"
+    }
+  ],
+  "financialTransactions": []
+}

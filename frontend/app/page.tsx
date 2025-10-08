@@ -12,7 +12,9 @@ import ServerDropdown from '@/components/ServerDropdown';
 import SplashPage from '@/components/SplashPage';
 import RoleGuard from '@/components/RoleGuard';
 import ThemeToggle from '@/components/ThemeToggle';
+import LanguageToggle from '@/components/LanguageToggle';
 import { useAuth } from '@/lib/auth';
+import { useTranslation } from '@/hooks/useTranslation';
 import { healthCheck, botApi, serverApi } from '@/lib/api';
 import { BotStats, ServerInfo } from '@/types';
 import { useFirmAccess } from '@/hooks/useFirmAccess';
@@ -51,7 +53,8 @@ export default function HomePage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { data: session, status } = useSession();
-  
+  const { t } = useTranslation();
+
   // Debug logging
   console.log('NextAuth session debug:', { session, status });
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -171,95 +174,45 @@ export default function HomePage() {
     const baseTabs = [
       {
         id: 'dashboard',
-        name: 'Dashboard',
+        name: t('nav.dashboard'),
         icon: BarChart3,
-        description: 'Main dashboard overview'
+        description: t('dashboard.title')
       },
       ...(canAccessChannelParser() ? [{
         id: 'channel-parser',
-        name: 'Channel Parser',
+        name: t('nav.channelParser'),
         icon: MessageSquare,
-        description: 'Parse Discord channels and send to webhooks'
-      }] : []),
-      ...(showAdminTabs ? [{
-        id: 'admin',
-        name: 'Admin',
-        icon: Shield,
-        description: 'Administrative tools and settings',
-        submenu: [
-          {
-            id: 'registration-settings',
-            name: 'Registration Settings',
-            icon: Settings,
-            description: 'Configure registration form and roles'
-          },
-          {
-            id: 'registration-analytics', 
-            name: 'Registration Analytics',
-            icon: BarChart3,
-            description: 'View and manage registrations'
-          },
-          {
-            id: 'orders-settings',
-            name: 'Orders Settings',
-            icon: Package,
-            description: 'Configure orders system and firms'
-          },
-          {
-            id: 'channel-logs-config',
-            name: 'Channel Logs Config',
-            icon: MessageSquare,
-            description: 'Configure automatic channel log forwarding'
-          },
-          {
-            id: 'discord-commands',
-            name: 'Discord Commands',
-            icon: Users,
-            description: 'Manage Discord slash commands'
-          },
-          {
-            id: 'moderation-settings',
-            name: 'Moderation',
-            icon: Gavel,
-            description: 'Configure moderation and auto-reply features'
-          },
-          {
-            id: 'firm-management',
-            name: 'Firm Management',
-            icon: Building,
-            description: 'Configure multiple firms and monitoring'
-          }
-        ]
+        description: t('quickActions.channelParserDesc')
       }] : []),
       {
         id: 'atlanta-server',
-        name: 'Atlanta Server',
+        name: t('nav.atlantaServer'),
         icon: Server,
-        description: 'Server status and player management'
+        description: t('quickActions.serverStatusDesc')
       },
       {
         id: 'servicos',
-        name: 'Serviços',
+        name: t('nav.servicos'),
         icon: Truck,
-        description: 'Encomendas, receitas e lista de preços',
+        description: t('servicos.ordersRecipes'),
         submenu: [
           {
             id: 'orders-dashboard',
-            name: 'Encomendas',
+            name: t('servicos.orders'),
             icon: Package,
-            description: 'Sistema de pedidos e encomendas'
+            description: t('servicos.ordersDesc')
           },
           {
             id: 'recipes',
-            name: 'Receitas',
+            name: t('servicos.recipes'),
             icon: ChefHat,
-            description: 'Calculadora de receitas'
+            description: t('servicos.recipesDesc')
           },
           {
             id: 'price-list',
-            name: 'Lista de Preços',
+            name: t('servicos.priceList'),
             icon: DollarSign,
-            description: 'Gerenciamento de preços de itens'
+            description: t('servicos.priceListDesc')
           }
         ]
       }
@@ -358,7 +311,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Bot Status, Server Selector, Theme Toggle and User Menu */}
+            {/* Bot Status, Server Selector, Theme Toggle, Language Toggle and User Menu */}
             <div className="flex items-center space-x-4">
               <ServerDropdown />
               <AuthButton />
@@ -370,6 +323,7 @@ export default function HomePage() {
                 <span className="text-gray-600 dark:text-gray-300">{botStats?.ping || 0}ms</span>
               </div>
               <ThemeToggle />
+              <LanguageToggle />
               <SimpleUserMenu />
             </div>
           </div>
@@ -382,8 +336,7 @@ export default function HomePage() {
           <nav className="flex space-x-8">
             {tabs.map((tab) => {
               const Icon = tab.icon;
-              const isActive = activeTab === tab.id || 
-                (tab.id === 'admin' && (activeTab === 'registration-settings' || activeTab === 'registration-analytics' || activeTab === 'orders-settings' || activeTab === 'channel-logs-config' || activeTab === 'discord-commands' || activeTab === 'moderation-settings' || activeTab === 'firm-management' || activeTab === 'payment-settings' || activeTab === 'payment-receipts')) ||
+              const isActive = activeTab === tab.id ||
                 (tab.id === 'servicos' && (activeTab === 'orders-dashboard' || activeTab === 'orders-management' || activeTab === 'recipes' || activeTab === 'price-list')) ||
                 (tab.submenu && tab.submenu.some((subitem: any) => subitem.id === activeTab));
               return (
@@ -412,93 +365,182 @@ export default function HomePage() {
             {/* Dashboard Overview */}
             <div className="card p-6 bg-white dark:bg-gray-800 transition-colors">
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 transition-colors">
-                {selectedServerName ? `${selectedServerName} Dashboard` : 'RedM Empresas Dashboard'}
+                {selectedServerName ? `${selectedServerName} ${t('dashboard.title')}` : `RedM Empresas ${t('dashboard.title')}`}
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="bg-gradient-to-r from-red-500 to-red-600 p-6 rounded-lg text-white transition-all duration-300">
-                  <h3 className="text-lg font-semibold mb-2">Server Players</h3>
+                  <h3 className="text-lg font-semibold mb-2">{t('dashboard.serverPlayers')}</h3>
                   <p className="text-3xl font-bold transition-all duration-300">
                     {serverInfo?.players || 0}
                   </p>
                   <p className="text-red-100 text-sm transition-all duration-300">
-                    Max: {serverInfo?.maxPlayers || 0}
+                    {t('dashboard.max')}: {serverInfo?.maxPlayers || 0}
                   </p>
                 </div>
                 <div className="bg-gradient-to-r from-green-500 to-green-600 p-6 rounded-lg text-white transition-all duration-300">
-                  <h3 className="text-lg font-semibold mb-2">Bot Status</h3>
+                  <h3 className="text-lg font-semibold mb-2">{t('dashboard.botStatus')}</h3>
                   <p className="text-3xl font-bold transition-all duration-300">
-                    {botStats?.ready ? 'Online' : 'Offline'}
+                    {botStats?.ready ? t('dashboard.online') : t('dashboard.offline')}
                   </p>
                   <p className="text-green-100 text-sm transition-all duration-300">
-                    {botStats ? `${botStats.ping}ms ping` : 'Connecting...'}
+                    {botStats ? `${botStats.ping}ms ${t('dashboard.ping')}` : t('dashboard.connecting')}
                   </p>
                 </div>
                 <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-6 rounded-lg text-white transition-all duration-300">
-                  <h3 className="text-lg font-semibold mb-2">Active Firms</h3>
+                  <h3 className="text-lg font-semibold mb-2">{t('dashboard.activeFirms')}</h3>
                   <p className="text-3xl font-bold transition-all duration-300">
                     {accessibleFirms.length}
                   </p>
-                  <p className="text-blue-100 text-sm">Accessible to you</p>
+                  <p className="text-blue-100 text-sm">{t('dashboard.accessibleToYou')}</p>
                 </div>
               </div>
             </div>
 
+            {/* Your Firms - Quick Access */}
+            <div className="card p-6">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">🏢 {t('firms.title')}</h3>
+              {firmsLoading ? (
+                <div className="text-center py-8">
+                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-2"></div>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm">{t('firms.loading')}</p>
+                </div>
+              ) : accessibleFirms.length > 0 ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+                  {accessibleFirms.map((firm: FirmConfig) => (
+                    <button
+                      key={firm.id}
+                      onClick={() => changeTab(firm.id)}
+                      className="p-4 border-2 border-gray-200 dark:border-gray-700 rounded-lg hover:border-blue-500 dark:hover:border-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all text-left group"
+                    >
+                      <div className="text-3xl mb-2">{firm.emoji || '🏢'}</div>
+                      <h4 className="font-semibold text-gray-900 dark:text-white mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400">{firm.name}</h4>
+                      <div className="flex items-center space-x-2 mb-2">
+                        <div className={`w-2 h-2 rounded-full ${firm.enabled ? 'bg-green-500' : 'bg-gray-400'}`}></div>
+                        <span className="text-xs text-gray-600 dark:text-gray-400">{firm.enabled ? t('firms.active') : t('firms.inactive')}</span>
+                      </div>
+                      <span className="text-xs text-blue-600 dark:text-blue-400 font-medium">{t('firms.access')} →</span>
+                    </button>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-8">
+                  <Building className="h-12 w-12 text-gray-400 mx-auto mb-3" />
+                  <p className="text-gray-600 dark:text-gray-400">{t('firms.noFirms')}</p>
+                </div>
+              )}
+            </div>
+
+            {/* Admin Tools */}
+            {showAdminTabs && (
+              <div className="card p-6">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">⚙️ {t('admin.title')}</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  <button
+                    onClick={() => changeTab('registration-settings')}
+                    className="p-4 border-2 border-gray-200 dark:border-gray-700 rounded-lg hover:border-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors text-left"
+                  >
+                    <Settings className="h-6 w-6 text-gray-600 dark:text-gray-400 mb-2" />
+                    <h4 className="font-medium text-gray-900 dark:text-white mb-1">{t('admin.registrationSettings')}</h4>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">{t('admin.registrationSettingsDesc')}</p>
+                  </button>
+                  <button
+                    onClick={() => changeTab('registration-analytics')}
+                    className="p-4 border-2 border-gray-200 dark:border-gray-700 rounded-lg hover:border-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors text-left"
+                  >
+                    <BarChart3 className="h-6 w-6 text-gray-600 dark:text-gray-400 mb-2" />
+                    <h4 className="font-medium text-gray-900 dark:text-white mb-1">{t('admin.registrationAnalytics')}</h4>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">{t('admin.registrationAnalyticsDesc')}</p>
+                  </button>
+                  <button
+                    onClick={() => changeTab('orders-settings')}
+                    className="p-4 border-2 border-gray-200 dark:border-gray-700 rounded-lg hover:border-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors text-left"
+                  >
+                    <Package className="h-6 w-6 text-gray-600 dark:text-gray-400 mb-2" />
+                    <h4 className="font-medium text-gray-900 dark:text-white mb-1">{t('admin.ordersSettings')}</h4>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">{t('admin.ordersSettingsDesc')}</p>
+                  </button>
+                  <button
+                    onClick={() => changeTab('channel-logs-config')}
+                    className="p-4 border-2 border-gray-200 dark:border-gray-700 rounded-lg hover:border-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors text-left"
+                  >
+                    <MessageSquare className="h-6 w-6 text-gray-600 dark:text-gray-400 mb-2" />
+                    <h4 className="font-medium text-gray-900 dark:text-white mb-1">{t('admin.channelLogsConfig')}</h4>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">{t('admin.channelLogsConfigDesc')}</p>
+                  </button>
+                  <button
+                    onClick={() => changeTab('discord-commands')}
+                    className="p-4 border-2 border-gray-200 dark:border-gray-700 rounded-lg hover:border-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors text-left"
+                  >
+                    <Users className="h-6 w-6 text-gray-600 dark:text-gray-400 mb-2" />
+                    <h4 className="font-medium text-gray-900 dark:text-white mb-1">{t('admin.discordCommands')}</h4>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">{t('admin.discordCommandsDesc')}</p>
+                  </button>
+                  <button
+                    onClick={() => changeTab('moderation-settings')}
+                    className="p-4 border-2 border-gray-200 dark:border-gray-700 rounded-lg hover:border-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors text-left"
+                  >
+                    <Gavel className="h-6 w-6 text-gray-600 dark:text-gray-400 mb-2" />
+                    <h4 className="font-medium text-gray-900 dark:text-white mb-1">{t('admin.moderationSettings')}</h4>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">{t('admin.moderationSettingsDesc')}</p>
+                  </button>
+                  <button
+                    onClick={() => changeTab('payment-settings')}
+                    className="p-4 border-2 border-gray-200 dark:border-gray-700 rounded-lg hover:border-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors text-left"
+                  >
+                    <DollarSign className="h-6 w-6 text-gray-600 dark:text-gray-400 mb-2" />
+                    <h4 className="font-medium text-gray-900 dark:text-white mb-1">{t('admin.paymentSettings')}</h4>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">{t('admin.paymentSettingsDesc')}</p>
+                  </button>
+                  <button
+                    onClick={() => changeTab('payment-receipts')}
+                    className="p-4 border-2 border-gray-200 dark:border-gray-700 rounded-lg hover:border-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors text-left"
+                  >
+                    <Receipt className="h-6 w-6 text-gray-600 dark:text-gray-400 mb-2" />
+                    <h4 className="font-medium text-gray-900 dark:text-white mb-1">{t('admin.paymentReceipts')}</h4>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">{t('admin.paymentReceiptsDesc')}</p>
+                  </button>
+                  <button
+                    onClick={() => changeTab('firm-management')}
+                    className="p-4 border-2 border-gray-200 dark:border-gray-700 rounded-lg hover:border-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors text-left"
+                  >
+                    <Building className="h-6 w-6 text-gray-600 dark:text-gray-400 mb-2" />
+                    <h4 className="font-medium text-gray-900 dark:text-white mb-1">{t('admin.firmManagement')}</h4>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">{t('admin.firmManagementDesc')}</p>
+                  </button>
+                </div>
+              </div>
+            )}
+
             {/* Quick Actions */}
             <div className="card p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">⚡ {t('dashboard.quickActions')}</h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <button
                   onClick={() => changeTab('atlanta-server')}
-                  className="p-4 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-left"
+                  className="p-4 border-2 border-gray-200 dark:border-gray-700 rounded-lg hover:border-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors text-left"
                 >
-                  <Server className="h-6 w-6 text-gray-600 mb-2" />
-                  <h4 className="font-medium text-gray-900">Server Status</h4>
-                  <p className="text-sm text-gray-500">Check server status</p>
+                  <Server className="h-6 w-6 text-gray-600 dark:text-gray-400 mb-2" />
+                  <h4 className="font-medium text-gray-900 dark:text-white">{t('quickActions.serverStatus')}</h4>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">{t('quickActions.serverStatusDesc')}</p>
                 </button>
                 <button
                   onClick={() => changeTab('servicos')}
-                  className="p-4 border border-green-300 rounded-lg hover:bg-green-50 transition-colors text-left bg-green-50"
+                  className="p-4 border-2 border-green-300 dark:border-green-700 rounded-lg hover:border-green-500 hover:bg-green-50 dark:hover:bg-green-900/20 transition-colors text-left bg-green-50 dark:bg-green-900/10"
                 >
-                  <Truck className="h-6 w-6 text-green-600 mb-2" />
-                  <h4 className="font-medium text-gray-900">Serviços</h4>
-                  <p className="text-sm text-gray-500">Encomendas, receitas e preços</p>
+                  <Truck className="h-6 w-6 text-green-600 dark:text-green-400 mb-2" />
+                  <h4 className="font-medium text-gray-900 dark:text-white">{t('quickActions.services')}</h4>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">{t('quickActions.servicesDesc')}</p>
                 </button>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <button
-                  onClick={() => changeTab('registration-settings')}
-                  className="p-4 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-left"
-                >
-                  <Settings className="h-6 w-6 text-gray-600 mb-2" />
-                  <h4 className="font-medium text-gray-900">Registration</h4>
-                  <p className="text-sm text-gray-500">Manage registration</p>
-                </button>
-                <button
-                  onClick={() => changeTab('channel-parser')}
-                  className="p-4 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-left"
-                >
-                  <MessageSquare className="h-6 w-6 text-gray-600 mb-2" />
-                  <h4 className="font-medium text-gray-900">Channel Parser</h4>
-                  <p className="text-sm text-gray-500">Parse Discord channels</p>
-                </button>
-                <button
-                  onClick={() => changeTab('registration-analytics')}
-                  className="p-4 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-left"
-                >
-                  <BarChart3 className="h-6 w-6 text-gray-600 mb-2" />
-                  <h4 className="font-medium text-gray-900">Analytics</h4>
-                  <p className="text-sm text-gray-500">View statistics</p>
-                </button>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
-                <button
-                  onClick={() => changeTab('empresas')}
-                  className="p-4 border border-blue-300 rounded-lg hover:bg-blue-50 transition-colors text-left bg-blue-50"
-                >
-                  <Building className="h-6 w-6 text-blue-600 mb-2" />
-                  <h4 className="font-medium text-gray-900">Empresas</h4>
-                  <p className="text-sm text-gray-500">Gerenciar múltiplas empresas</p>
-                </button>
+                {canAccessChannelParser() && (
+                  <button
+                    onClick={() => changeTab('channel-parser')}
+                    className="p-4 border-2 border-gray-200 dark:border-gray-700 rounded-lg hover:border-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors text-left"
+                  >
+                    <MessageSquare className="h-6 w-6 text-gray-600 dark:text-gray-400 mb-2" />
+                    <h4 className="font-medium text-gray-900 dark:text-white">{t('quickActions.channelParser')}</h4>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">{t('quickActions.channelParserDesc')}</p>
+                  </button>
+                )}
               </div>
             </div>
 
@@ -529,142 +571,23 @@ export default function HomePage() {
         )}
 
 
-        {(activeTab === 'admin' || activeTab === 'registration-settings' || activeTab === 'registration-analytics' || activeTab === 'orders-settings' || activeTab === 'channel-logs-config' || activeTab === 'discord-commands' || activeTab === 'moderation-settings' || activeTab === 'payment-settings' || activeTab === 'payment-receipts' || activeTab === 'firm-management') && (
-          <div className="space-y-8">
-            {/* Admin Menu */}
-            <div className="card p-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Admin Panel</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <button
-                  onClick={() => changeTab('registration-settings')}
-                  className={`p-6 border-2 rounded-lg text-left transition-colors ${
-                    activeTab === 'registration-settings'
-                      ? 'border-red-500 bg-red-50'
-                      : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
-                  }`}
-                >
-                  <Settings className="h-8 w-8 text-gray-600 mb-3" />
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Registration Settings</h3>
-                  <p className="text-gray-600">Configure registration forms, roles, and approval settings</p>
-                </button>
-                <button
-                  onClick={() => changeTab('registration-analytics')}
-                  className={`p-6 border-2 rounded-lg text-left transition-colors ${
-                    activeTab === 'registration-analytics'
-                      ? 'border-red-500 bg-red-50'
-                      : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
-                  }`}
-                >
-                  <BarChart3 className="h-8 w-8 text-gray-600 mb-3" />
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Registration Analytics</h3>
-                  <p className="text-gray-600">View registration statistics, manage submissions, and analyze data</p>
-                </button>
-                <button
-                  onClick={() => changeTab('orders-settings')}
-                  className={`p-6 border-2 rounded-lg text-left transition-colors ${
-                    activeTab === 'orders-settings'
-                      ? 'border-red-500 bg-red-50'
-                      : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
-                  }`}
-                >
-                  <Package className="h-8 w-8 text-gray-600 mb-3" />
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Orders Settings</h3>
-                  <p className="text-gray-600">Configure orders system, firms, and order management settings</p>
-                </button>
-                <button
-                  onClick={() => changeTab('channel-logs-config')}
-                  className={`p-6 border-2 rounded-lg text-left transition-colors ${
-                    activeTab === 'channel-logs-config'
-                      ? 'border-red-500 bg-red-50'
-                      : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
-                  }`}
-                >
-                  <MessageSquare className="h-8 w-8 text-gray-600 mb-3" />
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Channel Logs Config</h3>
-                  <p className="text-gray-600">Configure automatic channel log forwarding to external systems</p>
-                </button>
-                <button
-                  onClick={() => changeTab('discord-commands')}
-                  className={`p-6 border-2 rounded-lg text-left transition-colors ${
-                    activeTab === 'discord-commands'
-                      ? 'border-red-500 bg-red-50'
-                      : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
-                  }`}
-                >
-                  <Users className="h-8 w-8 text-gray-600 mb-3" />
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Discord Commands</h3>
-                  <p className="text-gray-600">Manage Discord slash commands and bot interactions</p>
-                </button>
-                <button
-                  onClick={() => changeTab('moderation-settings')}
-                  className={`p-6 border-2 rounded-lg text-left transition-colors ${
-                    activeTab === 'moderation-settings'
-                      ? 'border-red-500 bg-red-50'
-                      : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
-                  }`}
-                >
-                  <Gavel className="h-8 w-8 text-gray-600 mb-3" />
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Moderation Settings</h3>
-                  <p className="text-gray-600">Configure clear command, auto-mod, and auto-reply features</p>
-                </button>
-                <button
-                  onClick={() => changeTab('payment-settings')}
-                  className={`p-6 border-2 rounded-lg text-left transition-colors ${
-                    activeTab === 'payment-settings'
-                      ? 'border-blue-500 bg-blue-50'
-                      : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
-                  }`}
-                >
-                  <DollarSign className="h-8 w-8 text-gray-600 mb-3" />
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Payment Settings</h3>
-                  <p className="text-gray-600">Configure default pricing and payment system settings</p>
-                </button>
-                <button
-                  onClick={() => changeTab('payment-receipts')}
-                  className={`p-6 border-2 rounded-lg text-left transition-colors ${
-                    activeTab === 'payment-receipts'
-                      ? 'border-blue-500 bg-blue-50'
-                      : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
-                  }`}
-                >
-                  <Receipt className="h-8 w-8 text-gray-600 mb-3" />
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Worker Payment Receipts</h3>
-                  <p className="text-gray-600">View worker payment receipts created by Pay Worker button</p>
-                </button>
-                <button
-                  onClick={() => changeTab('firm-management')}
-                  className={`p-6 border-2 rounded-lg text-left transition-colors ${
-                    activeTab === 'firm-management'
-                      ? 'border-blue-500 bg-blue-50'
-                      : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
-                  }`}
-                >
-                  <Building className="h-8 w-8 text-gray-600 mb-3" />
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Firm Management</h3>
-                  <p className="text-gray-600">Configure multiple firms with role-based access and monitoring</p>
-                </button>
-              </div>
-            </div>
-
-            {/* Content Area */}
-            {activeTab === 'registration-settings' && <RegistrationSettings />}
-            {activeTab === 'registration-analytics' && <RegistrationAnalytics />}
-            {activeTab === 'orders-settings' && <OrdersSettings />}
-            {activeTab === 'channel-logs-config' && <ChannelLogsConfig />}
-            {activeTab === 'discord-commands' && <DiscordCommands />}
-            {activeTab === 'moderation-settings' && <ModerationSettings />}
-            {activeTab === 'payment-settings' && <PaymentSettings />}
-            {activeTab === 'payment-receipts' && <WorkerPaymentReceipts />}
-            {activeTab === 'firm-management' && <FirmManagement />}
-          </div>
-        )}
+        {/* Admin Tool Components */}
+        {activeTab === 'registration-settings' && <RegistrationSettings />}
+        {activeTab === 'registration-analytics' && <RegistrationAnalytics />}
+        {activeTab === 'orders-settings' && <OrdersSettings />}
+        {activeTab === 'channel-logs-config' && <ChannelLogsConfig />}
+        {activeTab === 'discord-commands' && <DiscordCommands />}
+        {activeTab === 'moderation-settings' && <ModerationSettings />}
+        {activeTab === 'payment-settings' && <PaymentSettings />}
+        {activeTab === 'payment-receipts' && <WorkerPaymentReceipts />}
+        {activeTab === 'firm-management' && <FirmManagement />}
 
         {/* Servicos Section */}
         {(activeTab === 'servicos' || activeTab === 'orders-dashboard' || activeTab === 'orders-management' || activeTab === 'recipes' || activeTab === 'price-list') && (
           <div className="space-y-8">
             {/* Servicos Menu */}
             <div className="card p-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Serviços</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">{t('servicos.title')}</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <button
                   onClick={() => changeTab('orders-dashboard')}
@@ -675,8 +598,8 @@ export default function HomePage() {
                   }`}
                 >
                   <Package className="h-8 w-8 text-gray-600 mb-3" />
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Encomendas</h3>
-                  <p className="text-gray-600">Sistema de pedidos e encomendas</p>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{t('servicos.orders')}</h3>
+                  <p className="text-gray-600">{t('servicos.ordersDesc')}</p>
                 </button>
                 <button
                   onClick={() => changeTab('recipes')}
@@ -687,8 +610,8 @@ export default function HomePage() {
                   }`}
                 >
                   <ChefHat className="h-8 w-8 text-gray-600 mb-3" />
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Receitas</h3>
-                  <p className="text-gray-600">Calculadora de receitas</p>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{t('servicos.recipes')}</h3>
+                  <p className="text-gray-600">{t('servicos.recipesDesc')}</p>
                 </button>
                 <button
                   onClick={() => changeTab('price-list')}
@@ -699,8 +622,8 @@ export default function HomePage() {
                   }`}
                 >
                   <DollarSign className="h-8 w-8 text-gray-600 mb-3" />
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Lista de Preços</h3>
-                  <p className="text-gray-600">Gerenciamento de preços de itens</p>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{t('servicos.priceList')}</h3>
+                  <p className="text-gray-600">{t('servicos.priceListDesc')}</p>
                 </button>
               </div>
             </div>
@@ -718,14 +641,14 @@ export default function HomePage() {
         {activeTab === 'empresas' && (
           <div className="space-y-8">
             <div className="card p-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">🏢 Empresas</h2>
-              <p className="text-gray-600 mb-6">Selecione uma empresa para acessar o sistema de gestão</p>
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">🏢 {t('firms.title')}</h2>
+              <p className="text-gray-600 mb-6">{t('firms.selectCompany')}</p>
               
               
               {firmsLoading ? (
                 <div className="text-center py-12">
                   <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-                  <p className="text-gray-600">Carregando empresas...</p>
+                  <p className="text-gray-600">{t('firms.loading')}</p>
                 </div>
               ) : (
                 <>
@@ -738,52 +661,52 @@ export default function HomePage() {
                           </div>
                           <div>
                             <h3 className="text-lg font-semibold text-gray-900">{firm.name}</h3>
-                            <p className="text-sm text-gray-500">{firm.description || 'Sistema de gestão empresarial'}</p>
+                            <p className="text-sm text-gray-500">{firm.description || t('firms.selectCompany')}</p>
                           </div>
                         </div>
-                        
+
                         <div className="space-y-2 mb-4">
                           <div className="flex items-center justify-between text-sm">
-                            <span className="text-gray-500">Status:</span>
+                            <span className="text-gray-500">{t('firms.status')}:</span>
                             <span className={`font-medium ${
                               firm.enabled ? 'text-green-600' : 'text-red-600'
                             }`}>
-                              {firm.enabled ? 'Ativo' : 'Inativo'}
+                              {firm.enabled ? t('firms.active') : t('firms.inactive')}
                             </span>
                           </div>
                           <div className="flex items-center justify-between text-sm">
-                            <span className="text-gray-500">Monitoramento:</span>
+                            <span className="text-gray-500">{t('firms.monitoring')}:</span>
                             <span className={`font-medium ${
                               firm.monitoring.enabled ? 'text-green-600' : 'text-red-600'
                             }`}>
-                              {firm.monitoring.enabled ? 'Ativo' : 'Inativo'}
+                              {firm.monitoring.enabled ? t('firms.active') : t('firms.inactive')}
                             </span>
                           </div>
                           <div className="flex items-center justify-between text-sm">
-                            <span className="text-gray-500">Roles:</span>
+                            <span className="text-gray-500">{t('firms.roles')}:</span>
                             <span className="text-gray-900">{firm.allowedRoles.length}</span>
                           </div>
                         </div>
-                        
-                        <button 
+
+                        <button
                           onClick={() => {
                             // Navigate to dynamic firm dashboard
                             changeTab(`firm-${firm.id}`);
                           }}
                           className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors"
                         >
-                          Acessar {firm.name}
+                          {t('firms.access')} {firm.name}
                         </button>
                       </div>
                     ))}
                   </div>
-                  
+
                   {accessibleFirms.length === 0 && (
                     <div className="text-center py-12">
                       <Building className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                      <h3 className="text-lg font-medium text-gray-900 mb-2">Nenhuma empresa disponível</h3>
+                      <h3 className="text-lg font-medium text-gray-900 mb-2">{t('firms.noFirms')}</h3>
                       <p className="text-gray-500">
-                        Você não tem acesso a nenhuma empresa ou nenhuma empresa foi configurada ainda.
+                        {t('firms.noFirmsDescription')}
                       </p>
                     </div>
                   )}

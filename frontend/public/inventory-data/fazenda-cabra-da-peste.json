@@ -241,9 +241,32 @@
       "atualizado_em": "2025-10-04T12:42:16.520Z",
       "ultimo_autor": "Santiago Bowdin",
       "ativo": true
+    },
+    "Creeking_Thyme": {
+      "id": "Creeking_Thyme",
+      "nome": "Creeking_Thyme",
+      "displayName": "Creeking Thyme",
+      "categoria": "plantas",
+      "quantidade": 500,
+      "criado_em": "2025-10-05T00:22:45.168Z",
+      "atualizado_em": "2025-10-05T00:22:45.168Z",
+      "ultimo_autor": "Margarida Versace",
+      "ativo": true
     }
   },
   "transactions": [
+    {
+      "id": "0ba81a0c-c5c1-4851-b21a-ce62403a8915",
+      "itemId": "Creeking_Thyme",
+      "tipo": "criar",
+      "quantidade_anterior": 0,
+      "quantidade_posterior": 500,
+      "quantidade_mudanca": 500,
+      "autor": "API",
+      "timestamp": "2025-10-05T00:33:31.941Z",
+      "origem": "manual",
+      "detalhes": "Created item Creeking Thyme"
+    },
     {
       "id": "9eba79f3-e12e-44c3-8015-59d6a5399143",
       "itemId": "palhaitaliana",
@@ -822,19 +845,31 @@
     }
   ],
   "analytics": {
-    "totalItems": 22,
-    "totalQuantity": 7510,
+    "totalItems": 23,
+    "totalQuantity": 8010,
     "totalValue": 0,
     "categorias": {},
     "workers": [
       {
         "nome": "API",
-        "totalTransactions": 48,
-        "lastActivity": "2025-10-04T22:47:12.549Z",
+        "totalTransactions": 49,
+        "lastActivity": "2025-10-05T00:33:31.941Z",
         "averagePerDay": 0
       }
     ],
     "recentTransactions": [
+      {
+        "id": "0ba81a0c-c5c1-4851-b21a-ce62403a8915",
+        "itemId": "Creeking_Thyme",
+        "tipo": "criar",
+        "quantidade_anterior": 0,
+        "quantidade_posterior": 500,
+        "quantidade_mudanca": 500,
+        "autor": "API",
+        "timestamp": "2025-10-05T00:33:31.941Z",
+        "origem": "manual",
+        "detalhes": "Created item Creeking Thyme"
+      },
       {
         "id": "9eba79f3-e12e-44c3-8015-59d6a5399143",
         "itemId": "palhaitaliana",
@@ -1503,7 +1538,8 @@
       "satchel",
       "potedemel",
       "adubo3",
-      "palhaitaliana"
+      "palhaitaliana",
+      "Creeking_Thyme"
     ]
   },
   "settings": {
@@ -1521,9 +1557,9 @@
     "backupEnabled": true,
     "backupInterval": 24
   },
-  "lastUpdate": "2025-10-04T22:47:12.550Z",
-  "totalItems": 22,
-  "totalQuantity": 7510,
+  "lastUpdate": "2025-10-05T00:33:31.945Z",
+  "totalItems": 23,
+  "totalQuantity": 8010,
   "activeWorkers": [],
   "version": "1.0.0",
   "firmId": "fazenda-cabra-da-peste"

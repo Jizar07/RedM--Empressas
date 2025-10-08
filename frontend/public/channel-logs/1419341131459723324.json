@@ -1,8 +1,198 @@
 {
   "channelId": "1419341131459723324",
-  "lastUpdated": "2025-10-04T20:50:31.849Z",
-  "messageCount": 585,
+  "lastUpdated": "2025-10-08T08:56:21.993Z",
+  "messageCount": 604,
   "messages": [
+    {
+      "id": "1425406456043278427",
+      "author": "Santiago Bowdin",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: Black_Berry x200\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 05:56:21",
+      "timestamp": "2025-10-08T08:56:21.892Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: Black_Berry x200\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 05:56:21",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425406247062212659",
+      "author": "Santiago Bowdin",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: Black_Berry x200\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 05:55:31",
+      "timestamp": "2025-10-08T08:55:32.067Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: Black_Berry x200\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 05:55:31",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425406139717386251",
+      "author": "Santiago Bowdin",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: Red_Raspberry x200\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 05:55:06",
+      "timestamp": "2025-10-08T08:55:06.474Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: Red_Raspberry x200\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 05:55:06",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425406127100919839",
+      "author": "Santiago Bowdin",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: Prairie_Poppy x200\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 05:55:03",
+      "timestamp": "2025-10-08T08:55:03.466Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: Prairie_Poppy x200\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 05:55:03",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425405842190237699",
+      "author": "Santiago Bowdin",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: Oleander_Sage x120\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 05:53:55",
+      "timestamp": "2025-10-08T08:53:55.538Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: Oleander_Sage x120\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 05:53:55",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425405830437801994",
+      "author": "Santiago Bowdin",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: coffeebeans x500\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 05:53:52",
+      "timestamp": "2025-10-08T08:53:52.736Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: coffeebeans x500\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 05:53:52",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425405500035436555",
+      "author": "Santiago Bowdin",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: coffeebeans x100\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 05:52:33",
+      "timestamp": "2025-10-08T08:52:33.962Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: coffeebeans x100\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 05:52:33",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425405171344609311",
+      "author": "Santiago Bowdin",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: Oleander_Sage x500\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 05:51:15",
+      "timestamp": "2025-10-08T08:51:15.596Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: Oleander_Sage x500\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 05:51:15",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425405163526688809",
+      "author": "Santiago Bowdin",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: Oregano x500\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 05:51:13",
+      "timestamp": "2025-10-08T08:51:13.732Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: Oregano x500\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 05:51:13",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425404931690729543",
+      "author": "Santiago Bowdin",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: Red_Raspberry x500\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 05:50:18",
+      "timestamp": "2025-10-08T08:50:18.458Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: Red_Raspberry x500\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 05:50:18",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425404924329459825",
+      "author": "Santiago Bowdin",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: Black_Berry x500\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 05:50:16",
+      "timestamp": "2025-10-08T08:50:16.703Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: Black_Berry x500\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 05:50:16",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425404704204128318",
+      "author": "Santiago Bowdin",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: Milk_Weed x500\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 05:49:24",
+      "timestamp": "2025-10-08T08:49:24.221Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: Milk_Weed x500\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 05:49:24",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425404696914432102",
+      "author": "Santiago Bowdin",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: Crows_Garlic x500\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 05:49:22",
+      "timestamp": "2025-10-08T08:49:22.483Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: Crows_Garlic x500\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 05:49:22",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425402174778900624",
+      "author": "Santiago Bowdin",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: coffeebeans x100\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 05:39:21",
+      "timestamp": "2025-10-08T08:39:21.159Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: coffeebeans x100\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 05:39:21",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425402103102439555",
+      "author": "Santiago Bowdin",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: Oleander_Sage x120\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 05:39:03",
+      "timestamp": "2025-10-08T08:39:04.070Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: Oleander_Sage x120\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 08/10/2025 - 05:39:03",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424475093743964201",
+      "author": "Santiago Bowdin",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: LibidgelOvino x50\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 05/10/2025 - 16:15:27",
+      "timestamp": "2025-10-05T19:15:27.816Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: LibidgelOvino x50\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 05/10/2025 - 16:15:27",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424475079927922750",
+      "author": "Santiago Bowdin",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: LibidgelAsneiro x50\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 05/10/2025 - 16:15:24",
+      "timestamp": "2025-10-05T19:15:24.522Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: LibidgelAsneiro x50\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 05/10/2025 - 16:15:24",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424475066657280080",
+      "author": "Santiago Bowdin",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: LibidgelOvino x170\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 05/10/2025 - 16:15:21",
+      "timestamp": "2025-10-05T19:15:21.358Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: LibidgelOvino x170\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 05/10/2025 - 16:15:21",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424475060000788603",
+      "author": "Santiago Bowdin",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: LibidgelAsneiro x170\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 05/10/2025 - 16:15:19",
+      "timestamp": "2025-10-05T19:15:19.771Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: LibidgelAsneiro x170\nAutor:: Santiago Bowdin | FIXO: 71809\nData:: 05/10/2025 - 16:15:19",
+      "rawEmbeds": []
+    },
     {
       "id": "1424136629974728734",
       "author": "Jizar Stoffeliz",

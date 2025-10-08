@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1759807484658_7qoj0b",
+  "sessionId": "session_1759803216100_n2x8n3",
+  "managerId": "588934801508270082",
+  "managerName": "chrisbam",
+  "workerId": "268794827305517057",
+  "workerName": "Pedro Sonoro",
+  "amountPaid": 250,
+  "paidAt": "2025-10-07T03:24:44.658Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-07T03:19:44.658Z",
+    "endTime": "2025-10-07T03:34:44.658Z"
+  }
+}

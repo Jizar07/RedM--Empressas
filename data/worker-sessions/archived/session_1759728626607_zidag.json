@@ -1,0 +1,187 @@
+{
+  "workerId": "845711436730597417",
+  "workerName": "Anthony Versace",
+  "channelId": "1423525103769092096",
+  "sessionId": "session_1759728626607_zidag",
+  "startTime": "2025-10-06T05:30:26.607Z",
+  "lastActivity": "2025-10-06T08:05:13.253Z",
+  "status": "stale",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 50,
+      "transactionId": "tx_1759731601252_6yfbtvn",
+      "timestamp": "2025-10-06T06:20:01.252Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 50,
+      "transactionId": "tx_1759731743693_hgqewc",
+      "timestamp": "2025-10-06T06:22:23.694Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1759734271415_0pcnah",
+      "timestamp": "2025-10-06T07:04:31.415Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1759735235928_41z1dr",
+      "timestamp": "2025-10-06T07:20:35.928Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Black Berry Semente",
+      "quantity": 50,
+      "transactionId": "tx_1759735837168_um8wxf",
+      "timestamp": "2025-10-06T07:30:37.168Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Adubo3",
+      "quantity": 50,
+      "transactionId": "tx_1759737292958_9s85xn",
+      "timestamp": "2025-10-06T07:54:52.958Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Black Berry Semente",
+      "quantity": 1,
+      "transactionId": "tx_1759737797798_a9b7q",
+      "timestamp": "2025-10-06T08:03:17.798Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Adubo3",
+      "quantity": 1,
+      "transactionId": "tx_1759737913253_fxinen",
+      "timestamp": "2025-10-06T08:05:13.253Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Bode",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759728626608_mracoq",
+      "timestamp": "2025-10-06T05:30:26.608Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Ovelha Macho",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759728842985_movksi",
+      "timestamp": "2025-10-06T05:34:02.985Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Bode",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759731274841_zh9kha",
+      "timestamp": "2025-10-06T06:14:34.841Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759733087695_4e7pj6",
+      "timestamp": "2025-10-06T06:44:47.695Z"
+    }
+  ],
+  "financialTransactions": [],
+  "totalCredits": 170,
+  "embedMessageId": "1424668813168738354",
+  "animalExpectations": [
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759728626608_mracoq",
+      "takenTimestamp": "2025-10-06T05:30:26.608Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759728842985_movksi",
+      "takenTimestamp": "2025-10-06T05:34:02.985Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759731274841_zh9kha",
+      "takenTimestamp": "2025-10-06T06:14:34.841Z"
+    }
+  ],
+  "seedExpectations": [
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 50,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 500,
+      "plantsFulfilled": 500,
+      "isComplete": true,
+      "transactionId": "tx_1759731601252_6yfbtvn"
+    },
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 50,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 500,
+      "plantsFulfilled": 500,
+      "isComplete": true,
+      "transactionId": "tx_1759731743693_hgqewc"
+    },
+    {
+      "seedType": "Black Berry Semente",
+      "seedQuantity": 50,
+      "expectedPlantType": "Black Berry Semente",
+      "expectedPlantQuantity": 500,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759735837168_um8wxf"
+    },
+    {
+      "seedType": "Adubo3",
+      "seedQuantity": 50,
+      "expectedPlantType": "Adubo3",
+      "expectedPlantQuantity": 500,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759737292958_9s85xn"
+    },
+    {
+      "seedType": "Black Berry Semente",
+      "seedQuantity": 1,
+      "expectedPlantType": "Black Berry Semente",
+      "expectedPlantQuantity": 10,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759737797798_a9b7q"
+    },
+    {
+      "seedType": "Adubo3",
+      "seedQuantity": 1,
+      "expectedPlantType": "Adubo3",
+      "expectedPlantQuantity": 10,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759737913253_fxinen"
+    }
+  ],
+  "completedAt": "2025-10-08T08:10:45.154Z",
+  "notes": "Auto-archived due to inactivity"
+}

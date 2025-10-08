@@ -1700,3 +1700,46 @@ All farm service functionality operational with complete audit trail, role-based
   - Caixa de Frutas (25 boxes: Apple, Peach, Banana, English Mace)
 - **Fraud Detection System**: Real-time plant-to-box ratio analysis, external box detection, timeline gap analysis
 - **Result**: All TypeScript compilation errors resolved, system fully operational with comprehensive embed documentation and confirmed box type configurations
+
+### 2025-10-08 08:14:54
+**Action**: Language Switcher Implementation & Complete Dashboard Reorganization
+**Prompt**: "we also getting mixed portuguese/english texts. add a language flag on top menu (by user profile) USA/Brazil flag, so user can choose which language they want." and "move everything from Admin tab into Dashboard, reorganize dashboard to better use space, make firms more prominent"
+**Changes**:
+- **Language Switcher System**: Implemented complete English/Portuguese translation system with USA 🇺🇸 / Brazil 🇧🇷 flag toggle
+  - Created `LanguageContext.tsx` with localStorage persistence and default pt-BR language
+  - Created translation files `en.ts` and `pt-BR.ts` with 150+ translation keys organized by category
+  - Created `useTranslation` hook for easy access throughout the app
+  - Created `LanguageToggle.tsx` component with SVG flag icons (emoji fallback didn't work)
+  - Added `LanguageProvider` to app layout wrapping entire application
+  - Translated entire main page.tsx including navigation, dashboard, admin, servicos, and firms sections
+- **Dashboard Reorganization**: Transformed Dashboard from sparse landing page to comprehensive command center
+  - **Removed Admin Tab**: Eliminated redundant Admin tab from navigation completely
+  - **Created Firm Quick Access Cards**: Replaced generic "Active Firms: 5" stat card with 5 prominent, clickable firm cards
+    - Each card displays firm emoji (🌾 🚂 🐣 🏥 🏪), name, status indicator, and access button
+    - Grid layout (5 columns on desktop, responsive on mobile)
+    - Hover effects with blue border and background
+  - **Moved Admin Tools to Dashboard**: All 9 admin tool cards now visible on Dashboard main page
+    - Registration Settings, Registration Analytics, Orders Settings
+    - Channel Logs Config, Discord Commands, Moderation Settings
+    - Payment Settings, Payment Receipts, Firm Management
+    - 3-column grid with hover effects
+  - **Streamlined Quick Actions**: Simplified from scattered layout to 3 essential actions
+    - Server Status (Atlanta Server)
+    - Serviços (Orders/Recipes/Prices)
+    - Channel Parser (conditional on user permissions)
+  - **Removed Admin Tab Content Section**: Deleted redundant admin menu display (lines 574-702)
+  - **Updated Navigation Active States**: Removed admin tab checks from isActive logic
+- **Files Modified**:
+  - `frontend/contexts/LanguageContext.tsx` - New language context with localStorage
+  - `frontend/lib/translations/en.ts` - 150+ English translations
+  - `frontend/lib/translations/pt-BR.ts` - 150+ Portuguese translations
+  - `frontend/lib/translations/index.ts` - Translation exports
+  - `frontend/hooks/useTranslation.ts` - Translation hook with nested key support
+  - `frontend/components/LanguageToggle.tsx` - Flag toggle component with SVG flags
+  - `frontend/app/layout.tsx` - Added LanguageProvider wrapper
+  - `frontend/app/page.tsx` - Complete restructure:
+    - Lines 187-236: Removed Admin tab from navigation
+    - Lines 337-341: Updated navigation active state logic
+    - Lines 399-545: Added Firm cards, Admin Tools section, streamlined Quick Actions
+    - Lines 574-583: Simplified admin tool component rendering
+- **Result**: Professional bilingual dashboard with USA/Brazil flag toggle, no more Admin tab, prominent firm access cards, all admin tools visible on main page, better space utilization, organized sections, and reduced navigation requirements

@@ -1,0 +1,58 @@
+{
+  "workerId": "1316586037136461845",
+  "workerName": "Wilian slow",
+  "channelId": "1424537427212636264",
+  "sessionId": "session_1759708211177_d7om7",
+  "startTime": "2025-10-05T23:50:11.177Z",
+  "lastActivity": "2025-10-06T05:15:55.988Z",
+  "status": "stale",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Junco",
+      "quantity": 50,
+      "transactionId": "tx_1759708211180_37gl2z",
+      "timestamp": "2025-10-05T23:50:11.180Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Adubo3",
+      "quantity": 100,
+      "transactionId": "tx_1759709840613_a6234h",
+      "timestamp": "2025-10-06T00:17:20.613Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 490,
+      "transactionId": "tx_1759727755988_7kstya",
+      "timestamp": "2025-10-06T05:15:55.988Z"
+    }
+  ],
+  "animalTransactions": [],
+  "financialTransactions": [],
+  "totalCredits": 122.5,
+  "embedMessageId": "1424626208699715675",
+  "seedExpectations": [
+    {
+      "seedType": "Semente de Junco",
+      "seedQuantity": 50,
+      "expectedPlantType": "Junco",
+      "expectedPlantQuantity": 500,
+      "plantsFulfilled": 490,
+      "isComplete": false,
+      "transactionId": "tx_1759708211180_37gl2z"
+    },
+    {
+      "seedType": "Adubo3",
+      "seedQuantity": 100,
+      "expectedPlantType": "Adubo3",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759709840613_a6234h"
+    }
+  ],
+  "completedAt": "2025-10-08T08:10:45.153Z",
+  "notes": "Auto-archived due to inactivity"
+}

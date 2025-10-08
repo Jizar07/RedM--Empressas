@@ -793,6 +793,20 @@ This file is synchronized with: https://github.com/Jizar07/RedM--Empressas
 - Created CLAUDE.md for AI assistant guidance
 - Repository: https://github.com/Jizar07/RedM--Empressas
 
+### [0.054] - 2025-10-08
+- **Language Switcher System**: Complete English/Portuguese translation with USA 🇺🇸 / Brazil 🇧🇷 flag toggle
+  - Created LanguageContext with localStorage persistence (default: pt-BR)
+  - 150+ translation keys organized by category (nav, dashboard, admin, servicos, firms, common)
+  - SVG flag icons for cross-platform compatibility
+  - useTranslation hook with nested key support
+  - Translated entire main dashboard interface
+- **Dashboard Reorganization**: Transformed sparse landing page into comprehensive command center
+  - **Removed Admin Tab**: Eliminated redundant navigation tab
+  - **Firm Quick Access Cards**: 5 prominent clickable cards (🌾 Fazenda, 🚂 Ferrovia, 🐣 Berçário, 🏥 Veterinária, 🏪 Armaria)
+  - **Moved Admin Tools to Dashboard**: All 9 admin tool cards now visible on main page
+  - **Streamlined Quick Actions**: Simplified to 3 essential actions (Server Status, Serviços, Channel Parser)
+  - Better space utilization, organized sections, reduced navigation
+
 ### [0.042] - 2025-09-17
 - **Payment System Fix**: Changed to pay workers for ALL plants deposited, not just those matching seed expectations
 - **Button Logic Fix**: Pay Worker button now shows when any plants are deposited

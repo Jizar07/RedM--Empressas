@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1759789774145_erotsj",
+  "sessionId": "session_1759507705871_zh4jv",
+  "managerId": "198538680686608384",
+  "managerName": "Barth",
+  "workerId": "398270963969425408",
+  "workerName": "John Weslley",
+  "amountPaid": 2531.8,
+  "paidAt": "2025-10-06T22:29:34.145Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-06T22:24:34.145Z",
+    "endTime": "2025-10-06T22:39:34.145Z"
+  }
+}

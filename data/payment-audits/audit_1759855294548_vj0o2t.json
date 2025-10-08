@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1759855294548_vj0o2t",
+  "sessionId": "session_1759441439896_idz95",
+  "managerId": "141250620593012736",
+  "managerName": "r3dley",
+  "workerId": "141243288572264449",
+  "workerName": "Dexter Morgan",
+  "amountPaid": 160,
+  "paidAt": "2025-10-07T16:41:34.548Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-07T16:36:34.548Z",
+    "endTime": "2025-10-07T16:51:34.548Z"
+  }
+}

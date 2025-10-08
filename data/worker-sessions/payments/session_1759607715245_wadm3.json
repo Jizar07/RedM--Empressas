@@ -1,0 +1,92 @@
+{
+  "sessionId": "session_1759607715245_wadm3",
+  "workerId": "590207324845637642",
+  "workerName": "Margarida Versace",
+  "amount": 320,
+  "paidBy": "141250620593012736",
+  "paidByName": "r3dley",
+  "paidAt": "2025-10-05T00:52:23.757Z",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Crows Garlic Semente",
+      "quantity": 50,
+      "transactionId": "tx_1759607736958_4lrlwe",
+      "timestamp": "2025-10-04T19:55:36.958Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "CoffeeSementes",
+      "quantity": 50,
+      "transactionId": "tx_1759620896730_77imz",
+      "timestamp": "2025-10-04T23:34:56.730Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "CoffeeSementes",
+      "quantity": 50,
+      "transactionId": "tx_1759620907629_mw6a7g",
+      "timestamp": "2025-10-04T23:35:07.629Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Creeking Thyme Semente",
+      "quantity": 50,
+      "transactionId": "tx_1759620924294_3yi614",
+      "timestamp": "2025-10-04T23:35:24.294Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Galinha",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759607715248_1zg3fk",
+      "timestamp": "2025-10-04T19:55:15.248Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759610930226_jldm4",
+      "timestamp": "2025-10-04T20:48:50.226Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Vaca",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759622786705_792c1e",
+      "timestamp": "2025-10-05T00:06:26.705Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Galinha",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759622837900_qz84ip",
+      "timestamp": "2025-10-05T00:07:17.900Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Vaca",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759622877469_1ymdco",
+      "timestamp": "2025-10-05T00:07:57.469Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759624750470_d9j4v",
+      "timestamp": "2025-10-05T00:39:10.470Z"
+    }
+  ],
+  "financialTransactions": []
+}

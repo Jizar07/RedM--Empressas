@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1759871590852_m9ildz",
+  "sessionId": "session_1759502436681_szhp",
+  "managerId": "141250620593012736",
+  "managerName": "r3dley",
+  "workerId": "959122593523335188",
+  "workerName": "Ingrid Dangerous",
+  "amountPaid": 2830,
+  "paidAt": "2025-10-07T21:13:10.852Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-07T21:08:10.852Z",
+    "endTime": "2025-10-07T21:23:10.852Z"
+  }
+}

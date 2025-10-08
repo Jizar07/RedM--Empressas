@@ -1,0 +1,25 @@
+{
+  "workerId": "614876929266417672",
+  "workerName": "Notorius Bowdin",
+  "channelId": "1420810298557726781",
+  "sessionId": "session_1759786874916_iwu0it",
+  "startTime": "2025-10-06T21:41:14.916Z",
+  "lastActivity": "2025-10-06T21:41:14.920Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1759786874920_w8h5wd",
+      "timestamp": "2025-10-06T21:41:14.920Z"
+    }
+  ],
+  "animalTransactions": [],
+  "financialTransactions": [],
+  "totalCredits": 125,
+  "embedMessageId": "1424874171472674857",
+  "seedExpectations": [],
+  "completedAt": "2025-10-07T16:37:12.509Z",
+  "notes": "Pago por r3dley (141250620593012736)"
+}

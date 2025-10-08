@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1759688318906_5p8urw",
+  "sessionId": "session_1759663808150_lcpth",
+  "managerId": "470361257497722886",
+  "managerName": "Gordo caramelo",
+  "workerId": "470361257497722886",
+  "workerName": "Kenai Comanches",
+  "amountPaid": 1620,
+  "paidAt": "2025-10-05T18:18:38.906Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-05T18:13:38.906Z",
+    "endTime": "2025-10-05T18:28:38.906Z"
+  }
+}

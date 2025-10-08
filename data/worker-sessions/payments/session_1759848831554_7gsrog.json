@@ -1,0 +1,20 @@
+{
+  "sessionId": "session_1759848831554_7gsrog",
+  "workerId": "949397147030274059",
+  "workerName": "Izzynha Evans",
+  "amount": 100,
+  "paidBy": "949397147030274059",
+  "paidByName": "๖ۣۜζ͜͡ɪᴢᴢʏɴʜᴀ🎀",
+  "paidAt": "2025-10-07T15:43:47.656Z",
+  "plantTransactions": [
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 400,
+      "transactionId": "tx_1759848831556_tqgpf",
+      "timestamp": "2025-10-07T14:53:51.556Z"
+    }
+  ],
+  "animalTransactions": [],
+  "financialTransactions": []
+}

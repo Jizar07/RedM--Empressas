@@ -1,0 +1,20 @@
+{
+  "sessionId": "session_1759786874916_iwu0it",
+  "workerId": "614876929266417672",
+  "workerName": "Notorius Bowdin",
+  "amount": 125,
+  "paidBy": "141250620593012736",
+  "paidByName": "r3dley",
+  "paidAt": "2025-10-07T16:37:12.512Z",
+  "plantTransactions": [
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1759786874920_w8h5wd",
+      "timestamp": "2025-10-06T21:41:14.920Z"
+    }
+  ],
+  "animalTransactions": [],
+  "financialTransactions": []
+}

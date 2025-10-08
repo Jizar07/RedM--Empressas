@@ -1,0 +1,212 @@
+{
+  "workerId": "1235055429260935321",
+  "workerName": "smith ramirez",
+  "channelId": "1416447193685950595",
+  "sessionId": "session_1759505902323_7dkdmx",
+  "startTime": "2025-10-03T15:38:22.323Z",
+  "lastActivity": "2025-10-04T04:58:01.407Z",
+  "status": "stale",
+  "plantTransactions": [],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Galo",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759505902323_ox4cl",
+      "timestamp": "2025-10-03T15:38:22.323Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759507887642_iq5zl",
+      "timestamp": "2025-10-03T16:11:27.642Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Galinha",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759508002232_ioazio",
+      "timestamp": "2025-10-03T16:13:22.232Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Porca",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759510089627_36xken",
+      "timestamp": "2025-10-03T16:48:09.627Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Mula",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759510126968_6nv6fk",
+      "timestamp": "2025-10-03T16:48:46.968Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759512049077_m23jy",
+      "timestamp": "2025-10-03T17:20:49.077Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Mula",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759512135392_6uxca8",
+      "timestamp": "2025-10-03T17:22:15.392Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759514691352_h9ycj",
+      "timestamp": "2025-10-03T18:04:51.352Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Mula",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759514893447_e6frdm",
+      "timestamp": "2025-10-03T18:08:13.447Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759516985678_idcot9",
+      "timestamp": "2025-10-03T18:43:05.678Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Cabra",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759517052706_jaiw0d",
+      "timestamp": "2025-10-03T18:44:12.706Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759518900269_0as7tu",
+      "timestamp": "2025-10-03T19:15:00.269Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Burro",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759519285592_g9nvc4",
+      "timestamp": "2025-10-03T19:21:25.592Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759521223525_crhd6n",
+      "timestamp": "2025-10-03T19:53:43.525Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Porco",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759552107292_szqs5u",
+      "timestamp": "2025-10-04T04:28:27.292Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759553881407_x1rp7",
+      "timestamp": "2025-10-04T04:58:01.407Z"
+    }
+  ],
+  "financialTransactions": [],
+  "totalCredits": 1120,
+  "embedMessageId": "1423896924645232641",
+  "animalExpectations": [
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759505902323_ox4cl",
+      "takenTimestamp": "2025-10-03T15:38:22.323Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759508002232_ioazio",
+      "takenTimestamp": "2025-10-03T16:13:22.232Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759510089627_36xken",
+      "takenTimestamp": "2025-10-03T16:48:09.627Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759510126968_6nv6fk",
+      "takenTimestamp": "2025-10-03T16:48:46.968Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759512135392_6uxca8",
+      "takenTimestamp": "2025-10-03T17:22:15.392Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759514893447_e6frdm",
+      "takenTimestamp": "2025-10-03T18:08:13.447Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759517052706_jaiw0d",
+      "takenTimestamp": "2025-10-03T18:44:12.706Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759519285592_g9nvc4",
+      "takenTimestamp": "2025-10-03T19:21:25.592Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759552107292_szqs5u",
+      "takenTimestamp": "2025-10-04T04:28:27.292Z"
+    }
+  ],
+  "completedAt": "2025-10-08T08:10:45.150Z",
+  "notes": "Auto-archived due to inactivity"
+}

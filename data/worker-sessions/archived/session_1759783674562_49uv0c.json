@@ -1,0 +1,42 @@
+{
+  "workerId": "324682324614578179",
+  "workerName": "Garcia Jidoki",
+  "channelId": "1424082238751899668",
+  "sessionId": "session_1759783674562_49uv0c",
+  "startTime": "2025-10-06T20:47:54.562Z",
+  "lastActivity": "2025-10-06T21:21:49.211Z",
+  "status": "paid",
+  "plantTransactions": [],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Porco",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759783674566_gawhn",
+      "timestamp": "2025-10-06T20:47:54.566Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759785709211_r89lr",
+      "timestamp": "2025-10-06T21:21:49.211Z"
+    }
+  ],
+  "financialTransactions": [],
+  "totalCredits": 160,
+  "embedMessageId": "1424869282264781036",
+  "animalExpectations": [
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759783674566_gawhn",
+      "takenTimestamp": "2025-10-06T20:47:54.566Z"
+    }
+  ],
+  "completedAt": "2025-10-07T00:17:31.642Z",
+  "notes": "Pago por r3dley (141250620593012736)"
+}

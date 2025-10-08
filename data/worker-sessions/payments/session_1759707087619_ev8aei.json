@@ -1,0 +1,92 @@
+{
+  "sessionId": "session_1759707087619_ev8aei",
+  "workerId": "487809893923946517",
+  "workerName": "Matheus Watanabe",
+  "amount": 298.6,
+  "paidBy": "333664599549411329",
+  "paidByName": "éoKs",
+  "paidAt": "2025-10-06T01:09:26.524Z",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Junco",
+      "quantity": 100,
+      "transactionId": "tx_1759707087623_enbvka",
+      "timestamp": "2025-10-05T23:31:27.623Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 500,
+      "transactionId": "tx_1759710840581_6qr2fx",
+      "timestamp": "2025-10-06T00:34:00.581Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 500,
+      "transactionId": "tx_1759711040259_5s7vuz",
+      "timestamp": "2025-10-06T00:37:20.259Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 220,
+      "transactionId": "tx_1759712495771_7bw2dh",
+      "timestamp": "2025-10-06T01:01:35.771Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Ovelha Macho",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759707125129_uaqmxs",
+      "timestamp": "2025-10-05T23:32:05.129Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 156.8,
+      "transactionId": "tx_1759708888171_hw1ff",
+      "timestamp": "2025-10-06T00:01:28.171Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Ovelha Macho",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759711152389_t8i06t",
+      "timestamp": "2025-10-06T00:39:12.389Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Bode",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759711392537_852aro",
+      "timestamp": "2025-10-06T00:43:12.537Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Bode",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759711516101_up6ao",
+      "timestamp": "2025-10-06T00:45:16.101Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 156.8,
+      "transactionId": "tx_1759711970658_x4ldh",
+      "timestamp": "2025-10-06T00:52:50.658Z"
+    }
+  ],
+  "financialTransactions": []
+}

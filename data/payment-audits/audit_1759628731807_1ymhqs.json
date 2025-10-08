@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1759628731807_1ymhqs",
+  "sessionId": "session_1759463036417_anw9ac",
+  "managerId": "588934801508270082",
+  "managerName": "chrisbam",
+  "workerId": "1140772877545775165",
+  "workerName": "Jhon Black",
+  "amountPaid": 890,
+  "paidAt": "2025-10-05T01:45:31.807Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-05T01:40:31.807Z",
+    "endTime": "2025-10-05T01:55:31.807Z"
+  }
+}

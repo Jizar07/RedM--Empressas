@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1759627945612_ls0xex",
+  "sessionId": "session_1759597021014_qif5co",
+  "managerId": "141250620593012736",
+  "managerName": "r3dley",
+  "workerId": "758683527108624404",
+  "workerName": "Romano Delaerva",
+  "amountPaid": 2190,
+  "paidAt": "2025-10-05T01:32:25.612Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-05T01:27:25.612Z",
+    "endTime": "2025-10-05T01:42:25.612Z"
+  }
+}

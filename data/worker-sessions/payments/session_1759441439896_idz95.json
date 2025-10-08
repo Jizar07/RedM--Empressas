@@ -1,0 +1,60 @@
+{
+  "sessionId": "session_1759441439896_idz95",
+  "workerId": "141243288572264449",
+  "workerName": "Dexter Morgan",
+  "amount": 160,
+  "paidBy": "141250620593012736",
+  "paidByName": "r3dley",
+  "paidAt": "2025-10-07T16:41:34.548Z",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Creeking Thyme Semente",
+      "quantity": 200,
+      "transactionId": "tx_1759441478288_vi5z7i",
+      "timestamp": "2025-10-02T21:44:38.288Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Red Sage Semente",
+      "quantity": 200,
+      "transactionId": "tx_1759441490858_978mfb",
+      "timestamp": "2025-10-02T21:44:50.858Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Oleander Sage Semente",
+      "quantity": 200,
+      "transactionId": "tx_1759441529400_u8bcjq",
+      "timestamp": "2025-10-02T21:45:29.400Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Touro",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759441439898_17kwy6",
+      "timestamp": "2025-10-02T21:43:59.898Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759443611612_d80krq",
+      "timestamp": "2025-10-02T22:20:11.612Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Burro",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759545677278_a76vgd",
+      "timestamp": "2025-10-04T02:41:17.278Z"
+    }
+  ],
+  "financialTransactions": []
+}

@@ -469,7 +469,7 @@
   "ferroviaRankings": [
     {
       "workerId": "unknown",
-      "workerName": "Izzynha Evans",
+      "workerName": "BONNIE BENNETT",
       "plants": {
         "thisWeek": 0,
         "allTime": 0
@@ -479,10 +479,10 @@
         "allTime": 0
       },
       "ferrovia": {
-        "thisWeek": 369,
-        "allTime": 685
+        "thisWeek": 374,
+        "allTime": 690
       },
-      "lastActivity": "2025-10-05T00:09:01.157Z"
+      "lastActivity": "2025-10-05T01:15:27.184Z"
     },
     {
       "workerId": "273987353456934913",
@@ -570,5 +570,5 @@
       "lastActivity": "2025-09-23T11:02:26.470Z"
     }
   ],
-  "lastUpdated": "2025-10-05T00:09:01.157Z"
+  "lastUpdated": "2025-10-05T01:15:27.184Z"
 }

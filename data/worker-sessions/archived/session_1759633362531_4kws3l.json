@@ -1,0 +1,98 @@
+{
+  "workerId": "522217368500568082",
+  "workerName": "Nico Chimichurri",
+  "channelId": "1423151074994290769",
+  "sessionId": "session_1759633362531_4kws3l",
+  "startTime": "2025-10-05T03:02:42.531Z",
+  "lastActivity": "2025-10-05T17:41:23.605Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente Trigo",
+      "quantity": 100,
+      "transactionId": "tx_1759681674539_yn32y",
+      "timestamp": "2025-10-05T16:27:54.539Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1759685936701_6uvnrp",
+      "timestamp": "2025-10-05T17:38:56.701Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1759686083605_ip70bs",
+      "timestamp": "2025-10-05T17:41:23.605Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Galinha",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759633362533_qeedfa",
+      "timestamp": "2025-10-05T03:02:42.533Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759635276390_goir9f",
+      "timestamp": "2025-10-05T03:34:36.390Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Porco",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759681609472_t7phl8",
+      "timestamp": "2025-10-05T16:26:49.472Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759683468877_lbeled",
+      "timestamp": "2025-10-05T16:57:48.877Z"
+    }
+  ],
+  "financialTransactions": [],
+  "totalCredits": 570,
+  "embedMessageId": "1424451422899933324",
+  "animalExpectations": [
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759633362533_qeedfa",
+      "takenTimestamp": "2025-10-05T03:02:42.533Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759681609472_t7phl8",
+      "takenTimestamp": "2025-10-05T16:26:49.472Z"
+    }
+  ],
+  "seedExpectations": [
+    {
+      "seedType": "Semente Trigo",
+      "seedQuantity": 100,
+      "expectedPlantType": "Trigo",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 1000,
+      "isComplete": true,
+      "transactionId": "tx_1759681674539_yn32y"
+    }
+  ],
+  "completedAt": "2025-10-07T21:19:35.515Z",
+  "notes": "Pago por r3dley (141250620593012736)"
+}

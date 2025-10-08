@@ -1,0 +1,67 @@
+{
+  "workerId": "1298828693505835041",
+  "workerName": "Jairson morgan",
+  "channelId": "1423475037083668520",
+  "sessionId": "session_1759453608767_j255wb",
+  "startTime": "2025-10-03T01:06:48.767Z",
+  "lastActivity": "2025-10-03T01:07:19.959Z",
+  "status": "stale",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 244,
+      "transactionId": "tx_1759453608768_8qxznn",
+      "timestamp": "2025-10-03T01:06:48.768Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 19,
+      "transactionId": "tx_1759453618165_2vptqk",
+      "timestamp": "2025-10-03T01:06:58.165Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 81,
+      "transactionId": "tx_1759453639959_mb7yt",
+      "timestamp": "2025-10-03T01:07:19.959Z"
+    }
+  ],
+  "animalTransactions": [],
+  "financialTransactions": [],
+  "totalCredits": 0,
+  "embedMessageId": "1423476484114485288",
+  "seedExpectations": [
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 244,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 2440,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759453608768_8qxznn"
+    },
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 19,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 190,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759453618165_2vptqk"
+    },
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 81,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 810,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759453639959_mb7yt"
+    }
+  ],
+  "completedAt": "2025-10-08T08:10:45.150Z",
+  "notes": "Auto-archived due to inactivity"
+}

@@ -1,0 +1,51 @@
+{
+  "workerId": "1127730801182777355",
+  "workerName": "Thony Gustav",
+  "channelId": "1420791388882206803",
+  "sessionId": "session_1759612789198_83sqe",
+  "startTime": "2025-10-04T21:19:49.198Z",
+  "lastActivity": "2025-10-04T21:20:23.313Z",
+  "status": "stale",
+  "plantTransactions": [],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Galo",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759612789200_46jw0m",
+      "timestamp": "2025-10-04T21:19:49.200Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Touro",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759612823313_rh4ymb",
+      "timestamp": "2025-10-04T21:20:23.313Z"
+    }
+  ],
+  "financialTransactions": [],
+  "totalCredits": 0,
+  "embedMessageId": "1424144145349611553",
+  "animalExpectations": [
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759612789200_46jw0m",
+      "takenTimestamp": "2025-10-04T21:19:49.200Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759612823313_rh4ymb",
+      "takenTimestamp": "2025-10-04T21:20:23.313Z"
+    }
+  ],
+  "completedAt": "2025-10-08T00:10:44.574Z",
+  "notes": "Auto-archived due to inactivity"
+}

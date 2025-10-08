@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1759897637257_omvy8u",
+  "sessionId": "session_1759890721605_kbaun",
+  "managerId": "333664599549411329",
+  "managerName": "éoKs",
+  "workerId": "862576444740075530",
+  "workerName": "jurandi labareda",
+  "amountPaid": 562.7,
+  "paidAt": "2025-10-08T04:27:17.257Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-08T04:22:17.257Z",
+    "endTime": "2025-10-08T04:37:17.257Z"
+  }
+}

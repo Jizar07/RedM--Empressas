@@ -1,0 +1,27 @@
+{
+  "sessionId": "session_1759794745115_qgufrh",
+  "workerId": "398270963969425408",
+  "workerName": "John Weslley",
+  "amount": 25,
+  "paidBy": "141250620593012736",
+  "paidByName": "r3dley",
+  "paidAt": "2025-10-06T23:53:51.509Z",
+  "plantTransactions": [
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 100,
+      "transactionId": "tx_1759794745120_i87z2",
+      "timestamp": "2025-10-06T23:52:25.120Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 100,
+      "transactionId": "tx_1759794794666_y4qjj4",
+      "timestamp": "2025-10-06T23:53:14.666Z"
+    }
+  ],
+  "animalTransactions": [],
+  "financialTransactions": []
+}

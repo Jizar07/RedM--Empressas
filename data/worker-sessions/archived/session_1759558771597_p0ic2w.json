@@ -1,0 +1,106 @@
+{
+  "workerId": "141250620593012736",
+  "workerName": "Santiago Bowdin",
+  "channelId": "1420777319194169474",
+  "sessionId": "session_1759558771597_p0ic2w",
+  "startTime": "2025-10-04T06:19:31.597Z",
+  "lastActivity": "2025-10-05T19:29:37.182Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "plant_deposited",
+      "itemName": "Corntorta",
+      "quantity": 269,
+      "transactionId": "tx_1759581757728_m8u7fo",
+      "timestamp": "2025-10-04T12:42:37.728Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 427,
+      "transactionId": "tx_1759615884203_yfkt5q",
+      "timestamp": "2025-10-04T22:11:24.203Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Porco",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759558771598_oh3bfa",
+      "timestamp": "2025-10-04T06:19:31.598Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Touro",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759580867388_vfe56e",
+      "timestamp": "2025-10-04T12:27:47.388Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Bode",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759604975688_e7m88m",
+      "timestamp": "2025-10-04T19:09:35.688Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759607920035_8gfl2g",
+      "timestamp": "2025-10-04T19:58:40.035Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Ovelha Femea",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759692577182_2qcz7n",
+      "timestamp": "2025-10-05T19:29:37.182Z"
+    }
+  ],
+  "financialTransactions": [],
+  "totalCredits": 14,
+  "embedMessageId": "1424478658290122884",
+  "animalExpectations": [
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759558771598_oh3bfa",
+      "takenTimestamp": "2025-10-04T06:19:31.598Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759580867388_vfe56e",
+      "takenTimestamp": "2025-10-04T12:27:47.388Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759604975688_e7m88m",
+      "takenTimestamp": "2025-10-04T19:09:35.688Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759692577182_2qcz7n",
+      "takenTimestamp": "2025-10-05T19:29:37.182Z"
+    }
+  ],
+  "seedExpectations": [],
+  "completedAt": "2025-10-06T16:07:52.279Z",
+  "notes": "Pago por r3dley (141250620593012736)"
+}

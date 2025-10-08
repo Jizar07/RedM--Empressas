@@ -1,0 +1,512 @@
+{
+  "workerId": "324682324614578179",
+  "workerName": "Garcia Jidoki",
+  "channelId": "1424082238751899668",
+  "sessionId": "session_1759615213412_gap2em",
+  "startTime": "2025-10-04T22:00:13.412Z",
+  "lastActivity": "2025-10-05T21:10:53.848Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 50,
+      "transactionId": "tx_1759615213414_4maer",
+      "timestamp": "2025-10-04T22:00:13.414Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1759617175404_khp4m",
+      "timestamp": "2025-10-04T22:32:55.404Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1759618389449_5d6l2",
+      "timestamp": "2025-10-04T22:53:09.449Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 60,
+      "transactionId": "tx_1759635022318_wow1mp",
+      "timestamp": "2025-10-05T03:30:22.318Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Adubo3",
+      "quantity": 200,
+      "transactionId": "tx_1759672577213_7nopyj",
+      "timestamp": "2025-10-05T13:56:17.213Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 200,
+      "transactionId": "tx_1759672593434_c41cld",
+      "timestamp": "2025-10-05T13:56:33.434Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1759675575861_7fb8hl",
+      "timestamp": "2025-10-05T14:46:15.861Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1759675668808_g9b0n6",
+      "timestamp": "2025-10-05T14:47:48.808Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1759675812521_7djtot",
+      "timestamp": "2025-10-05T14:50:12.521Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1759675973895_joqqb",
+      "timestamp": "2025-10-05T14:52:53.895Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1759676126318_l9t4wd",
+      "timestamp": "2025-10-05T14:55:26.318Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1759676336708_auwj6t",
+      "timestamp": "2025-10-05T14:58:56.708Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 410,
+      "transactionId": "tx_1759676710424_68crn",
+      "timestamp": "2025-10-05T15:05:10.424Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Adubo3",
+      "quantity": 173,
+      "transactionId": "tx_1759697933527_dlz3uy",
+      "timestamp": "2025-10-05T20:58:53.527Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 50,
+      "transactionId": "tx_1759698653848_nodho",
+      "timestamp": "2025-10-05T21:10:53.848Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759617275869_h9tzc",
+      "timestamp": "2025-10-04T22:34:35.869Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Touro",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759630249073_mk8kp",
+      "timestamp": "2025-10-05T02:10:49.073Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 151.2,
+      "transactionId": "tx_1759632509144_s3ug3zr",
+      "timestamp": "2025-10-05T02:48:29.144Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Galo",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759633833231_bzzrly",
+      "timestamp": "2025-10-05T03:10:33.231Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Porco",
+      "quantity": 2,
+      "cost": 40,
+      "amount": 0,
+      "transactionId": "tx_1759633918338_y6mz",
+      "timestamp": "2025-10-05T03:11:58.338Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Galinha",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759635045055_23z0xj",
+      "timestamp": "2025-10-05T03:30:45.055Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 2,
+      "amount": 80,
+      "transactionId": "tx_1759635815324_i6zaut",
+      "timestamp": "2025-10-05T03:43:35.324Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759640825684_wlnzm",
+      "timestamp": "2025-10-05T05:07:05.684Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Mula",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759641007931_ssv3ks",
+      "timestamp": "2025-10-05T05:10:07.931Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759642710958_m1wvtf",
+      "timestamp": "2025-10-05T05:38:30.958Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Galinha",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759677521190_0suci4",
+      "timestamp": "2025-10-05T15:18:41.190Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Burro",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759677527233_4a7ram",
+      "timestamp": "2025-10-05T15:18:47.233Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759677584296_r3j4kj",
+      "timestamp": "2025-10-05T15:19:44.296Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759680793507_s9v7hp",
+      "timestamp": "2025-10-05T16:13:13.507Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Ovelha Macho",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759680876036_7x4diq",
+      "timestamp": "2025-10-05T16:14:36.036Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Bode",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759682327569_edwgxd",
+      "timestamp": "2025-10-05T16:38:47.569Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Ovelha Macho",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759682393784_hnumbm",
+      "timestamp": "2025-10-05T16:39:53.784Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Burro",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759682408144_3xklxj",
+      "timestamp": "2025-10-05T16:40:08.144Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759682695364_wiqhod",
+      "timestamp": "2025-10-05T16:44:55.364Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Ovelha Macho",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759682787332_2ywupp",
+      "timestamp": "2025-10-05T16:46:27.332Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759684564551_gqyvla",
+      "timestamp": "2025-10-05T17:16:04.551Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Cabra",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759691520808_1ykyqh",
+      "timestamp": "2025-10-05T19:12:00.808Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759695429179_3gt2d",
+      "timestamp": "2025-10-05T20:17:09.179Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Cabra",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759695487773_0wjwld",
+      "timestamp": "2025-10-05T20:18:07.773Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Bode",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759695727376_qzw0bw",
+      "timestamp": "2025-10-05T20:22:07.376Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Bode",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759695750445_wofbmo",
+      "timestamp": "2025-10-05T20:22:30.445Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Cabra",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759697089211_zrxinm",
+      "timestamp": "2025-10-05T20:44:49.211Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 150.4,
+      "transactionId": "tx_1759697144919_f0pzsk",
+      "timestamp": "2025-10-05T20:45:44.919Z"
+    }
+  ],
+  "financialTransactions": [],
+  "totalCredits": 2791.6000000000004,
+  "embedMessageId": "1424504145947136201",
+  "seedExpectations": [
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 50,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 500,
+      "plantsFulfilled": 500,
+      "isComplete": true,
+      "transactionId": "tx_1759615213414_4maer"
+    },
+    {
+      "seedType": "Adubo3",
+      "seedQuantity": 200,
+      "expectedPlantType": "Adubo3",
+      "expectedPlantQuantity": 2000,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759672577213_7nopyj"
+    },
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 200,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 2000,
+      "plantsFulfilled": 2000,
+      "isComplete": true,
+      "transactionId": "tx_1759672593434_c41cld"
+    },
+    {
+      "seedType": "Adubo3",
+      "seedQuantity": 173,
+      "expectedPlantType": "Adubo3",
+      "expectedPlantQuantity": 1730,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759697933527_dlz3uy"
+    }
+  ],
+  "animalExpectations": [
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759630249073_mk8kp",
+      "takenTimestamp": "2025-10-05T02:10:49.073Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759633833231_bzzrly",
+      "takenTimestamp": "2025-10-05T03:10:33.231Z"
+    },
+    {
+      "animalsTaken": 2,
+      "animalsDelivered": 2,
+      "isComplete": true,
+      "transactionId": "tx_1759633918338_y6mz",
+      "takenTimestamp": "2025-10-05T03:11:58.338Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759635045055_23z0xj",
+      "takenTimestamp": "2025-10-05T03:30:45.055Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759641007931_ssv3ks",
+      "takenTimestamp": "2025-10-05T05:10:07.931Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759677521190_0suci4",
+      "takenTimestamp": "2025-10-05T15:18:41.190Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759677527233_4a7ram",
+      "takenTimestamp": "2025-10-05T15:18:47.233Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759680876036_7x4diq",
+      "takenTimestamp": "2025-10-05T16:14:36.036Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759682327569_edwgxd",
+      "takenTimestamp": "2025-10-05T16:38:47.569Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759682393784_hnumbm",
+      "takenTimestamp": "2025-10-05T16:39:53.784Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759682408144_3xklxj",
+      "takenTimestamp": "2025-10-05T16:40:08.144Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759682787332_2ywupp",
+      "takenTimestamp": "2025-10-05T16:46:27.332Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759691520808_1ykyqh",
+      "takenTimestamp": "2025-10-05T19:12:00.808Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759695487773_0wjwld",
+      "takenTimestamp": "2025-10-05T20:18:07.773Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759695727376_qzw0bw",
+      "takenTimestamp": "2025-10-05T20:22:07.377Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759695750445_wofbmo",
+      "takenTimestamp": "2025-10-05T20:22:30.445Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759697089211_zrxinm",
+      "takenTimestamp": "2025-10-05T20:44:49.211Z"
+    }
+  ],
+  "completedAt": "2025-10-06T00:20:23.077Z",
+  "notes": "Pago por Gordo caramelo (470361257497722886)"
+}

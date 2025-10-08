@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1759891190216_tkxpna",
+  "sessionId": "session_1759881017703_ekcti",
+  "managerId": "273987353456934913",
+  "managerName": "𝓢𝓸𝓾𝔃𝔃 🏄🏾",
+  "workerId": "728800620064014367",
+  "workerName": "Red Oliver",
+  "amountPaid": 645,
+  "paidAt": "2025-10-08T02:39:50.216Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-08T02:34:50.216Z",
+    "endTime": "2025-10-08T02:49:50.216Z"
+  }
+}

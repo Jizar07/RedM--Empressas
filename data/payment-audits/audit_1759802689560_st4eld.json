@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1759802689560_st4eld",
+  "sessionId": "session_1759795620712_8l81pn",
+  "managerId": "198538680686608384",
+  "managerName": "Barth",
+  "workerId": "751113851432337449",
+  "workerName": "Margeli Vestphal",
+  "amountPaid": 372.5,
+  "paidAt": "2025-10-07T02:04:49.560Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-07T01:59:49.560Z",
+    "endTime": "2025-10-07T02:14:49.560Z"
+  }
+}

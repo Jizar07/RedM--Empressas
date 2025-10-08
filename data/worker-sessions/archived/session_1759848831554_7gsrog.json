@@ -1,0 +1,25 @@
+{
+  "workerId": "949397147030274059",
+  "workerName": "Izzynha Evans",
+  "channelId": "1422627698060034098",
+  "sessionId": "session_1759848831554_7gsrog",
+  "startTime": "2025-10-07T14:53:51.554Z",
+  "lastActivity": "2025-10-07T14:53:51.556Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 400,
+      "transactionId": "tx_1759848831556_tqgpf",
+      "timestamp": "2025-10-07T14:53:51.556Z"
+    }
+  ],
+  "animalTransactions": [],
+  "financialTransactions": [],
+  "totalCredits": 100,
+  "embedMessageId": "1425134036409651291",
+  "seedExpectations": [],
+  "completedAt": "2025-10-07T15:43:47.654Z",
+  "notes": "Pago por ๖ۣۜζ͜͡ɪᴢᴢʏɴʜᴀ🎀 (949397147030274059)"
+}

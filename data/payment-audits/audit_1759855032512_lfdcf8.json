@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1759855032512_lfdcf8",
+  "sessionId": "session_1759786874916_iwu0it",
+  "managerId": "141250620593012736",
+  "managerName": "r3dley",
+  "workerId": "614876929266417672",
+  "workerName": "Notorius Bowdin",
+  "amountPaid": 125,
+  "paidAt": "2025-10-07T16:37:12.512Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-07T16:32:12.512Z",
+    "endTime": "2025-10-07T16:47:12.512Z"
+  }
+}

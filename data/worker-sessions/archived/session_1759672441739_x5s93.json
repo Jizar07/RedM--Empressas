@@ -1,0 +1,107 @@
+{
+  "workerId": "206587400703574019",
+  "workerName": "Cosmo Versace",
+  "channelId": "1423043541701230804",
+  "sessionId": "session_1759672441739_x5s93",
+  "startTime": "2025-10-05T13:54:01.739Z",
+  "lastActivity": "2025-10-05T14:45:51.543Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 200,
+      "transactionId": "tx_1759672441741_a9xwyn",
+      "timestamp": "2025-10-05T13:54:01.741Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Adubo3",
+      "quantity": 200,
+      "transactionId": "tx_1759673019571_807c5",
+      "timestamp": "2025-10-05T14:03:39.571Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1759674229398_ewvbp8h",
+      "timestamp": "2025-10-05T14:23:49.398Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1759674665364_0mlv6",
+      "timestamp": "2025-10-05T14:31:05.364Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1759674830517_1o4ne",
+      "timestamp": "2025-10-05T14:33:50.517Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1759674973869_ulscms",
+      "timestamp": "2025-10-05T14:36:13.869Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1759675120859_r1j66c",
+      "timestamp": "2025-10-05T14:38:40.859Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1759675256986_yacglq",
+      "timestamp": "2025-10-05T14:40:56.986Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1759675403615_oy36kg",
+      "timestamp": "2025-10-05T14:43:23.615Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 460,
+      "transactionId": "tx_1759675551543_tjil3g",
+      "timestamp": "2025-10-05T14:45:51.543Z"
+    }
+  ],
+  "animalTransactions": [],
+  "financialTransactions": [],
+  "totalCredits": 990,
+  "embedMessageId": "1424407247659729006",
+  "seedExpectations": [
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 200,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 2000,
+      "plantsFulfilled": 2000,
+      "isComplete": true,
+      "transactionId": "tx_1759672441741_a9xwyn"
+    },
+    {
+      "seedType": "Adubo3",
+      "seedQuantity": 200,
+      "expectedPlantType": "Adubo3",
+      "expectedPlantQuantity": 2000,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759673019571_807c5"
+    }
+  ],
+  "completedAt": "2025-10-05T14:49:03.514Z",
+  "notes": "Pago por ๖ۣۜζ͜͡ɪᴢᴢʏɴʜᴀ🎀 (949397147030274059)"
+}

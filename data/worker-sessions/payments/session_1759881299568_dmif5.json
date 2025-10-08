@@ -1,0 +1,135 @@
+{
+  "sessionId": "session_1759881299568_dmif5",
+  "workerId": "481612456792424448",
+  "workerName": "Cleber Versace",
+  "amount": 1930,
+  "paidBy": "949397147030274059",
+  "paidByName": "๖ۣۜζ͜͡ɪᴢᴢʏɴʜᴀ🎀",
+  "paidAt": "2025-10-08T02:14:13.788Z",
+  "plantTransactions": [
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1759881299570_fbxbqo",
+      "timestamp": "2025-10-07T23:54:59.570Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 470,
+      "transactionId": "tx_1759881577797_kesdv2",
+      "timestamp": "2025-10-07T23:59:37.797Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 470,
+      "transactionId": "tx_1759881580418_3jgpl",
+      "timestamp": "2025-10-07T23:59:40.418Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 470,
+      "transactionId": "tx_1759881584642_fy2qw",
+      "timestamp": "2025-10-07T23:59:44.642Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 470,
+      "transactionId": "tx_1759881622923_kb2b6o",
+      "timestamp": "2025-10-08T00:00:22.923Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 470,
+      "transactionId": "tx_1759881624643_9jkmwh",
+      "timestamp": "2025-10-08T00:00:24.643Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 470,
+      "transactionId": "tx_1759881626531_xnoco1",
+      "timestamp": "2025-10-08T00:00:26.531Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 470,
+      "transactionId": "tx_1759881628125_4jeaih",
+      "timestamp": "2025-10-08T00:00:28.125Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 470,
+      "transactionId": "tx_1759881629759_uppbc5",
+      "timestamp": "2025-10-08T00:00:29.759Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 470,
+      "transactionId": "tx_1759882363755_ruk52h",
+      "timestamp": "2025-10-08T00:12:43.755Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 470,
+      "transactionId": "tx_1759882368106_v9l7hr",
+      "timestamp": "2025-10-08T00:12:48.106Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 470,
+      "transactionId": "tx_1759882369346_vbuex6",
+      "timestamp": "2025-10-08T00:12:49.346Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 470,
+      "transactionId": "tx_1759882377242_cnehuh",
+      "timestamp": "2025-10-08T00:12:57.242Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 470,
+      "transactionId": "tx_1759882427693_fq89e",
+      "timestamp": "2025-10-08T00:13:47.693Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 470,
+      "transactionId": "tx_1759882743580_7dejqq",
+      "timestamp": "2025-10-08T00:19:03.580Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Touro",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759883158375_t7knl",
+      "timestamp": "2025-10-08T00:25:58.375Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759884996486_hzi0yc",
+      "timestamp": "2025-10-08T00:56:36.486Z"
+    }
+  ],
+  "financialTransactions": []
+}

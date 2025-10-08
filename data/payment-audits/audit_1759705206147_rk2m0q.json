@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1759705206147_rk2m0q",
+  "sessionId": "session_1759676927078_1pxq5",
+  "managerId": "1127730801182777355",
+  "managerName": "thony",
+  "workerId": "431957051275739156",
+  "workerName": "Fernanda Silva",
+  "amountPaid": 2987.5,
+  "paidAt": "2025-10-05T23:00:06.147Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-05T22:55:06.147Z",
+    "endTime": "2025-10-05T23:10:06.147Z"
+  }
+}

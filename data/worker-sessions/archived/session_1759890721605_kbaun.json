@@ -1,0 +1,98 @@
+{
+  "workerId": "862576444740075530",
+  "workerName": "jurandi labareda",
+  "channelId": "1423873737672884267",
+  "sessionId": "session_1759890721605_kbaun",
+  "startTime": "2025-10-08T02:32:01.605Z",
+  "lastActivity": "2025-10-08T04:21:29.193Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 100,
+      "transactionId": "tx_1759890721606_5jvlv",
+      "timestamp": "2025-10-08T02:32:01.606Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1759896477991_8gp9pn",
+      "timestamp": "2025-10-08T04:07:57.991Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 490,
+      "transactionId": "tx_1759897289193_vyll8f",
+      "timestamp": "2025-10-08T04:21:29.193Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Cabra",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759890920750_h0obd",
+      "timestamp": "2025-10-08T02:35:20.750Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 155.2,
+      "transactionId": "tx_1759892639694_k98z3",
+      "timestamp": "2025-10-08T03:03:59.694Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Porco",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759894661935_1mvrui",
+      "timestamp": "2025-10-08T03:37:41.935Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759896399246_mt596",
+      "timestamp": "2025-10-08T04:06:39.246Z"
+    }
+  ],
+  "financialTransactions": [],
+  "totalCredits": 562.7,
+  "embedMessageId": "1425337282432466975",
+  "seedExpectations": [
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 100,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 1000,
+      "isComplete": true,
+      "transactionId": "tx_1759890721606_5jvlv"
+    }
+  ],
+  "animalExpectations": [
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759890920750_h0obd",
+      "takenTimestamp": "2025-10-08T02:35:20.750Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759894661935_1mvrui",
+      "takenTimestamp": "2025-10-08T03:37:41.935Z"
+    }
+  ],
+  "completedAt": "2025-10-08T04:27:17.244Z",
+  "notes": "Pago por éoKs (333664599549411329)"
+}

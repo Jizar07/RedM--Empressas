@@ -1,0 +1,70 @@
+{
+  "workerId": "726777646150582463",
+  "workerName": "jagunsso torres",
+  "channelId": "1420917688439668857",
+  "sessionId": "session_1759504606175_6fcuib",
+  "startTime": "2025-10-03T15:16:46.176Z",
+  "lastActivity": "2025-10-03T15:51:17.285Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Junco",
+      "quantity": 50,
+      "transactionId": "tx_1759504606177_cwyxl",
+      "timestamp": "2025-10-03T15:16:46.177Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 100,
+      "transactionId": "tx_1759506662687_um0s3m",
+      "timestamp": "2025-10-03T15:51:02.687Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 100,
+      "transactionId": "tx_1759506667409_hkmvmf",
+      "timestamp": "2025-10-03T15:51:07.409Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 100,
+      "transactionId": "tx_1759506669606_qyc83o",
+      "timestamp": "2025-10-03T15:51:09.606Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 100,
+      "transactionId": "tx_1759506673865_xdh1ka",
+      "timestamp": "2025-10-03T15:51:13.865Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 100,
+      "transactionId": "tx_1759506677285_iug1o8",
+      "timestamp": "2025-10-03T15:51:17.285Z"
+    }
+  ],
+  "animalTransactions": [],
+  "financialTransactions": [],
+  "totalCredits": 125,
+  "embedMessageId": "1423698936887251197",
+  "seedExpectations": [
+    {
+      "seedType": "Semente de Junco",
+      "seedQuantity": 50,
+      "expectedPlantType": "Junco",
+      "expectedPlantQuantity": 500,
+      "plantsFulfilled": 500,
+      "isComplete": true,
+      "transactionId": "tx_1759504606177_cwyxl"
+    }
+  ],
+  "completedAt": "2025-10-07T16:41:21.819Z",
+  "notes": "Pago por r3dley (141250620593012736)"
+}

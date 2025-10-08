@@ -1,0 +1,26 @@
+{
+  "weekStart": "2025-10-05T04:00:00.000Z",
+  "category": "plants",
+  "winners": {
+    "first": {
+      "workerId": "470361257497722886",
+      "workerName": "Kenai Comanches",
+      "count": 6980,
+      "prize": 2500
+    },
+    "second": {
+      "workerId": "234380781479395338",
+      "workerName": "Gaioto Silva",
+      "count": 4020,
+      "prize": 1500
+    },
+    "third": {
+      "workerId": "398270963969425408",
+      "workerName": "john Weslley",
+      "count": 4000,
+      "prize": 1000
+    }
+  },
+  "totalPaid": 5000,
+  "paidAt": null
+}

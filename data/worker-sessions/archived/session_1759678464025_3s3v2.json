@@ -1,0 +1,369 @@
+{
+  "workerId": "758683527108624404",
+  "workerName": "Romano Delaerva",
+  "channelId": "1424077184339017811",
+  "sessionId": "session_1759678464025_3s3v2",
+  "startTime": "2025-10-05T15:34:24.025Z",
+  "lastActivity": "2025-10-06T14:36:07.886Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 460,
+      "transactionId": "tx_1759678464027_dgo91",
+      "timestamp": "2025-10-05T15:34:24.027Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 240,
+      "transactionId": "tx_1759682634818_2cwm7",
+      "timestamp": "2025-10-05T16:43:54.818Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1759691482305_95tnbt",
+      "timestamp": "2025-10-05T19:11:22.305Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 440,
+      "transactionId": "tx_1759691629876_14n3uf",
+      "timestamp": "2025-10-05T19:13:49.876Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 50,
+      "transactionId": "tx_1759753709608_5lsqn",
+      "timestamp": "2025-10-06T12:28:29.608Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 230,
+      "transactionId": "tx_1759753711427_qzuv1g",
+      "timestamp": "2025-10-06T12:28:31.427Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Adubo3",
+      "quantity": 50,
+      "transactionId": "tx_1759753720786_gea7un",
+      "timestamp": "2025-10-06T12:28:40.786Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1759756650382_h3ezw9",
+      "timestamp": "2025-10-06T13:17:30.382Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1759756901108_5fxgb",
+      "timestamp": "2025-10-06T13:21:41.108Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Junco",
+      "quantity": 50,
+      "transactionId": "tx_1759761362866_mus1h3",
+      "timestamp": "2025-10-06T14:36:02.866Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Adubo3",
+      "quantity": 50,
+      "transactionId": "tx_1759761367886_g0281k",
+      "timestamp": "2025-10-06T14:36:07.886Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Bode",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759678494168_0vhydd",
+      "timestamp": "2025-10-05T15:34:54.168Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Burro",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759691410115_5odmci",
+      "timestamp": "2025-10-05T19:10:10.115Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759693336418_uvcrqo",
+      "timestamp": "2025-10-05T19:42:16.418Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Galo",
+      "quantity": 2,
+      "cost": 40,
+      "amount": 0,
+      "transactionId": "tx_1759693840831_4ustr",
+      "timestamp": "2025-10-05T19:50:40.831Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Galinha",
+      "quantity": 2,
+      "cost": 40,
+      "amount": 0,
+      "transactionId": "tx_1759693844918_5f4gdkp",
+      "timestamp": "2025-10-05T19:50:44.918Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759695720042_awrh25",
+      "timestamp": "2025-10-05T20:22:00.042Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Porca",
+      "quantity": 3,
+      "cost": 60,
+      "amount": 0,
+      "transactionId": "tx_1759699254491_3klqoc",
+      "timestamp": "2025-10-05T21:20:54.491Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Porco",
+      "quantity": 1,
+      "cost": 20,
+      "amount": 0,
+      "transactionId": "tx_1759699254735_9tmk59",
+      "timestamp": "2025-10-05T21:20:54.735Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759700929630_qems6o",
+      "timestamp": "2025-10-05T21:48:49.630Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Ovelha Femea",
+      "quantity": 2,
+      "cost": 40,
+      "amount": 0,
+      "transactionId": "tx_1759753312887_hciprc",
+      "timestamp": "2025-10-06T12:21:52.887Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Ovelha Macho",
+      "quantity": 2,
+      "cost": 40,
+      "amount": 0,
+      "transactionId": "tx_1759753314393_lrf7oc",
+      "timestamp": "2025-10-06T12:21:54.393Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Ovelha Macho",
+      "quantity": 2,
+      "cost": 40,
+      "amount": 0,
+      "transactionId": "tx_1759753329660_cecjoi",
+      "timestamp": "2025-10-06T12:22:09.660Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Bode",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759753367931_6h0xxr",
+      "timestamp": "2025-10-06T12:22:47.931Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759755128866_64iws",
+      "timestamp": "2025-10-06T12:52:08.866Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Bode",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759755166044_vlggup",
+      "timestamp": "2025-10-06T12:52:46.044Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759758045293_n4w0i7",
+      "timestamp": "2025-10-06T13:40:45.293Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Bode",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759758085410_814iu5",
+      "timestamp": "2025-10-06T13:41:25.410Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759759907614_fcspmm",
+      "timestamp": "2025-10-06T14:11:47.614Z"
+    }
+  ],
+  "financialTransactions": [],
+  "totalCredits": 1677.5,
+  "embedMessageId": "1424767187507220521",
+  "seedExpectations": [
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 50,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 500,
+      "plantsFulfilled": 500,
+      "isComplete": true,
+      "transactionId": "tx_1759753709608_5lsqn"
+    },
+    {
+      "seedType": "Adubo3",
+      "seedQuantity": 50,
+      "expectedPlantType": "Adubo3",
+      "expectedPlantQuantity": 500,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759753720786_gea7un"
+    },
+    {
+      "seedType": "Semente de Junco",
+      "seedQuantity": 50,
+      "expectedPlantType": "Junco",
+      "expectedPlantQuantity": 500,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759761362866_mus1h3"
+    },
+    {
+      "seedType": "Adubo3",
+      "seedQuantity": 50,
+      "expectedPlantType": "Adubo3",
+      "expectedPlantQuantity": 500,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759761367886_g0281k"
+    }
+  ],
+  "animalExpectations": [
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759678494168_0vhydd",
+      "takenTimestamp": "2025-10-05T15:34:54.168Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759691410115_5odmci",
+      "takenTimestamp": "2025-10-05T19:10:10.115Z"
+    },
+    {
+      "animalsTaken": 2,
+      "animalsDelivered": 2,
+      "isComplete": true,
+      "transactionId": "tx_1759693840831_4ustr",
+      "takenTimestamp": "2025-10-05T19:50:40.831Z"
+    },
+    {
+      "animalsTaken": 2,
+      "animalsDelivered": 2,
+      "isComplete": true,
+      "transactionId": "tx_1759693844918_5f4gdkp",
+      "takenTimestamp": "2025-10-05T19:50:44.918Z"
+    },
+    {
+      "animalsTaken": 3,
+      "animalsDelivered": 3,
+      "isComplete": true,
+      "transactionId": "tx_1759699254491_3klqoc",
+      "takenTimestamp": "2025-10-05T21:20:54.491Z"
+    },
+    {
+      "animalsTaken": 1,
+      "animalsDelivered": 1,
+      "isComplete": true,
+      "transactionId": "tx_1759699254735_9tmk59",
+      "takenTimestamp": "2025-10-05T21:20:54.735Z"
+    },
+    {
+      "animalsTaken": 2,
+      "animalsDelivered": 2,
+      "isComplete": true,
+      "transactionId": "tx_1759753312887_hciprc",
+      "takenTimestamp": "2025-10-06T12:21:52.887Z"
+    },
+    {
+      "animalsTaken": 2,
+      "animalsDelivered": 2,
+      "isComplete": true,
+      "transactionId": "tx_1759753314393_lrf7oc",
+      "takenTimestamp": "2025-10-06T12:21:54.393Z"
+    },
+    {
+      "animalsTaken": 2,
+      "animalsDelivered": 2,
+      "isComplete": true,
+      "transactionId": "tx_1759753329660_cecjoi",
+      "takenTimestamp": "2025-10-06T12:22:09.660Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 2,
+      "isComplete": false,
+      "transactionId": "tx_1759753367931_6h0xxr",
+      "takenTimestamp": "2025-10-06T12:22:47.931Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759755166044_vlggup",
+      "takenTimestamp": "2025-10-06T12:52:46.044Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759758085410_814iu5",
+      "takenTimestamp": "2025-10-06T13:41:25.410Z"
+    }
+  ],
+  "completedAt": "2025-10-07T00:21:18.014Z",
+  "notes": "Pago por r3dley (141250620593012736)"
+}

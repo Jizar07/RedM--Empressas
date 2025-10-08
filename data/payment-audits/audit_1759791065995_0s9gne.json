@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1759791065995_0s9gne",
+  "sessionId": "session_1759768945904_kxtj12",
+  "managerId": "1384209105610211338",
+  "managerName": "Raff",
+  "workerId": "1384209105610211338",
+  "workerName": "Draven Lima",
+  "amountPaid": 577.5,
+  "paidAt": "2025-10-06T22:51:05.995Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-06T22:46:05.995Z",
+    "endTime": "2025-10-06T23:01:05.995Z"
+  }
+}

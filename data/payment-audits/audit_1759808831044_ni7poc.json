@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1759808831044_ni7poc",
+  "sessionId": "session_1759803742832_xthj1l",
+  "managerId": "198538680686608384",
+  "managerName": "Barth",
+  "workerId": "409011012986208258",
+  "workerName": "Rex Solossano",
+  "amountPaid": 250,
+  "paidAt": "2025-10-07T03:47:11.044Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-07T03:42:11.044Z",
+    "endTime": "2025-10-07T03:57:11.044Z"
+  }
+}

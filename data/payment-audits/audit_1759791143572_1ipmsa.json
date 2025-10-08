@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1759791143572_1ipmsa",
+  "sessionId": "session_1759547529557_1fgs",
+  "managerId": "141250620593012736",
+  "managerName": "r3dley",
+  "workerId": "695109023741116496",
+  "workerName": "yuri westside",
+  "amountPaid": 3352.5,
+  "paidAt": "2025-10-06T22:52:23.572Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-06T22:47:23.572Z",
+    "endTime": "2025-10-06T23:02:23.572Z"
+  }
+}

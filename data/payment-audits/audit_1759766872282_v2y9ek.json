@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1759766872282_v2y9ek",
+  "sessionId": "session_1759558771597_p0ic2w",
+  "managerId": "141250620593012736",
+  "managerName": "r3dley",
+  "workerId": "141250620593012736",
+  "workerName": "Santiago Bowdin",
+  "amountPaid": 14,
+  "paidAt": "2025-10-06T16:07:52.282Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-06T16:02:52.282Z",
+    "endTime": "2025-10-06T16:17:52.282Z"
+  }
+}

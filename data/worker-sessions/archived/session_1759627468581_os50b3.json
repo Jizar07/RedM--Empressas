@@ -1,0 +1,35 @@
+{
+  "workerId": "614115703229775904",
+  "workerName": "Sasa Pietra",
+  "channelId": "1424205328664363098",
+  "sessionId": "session_1759627468581_os50b3",
+  "startTime": "2025-10-05T01:24:28.581Z",
+  "lastActivity": "2025-10-05T01:24:28.582Z",
+  "status": "stale",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 1,
+      "transactionId": "tx_1759627468582_e3x2r",
+      "timestamp": "2025-10-05T01:24:28.582Z"
+    }
+  ],
+  "animalTransactions": [],
+  "financialTransactions": [],
+  "totalCredits": 0,
+  "embedMessageId": "1424205572135190659",
+  "seedExpectations": [
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 1,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 10,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759627468582_e3x2r"
+    }
+  ],
+  "completedAt": "2025-10-08T08:10:45.152Z",
+  "notes": "Auto-archived due to inactivity"
+}

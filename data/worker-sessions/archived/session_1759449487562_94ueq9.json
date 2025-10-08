@@ -1,0 +1,41 @@
+{
+  "workerId": "1245794457161564201",
+  "workerName": "juca rabicho",
+  "channelId": "1416510577768923190",
+  "sessionId": "session_1759449487562_94ueq9",
+  "startTime": "2025-10-02T23:58:07.562Z",
+  "lastActivity": "2025-10-03T00:28:52.960Z",
+  "status": "stale",
+  "plantTransactions": [],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Bode",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759449487563_wfi163",
+      "timestamp": "2025-10-02T23:58:07.563Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759451332960_kycfh",
+      "timestamp": "2025-10-03T00:28:52.960Z"
+    }
+  ],
+  "financialTransactions": [],
+  "totalCredits": 160,
+  "animalExpectations": [
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759449487563_wfi163",
+      "takenTimestamp": "2025-10-02T23:58:07.563Z"
+    }
+  ],
+  "completedAt": "2025-10-08T08:10:45.149Z",
+  "notes": "Auto-archived due to inactivity"
+}

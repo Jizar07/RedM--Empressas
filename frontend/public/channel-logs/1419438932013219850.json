@@ -1,8 +1,928 @@
 {
   "channelId": "1419438932013219850",
-  "lastUpdated": "2025-10-04T22:06:23.188Z",
-  "messageCount": 242,
+  "lastUpdated": "2025-10-08T04:57:58.828Z",
+  "messageCount": 334,
   "messages": [
+    {
+      "id": "1425346463843749928",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammoshotgunnormal x5\nComprador:: Nico Chimichurri | FIXO: 78456\nPreço Total:: $10\nData:: 08/10/2025 -  01:57:58",
+      "timestamp": "2025-10-08T04:57:58.637Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammoshotgunnormal x5\nComprador:: Nico Chimichurri | FIXO: 78456\nPreço Total:: $10\nData:: 08/10/2025 -  01:57:58",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425346450589618259",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammoshotgunnormal x5\nComprador:: Nico Chimichurri | FIXO: 78456\nPreço Total:: $10\nData:: 08/10/2025 -  01:57:55",
+      "timestamp": "2025-10-08T04:57:55.477Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammoshotgunnormal x5\nComprador:: Nico Chimichurri | FIXO: 78456\nPreço Total:: $10\nData:: 08/10/2025 -  01:57:55",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425346436073001022",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammopistolexpress x5\nComprador:: Nico Chimichurri | FIXO: 78456\nPreço Total:: $50\nData:: 08/10/2025 -  01:57:51",
+      "timestamp": "2025-10-08T04:57:52.016Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammopistolexpress x5\nComprador:: Nico Chimichurri | FIXO: 78456\nPreço Total:: $50\nData:: 08/10/2025 -  01:57:51",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425346409913258088",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorifleexpress x5\nComprador:: Nico Chimichurri | FIXO: 78456\nPreço Total:: $65\nData:: 08/10/2025 -  01:57:45",
+      "timestamp": "2025-10-08T04:57:45.779Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorifleexpress x5\nComprador:: Nico Chimichurri | FIXO: 78456\nPreço Total:: $65\nData:: 08/10/2025 -  01:57:45",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425318504445509693",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: WEAPON_RIFLE_BOLTACTION x1\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 08/10/2025 -  00:06:52",
+      "timestamp": "2025-10-08T03:06:52.597Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: WEAPON_RIFLE_BOLTACTION x1\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 08/10/2025 -  00:06:52",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425318414544539729",
+      "author": "Polly Bowdin",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: WEAPON_PISTOL_SEMIAUTO x1\nFuncionario:: Polly Bowdin | FIXO: 2009\nData:: 08/10/2025 -  00:06:31",
+      "timestamp": "2025-10-08T03:06:31.163Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: WEAPON_PISTOL_SEMIAUTO x1\nFuncionario:: Polly Bowdin | FIXO: 2009\nData:: 08/10/2025 -  00:06:31",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425318364993032344",
+      "author": "Polly Bowdin",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: WEAPON_RIFLE_BOLTACTION x1\nFuncionario:: Polly Bowdin | FIXO: 2009\nData:: 08/10/2025 -  00:06:19",
+      "timestamp": "2025-10-08T03:06:19.349Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: WEAPON_RIFLE_BOLTACTION x1\nFuncionario:: Polly Bowdin | FIXO: 2009\nData:: 08/10/2025 -  00:06:19",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425318265181438073",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorevolverexpress x5\nComprador:: Nico Chimichurri | FIXO: 78456\nPreço Total:: $52.5\nData:: 08/10/2025 -  00:05:55",
+      "timestamp": "2025-10-08T03:05:55.552Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorevolverexpress x5\nComprador:: Nico Chimichurri | FIXO: 78456\nPreço Total:: $52.5\nData:: 08/10/2025 -  00:05:55",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425318204284211261",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammopistolnormal x5\nComprador:: Nico Chimichurri | FIXO: 78456\nPreço Total:: $9.25\nData:: 08/10/2025 -  00:05:40",
+      "timestamp": "2025-10-08T03:05:41.033Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammopistolnormal x5\nComprador:: Nico Chimichurri | FIXO: 78456\nPreço Total:: $9.25\nData:: 08/10/2025 -  00:05:40",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425308699127447652",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: ammoshotgunnormal x20\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 07/10/2025 -  23:27:54",
+      "timestamp": "2025-10-08T02:27:54.827Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: ammoshotgunnormal x20\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 07/10/2025 -  23:27:54",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425305471891542107",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorifleexpress x10\nComprador:: Manoel Jackson | FIXO: 75326\nPreço Total:: $130\nData:: 07/10/2025 -  23:15:05",
+      "timestamp": "2025-10-08T02:15:05.394Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorifleexpress x10\nComprador:: Manoel Jackson | FIXO: 75326\nPreço Total:: $130\nData:: 07/10/2025 -  23:15:05",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425305162427273277",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammoshotgunnormal x10\nComprador:: Manoel Jackson | FIXO: 75326\nPreço Total:: $20\nData:: 07/10/2025 -  23:13:51",
+      "timestamp": "2025-10-08T02:13:51.612Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammoshotgunnormal x10\nComprador:: Manoel Jackson | FIXO: 75326\nPreço Total:: $20\nData:: 07/10/2025 -  23:13:51",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425305137898979398",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorifleexpress x10\nComprador:: Manoel Jackson | FIXO: 75326\nPreço Total:: $130\nData:: 07/10/2025 -  23:13:45",
+      "timestamp": "2025-10-08T02:13:45.764Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorifleexpress x10\nComprador:: Manoel Jackson | FIXO: 75326\nPreço Total:: $130\nData:: 07/10/2025 -  23:13:45",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425305115044216874",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammopistolexpress x10\nComprador:: Manoel Jackson | FIXO: 75326\nPreço Total:: $100\nData:: 07/10/2025 -  23:13:40",
+      "timestamp": "2025-10-08T02:13:40.315Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammopistolexpress x10\nComprador:: Manoel Jackson | FIXO: 75326\nPreço Total:: $100\nData:: 07/10/2025 -  23:13:40",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425302549518614692",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: WEAPON_PISTOL_SEMIAUTO x1\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 07/10/2025 - 23:03:28",
+      "timestamp": "2025-10-08T02:03:28.646Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: WEAPON_PISTOL_SEMIAUTO x1\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 07/10/2025 - 23:03:28",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425302526869377156",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: WEAPON_PISTOL_SEMIAUTO x1\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 07/10/2025 - 23:03:23",
+      "timestamp": "2025-10-08T02:03:23.246Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: WEAPON_PISTOL_SEMIAUTO x1\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 07/10/2025 - 23:03:23",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425302497907576852",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: WEAPON_RIFLE_BOLTACTION x1\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 07/10/2025 - 23:03:16",
+      "timestamp": "2025-10-08T02:03:16.341Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: WEAPON_RIFLE_BOLTACTION x1\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 07/10/2025 - 23:03:16",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425296134699749406",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: ammopistolexpress x5\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 07/10/2025 -  22:37:59",
+      "timestamp": "2025-10-08T01:37:59.234Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: ammopistolexpress x5\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 07/10/2025 -  22:37:59",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425288512428834836",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: WEAPON_PISTOL_SEMIAUTO x1\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 07/10/2025 -  22:07:41",
+      "timestamp": "2025-10-08T01:07:41.943Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: WEAPON_PISTOL_SEMIAUTO x1\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 07/10/2025 -  22:07:41",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425288501402013811",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: WEAPON_PISTOL_SEMIAUTO x1\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 07/10/2025 -  22:07:39",
+      "timestamp": "2025-10-08T01:07:39.314Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: WEAPON_PISTOL_SEMIAUTO x1\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 07/10/2025 -  22:07:39",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425288339870847077",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: ammorifleexpress x25\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 07/10/2025 - 22:07:00",
+      "timestamp": "2025-10-08T01:07:00.802Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: ammorifleexpress x25\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 07/10/2025 - 22:07:00",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425288310389215325",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: WEAPON_RIFLE_BOLTACTION x1\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 07/10/2025 -  22:06:53",
+      "timestamp": "2025-10-08T01:06:53.773Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: WEAPON_RIFLE_BOLTACTION x1\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 07/10/2025 -  22:06:53",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425285772688228474",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: ammorifleexpress x25\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 07/10/2025 - 21:56:48",
+      "timestamp": "2025-10-08T00:56:48.738Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: ammorifleexpress x25\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 07/10/2025 - 21:56:48",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425260315557494864",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: ammorifleexpress x10\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 07/10/2025 -  20:15:39",
+      "timestamp": "2025-10-07T23:15:39.285Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: ammorifleexpress x10\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 07/10/2025 -  20:15:39",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425234599939801088",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: WEAPON_RIFLE_BOLTACTION x1\nComprador:: darth bartista | FIXO: 75078\nPreço Total:: $280\nData:: 07/10/2025 -  18:33:28",
+      "timestamp": "2025-10-07T21:33:28.204Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: WEAPON_RIFLE_BOLTACTION x1\nComprador:: darth bartista | FIXO: 75078\nPreço Total:: $280\nData:: 07/10/2025 -  18:33:28",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425233616539226215",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: WEAPON_REPEATER_WINCHESTER x1\nComprador:: darth bartista | FIXO: 75078\nPreço Total:: $290\nData:: 07/10/2025 -  18:29:33",
+      "timestamp": "2025-10-07T21:29:33.743Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: WEAPON_REPEATER_WINCHESTER x1\nComprador:: darth bartista | FIXO: 75078\nPreço Total:: $290\nData:: 07/10/2025 -  18:29:33",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425214814984343563",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: WEAPON_RIFLE_BOLTACTION x1\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 07/10/2025 - 17:14:50",
+      "timestamp": "2025-10-07T20:14:51.103Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: WEAPON_RIFLE_BOLTACTION x1\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 07/10/2025 - 17:14:50",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425214792800407684",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: WEAPON_RIFLE_BOLTACTION x1\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 07/10/2025 - 17:14:45",
+      "timestamp": "2025-10-07T20:14:45.814Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: WEAPON_RIFLE_BOLTACTION x1\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 07/10/2025 - 17:14:45",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425214768347742228",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: WEAPON_RIFLE_BOLTACTION x1\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 07/10/2025 - 17:14:39",
+      "timestamp": "2025-10-07T20:14:39.984Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: WEAPON_RIFLE_BOLTACTION x1\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 07/10/2025 - 17:14:39",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425214741906722861",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: WEAPON_RIFLE_BOLTACTION x1\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 07/10/2025 - 17:14:33",
+      "timestamp": "2025-10-07T20:14:33.680Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: WEAPON_RIFLE_BOLTACTION x1\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 07/10/2025 - 17:14:33",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425214715604504778",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: WEAPON_RIFLE_BOLTACTION x1\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 07/10/2025 - 17:14:27",
+      "timestamp": "2025-10-07T20:14:27.409Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: WEAPON_RIFLE_BOLTACTION x1\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 07/10/2025 - 17:14:27",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425214665838952690",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: WEAPON_RIFLE_BOLTACTION x1\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 07/10/2025 - 17:14:15",
+      "timestamp": "2025-10-07T20:14:15.544Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: WEAPON_RIFLE_BOLTACTION x1\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 07/10/2025 - 17:14:15",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425214644603322431",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: WEAPON_RIFLE_BOLTACTION x1\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 07/10/2025 - 17:14:10",
+      "timestamp": "2025-10-07T20:14:10.481Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: WEAPON_RIFLE_BOLTACTION x1\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 07/10/2025 - 17:14:10",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425213852362080358",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorifleexpress x5\nComprador:: Nico Chimichurri | FIXO: 78456\nPreço Total:: $65\nData:: 07/10/2025 -  17:11:01",
+      "timestamp": "2025-10-07T20:11:01.596Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorifleexpress x5\nComprador:: Nico Chimichurri | FIXO: 78456\nPreço Total:: $65\nData:: 07/10/2025 -  17:11:01",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425187936361513070",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: WEAPON_REPEATER_WINCHESTER x1\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 07/10/2025 - 15:28:02",
+      "timestamp": "2025-10-07T18:28:02.740Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: WEAPON_REPEATER_WINCHESTER x1\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 07/10/2025 - 15:28:02",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425187917835276378",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: WEAPON_REPEATER_WINCHESTER x1\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 07/10/2025 - 15:27:58",
+      "timestamp": "2025-10-07T18:27:58.323Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: WEAPON_REPEATER_WINCHESTER x1\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 07/10/2025 - 15:27:58",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425187882556985406",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: WEAPON_REPEATER_EVANS x1\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 07/10/2025 - 15:27:49",
+      "timestamp": "2025-10-07T18:27:49.912Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: WEAPON_REPEATER_EVANS x1\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 07/10/2025 - 15:27:49",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425187845345247424",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: WEAPON_REPEATER_EVANS x1\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 07/10/2025 - 15:27:40",
+      "timestamp": "2025-10-07T18:27:41.040Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: WEAPON_REPEATER_EVANS x1\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 07/10/2025 - 15:27:40",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424950423995023370",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: WEAPON_PISTOL_SEMIAUTO x1\nComprador:: Johnny Rocks | FIXO: 77228\nPreço Total:: $50\nData:: 06/10/2025 -  23:44:15",
+      "timestamp": "2025-10-07T02:44:15.379Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: WEAPON_PISTOL_SEMIAUTO x1\nComprador:: Johnny Rocks | FIXO: 77228\nPreço Total:: $50\nData:: 06/10/2025 -  23:44:15",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424950419670564984",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: WEAPON_PISTOL_SEMIAUTO x1\nComprador:: Johnny Rocks | FIXO: 77228\nPreço Total:: $50\nData:: 06/10/2025 -  23:44:14",
+      "timestamp": "2025-10-07T02:44:14.348Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: WEAPON_PISTOL_SEMIAUTO x1\nComprador:: Johnny Rocks | FIXO: 77228\nPreço Total:: $50\nData:: 06/10/2025 -  23:44:14",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424950093810896977",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammoshotgunnormal x30\nComprador:: Johnny Rocks | FIXO: 77228\nPreço Total:: $60\nData:: 06/10/2025 -  23:42:56",
+      "timestamp": "2025-10-07T02:42:56.657Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammoshotgunnormal x30\nComprador:: Johnny Rocks | FIXO: 77228\nPreço Total:: $60\nData:: 06/10/2025 -  23:42:56",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424949949430366228",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: WEAPON_SHOTGUN_DOUBLEBARREL x1\nComprador:: Johnny Rocks | FIXO: 77228\nPreço Total:: $290\nData:: 06/10/2025 -  23:42:22",
+      "timestamp": "2025-10-07T02:42:22.234Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: WEAPON_SHOTGUN_DOUBLEBARREL x1\nComprador:: Johnny Rocks | FIXO: 77228\nPreço Total:: $290\nData:: 06/10/2025 -  23:42:22",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424949898071244911",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: WEAPON_SHOTGUN_DOUBLEBARREL x1\nComprador:: Johnny Rocks | FIXO: 77228\nPreço Total:: $290\nData:: 06/10/2025 -  23:42:09",
+      "timestamp": "2025-10-07T02:42:09.989Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: WEAPON_SHOTGUN_DOUBLEBARREL x1\nComprador:: Johnny Rocks | FIXO: 77228\nPreço Total:: $290\nData:: 06/10/2025 -  23:42:09",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424949891540455478",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: WEAPON_SHOTGUN_DOUBLEBARREL x1\nComprador:: Johnny Rocks | FIXO: 77228\nPreço Total:: $295\nData:: 06/10/2025 -  23:42:08",
+      "timestamp": "2025-10-07T02:42:08.432Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: WEAPON_SHOTGUN_DOUBLEBARREL x1\nComprador:: Johnny Rocks | FIXO: 77228\nPreço Total:: $295\nData:: 06/10/2025 -  23:42:08",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424945917836001411",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorevolverexpress x2\nComprador:: Matheus Watanabe | FIXO: 78688\nPreço Total:: $21.0\nData:: 06/10/2025 -  23:26:20",
+      "timestamp": "2025-10-07T02:26:21.027Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorevolverexpress x2\nComprador:: Matheus Watanabe | FIXO: 78688\nPreço Total:: $21.0\nData:: 06/10/2025 -  23:26:20",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424941736362381438",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorifleexpress x2\nComprador:: Cosmo Versace | FIXO: 78447\nPreço Total:: $26\nData:: 06/10/2025 -  23:09:43",
+      "timestamp": "2025-10-07T02:09:44.086Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorifleexpress x2\nComprador:: Cosmo Versace | FIXO: 78447\nPreço Total:: $26\nData:: 06/10/2025 -  23:09:43",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424941698966093894",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammopistolexpress x2\nComprador:: Cosmo Versace | FIXO: 78447\nPreço Total:: $20\nData:: 06/10/2025 -  23:09:35",
+      "timestamp": "2025-10-07T02:09:35.170Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammopistolexpress x2\nComprador:: Cosmo Versace | FIXO: 78447\nPreço Total:: $20\nData:: 06/10/2025 -  23:09:35",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424914762667393024",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: segurofechada x1\nComprador:: Jhon Black | FIXO: 78280\nPreço Total:: $150\nData:: 06/10/2025 -  21:22:32",
+      "timestamp": "2025-10-07T00:22:33.056Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: segurofechada x1\nComprador:: Jhon Black | FIXO: 78280\nPreço Total:: $150\nData:: 06/10/2025 -  21:22:32",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424914749585359010",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: segurorua x1\nComprador:: Jhon Black | FIXO: 78280\nPreço Total:: $100\nData:: 06/10/2025 -  21:22:29",
+      "timestamp": "2025-10-07T00:22:29.937Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: segurorua x1\nComprador:: Jhon Black | FIXO: 78280\nPreço Total:: $100\nData:: 06/10/2025 -  21:22:29",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424914626436530287",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammoshotgunnormal x2\nComprador:: Jhon Black | FIXO: 78280\nPreço Total:: $4\nData:: 06/10/2025 -  21:22:00",
+      "timestamp": "2025-10-07T00:22:00.576Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammoshotgunnormal x2\nComprador:: Jhon Black | FIXO: 78280\nPreço Total:: $4\nData:: 06/10/2025 -  21:22:00",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424768447434330155",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorifleexpress x20\nComprador:: John Weslley | FIXO: 550\nPreço Total:: $260\nData:: 06/10/2025 -  11:41:08",
+      "timestamp": "2025-10-06T14:41:08.786Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorifleexpress x20\nComprador:: John Weslley | FIXO: 550\nPreço Total:: $260\nData:: 06/10/2025 -  11:41:08",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424768412697231560",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorevolverexpress x10\nComprador:: John Weslley | FIXO: 550\nPreço Total:: $105.0\nData:: 06/10/2025 -  11:41:00",
+      "timestamp": "2025-10-06T14:41:00.504Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorevolverexpress x10\nComprador:: John Weslley | FIXO: 550\nPreço Total:: $105.0\nData:: 06/10/2025 -  11:41:00",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424665952867455056",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammoshotgunnormal x2\nComprador:: JAGUNSSO TORRES | FIXO: 78260\nPreço Total:: $4\nData:: 06/10/2025 -  04:53:52",
+      "timestamp": "2025-10-06T07:53:52.177Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammoshotgunnormal x2\nComprador:: JAGUNSSO TORRES | FIXO: 78260\nPreço Total:: $4\nData:: 06/10/2025 -  04:53:52",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424665674780901416",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammoshotgunnormal x1\nComprador:: JAGUNSSO TORRES | FIXO: 78260\nPreço Total:: $2\nData:: 06/10/2025 -  04:52:45",
+      "timestamp": "2025-10-06T07:52:45.876Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammoshotgunnormal x1\nComprador:: JAGUNSSO TORRES | FIXO: 78260\nPreço Total:: $2\nData:: 06/10/2025 -  04:52:45",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424665404197834855",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: WEAPON_SHOTGUN_DOUBLEBARREL x1\nComprador:: MARIA VITORIA | FIXO: 78112\nPreço Total:: $290\nData:: 06/10/2025 -  04:51:41",
+      "timestamp": "2025-10-06T07:51:41.364Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: WEAPON_SHOTGUN_DOUBLEBARREL x1\nComprador:: MARIA VITORIA | FIXO: 78112\nPreço Total:: $290\nData:: 06/10/2025 -  04:51:41",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424665194629693480",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorepeaternormal x5\nComprador:: JAGUNSSO TORRES | FIXO: 78260\nPreço Total:: $9.25\nData:: 06/10/2025 -  04:50:51",
+      "timestamp": "2025-10-06T07:50:51.399Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorepeaternormal x5\nComprador:: JAGUNSSO TORRES | FIXO: 78260\nPreço Total:: $9.25\nData:: 06/10/2025 -  04:50:51",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424665169472000114",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorepeaternormal x9\nComprador:: JAGUNSSO TORRES | FIXO: 78260\nPreço Total:: $16.65\nData:: 06/10/2025 -  04:50:45",
+      "timestamp": "2025-10-06T07:50:45.401Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorepeaternormal x9\nComprador:: JAGUNSSO TORRES | FIXO: 78260\nPreço Total:: $16.65\nData:: 06/10/2025 -  04:50:45",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424665105450143784",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorepeaternormal x1\nComprador:: JAGUNSSO TORRES | FIXO: 78260\nPreço Total:: $1.85\nData:: 06/10/2025 -  04:50:30",
+      "timestamp": "2025-10-06T07:50:30.137Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorepeaternormal x1\nComprador:: JAGUNSSO TORRES | FIXO: 78260\nPreço Total:: $1.85\nData:: 06/10/2025 -  04:50:30",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424664808954789928",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorepeaterexpress x1\nComprador:: Anthony Versace | FIXO: 78458\nPreço Total:: $13\nData:: 06/10/2025 -  04:49:19",
+      "timestamp": "2025-10-06T07:49:19.447Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorepeaterexpress x1\nComprador:: Anthony Versace | FIXO: 78458\nPreço Total:: $13\nData:: 06/10/2025 -  04:49:19",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424664703388352532",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammopistolexpress x1\nComprador:: Cosmo Versace | FIXO: 78447\nPreço Total:: $10\nData:: 06/10/2025 -  04:48:54",
+      "timestamp": "2025-10-06T07:48:54.278Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammopistolexpress x1\nComprador:: Cosmo Versace | FIXO: 78447\nPreço Total:: $10\nData:: 06/10/2025 -  04:48:54",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424664666939850792",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorifleexpress x1\nComprador:: Cosmo Versace | FIXO: 78447\nPreço Total:: $13\nData:: 06/10/2025 -  04:48:45",
+      "timestamp": "2025-10-06T07:48:45.588Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorifleexpress x1\nComprador:: Cosmo Versace | FIXO: 78447\nPreço Total:: $13\nData:: 06/10/2025 -  04:48:45",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424586757579477015",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: segurorua x2\nComprador:: Ubirajara Cauamb | FIXO: 1050\nPreço Total:: $200\nData:: 05/10/2025 -  23:39:10",
+      "timestamp": "2025-10-06T02:39:10.549Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: segurorua x2\nComprador:: Ubirajara Cauamb | FIXO: 1050\nPreço Total:: $200\nData:: 05/10/2025 -  23:39:10",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424564226130710631",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorevolverexpress x2\nComprador:: Matheus Watanabe | FIXO: 78688\nPreço Total:: $21.0\nData:: 05/10/2025 -  22:09:38",
+      "timestamp": "2025-10-06T01:09:38.633Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorevolverexpress x2\nComprador:: Matheus Watanabe | FIXO: 78688\nPreço Total:: $21.0\nData:: 05/10/2025 -  22:09:38",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424556818679595081",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: ammoshotgunnormal x10\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 05/10/2025 -  21:40:12",
+      "timestamp": "2025-10-06T00:40:12.559Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: ammoshotgunnormal x10\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 05/10/2025 -  21:40:12",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424449431851241596",
+      "author": "Polly Lima",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: WEAPON_PISTOL_M1899 x1\nFuncionario:: Polly Lima | FIXO: 2009\nData:: 05/10/2025 -  14:33:29",
+      "timestamp": "2025-10-05T17:33:29.544Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: WEAPON_PISTOL_M1899 x1\nFuncionario:: Polly Lima | FIXO: 2009\nData:: 05/10/2025 -  14:33:29",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424449425157132450",
+      "author": "Polly Lima",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: WEAPON_PISTOL_M1899 x1\nFuncionario:: Polly Lima | FIXO: 2009\nData:: 05/10/2025 -  14:33:27",
+      "timestamp": "2025-10-05T17:33:27.948Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: WEAPON_PISTOL_M1899 x1\nFuncionario:: Polly Lima | FIXO: 2009\nData:: 05/10/2025 -  14:33:27",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424443405890621491",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorepeaterexpress x10\nComprador:: Ingrid Dangerous | FIXO: 78258\nPreço Total:: $130\nData:: 05/10/2025 -  14:09:32",
+      "timestamp": "2025-10-05T17:09:32.843Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorepeaterexpress x10\nComprador:: Ingrid Dangerous | FIXO: 78258\nPreço Total:: $130\nData:: 05/10/2025 -  14:09:32",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424443235392028813",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammoshotgunnormal x30\nComprador:: Ingrid Dangerous | FIXO: 78258\nPreço Total:: $60\nData:: 05/10/2025 -  14:08:52",
+      "timestamp": "2025-10-05T17:08:52.193Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammoshotgunnormal x30\nComprador:: Ingrid Dangerous | FIXO: 78258\nPreço Total:: $60\nData:: 05/10/2025 -  14:08:52",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424442271268470940",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: WEAPON_SHOTGUN_DOUBLEBARREL x1\nComprador:: Ingrid Dangerous | FIXO: 78258\nPreço Total:: $290\nData:: 05/10/2025 -  14:05:02",
+      "timestamp": "2025-10-05T17:05:02.328Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: WEAPON_SHOTGUN_DOUBLEBARREL x1\nComprador:: Ingrid Dangerous | FIXO: 78258\nPreço Total:: $290\nData:: 05/10/2025 -  14:05:02",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424423429934682112",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorifleexpress x1\nComprador:: Souzz Ramirez | FIXO: 421\nPreço Total:: $13\nData:: 05/10/2025 -  12:50:10",
+      "timestamp": "2025-10-05T15:50:10.204Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorifleexpress x1\nComprador:: Souzz Ramirez | FIXO: 421\nPreço Total:: $13\nData:: 05/10/2025 -  12:50:10",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424423415502344313",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: segurofechada x1\nComprador:: Souzz Ramirez | FIXO: 421\nPreço Total:: $150\nData:: 05/10/2025 -  12:50:06",
+      "timestamp": "2025-10-05T15:50:06.763Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: segurofechada x1\nComprador:: Souzz Ramirez | FIXO: 421\nPreço Total:: $150\nData:: 05/10/2025 -  12:50:06",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424292088945836145",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorepeaterexpress x1\nComprador:: Anthony Versace | FIXO: 78458\nPreço Total:: $13\nData:: 05/10/2025 -  04:08:15",
+      "timestamp": "2025-10-05T07:08:16.072Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorepeaterexpress x1\nComprador:: Anthony Versace | FIXO: 78458\nPreço Total:: $13\nData:: 05/10/2025 -  04:08:15",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424291846061953104",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorepeaterexpress x1\nComprador:: Margarida Versace | FIXO: 78457\nPreço Total:: $13\nData:: 05/10/2025 -  04:07:18",
+      "timestamp": "2025-10-05T07:07:18.164Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorepeaterexpress x1\nComprador:: Margarida Versace | FIXO: 78457\nPreço Total:: $13\nData:: 05/10/2025 -  04:07:18",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424291567518351482",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammopistolexpress x2\nComprador:: Anthony Versace | FIXO: 78458\nPreço Total:: $20\nData:: 05/10/2025 -  04:06:11",
+      "timestamp": "2025-10-05T07:06:11.754Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammopistolexpress x2\nComprador:: Anthony Versace | FIXO: 78458\nPreço Total:: $20\nData:: 05/10/2025 -  04:06:11",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424270233430134936",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: WEAPON_SHOTGUN_DOUBLEBARREL x1\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 05/10/2025 - 02:41:25",
+      "timestamp": "2025-10-05T05:41:25.311Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: WEAPON_SHOTGUN_DOUBLEBARREL x1\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 05/10/2025 - 02:41:25",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424270212810670223",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: WEAPON_SHOTGUN_DOUBLEBARREL x1\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 05/10/2025 - 02:41:20",
+      "timestamp": "2025-10-05T05:41:20.395Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: WEAPON_SHOTGUN_DOUBLEBARREL x1\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 05/10/2025 - 02:41:20",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424270192636330075",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: WEAPON_SHOTGUN_DOUBLEBARREL x1\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 05/10/2025 - 02:41:15",
+      "timestamp": "2025-10-05T05:41:15.585Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: WEAPON_SHOTGUN_DOUBLEBARREL x1\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 05/10/2025 - 02:41:15",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424270170976813188",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: WEAPON_SHOTGUN_DOUBLEBARREL x1\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 05/10/2025 - 02:41:10",
+      "timestamp": "2025-10-05T05:41:10.421Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: WEAPON_SHOTGUN_DOUBLEBARREL x1\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 05/10/2025 - 02:41:10",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424227400522403973",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: segurorua x10\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 04/10/2025 -  23:51:13",
+      "timestamp": "2025-10-05T02:51:13.150Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: segurorua x10\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 04/10/2025 -  23:51:13",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424227387528319098",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: segurofechada x10\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 04/10/2025 -  23:51:09",
+      "timestamp": "2025-10-05T02:51:10.052Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: segurofechada x10\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 04/10/2025 -  23:51:09",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424227365420138546",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: ammorifleexpress x50\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 04/10/2025 -  23:51:04",
+      "timestamp": "2025-10-05T02:51:04.781Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: ammorifleexpress x50\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 04/10/2025 -  23:51:04",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424227331031175378",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: WEAPON_RIFLE_SPRINGFIELD x1\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 04/10/2025 -  23:50:56",
+      "timestamp": "2025-10-05T02:50:56.582Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: WEAPON_RIFLE_SPRINGFIELD x1\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 04/10/2025 -  23:50:56",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424227306905403493",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: WEAPON_RIFLE_SPRINGFIELD x1\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 04/10/2025 - 23:50:50",
+      "timestamp": "2025-10-05T02:50:50.830Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: WEAPON_RIFLE_SPRINGFIELD x1\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 04/10/2025 - 23:50:50",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424227286974206033",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: WEAPON_RIFLE_SPRINGFIELD x1\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 04/10/2025 - 23:50:45",
+      "timestamp": "2025-10-05T02:50:46.078Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: WEAPON_RIFLE_SPRINGFIELD x1\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 04/10/2025 - 23:50:45",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424227239272255590",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: WEAPON_RIFLE_SPRINGFIELD x1\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 04/10/2025 -  23:50:34",
+      "timestamp": "2025-10-05T02:50:34.705Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: WEAPON_RIFLE_SPRINGFIELD x1\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 04/10/2025 -  23:50:34",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424227206850285569",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: WEAPON_RIFLE_SPRINGFIELD x1\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 04/10/2025 -  23:50:26",
+      "timestamp": "2025-10-05T02:50:26.975Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: WEAPON_RIFLE_SPRINGFIELD x1\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 04/10/2025 -  23:50:26",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424227117960528072",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: WEAPON_SHOTGUN_DOUBLEBARREL x1\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 04/10/2025 -  23:50:05",
+      "timestamp": "2025-10-05T02:50:05.782Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: WEAPON_SHOTGUN_DOUBLEBARREL x1\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 04/10/2025 -  23:50:05",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424227111652163676",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: WEAPON_SHOTGUN_DOUBLEBARREL x1\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 04/10/2025 -  23:50:04",
+      "timestamp": "2025-10-05T02:50:04.278Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: WEAPON_SHOTGUN_DOUBLEBARREL x1\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 04/10/2025 -  23:50:04",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424227105394262120",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: WEAPON_SHOTGUN_DOUBLEBARREL x1\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 04/10/2025 -  23:50:02",
+      "timestamp": "2025-10-05T02:50:02.786Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: WEAPON_SHOTGUN_DOUBLEBARREL x1\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 04/10/2025 -  23:50:02",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424227098708676740",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: WEAPON_SHOTGUN_DOUBLEBARREL x1\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 04/10/2025 -  23:50:01",
+      "timestamp": "2025-10-05T02:50:01.192Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: WEAPON_SHOTGUN_DOUBLEBARREL x1\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 04/10/2025 -  23:50:01",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424227089078550558",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: WEAPON_RIFLE_BOLTACTION x1\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 04/10/2025 -  23:49:58",
+      "timestamp": "2025-10-05T02:49:58.896Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: WEAPON_RIFLE_BOLTACTION x1\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 04/10/2025 -  23:49:58",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1424227082912927766",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: WEAPON_RIFLE_BOLTACTION x1\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 04/10/2025 -  23:49:57",
+      "timestamp": "2025-10-05T02:49:57.426Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: WEAPON_RIFLE_BOLTACTION x1\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 04/10/2025 -  23:49:57",
+      "rawEmbeds": []
+    },
     {
       "id": "1424155719619317780",
       "author": "Santiago Bowdin",

@@ -97,7 +97,31 @@ When you see "/update" command from the user, perform the following actions:
 3. Update changelog.md if there are version-worthy changes
 4. Update CLAUDE.md if there are architectural or command changes
 
-## Recent Major Updates (v0.051) **[CURRENT VERSION]**
+## Recent Major Updates (v0.054) **[CURRENT VERSION]**
+
+### Language Switcher & Dashboard Reorganization (v0.054)
+- **Bilingual System**: Complete English/Portuguese translation with USA 🇺🇸 / Brazil 🇧🇷 flag toggle in header
+  - **LanguageContext**: Global language state with localStorage persistence (default: pt-BR)
+  - **Translation Files**: 150+ keys organized by category (nav, dashboard, admin, servicos, firms, common)
+  - **useTranslation Hook**: Easy access to translations with nested key support (`t('nav.dashboard')`)
+  - **SVG Flags**: Cross-platform compatible flag icons (emojis don't render on all systems)
+  - **Main Dashboard**: Fully translated navigation, stats, firms, admin tools, quick actions
+- **Dashboard Revolution**: Transformed sparse landing page into comprehensive command center
+  - **No More Admin Tab**: Eliminated redundant Admin tab from navigation
+  - **Firm Quick Access**: 5 prominent clickable cards replacing generic "Active Firms: 5" stat
+    - Displays firm emoji (🌾 🚂 🐣 🏥 🏪), name, status indicator, access button
+    - Grid layout: 5 columns desktop, responsive on mobile
+  - **Admin Tools on Dashboard**: All 9 admin tool cards now visible on main page
+    - Registration Settings, Registration Analytics, Orders Settings
+    - Channel Logs Config, Discord Commands, Moderation Settings
+    - Payment Settings, Payment Receipts, Firm Management
+  - **Streamlined Quick Actions**: Simplified to 3 essential shortcuts
+    - Server Status (Atlanta Server tab)
+    - Serviços (Orders/Recipes/Prices)
+    - Channel Parser (if user has permission)
+  - **Better UX**: Everything visible after login, no hidden tools, better space utilization
+
+## Previous Major Updates
 
 ### Template System Overhaul - 4 Working System Templates (v0.051)
 - **Template System Revolution**: Replaced generic templates (fazenda-bw, generic, custom) with 4 real working system templates from Cabra da Peste server

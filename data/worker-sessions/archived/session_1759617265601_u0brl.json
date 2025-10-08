@@ -1,0 +1,51 @@
+{
+  "workerId": "381598369556070402",
+  "workerName": "jubiscleia gilbert",
+  "channelId": "1422071465578070066",
+  "sessionId": "session_1759617265601_u0brl",
+  "startTime": "2025-10-04T22:34:25.601Z",
+  "lastActivity": "2025-10-04T22:34:50.427Z",
+  "status": "stale",
+  "plantTransactions": [],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Touro",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759617265602_ogsvcs",
+      "timestamp": "2025-10-04T22:34:25.602Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Porco",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759617290427_i4xcda1",
+      "timestamp": "2025-10-04T22:34:50.427Z"
+    }
+  ],
+  "financialTransactions": [],
+  "totalCredits": 0,
+  "embedMessageId": "1424162881292861592",
+  "animalExpectations": [
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759617265602_ogsvcs",
+      "takenTimestamp": "2025-10-04T22:34:25.602Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759617290427_i4xcda1",
+      "takenTimestamp": "2025-10-04T22:34:50.427Z"
+    }
+  ],
+  "completedAt": "2025-10-08T08:10:45.152Z",
+  "notes": "Auto-archived due to inactivity"
+}

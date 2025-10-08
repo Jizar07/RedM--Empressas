@@ -1,0 +1,42 @@
+{
+  "workerId": "862576444740075530",
+  "workerName": "jurandi labareda",
+  "channelId": "1423873737672884267",
+  "sessionId": "session_1759625060621_m7qm82",
+  "startTime": "2025-10-05T00:44:20.621Z",
+  "lastActivity": "2025-10-05T01:48:42.640Z",
+  "status": "stale",
+  "plantTransactions": [],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Touro",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759625060624_c5tx",
+      "timestamp": "2025-10-05T00:44:20.624Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759628922640_eku5mb9",
+      "timestamp": "2025-10-05T01:48:42.640Z"
+    }
+  ],
+  "financialTransactions": [],
+  "totalCredits": 160,
+  "embedMessageId": "1424211671957897280",
+  "animalExpectations": [
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759625060624_c5tx",
+      "takenTimestamp": "2025-10-05T00:44:20.624Z"
+    }
+  ],
+  "completedAt": "2025-10-08T02:10:44.723Z",
+  "notes": "Auto-archived due to inactivity"
+}

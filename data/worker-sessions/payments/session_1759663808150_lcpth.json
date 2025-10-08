@@ -1,0 +1,169 @@
+{
+  "sessionId": "session_1759663808150_lcpth",
+  "workerId": "470361257497722886",
+  "workerName": "Kenai Comanches",
+  "amount": 1620,
+  "paidBy": "470361257497722886",
+  "paidByName": "Gordo caramelo",
+  "paidAt": "2025-10-05T18:18:38.905Z",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Junco",
+      "quantity": 100,
+      "transactionId": "tx_1759663808152_nejhv",
+      "timestamp": "2025-10-05T11:30:08.152Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Adubo3",
+      "quantity": 100,
+      "transactionId": "tx_1759666001459_czchbr",
+      "timestamp": "2025-10-05T12:06:41.459Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 500,
+      "transactionId": "tx_1759666209525_4j8ttg",
+      "timestamp": "2025-10-05T12:10:09.525Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 500,
+      "transactionId": "tx_1759666433793_0a8owb",
+      "timestamp": "2025-10-05T12:13:53.793Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 500,
+      "transactionId": "tx_1759666724454_8rokvb",
+      "timestamp": "2025-10-05T12:18:44.454Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 500,
+      "transactionId": "tx_1759667155320_qg1o6",
+      "timestamp": "2025-10-05T12:25:55.320Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 100,
+      "transactionId": "tx_1759667229398_quc3ar",
+      "timestamp": "2025-10-05T12:27:09.398Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente Trigo",
+      "quantity": 100,
+      "transactionId": "tx_1759668656643_8p38ip",
+      "timestamp": "2025-10-05T12:50:56.643Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Adubo3",
+      "quantity": 100,
+      "transactionId": "tx_1759668672259_73gp4i",
+      "timestamp": "2025-10-05T12:51:12.259Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1759672662783_r3xcwn",
+      "timestamp": "2025-10-05T13:57:42.783Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1759672880276_upspu9",
+      "timestamp": "2025-10-05T14:01:20.276Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1759673147634_zu0o4q",
+      "timestamp": "2025-10-05T14:05:47.634Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 420,
+      "transactionId": "tx_1759673369342_v691wq",
+      "timestamp": "2025-10-05T14:09:29.342Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Vaca",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759663839551_5jdlnk",
+      "timestamp": "2025-10-05T11:30:39.551Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759665798926_qxu33",
+      "timestamp": "2025-10-05T12:03:18.926Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Touro",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759668703215_j9yku",
+      "timestamp": "2025-10-05T12:51:43.215Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759670860686_pcvq0p",
+      "timestamp": "2025-10-05T13:27:40.686Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Ovelha Femea",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759671259469_1n9ve",
+      "timestamp": "2025-10-05T13:34:19.469Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759673093520_cwfp2",
+      "timestamp": "2025-10-05T14:04:53.520Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Ovelha Macho",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759673193516_3gffw",
+      "timestamp": "2025-10-05T14:06:33.516Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759675398238_00ck4a",
+      "timestamp": "2025-10-05T14:43:18.238Z"
+    }
+  ],
+  "financialTransactions": []
+}

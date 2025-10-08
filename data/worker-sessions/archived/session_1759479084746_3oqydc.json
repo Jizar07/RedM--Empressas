@@ -1,0 +1,42 @@
+{
+  "workerId": "845711436730597417",
+  "workerName": "Anthony Versace",
+  "channelId": "1423525103769092096",
+  "sessionId": "session_1759479084746_3oqydc",
+  "startTime": "2025-10-03T08:11:24.746Z",
+  "lastActivity": "2025-10-03T08:41:17.529Z",
+  "status": "stale",
+  "plantTransactions": [],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Cabra",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759479084748_rcn",
+      "timestamp": "2025-10-03T08:11:24.748Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759480877529_qqlqw9",
+      "timestamp": "2025-10-03T08:41:17.529Z"
+    }
+  ],
+  "financialTransactions": [],
+  "totalCredits": 160,
+  "embedMessageId": "1423590724657483808",
+  "animalExpectations": [
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759479084748_rcn",
+      "takenTimestamp": "2025-10-03T08:11:24.748Z"
+    }
+  ],
+  "completedAt": "2025-10-06T05:10:41.477Z",
+  "notes": "Auto-archived due to inactivity"
+}

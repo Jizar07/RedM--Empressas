@@ -1,0 +1,20 @@
+{
+  "sessionId": "session_1759563077580_7c4pka",
+  "workerId": "206587400703574019",
+  "workerName": "Cosmo Versace",
+  "amount": 160,
+  "paidBy": "949397147030274059",
+  "paidByName": "๖ۣۜζ͜͡ɪᴢᴢʏɴʜᴀ🎀",
+  "paidAt": "2025-10-05T00:59:25.144Z",
+  "plantTransactions": [],
+  "animalTransactions": [
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759563077581_pdhwgl",
+      "timestamp": "2025-10-04T07:31:17.581Z"
+    }
+  ],
+  "financialTransactions": []
+}

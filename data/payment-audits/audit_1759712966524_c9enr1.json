@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1759712966524_c9enr1",
+  "sessionId": "session_1759707087619_ev8aei",
+  "managerId": "333664599549411329",
+  "managerName": "éoKs",
+  "workerId": "487809893923946517",
+  "workerName": "Matheus Watanabe",
+  "amountPaid": 298.6,
+  "paidAt": "2025-10-06T01:09:26.524Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-06T01:04:26.524Z",
+    "endTime": "2025-10-06T01:19:26.524Z"
+  }
+}

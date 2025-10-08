@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1759718034144_oberz2",
+  "sessionId": "session_1759699641582_lix17r",
+  "managerId": "333664599549411329",
+  "managerName": "éoKs",
+  "workerId": "1117649799181783130",
+  "workerName": "Ubirajara Cauamb",
+  "amountPaid": 441.25,
+  "paidAt": "2025-10-06T02:33:54.144Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-06T02:28:54.144Z",
+    "endTime": "2025-10-06T02:43:54.144Z"
+  }
+}
