@@ -4,6 +4,8 @@ import {
   ModalSubmitInteraction,
   EmbedBuilder,
   ActionRowBuilder,
+  ButtonBuilder,
+  ButtonStyle,
   StringSelectMenuBuilder,
   ModalBuilder,
   TextInputBuilder,
@@ -16,9 +18,11 @@ import OrdersService from '../../services/OrdersService';
 const activeOrderSessions = new Map<string, {
   firmId?: string;
   firmName?: string;
-  supplierId?: string;
-  supplierName?: string;
-  supplierDiscordTag?: string;
+  suppliers?: Array<{
+    id: string;
+    name: string;
+    tag: string;
+  }>;
   step: number;
   timestamp: number;
 }>();
@@ -47,12 +51,18 @@ export default {
         await handleOrderAccept(interaction);
       } else if (interaction.isButton() && interaction.customId.startsWith('order_reject_')) {
         await handleOrderReject(interaction);
+      } else if (interaction.isButton() && interaction.customId.startsWith('order_ready_')) {
+        await handleOrderReadyForPickup(interaction);
+      } else if (interaction.isButton() && interaction.customId.startsWith('order_complete_')) {
+        await handleOrderComplete(interaction);
       } else if (interaction.isStringSelectMenu() && interaction.customId.startsWith('order_firm_')) {
         await handleFirmSelection(interaction);
       } else if (interaction.isStringSelectMenu() && interaction.customId.startsWith('order_supplier_')) {
         await handleSupplierSelection(interaction);
       } else if (interaction.isModalSubmit() && interaction.customId.startsWith('order_details_modal_')) {
         await handleOrderDetailsSubmit(interaction);
+      } else if (interaction.isModalSubmit() && interaction.customId.startsWith('order_reject_reason_')) {
+        await handleOrderRejectModal(interaction);
       }
     } catch (error) {
       console.error('Error handling orders interaction:', error);
@@ -64,8 +74,16 @@ async function handleOrderStart(interaction: ButtonInteraction) {
   try {
     // CRITICAL: Defer the reply IMMEDIATELY as first action to prevent timeout
     await interaction.deferReply({ flags: MessageFlags.Ephemeral });
-    
-    const config = await OrdersService.getConfig();
+
+    const guildId = interaction.guildId;
+    if (!guildId) {
+      await interaction.editReply({
+        content: '❌ Este comando só pode ser usado em um servidor.'
+      });
+      return;
+    }
+
+    const config = await OrdersService.getConfig(guildId);
     if (!config) {
       await interaction.editReply({
         content: '❌ Sistema de encomendas não configurado.'
@@ -81,7 +99,7 @@ async function handleOrderStart(interaction: ButtonInteraction) {
       return;
     }
 
-    const activeUserOrders = await OrdersService.getUserActiveOrders(interaction.user.id);
+    const activeUserOrders = await OrdersService.getUserActiveOrders(guildId, interaction.user.id);
     if (activeUserOrders.length >= config.settings.maxActiveOrdersPerUser) {
       await interaction.editReply({
         content: formatMessage(config.messages.orderLimitReached, {
@@ -155,6 +173,9 @@ async function handleFirmSelection(interaction: StringSelectMenuInteraction) {
     const userId = interaction.customId.split('_')[2];
     if (userId !== interaction.user.id) return;
 
+    const guildId = interaction.guildId;
+    if (!guildId) return;
+
     const session = activeOrderSessions.get(userId);
     if (!session) {
       await interaction.reply({
@@ -164,7 +185,7 @@ async function handleFirmSelection(interaction: StringSelectMenuInteraction) {
       return;
     }
 
-    const config = await OrdersService.getConfig();
+    const config = await OrdersService.getConfig(guildId);
     if (!config) return;
 
     const firmId = interaction.values[0];
@@ -189,23 +210,63 @@ async function handleFirmSelection(interaction: StringSelectMenuInteraction) {
 
     // Get suppliers directly from the configured supplier user IDs
     const suppliers = [];
-    
-    for (const userId of firm.supplierUserIds || []) {
+    const debugInfo = {
+      totalConfigured: firm.supplierUserIds?.length || 0,
+      filteredSelf: 0,
+      filteredBot: 0,
+      fetchFailed: 0,
+      success: 0
+    };
+
+    console.log(`🔍 Firm "${firm.name}" has ${debugInfo.totalConfigured} configured suppliers: ${firm.supplierUserIds?.join(', ')}`);
+    console.log(`🔍 User requesting order: ${interaction.user.id} (${interaction.user.username})`);
+
+    for (const supplierId of firm.supplierUserIds || []) {
       try {
-        if (userId !== interaction.user.id) { // Don't allow ordering from yourself
-          const member = await guild.members.fetch(userId);
-          if (member && !member.user.bot) {
-            suppliers.push(member);
-          }
+        if (supplierId === interaction.user.id) {
+          console.log(`⚠️ Filtered out ${supplierId} (you can't order from yourself)`);
+          debugInfo.filteredSelf++;
+          continue;
         }
+
+        const member = await guild.members.fetch(supplierId);
+        if (!member) {
+          console.log(`❌ Failed to fetch member ${supplierId}`);
+          debugInfo.fetchFailed++;
+          continue;
+        }
+
+        if (member.user.bot) {
+          console.log(`⚠️ Filtered out ${supplierId} (${member.user.username}) - is a bot`);
+          debugInfo.filteredBot++;
+          continue;
+        }
+
+        suppliers.push(member);
+        debugInfo.success++;
+        console.log(`✅ Added supplier: ${member.user.username} (${supplierId})`);
       } catch (error) {
-        console.error(`Error fetching user ${userId}:`, error);
+        console.error(`❌ Error fetching user ${supplierId}:`, error);
+        debugInfo.fetchFailed++;
       }
     }
 
+    console.log(`📊 Supplier filtering results:`, debugInfo);
+
     if (suppliers.length === 0) {
+      let errorMessage = config.messages.noSuppliersAvailable;
+
+      // Provide more specific error message
+      if (debugInfo.totalConfigured === 0) {
+        errorMessage = `❌ Nenhum fornecedor configurado para **${firm.name}**.\n\nPor favor, configure fornecedores no painel web.`;
+      } else if (debugInfo.filteredSelf > 0 && debugInfo.filteredSelf === debugInfo.totalConfigured) {
+        errorMessage = `❌ Você não pode fazer encomendas para si mesmo.\n\nVocê é o único fornecedor configurado para **${firm.name}**.`;
+      } else if (debugInfo.fetchFailed === debugInfo.totalConfigured) {
+        errorMessage = `❌ Erro ao buscar fornecedores para **${firm.name}**.\n\nOs fornecedores configurados podem ter saído do servidor.`;
+      }
+
       await interaction.update({
-        content: config.messages.noSuppliersAvailable,
+        content: errorMessage,
         embeds: [],
         components: []
       });
@@ -232,7 +293,9 @@ async function handleFirmSelection(interaction: StringSelectMenuInteraction) {
     const selectMenu = new StringSelectMenuBuilder()
       .setCustomId(`order_supplier_${userId}`)
       .setPlaceholder(config.steps.selectSupplier.dropdownPlaceholder)
-      .addOptions(options);
+      .addOptions(options)
+      .setMinValues(1)
+      .setMaxValues(Math.min(suppliers.length, 25)); // Allow selecting multiple suppliers
 
     const row = new ActionRowBuilder<StringSelectMenuBuilder>()
       .addComponents(selectMenu);
@@ -268,6 +331,9 @@ async function handleSupplierSelection(interaction: StringSelectMenuInteraction)
     const userId = interaction.customId.split('_')[2];
     if (userId !== interaction.user.id) return;
 
+    const guildId = interaction.guildId;
+    if (!guildId) return;
+
     const session = activeOrderSessions.get(userId);
     if (!session || !session.firmId) {
       await interaction.reply({
@@ -278,17 +344,33 @@ async function handleSupplierSelection(interaction: StringSelectMenuInteraction)
       return;
     }
 
-    const config = await OrdersService.getConfig();
+    const config = await OrdersService.getConfig(guildId);
     if (!config) return;
 
-    const supplierId = interaction.values[0];
+    const supplierIds = interaction.values; // Get ALL selected supplier IDs
     const guild = interaction.guild;
     if (!guild) return;
 
-    const supplier = await guild.members.fetch(supplierId);
-    if (!supplier) {
+    // Fetch all selected suppliers
+    const suppliers = [];
+    for (const supplierId of supplierIds) {
+      try {
+        const member = await guild.members.fetch(supplierId);
+        if (member) {
+          suppliers.push({
+            id: member.id,
+            name: member.displayName,
+            tag: member.user.tag
+          });
+        }
+      } catch (error) {
+        console.error(`Error fetching supplier ${supplierId}:`, error);
+      }
+    }
+
+    if (suppliers.length === 0) {
       await interaction.update({
-        content: '❌ Fornecedor não encontrado.',
+        content: '❌ Nenhum fornecedor encontrado.',
         embeds: [],
         components: []
       });
@@ -296,9 +378,7 @@ async function handleSupplierSelection(interaction: StringSelectMenuInteraction)
       return;
     }
 
-    session.supplierId = supplierId;
-    session.supplierName = supplier.displayName;
-    session.supplierDiscordTag = supplier.user.tag;
+    session.suppliers = suppliers;
     session.step = 3;
     session.timestamp = Date.now();
 
@@ -362,20 +442,25 @@ async function handleSupplierSelection(interaction: StringSelectMenuInteraction)
 
 async function handleOrderDetailsSubmit(interaction: ModalSubmitInteraction) {
   try {
+    // CRITICAL: Defer reply IMMEDIATELY to prevent timeout
+    await interaction.deferReply({ flags: MessageFlags.Ephemeral });
+
     const userId = interaction.customId.split('_')[3];
     if (userId !== interaction.user.id) return;
 
+    const guildId = interaction.guildId;
+    if (!guildId) return;
+
     const session = activeOrderSessions.get(userId);
-    if (!session || !session.firmId || !session.supplierId) {
-      await interaction.reply({
-        content: '❌ Sessão expirada. Por favor, comece novamente.',
-        flags: MessageFlags.Ephemeral
+    if (!session || !session.firmId || !session.suppliers || session.suppliers.length === 0) {
+      await interaction.editReply({
+        content: '❌ Sessão expirada. Por favor, comece novamente.'
       });
       activeOrderSessions.delete(userId);
       return;
     }
 
-    const config = await OrdersService.getConfig();
+    const config = await OrdersService.getConfig(guildId);
     if (!config) return;
 
     const itemName = interaction.fields.getTextInputValue('item_name');
@@ -384,20 +469,20 @@ async function handleOrderDetailsSubmit(interaction: ModalSubmitInteraction) {
 
     const quantity = parseInt(quantityStr);
     if (isNaN(quantity) || quantity <= 0) {
-      await interaction.reply({
-        content: '❌ Quantidade inválida. Por favor, insira um número válido maior que 0.',
-        flags: MessageFlags.Ephemeral
+      await interaction.editReply({
+        content: '❌ Quantidade inválida. Por favor, insira um número válido maior que 0.'
       });
       return;
     }
 
-    const order = await OrdersService.createOrder({
+    // Create ONE order with ALL selected suppliers
+    const order = await OrdersService.createOrder(guildId, {
       customerId: interaction.user.id,
       customerName: interaction.user.username,
       customerDiscordTag: interaction.user.tag,
-      supplierId: session.supplierId,
-      supplierName: session.supplierName!,
-      supplierDiscordTag: session.supplierDiscordTag!,
+      supplierIds: session.suppliers.map(s => s.id),
+      supplierNames: session.suppliers.map(s => s.name),
+      supplierDiscordTags: session.suppliers.map(s => s.tag),
       firmId: session.firmId,
       firmName: session.firmName!,
       itemName,
@@ -406,45 +491,53 @@ async function handleOrderDetailsSubmit(interaction: ModalSubmitInteraction) {
     });
 
     if (!order) {
-      await interaction.reply({
-        content: '❌ Erro ao criar encomenda.',
-        flags: MessageFlags.Ephemeral
+      await interaction.editReply({
+        content: '❌ Erro ao criar encomenda.'
       });
       return;
     }
 
+    // Build success embed
     const embed = new EmbedBuilder()
       .setTitle('✅ Encomenda Criada com Sucesso!')
       .setColor('#00FF00')
-      .setDescription(`Sua encomenda foi enviada para **${session.supplierName}**`)
+      .setDescription(`Sua encomenda foi enviada para ${session.suppliers.length} fornecedor(es)`)
       .addFields(
-        { name: 'ID da Encomenda', value: order.orderId, inline: true },
-        { name: 'Firma', value: session.firmName!, inline: true },
-        { name: 'Status', value: '⏳ Pendente', inline: true },
-        { name: 'Item', value: itemName, inline: true },
-        { name: 'Quantidade', value: quantity.toString(), inline: true },
-        { name: 'Fornecedor', value: session.supplierName!, inline: true }
+        { name: '\u200B', value: '**📋 Detalhes da Encomenda**', inline: false },
+        { name: '🆔 ID', value: `\`${order.orderId}\``, inline: true },
+        { name: '🏢 Firma', value: session.firmName!, inline: true },
+        { name: '📊 Status', value: '⏳ **Pendente**', inline: true },
+        { name: '\u200B', value: '\u200B', inline: false },
+        { name: '📦 Item', value: `**${quantity}x** ${itemName}`, inline: true },
+        {
+          name: '👥 Fornecedores',
+          value: session.suppliers.map(s => s.name).join(', '),
+          inline: true
+        }
       )
-      .setFooter({ text: 'Você receberá uma notificação quando o fornecedor responder.' })
+      .setFooter({ text: 'Você receberá uma notificação quando algum fornecedor responder.' })
       .setTimestamp();
 
     if (notes) {
-      embed.addFields({ name: 'Observações', value: notes, inline: false });
+      embed.addFields(
+        { name: '\u200B', value: '\u200B', inline: false },
+        { name: '📝 Observações', value: `> ${notes}`, inline: false }
+      );
     }
 
-    await interaction.reply({
-      embeds: [embed],
-      flags: MessageFlags.Ephemeral
+    await interaction.editReply({
+      embeds: [embed]
     });
 
     activeOrderSessions.delete(userId);
 
   } catch (error: any) {
     console.error('Error submitting order:', error);
-    
-    const config = await OrdersService.getConfig();
+
+    const guildId = interaction.guildId;
+    const config = guildId ? await OrdersService.getConfig(guildId) : null;
     let errorMessage = '❌ Erro ao criar encomenda.';
-    
+
     if (config) {
       if (error.message?.includes('Order limit reached')) {
         errorMessage = formatMessage(config.messages.orderLimitReached, {
@@ -456,20 +549,34 @@ async function handleOrderDetailsSubmit(interaction: ModalSubmitInteraction) {
       }
     }
 
-    await interaction.reply({
-      content: errorMessage,
-      flags: MessageFlags.Ephemeral
-    });
-    
+    try {
+      if (interaction.deferred || interaction.replied) {
+        await interaction.editReply({
+          content: errorMessage
+        });
+      } else {
+        await interaction.reply({
+          content: errorMessage,
+          flags: MessageFlags.Ephemeral
+        });
+      }
+    } catch (replyError) {
+      console.error('Failed to send error message:', replyError);
+    }
+
     activeOrderSessions.delete(interaction.user.id);
   }
 }
 
 async function handleOrderAccept(interaction: ButtonInteraction) {
   try {
+    const guildId = interaction.guildId;
+    if (!guildId) return;
+
     const orderId = interaction.customId.split('_')[2];
-    
+
     const updated = await OrdersService.updateOrderStatus(
+      guildId,
       orderId,
       'accepted',
       interaction.user.id
@@ -486,17 +593,34 @@ async function handleOrderAccept(interaction: ButtonInteraction) {
     const embed = new EmbedBuilder()
       .setTitle('✅ Encomenda Aceita')
       .setColor('#00FF00')
-      .setDescription(`Você aceitou a encomenda **${updated.orderId}**`)
+      .setDescription(`Você aceitou a encomenda \`${updated.orderId}\`\n\nO cliente foi notificado. Quando estiver pronto, use os botões abaixo para atualizar o status.`)
       .addFields(
-        { name: 'Cliente', value: updated.customerName, inline: true },
-        { name: 'Item', value: `${updated.itemQuantity}x ${updated.itemName}`, inline: true },
-        { name: 'Status', value: '✅ Aceita', inline: true }
+        { name: '\u200B', value: '**📋 Detalhes da Encomenda**', inline: false },
+        { name: '👤 Cliente', value: updated.customerName, inline: true },
+        { name: '📦 Item', value: `**${updated.itemQuantity}x** ${updated.itemName}`, inline: true },
+        { name: '📊 Status', value: '✅ **Aceita**', inline: true }
       )
+      .setFooter({ text: `Aceita em ${new Date().toLocaleString('pt-BR')}` })
       .setTimestamp();
+
+    // Add buttons for next actions
+    const row = new ActionRowBuilder<ButtonBuilder>()
+      .addComponents(
+        new ButtonBuilder()
+          .setCustomId(`order_ready_${orderId}`)
+          .setLabel('Pronto para Retirar')
+          .setEmoji('📦')
+          .setStyle(ButtonStyle.Primary),
+        new ButtonBuilder()
+          .setCustomId(`order_complete_${orderId}`)
+          .setLabel('Marcar como Concluído')
+          .setEmoji('✅')
+          .setStyle(ButtonStyle.Success)
+      );
 
     await interaction.update({
       embeds: [embed],
-      components: []
+      components: [row]
     });
 
   } catch (error: any) {
@@ -519,12 +643,110 @@ async function handleOrderAccept(interaction: ButtonInteraction) {
 async function handleOrderReject(interaction: ButtonInteraction) {
   try {
     const orderId = interaction.customId.split('_')[2];
-    
+
+    // Show modal asking for rejection reason
+    const modal = new ModalBuilder()
+      .setCustomId(`order_reject_reason_${orderId}`)
+      .setTitle('Rejeitar Encomenda');
+
+    const reasonInput = new TextInputBuilder()
+      .setCustomId('rejection_reason')
+      .setLabel('Motivo da Rejeição')
+      .setPlaceholder('Ex: Item fora de estoque, preço muito alto, não trabalho com esse item...')
+      .setStyle(TextInputStyle.Paragraph)
+      .setRequired(true)
+      .setMinLength(5)
+      .setMaxLength(500);
+
+    const row = new ActionRowBuilder<TextInputBuilder>().addComponents(reasonInput);
+    modal.addComponents(row);
+
+    await interaction.showModal(modal);
+
+  } catch (error: any) {
+    console.error('Error showing rejection modal:', error);
+    await interaction.reply({
+      content: '❌ Erro ao processar rejeição.',
+      flags: MessageFlags.Ephemeral
+    });
+  }
+}
+
+async function handleOrderRejectModal(interaction: ModalSubmitInteraction) {
+  try {
+    await interaction.deferUpdate();
+
+    const guildId = interaction.guildId;
+    if (!guildId) return;
+
+    const orderId = interaction.customId.split('_')[3]; // order_reject_reason_{orderId}
+    const reason = interaction.fields.getTextInputValue('rejection_reason');
+
     const updated = await OrdersService.updateOrderStatus(
+      guildId,
       orderId,
       'rejected',
       interaction.user.id,
-      'Rejeitado pelo fornecedor'
+      reason
+    );
+
+    if (!updated) {
+      await interaction.followUp({
+        content: '❌ Encomenda não encontrada.',
+        flags: MessageFlags.Ephemeral
+      });
+      return;
+    }
+
+    const embed = new EmbedBuilder()
+      .setTitle('❌ Encomenda Rejeitada')
+      .setColor('#FF0000')
+      .setDescription(`Você rejeitou a encomenda \`${updated.orderId}\`\n\nO cliente foi notificado com o motivo da rejeição.`)
+      .addFields(
+        { name: '\u200B', value: '**📋 Detalhes da Encomenda**', inline: false },
+        { name: '👤 Cliente', value: updated.customerName, inline: true },
+        { name: '📦 Item', value: `**${updated.itemQuantity}x** ${updated.itemName}`, inline: true },
+        { name: '📊 Status', value: '❌ **Rejeitada**', inline: true },
+        { name: '\u200B', value: '\u200B', inline: false },
+        { name: '📝 Motivo', value: `> ${reason}`, inline: false }
+      )
+      .setFooter({ text: `Rejeitada em ${new Date().toLocaleString('pt-BR')}` })
+      .setTimestamp();
+
+    await interaction.editReply({
+      embeds: [embed],
+      components: []
+    });
+
+  } catch (error: any) {
+    console.error('Error processing rejection:', error);
+
+    if (error.message === 'Unauthorized to update this order') {
+      await interaction.followUp({
+        content: '❌ Você não tem permissão para rejeitar esta encomenda.',
+        flags: MessageFlags.Ephemeral
+      });
+    } else {
+      await interaction.followUp({
+        content: '❌ Erro ao rejeitar encomenda.',
+        flags: MessageFlags.Ephemeral
+      });
+    }
+  }
+}
+
+async function handleOrderReadyForPickup(interaction: ButtonInteraction) {
+  try {
+    const guildId = interaction.guildId;
+    if (!guildId) return;
+
+    const orderId = interaction.customId.split('_')[2]; // order_ready_{orderId}
+
+    const updated = await OrdersService.updateOrderStatus(
+      guildId,
+      orderId,
+      'in_progress',
+      interaction.user.id
     );
 
     if (!updated) {
@@ -536,32 +758,101 @@ async function handleOrderReject(interaction: ButtonInteraction) {
     }
 
     const embed = new EmbedBuilder()
-      .setTitle('❌ Encomenda Rejeitada')
-      .setColor('#FF0000')
-      .setDescription(`Você rejeitou a encomenda **${updated.orderId}**`)
+      .setTitle('📦 Encomenda Pronta para Retirada')
+      .setColor('#FFA500')
+      .setDescription(`A encomenda \`${updated.orderId}\` está pronta!\n\nO cliente foi notificado e pode vir retirar.`)
       .addFields(
-        { name: 'Cliente', value: updated.customerName, inline: true },
-        { name: 'Item', value: `${updated.itemQuantity}x ${updated.itemName}`, inline: true },
-        { name: 'Status', value: '❌ Rejeitada', inline: true }
+        { name: '\u200B', value: '**📋 Detalhes da Encomenda**', inline: false },
+        { name: '👤 Cliente', value: updated.customerName, inline: true },
+        { name: '📦 Item', value: `**${updated.itemQuantity}x** ${updated.itemName}`, inline: true },
+        { name: '📊 Status', value: '📦 **Pronta**', inline: true }
       )
+      .setFooter({ text: `Marcada como pronta em ${new Date().toLocaleString('pt-BR')}` })
       .setTimestamp();
+
+    // Only show "Mark as Completed" button now
+    const row = new ActionRowBuilder<ButtonBuilder>()
+      .addComponents(
+        new ButtonBuilder()
+          .setCustomId(`order_complete_${orderId}`)
+          .setLabel('Marcar como Concluído')
+          .setEmoji('✅')
+          .setStyle(ButtonStyle.Success)
+      );
 
     await interaction.update({
       embeds: [embed],
-      components: []
+      components: [row]
     });
 
   } catch (error: any) {
-    console.error('Error rejecting order:', error);
-    
+    console.error('Error marking order ready:', error);
+
     if (error.message === 'Unauthorized to update this order') {
       await interaction.reply({
-        content: '❌ Você não tem permissão para rejeitar esta encomenda.',
+        content: '❌ Você não tem permissão para atualizar esta encomenda.',
         flags: MessageFlags.Ephemeral
       });
     } else {
       await interaction.reply({
-        content: '❌ Erro ao rejeitar encomenda.',
+        content: '❌ Erro ao atualizar status da encomenda.',
+        flags: MessageFlags.Ephemeral
+      });
+    }
+  }
+}
+
+async function handleOrderComplete(interaction: ButtonInteraction) {
+  try {
+    const guildId = interaction.guildId;
+    if (!guildId) return;
+
+    const orderId = interaction.customId.split('_')[2]; // order_complete_{orderId}
+
+    const updated = await OrdersService.updateOrderStatus(
+      guildId,
+      orderId,
+      'completed',
+      interaction.user.id
+    );
+
+    if (!updated) {
+      await interaction.reply({
+        content: '❌ Encomenda não encontrada.',
+        flags: MessageFlags.Ephemeral
+      });
+      return;
+    }
+
+    const embed = new EmbedBuilder()
+      .setTitle('🎉 Encomenda Concluída')
+      .setColor('#00FF00')
+      .setDescription(`A encomenda \`${updated.orderId}\` foi concluída com sucesso!\n\nO cliente foi notificado.`)
+      .addFields(
+        { name: '\u200B', value: '**📋 Detalhes da Encomenda**', inline: false },
+        { name: '👤 Cliente', value: updated.customerName, inline: true },
+        { name: '📦 Item', value: `**${updated.itemQuantity}x** ${updated.itemName}`, inline: true },
+        { name: '📊 Status', value: '✅ **Concluída**', inline: true }
+      )
+      .setFooter({ text: `Concluída em ${new Date().toLocaleString('pt-BR')}` })
+      .setTimestamp();
+
+    await interaction.update({
+      embeds: [embed],
+      components: [] // Remove all buttons
+    });
+
+  } catch (error: any) {
+    console.error('Error completing order:', error);
+
+    if (error.message === 'Unauthorized to update this order') {
+      await interaction.reply({
+        content: '❌ Você não tem permissão para atualizar esta encomenda.',
+        flags: MessageFlags.Ephemeral
+      });
+    } else {
+      await interaction.reply({
+        content: '❌ Erro ao concluir encomenda.',
         flags: MessageFlags.Ephemeral
       });
     }

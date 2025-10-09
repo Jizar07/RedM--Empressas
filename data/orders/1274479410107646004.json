@@ -1,0 +1,29 @@
+[
+  {
+    "orderId": "ORD-1760031419529-92SY02QCH",
+    "status": "pending",
+    "customerId": "372161270176153601",
+    "customerName": "jizarstoffel",
+    "customerDiscordTag": "jizarstoffel",
+    "supplierIds": [
+      "198538680686608384",
+      "141250620593012736"
+    ],
+    "supplierNames": [
+      "Barth",
+      "Santiago Bowdin | 2512"
+    ],
+    "supplierDiscordTags": [
+      "brtsix9",
+      "r3dley"
+    ],
+    "firmId": "1425877262238220338",
+    "firmName": "🌽・fazenda",
+    "itemName": "Alcool Industrial",
+    "itemQuantity": 1000,
+    "notes": "Artezanato",
+    "message": "✅ **Encomenda Realizada!**\n\njizarstoffel encomendou 1000x Alcool Industrial de Barth, Santiago Bowdin | 2512",
+    "createdAt": "2025-10-09T17:36:59.529Z",
+    "updatedAt": "2025-10-09T17:36:59.529Z"
+  }
+]

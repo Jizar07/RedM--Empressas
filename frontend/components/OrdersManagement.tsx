@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Package2, Eye, CheckCircle, XCircle, Clock, AlertCircle, Filter, Search, Download } from 'lucide-react';
+import { Package2, Eye, CheckCircle, XCircle, Clock, AlertCircle, Filter, Search, Download, Server } from 'lucide-react';
+import { useServer } from '@/contexts/ServerContext';
 
 type OrderStatus = 'pending' | 'accepted' | 'in_progress' | 'completed' | 'cancelled' | 'rejected';
 
@@ -36,6 +37,7 @@ interface Firm {
 }
 
 export default function OrdersManagement() {
+  const { selectedServerId, selectedServerName } = useServer();
   const [orders, setOrders] = useState<Order[]>([]);
   const [firms, setFirms] = useState<Firm[]>([]);
   const [loading, setLoading] = useState(true);
@@ -50,12 +52,16 @@ export default function OrdersManagement() {
   const [showOrderDetails, setShowOrderDetails] = useState(false);
 
   useEffect(() => {
-    fetchOrders();
-    fetchFirms();
-  }, []);
+    if (selectedServerId) {
+      fetchOrders();
+      fetchFirms();
+    }
+  }, [selectedServerId]);
 
   useEffect(() => {
-    fetchOrders();
+    if (selectedServerId) {
+      fetchOrders();
+    }
   }, [filters]);
 
   const fetchOrders = async () => {
@@ -193,6 +199,18 @@ export default function OrdersManagement() {
     return acc;
   }, {} as Record<OrderStatus, number>);
 
+  if (!selectedServerId) {
+    return (
+      <div className="flex flex-col items-center justify-center h-96 space-y-4">
+        <Server className="h-20 w-20 text-gray-400" />
+        <div className="text-gray-600 dark:text-gray-300 text-xl font-semibold">Selecione um servidor</div>
+        <div className="text-gray-500 dark:text-gray-400 text-center max-w-md">
+          Escolha um servidor Discord no menu acima para gerenciar as encomendas
+        </div>
+      </div>
+    );
+  }
+
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
@@ -207,12 +225,12 @@ export default function OrdersManagement() {
       <div className="card p-6">
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center space-x-3">
-            <Package2 className="h-6 w-6 text-gray-600" />
-            <h2 className="text-xl font-semibold text-gray-900">Gerenciamento de Encomendas</h2>
+            <Package2 className="h-6 w-6 text-gray-600 dark:text-gray-300" />
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Gerenciamento de Encomendas</h2>
           </div>
           <button
             onClick={exportOrders}
-            className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors flex items-center space-x-2"
+            className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 dark:hover:bg-green-600 transition-colors flex items-center space-x-2"
           >
             <Download className="h-4 w-4" />
             <span>Exportar CSV</span>
@@ -221,40 +239,40 @@ export default function OrdersManagement() {
 
         {/* Status Statistics */}
         <div className="grid grid-cols-2 md:grid-cols-6 gap-4 mb-6">
-          <div className="bg-gray-50 p-4 rounded-lg text-center">
-            <div className="text-2xl font-bold text-gray-900">{filteredOrdersCount}</div>
-            <div className="text-sm text-gray-600">Total</div>
+          <div className="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg text-center">
+            <div className="text-2xl font-bold text-gray-900 dark:text-white">{filteredOrdersCount}</div>
+            <div className="text-sm text-gray-600 dark:text-gray-300">Total</div>
           </div>
-          <div className="bg-yellow-50 p-4 rounded-lg text-center">
-            <div className="text-2xl font-bold text-yellow-600">{statusCounts.pending || 0}</div>
-            <div className="text-sm text-yellow-600">Pendentes</div>
+          <div className="bg-yellow-50 dark:bg-yellow-900/30 p-4 rounded-lg text-center">
+            <div className="text-2xl font-bold text-yellow-600 dark:text-yellow-400">{statusCounts.pending || 0}</div>
+            <div className="text-sm text-yellow-600 dark:text-yellow-300">Pendentes</div>
           </div>
-          <div className="bg-blue-50 p-4 rounded-lg text-center">
-            <div className="text-2xl font-bold text-blue-600">{statusCounts.accepted || 0}</div>
-            <div className="text-sm text-blue-600">Aceitas</div>
+          <div className="bg-blue-50 dark:bg-blue-900/30 p-4 rounded-lg text-center">
+            <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">{statusCounts.accepted || 0}</div>
+            <div className="text-sm text-blue-600 dark:text-blue-300">Aceitas</div>
           </div>
-          <div className="bg-purple-50 p-4 rounded-lg text-center">
-            <div className="text-2xl font-bold text-purple-600">{statusCounts.in_progress || 0}</div>
-            <div className="text-sm text-purple-600">Em Andamento</div>
+          <div className="bg-purple-50 dark:bg-purple-900/30 p-4 rounded-lg text-center">
+            <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">{statusCounts.in_progress || 0}</div>
+            <div className="text-sm text-purple-600 dark:text-purple-300">Em Andamento</div>
           </div>
-          <div className="bg-green-50 p-4 rounded-lg text-center">
-            <div className="text-2xl font-bold text-green-600">{statusCounts.completed || 0}</div>
-            <div className="text-sm text-green-600">Concluídas</div>
+          <div className="bg-green-50 dark:bg-green-900/30 p-4 rounded-lg text-center">
+            <div className="text-2xl font-bold text-green-600 dark:text-green-400">{statusCounts.completed || 0}</div>
+            <div className="text-sm text-green-600 dark:text-green-300">Concluídas</div>
           </div>
-          <div className="bg-red-50 p-4 rounded-lg text-center">
-            <div className="text-2xl font-bold text-red-600">{(statusCounts.cancelled || 0) + (statusCounts.rejected || 0)}</div>
-            <div className="text-sm text-red-600">Canceladas/Rejeitadas</div>
+          <div className="bg-red-50 dark:bg-red-900/30 p-4 rounded-lg text-center">
+            <div className="text-2xl font-bold text-red-600 dark:text-red-400">{(statusCounts.cancelled || 0) + (statusCounts.rejected || 0)}</div>
+            <div className="text-sm text-red-600 dark:text-red-300">Canceladas/Rejeitadas</div>
           </div>
         </div>
 
         {/* Filters */}
         <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Status</label>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Status</label>
             <select
               value={filters.status}
               onChange={(e) => setFilters({ ...filters, status: e.target.value })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-indigo-500"
             >
               <option value="">Todos os Status</option>
               <option value="pending">Pendente</option>
@@ -266,11 +284,11 @@ export default function OrdersManagement() {
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Firma</label>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Firma</label>
             <select
               value={filters.firmId}
               onChange={(e) => setFilters({ ...filters, firmId: e.target.value })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-indigo-500"
             >
               <option value="">Todas as Firmas</option>
               {firms.filter(f => f.active).map(firm => (
@@ -279,33 +297,33 @@ export default function OrdersManagement() {
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Data Inicial</label>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Data Inicial</label>
             <input
               type="date"
               value={filters.startDate}
               onChange={(e) => setFilters({ ...filters, startDate: e.target.value })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-indigo-500"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Data Final</label>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Data Final</label>
             <input
               type="date"
               value={filters.endDate}
               onChange={(e) => setFilters({ ...filters, endDate: e.target.value })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-indigo-500"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Pesquisar</label>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Pesquisar</label>
             <div className="relative">
-              <Search className="absolute left-3 top-2.5 h-4 w-4 text-gray-400" />
+              <Search className="absolute left-3 top-2.5 h-4 w-4 text-gray-400 dark:text-gray-500" />
               <input
                 type="text"
                 value={filters.search}
                 onChange={(e) => setFilters({ ...filters, search: e.target.value })}
                 placeholder="ID, cliente, fornecedor..."
-                className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                className="w-full pl-10 pr-3 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 rounded-lg focus:ring-2 focus:ring-indigo-500"
               />
             </div>
           </div>
@@ -315,25 +333,25 @@ export default function OrdersManagement() {
       {/* Orders Table */}
       <div className="card">
         <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-50">
+          <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+            <thead className="bg-gray-50 dark:bg-gray-700">
               <tr>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID da Encomenda</th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Cliente</th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Fornecedor</th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Firma</th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Item</th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Quantidade</th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Data</th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ações</th>
+                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">ID da Encomenda</th>
+                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Status</th>
+                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Cliente</th>
+                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Fornecedor</th>
+                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Firma</th>
+                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Item</th>
+                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Quantidade</th>
+                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Data</th>
+                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Ações</th>
               </tr>
             </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
+            <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
               {orders.map((order) => (
-                <tr key={order.orderId} className="hover:bg-gray-50">
+                <tr key={order.orderId} className="hover:bg-gray-50 dark:hover:bg-gray-700">
                   <td className="px-4 py-3 whitespace-nowrap">
-                    <div className="font-mono text-sm text-gray-900">{order.orderId}</div>
+                    <div className="font-mono text-sm text-gray-900 dark:text-white">{order.orderId}</div>
                   </td>
                   <td className="px-4 py-3 whitespace-nowrap">
                     <span className={`inline-flex items-center space-x-1 px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(order.status)}`}>
@@ -342,25 +360,25 @@ export default function OrdersManagement() {
                     </span>
                   </td>
                   <td className="px-4 py-3 whitespace-nowrap">
-                    <div className="text-sm font-medium text-gray-900">{order.customerName}</div>
-                    <div className="text-sm text-gray-500">{order.customerDiscordTag}</div>
+                    <div className="text-sm font-medium text-gray-900 dark:text-white">{order.customerName}</div>
+                    <div className="text-sm text-gray-500 dark:text-gray-400">{order.customerDiscordTag}</div>
                   </td>
                   <td className="px-4 py-3 whitespace-nowrap">
-                    <div className="text-sm font-medium text-gray-900">{order.supplierName}</div>
-                    <div className="text-sm text-gray-500">{order.supplierDiscordTag}</div>
+                    <div className="text-sm font-medium text-gray-900 dark:text-white">{order.supplierName}</div>
+                    <div className="text-sm text-gray-500 dark:text-gray-400">{order.supplierDiscordTag}</div>
                   </td>
                   <td className="px-4 py-3 whitespace-nowrap">
-                    <div className="text-sm text-gray-900">{order.firmName}</div>
+                    <div className="text-sm text-gray-900 dark:text-white">{order.firmName}</div>
                   </td>
                   <td className="px-4 py-3 whitespace-nowrap">
-                    <div className="text-sm font-medium text-gray-900">{order.itemName}</div>
+                    <div className="text-sm font-medium text-gray-900 dark:text-white">{order.itemName}</div>
                   </td>
                   <td className="px-4 py-3 whitespace-nowrap">
-                    <div className="text-sm text-gray-900">{order.itemQuantity}</div>
+                    <div className="text-sm text-gray-900 dark:text-white">{order.itemQuantity}</div>
                   </td>
                   <td className="px-4 py-3 whitespace-nowrap">
-                    <div className="text-sm text-gray-900">{new Date(order.createdAt).toLocaleDateString('pt-BR')}</div>
-                    <div className="text-sm text-gray-500">{new Date(order.createdAt).toLocaleTimeString('pt-BR')}</div>
+                    <div className="text-sm text-gray-900 dark:text-white">{new Date(order.createdAt).toLocaleDateString('pt-BR')}</div>
+                    <div className="text-sm text-gray-500 dark:text-gray-400">{new Date(order.createdAt).toLocaleTimeString('pt-BR')}</div>
                   </td>
                   <td className="px-4 py-3 whitespace-nowrap">
                     <button
@@ -378,7 +396,7 @@ export default function OrdersManagement() {
               ))}
               {orders.length === 0 && (
                 <tr>
-                  <td colSpan={9} className="px-4 py-8 text-center text-gray-500">
+                  <td colSpan={9} className="px-4 py-8 text-center text-gray-500 dark:text-gray-400">
                     Nenhuma encomenda encontrada com os filtros aplicados.
                   </td>
                 </tr>
@@ -391,12 +409,12 @@ export default function OrdersManagement() {
       {/* Order Details Modal */}
       {showOrderDetails && selectedOrder && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-6 max-w-2xl w-full mx-4 max-h-screen overflow-y-auto">
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-6 max-w-2xl w-full mx-4 max-h-screen overflow-y-auto">
             <div className="flex justify-between items-center mb-6">
-              <h3 className="text-lg font-semibold text-gray-900">Detalhes da Encomenda</h3>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Detalhes da Encomenda</h3>
               <button
                 onClick={() => setShowOrderDetails(false)}
-                className="text-gray-400 hover:text-gray-600"
+                className="text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300"
               >
                 <XCircle className="h-6 w-6" />
               </button>
@@ -405,41 +423,41 @@ export default function OrdersManagement() {
             <div className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700">ID da Encomenda</label>
-                  <div className="font-mono text-sm text-gray-900">{selectedOrder.orderId}</div>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">ID da Encomenda</label>
+                  <div className="font-mono text-sm text-gray-900 dark:text-white">{selectedOrder.orderId}</div>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700">Status</label>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Status</label>
                   <span className={`inline-flex items-center space-x-1 px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(selectedOrder.status)}`}>
                     {getStatusIcon(selectedOrder.status)}
                     <span>{getStatusText(selectedOrder.status)}</span>
                   </span>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700">Cliente</label>
-                  <div className="text-sm text-gray-900">{selectedOrder.customerName}</div>
-                  <div className="text-sm text-gray-500">{selectedOrder.customerDiscordTag}</div>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Cliente</label>
+                  <div className="text-sm text-gray-900 dark:text-white">{selectedOrder.customerName}</div>
+                  <div className="text-sm text-gray-500 dark:text-gray-400">{selectedOrder.customerDiscordTag}</div>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700">Fornecedor</label>
-                  <div className="text-sm text-gray-900">{selectedOrder.supplierName}</div>
-                  <div className="text-sm text-gray-500">{selectedOrder.supplierDiscordTag}</div>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Fornecedor</label>
+                  <div className="text-sm text-gray-900 dark:text-white">{selectedOrder.supplierName}</div>
+                  <div className="text-sm text-gray-500 dark:text-gray-400">{selectedOrder.supplierDiscordTag}</div>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700">Firma</label>
-                  <div className="text-sm text-gray-900">{selectedOrder.firmName}</div>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Firma</label>
+                  <div className="text-sm text-gray-900 dark:text-white">{selectedOrder.firmName}</div>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700">Item</label>
-                  <div className="text-sm text-gray-900">{selectedOrder.itemName}</div>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Item</label>
+                  <div className="text-sm text-gray-900 dark:text-white">{selectedOrder.itemName}</div>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700">Quantidade</label>
-                  <div className="text-sm text-gray-900">{selectedOrder.itemQuantity}</div>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Quantidade</label>
+                  <div className="text-sm text-gray-900 dark:text-white">{selectedOrder.itemQuantity}</div>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700">Data de Criação</label>
-                  <div className="text-sm text-gray-900">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Data de Criação</label>
+                  <div className="text-sm text-gray-900 dark:text-white">
                     {new Date(selectedOrder.createdAt).toLocaleString('pt-BR')}
                   </div>
                 </div>
@@ -447,42 +465,42 @@ export default function OrdersManagement() {
 
               {selectedOrder.notes && (
                 <div>
-                  <label className="block text-sm font-medium text-gray-700">Observações</label>
-                  <div className="text-sm text-gray-900 p-3 bg-gray-50 rounded-lg">{selectedOrder.notes}</div>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Observações</label>
+                  <div className="text-sm text-gray-900 dark:text-white p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">{selectedOrder.notes}</div>
                 </div>
               )}
 
               {selectedOrder.rejectionReason && (
                 <div>
-                  <label className="block text-sm font-medium text-gray-700">Motivo da Rejeição</label>
-                  <div className="text-sm text-red-600 p-3 bg-red-50 rounded-lg">{selectedOrder.rejectionReason}</div>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Motivo da Rejeição</label>
+                  <div className="text-sm text-red-600 dark:text-red-400 p-3 bg-red-50 dark:bg-red-900/30 rounded-lg">{selectedOrder.rejectionReason}</div>
                 </div>
               )}
 
               {/* Status History */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Histórico</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Histórico</label>
                 <div className="space-y-2">
-                  <div className="text-sm text-gray-600 p-2 bg-gray-50 rounded">
+                  <div className="text-sm text-gray-600 dark:text-gray-300 p-2 bg-gray-50 dark:bg-gray-700 rounded">
                     <span className="font-medium">Criada:</span> {new Date(selectedOrder.createdAt).toLocaleString('pt-BR')}
                   </div>
                   {selectedOrder.acceptedAt && (
-                    <div className="text-sm text-blue-600 p-2 bg-blue-50 rounded">
+                    <div className="text-sm text-blue-600 dark:text-blue-400 p-2 bg-blue-50 dark:bg-blue-900/30 rounded">
                       <span className="font-medium">Aceita:</span> {new Date(selectedOrder.acceptedAt).toLocaleString('pt-BR')}
                     </div>
                   )}
                   {selectedOrder.completedAt && (
-                    <div className="text-sm text-green-600 p-2 bg-green-50 rounded">
+                    <div className="text-sm text-green-600 dark:text-green-400 p-2 bg-green-50 dark:bg-green-900/30 rounded">
                       <span className="font-medium">Concluída:</span> {new Date(selectedOrder.completedAt).toLocaleString('pt-BR')}
                     </div>
                   )}
                   {selectedOrder.cancelledAt && (
-                    <div className="text-sm text-gray-600 p-2 bg-gray-50 rounded">
+                    <div className="text-sm text-gray-600 dark:text-gray-300 p-2 bg-gray-50 dark:bg-gray-700 rounded">
                       <span className="font-medium">Cancelada:</span> {new Date(selectedOrder.cancelledAt).toLocaleString('pt-BR')}
                     </div>
                   )}
                   {selectedOrder.rejectedAt && (
-                    <div className="text-sm text-red-600 p-2 bg-red-50 rounded">
+                    <div className="text-sm text-red-600 dark:text-red-400 p-2 bg-red-50 dark:bg-red-900/30 rounded">
                       <span className="font-medium">Rejeitada:</span> {new Date(selectedOrder.rejectedAt).toLocaleString('pt-BR')}
                     </div>
                   )}
@@ -493,7 +511,7 @@ export default function OrdersManagement() {
             <div className="flex justify-end space-x-3 mt-6">
               <button
                 onClick={() => setShowOrderDetails(false)}
-                className="px-4 py-2 text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50"
+                className="px-4 py-2 text-gray-700 dark:text-gray-200 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700"
               >
                 Fechar
               </button>

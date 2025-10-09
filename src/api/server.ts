@@ -42,6 +42,7 @@ import inventoryAnalyticsRoutes from './routes/inventory-analytics';
 import comprehensiveAnalyticsRoutes from './routes/comprehensive-analytics';
 import FerroviaSessionService from '../services/FerroviaSessionService';
 import DiscordRoleService from '../services/DiscordRoleService';
+import OrdersService from '../services/OrdersService';
 
 export async function startApiServer(bot: BotClient): Promise<void> {
   // Make bot client available globally for API routes
@@ -201,18 +202,37 @@ export async function startApiServer(bot: BotClient): Promise<void> {
   // Force Sync Routes
   app.use('/api/force-sync', forceSyncRoutes);
   
+  // Make Socket.IO instance globally available
+  app.set('io', io);
+  (global as any).io = io;
+
+  // Configure OrdersService with Socket.IO for real-time updates
+  OrdersService.setIO(io);
+
   // Socket.IO connection handling
   io.on('connection', (socket) => {
     console.log('🔌 New socket connection:', socket.id);
-    
+
     socket.on('subscribe:status', () => {
       socket.join('status-updates');
     });
-    
+
     socket.on('subscribe:players', () => {
       socket.join('player-updates');
     });
-    
+
+    socket.on('subscribe:orders', (data: { serverId: string }) => {
+      const roomName = `orders-${data.serverId}`;
+      socket.join(roomName);
+      console.log(`📦 Socket ${socket.id} joined orders room: ${roomName}`);
+    });
+
+    socket.on('unsubscribe:orders', (data: { serverId: string }) => {
+      const roomName = `orders-${data.serverId}`;
+      socket.leave(roomName);
+      console.log(`📦 Socket ${socket.id} left orders room: ${roomName}`);
+    });
+
     socket.on('disconnect', () => {
       console.log('🔌 Socket disconnected:', socket.id);
     });

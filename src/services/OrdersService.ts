@@ -1,4 +1,5 @@
 import { Client, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, TextChannel } from 'discord.js';
+import { Server as SocketIOServer } from 'socket.io';
 import fs from 'fs';
 import path from 'path';
 
@@ -10,9 +11,10 @@ export interface IOrder {
   customerId: string;
   customerName: string;
   customerDiscordTag: string;
-  supplierId: string;
-  supplierName: string;
-  supplierDiscordTag: string;
+  supplierIds: string[];
+  supplierNames: string[];
+  supplierDiscordTags: string[];
+  acceptedBySupplierId?: string; // Which supplier accepted this order
   firmId: string;
   firmName: string;
   itemName: string;
@@ -22,10 +24,14 @@ export interface IOrder {
   channelId?: string;
   messageId?: string;
   acceptedAt?: string;
+  acceptedBy?: string;
   completedAt?: string;
+  completedBy?: string;
   cancelledAt?: string;
   rejectedAt?: string;
   rejectionReason?: string;
+  readyForPickupAt?: string;
+  readyForPickupBy?: string;
   createdAt: string;
   updatedAt: string;
 }
@@ -110,14 +116,26 @@ export interface IOrdersConfig {
   };
 }
 
-// File paths for persistent storage
-const CONFIG_FILE = path.join(__dirname, '../../data/orders-config.json');
-const ORDERS_FILE = path.join(__dirname, '../../data/orders.json');
-const DATA_DIR = path.dirname(CONFIG_FILE);
+// Base directories for persistent storage
+const DATA_DIR = path.join(__dirname, '../../data');
+const ORDERS_DIR = path.join(DATA_DIR, 'orders');
+const CONFIG_DIR = path.join(DATA_DIR, 'orders-config');
 
-// Ensure data directory exists
-if (!fs.existsSync(DATA_DIR)) {
-  fs.mkdirSync(DATA_DIR, { recursive: true });
+// Ensure data directories exist
+if (!fs.existsSync(ORDERS_DIR)) {
+  fs.mkdirSync(ORDERS_DIR, { recursive: true });
+}
+if (!fs.existsSync(CONFIG_DIR)) {
+  fs.mkdirSync(CONFIG_DIR, { recursive: true });
+}
+
+// Helper functions to get server-specific file paths
+function getOrdersFilePath(serverId: string): string {
+  return path.join(ORDERS_DIR, `${serverId}.json`);
+}
+
+function getConfigFilePath(serverId: string): string {
+  return path.join(CONFIG_DIR, `${serverId}.json`);
 }
 
 // Default configuration
@@ -184,64 +202,82 @@ const defaultConfig: IOrdersConfig = {
 
 class OrdersService {
   private client: Client | null = null;
+  private io: SocketIOServer | null = null;
 
   setClient(client: Client): void {
     this.client = client;
   }
 
+  setIO(io: SocketIOServer): void {
+    this.io = io;
+    console.log('✅ OrdersService: Socket.IO instance configured');
+  }
+
+  private emitOrderEvent(event: string, serverId: string, order: IOrder): void {
+    if (this.io) {
+      const roomName = `orders-${serverId}`;
+      this.io.to(roomName).emit(event, { serverId, order });
+      console.log(`📡 Emitted ${event} to room ${roomName} for order ${order.orderId}`);
+    }
+  }
+
   // Load configuration from file
-  private loadConfigFromFile(): IOrdersConfig {
+  private loadConfigFromFile(serverId: string): IOrdersConfig {
     try {
-      if (fs.existsSync(CONFIG_FILE)) {
-        const data = fs.readFileSync(CONFIG_FILE, 'utf8');
+      const configFile = getConfigFilePath(serverId);
+      if (fs.existsSync(configFile)) {
+        const data = fs.readFileSync(configFile, 'utf8');
         return JSON.parse(data);
       }
     } catch (error) {
-      console.error('Error loading orders config from file:', error);
+      console.error(`Error loading orders config from file for server ${serverId}:`, error);
     }
     return defaultConfig;
   }
 
   // Save configuration to file
-  private saveConfigToFile(config: IOrdersConfig): void {
+  private saveConfigToFile(serverId: string, config: IOrdersConfig): void {
     try {
-      fs.writeFileSync(CONFIG_FILE, JSON.stringify(config, null, 2));
+      const configFile = getConfigFilePath(serverId);
+      fs.writeFileSync(configFile, JSON.stringify(config, null, 2));
     } catch (error) {
-      console.error('Error saving orders config to file:', error);
+      console.error(`Error saving orders config to file for server ${serverId}:`, error);
     }
   }
 
   // Load orders from file
-  private loadOrdersFromFile(): IOrder[] {
+  private loadOrdersFromFile(serverId: string): IOrder[] {
     try {
-      if (fs.existsSync(ORDERS_FILE)) {
-        const data = fs.readFileSync(ORDERS_FILE, 'utf8');
+      const ordersFile = getOrdersFilePath(serverId);
+      if (fs.existsSync(ordersFile)) {
+        const data = fs.readFileSync(ordersFile, 'utf8');
         return JSON.parse(data);
       }
     } catch (error) {
-      console.error('Error loading orders from file:', error);
+      console.error(`Error loading orders from file for server ${serverId}:`, error);
     }
     return [];
   }
 
   // Save orders to file
-  private saveOrdersToFile(orders: IOrder[]): void {
+  private saveOrdersToFile(serverId: string, orders: IOrder[]): void {
     try {
-      fs.writeFileSync(ORDERS_FILE, JSON.stringify(orders, null, 2));
+      const ordersFile = getOrdersFilePath(serverId);
+      fs.writeFileSync(ordersFile, JSON.stringify(orders, null, 2));
     } catch (error) {
-      console.error('Error saving orders to file:', error);
+      console.error(`Error saving orders to file for server ${serverId}:`, error);
     }
   }
 
-  async getConfig(): Promise<IOrdersConfig | null> {
-    return this.loadConfigFromFile();
+  async getConfig(serverId: string): Promise<IOrdersConfig | null> {
+    return this.loadConfigFromFile(serverId);
   }
 
-  async updateConfig(config: Partial<IOrdersConfig>): Promise<IOrdersConfig | null> {
+  async updateConfig(serverId: string, config: Partial<IOrdersConfig>): Promise<IOrdersConfig | null> {
     try {
-      const currentConfig = this.loadConfigFromFile();
+      const currentConfig = this.loadConfigFromFile(serverId);
       const updatedConfig = { ...currentConfig, ...config };
-      this.saveConfigToFile(updatedConfig);
+      this.saveConfigToFile(serverId, updatedConfig);
       return updatedConfig;
     } catch (error) {
       console.error('Error updating orders config:', error);
@@ -249,13 +285,13 @@ class OrdersService {
     }
   }
 
-  async createOrder(orderData: {
+  async createOrder(serverId: string, orderData: {
     customerId: string;
     customerName: string;
     customerDiscordTag: string;
-    supplierId: string;
-    supplierName: string;
-    supplierDiscordTag: string;
+    supplierIds: string[];
+    supplierNames: string[];
+    supplierDiscordTags: string[];
     firmId: string;
     firmName: string;
     itemName: string;
@@ -263,8 +299,8 @@ class OrdersService {
     notes?: string;
   }): Promise<IOrder | null> {
     try {
-      const config = this.loadConfigFromFile();
-      const orders = this.loadOrdersFromFile();
+      const config = this.loadConfigFromFile(serverId);
+      const orders = this.loadOrdersFromFile(serverId);
 
       const activeOrders = orders.filter(order => 
         order.customerId === orderData.customerId &&
@@ -289,7 +325,7 @@ class OrdersService {
 
       const message = this.formatMessage(config.messages.orderPlaced, {
         customerName: orderData.customerName,
-        supplierName: orderData.supplierName,
+        supplierName: orderData.supplierNames.join(', '),
         item: orderData.itemName,
         quantity: orderData.itemQuantity.toString(),
         firmName: orderData.firmName
@@ -305,11 +341,14 @@ class OrdersService {
       };
 
       orders.push(order);
-      this.saveOrdersToFile(orders);
+      this.saveOrdersToFile(serverId, orders);
 
       if (config.settings.notificationsEnabled && config.settings.dmNotificationsEnabled) {
         await this.sendOrderNotification(order, config);
       }
+
+      // Emit socket event for real-time updates
+      this.emitOrderEvent('order:created', serverId, order);
 
       return order;
     } catch (error) {
@@ -319,31 +358,39 @@ class OrdersService {
   }
 
   async updateOrderStatus(
-    orderId: string, 
-    status: OrderStatus, 
+    serverId: string,
+    orderId: string,
+    status: OrderStatus,
     userId: string,
     reason?: string
   ): Promise<IOrder | null> {
     try {
-      const orders = this.loadOrdersFromFile();
+      const orders = this.loadOrdersFromFile(serverId);
       const orderIndex = orders.findIndex(order => order.orderId === orderId);
-      
+
       if (orderIndex === -1) return null;
 
       const order = orders[orderIndex];
-      if (order.supplierId !== userId && order.customerId !== userId) {
+      if (!order.supplierIds.includes(userId) && order.customerId !== userId) {
         throw new Error('Unauthorized to update this order');
       }
 
       order.status = status;
       order.updatedAt = new Date().toISOString();
-      
+
       switch (status) {
         case 'accepted':
           order.acceptedAt = new Date().toISOString();
+          order.acceptedBy = userId;
+          order.acceptedBySupplierId = userId; // Track which supplier accepted
+          break;
+        case 'in_progress':
+          order.readyForPickupAt = new Date().toISOString();
+          order.readyForPickupBy = userId;
           break;
         case 'completed':
           order.completedAt = new Date().toISOString();
+          order.completedBy = userId;
           break;
         case 'cancelled':
           order.cancelledAt = new Date().toISOString();
@@ -355,9 +402,12 @@ class OrdersService {
       }
 
       orders[orderIndex] = order;
-      this.saveOrdersToFile(orders);
+      this.saveOrdersToFile(serverId, orders);
 
       await this.sendStatusUpdateNotification(order, status, reason);
+
+      // Emit socket event for real-time updates
+      this.emitOrderEvent('order:status_changed', serverId, order);
 
       return order;
     } catch (error) {
@@ -366,24 +416,24 @@ class OrdersService {
     }
   }
 
-  async getUserActiveOrders(userId: string): Promise<IOrder[]> {
-    const orders = this.loadOrdersFromFile();
-    return orders.filter(order => 
-      (order.customerId === userId || order.supplierId === userId) &&
+  async getUserActiveOrders(serverId: string, userId: string): Promise<IOrder[]> {
+    const orders = this.loadOrdersFromFile(serverId);
+    return orders.filter(order =>
+      (order.customerId === userId || order.supplierIds.includes(userId)) &&
       ['pending', 'accepted', 'in_progress'].includes(order.status)
     ).sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
   }
 
-  async getUserOrders(userId: string, limit: number = 10): Promise<IOrder[]> {
-    const orders = this.loadOrdersFromFile();
+  async getUserOrders(serverId: string, userId: string, limit: number = 10): Promise<IOrder[]> {
+    const orders = this.loadOrdersFromFile(serverId);
     return orders
-      .filter(order => order.customerId === userId || order.supplierId === userId)
+      .filter(order => order.customerId === userId || order.supplierIds.includes(userId))
       .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
       .slice(0, limit);
   }
 
-  async getFirmOrders(firmId: string, status?: OrderStatus): Promise<IOrder[]> {
-    const orders = this.loadOrdersFromFile();
+  async getFirmOrders(serverId: string, firmId: string, status?: OrderStatus): Promise<IOrder[]> {
+    const orders = this.loadOrdersFromFile(serverId);
     return orders
       .filter(order => {
         const matchesFirm = order.firmId === firmId;
@@ -393,7 +443,7 @@ class OrdersService {
       .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
   }
 
-  async getAllOrders(filters?: {
+  async getAllOrders(serverId: string, filters?: {
     status?: OrderStatus;
     firmId?: string;
     customerId?: string;
@@ -401,14 +451,14 @@ class OrdersService {
     startDate?: Date;
     endDate?: Date;
   }): Promise<IOrder[]> {
-    const orders = this.loadOrdersFromFile();
-    
+    const orders = this.loadOrdersFromFile(serverId);
+
     return orders
       .filter(order => {
         if (filters?.status && order.status !== filters.status) return false;
         if (filters?.firmId && order.firmId !== filters.firmId) return false;
         if (filters?.customerId && order.customerId !== filters.customerId) return false;
-        if (filters?.supplierId && order.supplierId !== filters.supplierId) return false;
+        if (filters?.supplierId && !order.supplierIds.includes(filters.supplierId)) return false;
         if (filters?.startDate && new Date(order.createdAt) < filters.startDate) return false;
         if (filters?.endDate && new Date(order.createdAt) > filters.endDate) return false;
         return true;
@@ -416,7 +466,57 @@ class OrdersService {
       .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
   }
 
-  async getOrderStats(): Promise<{
+  async deleteOrder(serverId: string, orderId: string): Promise<boolean> {
+    try {
+      const orders = this.loadOrdersFromFile(serverId);
+      const orderIndex = orders.findIndex(order => order.orderId === orderId);
+
+      if (orderIndex === -1) return false;
+
+      const deletedOrder = orders[orderIndex];
+      orders.splice(orderIndex, 1);
+      this.saveOrdersToFile(serverId, orders);
+
+      // Emit socket event for real-time updates
+      this.emitOrderEvent('order:deleted', serverId, deletedOrder);
+
+      return true;
+    } catch (error) {
+      console.error('Error deleting order:', error);
+      return false;
+    }
+  }
+
+  async updateOrder(serverId: string, orderId: string, updates: Partial<IOrder>): Promise<IOrder | null> {
+    try {
+      const orders = this.loadOrdersFromFile(serverId);
+      const orderIndex = orders.findIndex(order => order.orderId === orderId);
+
+      if (orderIndex === -1) return null;
+
+      const order = orders[orderIndex];
+      const updatedOrder = {
+        ...order,
+        ...updates,
+        orderId: order.orderId, // Prevent ID change
+        createdAt: order.createdAt, // Prevent createdAt change
+        updatedAt: new Date().toISOString()
+      };
+
+      orders[orderIndex] = updatedOrder;
+      this.saveOrdersToFile(serverId, orders);
+
+      // Emit socket event for real-time updates
+      this.emitOrderEvent('order:updated', serverId, updatedOrder);
+
+      return updatedOrder;
+    } catch (error) {
+      console.error('Error updating order:', error);
+      return null;
+    }
+  }
+
+  async getOrderStats(serverId: string): Promise<{
     total: number;
     pending: number;
     accepted: number;
@@ -428,7 +528,7 @@ class OrdersService {
     topSuppliers: { supplierName: string; count: number }[];
     topItems: { itemName: string; count: number; totalQuantity: number }[];
   }> {
-    const orders = this.loadOrdersFromFile();
+    const orders = this.loadOrdersFromFile(serverId);
 
     const stats = {
       total: orders.length,
@@ -484,57 +584,130 @@ class OrdersService {
     if (!this.client) return;
 
     try {
-      const supplier = await this.client.users.fetch(order.supplierId);
-      
-      const embed = new EmbedBuilder()
-        .setTitle('📦 Nova Encomenda!')
-        .setColor(config.settings.embedColor as any)
-        .setDescription(this.formatMessage(config.messages.dmNotificationTemplate, {
-          customerName: order.customerName,
-          item: order.itemName,
-          quantity: order.itemQuantity.toString(),
-          notes: order.notes || 'Nenhuma observação'
-        }))
-        .addFields(
-          { name: 'ID da Encomenda', value: order.orderId, inline: true },
-          { name: 'Firma', value: order.firmName, inline: true },
-          { name: 'Status', value: '⏳ Pendente', inline: true }
-        )
-        .setTimestamp();
-
-      const row = new ActionRowBuilder<ButtonBuilder>()
-        .addComponents(
-          new ButtonBuilder()
-            .setCustomId(`order_accept_${order.orderId}`)
-            .setLabel('Aceitar')
-            .setEmoji('✅')
-            .setStyle(ButtonStyle.Success),
-          new ButtonBuilder()
-            .setCustomId(`order_reject_${order.orderId}`)
-            .setLabel('Rejeitar')
-            .setEmoji('❌')
-            .setStyle(ButtonStyle.Danger)
-        );
-
-      await supplier.send({ embeds: [embed], components: [row] });
-
+      // Find the firm configuration
       const firm = config.firms.find(f => f.id === order.firmId);
+
+      // Priority 1: Send to firm's channel (primary notification)
+      let channelNotificationSent = false;
       if (firm?.notificationChannelId && config.settings.notificationsEnabled) {
-        const channel = await this.client.channels.fetch(firm.notificationChannelId) as TextChannel;
-        if (channel) {
-          const channelEmbed = new EmbedBuilder()
-            .setTitle('📦 Nova Encomenda')
-            .setColor(config.settings.embedColor as any)
-            .setDescription(this.formatMessage(config.messages.channelNotificationTemplate, {
-              customerName: order.customerName,
-              supplierName: order.supplierName,
-              firmName: order.firmName,
-              item: order.itemName,
-              quantity: order.itemQuantity.toString()
-            }))
-            .setTimestamp();
-          
-          await channel.send({ embeds: [channelEmbed] });
+        try {
+          const channel = await this.client.channels.fetch(firm.notificationChannelId) as TextChannel;
+          if (channel) {
+            const channelEmbed = new EmbedBuilder()
+              .setTitle('📦 Nova Encomenda Recebida')
+              .setColor('#FFA500') // Orange for pending
+              .setDescription(`**${order.customerName}** solicitou uma encomenda`)
+              .addFields(
+                { name: '\u200B', value: '**📋 Informações da Encomenda**', inline: false },
+                { name: '🆔 ID', value: `\`${order.orderId}\``, inline: true },
+                { name: '👤 Cliente', value: order.customerName, inline: true },
+                { name: '🏢 Firma', value: order.firmName, inline: true },
+                { name: '\u200B', value: '\u200B', inline: false },
+                { name: '📦 Item Solicitado', value: `**${order.itemQuantity}x** ${order.itemName}`, inline: true },
+                { name: '📊 Status', value: '⏳ **Pendente**', inline: true },
+                { name: '👥 Fornecedores', value: order.supplierIds.map(id => `<@${id}>`).join(', '), inline: true }
+              )
+              .setFooter({ text: `Encomenda criada em ${new Date(order.createdAt).toLocaleString('pt-BR')}` })
+              .setTimestamp();
+
+            // Add notes field only if notes exist
+            if (order.notes) {
+              channelEmbed.addFields(
+                { name: '\u200B', value: '\u200B', inline: false },
+                { name: '📝 Observações do Cliente', value: `> ${order.notes}`, inline: false }
+              );
+            }
+
+            const row = new ActionRowBuilder<ButtonBuilder>()
+              .addComponents(
+                new ButtonBuilder()
+                  .setCustomId(`order_accept_${order.orderId}`)
+                  .setLabel('Aceitar')
+                  .setEmoji('✅')
+                  .setStyle(ButtonStyle.Success),
+                new ButtonBuilder()
+                  .setCustomId(`order_reject_${order.orderId}`)
+                  .setLabel('Rejeitar')
+                  .setEmoji('❌')
+                  .setStyle(ButtonStyle.Danger)
+              );
+
+            await channel.send({ embeds: [channelEmbed], components: [row] });
+            channelNotificationSent = true;
+            console.log(`✅ Order notification sent to channel ${channel.name} for firm ${firm.name}`);
+          }
+        } catch (channelError) {
+          console.error('Error sending order notification to channel:', channelError);
+        }
+      }
+
+      // Priority 2: Send DM to all suppliers (secondary/fallback notification)
+      if (config.settings.dmNotificationsEnabled) {
+        for (let i = 0; i < order.supplierIds.length; i++) {
+          try {
+            const supplierId = order.supplierIds[i];
+            const supplierName = order.supplierNames[i];
+            const supplier = await this.client.users.fetch(supplierId);
+
+            const dmEmbed = new EmbedBuilder()
+              .setTitle('📦 Nova Encomenda Recebida')
+              .setColor('#FFA500') // Orange for pending
+              .setDescription(`Você recebeu uma nova encomenda de **${order.customerName}**`)
+              .addFields(
+                { name: '\u200B', value: '**📋 Informações da Encomenda**', inline: false },
+                { name: '🆔 ID', value: `\`${order.orderId}\``, inline: true },
+                { name: '👤 Cliente', value: order.customerName, inline: true },
+                { name: '🏢 Firma', value: order.firmName, inline: true },
+                { name: '\u200B', value: '\u200B', inline: false },
+                { name: '📦 Item Solicitado', value: `**${order.itemQuantity}x** ${order.itemName}`, inline: true },
+                { name: '📊 Status', value: '⏳ **Pendente**', inline: true }
+              );
+
+            // Add notes field only if notes exist
+            if (order.notes) {
+              dmEmbed.addFields(
+                { name: '\u200B', value: '\u200B', inline: false },
+                { name: '📝 Observações do Cliente', value: `> ${order.notes}`, inline: false }
+              );
+            }
+
+            // Show other suppliers if multiple
+            if (order.supplierIds.length > 1) {
+              const otherSuppliers = order.supplierNames.filter((_, idx) => idx !== i);
+              dmEmbed.addFields(
+                { name: '\u200B', value: '\u200B', inline: false },
+                { name: '👥 Outros Fornecedores', value: otherSuppliers.join(', '), inline: false }
+              );
+            }
+
+            dmEmbed
+              .setFooter({
+                text: channelNotificationSent
+                  ? `Notificação também enviada no canal da firma • ${new Date(order.createdAt).toLocaleString('pt-BR')}`
+                  : `Notificação por DM • ${new Date(order.createdAt).toLocaleString('pt-BR')}`
+              })
+              .setTimestamp();
+
+            const row = new ActionRowBuilder<ButtonBuilder>()
+              .addComponents(
+                new ButtonBuilder()
+                  .setCustomId(`order_accept_${order.orderId}`)
+                  .setLabel('Aceitar')
+                  .setEmoji('✅')
+                  .setStyle(ButtonStyle.Success),
+                new ButtonBuilder()
+                  .setCustomId(`order_reject_${order.orderId}`)
+                  .setLabel('Rejeitar')
+                  .setEmoji('❌')
+                  .setStyle(ButtonStyle.Danger)
+              );
+
+            await supplier.send({ embeds: [dmEmbed], components: [row] });
+            console.log(`✅ DM notification sent to ${supplierName}`);
+          } catch (dmError) {
+            console.error(`Error sending DM notification to supplier ${order.supplierNames[i]}:`, dmError);
+            // Continue sending to other suppliers even if one fails
+          }
         }
       }
     } catch (error) {
@@ -543,36 +716,43 @@ class OrdersService {
   }
 
   private async sendStatusUpdateNotification(
-    order: IOrder, 
+    order: IOrder,
     newStatus: OrderStatus,
     reason?: string
   ): Promise<void> {
     if (!this.client) return;
 
     try {
-      const config = this.loadConfigFromFile();
-      if (!config.settings.dmNotificationsEnabled) return;
-
       const customer = await this.client.users.fetch(order.customerId);
-      
-      let message = '';
+
+      let title = '';
+      let description = '';
       let color = '#00FF00';
-      
+
       switch (newStatus) {
         case 'accepted':
-          message = config.messages.orderAccepted;
+          title = '✅ Encomenda Aceita';
+          description = `Sua encomenda foi aceita por **${order.supplierName}**!`;
           color = '#00FF00';
           break;
         case 'rejected':
-          message = config.messages.orderRejected;
+          title = '❌ Encomenda Rejeitada';
+          description = `Sua encomenda foi rejeitada por **${order.supplierName}**.`;
           color = '#FF0000';
           break;
+        case 'in_progress':
+          title = '📦 Encomenda Pronta para Retirada';
+          description = `Sua encomenda está pronta! Você pode retirar com **${order.supplierName}**.`;
+          color = '#FFA500';
+          break;
         case 'completed':
-          message = config.messages.orderCompleted;
+          title = '🎉 Encomenda Concluída';
+          description = `Sua encomenda foi marcada como concluída!`;
           color = '#00FF00';
           break;
         case 'cancelled':
-          message = config.messages.orderCancelled;
+          title = '❌ Encomenda Cancelada';
+          description = 'Sua encomenda foi cancelada.';
           color = '#FF0000';
           break;
         default:
@@ -580,20 +760,39 @@ class OrdersService {
       }
 
       const embed = new EmbedBuilder()
-        .setTitle('📦 Atualização da Encomenda')
+        .setTitle(title)
         .setColor(color as any)
-        .setDescription(this.formatMessage(message, {
-          supplierName: order.supplierName,
-          reason: reason || 'Sem motivo especificado'
-        }))
+        .setDescription(description)
         .addFields(
-          { name: 'ID da Encomenda', value: order.orderId, inline: true },
-          { name: 'Item', value: `${order.itemQuantity}x ${order.itemName}`, inline: true },
-          { name: 'Novo Status', value: this.getStatusDisplay(newStatus), inline: true }
-        )
+          { name: '\u200B', value: '**📋 Detalhes da Encomenda**', inline: false },
+          { name: '🆔 ID', value: `\`${order.orderId}\``, inline: true },
+          { name: '🏢 Firma', value: order.firmName, inline: true },
+          { name: '📊 Status', value: this.getStatusDisplay(newStatus), inline: true },
+          { name: '\u200B', value: '\u200B', inline: false },
+          { name: '📦 Item', value: `**${order.itemQuantity}x** ${order.itemName}`, inline: true },
+          { name: '👨‍💼 Fornecedor', value: order.supplierName, inline: true }
+        );
+
+      if (reason && (newStatus === 'rejected' || newStatus === 'cancelled')) {
+        embed.addFields(
+          { name: '\u200B', value: '\u200B', inline: false },
+          { name: '📝 Motivo', value: `> ${reason}`, inline: false }
+        );
+      }
+
+      if (order.notes) {
+        embed.addFields(
+          { name: '\u200B', value: '\u200B', inline: false },
+          { name: '💬 Suas Observações', value: `> ${order.notes}`, inline: false }
+        );
+      }
+
+      embed
+        .setFooter({ text: `Atualizado em ${new Date().toLocaleString('pt-BR')}` })
         .setTimestamp();
 
       await customer.send({ embeds: [embed] });
+      console.log(`✅ Notification sent to customer ${order.customerName} for order ${order.orderId} (${newStatus})`);
     } catch (error) {
       console.error('Error sending status update notification:', error);
     }

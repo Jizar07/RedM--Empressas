@@ -3,9 +3,13 @@ import OrdersService, { OrderStatus } from '../../services/OrdersService';
 
 const router = Router();
 
-router.get('/config', async (_req: Request, res: Response) => {
+router.get('/config', async (req: Request, res: Response) => {
   try {
-    const config = await OrdersService.getConfig();
+    const serverId = req.query.serverId as string;
+    if (!serverId) {
+      return res.status(400).json({ error: 'Server ID is required' });
+    }
+    const config = await OrdersService.getConfig(serverId);
     res.json(config);
   } catch (error) {
     console.error('Error fetching orders config:', error);
@@ -15,7 +19,11 @@ router.get('/config', async (_req: Request, res: Response) => {
 
 router.put('/config', async (req: Request, res: Response) => {
   try {
-    const config = await OrdersService.updateConfig(req.body);
+    const serverId = req.query.serverId as string;
+    if (!serverId) {
+      return res.status(400).json({ error: 'Server ID is required' });
+    }
+    const config = await OrdersService.updateConfig(serverId, req.body);
     if (!config) {
       return res.status(500).json({ error: 'Failed to update orders configuration' });
     }
@@ -28,8 +36,13 @@ router.put('/config', async (req: Request, res: Response) => {
 
 router.get('/', async (req: Request, res: Response) => {
   try {
+    const serverId = req.query.serverId as string;
+    if (!serverId) {
+      return res.status(400).json({ error: 'Server ID is required' });
+    }
+
     const filters: any = {};
-    
+
     if (req.query.status) {
       filters.status = req.query.status as OrderStatus;
     }
@@ -49,7 +62,7 @@ router.get('/', async (req: Request, res: Response) => {
       filters.endDate = new Date(req.query.endDate as string);
     }
 
-    const orders = await OrdersService.getAllOrders(filters);
+    const orders = await OrdersService.getAllOrders(serverId, filters);
     res.json(orders);
   } catch (error) {
     console.error('Error fetching orders:', error);
@@ -59,15 +72,19 @@ router.get('/', async (req: Request, res: Response) => {
 
 router.post('/', async (req: Request, res: Response) => {
   try {
-    const order = await OrdersService.createOrder(req.body);
+    const serverId = req.query.serverId as string;
+    if (!serverId) {
+      return res.status(400).json({ error: 'Server ID is required' });
+    }
+    const order = await OrdersService.createOrder(serverId, req.body);
     if (!order) {
       return res.status(500).json({ error: 'Failed to create order' });
     }
     return res.status(201).json(order);
   } catch (error: any) {
     console.error('Error creating order:', error);
-    
-    if (error.message?.includes('Order limit reached') || 
+
+    if (error.message?.includes('Order limit reached') ||
         error.message?.includes('Cooldown active')) {
       return res.status(429).json({ error: error.message });
     } else {
@@ -78,6 +95,10 @@ router.post('/', async (req: Request, res: Response) => {
 
 router.put('/:orderId/status', async (req: Request, res: Response) => {
   try {
+    const serverId = req.query.serverId as string;
+    if (!serverId) {
+      return res.status(400).json({ error: 'Server ID is required' });
+    }
     const { orderId } = req.params;
     const { status, userId, reason } = req.body;
 
@@ -86,6 +107,7 @@ router.put('/:orderId/status', async (req: Request, res: Response) => {
     }
 
     const order = await OrdersService.updateOrderStatus(
+      serverId,
       orderId,
       status as OrderStatus,
       userId,
@@ -99,7 +121,7 @@ router.put('/:orderId/status', async (req: Request, res: Response) => {
     return res.json(order);
   } catch (error: any) {
     console.error('Error updating order status:', error);
-    
+
     if (error.message === 'Unauthorized to update this order') {
       return res.status(403).json({ error: error.message });
     } else {
@@ -108,9 +130,13 @@ router.put('/:orderId/status', async (req: Request, res: Response) => {
   }
 });
 
-router.get('/stats', async (_req: Request, res: Response) => {
+router.get('/stats', async (req: Request, res: Response) => {
   try {
-    const stats = await OrdersService.getOrderStats();
+    const serverId = req.query.serverId as string;
+    if (!serverId) {
+      return res.status(400).json({ error: 'Server ID is required' });
+    }
+    const stats = await OrdersService.getOrderStats(serverId);
     res.json(stats);
   } catch (error) {
     console.error('Error fetching order stats:', error);
@@ -120,10 +146,14 @@ router.get('/stats', async (_req: Request, res: Response) => {
 
 router.get('/user/:userId', async (req: Request, res: Response) => {
   try {
+    const serverId = req.query.serverId as string;
+    if (!serverId) {
+      return res.status(400).json({ error: 'Server ID is required' });
+    }
     const { userId } = req.params;
     const limit = req.query.limit ? parseInt(req.query.limit as string) : 10;
-    
-    const orders = await OrdersService.getUserOrders(userId, limit);
+
+    const orders = await OrdersService.getUserOrders(serverId, userId, limit);
     res.json(orders);
   } catch (error) {
     console.error('Error fetching user orders:', error);
@@ -133,8 +163,12 @@ router.get('/user/:userId', async (req: Request, res: Response) => {
 
 router.get('/user/:userId/active', async (req: Request, res: Response) => {
   try {
+    const serverId = req.query.serverId as string;
+    if (!serverId) {
+      return res.status(400).json({ error: 'Server ID is required' });
+    }
     const { userId } = req.params;
-    const orders = await OrdersService.getUserActiveOrders(userId);
+    const orders = await OrdersService.getUserActiveOrders(serverId, userId);
     res.json(orders);
   } catch (error) {
     console.error('Error fetching user active orders:', error);
@@ -144,10 +178,14 @@ router.get('/user/:userId/active', async (req: Request, res: Response) => {
 
 router.get('/firm/:firmId', async (req: Request, res: Response) => {
   try {
+    const serverId = req.query.serverId as string;
+    if (!serverId) {
+      return res.status(400).json({ error: 'Server ID is required' });
+    }
     const { firmId } = req.params;
     const status = req.query.status as OrderStatus | undefined;
-    
-    const orders = await OrdersService.getFirmOrders(firmId, status);
+
+    const orders = await OrdersService.getFirmOrders(serverId, firmId, status);
     res.json(orders);
   } catch (error) {
     console.error('Error fetching firm orders:', error);
@@ -155,18 +193,62 @@ router.get('/firm/:firmId', async (req: Request, res: Response) => {
   }
 });
 
+// DELETE endpoint to delete an order
+router.delete('/:orderId', async (req: Request, res: Response) => {
+  try {
+    const serverId = req.query.serverId as string;
+    if (!serverId) {
+      return res.status(400).json({ error: 'Server ID is required' });
+    }
+    const { orderId } = req.params;
+
+    const deleted = await OrdersService.deleteOrder(serverId, orderId);
+
+    if (!deleted) {
+      return res.status(404).json({ error: 'Order not found' });
+    }
+
+    return res.json({ success: true, message: 'Order deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting order:', error);
+    return res.status(500).json({ error: 'Failed to delete order' });
+  }
+});
+
+// PUT endpoint for full order updates
+router.put('/:orderId', async (req: Request, res: Response) => {
+  try {
+    const serverId = req.query.serverId as string;
+    if (!serverId) {
+      return res.status(400).json({ error: 'Server ID is required' });
+    }
+    const { orderId } = req.params;
+
+    const order = await OrdersService.updateOrder(serverId, orderId, req.body);
+
+    if (!order) {
+      return res.status(404).json({ error: 'Order not found' });
+    }
+
+    return res.json(order);
+  } catch (error) {
+    console.error('Error updating order:', error);
+    return res.status(500).json({ error: 'Failed to update order' });
+  }
+});
+
 router.get('/discord/roles', async (req: Request, res: Response) => {
   try {
     const botClient = req.app.get('botClient');
-    const guildId = process.env.DISCORD_GUILD_ID || '1205749564775211049';
-    
+    const serverId = req.query.serverId as string || process.env.DISCORD_GUILD_ID || '1205749564775211049';
+
     if (!botClient) {
       return res.status(503).json({ error: 'Bot not connected to Discord' });
     }
 
-    const guild = botClient.guilds.cache.get(guildId);
+    const guild = botClient.guilds.cache.get(serverId);
     if (!guild) {
-      return res.status(503).json({ error: 'BlackGolden server not found' });
+      return res.status(503).json({ error: 'Server not found' });
     }
     const roles = guild.roles.cache
       .filter((role: any) => !role.managed && role.name !== '@everyone')
@@ -189,15 +271,15 @@ router.get('/discord/roles', async (req: Request, res: Response) => {
 router.get('/discord/users', async (req: Request, res: Response) => {
   try {
     const botClient = req.app.get('botClient');
-    const guildId = process.env.DISCORD_GUILD_ID || '1205749564775211049';
-    
+    const serverId = req.query.serverId as string || process.env.DISCORD_GUILD_ID || '1205749564775211049';
+
     if (!botClient) {
       return res.status(503).json({ error: 'Bot not connected to Discord' });
     }
 
-    const guild = botClient.guilds.cache.get(guildId);
+    const guild = botClient.guilds.cache.get(serverId);
     if (!guild) {
-      return res.status(503).json({ error: 'BlackGolden server not found' });
+      return res.status(503).json({ error: 'Server not found' });
     }
     const users = Array.from(guild.members.cache.values())
       .filter((member: any) => !member.user.bot)
@@ -219,15 +301,15 @@ router.get('/discord/users', async (req: Request, res: Response) => {
 router.get('/discord/categories', async (req: Request, res: Response) => {
   try {
     const botClient = req.app.get('botClient');
-    const guildId = process.env.DISCORD_GUILD_ID || '1205749564775211049';
-    
+    const serverId = req.query.serverId as string || process.env.DISCORD_GUILD_ID || '1205749564775211049';
+
     if (!botClient) {
       return res.status(503).json({ error: 'Bot not connected to Discord' });
     }
 
-    const guild = botClient.guilds.cache.get(guildId);
+    const guild = botClient.guilds.cache.get(serverId);
     if (!guild) {
-      return res.status(503).json({ error: 'BlackGolden server not found' });
+      return res.status(503).json({ error: 'Server not found' });
     }
     const categories = guild.channels.cache
       .filter((channel: any) => channel.type === 4) // Category channels

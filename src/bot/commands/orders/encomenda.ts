@@ -15,9 +15,11 @@ import OrdersService, { IOrdersConfig } from '../../../services/OrdersService';
 const activeOrders = new Map<string, {
   firmId?: string;
   firmName?: string;
-  supplierId?: string;
-  supplierName?: string;
-  supplierDiscordTag?: string;
+  suppliers?: Array<{
+    id: string;
+    name: string;
+    tag: string;
+  }>;
   step: number;
 }>();
 
@@ -28,7 +30,16 @@ export default {
   
   async execute(interaction: ChatInputCommandInteraction) {
     try {
-      const config = await OrdersService.getConfig();
+      const guildId = interaction.guildId;
+      if (!guildId) {
+        await interaction.reply({
+          content: '❌ Este comando só pode ser usado em um servidor.',
+          ephemeral: true
+        });
+        return;
+      }
+
+      const config = await OrdersService.getConfig(guildId);
       if (!config) {
         await interaction.reply({
           content: '❌ Sistema de encomendas não configurado.',
@@ -46,7 +57,7 @@ export default {
         return;
       }
 
-      const activeUserOrders = await OrdersService.getUserActiveOrders(interaction.user.id);
+      const activeUserOrders = await OrdersService.getUserActiveOrders(guildId, interaction.user.id);
       if (activeUserOrders.length >= config.settings.maxActiveOrdersPerUser) {
         await interaction.reply({
           content: formatMessage(config.messages.orderLimitReached, {
@@ -95,7 +106,7 @@ export default {
         if (i.customId.startsWith('order_select_firm_')) {
           await handleFirmSelection(i as StringSelectMenuInteraction, config);
         } else if (i.customId.startsWith('order_select_supplier_')) {
-          await handleSupplierSelection(i as StringSelectMenuInteraction, config);
+          await handleSupplierSelection(i as StringSelectMenuInteraction, config, guildId);
         }
       });
 
@@ -183,7 +194,9 @@ async function handleFirmSelection(
     const selectMenu = new StringSelectMenuBuilder()
       .setCustomId(`order_select_supplier_${interaction.user.id}`)
       .setPlaceholder(config.steps.selectSupplier.dropdownPlaceholder)
-      .addOptions(options);
+      .addOptions(options)
+      .setMinValues(1)
+      .setMaxValues(Math.min(suppliers.length, 25)); // Allow selecting multiple suppliers
 
     const row = new ActionRowBuilder<StringSelectMenuBuilder>()
       .addComponents(selectMenu);
@@ -205,28 +218,43 @@ async function handleFirmSelection(
 
 async function handleSupplierSelection(
   interaction: StringSelectMenuInteraction,
-  config: IOrdersConfig
+  config: IOrdersConfig,
+  guildId: string
 ) {
   try {
-    const supplierId = interaction.values[0];
+    const supplierIds = interaction.values; // Get ALL selected supplier IDs
     const orderData = activeOrders.get(interaction.user.id);
     if (!orderData || !orderData.firmId) return;
 
     const guild = interaction.guild;
     if (!guild) return;
 
-    const supplier = await guild.members.fetch(supplierId);
-    if (!supplier) {
+    // Fetch all selected suppliers
+    const suppliers = [];
+    for (const supplierId of supplierIds) {
+      try {
+        const member = await guild.members.fetch(supplierId);
+        if (member) {
+          suppliers.push({
+            id: member.id,
+            name: member.displayName,
+            tag: member.user.tag
+          });
+        }
+      } catch (error) {
+        console.error(`Error fetching supplier ${supplierId}:`, error);
+      }
+    }
+
+    if (suppliers.length === 0) {
       await interaction.reply({
-        content: '❌ Fornecedor não encontrado.',
+        content: '❌ Nenhum fornecedor encontrado.',
         ephemeral: true
       });
       return;
     }
 
-    orderData.supplierId = supplierId;
-    orderData.supplierName = supplier.displayName;
-    orderData.supplierDiscordTag = supplier.user.tag;
+    orderData.suppliers = suppliers;
     orderData.step = 3;
 
     const modal = new ModalBuilder()
@@ -275,7 +303,7 @@ async function handleSupplierSelection(
       return;
     }
 
-    await handleOrderSubmit(modalSubmit, orderData, config);
+    await handleOrderSubmit(modalSubmit, orderData, config, guildId);
     activeOrders.delete(interaction.user.id);
 
   } catch (error) {
@@ -290,7 +318,8 @@ async function handleSupplierSelection(
 async function handleOrderSubmit(
   interaction: ModalSubmitInteraction,
   orderData: any,
-  config: IOrdersConfig
+  config: IOrdersConfig,
+  guildId: string
 ) {
   try {
     const itemName = interaction.fields.getTextInputValue('item_name');
@@ -306,45 +335,85 @@ async function handleOrderSubmit(
       return;
     }
 
-    const order = await OrdersService.createOrder({
-      customerId: interaction.user.id,
-      customerName: interaction.user.username,
-      customerDiscordTag: interaction.user.tag,
-      supplierId: orderData.supplierId,
-      supplierName: orderData.supplierName,
-      supplierDiscordTag: orderData.supplierDiscordTag,
-      firmId: orderData.firmId,
-      firmName: orderData.firmName,
-      itemName,
-      itemQuantity: quantity,
-      notes
-    });
-
-    if (!order) {
+    // Create orders for ALL selected suppliers
+    if (!orderData.suppliers || orderData.suppliers.length === 0) {
       await interaction.reply({
-        content: '❌ Erro ao criar encomenda.',
+        content: '❌ Nenhum fornecedor selecionado.',
         ephemeral: true
       });
       return;
     }
 
+    const createdOrders = [];
+    const failedOrders = [];
+
+    for (const supplier of orderData.suppliers) {
+      try {
+        const order = await OrdersService.createOrder(guildId, {
+          customerId: interaction.user.id,
+          customerName: interaction.user.username,
+          customerDiscordTag: interaction.user.tag,
+          supplierId: supplier.id,
+          supplierName: supplier.name,
+          supplierDiscordTag: supplier.tag,
+          firmId: orderData.firmId,
+          firmName: orderData.firmName,
+          itemName,
+          itemQuantity: quantity,
+          notes
+        });
+
+        if (order) {
+          createdOrders.push({ order, supplier });
+        } else {
+          failedOrders.push(supplier.name);
+        }
+      } catch (error) {
+        console.error(`Error creating order for ${supplier.name}:`, error);
+        failedOrders.push(supplier.name);
+      }
+    }
+
+    if (createdOrders.length === 0) {
+      await interaction.reply({
+        content: '❌ Erro ao criar encomendas.',
+        ephemeral: true
+      });
+      return;
+    }
+
+    // Build success embed with all created orders
     const embed = new EmbedBuilder()
-      .setTitle('✅ Encomenda Criada com Sucesso!')
+      .setTitle(`✅ ${createdOrders.length} Encomenda(s) Criada(s)!`)
       .setColor('#00FF00')
-      .setDescription(`Sua encomenda foi enviada para **${orderData.supplierName}**`)
+      .setDescription(`Suas encomendas foram enviadas para ${createdOrders.length} fornecedor(es)`)
       .addFields(
-        { name: 'ID da Encomenda', value: order.orderId, inline: true },
-        { name: 'Firma', value: orderData.firmName, inline: true },
-        { name: 'Status', value: '⏳ Pendente', inline: true },
-        { name: 'Item', value: itemName, inline: true },
-        { name: 'Quantidade', value: quantity.toString(), inline: true },
-        { name: 'Fornecedor', value: orderData.supplierName, inline: true }
+        { name: '\u200B', value: '**📋 Detalhes das Encomendas**', inline: false },
+        { name: '🏢 Firma', value: orderData.firmName, inline: true },
+        { name: '📦 Item', value: `**${quantity}x** ${itemName}`, inline: true },
+        { name: '📊 Status', value: '⏳ **Pendente**', inline: true },
+        { name: '\u200B', value: '\u200B', inline: false },
+        {
+          name: '👥 Fornecedores',
+          value: createdOrders.map((o, i) => `${i + 1}. **${o.supplier.name}** (ID: \`${o.order.orderId}\`)`).join('\n'),
+          inline: false
+        }
       )
-      .setFooter({ text: 'Você receberá uma notificação quando o fornecedor responder.' })
+      .setFooter({ text: 'Você receberá notificações quando os fornecedores responderem.' })
       .setTimestamp();
 
     if (notes) {
-      embed.addFields({ name: 'Observações', value: notes, inline: false });
+      embed.addFields(
+        { name: '\u200B', value: '\u200B', inline: false },
+        { name: '📝 Observações', value: `> ${notes}`, inline: false }
+      );
+    }
+
+    if (failedOrders.length > 0) {
+      embed.addFields(
+        { name: '\u200B', value: '\u200B', inline: false },
+        { name: '⚠️ Falhas', value: `Não foi possível criar encomendas para: ${failedOrders.join(', ')}`, inline: false }
+      );
     }
 
     await interaction.reply({

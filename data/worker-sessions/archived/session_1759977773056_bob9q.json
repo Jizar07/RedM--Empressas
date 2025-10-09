@@ -1,0 +1,216 @@
+{
+  "workerId": "511682836835860530",
+  "workerName": "Silveta Braga",
+  "channelId": "1425337828924981300",
+  "sessionId": "session_1759977773056_bob9q",
+  "startTime": "2025-10-09T02:42:53.056Z",
+  "lastActivity": "2025-10-09T15:15:43.264Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 400,
+      "transactionId": "tx_1759977773059_wothzo",
+      "timestamp": "2025-10-09T02:42:53.059Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Black Berry Semente",
+      "quantity": 50,
+      "transactionId": "tx_1759978477627_qj97z4",
+      "timestamp": "2025-10-09T02:54:37.627Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Adubo3",
+      "quantity": 50,
+      "transactionId": "tx_1759978505866_k4qp5",
+      "timestamp": "2025-10-09T02:55:05.866Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Black Berry",
+      "quantity": 500,
+      "transactionId": "tx_1759981594626_njq6is",
+      "timestamp": "2025-10-09T03:46:34.626Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Black Berry",
+      "quantity": 160,
+      "transactionId": "tx_1759982087880_w5u3f8",
+      "timestamp": "2025-10-09T03:54:47.880Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Black Berry",
+      "quantity": 290,
+      "transactionId": "tx_1759983674574_zghdr",
+      "timestamp": "2025-10-09T04:21:14.574Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Milk Weed Semente",
+      "quantity": 50,
+      "transactionId": "tx_1759984000662_0sdd7f",
+      "timestamp": "2025-10-09T04:26:40.662Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Algodão",
+      "quantity": 410,
+      "transactionId": "tx_1759986130885_57q36w",
+      "timestamp": "2025-10-09T05:02:10.885Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Algodão",
+      "quantity": 170,
+      "transactionId": "tx_1759986971126_03k6b7",
+      "timestamp": "2025-10-09T05:16:11.126Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Crows Garlic Semente",
+      "quantity": 50,
+      "transactionId": "tx_1759987718184_01i9jn",
+      "timestamp": "2025-10-09T05:28:38.184Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 50,
+      "transactionId": "tx_1760022493440_c6hc8k",
+      "timestamp": "2025-10-09T15:08:13.440Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Mula",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759979395304_gll08o",
+      "timestamp": "2025-10-09T03:09:55.304Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759981857135_jok87o",
+      "timestamp": "2025-10-09T03:50:57.135Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Touro",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759983856669_2ab9wu",
+      "timestamp": "2025-10-09T04:24:16.669Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759985763333_9fwwyc",
+      "timestamp": "2025-10-09T04:56:03.333Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Bode",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1760022827141_jz4m8l",
+      "timestamp": "2025-10-09T15:13:47.141Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Burro",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1760022943264_oysu9r",
+      "timestamp": "2025-10-09T15:15:43.264Z"
+    }
+  ],
+  "financialTransactions": [],
+  "inventoryTransactions": [],
+  "totalCredits": 802.5,
+  "embedMessageId": "1425864313742299217",
+  "seedExpectations": [
+    {
+      "seedType": "Black Berry Semente",
+      "seedQuantity": 50,
+      "expectedPlantType": "Black Berry Semente",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759978477627_qj97z4",
+      "aduboUsed": 50,
+      "aduboCost": 37.5
+    },
+    {
+      "seedType": "Milk Weed Semente",
+      "seedQuantity": 50,
+      "expectedPlantType": "Milk Weed Semente",
+      "expectedPlantQuantity": 500,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759984000662_0sdd7f"
+    },
+    {
+      "seedType": "Crows Garlic Semente",
+      "seedQuantity": 50,
+      "expectedPlantType": "Crows Garlic Semente",
+      "expectedPlantQuantity": 500,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759987718184_01i9jn"
+    },
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 50,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 500,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1760022493440_c6hc8k"
+    }
+  ],
+  "animalExpectations": [
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759979395304_gll08o",
+      "takenTimestamp": "2025-10-09T03:09:55.304Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759983856669_2ab9wu",
+      "takenTimestamp": "2025-10-09T04:24:16.669Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1760022827141_jz4m8l",
+      "takenTimestamp": "2025-10-09T15:13:47.141Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1760022943264_oysu9r",
+      "takenTimestamp": "2025-10-09T15:15:43.264Z"
+    }
+  ],
+  "completedAt": "2025-10-09T15:38:49.583Z",
+  "notes": "Pago por Barth (198538680686608384)"
+}

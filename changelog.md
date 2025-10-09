@@ -5,7 +5,32 @@ This file is synchronized with: https://github.com/Jizar07/RedM--Empressas
 
 ## Version History
 
-### [0.058] - 2025-10-09 **[CURRENT VERSION]**
+### [0.059] - 2025-10-09 **[CURRENT VERSION]**
+- **MULTI-SUPPLIER ORDER SYSTEM**: Complete implementation of multi-supplier order selection in Discord bot and frontend
+- **KEY FEATURES**:
+  - ONE order sent to MULTIPLE suppliers (first-come-first-served)
+  - Discord bot: Multi-select supplier dropdown (1 to all suppliers)
+  - Frontend: Multi-select checkbox list with "Select All" toggle
+  - Frontend: Display usernames instead of Discord IDs
+  - Backend tracks which supplier accepts order with `acceptedBySupplierId`
+- **BACKEND CHANGES** (`src/services/OrdersService.ts`):
+  - Changed single supplier to arrays: `supplierIds[]`, `supplierNames[]`, `supplierDiscordTags[]`
+  - Notification system sends to ALL suppliers via DM and channel
+  - Authorization checks verify userId in supplierIds array
+  - Fixed user order queries to check array membership
+- **DISCORD BOT** (`src/bot/events/ordersInteraction.handler.ts`):
+  - Added `.setMinValues(1)` and `.setMaxValues()` to supplier dropdown
+  - Creates ONE order with all selected supplier IDs/names/tags
+  - Success message shows count and list of all suppliers
+- **FRONTEND** (`frontend/components/OrdersDashboard.tsx`):
+  - Changed `formSupplierId` → `formSupplierIds[]` array state
+  - Fetches Discord users with names when firm is selected
+  - Multi-select checkbox UI with "displayName (@username)" format
+  - "Selecionar Todos / Desmarcar Todos" toggle button
+  - Maps selected IDs to names before submission
+- **RESULT**: Customers can send one order to multiple suppliers, first to accept gets it, no duplicate orders created
+
+### [0.058] - 2025-10-09
 - **MULTI-SERVER SELECTION FIX**: Fixed real-time server selection and per-server data isolation
 - **KEY FIXES**:
   - Removed `window.location.reload()` from server selection (caused full page reload)

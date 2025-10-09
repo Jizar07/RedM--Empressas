@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Package, Plus, Trash2, Save, RefreshCw, ChevronUp, ChevronDown, ToggleLeft, ToggleRight, Settings } from 'lucide-react';
+import { Package, Plus, Trash2, Save, RefreshCw, ChevronUp, ChevronDown, ToggleLeft, ToggleRight, Settings, Server } from 'lucide-react';
+import { useServer } from '@/contexts/ServerContext';
 
 interface OrderItem {
   id: string;
@@ -110,6 +111,7 @@ interface DiscordCategory {
 }
 
 export default function OrdersSettings() {
+  const { selectedServerId, selectedServerName } = useServer();
   const [config, setConfig] = useState<OrdersConfig | null>(null);
   const [discordRoles, setDiscordRoles] = useState<DiscordRole[]>([]);
   const [discordUsers, setDiscordUsers] = useState<DiscordUser[]>([]);
@@ -132,15 +134,18 @@ export default function OrdersSettings() {
   const [selectedCategoryId, setSelectedCategoryId] = useState<string>('');
 
   useEffect(() => {
-    fetchConfig();
-    fetchDiscordRoles();
-    fetchDiscordUsers();
-    fetchDiscordCategories();
-  }, []);
+    if (selectedServerId) {
+      fetchConfig();
+      fetchDiscordRoles();
+      fetchDiscordUsers();
+      fetchDiscordCategories();
+    }
+  }, [selectedServerId]);
 
   const fetchConfig = async () => {
+    if (!selectedServerId) return;
     try {
-      const response = await fetch('http://localhost:3050/api/orders/config');
+      const response = await fetch(`http://localhost:3050/api/orders/config?serverId=${selectedServerId}`);
       const data = await response.json();
       setConfig(data);
     } catch (error) {
@@ -151,8 +156,9 @@ export default function OrdersSettings() {
   };
 
   const fetchDiscordRoles = async () => {
+    if (!selectedServerId) return;
     try {
-      const response = await fetch('http://localhost:3050/api/orders/discord/roles');
+      const response = await fetch(`http://localhost:3050/api/orders/discord/roles?serverId=${selectedServerId}`);
       if (response.ok) {
         const roles = await response.json();
         setDiscordRoles(roles);
@@ -163,8 +169,9 @@ export default function OrdersSettings() {
   };
 
   const fetchDiscordUsers = async () => {
+    if (!selectedServerId) return;
     try {
-      const response = await fetch('http://localhost:3050/api/orders/discord/users');
+      const response = await fetch(`http://localhost:3050/api/orders/discord/users?serverId=${selectedServerId}`);
       if (response.ok) {
         const users = await response.json();
         setDiscordUsers(users);
@@ -175,8 +182,9 @@ export default function OrdersSettings() {
   };
 
   const fetchDiscordCategories = async () => {
+    if (!selectedServerId) return;
     try {
-      const response = await fetch('http://localhost:3050/api/orders/discord/categories');
+      const response = await fetch(`http://localhost:3050/api/orders/discord/categories?serverId=${selectedServerId}`);
       if (response.ok) {
         const categories = await response.json();
         setDiscordCategories(categories);
@@ -187,11 +195,11 @@ export default function OrdersSettings() {
   };
 
   const saveConfig = async () => {
-    if (!config) return;
+    if (!config || !selectedServerId) return;
 
     setSaving(true);
     try {
-      const response = await fetch('http://localhost:3050/api/orders/config', {
+      const response = await fetch(`http://localhost:3050/api/orders/config?serverId=${selectedServerId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -325,18 +333,30 @@ export default function OrdersSettings() {
     });
   };
 
-  if (loading) {
+  if (!selectedServerId) {
     return (
-      <div className="flex items-center justify-center h-64">
-        <div className="text-gray-500">Carregando configuração...</div>
+      <div className="flex flex-col items-center justify-center h-96 space-y-4">
+        <Server className="h-20 w-20 text-gray-400" />
+        <div className="text-gray-600 dark:text-gray-300 text-xl font-semibold">Selecione um servidor</div>
+        <div className="text-gray-500 dark:text-gray-400 text-center max-w-md">
+          Escolha um servidor Discord no menu acima para configurar o sistema de encomendas
+        </div>
       </div>
     );
   }
 
-  if (!config) {
+  if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="text-red-500">Erro ao carregar configuração</div>
+        <div className="text-gray-500 dark:text-gray-400">Carregando configuração...</div>
+      </div>
+    );
+  }
+
+  if (!config || !config.settings || !config.firms || !config.messages || !config.formDisplay) {
+    return (
+      <div className="flex items-center justify-center h-64">
+        <div className="text-red-500 dark:text-red-400">Erro ao carregar configuração - estrutura inválida</div>
       </div>
     );
   }
@@ -346,13 +366,13 @@ export default function OrdersSettings() {
       <div className="card p-6">
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center space-x-3">
-            <Package className="h-6 w-6 text-gray-600" />
-            <h2 className="text-xl font-semibold text-gray-900">Configuração do Sistema de Encomendas</h2>
+            <Package className="h-6 w-6 text-gray-600 dark:text-gray-300" />
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Configuração do Sistema de Encomendas</h2>
           </div>
           <div className="flex space-x-2">
             <button
               onClick={() => { fetchDiscordRoles(); fetchDiscordUsers(); fetchDiscordCategories(); }}
-              className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors flex items-center space-x-2"
+              className="px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors flex items-center space-x-2"
             >
               <RefreshCw className="h-4 w-4" />
               <span>Atualizar Dados</span>
@@ -368,27 +388,47 @@ export default function OrdersSettings() {
           </div>
         </div>
 
+        {/* Setup Instructions */}
+        <div className="mb-6 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
+          <h3 className="text-lg font-medium text-blue-900 dark:text-blue-100 mb-3 flex items-center">
+            <Settings className="h-5 w-5 mr-2" />
+            Como Configurar o Sistema de Encomendas
+          </h3>
+          <ol className="list-decimal list-inside space-y-2 text-sm text-blue-800 dark:text-blue-200">
+            <li>Crie uma <strong>Categoria</strong> no seu servidor Discord (ex: "Encomendas")</li>
+            <li>Crie <strong>canais</strong> dentro da categoria para cada firma (ex: fazenda, berçário, armaria)</li>
+            <li>Crie um canal chamado <strong>"fazer-encomendas"</strong> onde usuários farão pedidos</li>
+            <li>Execute o comando <code className="px-2 py-0.5 bg-blue-100 dark:bg-blue-800 rounded">/orders-setup</code> no canal "fazer-encomendas"</li>
+            <li>O sistema detectará automaticamente todos os canais da categoria e criará as firmas</li>
+            <li>Configure fornecedores para cada firma na aba "Firmas" abaixo</li>
+            <li>As encomendas serão enviadas para os canais apropriados das firmas</li>
+          </ol>
+          <div className="mt-3 text-xs text-blue-700 dark:text-blue-300">
+            💡 <strong>Dica:</strong> Cada canal na categoria representará uma firma. O sistema usa os canais como destino das notificações.
+          </div>
+        </div>
+
         <div className="mb-6">
-          <div className="border-b border-gray-200">
+          <div className="border-b border-gray-200 dark:border-gray-700">
             <nav className="-mb-px flex space-x-8">
-              <button 
+              <button
                 onClick={() => setActiveTab('settings')}
-                className={`py-2 px-1 border-b-2 ${activeTab === 'settings' ? 'border-indigo-500 text-indigo-600' : 'border-transparent text-gray-500 hover:text-gray-700'} whitespace-nowrap font-medium text-sm`}>
+                className={`py-2 px-1 border-b-2 ${activeTab === 'settings' ? 'border-indigo-500 text-indigo-600 dark:text-indigo-400' : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300'} whitespace-nowrap font-medium text-sm`}>
                 Configurações
               </button>
-              <button 
+              <button
                 onClick={() => setActiveTab('firms')}
-                className={`py-2 px-1 border-b-2 ${activeTab === 'firms' ? 'border-indigo-500 text-indigo-600' : 'border-transparent text-gray-500 hover:text-gray-700'} whitespace-nowrap font-medium text-sm`}>
+                className={`py-2 px-1 border-b-2 ${activeTab === 'firms' ? 'border-indigo-500 text-indigo-600 dark:text-indigo-400' : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300'} whitespace-nowrap font-medium text-sm`}>
                 Firmas
               </button>
-              <button 
+              <button
                 onClick={() => setActiveTab('messages')}
-                className={`py-2 px-1 border-b-2 ${activeTab === 'messages' ? 'border-indigo-500 text-indigo-600' : 'border-transparent text-gray-500 hover:text-gray-700'} whitespace-nowrap font-medium text-sm`}>
+                className={`py-2 px-1 border-b-2 ${activeTab === 'messages' ? 'border-indigo-500 text-indigo-600 dark:text-indigo-400' : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300'} whitespace-nowrap font-medium text-sm`}>
                 Mensagens
               </button>
-              <button 
+              <button
                 onClick={() => setActiveTab('display')}
-                className={`py-2 px-1 border-b-2 ${activeTab === 'display' ? 'border-indigo-500 text-indigo-600' : 'border-transparent text-gray-500 hover:text-gray-700'} whitespace-nowrap font-medium text-sm`}>
+                className={`py-2 px-1 border-b-2 ${activeTab === 'display' ? 'border-indigo-500 text-indigo-600 dark:text-indigo-400' : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300'} whitespace-nowrap font-medium text-sm`}>
                 Exibição
               </button>
             </nav>
@@ -397,10 +437,10 @@ export default function OrdersSettings() {
 
         {activeTab === 'settings' && (
           <div className="space-y-6">
-            <h3 className="text-lg font-medium text-gray-900">Configurações Gerais</h3>
+            <h3 className="text-lg font-medium text-gray-900 dark:text-white">Configurações Gerais</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Máximo de Encomendas Ativas por Usuário
                 </label>
                 <input
@@ -410,13 +450,13 @@ export default function OrdersSettings() {
                     ...config,
                     settings: { ...config.settings, maxActiveOrdersPerUser: parseInt(e.target.value) || 5 }
                   })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-indigo-500"
                   min="1"
                   max="20"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Tempo de Espera entre Encomendas (minutos)
                 </label>
                 <input
@@ -426,13 +466,13 @@ export default function OrdersSettings() {
                     ...config,
                     settings: { ...config.settings, orderCooldownMinutes: parseInt(e.target.value) || 0 }
                   })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-indigo-500"
                   min="0"
                   max="60"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Cor do Embed
                 </label>
                 <input
@@ -442,7 +482,7 @@ export default function OrdersSettings() {
                     ...config,
                     settings: { ...config.settings, embedColor: e.target.value }
                   })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-indigo-500"
                 />
               </div>
               <div className="space-y-2">
@@ -454,9 +494,9 @@ export default function OrdersSettings() {
                       ...config,
                       settings: { ...config.settings, notificationsEnabled: e.target.checked }
                     })}
-                    className="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    className="rounded border-gray-300 dark:border-gray-600 text-indigo-600 focus:ring-indigo-500"
                   />
-                  <span className="text-sm font-medium text-gray-700">Notificações no Canal</span>
+                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Notificações no Canal</span>
                 </label>
                 <label className="flex items-center space-x-2">
                   <input
@@ -466,9 +506,9 @@ export default function OrdersSettings() {
                       ...config,
                       settings: { ...config.settings, dmNotificationsEnabled: e.target.checked }
                     })}
-                    className="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    className="rounded border-gray-300 dark:border-gray-600 text-indigo-600 focus:ring-indigo-500"
                   />
-                  <span className="text-sm font-medium text-gray-700">Notificações por DM</span>
+                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Notificações por DM</span>
                 </label>
                 <label className="flex items-center space-x-2">
                   <input
@@ -478,9 +518,9 @@ export default function OrdersSettings() {
                       ...config,
                       settings: { ...config.settings, requireApproval: e.target.checked }
                     })}
-                    className="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    className="rounded border-gray-300 dark:border-gray-600 text-indigo-600 focus:ring-indigo-500"
                   />
-                  <span className="text-sm font-medium text-gray-700">Requer Aprovação</span>
+                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Requer Aprovação</span>
                 </label>
               </div>
             </div>
@@ -490,7 +530,7 @@ export default function OrdersSettings() {
         {activeTab === 'firms' && (
           <div className="space-y-6">
             <div className="flex items-center justify-between">
-              <h3 className="text-lg font-medium text-gray-900">Firmas Disponíveis</h3>
+              <h3 className="text-lg font-medium text-gray-900 dark:text-white">Firmas Disponíveis</h3>
               <button
                 onClick={() => setShowAddFirm(true)}
                 className="px-3 py-1.5 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors flex items-center space-x-1 text-sm"
@@ -501,16 +541,16 @@ export default function OrdersSettings() {
             </div>
 
             {showAddFirm && (
-              <div className="p-4 bg-gray-50 rounded-lg">
+              <div className="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                       Nome da Categoria do Servidor
                     </label>
                     <select
                       value={selectedCategoryId}
                       onChange={(e) => setSelectedCategoryId(e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-indigo-500"
                     >
                       <option value="">Selecione uma categoria do Discord...</option>
                       {discordCategories.map(category => (
@@ -521,12 +561,12 @@ export default function OrdersSettings() {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                       Cargos do Servidor
                     </label>
-                    <div className="max-h-40 overflow-y-auto border border-gray-300 rounded-lg p-2">
+                    <div className="max-h-40 overflow-y-auto border border-gray-300 dark:border-gray-600 dark:bg-gray-800 rounded-lg p-2">
                       {discordRoles.map(role => (
-                        <label key={role.id} className="flex items-center space-x-2 p-1 hover:bg-gray-50">
+                        <label key={role.id} className="flex items-center space-x-2 p-1 hover:bg-gray-50 dark:hover:bg-gray-700">
                           <input
                             type="checkbox"
                             checked={newFirm.discordRoleIds?.includes(role.id) || false}
@@ -538,18 +578,18 @@ export default function OrdersSettings() {
                                 setNewFirm({ ...newFirm, discordRoleIds: roleIds.filter(id => id !== role.id) });
                               }
                             }}
-                            className="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                            className="rounded border-gray-300 dark:border-gray-600 text-indigo-600 focus:ring-indigo-500"
                           />
-                          <span className="text-sm">@{role.name} ({role.memberCount} membros)</span>
+                          <span className="text-sm text-gray-900 dark:text-gray-200">@{role.name} ({role.memberCount} membros)</span>
                         </label>
                       ))}
                     </div>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                       Usuários com os Cargos Selecionados
                     </label>
-                    <div className="max-h-40 overflow-y-auto border border-gray-300 rounded-lg p-2">
+                    <div className="max-h-40 overflow-y-auto border border-gray-300 dark:border-gray-600 dark:bg-gray-800 rounded-lg p-2">
                       {(() => {
                         
                         const filteredUsers = discordUsers.filter(user => 
@@ -559,7 +599,7 @@ export default function OrdersSettings() {
                         
                         return filteredUsers;
                       })().map(user => (
-                          <label key={user.id} className="flex items-center space-x-2 p-1 hover:bg-gray-50">
+                          <label key={user.id} className="flex items-center space-x-2 p-1 hover:bg-gray-50 dark:hover:bg-gray-700">
                             <input
                               type="checkbox"
                               checked={newFirm.supplierUserIds?.includes(user.id) || false}
@@ -571,29 +611,29 @@ export default function OrdersSettings() {
                                   setNewFirm({ ...newFirm, supplierUserIds: userIds.filter(id => id !== user.id) });
                                 }
                               }}
-                              className="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                              className="rounded border-gray-300 dark:border-gray-600 text-indigo-600 focus:ring-indigo-500"
                             />
-                            <span className="text-sm">{user.displayName} (@{user.username})</span>
+                            <span className="text-sm text-gray-900 dark:text-gray-200">{user.displayName} (@{user.username})</span>
                           </label>
                         ))}
-                      {(!newFirm.discordRoleIds?.length || discordUsers.filter(user => 
+                      {(!newFirm.discordRoleIds?.length || discordUsers.filter(user =>
                         newFirm.discordRoleIds?.some(roleId => user.roleIds.includes(roleId))
                       ).length === 0) && (
-                        <div className="text-sm text-gray-500 p-2">
+                        <div className="text-sm text-gray-500 dark:text-gray-400 p-2">
                           Selecione cargos primeiro para ver os usuários disponíveis
                         </div>
                       )}
                     </div>
                   </div>
                   <div className="md:col-span-2">
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                       Descrição (Opcional)
                     </label>
                     <input
                       type="text"
                       value={newFirm.description}
                       onChange={(e) => setNewFirm({ ...newFirm, description: e.target.value })}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-indigo-500"
                       placeholder="Descrição breve da firma..."
                     />
                   </div>
@@ -606,7 +646,7 @@ export default function OrdersSettings() {
                     </button>
                     <button
                       onClick={() => setShowAddFirm(false)}
-                      className="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition-colors text-sm"
+                      className="px-4 py-2 bg-gray-300 dark:bg-gray-600 text-gray-700 dark:text-gray-200 rounded-lg hover:bg-gray-400 dark:hover:bg-gray-500 transition-colors text-sm"
                     >
                       Cancelar
                     </button>
@@ -616,28 +656,28 @@ export default function OrdersSettings() {
             )}
 
             {showEditFirm && (
-              <div className="p-4 bg-blue-50 rounded-lg">
-                <h4 className="text-lg font-medium text-gray-900 mb-4">Editar Firma: {editingFirmData.name}</h4>
+              <div className="p-4 bg-blue-50 dark:bg-blue-900/30 rounded-lg">
+                <h4 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Editar Firma: {editingFirmData.name}</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                       Descrição
                     </label>
                     <input
                       type="text"
                       value={editingFirmData.description || ''}
                       onChange={(e) => setEditingFirmData({ ...editingFirmData, description: e.target.value })}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-indigo-500"
                       placeholder="Descrição da firma..."
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                       Cargos do Servidor
                     </label>
-                    <div className="max-h-40 overflow-y-auto border border-gray-300 rounded-lg p-2">
+                    <div className="max-h-40 overflow-y-auto border border-gray-300 dark:border-gray-600 dark:bg-gray-800 rounded-lg p-2">
                       {discordRoles.map(role => (
-                        <label key={role.id} className="flex items-center space-x-2 p-1 hover:bg-gray-50">
+                        <label key={role.id} className="flex items-center space-x-2 p-1 hover:bg-gray-50 dark:hover:bg-gray-700">
                           <input
                             type="checkbox"
                             checked={editingFirmData.discordRoleIds?.includes(role.id) || false}
@@ -649,24 +689,24 @@ export default function OrdersSettings() {
                                 setEditingFirmData({ ...editingFirmData, discordRoleIds: roleIds.filter(id => id !== role.id) });
                               }
                             }}
-                            className="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                            className="rounded border-gray-300 dark:border-gray-600 text-indigo-600 focus:ring-indigo-500"
                           />
-                          <span className="text-sm">@{role.name} ({role.memberCount} membros)</span>
+                          <span className="text-sm text-gray-900 dark:text-gray-200">@{role.name} ({role.memberCount} membros)</span>
                         </label>
                       ))}
                     </div>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                       Usuários Fornecedores
                     </label>
-                    <div className="max-h-40 overflow-y-auto border border-gray-300 rounded-lg p-2">
+                    <div className="max-h-40 overflow-y-auto border border-gray-300 dark:border-gray-600 dark:bg-gray-800 rounded-lg p-2">
                       {discordUsers
-                        .filter(user => 
+                        .filter(user =>
                           editingFirmData.discordRoleIds?.some(roleId => user.roleIds.includes(roleId))
                         )
                         .map(user => (
-                          <label key={user.id} className="flex items-center space-x-2 p-1 hover:bg-gray-50">
+                          <label key={user.id} className="flex items-center space-x-2 p-1 hover:bg-gray-50 dark:hover:bg-gray-700">
                             <input
                               type="checkbox"
                               checked={editingFirmData.supplierUserIds?.includes(user.id) || false}
@@ -678,15 +718,15 @@ export default function OrdersSettings() {
                                   setEditingFirmData({ ...editingFirmData, supplierUserIds: userIds.filter(id => id !== user.id) });
                                 }
                               }}
-                              className="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                              className="rounded border-gray-300 dark:border-gray-600 text-indigo-600 focus:ring-indigo-500"
                             />
-                            <span className="text-sm">{user.displayName} (@{user.username})</span>
+                            <span className="text-sm text-gray-900 dark:text-gray-200">{user.displayName} (@{user.username})</span>
                           </label>
                         ))}
-                      {(!editingFirmData.discordRoleIds?.length || discordUsers.filter(user => 
+                      {(!editingFirmData.discordRoleIds?.length || discordUsers.filter(user =>
                         editingFirmData.discordRoleIds?.some(roleId => user.roleIds.includes(roleId))
                       ).length === 0) && (
-                        <div className="text-sm text-gray-500 p-2">
+                        <div className="text-sm text-gray-500 dark:text-gray-400 p-2">
                           Selecione cargos primeiro para ver os usuários disponíveis
                         </div>
                       )}
@@ -701,7 +741,7 @@ export default function OrdersSettings() {
                     </button>
                     <button
                       onClick={cancelEdit}
-                      className="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition-colors text-sm"
+                      className="px-4 py-2 bg-gray-300 dark:bg-gray-600 text-gray-700 dark:text-gray-200 rounded-lg hover:bg-gray-400 dark:hover:bg-gray-500 transition-colors text-sm"
                     >
                       Cancelar
                     </button>
@@ -711,18 +751,19 @@ export default function OrdersSettings() {
             )}
 
             <div className="overflow-x-auto">
-              <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
+              <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                <thead className="bg-gray-50 dark:bg-gray-700">
                   <tr>
-                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ordem</th>
-                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nome</th>
-                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Cargos</th>
-                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Descrição</th>
-                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ações</th>
+                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Ordem</th>
+                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Nome</th>
+                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Canal Discord</th>
+                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Cargos</th>
+                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Descrição</th>
+                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Status</th>
+                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Ações</th>
                   </tr>
                 </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
+                <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
                   {config.firms.map((firm, index) => (
                     <tr key={firm.id} className={!firm.active ? 'opacity-50' : ''}>
                       <td className="px-4 py-3 whitespace-nowrap">
@@ -730,35 +771,52 @@ export default function OrdersSettings() {
                           <button
                             onClick={() => moveFirm(firm.id, 'up')}
                             disabled={index === 0}
-                            className="p-1 text-gray-400 hover:text-gray-600 disabled:opacity-30"
+                            className="p-1 text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 disabled:opacity-30"
                           >
                             <ChevronUp className="h-4 w-4" />
                           </button>
                           <button
                             onClick={() => moveFirm(firm.id, 'down')}
                             disabled={index === config.firms.length - 1}
-                            className="p-1 text-gray-400 hover:text-gray-600 disabled:opacity-30"
+                            className="p-1 text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 disabled:opacity-30"
                           >
                             <ChevronDown className="h-4 w-4" />
                           </button>
                         </div>
                       </td>
-                      <td className="px-4 py-3 whitespace-nowrap font-medium text-gray-900">
+                      <td className="px-4 py-3 whitespace-nowrap font-medium text-gray-900 dark:text-white">
                         {firm.name}
                       </td>
-                      <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-500">
+                      <td className="px-4 py-3 whitespace-nowrap text-sm">
+                        {firm.id ? (
+                          <div className="flex items-center space-x-2">
+                            <span className="text-gray-600 dark:text-gray-300">#</span>
+                            <code className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded text-xs">
+                              {firm.id}
+                            </code>
+                          </div>
+                        ) : (
+                          <span className="text-gray-400 dark:text-gray-500 italic">Não configurado</span>
+                        )}
+                        {firm.notificationChannelId && firm.notificationChannelId !== firm.id && (
+                          <div className="text-xs text-gray-400 dark:text-gray-500 mt-1">
+                            Notificações: {firm.notificationChannelId}
+                          </div>
+                        )}
+                      </td>
+                      <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
                         {firm.discordRoleNames?.map(name => `@${name}`).join(', ') || 'Nenhum cargo'}
-                        <div className="text-xs text-gray-400">
+                        <div className="text-xs text-gray-400 dark:text-gray-500">
                           {firm.supplierUserNames?.length || 0} fornecedores
                         </div>
                       </td>
-                      <td className="px-4 py-3 text-sm text-gray-500">
+                      <td className="px-4 py-3 text-sm text-gray-500 dark:text-gray-400">
                         {firm.description || '-'}
                       </td>
                       <td className="px-4 py-3 whitespace-nowrap">
                         <button
                           onClick={() => toggleFirm(firm.id)}
-                          className="text-gray-500 hover:text-gray-700"
+                          className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300"
                         >
                           {firm.active ? (
                             <ToggleRight className="h-6 w-6 text-green-600" />
@@ -789,7 +847,7 @@ export default function OrdersSettings() {
                   ))}
                   {config.firms.length === 0 && (
                     <tr>
-                      <td colSpan={6} className="px-4 py-8 text-center text-gray-500">
+                      <td colSpan={6} className="px-4 py-8 text-center text-gray-500 dark:text-gray-400">
                         Nenhuma firma configurada. Clique em "Adicionar Firma" para começar.
                       </td>
                     </tr>
@@ -802,10 +860,10 @@ export default function OrdersSettings() {
 
         {activeTab === 'messages' && (
           <div className="space-y-6">
-            <h3 className="text-lg font-medium text-gray-900">Mensagens do Sistema</h3>
+            <h3 className="text-lg font-medium text-gray-900 dark:text-white">Mensagens do Sistema</h3>
             <div className="grid grid-cols-1 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Encomenda Realizada
                 </label>
                 <textarea
@@ -814,13 +872,13 @@ export default function OrdersSettings() {
                     ...config,
                     messages: { ...config.messages, orderPlaced: e.target.value }
                   })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-indigo-500"
                   rows={3}
                   placeholder="Mensagem quando uma encomenda é criada..."
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Template de Notificação por DM
                 </label>
                 <textarea
@@ -829,16 +887,16 @@ export default function OrdersSettings() {
                     ...config,
                     messages: { ...config.messages, dmNotificationTemplate: e.target.value }
                   })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-indigo-500"
                   rows={4}
                   placeholder="Template de notificação enviada ao fornecedor..."
                 />
-                <p className="mt-1 text-sm text-gray-500">
+                <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
                   Variáveis: {'{customerName}'}, {'{item}'}, {'{quantity}'}, {'{notes}'}
                 </p>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Template de Notificação no Canal
                 </label>
                 <textarea
@@ -847,11 +905,11 @@ export default function OrdersSettings() {
                     ...config,
                     messages: { ...config.messages, channelNotificationTemplate: e.target.value }
                   })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-indigo-500"
                   rows={4}
                   placeholder="Template de notificação no canal..."
                 />
-                <p className="mt-1 text-sm text-gray-500">
+                <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
                   Variáveis: {'{customerName}'}, {'{supplierName}'}, {'{firmName}'}, {'{item}'}, {'{quantity}'}
                 </p>
               </div>
@@ -861,10 +919,10 @@ export default function OrdersSettings() {
 
         {activeTab === 'display' && (
           <div className="space-y-6">
-            <h3 className="text-lg font-medium text-gray-900">Configuração de Exibição</h3>
+            <h3 className="text-lg font-medium text-gray-900 dark:text-white">Configuração de Exibição</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Título do Formulário
                 </label>
                 <input
@@ -874,11 +932,11 @@ export default function OrdersSettings() {
                     ...config,
                     formDisplay: { ...config.formDisplay, title: e.target.value }
                   })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-indigo-500"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Cor do Embed
                 </label>
                 <input
@@ -888,11 +946,11 @@ export default function OrdersSettings() {
                     ...config,
                     formDisplay: { ...config.formDisplay, embedColor: e.target.value }
                   })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-indigo-500"
                 />
               </div>
               <div className="md:col-span-2">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Descrição do Formulário
                 </label>
                 <textarea
@@ -901,12 +959,12 @@ export default function OrdersSettings() {
                     ...config,
                     formDisplay: { ...config.formDisplay, description: e.target.value }
                   })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-indigo-500"
                   rows={6}
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Texto do Botão
                 </label>
                 <input
@@ -914,16 +972,16 @@ export default function OrdersSettings() {
                   value={config.formDisplay.button.text}
                   onChange={(e) => setConfig({
                     ...config,
-                    formDisplay: { 
-                      ...config.formDisplay, 
+                    formDisplay: {
+                      ...config.formDisplay,
                       button: { ...config.formDisplay.button, text: e.target.value }
                     }
                   })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-indigo-500"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Emoji do Botão
                 </label>
                 <input
@@ -931,12 +989,12 @@ export default function OrdersSettings() {
                   value={config.formDisplay.button.emoji}
                   onChange={(e) => setConfig({
                     ...config,
-                    formDisplay: { 
-                      ...config.formDisplay, 
+                    formDisplay: {
+                      ...config.formDisplay,
                       button: { ...config.formDisplay.button, emoji: e.target.value }
                     }
                   })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-indigo-500"
                 />
               </div>
             </div>

@@ -802,10 +802,10 @@
         "allTime": 0
       },
       "ferrovia": {
-        "thisWeek": 43,
-        "allTime": 951
+        "thisWeek": 56,
+        "allTime": 964
       },
-      "lastActivity": "2025-10-09T14:19:53.448Z"
+      "lastActivity": "2025-10-09T17:20:07.523Z"
     },
     {
       "workerId": "949397147030274059",
@@ -1114,5 +1114,5 @@
       "lastActivity": "2025-10-08T16:36:59.318Z"
     }
   ],
-  "lastUpdated": "2025-10-09T14:19:53.448Z"
+  "lastUpdated": "2025-10-09T17:20:07.523Z"
 }

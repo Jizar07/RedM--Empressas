@@ -4538,7 +4538,7 @@
     "role": "manager",
     "status": "active",
     "startTime": "2025-09-27T19:31:38.617Z",
-    "lastActivity": "2025-10-08T17:02:37.859Z",
+    "lastActivity": "2025-10-09T17:46:32.743Z",
     "transactions": [
       {
         "transactionId": "tx_1759092464191_ovldmytw1",
@@ -6265,6 +6265,39 @@
         "amount": 1000,
         "timestamp": "2025-10-08T17:02:37.853Z",
         "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Chris Rubble | FIXO: 72751\nData:: 08/10/2025 - 14:02:37"
+      },
+      {
+        "transactionId": "tx_1760031286355_c5jvny0o3",
+        "type": "REVENUE_DISTRIBUTED",
+        "itemName": "bank_deposit",
+        "quantity": 1,
+        "amount": 500,
+        "timestamp": "2025-10-09T17:34:46.355Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $500\nAutor:: Chris Rubble | FIXO: 72751\nSaldo após depósito:: $25550.1\nData:: 09/10/2025 - 14:34:45"
+      },
+      {
+        "transactionId": "tx_1760031457592_g4fvs3kht",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "Oregano_Seed ",
+        "quantity": 20,
+        "timestamp": "2025-10-09T17:37:37.592Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Oregano_Seed x20\nAutor:: Chris Rubble | FIXO: 72751\nData:: 09/10/2025 - 14:37:37"
+      },
+      {
+        "transactionId": "tx_1760031969037_qv6q87qcr",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "Black_Currant_Seed ",
+        "quantity": 20,
+        "timestamp": "2025-10-09T17:46:09.037Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Black_Currant_Seed x20\nAutor:: Chris Rubble | FIXO: 72751\nData:: 09/10/2025 - 14:46:08"
+      },
+      {
+        "transactionId": "tx_1760031992743_6fh26oy7t",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "Prairie_Poppy_Seed ",
+        "quantity": 40,
+        "timestamp": "2025-10-09T17:46:32.743Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Prairie_Poppy_Seed x40\nAutor:: Chris Rubble | FIXO: 72751\nData:: 09/10/2025 - 14:46:32"
       }
     ],
     "openResponsibilities": {
@@ -6275,7 +6308,7 @@
     },
     "totalBoxesProcessed": 1250,
     "totalRevenueGenerated": 18000,
-    "totalRevenueReturned": 9500,
+    "totalRevenueReturned": 10000,
     "totalMoneyWithdrawn": 0,
     "totalMoneyDeposited": 0,
     "totalPaymentOwed": 0
@@ -8377,7 +8410,7 @@
     "role": "worker",
     "status": "active",
     "startTime": "2025-10-04T17:18:35.561Z",
-    "lastActivity": "2025-10-09T04:19:42.544Z",
+    "lastActivity": "2025-10-09T17:40:53.859Z",
     "transactions": [
       {
         "transactionId": "tx_1759598315568_vtn9w3yhi",
@@ -8874,7 +8907,7 @@
     "role": "manager",
     "status": "active",
     "startTime": "2025-10-06T16:21:58.547Z",
-    "lastActivity": "2025-10-09T14:20:13.350Z",
+    "lastActivity": "2025-10-09T17:20:05.378Z",
     "transactions": [
       {
         "transactionId": "tx_1759768448504_1cmizm5rj",
@@ -10235,6 +10268,129 @@
         "amount": 5000,
         "timestamp": "2025-10-09T14:20:13.338Z",
         "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $5000\nAutor:: Endo D. Barth | FIXO: 76312\nSaldo após depósito:: $33312.1\nData:: 09/10/2025 - 11:20:12"
+      },
+      {
+        "transactionId": "tx_1760020478936_fpdotts1t",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-10-09T14:34:38.936Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 09/10/2025 - 11:34:38"
+      },
+      {
+        "transactionId": "tx_1760021261656_v9qslu4wj",
+        "type": "FERROVIA_MISSION_COMPLETED",
+        "itemName": "ferrovia_mission",
+        "quantity": 250,
+        "timestamp": "2025-10-09T14:47:41.656Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 1611\nRecompensa:: 1000\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 09/10/2025 - 11:47:41"
+      },
+      {
+        "transactionId": "tx_1760021276849_0r5iz5zih",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-10-09T14:47:56.849Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 09/10/2025 - 11:47:56"
+      },
+      {
+        "transactionId": "tx_1760021949503_qjltt4zs9",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-10-09T14:59:09.503Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 09/10/2025 - 11:59:09"
+      },
+      {
+        "transactionId": "tx_1760024305577_m15lb8nce",
+        "type": "REVENUE_DISTRIBUTED",
+        "itemName": "bank_deposit",
+        "quantity": 1,
+        "amount": 1015,
+        "timestamp": "2025-10-09T15:38:25.577Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $1015\nAutor:: Endo D. Barth | FIXO: 76312\nSaldo após depósito:: $34487.1\nData:: 09/10/2025 - 12:38:25"
+      },
+      {
+        "transactionId": "tx_1760025114642_err49yj5n",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-10-09T15:51:54.642Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 09/10/2025 - 12:51:54"
+      },
+      {
+        "transactionId": "tx_1760025832741_rjdwt23mk",
+        "type": "FERROVIA_MISSION_COMPLETED",
+        "itemName": "ferrovia_mission",
+        "quantity": 250,
+        "timestamp": "2025-10-09T16:03:52.741Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 1614\nRecompensa:: 1000\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 09/10/2025 - 13:03:52"
+      },
+      {
+        "transactionId": "tx_1760025845161_s8af4h8p1",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-10-09T16:04:05.161Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 09/10/2025 - 13:04:04"
+      },
+      {
+        "transactionId": "tx_1760026555455_n8zdpe7m7",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-10-09T16:15:55.455Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 09/10/2025 - 13:15:55"
+      },
+      {
+        "transactionId": "tx_1760027267738_64zn5lof2",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-10-09T16:27:47.738Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 09/10/2025 - 13:27:47"
+      },
+      {
+        "transactionId": "tx_1760027987296_1t58fjycm",
+        "type": "FERROVIA_MISSION_COMPLETED",
+        "itemName": "ferrovia_mission",
+        "quantity": 250,
+        "timestamp": "2025-10-09T16:39:47.296Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 1617\nRecompensa:: 1000\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 09/10/2025 - 13:39:46"
+      },
+      {
+        "transactionId": "tx_1760028000183_y1sv2xx54",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-10-09T16:40:00.183Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 09/10/2025 - 13:39:59"
+      },
+      {
+        "transactionId": "tx_1760029686832_eji5f4sno",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-10-09T17:08:06.832Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 09/10/2025 - 14:08:06"
+      },
+      {
+        "transactionId": "tx_1760030405378_exaqy40mx",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-10-09T17:20:05.378Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 09/10/2025 - 14:20:05"
       }
     ],
     "openResponsibilities": {
@@ -10243,9 +10399,9 @@
       "dueDate": "2025-10-07T16:21:58.547Z",
       "startDate": "2025-10-06T16:21:58.547Z"
     },
-    "totalBoxesProcessed": 2250,
-    "totalRevenueGenerated": 46000,
-    "totalRevenueReturned": 24000,
+    "totalBoxesProcessed": 3000,
+    "totalRevenueGenerated": 56000,
+    "totalRevenueReturned": 25015,
     "totalMoneyWithdrawn": 0,
     "totalMoneyDeposited": 0,
     "totalPaymentOwed": 0
@@ -13441,7 +13597,7 @@
     "role": "manager",
     "status": "active",
     "startTime": "2025-10-07T00:31:43.153Z",
-    "lastActivity": "2025-10-08T23:20:54.973Z",
+    "lastActivity": "2025-10-09T16:53:21.666Z",
     "transactions": [
       {
         "transactionId": "tx_1759883574281_rtrny9ky3",
@@ -13821,6 +13977,30 @@
         "quantity": 100,
         "timestamp": "2025-10-08T23:20:54.961Z",
         "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: corn x100\nAutor:: Thony Gustav | FIXO: 72363\nData:: 08/10/2025 - 20:20:54"
+      },
+      {
+        "transactionId": "tx_1760028791775_fhf3rca89",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-10-09T16:53:11.775Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Thony Gustav | FIXO: 72363\nData:: 09/10/2025 - 13:53:11"
+      },
+      {
+        "transactionId": "tx_1760028796954_hjtqwm4e6",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 200,
+        "timestamp": "2025-10-09T16:53:16.954Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x200\nAutor:: Thony Gustav | FIXO: 72363\nData:: 09/10/2025 - 13:53:16"
+      },
+      {
+        "transactionId": "tx_1760028801666_smhhgk5vy",
+        "type": "PLANTS_WITHDRAWN",
+        "itemName": "corn",
+        "quantity": 100,
+        "timestamp": "2025-10-09T16:53:21.666Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: corn x100\nAutor:: Thony Gustav | FIXO: 72363\nData:: 09/10/2025 - 13:53:21"
       }
     ],
     "openResponsibilities": {
@@ -14194,7 +14374,7 @@
     "role": "worker",
     "status": "active",
     "startTime": "2025-10-07T20:32:05.221Z",
-    "lastActivity": "2025-10-09T13:54:11.448Z",
+    "lastActivity": "2025-10-09T16:38:34.612Z",
     "transactions": [
       {
         "transactionId": "tx_1759869125229_ug9bar98j",
@@ -14419,6 +14599,22 @@
         "quantity": 250,
         "timestamp": "2025-10-09T13:54:11.439Z",
         "originalMessage": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 1605\nRecompensa:: 1000\nAutor:: Ragnar Lothbrok | FIXO: 1264\nData:: 09/10/2025 - 10:54:11"
+      },
+      {
+        "transactionId": "tx_1760019953305_525zx6isk",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "cornseed ",
+        "quantity": 100,
+        "timestamp": "2025-10-09T14:25:53.305Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x100\nAutor:: Ragnar Lothbrok | FIXO: 1264\nData:: 09/10/2025 - 11:25:51"
+      },
+      {
+        "transactionId": "tx_1760022617762_2fswboo3t",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "cornseed ",
+        "quantity": 100,
+        "timestamp": "2025-10-09T15:10:17.762Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x100\nAutor:: Ragnar Lothbrok | FIXO: 1264\nData:: 09/10/2025 - 12:10:17"
       }
     ],
     "openResponsibilities": {
@@ -14836,7 +15032,7 @@
     "role": "worker",
     "status": "active",
     "startTime": "2025-10-08T21:33:48.727Z",
-    "lastActivity": "2025-10-08T21:57:23.712Z",
+    "lastActivity": "2025-10-09T17:06:33.241Z",
     "transactions": [
       {
         "transactionId": "tx_1759959228734_1ivz5dhh4",
@@ -14861,6 +15057,14 @@
         "quantity": 340,
         "timestamp": "2025-10-08T21:57:23.699Z",
         "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: trigo x340\nAutor:: JANE LOTHBROK | FIXO: 78734\nData:: 08/10/2025 - 18:57:23"
+      },
+      {
+        "transactionId": "tx_1760029593232_pc0knurok",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "cornseed ",
+        "quantity": 50,
+        "timestamp": "2025-10-09T17:06:33.232Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x50\nAutor:: JANE LOTHBROK | FIXO: 78734\nData:: 09/10/2025 - 14:06:32"
       }
     ],
     "openResponsibilities": {
@@ -14914,7 +15118,7 @@
     "role": "worker",
     "status": "active",
     "startTime": "2025-10-08T21:50:33.455Z",
-    "lastActivity": "2025-10-09T14:21:19.157Z",
+    "lastActivity": "2025-10-09T15:52:22.958Z",
     "transactions": [
       {
         "transactionId": "tx_1760010616459_709x75zwj",
@@ -14947,6 +15151,14 @@
         "quantity": 100,
         "timestamp": "2025-10-09T14:21:19.157Z",
         "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x100\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 09/10/2025 - 11:21:18"
+      },
+      {
+        "transactionId": "tx_1760025142958_bc0gbo6pm",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "cornseed ",
+        "quantity": 150,
+        "timestamp": "2025-10-09T15:52:22.958Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x150\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 09/10/2025 - 12:52:22"
       }
     ],
     "openResponsibilities": {
@@ -15064,7 +15276,7 @@
     "role": "worker",
     "status": "active",
     "startTime": "2025-10-09T02:42:53.063Z",
-    "lastActivity": "2025-10-09T05:28:38.198Z",
+    "lastActivity": "2025-10-09T17:05:35.204Z",
     "transactions": [
       {
         "transactionId": "tx_1759977773071_2cwg2isjk",
@@ -15097,6 +15309,30 @@
         "quantity": 50,
         "timestamp": "2025-10-09T05:28:38.188Z",
         "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Crows_Garlic_Seed x50\nAutor:: Silveta Braga | FIXO: 78769\nData:: 09/10/2025 - 02:28:37"
+      },
+      {
+        "transactionId": "tx_1760022493450_yionfnnlm",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "cornseed ",
+        "quantity": 50,
+        "timestamp": "2025-10-09T15:08:13.450Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x50\nAutor:: Silveta Braga | FIXO: 78769\nData:: 09/10/2025 - 12:08:13"
+      },
+      {
+        "transactionId": "tx_1760027880748_ilvvyllmf",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "cornseed ",
+        "quantity": 50,
+        "timestamp": "2025-10-09T16:38:00.748Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x50\nAutor:: Silveta Braga | FIXO: 78769\nData:: 09/10/2025 - 13:37:59"
+      },
+      {
+        "transactionId": "tx_1760029535196_6my6eywkh",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "cornseed ",
+        "quantity": 50,
+        "timestamp": "2025-10-09T17:05:35.196Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x50\nAutor:: Silveta Braga | FIXO: 78769\nData:: 09/10/2025 - 14:05:34"
       }
     ],
     "openResponsibilities": {

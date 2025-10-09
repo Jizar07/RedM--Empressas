@@ -1,0 +1,599 @@
+{
+  "workerId": "835165941267693659",
+  "workerName": "Ragnar Lothbrok",
+  "channelId": "1425188689906241606",
+  "sessionId": "session_1759954768103_3yagha",
+  "startTime": "2025-10-08T20:19:28.103Z",
+  "lastActivity": "2025-10-09T16:38:34.607Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Junco",
+      "quantity": 75,
+      "transactionId": "tx_1759955035008_7x9nad",
+      "timestamp": "2025-10-08T20:23:55.008Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Junco",
+      "quantity": 25,
+      "transactionId": "tx_1759955074338_68poo5",
+      "timestamp": "2025-10-08T20:24:34.338Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Adubo3",
+      "quantity": 25,
+      "transactionId": "tx_1759955083649_qpkqwi",
+      "timestamp": "2025-10-08T20:24:43.649Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Creekplum Semente",
+      "quantity": 63,
+      "transactionId": "tx_1759955606998_6y5tus",
+      "timestamp": "2025-10-08T20:33:26.998Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 63,
+      "transactionId": "tx_1759955763750_x4uu4b",
+      "timestamp": "2025-10-08T20:36:03.750Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 490,
+      "transactionId": "tx_1759956911593_e3a9hv",
+      "timestamp": "2025-10-08T20:55:11.593Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1759957722846_qy4juq",
+      "timestamp": "2025-10-08T21:08:42.846Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 170,
+      "transactionId": "tx_1759958066191_y8nnw",
+      "timestamp": "2025-10-08T21:14:26.191Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1759958069936_zm459f",
+      "timestamp": "2025-10-08T21:14:29.936Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 220,
+      "transactionId": "tx_1759958568841_4e4sd4",
+      "timestamp": "2025-10-08T21:22:48.841Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Adubo3",
+      "quantity": 97,
+      "transactionId": "tx_1759958630972_g1n8kc",
+      "timestamp": "2025-10-08T21:23:50.972Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente Trigo",
+      "quantity": 100,
+      "transactionId": "tx_1759958658803_74nhrq",
+      "timestamp": "2025-10-08T21:24:18.803Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 420,
+      "transactionId": "tx_1759963352866_uh7jsh",
+      "timestamp": "2025-10-08T22:42:32.866Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 420,
+      "transactionId": "tx_1759963365985_a4wqug",
+      "timestamp": "2025-10-08T22:42:45.985Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 420,
+      "transactionId": "tx_1759963396694_m9pftt",
+      "timestamp": "2025-10-08T22:43:16.694Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1759973867664_fm2puf",
+      "timestamp": "2025-10-09T01:37:47.664Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 490,
+      "transactionId": "tx_1759973907049_28rjsb",
+      "timestamp": "2025-10-09T01:38:27.049Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 50,
+      "transactionId": "tx_1759974960735_zyiptr",
+      "timestamp": "2025-10-09T01:56:00.735Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente Trigo",
+      "quantity": 9,
+      "transactionId": "tx_1759975041854_o2ewd9",
+      "timestamp": "2025-10-09T01:57:21.854Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Junco",
+      "quantity": 30,
+      "transactionId": "tx_1759975364392_abyav8",
+      "timestamp": "2025-10-09T02:02:44.392Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 200,
+      "transactionId": "tx_1759976049290_30lvhc",
+      "timestamp": "2025-10-09T02:14:09.290Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 80,
+      "transactionId": "tx_1759976399909_xuhk5o",
+      "timestamp": "2025-10-09T02:19:59.909Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 490,
+      "transactionId": "tx_1759976403411_fwcni",
+      "timestamp": "2025-10-09T02:20:03.411Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Adubo3",
+      "quantity": 30,
+      "transactionId": "tx_1759976653549_n2rs0n",
+      "timestamp": "2025-10-09T02:24:13.549Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Junco",
+      "quantity": 20,
+      "transactionId": "tx_1759976719137_wmhl2w",
+      "timestamp": "2025-10-09T02:25:19.137Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 50,
+      "transactionId": "tx_1759977493100_8s1i2o",
+      "timestamp": "2025-10-09T02:38:13.100Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Adubo3",
+      "quantity": 50,
+      "transactionId": "tx_1759977500777_rpmnad",
+      "timestamp": "2025-10-09T02:38:20.777Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 470,
+      "transactionId": "tx_1759977548477_mp6a2t",
+      "timestamp": "2025-10-09T02:39:08.477Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Junco",
+      "quantity": 40,
+      "transactionId": "tx_1759977589614_bhflfe",
+      "timestamp": "2025-10-09T02:39:49.614Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Adubo3",
+      "quantity": 50,
+      "transactionId": "tx_1759977597682_wsu71i",
+      "timestamp": "2025-10-09T02:39:57.682Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 130,
+      "transactionId": "tx_1759978860934_uf2n0j",
+      "timestamp": "2025-10-09T03:01:00.934Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 490,
+      "transactionId": "tx_1759979160308_vndjwb",
+      "timestamp": "2025-10-09T03:06:00.308Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 500,
+      "transactionId": "tx_1759979483233_do61y",
+      "timestamp": "2025-10-09T03:11:23.233Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 500,
+      "transactionId": "tx_1759980130992_12nk3",
+      "timestamp": "2025-10-09T03:22:10.992Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 100,
+      "transactionId": "tx_1760019953300_8k011n",
+      "timestamp": "2025-10-09T14:25:53.300Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 100,
+      "transactionId": "tx_1760022617753_m9lbtrj",
+      "timestamp": "2025-10-09T15:10:17.753Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1760026262631_3g9gwh",
+      "timestamp": "2025-10-09T16:11:02.631Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 490,
+      "transactionId": "tx_1760026734342_uuali7",
+      "timestamp": "2025-10-09T16:18:54.342Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1760026981599_f79mj",
+      "timestamp": "2025-10-09T16:23:01.599Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1760027180531_bbeszr",
+      "timestamp": "2025-10-09T16:26:20.531Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1760027382887_7zkqie",
+      "timestamp": "2025-10-09T16:29:42.887Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1760027597698_d2wnwy",
+      "timestamp": "2025-10-09T16:33:17.698Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 330,
+      "transactionId": "tx_1760027914607_nddjjj",
+      "timestamp": "2025-10-09T16:38:34.607Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Bode",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759954768105_aov12c",
+      "timestamp": "2025-10-08T20:19:28.105Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Cabra",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759958980558_6y0ils",
+      "timestamp": "2025-10-08T21:29:40.558Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759960876515_oaqtsg",
+      "timestamp": "2025-10-08T22:01:16.515Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Porco",
+      "quantity": 1,
+      "cost": 20,
+      "amount": 0,
+      "transactionId": "tx_1760010785818_us65j3",
+      "timestamp": "2025-10-09T11:53:05.818Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Touro",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1760010854213_m3cb88",
+      "timestamp": "2025-10-09T11:54:14.213Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Burro",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1760010896607_8v3zz",
+      "timestamp": "2025-10-09T11:54:56.607Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1760012810346_xxcww",
+      "timestamp": "2025-10-09T12:26:50.346Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Ovelha Macho",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1760015123902_oxbfqs",
+      "timestamp": "2025-10-09T13:05:23.902Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Burro",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1760015261335_7va61",
+      "timestamp": "2025-10-09T13:07:41.335Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1760017228324_rolqo8",
+      "timestamp": "2025-10-09T13:40:28.324Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1760024394735_hbnw3",
+      "timestamp": "2025-10-09T15:39:54.735Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Bode",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1760024557093_llf6d",
+      "timestamp": "2025-10-09T15:42:37.093Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1760026526910_uzqhl",
+      "timestamp": "2025-10-09T16:15:26.910Z"
+    }
+  ],
+  "financialTransactions": [],
+  "inventoryTransactions": [],
+  "totalCredits": 3390,
+  "embedMessageId": "1425885167268139141",
+  "animalExpectations": [
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759954768105_aov12c",
+      "takenTimestamp": "2025-10-08T20:19:28.105Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759958980558_6y0ils",
+      "takenTimestamp": "2025-10-08T21:29:40.558Z"
+    },
+    {
+      "animalsTaken": 1,
+      "animalsDelivered": 1,
+      "isComplete": true,
+      "transactionId": "tx_1760010785818_us65j3",
+      "takenTimestamp": "2025-10-09T11:53:05.818Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1760010854213_m3cb88",
+      "takenTimestamp": "2025-10-09T11:54:14.213Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1760010896607_8v3zz",
+      "takenTimestamp": "2025-10-09T11:54:56.607Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 3,
+      "isComplete": false,
+      "transactionId": "tx_1760015123902_oxbfqs",
+      "takenTimestamp": "2025-10-09T13:05:23.902Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1760015261335_7va61",
+      "takenTimestamp": "2025-10-09T13:07:41.335Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1760024557093_llf6d",
+      "takenTimestamp": "2025-10-09T15:42:37.093Z"
+    }
+  ],
+  "seedExpectations": [
+    {
+      "seedType": "Semente de Junco",
+      "seedQuantity": 75,
+      "expectedPlantType": "Junco",
+      "expectedPlantQuantity": 750,
+      "plantsFulfilled": 750,
+      "isComplete": true,
+      "transactionId": "tx_1759955035008_7x9nad"
+    },
+    {
+      "seedType": "Semente de Junco",
+      "seedQuantity": 25,
+      "expectedPlantType": "Junco",
+      "expectedPlantQuantity": 500,
+      "plantsFulfilled": 500,
+      "isComplete": true,
+      "transactionId": "tx_1759955074338_68poo5",
+      "aduboUsed": 25,
+      "aduboCost": 18.75
+    },
+    {
+      "seedType": "Creekplum Semente",
+      "seedQuantity": 63,
+      "expectedPlantType": "Creekplum Semente",
+      "expectedPlantQuantity": 1260,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759955606998_6y5tus",
+      "aduboUsed": 227,
+      "aduboCost": 170.25
+    },
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 63,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 630,
+      "plantsFulfilled": 630,
+      "isComplete": true,
+      "transactionId": "tx_1759955763750_x4uu4b"
+    },
+    {
+      "seedType": "Semente Trigo",
+      "seedQuantity": 100,
+      "expectedPlantType": "Trigo",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 1000,
+      "isComplete": true,
+      "transactionId": "tx_1759958658803_74nhrq"
+    },
+    {
+      "seedType": "Semente Trigo",
+      "seedQuantity": 9,
+      "expectedPlantType": "Trigo",
+      "expectedPlantQuantity": 90,
+      "plantsFulfilled": 90,
+      "isComplete": true,
+      "transactionId": "tx_1759975041854_o2ewd9"
+    },
+    {
+      "seedType": "Semente de Junco",
+      "seedQuantity": 30,
+      "expectedPlantType": "Junco",
+      "expectedPlantQuantity": 300,
+      "plantsFulfilled": 300,
+      "isComplete": true,
+      "transactionId": "tx_1759975364392_abyav8"
+    },
+    {
+      "seedType": "Semente de Junco",
+      "seedQuantity": 20,
+      "expectedPlantType": "Junco",
+      "expectedPlantQuantity": 200,
+      "plantsFulfilled": 200,
+      "isComplete": true,
+      "transactionId": "tx_1759976719137_wmhl2w"
+    },
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 50,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 500,
+      "plantsFulfilled": 500,
+      "isComplete": true,
+      "transactionId": "tx_1759977493100_8s1i2o"
+    },
+    {
+      "seedType": "Semente de Junco",
+      "seedQuantity": 40,
+      "expectedPlantType": "Junco",
+      "expectedPlantQuantity": 400,
+      "plantsFulfilled": 400,
+      "isComplete": true,
+      "transactionId": "tx_1759977589614_bhflfe"
+    },
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 100,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 1000,
+      "isComplete": true,
+      "transactionId": "tx_1760019953300_8k011n"
+    },
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 100,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 1000,
+      "isComplete": true,
+      "transactionId": "tx_1760022617753_m9lbtrj"
+    }
+  ],
+  "completedAt": "2025-10-09T16:55:10.285Z",
+  "notes": "Pago por AnDuRiNhaa (1235055429260935321)"
+}

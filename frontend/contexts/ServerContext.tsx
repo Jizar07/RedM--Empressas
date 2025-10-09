@@ -5,7 +5,8 @@ import React, { createContext, useContext, useState, useEffect, ReactNode } from
 interface ServerContextType {
   selectedServerId: string | null;
   selectedServerName: string | null;
-  setSelectedServer: (serverId: string, serverName: string) => void;
+  selectedServerIcon: string | null;
+  setSelectedServer: (serverId: string, serverName: string, serverIcon: string | null) => void;
   clearSelectedServer: () => void;
 }
 
@@ -18,39 +19,50 @@ interface ServerProviderProps {
 export function ServerProvider({ children }: ServerProviderProps) {
   const [selectedServerId, setSelectedServerId] = useState<string | null>(null);
   const [selectedServerName, setSelectedServerName] = useState<string | null>(null);
+  const [selectedServerIcon, setSelectedServerIcon] = useState<string | null>(null);
 
   // Load from localStorage on mount
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const savedServerId = localStorage.getItem('selectedServerId');
       const savedServerName = localStorage.getItem('selectedServerName');
-      
+      const savedServerIcon = localStorage.getItem('selectedServerIcon');
+
       if (savedServerId && savedServerName) {
         setSelectedServerId(savedServerId);
         setSelectedServerName(savedServerName);
+        setSelectedServerIcon(savedServerIcon);
       }
     }
   }, []);
 
-  const setSelectedServer = (serverId: string, serverName: string) => {
+  const setSelectedServer = (serverId: string, serverName: string, serverIcon: string | null) => {
     setSelectedServerId(serverId);
     setSelectedServerName(serverName);
-    
+    setSelectedServerIcon(serverIcon);
+
     // Persist to localStorage
     if (typeof window !== 'undefined') {
       localStorage.setItem('selectedServerId', serverId);
       localStorage.setItem('selectedServerName', serverName);
+      if (serverIcon) {
+        localStorage.setItem('selectedServerIcon', serverIcon);
+      } else {
+        localStorage.removeItem('selectedServerIcon');
+      }
     }
   };
 
   const clearSelectedServer = () => {
     setSelectedServerId(null);
     setSelectedServerName(null);
-    
+    setSelectedServerIcon(null);
+
     // Clear from localStorage
     if (typeof window !== 'undefined') {
       localStorage.removeItem('selectedServerId');
       localStorage.removeItem('selectedServerName');
+      localStorage.removeItem('selectedServerIcon');
     }
   };
 
@@ -59,6 +71,7 @@ export function ServerProvider({ children }: ServerProviderProps) {
       value={{
         selectedServerId,
         selectedServerName,
+        selectedServerIcon,
         setSelectedServer,
         clearSelectedServer,
       }}

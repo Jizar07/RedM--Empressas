@@ -1,0 +1,224 @@
+{
+  "configId": "orders_config",
+  "firms": [
+    {
+      "id": "firm_1755616597781",
+      "name": "🛥️┋ HIDROVIA BRAITHWAITE",
+      "description": "",
+      "discordRoleIds": [
+        "1403409669191503913"
+      ],
+      "discordRoleNames": [
+        "⛴️​| Lider Hidrovia BRAITHWAITE"
+      ],
+      "supplierUserIds": [
+        "304798227713097744",
+        "1246146387188383796"
+      ],
+      "supplierUserNames": [
+        "! Jesuino Serra 🔱",
+        "! John T. Thompson ☠"
+      ],
+      "items": [],
+      "active": true,
+      "order": 0
+    },
+    {
+      "id": "firm_1755616620195",
+      "name": "🐄 ┋ FAZENDA BRAITHWAITE I",
+      "description": "",
+      "discordRoleIds": [
+        "1389443492312256584",
+        "1385345704255426670"
+      ],
+      "discordRoleNames": [
+        "🌾| Líder Fazenda BW I",
+        "🌾 | Gerente Fazenda BW I"
+      ],
+      "supplierUserIds": [
+        "159183277674987520",
+        "372161270176153601"
+      ],
+      "supplierUserNames": [
+        "Jizar Stoffeliz | 4222",
+        "Zero Bala | 4035"
+      ],
+      "items": [],
+      "active": true,
+      "order": 1
+    },
+    {
+      "id": "firm_1755616653056",
+      "name": "🐄 ┋ FAZENDA BRAITHWAITE II",
+      "description": "",
+      "discordRoleIds": [
+        "1404938492714291341",
+        "1404938411831197848"
+      ],
+      "discordRoleNames": [
+        "🌱| Líder Fazenda BW II",
+        "🌱 | Gerente Fazenda BW II"
+      ],
+      "supplierUserIds": [
+        "1142754797171253271",
+        "375281903923757067"
+      ],
+      "supplierUserNames": [
+        "! Mark Rodz➰",
+        "Barbosa Lessa | 974"
+      ],
+      "items": [],
+      "active": true,
+      "order": 2
+    },
+    {
+      "id": "firm_1755616636555",
+      "name": "🐄 ┋ FAZENDA BRAITHWAITE III",
+      "description": "",
+      "discordRoleIds": [
+        "1404941047347286196",
+        "1404941846639153244"
+      ],
+      "discordRoleNames": [
+        "🌿​| Líder Fazenda BW III",
+        "🌿 | Gerente Fazenda BW III"
+      ],
+      "supplierUserIds": [
+        "1142754797171253271",
+        "375281903923757067",
+        "649716210979831828",
+        "359427893354299412",
+        "633030649279938561"
+      ],
+      "supplierUserNames": [
+        "! Mark Rodz➰",
+        "! Peu Montanha 🧩",
+        "Barbosa Lessa | 974",
+        "Jane calamidade | 4288",
+        "Ojuara Abaporujucaíba | 4721"
+      ],
+      "items": [],
+      "active": true,
+      "order": 3
+    },
+    {
+      "id": "firm_1755616689011",
+      "name": "🔫 ┋ ARMARIA VEIO",
+      "description": "",
+      "discordRoleIds": [
+        "1386824482311901194"
+      ],
+      "discordRoleNames": [
+        "🔫| Armeiro"
+      ],
+      "supplierUserIds": [
+        "346672116986413057"
+      ],
+      "supplierUserNames": [
+        "Rocco Augusto | 3276"
+      ],
+      "items": [],
+      "active": true,
+      "order": 4
+    },
+    {
+      "id": "firm_1755616711241",
+      "name": "🐴 ┋ HARAS E CRUZAS",
+      "description": "",
+      "discordRoleIds": [
+        "1403410488532009152"
+      ],
+      "discordRoleNames": [
+        "🐎| Lider Estabulo"
+      ],
+      "supplierUserIds": [
+        "1246146387188383796",
+        "452950037664890945"
+      ],
+      "supplierUserNames": [
+        "! Jesuino Serra 🔱",
+        "Kansas | 4020"
+      ],
+      "items": [],
+      "active": true,
+      "order": 5
+    },
+    {
+      "id": "firm_1755616741405",
+      "name": "🟩┋ HAYALLA",
+      "description": "",
+      "discordRoleIds": [
+        "1402144126341742613"
+      ],
+      "discordRoleNames": [
+        "🎨| Artesãos"
+      ],
+      "supplierUserIds": [
+        "530512094097965057"
+      ],
+      "supplierUserNames": [
+        "Abigail Jerry (Bia) | 4233"
+      ],
+      "items": [],
+      "active": true,
+      "order": 6
+    }
+  ],
+  "settings": {
+    "notificationsEnabled": true,
+    "dmNotificationsEnabled": true,
+    "requireApproval": false,
+    "maxActiveOrdersPerUser": 5,
+    "orderCooldownMinutes": 0,
+    "embedColor": "#00FF00",
+    "orderChannelId": "1401978576982773841"
+  },
+  "command": {
+    "name": "encomenda",
+    "description": "Fazer uma encomenda para outro jogador",
+    "permissions": "SendMessages"
+  },
+  "messages": {
+    "orderPlaced": "✅ **Encomenda Realizada!**\n\n{customerName} encomendou {quantity}x {item} de {supplierName}",
+    "orderAccepted": "✅ Sua encomenda foi aceita por {supplierName}!",
+    "orderRejected": "❌ Sua encomenda foi rejeitada por {supplierName}.\nMotivo: {reason}",
+    "orderCompleted": "🎉 Sua encomenda foi concluída por {supplierName}!",
+    "orderCancelled": "❌ Encomenda cancelada.",
+    "dmNotificationTemplate": "📦 **Nova Encomenda!**\n\n**Cliente:** {customerName}\n**Item:** {quantity}x {item}\n**Notas:** {notes}\n\nUse os botões abaixo para aceitar ou rejeitar.",
+    "channelNotificationTemplate": "📦 **Nova Encomenda**\n\n**De:** {customerName}\n**Para:** {supplierName}\n**Firma:** {firmName}\n**Item:** {quantity}x {item}",
+    "noSuppliersAvailable": "❌ Não há fornecedores disponíveis para esta firma no momento.",
+    "orderLimitReached": "❌ Você atingiu o limite máximo de {limit} encomendas ativas.",
+    "cooldownActive": "⏱️ Você precisa aguardar {minutes} minutos antes de fazer outra encomenda."
+  },
+  "formDisplay": {
+    "title": "📦 Sistema de Encomendas",
+    "description": "**Bem-vindo ao Sistema de Encomendas!**\n\nAqui você pode fazer encomendas de itens para outros jogadores.\n\n**Como funciona:**\n• Escolha a firma/categoria\n• Selecione o fornecedor\n• Especifique o item e quantidade\n• Aguarde a confirmação\n\nClique no botão abaixo para começar.",
+    "embedColor": "#00FF00",
+    "button": {
+      "text": "Fazer Encomenda",
+      "emoji": "📦",
+      "style": "Primary"
+    }
+  },
+  "steps": {
+    "selectFirm": {
+      "embedTitle": "Passo 1/3 - Selecione a Firma",
+      "embedDescription": "Escolha a firma/categoria do item que deseja encomendar:",
+      "dropdownPlaceholder": "Selecione uma firma..."
+    },
+    "selectSupplier": {
+      "embedTitle": "Passo 2/3 - Selecione o Fornecedor",
+      "embedDescription": "Escolha quem irá fornecer o item:",
+      "dropdownPlaceholder": "Selecione um fornecedor..."
+    },
+    "orderDetails": {
+      "modalTitle": "Passo 3/3 - Detalhes da Encomenda",
+      "itemLabel": "Nome do Item",
+      "itemPlaceholder": "Ex: Madeira, Ferro, Comida...",
+      "quantityLabel": "Quantidade",
+      "quantityPlaceholder": "Ex: 10, 50, 100...",
+      "notesLabel": "Observações (Opcional)",
+      "notesPlaceholder": "Informações adicionais sobre a encomenda..."
+    }
+  }
+}

@@ -30,7 +30,7 @@ export const Constants = {
   
   Bot: {
     Prefix: '!',
-    CooldownDefault: 3000,    // 3 seconds
+    CooldownDefault: 3,    // 3 seconds (in seconds, gets multiplied by 1000 for milliseconds)
     MaxMessageLength: 2000,
     MaxEmbedFields: 25,
   },

@@ -97,7 +97,33 @@ When you see "/update" command from the user, perform the following actions:
 3. Update changelog.md if there are version-worthy changes
 4. Update CLAUDE.md if there are architectural or command changes
 
-## Recent Major Updates (v0.057) **[CURRENT VERSION]**
+## Recent Major Updates (v0.059) **[CURRENT VERSION]**
+
+### Multi-Supplier Order System - Discord & Frontend (v0.059)
+- **Feature**: Complete implementation of multi-supplier order selection in Discord bot and frontend
+- **Key Changes**:
+  - ONE order sent to MULTIPLE suppliers (first-come-first-served)
+  - Discord bot: Multi-select supplier dropdown using `.setMinValues()` and `.setMaxValues()`
+  - Frontend: Multi-select checkbox list with "Select All" toggle
+  - Frontend: Display usernames (displayName @username) instead of Discord IDs
+  - Backend tracks which supplier accepts with `acceptedBySupplierId` field
+- **Backend**: Changed single supplier fields to arrays (`supplierIds[]`, `supplierNames[]`, `supplierDiscordTags[]`)
+- **Notifications**: All suppliers receive DM + channel notification
+- **Authorization**: Updated to check userId in supplierIds array
+- **Result**: Customers select 1 to all suppliers, creates one order, first to accept gets it
+
+## Previous Major Updates (v0.058)
+
+### Multi-Server Selection Fix (v0.058)
+- **Feature**: Fixed real-time server selection and per-server data isolation in RedM Server Browser
+- **Key Changes**:
+  - Removed page reload from server selection
+  - Implemented `serverSelectionChanged` custom event
+  - Per-server known players storage with server-scoped keys
+  - All components listen for server changes and refresh data
+- **Result**: Selecting different servers updates data in real-time without page reload
+
+## Previous Major Updates (v0.057)
 
 ### Animal Cost Backend Deduction Removal (v0.057)
 - **Critical Payment Bug**: Backend was deducting animal raising costs from worker payments instead of just Adubo3

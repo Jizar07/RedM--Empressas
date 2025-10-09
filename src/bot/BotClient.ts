@@ -137,6 +137,8 @@ export class BotClient extends Client {
               console.error('❌ Failed to load dynamic registration command:', error);
             }
           } else if (command.default?.data && command.default?.execute) {
+            // Ensure the command has the correct name for cooldowns
+            command.default.name = command.default.data.name;
             this.commands.set(command.default.data.name, command.default);
             console.log(`📌 Loaded command: ${command.default.data.name}`);
           }

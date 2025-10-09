@@ -1,0 +1,217 @@
+{
+  "configId": "orders_config",
+  "firms": [
+    {
+      "id": "1425866688930513020",
+      "name": "🔫・armaria",
+      "description": "Encomendas para 🔫・armaria",
+      "discordRoleIds": [
+        "1274479410107646008"
+      ],
+      "discordRoleNames": [
+        "❪★❱ Gerentes"
+      ],
+      "supplierUserIds": [
+        "198538680686608384",
+        "1240761203429478493"
+      ],
+      "supplierUserNames": [
+        "Barth",
+        "Polly"
+      ],
+      "items": [],
+      "notificationChannelId": "1425866688930513020",
+      "active": true,
+      "order": 0
+    },
+    {
+      "id": "1425877262238220338",
+      "name": "🌽・fazenda",
+      "description": "Encomendas para 🌽・fazenda",
+      "discordRoleIds": [
+        "1274479410107646008"
+      ],
+      "discordRoleNames": [
+        "❪★❱ Gerentes"
+      ],
+      "supplierUserIds": [
+        "198538680686608384",
+        "1204772480305209384",
+        "588934801508270082",
+        "584129725052747798",
+        "1384209105610211338",
+        "949397147030274059",
+        "333664599549411329",
+        "372161270176153601",
+        "774273635414048800",
+        "470361257497722886",
+        "183635823722233857",
+        "614876929266417672",
+        "1240761203429478493",
+        "141250620593012736",
+        "1235055429260935321",
+        "273987353456934913",
+        "1127730801182777355",
+        "940279402145669241",
+        "969273317469089802"
+      ],
+      "supplierUserNames": [
+        "Barth",
+        "BONNIE BOWDIN | 3858",
+        "Chris Rubble | 2975",
+        "Django / Barba",
+        "Draven Lima | 5579",
+        "Izzynha Evans | 1383",
+        "Jizar Stoffeliz | 4222",
+        "Johnny Rocks (Korea)",
+        "josefh bowdin | 2527",
+        "Kenai Comanches | 5983",
+        "Nat Corvinus",
+        "Notorius Bowdin | 2527",
+        "Polly",
+        "Santiago Bowdin | 2512",
+        "smith ramirez | 1025",
+        "Souzz Ramirez | 1241",
+        "Tereza Mcfell | 445",
+        "Thony Gustav | 2548",
+        "Zeca Trindade"
+      ],
+      "items": [],
+      "notificationChannelId": "1425877262238220338",
+      "active": true,
+      "order": 1
+    },
+    {
+      "id": "1425869110935293952",
+      "name": "💉・veterinaria",
+      "description": "Encomendas para 💉・veterinaria",
+      "discordRoleIds": [
+        "1274479410107646008"
+      ],
+      "discordRoleNames": [
+        "❪★❱ Gerentes"
+      ],
+      "supplierUserIds": [
+        "588934801508270082",
+        "949397147030274059",
+        "372161270176153601",
+        "614876929266417672",
+        "141250620593012736"
+      ],
+      "supplierUserNames": [
+        "Chris Rubble | 2975",
+        "Izzynha Evans | 1383",
+        "Jizar Stoffeliz | 4222",
+        "Notorius Bowdin | 2527",
+        "Santiago Bowdin | 2512"
+      ],
+      "items": [],
+      "notificationChannelId": "1425869110935293952",
+      "active": true,
+      "order": 2
+    },
+    {
+      "id": "1425869001405239386",
+      "name": "📦・artezanato",
+      "description": "Encomendas para 📦・artezanato",
+      "discordRoleIds": [
+        "1274479410107646008"
+      ],
+      "discordRoleNames": [
+        "❪★❱ Gerentes"
+      ],
+      "supplierUserIds": [
+        "372161270176153601"
+      ],
+      "supplierUserNames": [
+        "Jizar Stoffeliz | 4222"
+      ],
+      "items": [],
+      "notificationChannelId": "1425869001405239386",
+      "active": true,
+      "order": 3
+    },
+    {
+      "id": "1425868881624305705",
+      "name": "🐄・berçario",
+      "description": "Encomendas para 🐄・berçario",
+      "discordRoleIds": [
+        "1274479410107646008"
+      ],
+      "discordRoleNames": [
+        "❪★❱ Gerentes"
+      ],
+      "supplierUserIds": [
+        "588934801508270082",
+        "372161270176153601",
+        "141250620593012736"
+      ],
+      "supplierUserNames": [
+        "Chris Rubble | 2975",
+        "Jizar Stoffeliz | 4222",
+        "Santiago Bowdin | 2512"
+      ],
+      "items": [],
+      "notificationChannelId": "1425868881624305705",
+      "active": true,
+      "order": 4
+    }
+  ],
+  "settings": {
+    "notificationsEnabled": true,
+    "dmNotificationsEnabled": true,
+    "requireApproval": false,
+    "maxActiveOrdersPerUser": 5,
+    "orderCooldownMinutes": 0,
+    "embedColor": "#00FF00",
+    "orderChannelId": "1425868019028197567"
+  },
+  "command": {
+    "name": "encomenda",
+    "description": "Fazer uma encomenda para outro jogador",
+    "permissions": "SendMessages"
+  },
+  "messages": {
+    "orderPlaced": "✅ **Encomenda Realizada!**\n\n{customerName} encomendou {quantity}x {item} de {supplierName}",
+    "orderAccepted": "✅ Sua encomenda foi aceita por {supplierName}!",
+    "orderRejected": "❌ Sua encomenda foi rejeitada por {supplierName}.\nMotivo: {reason}",
+    "orderCompleted": "🎉 Sua encomenda foi concluída por {supplierName}!",
+    "orderCancelled": "❌ Encomenda cancelada.",
+    "dmNotificationTemplate": "📦 **Nova Encomenda!**\n\n**Cliente:** {customerName}\n**Item:** {quantity}x {item}\n**Notas:** {notes}\n\nUse os botões abaixo para aceitar ou rejeitar.",
+    "channelNotificationTemplate": "📦 **Nova Encomenda**\n\n**De:** {customerName}\n**Para:** {supplierName}\n**Firma:** {firmName}\n**Item:** {quantity}x {item}",
+    "noSuppliersAvailable": "❌ Não há fornecedores disponíveis para esta firma no momento.",
+    "orderLimitReached": "❌ Você atingiu o limite máximo de {limit} encomendas ativas.",
+    "cooldownActive": "⏱️ Você precisa aguardar {minutes} minutos antes de fazer outra encomenda."
+  },
+  "formDisplay": {
+    "title": "📦 Sistema de Encomendas",
+    "description": "**Bem-vindo ao Sistema de Encomendas!**\n\nAqui você pode fazer encomendas de itens para outros jogadores.\n\n**Como funciona:**\n• Escolha a firma/categoria\n• Selecione o fornecedor\n• Especifique o item e quantidade\n• Aguarde a confirmação\n\nClique no botão abaixo para começar.",
+    "embedColor": "#00FF00",
+    "button": {
+      "text": "Fazer Encomenda",
+      "emoji": "📦",
+      "style": "Primary"
+    }
+  },
+  "steps": {
+    "selectFirm": {
+      "embedTitle": "Passo 1/3 - Selecione a Firma",
+      "embedDescription": "Escolha a firma/categoria do item que deseja encomendar:",
+      "dropdownPlaceholder": "Selecione uma firma..."
+    },
+    "selectSupplier": {
+      "embedTitle": "Passo 2/3 - Selecione o Fornecedor",
+      "embedDescription": "Escolha quem irá fornecer o item:",
+      "dropdownPlaceholder": "Selecione um fornecedor..."
+    },
+    "orderDetails": {
+      "modalTitle": "Passo 3/3 - Detalhes da Encomenda",
+      "itemLabel": "Nome do Item",
+      "itemPlaceholder": "Ex: Madeira, Ferro, Comida...",
+      "quantityLabel": "Quantidade",
+      "quantityPlaceholder": "Ex: 10, 50, 100...",
+      "notesLabel": "Observações (Opcional)",
+      "notesPlaceholder": "Informações adicionais sobre a encomenda..."
+    }
+  }
+}

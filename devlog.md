@@ -4,6 +4,42 @@ This is a local timestamped file to track all development changes and prompts.
 
 ## Log Entries
 
+### 2025-10-09 13:44:20
+**Action**: Multi-Supplier Order System - Discord & Frontend
+**Prompt**: User requested multi-supplier selection in Discord bot's fazer-encomendas flow, then requested the same for frontend with usernames instead of Discord IDs.
+**Changes**:
+- **Backend Order Data Model** (`src/services/OrdersService.ts`):
+  - Changed single supplier fields to arrays: `supplierIds[]`, `supplierNames[]`, `supplierDiscordTags[]`
+  - Added `acceptedBySupplierId` field to track which supplier accepts first-come-first-served orders
+  - Updated `createOrder()` to accept arrays of supplier data
+  - Modified notification system to send to ALL suppliers via DM and channel
+  - Updated authorization checks in `updateOrderStatus()` to verify userId is in supplierIds array
+  - Fixed `getUserActiveOrders()` and `getUserOrders()` to use `supplierIds.includes()`
+  - Fixed `getAllOrders()` filter to check supplier array membership
+- **Discord Bot Multi-Supplier** (`src/bot/events/ordersInteraction.handler.ts`):
+  - Updated `activeOrderSessions` interface to store array of suppliers
+  - Added `.setMinValues(1)` and `.setMaxValues()` to supplier dropdown (lines 297-298)
+  - Modified `handleSupplierSelection()` to fetch all selected suppliers
+  - Changed `handleOrderDetailsSubmit()` to create ONE order with all supplier IDs/names/tags
+  - Updated success embed to show count and list of all suppliers
+- **Frontend Multi-Supplier** (`frontend/components/OrdersDashboard.tsx`):
+  - Changed state from `formSupplierId: string` → `formSupplierIds: string[]`
+  - Added `availableSuppliers` state to store Discord users with {id, username, displayName}
+  - Created useEffect to fetch Discord users when firm is selected (lines 154-188)
+  - Replaced single-select dropdown with multi-select checkbox list (lines 812-862)
+  - Added "Selecionar Todos / Desmarcar Todos" toggle button
+  - Display format: "displayName (@username)" instead of numerical IDs
+  - Updated `handleCreateOrder()` to map selected IDs to names from availableSuppliers
+  - Updated form submission to send arrays: supplierIds, supplierNames, supplierDiscordTags
+  - Added validation: at least 1 supplier required
+  - Clear selected suppliers when firm changes
+- **Result**:
+  - ONE order created for MULTIPLE suppliers
+  - First supplier to accept gets the order
+  - All suppliers receive notifications
+  - Frontend shows proper usernames instead of Discord IDs
+  - "Select All" functionality for easy bulk selection
+
 ### 2025-10-09 10:23:42
 **Action**: Fix Multi-Server Selection Real-Time Updates and Per-Server Known Players
 **Prompt**: User reported two issues: 1) Selecting another server does NOT update data in realtime. 2) Selecting another server and refreshing the page still shows Known People and Player Management from hardcoded server.

@@ -65,7 +65,7 @@ export default function HomePage() {
   const [healthStatus, setHealthStatus] = useState<any>(null);
   const [serverInfo, setServerInfo] = useState<ServerInfo | null>(null);
   const [isPending, startTransition] = useTransition();
-  const { selectedServerId, selectedServerName, setSelectedServer } = useServer();
+  const { selectedServerId, selectedServerName, selectedServerIcon, setSelectedServer } = useServer();
   const { canAccessChannelParser, isAdmin } = useAuth();
   const { accessibleFirms, loading: firmsLoading } = useFirmAccess(true);
   const [isInitialLoad, setIsInitialLoad] = useState(true);
@@ -303,9 +303,23 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-3">
-              <div className="p-2 bg-red-600 dark:bg-red-700 rounded-lg transition-colors">
-                <Server className="h-6 w-6 text-white" />
-              </div>
+              {selectedServerId && selectedServerIcon ? (
+                <img
+                  src={`https://cdn.discordapp.com/icons/${selectedServerId}/${selectedServerIcon}.png?size=64`}
+                  alt={selectedServerName || 'Server'}
+                  className="w-10 h-10 rounded-full"
+                />
+              ) : selectedServerName ? (
+                <div className="w-10 h-10 bg-red-600 dark:bg-red-700 rounded-full flex items-center justify-center transition-colors">
+                  <span className="text-white text-lg font-bold">
+                    {selectedServerName.substring(0, 1).toUpperCase()}
+                  </span>
+                </div>
+              ) : (
+                <div className="p-2 bg-red-600 dark:bg-red-700 rounded-lg transition-colors">
+                  <Server className="h-6 w-6 text-white" />
+                </div>
+              )}
               <div>
                 <h1 className="text-xl font-bold text-gray-900 dark:text-white transition-colors">
                   {selectedServerName || 'RedM Empresas'}
@@ -605,43 +619,43 @@ export default function HomePage() {
           <div className="space-y-8">
             {/* Servicos Menu */}
             <div className="card p-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">{t('servicos.title')}</h2>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">{t('servicos.title')}</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <button
                   onClick={() => changeTab('orders-dashboard')}
                   className={`p-6 border-2 rounded-lg text-left transition-colors ${
                     activeTab === 'orders-dashboard' || activeTab === 'orders-management'
-                      ? 'border-red-500 bg-red-50'
-                      : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
+                      ? 'border-red-500 bg-red-50 dark:bg-red-900/20'
+                      : 'border-gray-300 dark:border-gray-600 hover:border-gray-400 dark:hover:border-gray-500 hover:bg-gray-50 dark:hover:bg-gray-700'
                   }`}
                 >
-                  <Package className="h-8 w-8 text-gray-600 mb-3" />
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{t('servicos.orders')}</h3>
-                  <p className="text-gray-600">{t('servicos.ordersDesc')}</p>
+                  <Package className="h-8 w-8 text-gray-600 dark:text-gray-300 mb-3" />
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{t('servicos.orders')}</h3>
+                  <p className="text-gray-600 dark:text-gray-300">{t('servicos.ordersDesc')}</p>
                 </button>
                 <button
                   onClick={() => changeTab('recipes')}
                   className={`p-6 border-2 rounded-lg text-left transition-colors ${
                     activeTab === 'recipes'
-                      ? 'border-red-500 bg-red-50'
-                      : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
+                      ? 'border-red-500 bg-red-50 dark:bg-red-900/20'
+                      : 'border-gray-300 dark:border-gray-600 hover:border-gray-400 dark:hover:border-gray-500 hover:bg-gray-50 dark:hover:bg-gray-700'
                   }`}
                 >
-                  <ChefHat className="h-8 w-8 text-gray-600 mb-3" />
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{t('servicos.recipes')}</h3>
-                  <p className="text-gray-600">{t('servicos.recipesDesc')}</p>
+                  <ChefHat className="h-8 w-8 text-gray-600 dark:text-gray-300 mb-3" />
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{t('servicos.recipes')}</h3>
+                  <p className="text-gray-600 dark:text-gray-300">{t('servicos.recipesDesc')}</p>
                 </button>
                 <button
                   onClick={() => changeTab('price-list')}
                   className={`p-6 border-2 rounded-lg text-left transition-colors ${
                     activeTab === 'price-list'
-                      ? 'border-red-500 bg-red-50'
-                      : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
+                      ? 'border-red-500 bg-red-50 dark:bg-red-900/20'
+                      : 'border-gray-300 dark:border-gray-600 hover:border-gray-400 dark:hover:border-gray-500 hover:bg-gray-50 dark:hover:bg-gray-700'
                   }`}
                 >
-                  <DollarSign className="h-8 w-8 text-gray-600 mb-3" />
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{t('servicos.priceList')}</h3>
-                  <p className="text-gray-600">{t('servicos.priceListDesc')}</p>
+                  <DollarSign className="h-8 w-8 text-gray-600 dark:text-gray-300 mb-3" />
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{t('servicos.priceList')}</h3>
+                  <p className="text-gray-600 dark:text-gray-300">{t('servicos.priceListDesc')}</p>
                 </button>
               </div>
             </div>
