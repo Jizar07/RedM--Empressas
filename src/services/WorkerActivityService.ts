@@ -710,31 +710,15 @@ export class WorkerActivityService {
     // NOTE: Adubo3 costs are deducted in embed display by counting plantTransactions
     // Removed duplicate deduction from here to prevent double-charging workers
 
-    // Calculate animal deliveries
-    const animalsTaken = session.animalTransactions
-      .filter(t => t.type === 'animals_taken')
-      .reduce((sum, t) => sum + t.quantity, 0);
-    
-    const totalAnimalCost = animalsTaken * prices.animalCost;
-    
-    // Find completed deliveries
+    // Calculate animal deliveries - Workers get FULL delivery amount
+    // Animal costs are for FRONTEND analytics only, NOT backend payments
     const deliveryAmount = session.animalTransactions
       .filter(t => t.type === 'delivery_completed')
       .reduce((sum, t) => sum + (t.amount || 0), 0);
-    
-    // Apply payment logic:
-    // If delivery >= cost, worker gets full delivery amount
-    // If delivery < cost, worker gets $0 and owes the difference
-    if (deliveryAmount > 0) {
-      if (deliveryAmount >= totalAnimalCost) {
-        totalCredits += deliveryAmount; // Full payment
-      } else {
-        // Worker owes money
-        totalCosts = totalAnimalCost - deliveryAmount;
-      }
-    }
 
-    session.totalCredits = Math.max(0, totalCredits - totalCosts);
+    totalCredits += deliveryAmount;  // Workers paid full $160 per delivery
+
+    session.totalCredits = totalCredits;
   }
 
   /**

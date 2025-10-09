@@ -4,6 +4,40 @@ This is a local timestamped file to track all development changes and prompts.
 
 ## Log Entries
 
+### 2025-10-09 07:58:19
+**Action**: Remove Animal Cost Deduction from Backend Worker Payments
+**Prompt**: User reported Margarida Versace session showing $45.00 instead of expected $285.00. System was incorrectly deducting animal raising costs ($240) from worker payments in backend.
+**Changes**:
+- **Critical Bug**: Backend payment calculation was deducting animal raising costs from worker payments when it should ONLY deduct Adubo3
+- **Root Cause**: Lines 713-742 in `recalculateSessionCredits()` were comparing delivery amount vs animal costs and charging workers the difference
+- **Broken Logic**:
+  - 12 animals taken × $20 cost = $240 total cost
+  - 4 animals delivered = $160 payment from game
+  - System calculated: $160 < $240, so worker owes $80
+  - Final payment: $125 (plants) - $80 (animal debt) = $45 ❌
+- **User's System Design**:
+  - Backend payments: Plants + Animal deliveries - Adubo3 ONLY
+  - Frontend analytics: Show costs and profits using configurable raising costs
+  - Animal costs are for ANALYTICS display, NOT payment deductions
+- **Fix Applied**:
+  - Removed entire animal cost comparison logic (lines 713-735)
+  - Removed `animalsTaken` calculation
+  - Removed `totalAnimalCost` calculation
+  - Removed conditional payment logic
+  - Replaced with simple: `totalCredits += deliveryAmount`
+  - Workers now get FULL $160 delivery amount every time
+- **Corrected Calculation**:
+  - Plants: 500 × $0.25 = $125
+  - Animals: 1 delivery × $160 = $160
+  - Total: $285 ✅
+- **Files Modified**:
+  - `src/services/WorkerActivityService.ts` - Lines 713-721, removed animal cost deduction logic
+- **Impact**:
+  - All workers now paid correctly: plants + full delivery amounts - Adubo3 only
+  - Animal costs remain in frontend analytics for profit tracking
+  - No cost comparisons or deductions for animal services in backend
+**Result**: Backend worker payments now follow correct formula: totalCredits = plantCredits + deliveryAmount (no animal cost deductions). Frontend analytics unchanged.
+
 ### 2025-10-08 18:09:25
 **Action**: Fix Adubo3 Double-Deduction Bug in Worker Payment System
 **Prompt**: User reported incorrect payment calculation in Romano Delaerva's payment embed showing $3675.75 instead of expected $3900.75

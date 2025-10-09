@@ -5,7 +5,30 @@ This file is synchronized with: https://github.com/Jizar07/RedM--Empressas
 
 ## Version History
 
-### [0.056] - 2025-10-08 **[CURRENT VERSION]**
+### [0.057] - 2025-10-09 **[CURRENT VERSION]**
+- **CRITICAL BUG FIX**: Removed animal cost deduction from backend worker payments
+- **PAYMENT FORMULA CORRECTION**: Backend now only deducts Adubo3, not animal raising costs
+- **KEY FIX**:
+  - Removed animal cost comparison logic from `recalculateSessionCredits()` (lines 713-742)
+  - Workers now receive FULL delivery amount ($160) without cost deductions
+  - Animal costs are for FRONTEND analytics only, NOT backend payment calculations
+  - Example: Margarida Versace was paid $45, correct amount is $285 ($240 difference)
+- **BROKEN LOGIC REMOVED**:
+  - Previous: if (deliveryAmount >= animalCost) pay worker, else worker owes money
+  - Caused: $125 plants + $160 delivery - $240 animal debt = $45 WRONG
+- **CORRECT LOGIC**:
+  - Backend: totalCredits = plantCredits + deliveryAmount (no animal costs)
+  - Display: totalCredits - Adubo3Deductions
+  - Frontend Analytics: Show costs/profits using configurable raising costs
+- **TECHNICAL DETAILS**:
+  - Removed `animalsTaken` and `totalAnimalCost` calculations
+  - Removed conditional payment logic comparing delivery vs costs
+  - Simplified to: `totalCredits += deliveryAmount`
+- **FILES MODIFIED**:
+  - src/services/WorkerActivityService.ts - Removed animal cost deduction (lines 713-721)
+- **IMPACT**: All workers now paid correctly without animal cost deductions in backend
+
+### [0.056] - 2025-10-08
 - **CRITICAL BUG FIX**: Adubo3 double-deduction causing worker underpayment by $225+ per session
 - **PAYMENT ACCURACY**: Workers now correctly paid for all work minus single Adubo3 deduction
 - **KEY FIX**:

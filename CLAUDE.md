@@ -97,7 +97,33 @@ When you see "/update" command from the user, perform the following actions:
 3. Update changelog.md if there are version-worthy changes
 4. Update CLAUDE.md if there are architectural or command changes
 
-## Recent Major Updates (v0.056) **[CURRENT VERSION]**
+## Recent Major Updates (v0.057) **[CURRENT VERSION]**
+
+### Animal Cost Backend Deduction Removal (v0.057)
+- **Critical Payment Bug**: Backend was deducting animal raising costs from worker payments instead of just Adubo3
+- **Root Cause**: Lines 713-742 in `recalculateSessionCredits()` compared deliveryAmount vs animalCost and charged workers the difference
+- **Impact Example**: Margarida Versace paid $45 instead of correct $285 (underpaid $240)
+- **Broken Logic**:
+  - 12 animals taken × $20 cost = $240
+  - 4 delivered = $160 payment
+  - System: $160 < $240, worker owes $80
+  - Final: $125 plants - $80 debt = $45 ❌
+- **System Design**:
+  - Backend payments: Plants + Deliveries - Adubo3 ONLY
+  - Frontend analytics: Show costs/profits with configurable raising costs
+  - Animal costs are for ANALYTICS, NOT payment deductions
+- **Technical Fix**:
+  - Removed animal cost comparison logic completely
+  - Workers now get FULL delivery amount ($160) always
+  - Simplified: `totalCredits += deliveryAmount`
+- **Calculation Flow (Corrected)**:
+  - Plants: quantity × $0.25 = plantCredits
+  - Animals: deliveryAmount (FULL $160, no deductions)
+  - totalCredits = plantCredits + deliveryAmount
+  - Display total = totalCredits - (Adubo3Taken × $0.75)
+- **Result**: Backend only deducts Adubo3. Animal costs stay in frontend analytics for profit tracking.
+
+## Previous Major Updates (v0.056)
 
 ### Adubo3 Double-Deduction Bug Fix (v0.056)
 - **Critical Payment Bug**: Fixed systematic worker underpayment due to Adubo3 costs being deducted twice
@@ -111,7 +137,7 @@ When you see "/update" command from the user, perform the following actions:
   - Workers with seedExpectations containing aduboCost were systematically underpaid
 - **Calculation Flow (Corrected)**:
   - Plants: quantity × $0.25 = plantCredits
-  - Animals: deliveryAmount (if >= cost)
+  - Animals: deliveryAmount (full amount)
   - totalCredits = plantCredits + animalCredits (no premature Adubo3 deduction)
   - Display total = totalCredits - (Adubo3Taken × $0.75)
 - **Result**: All future payments correctly deduct Adubo3 costs once. Past underpaid sessions can be identified and compensated.
