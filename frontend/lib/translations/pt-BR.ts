@@ -4,7 +4,7 @@ export const ptBR = {
     dashboard: 'Dashboard',
     admin: 'Admin',
     servicos: 'Serviços',
-    atlantaServer: 'Atlanta Server',
+    atlantaServer: 'Servidor',
     channelParser: 'Channel Parser',
   },
 

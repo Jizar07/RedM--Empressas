@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1759964456547_jv17s6",
+  "sessionId": "session_1759639274379_qwj2ti",
+  "managerId": "949397147030274059",
+  "managerName": "๖ۣۜζ͜͡ɪᴢᴢʏɴʜᴀ🎀",
+  "workerId": "590207324845637642",
+  "workerName": "Margarida Versace",
+  "amountPaid": 855,
+  "paidAt": "2025-10-08T23:00:56.547Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-08T22:55:56.547Z",
+    "endTime": "2025-10-08T23:10:56.547Z"
+  }
+}

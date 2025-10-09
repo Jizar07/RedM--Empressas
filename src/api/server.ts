@@ -38,6 +38,8 @@ import supplyChainRoutes, { initializeSupplyChainService } from './routes/supply
 import ferroviaUserMetricsRoutes from './routes/ferrovia-user-metrics';
 import globalWorkerAnalyticsRoutes from './routes/global-worker-analytics';
 import weeklySalesRoutes from './routes/weekly-sales';
+import inventoryAnalyticsRoutes from './routes/inventory-analytics';
+import comprehensiveAnalyticsRoutes from './routes/comprehensive-analytics';
 import FerroviaSessionService from '../services/FerroviaSessionService';
 import DiscordRoleService from '../services/DiscordRoleService';
 
@@ -180,6 +182,12 @@ export async function startApiServer(bot: BotClient): Promise<void> {
 
   // Weekly sales tracking routes
   app.use('/api/weekly-sales', weeklySalesRoutes);
+
+  // Inventory analytics routes (category-based tracking)
+  app.use('/api/inventory-analytics', inventoryAnalyticsRoutes);
+
+  // Comprehensive analytics from existing session data
+  app.use('/api/comprehensive-analytics', comprehensiveAnalyticsRoutes);
 
   // Worker prices management routes
   app.use('/api', workerPricesRoutes);

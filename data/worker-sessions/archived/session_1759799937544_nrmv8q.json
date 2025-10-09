@@ -1,0 +1,26 @@
+{
+  "workerId": "1384209105610211338",
+  "workerName": "Draven Lima",
+  "channelId": "1422764073862561824",
+  "sessionId": "session_1759799937544_nrmv8q",
+  "startTime": "2025-10-07T01:18:57.544Z",
+  "lastActivity": "2025-10-07T01:18:57.546Z",
+  "status": "stale",
+  "plantTransactions": [],
+  "animalTransactions": [
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759799937546_45uxd",
+      "timestamp": "2025-10-07T01:18:57.546Z"
+    }
+  ],
+  "financialTransactions": [],
+  "totalCredits": 160,
+  "embedMessageId": "1424928960202149918",
+  "animalExpectations": [],
+  "inventoryTransactions": [],
+  "completedAt": "2025-10-09T11:09:21.128Z",
+  "notes": "Auto-archived due to inactivity"
+}

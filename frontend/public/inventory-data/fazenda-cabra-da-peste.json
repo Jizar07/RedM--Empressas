@@ -332,9 +332,78 @@
       "atualizado_em": "2025-10-08T13:05:15.161Z",
       "ultimo_autor": "Ragnar Lothbrok",
       "ativo": true
+    },
+    "corntorta": {
+      "id": "corntorta",
+      "nome": "Torta de Milho",
+      "displayName": "Torta de Milho",
+      "categoria": "plantas",
+      "quantidade": 0,
+      "criado_em": "2025-10-09T05:17:51.463Z",
+      "atualizado_em": "2025-10-09T03:27:35.314Z",
+      "ultimo_autor": "Silveta Braga",
+      "ativo": true
+    },
+    "Crows_Garlic_Seed": {
+      "id": "Crows_Garlic_Seed",
+      "nome": "Semente de Alho",
+      "displayName": "Semente de Alho",
+      "categoria": "sementes",
+      "quantidade": 0,
+      "criado_em": "2025-10-09T05:28:38.150Z",
+      "atualizado_em": "2025-10-09T01:31:48.190Z",
+      "ultimo_autor": "MARIA VITORIA",
+      "ativo": true
+    },
+    "fertilizer": {
+      "id": "fertilizer",
+      "nome": "fertilizer",
+      "displayName": "Fertilizer",
+      "categoria": "materiais",
+      "quantidade": 0,
+      "criado_em": "2025-10-08T20:16:20.024Z",
+      "atualizado_em": "2025-10-08T16:48:37.737Z",
+      "ultimo_autor": "Nico Chimichurri",
+      "ativo": true
     }
   },
   "transactions": [
+    {
+      "id": "8c06758c-225c-4082-a547-9efd0b7ea100",
+      "itemId": "fertilizer",
+      "tipo": "criar",
+      "quantidade_anterior": 0,
+      "quantidade_posterior": 0,
+      "quantidade_mudanca": 0,
+      "autor": "API",
+      "timestamp": "2025-10-09T12:05:10.175Z",
+      "origem": "manual",
+      "detalhes": "Created item Fertilizer"
+    },
+    {
+      "id": "1dbd0159-d0b5-4de1-b314-45a4c8cee5e6",
+      "itemId": "Crows_Garlic_Seed",
+      "tipo": "criar",
+      "quantidade_anterior": 0,
+      "quantidade_posterior": 0,
+      "quantidade_mudanca": 0,
+      "autor": "API",
+      "timestamp": "2025-10-09T12:04:59.992Z",
+      "origem": "manual",
+      "detalhes": "Created item Semente de Alho"
+    },
+    {
+      "id": "098b3fd3-8ce6-4ffc-b010-90e5bb007398",
+      "itemId": "corntorta",
+      "tipo": "criar",
+      "quantidade_anterior": 0,
+      "quantidade_posterior": 0,
+      "quantidade_mudanca": 0,
+      "autor": "API",
+      "timestamp": "2025-10-09T12:04:44.312Z",
+      "origem": "manual",
+      "detalhes": "Created item Torta de Milho"
+    },
     {
       "id": "e6df2220-c6d9-4186-900a-abb482f604a2",
       "itemId": "paocommatega",
@@ -1045,19 +1114,55 @@
     }
   ],
   "analytics": {
-    "totalItems": 30,
+    "totalItems": 33,
     "totalQuantity": 7360,
     "totalValue": 100,
     "categorias": {},
     "workers": [
       {
         "nome": "API",
-        "totalTransactions": 59,
-        "lastActivity": "2025-10-08T14:10:17.640Z",
+        "totalTransactions": 62,
+        "lastActivity": "2025-10-09T12:05:10.175Z",
         "averagePerDay": 0
       }
     ],
     "recentTransactions": [
+      {
+        "id": "8c06758c-225c-4082-a547-9efd0b7ea100",
+        "itemId": "fertilizer",
+        "tipo": "criar",
+        "quantidade_anterior": 0,
+        "quantidade_posterior": 0,
+        "quantidade_mudanca": 0,
+        "autor": "API",
+        "timestamp": "2025-10-09T12:05:10.175Z",
+        "origem": "manual",
+        "detalhes": "Created item Fertilizer"
+      },
+      {
+        "id": "1dbd0159-d0b5-4de1-b314-45a4c8cee5e6",
+        "itemId": "Crows_Garlic_Seed",
+        "tipo": "criar",
+        "quantidade_anterior": 0,
+        "quantidade_posterior": 0,
+        "quantidade_mudanca": 0,
+        "autor": "API",
+        "timestamp": "2025-10-09T12:04:59.992Z",
+        "origem": "manual",
+        "detalhes": "Created item Semente de Alho"
+      },
+      {
+        "id": "098b3fd3-8ce6-4ffc-b010-90e5bb007398",
+        "itemId": "corntorta",
+        "tipo": "criar",
+        "quantidade_anterior": 0,
+        "quantidade_posterior": 0,
+        "quantidade_mudanca": 0,
+        "autor": "API",
+        "timestamp": "2025-10-09T12:04:44.312Z",
+        "origem": "manual",
+        "detalhes": "Created item Torta de Milho"
+      },
       {
         "id": "e6df2220-c6d9-4186-900a-abb482f604a2",
         "itemId": "paocommatega",
@@ -1621,42 +1726,6 @@
         "timestamp": "2025-09-12T19:50:32.176Z",
         "origem": "manual",
         "detalhes": "Created item Asclepias"
-      },
-      {
-        "id": "2f52cf19-b5b6-4d7f-98f8-c89605ea9d15",
-        "itemId": "Milk_Weed",
-        "tipo": "deletar",
-        "quantidade_anterior": 0,
-        "quantidade_posterior": 0,
-        "quantidade_mudanca": 0,
-        "autor": "API",
-        "timestamp": "2025-09-12T19:29:56.851Z",
-        "origem": "manual",
-        "detalhes": "Deleted item Asclepias"
-      },
-      {
-        "id": "f162dea6-690c-47b7-8f14-3dcae24bee7e",
-        "itemId": "Milk_Weed",
-        "tipo": "editar",
-        "quantidade_anterior": 0,
-        "quantidade_posterior": 0,
-        "quantidade_mudanca": 0,
-        "autor": "API",
-        "timestamp": "2025-09-12T19:29:20.362Z",
-        "origem": "manual",
-        "detalhes": "Updated item Asclepias"
-      },
-      {
-        "id": "ccfae39b-d060-424b-bd02-7c9304edfe76",
-        "itemId": "Milk_Weed",
-        "tipo": "editar",
-        "quantidade_anterior": 0,
-        "quantidade_posterior": 0,
-        "quantidade_mudanca": 0,
-        "autor": "API",
-        "timestamp": "2025-09-12T19:24:05.271Z",
-        "origem": "manual",
-        "detalhes": "Updated item Asclepias"
       }
     ],
     "lowStockAlerts": [
@@ -1813,6 +1882,39 @@
         "atualizado_em": "2025-10-08T13:05:15.161Z",
         "ultimo_autor": "Ragnar Lothbrok",
         "ativo": true
+      },
+      {
+        "id": "corntorta",
+        "nome": "Torta de Milho",
+        "displayName": "Torta de Milho",
+        "categoria": "plantas",
+        "quantidade": 0,
+        "criado_em": "2025-10-09T05:17:51.463Z",
+        "atualizado_em": "2025-10-09T03:27:35.314Z",
+        "ultimo_autor": "Silveta Braga",
+        "ativo": true
+      },
+      {
+        "id": "Crows_Garlic_Seed",
+        "nome": "Semente de Alho",
+        "displayName": "Semente de Alho",
+        "categoria": "sementes",
+        "quantidade": 0,
+        "criado_em": "2025-10-09T05:28:38.150Z",
+        "atualizado_em": "2025-10-09T01:31:48.190Z",
+        "ultimo_autor": "MARIA VITORIA",
+        "ativo": true
+      },
+      {
+        "id": "fertilizer",
+        "nome": "fertilizer",
+        "displayName": "Fertilizer",
+        "categoria": "materiais",
+        "quantidade": 0,
+        "criado_em": "2025-10-08T20:16:20.024Z",
+        "atualizado_em": "2025-10-08T16:48:37.737Z",
+        "ultimo_autor": "Nico Chimichurri",
+        "ativo": true
       }
     ],
     "priceMatches": 1,
@@ -1845,7 +1947,10 @@
       "Oleander_Sage",
       "Black_Berry",
       "sucodelemon",
-      "paocommatega"
+      "paocommatega",
+      "corntorta",
+      "Crows_Garlic_Seed",
+      "fertilizer"
     ]
   },
   "settings": {
@@ -1863,8 +1968,8 @@
     "backupEnabled": true,
     "backupInterval": 24
   },
-  "lastUpdate": "2025-10-08T14:10:17.642Z",
-  "totalItems": 30,
+  "lastUpdate": "2025-10-09T12:05:10.176Z",
+  "totalItems": 33,
   "totalQuantity": 7360,
   "activeWorkers": [],
   "version": "1.0.0",

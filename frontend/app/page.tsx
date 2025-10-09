@@ -19,6 +19,7 @@ import { healthCheck, botApi, serverApi } from '@/lib/api';
 import { BotStats, ServerInfo } from '@/types';
 import { useFirmAccess } from '@/hooks/useFirmAccess';
 import { FirmConfig } from '@/types/firms';
+import { getFirmEmoji } from '@/lib/firmHelpers';
 
 // Dynamic imports for heavy components - loaded only when needed
 const ServerStatusCard = dynamic(() => import('@/components/ServerStatusCard'), { ssr: false });
@@ -45,6 +46,8 @@ const GenericFirmDashboard = dynamic(() => import('@/components/GenericFirmDashb
 const FirmTemplateRenderer = dynamic(() => import('@/components/FirmTemplateRenderer'), { ssr: false });
 const UserMenu = dynamic(() => import('@/components/UserMenu'), { ssr: false });
 const SimpleUserMenu = dynamic(() => import('@/components/SimpleUserMenu'), { ssr: false });
+const RedMServerBrowser = dynamic(() => import('@/components/RedMServerBrowser'), { ssr: false });
+const RedMServerListSidebar = dynamic(() => import('@/components/RedMServerListSidebar'), { ssr: false });
 
 // Import getAvailableComponents separately since it's used in logic
 import { getAvailableComponents } from '@/components/FirmTemplateRenderer';
@@ -412,7 +415,7 @@ export default function HomePage() {
                       onClick={() => changeTab(firm.id)}
                       className="p-4 border-2 border-gray-200 dark:border-gray-700 rounded-lg hover:border-blue-500 dark:hover:border-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all text-left group"
                     >
-                      <div className="text-3xl mb-2">{firm.emoji || '🏢'}</div>
+                      <div className="text-3xl mb-2">{getFirmEmoji(firm)}</div>
                       <h4 className="font-semibold text-gray-900 dark:text-white mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400">{firm.name}</h4>
                       <div className="flex items-center space-x-2 mb-2">
                         <div className={`w-2 h-2 rounded-full ${firm.enabled ? 'bg-green-500' : 'bg-gray-400'}`}></div>
@@ -549,9 +552,24 @@ export default function HomePage() {
 
         {activeTab === 'atlanta-server' && (
           <div className="space-y-8">
-            {/* Enhanced Server Status - Main Display */}
-            <EnhancedServerStatus />
+            {/* First Row: Server Browser + Status with Sidebar */}
+            <div className="flex gap-6">
+              {/* Main Content */}
+              <div className="flex-1 space-y-8">
+                {/* Server Browser */}
+                <RedMServerBrowser />
 
+                {/* Enhanced Server Status */}
+                <EnhancedServerStatus />
+              </div>
+
+              {/* Sidebar */}
+              <div className="w-80 flex-shrink-0 sticky top-4 self-start">
+                <RedMServerListSidebar />
+              </div>
+            </div>
+
+            {/* Full Width Sections Below */}
             {/* Known Players */}
             <KnownPlayersCard />
 

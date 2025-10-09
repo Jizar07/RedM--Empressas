@@ -1,0 +1,36 @@
+{
+  "workerId": "311732968806678529",
+  "workerName": "Bob Eastwood",
+  "channelId": "1424077079569502299",
+  "sessionId": "session_1759796075667_2xhugv",
+  "startTime": "2025-10-07T00:14:35.667Z",
+  "lastActivity": "2025-10-07T00:14:35.671Z",
+  "status": "stale",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Adubo3",
+      "quantity": 50,
+      "transactionId": "tx_1759796075671_bn4qoe",
+      "timestamp": "2025-10-07T00:14:35.671Z"
+    }
+  ],
+  "animalTransactions": [],
+  "financialTransactions": [],
+  "totalCredits": 0,
+  "embedMessageId": "1424912761724600320",
+  "seedExpectations": [
+    {
+      "seedType": "Adubo3",
+      "seedQuantity": 50,
+      "expectedPlantType": "Adubo3",
+      "expectedPlantQuantity": 500,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759796075671_bn4qoe"
+    }
+  ],
+  "inventoryTransactions": [],
+  "completedAt": "2025-10-09T11:09:21.127Z",
+  "notes": "Auto-archived due to inactivity"
+}

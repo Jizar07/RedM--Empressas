@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1759960177355_5ej4io",
+  "sessionId": "session_1759837073735_8mvhvo",
+  "managerId": "1204772480305209384",
+  "managerName": "𝑻𝒐́𝒙𝒊𝒄𝒂 𓆩♡𓆪",
+  "workerId": "758683527108624404",
+  "workerName": "Romano Delaerva",
+  "amountPaid": 4207.5,
+  "paidAt": "2025-10-08T21:49:37.355Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-08T21:44:37.355Z",
+    "endTime": "2025-10-08T21:59:37.355Z"
+  }
+}

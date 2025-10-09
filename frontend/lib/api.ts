@@ -419,13 +419,14 @@ export const knownPlayersStorage = {
     }
   },
 
-  getKnownPlayers: (): KnownPlayer[] => {
+  getKnownPlayers: (serverId?: string): KnownPlayer[] => {
     if (typeof window === 'undefined') return [];
     try {
       // Run migration on first access
       knownPlayersStorage.migrateOldData();
 
-      const stored = localStorage.getItem('knownPlayers');
+      const storageKey = serverId ? `knownPlayers_${serverId}` : 'knownPlayers';
+      const stored = localStorage.getItem(storageKey);
       return stored ? JSON.parse(stored) : [];
     } catch (error) {
       console.error('Error reading known players from localStorage:', error);
@@ -433,10 +434,10 @@ export const knownPlayersStorage = {
     }
   },
 
-  saveKnownPlayer: (player: KnownPlayer): void => {
+  saveKnownPlayer: (player: KnownPlayer, serverId?: string): void => {
     if (typeof window === 'undefined') return;
     try {
-      const known = knownPlayersStorage.getKnownPlayers();
+      const known = knownPlayersStorage.getKnownPlayers(serverId);
       const index = known.findIndex(p => p.playerName === player.playerName);
 
       // Validation: prevent empty playerName
@@ -456,30 +457,32 @@ export const knownPlayersStorage = {
         known.push(player);
       }
 
-      localStorage.setItem('knownPlayers', JSON.stringify(known));
+      const storageKey = serverId ? `knownPlayers_${serverId}` : 'knownPlayers';
+      localStorage.setItem(storageKey, JSON.stringify(known));
     } catch (error) {
       console.error('Error saving known player to localStorage:', error);
     }
   },
 
-  removeKnownPlayer: (playerName: string): void => {
+  removeKnownPlayer: (playerName: string, serverId?: string): void => {
     if (typeof window === 'undefined') return;
     try {
-      const known = knownPlayersStorage.getKnownPlayers();
+      const known = knownPlayersStorage.getKnownPlayers(serverId);
       const filtered = known.filter(p => p.playerName !== playerName);
-      localStorage.setItem('knownPlayers', JSON.stringify(filtered));
+      const storageKey = serverId ? `knownPlayers_${serverId}` : 'knownPlayers';
+      localStorage.setItem(storageKey, JSON.stringify(filtered));
     } catch (error) {
       console.error('Error removing known player from localStorage:', error);
     }
   },
 
-  isKnownPlayer: (playerName: string): boolean => {
-    const known = knownPlayersStorage.getKnownPlayers();
+  isKnownPlayer: (playerName: string, serverId?: string): boolean => {
+    const known = knownPlayersStorage.getKnownPlayers(serverId);
     return known.some(p => p.playerName === playerName);
   },
 
-  getKnownPlayer: (playerName: string): KnownPlayer | null => {
-    const known = knownPlayersStorage.getKnownPlayers();
+  getKnownPlayer: (playerName: string, serverId?: string): KnownPlayer | null => {
+    const known = knownPlayersStorage.getKnownPlayers(serverId);
     return known.find(p => p.playerName === playerName) || null;
   },
 

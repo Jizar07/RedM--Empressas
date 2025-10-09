@@ -100,25 +100,43 @@ function extractWorkerTransactionData(parsedMessage: any): any {
     // Handle seed withdrawals - check both inventario and estoque categories
     if (parsedMessage.parseSuccess && (parsedMessage.categoria === 'estoque' || parsedMessage.categoria === 'inventario')) {
       console.log(`✅ Message qualifies for seed withdrawal check - categoria: ${parsedMessage.categoria}`);
-      
+
       // First try to use the parsed message fields directly (for "REMOVER ITEM" messages)
       if (parsedMessage.tipo === 'remover' && parsedMessage.autor && parsedMessage.item && parsedMessage.quantidade) {
         const itemName = parsedMessage.item;
         console.log(`🔍 Checking parsed fields - item: "${itemName}"`);
-        
+
+        // Classify the item to determine its category
+        const itemClassification = classifyInventoryItem(itemName);
+        const itemCategory = itemClassification?.category || 'outros';
+        const normalizedItem = itemClassification?.normalizedName || itemName;
+
+        console.log(`📦 Item classified - Name: "${normalizedItem}", Category: "${itemCategory}"`);
+
         // Check if the item is a seed type
-        if (itemName && (itemName.toLowerCase().includes('semente') || itemName.toLowerCase().includes('seed'))) {
-          console.log(`🌱 SEED WITHDRAWAL DETECTED via parsed fields: ${parsedMessage.autor} took ${parsedMessage.quantidade}x ${itemName}`);
+        if (itemName && (itemName.toLowerCase().includes('semente') || itemName.toLowerCase().includes('seed') || itemCategory === 'sementes')) {
+          console.log(`🌱 SEED WITHDRAWAL DETECTED via parsed fields: ${parsedMessage.autor} took ${parsedMessage.quantidade}x ${normalizedItem}`);
           return {
             workerName: parsedMessage.autor,
             type: 'seed_taken',
-            itemName: normalizeItemName(itemName),
+            itemName: normalizedItem,
+            itemCategory: 'sementes',
             quantity: parsedMessage.quantidade,
             timestamp: parsedMessage.timestamp || new Date().toISOString(),
             originalMessage: parsedMessage
           };
         } else {
-          console.log(`❌ Item "${itemName}" is not a seed type`);
+          // This is a general inventory item removal (not a seed)
+          console.log(`📦 INVENTORY REMOVAL DETECTED: ${parsedMessage.autor} removed ${parsedMessage.quantidade}x ${normalizedItem} (${itemCategory})`);
+          return {
+            workerName: parsedMessage.autor,
+            type: 'inventory_removed',
+            itemName: normalizedItem,
+            itemCategory: itemCategory,
+            quantity: parsedMessage.quantidade,
+            timestamp: parsedMessage.timestamp || new Date().toISOString(),
+            originalMessage: parsedMessage
+          };
         }
       } else {
         console.log(`❌ Parsed fields incomplete - tipo: ${parsedMessage.tipo}, autor: ${parsedMessage.autor}, item: ${parsedMessage.item}, quantidade: ${parsedMessage.quantidade}`);
@@ -127,7 +145,7 @@ function extractWorkerTransactionData(parsedMessage: any): any {
       // Fallback to content pattern matching
       const content = parsedMessage.content || '';
       console.log(`🔍 Trying pattern matching on content: "${content.substring(0, 150)}"`);
-      
+
       const seedWithdrawPatterns = [
         // Pattern 1: "Jizar Stoffeliz removeu 100x Semente de Trigo"
         /(.+?)\s+removeu\s+(\d+)x?\s+(semente[^,]*|seed[^,]*)/i,
@@ -136,22 +154,29 @@ function extractWorkerTransactionData(parsedMessage: any): any {
         // Pattern 3: "Jizar Stoffeliz retirou 100 Sementes de Trigo"
         /(.+?)\s+retirou\s+(\d+)\s+(semente[^,]*|seed[^,]*)/i
       ];
-      
+
       for (let i = 0; i < seedWithdrawPatterns.length; i++) {
         const pattern = seedWithdrawPatterns[i];
         const match = content.match(pattern);
         console.log(`🔍 Pattern ${i + 1} test:`, match ? `MATCH - ${match[0]}` : 'NO MATCH');
-        
+
         if (match) {
           const workerName = match[1].trim();
           const quantity = parseInt(match[2]);
           const itemName = match[3];
-          console.log(`🌱 SEED WITHDRAWAL DETECTED via pattern ${i + 1}: ${workerName} took ${quantity}x ${itemName}`);
+          const normalizedItem = normalizeItemName(itemName);
+
+          // Classify the item
+          const itemClassification = classifyInventoryItem(normalizedItem);
+          const itemCategory = itemClassification?.category || 'sementes';
+
+          console.log(`🌱 SEED WITHDRAWAL DETECTED via pattern ${i + 1}: ${workerName} took ${quantity}x ${normalizedItem} (${itemCategory})`);
 
           return {
             workerName,
             type: 'seed_taken',
-            itemName: normalizeItemName(itemName),
+            itemName: itemClassification?.normalizedName || normalizedItem,
+            itemCategory: itemCategory,
             quantity,
             timestamp: parsedMessage.timestamp || new Date().toISOString(),
             originalMessage: parsedMessage
@@ -159,6 +184,25 @@ function extractWorkerTransactionData(parsedMessage: any): any {
         }
       }
       console.log(`❌ No seed withdrawal patterns matched`);
+
+      // Check for INSERIR (addition) messages
+      if (parsedMessage.tipo === 'adicionar' && parsedMessage.autor && parsedMessage.item && parsedMessage.quantidade) {
+        const itemName = parsedMessage.item;
+        const itemClassification = classifyInventoryItem(itemName);
+        const itemCategory = itemClassification?.category || 'outros';
+        const normalizedItem = itemClassification?.normalizedName || itemName;
+
+        console.log(`📦 INVENTORY ADDITION DETECTED: ${parsedMessage.autor} added ${parsedMessage.quantidade}x ${normalizedItem} (${itemCategory})`);
+        return {
+          workerName: parsedMessage.autor,
+          type: 'inventory_added',
+          itemName: normalizedItem,
+          itemCategory: itemCategory,
+          quantity: parsedMessage.quantidade,
+          timestamp: parsedMessage.timestamp || new Date().toISOString(),
+          originalMessage: parsedMessage
+        };
+      }
     } else {
       console.log(`❌ Message doesn't qualify for seed withdrawal check - parseSuccess: ${parsedMessage.parseSuccess}, categoria: ${parsedMessage.categoria}`);
     }
@@ -232,6 +276,86 @@ function cleanBercarioItemName(itemName: string): string {
     .replace(/\n+/g, ' ') // Replace newlines with spaces
     .replace(/\s+/g, ' ') // Normalize whitespace
     .trim();
+}
+
+// Load and cache inventory data for item classification
+let inventoryCache: any = null;
+let inventoryCacheTime: number = 0;
+const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes cache
+
+function loadInventoryData(): any {
+  try {
+    const now = Date.now();
+    if (inventoryCache && (now - inventoryCacheTime) < CACHE_DURATION) {
+      return inventoryCache;
+    }
+
+    const inventoryPath = path.join(process.cwd(), 'public', 'inventory-data', 'fazenda-cabra-da-peste.json');
+    if (!fs.existsSync(inventoryPath)) {
+      console.warn('⚠️ Inventory file not found for item classification');
+      return null;
+    }
+
+    const inventoryData = JSON.parse(fs.readFileSync(inventoryPath, 'utf8'));
+    inventoryCache = inventoryData;
+    inventoryCacheTime = now;
+    console.log('✅ Loaded inventory data for item classification');
+    return inventoryData;
+  } catch (error) {
+    console.error('❌ Error loading inventory data:', error);
+    return null;
+  }
+}
+
+// Classify an item by its category using inventory lookup
+function classifyInventoryItem(itemName: string): { category: string; normalizedName: string } | null {
+  try {
+    const inventory = loadInventoryData();
+    if (!inventory || !inventory.items) {
+      return null;
+    }
+
+    const cleanItem = itemName.toLowerCase().trim();
+
+    // Search through inventory items to find a match
+    for (const [itemId, itemData] of Object.entries(inventory.items)) {
+      const data = itemData as any;
+      const displayName = (data.displayName || '').toLowerCase();
+      const nome = (data.nome || '').toLowerCase();
+      const id = (data.id || '').toLowerCase();
+
+      // Match by displayName, nome, or id
+      if (displayName === cleanItem || nome === cleanItem || id === cleanItem ||
+          cleanItem.includes(displayName) || cleanItem.includes(nome)) {
+        return {
+          category: data.categoria || 'outros',
+          normalizedName: data.displayName || itemName
+        };
+      }
+    }
+
+    // Fallback: try to infer category from item name patterns
+    const lowerItem = itemName.toLowerCase();
+    if (lowerItem.includes('semente') || lowerItem.includes('seed')) {
+      return { category: 'sementes', normalizedName: itemName };
+    }
+    if (lowerItem.includes('caixa')) {
+      return { category: 'caixas', normalizedName: itemName };
+    }
+    if (lowerItem.includes('couro') || lowerItem.includes('leather') ||
+        lowerItem.includes('agua') || lowerItem.includes('water')) {
+      return { category: 'materiais', normalizedName: itemName };
+    }
+    if (lowerItem.includes('alcool') || lowerItem.includes('alcohol')) {
+      return { category: 'produtos', normalizedName: itemName };
+    }
+
+    console.log(`⚠️ Could not classify item: ${itemName}`);
+    return { category: 'outros', normalizedName: itemName };
+  } catch (error) {
+    console.error('❌ Error classifying item:', error);
+    return null;
+  }
 }
 
 // Disable static generation for this API route

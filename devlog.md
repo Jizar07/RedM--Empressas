@@ -4,6 +4,45 @@ This is a local timestamped file to track all development changes and prompts.
 
 ## Log Entries
 
+### 2025-10-09 10:23:42
+**Action**: Fix Multi-Server Selection Real-Time Updates and Per-Server Known Players
+**Prompt**: User reported two issues: 1) Selecting another server does NOT update data in realtime. 2) Selecting another server and refreshing the page still shows Known People and Player Management from hardcoded server.
+**Changes**:
+- **Issue 1 - Socket.io Hardcoded Server**:
+  - `frontend/socket-server.js` was hardcoded to fetch Atlanta server (131.196.197.140:30120)
+  - Socket broadcasts were overwriting manually selected server data every 30 seconds
+  - Removed Socket.io dependency from ServerMonitor.tsx completely
+  - Replaced with manual polling using selected server's IP:port
+- **Issue 2 - Known Players Global Storage**:
+  - Known players were using global storage key `'serverMonitor_knownPlayers'`
+  - Changed to per-server keys: `'serverMonitor_knownPlayers_${serverId}'`
+  - Updated all knownPlayersStorage functions to accept optional serverId parameter
+- **Real-Time Server Switching**:
+  - Removed `window.location.reload()` from page.tsx server selection callbacks
+  - Added `serverSelectionChanged` custom event dispatch to redmServerStorage.ts
+  - Made EnhancedServerStatus, KnownPlayersCard, and PlayerManagement listen for server changes
+  - All components now clear data and refetch when server selection changes
+- **URL Format Support**:
+  - Added support for `https://servers.redm.net/servers/detail/xxxxx` URL format
+  - Implemented `resolveServerId()` function to convert server IDs to IP:port via cfx.re API
+  - Updated placeholder from "191.96.5.132:30120" to full URL example
+- **Auto-Refresh Implementation**:
+  - EnhancedServerStatus: 15 second refresh interval
+  - KnownPlayersCard: 30 second refresh interval
+  - PlayerManagement: 30 second refresh interval
+  - All using currently selected server, not hardcoded
+- **Files Modified**:
+  - frontend/app/page.tsx
+  - frontend/components/EnhancedServerStatus.tsx
+  - frontend/components/KnownPlayersCard.tsx
+  - frontend/components/PlayerManagement.tsx
+  - frontend/components/ServerMonitor.tsx
+  - frontend/components/RedMServerBrowser.tsx
+  - frontend/lib/api.ts
+  - frontend/lib/redmServersApi.ts
+  - frontend/lib/redmServerStorage.ts
+**Result**: Server selection now updates all components in real-time without page reload. Each server has its own isolated known players list.
+
 ### 2025-10-09 07:58:19
 **Action**: Remove Animal Cost Deduction from Backend Worker Payments
 **Prompt**: User reported Margarida Versace session showing $45.00 instead of expected $285.00. System was incorrectly deducting animal raising costs ($240) from worker payments in backend.

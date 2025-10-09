@@ -44,13 +44,38 @@ function parseAndUpdateWorkerActivity(content: string, _authorName: string): voi
         return;
       }
 
-      // Check for plant/material activities
+      // Check for plant/material activities - ONLY actual plant deposits, NOT seeds/materials
       const quantiaMatch = content.match(/Quantia::\s+(\d+)/i);
-      if (quantiaMatch && (content.includes('DEPOSITOU') || content.includes('SACOU'))) {
-        const quantity = parseInt(quantiaMatch[1]);
-        console.log(`🌱 Weekly Rankings: ${workerName} deposited ${quantity} plants`);
-        weeklyService.updateWorkerStats('unknown', workerName, 'plants', quantity);
-        return;
+      if (quantiaMatch && content.includes('DEPOSITOU')) {
+        // Exclude seed/material withdrawals (Adubo, Semente)
+        const contentLower = content.toLowerCase();
+        const isActualPlant = (
+          contentLower.includes('milho') ||
+          contentLower.includes('junco') ||
+          contentLower.includes('trigo') ||
+          contentLower.includes('algodao') ||
+          contentLower.includes('algodão') ||
+          contentLower.includes('quartzo') ||
+          contentLower.includes('ferro') ||
+          contentLower.includes('carvao') ||
+          contentLower.includes('carvão') ||
+          contentLower.includes('madeira')
+        );
+
+        // Explicitly exclude seeds and materials
+        const isSeedOrMaterial = (
+          contentLower.includes('adubo') ||
+          contentLower.includes('semente')
+        );
+
+        if (isActualPlant && !isSeedOrMaterial) {
+          const quantity = parseInt(quantiaMatch[1]);
+          console.log(`🌱 Weekly Rankings: ${workerName} deposited ${quantity} plants`);
+          weeklyService.updateWorkerStats('unknown', workerName, 'plants', quantity);
+          return;
+        } else {
+          console.log(`⏭️ Skipping non-plant activity: ${contentLower.substring(0, 100)}...`);
+        }
       }
     }
 

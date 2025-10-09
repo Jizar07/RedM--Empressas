@@ -3,7 +3,8 @@
 import { useState, useEffect, useMemo } from 'react';
 import { Search, Star, Edit3, Trash2, ChevronUp, ChevronDown, Eye, EyeOff } from 'lucide-react';
 import { KnownPlayer, SortField, SortDirection, Player } from '@/types';
-import { knownPlayersStorage, serverApi } from '@/lib/api';
+import { knownPlayersStorage } from '@/lib/api';
+import { getSelectedRedMServer } from '@/lib/redmServerStorage';
 
 export default function KnownPlayersCard() {
   const [knownPlayers, setKnownPlayers] = useState<KnownPlayer[]>([]);
@@ -15,44 +16,69 @@ export default function KnownPlayersCard() {
   const [sortDirection, setSortDirection] = useState<SortDirection>('asc');
   const [editingPlayer, setEditingPlayer] = useState<string | null>(null);
   const [editForm, setEditForm] = useState<Partial<KnownPlayer>>({});
+  const [selectedServer, setSelectedServer] = useState<ReturnType<typeof getSelectedRedMServer>>(null);
 
   useEffect(() => {
     setMounted(true);
+    const server = getSelectedRedMServer();
+    setSelectedServer(server);
+
+    // Listen for server selection changes
+    const handleServerChange = () => {
+      const server = getSelectedRedMServer();
+      setSelectedServer(server);
+    };
+
+    window.addEventListener('serverSelectionChanged', handleServerChange);
+    window.addEventListener('storage', (e) => {
+      if (e.key === 'activeRedMServerId') {
+        handleServerChange();
+      }
+    });
+
+    return () => {
+      window.removeEventListener('serverSelectionChanged', handleServerChange);
+    };
   }, []);
 
   useEffect(() => {
-    if (!mounted) return;
-    
+    if (!mounted || !selectedServer) return;
+
     const loadData = async () => {
-      // Load known players
-      setKnownPlayers(knownPlayersStorage.getKnownPlayers());
-      
-      // Load online players
+      // Load known players for this server
+      setKnownPlayers(knownPlayersStorage.getKnownPlayers(selectedServer.id));
+
+      // Load online players for this server
       try {
-        const players = await serverApi.getPlayers();
-        setOnlinePlayers(players);
+        const playersRes = await fetch(`/api/server-proxy/players?serverIp=${selectedServer.ip}&serverPort=${selectedServer.port}`);
+        if (playersRes.ok) {
+          const players = await playersRes.json();
+          setOnlinePlayers(players);
+        }
       } catch (error) {
         console.error('Error fetching online players:', error);
       }
     };
 
     loadData();
-    
-    // Listen for storage changes
+
+    // Listen for storage changes for this server
     const handleStorageChange = () => {
-      setKnownPlayers(knownPlayersStorage.getKnownPlayers());
+      if (selectedServer) {
+        setKnownPlayers(knownPlayersStorage.getKnownPlayers(selectedServer.id));
+      }
     };
-    
+
     window.addEventListener('storage', handleStorageChange);
-    
+
     // Set up periodic refresh to sync with player management changes
     const interval = setInterval(loadData, 30000); // Every 30 seconds
-    
+
     return () => {
       window.removeEventListener('storage', handleStorageChange);
       clearInterval(interval);
     };
-  }, [mounted]);
+  }, [mounted, selectedServer]);
 
   // Merge known players with online status
   const playersWithStatus = useMemo(() => {
@@ -142,16 +168,20 @@ export default function KnownPlayersCard() {
       lastLogin: new Date().toISOString(),
     };
 
-    knownPlayersStorage.saveKnownPlayer(updatedPlayer);
-    setKnownPlayers(knownPlayersStorage.getKnownPlayers());
+    if (selectedServer) {
+      knownPlayersStorage.saveKnownPlayer(updatedPlayer, selectedServer.id);
+      setKnownPlayers(knownPlayersStorage.getKnownPlayers(selectedServer.id));
+    }
     setEditingPlayer(null);
     setEditForm({});
   };
 
   const handleDelete = (playerName: string) => {
     if (confirm('Are you sure you want to remove this known player?')) {
-      knownPlayersStorage.removeKnownPlayer(playerName);
-      setKnownPlayers(knownPlayersStorage.getKnownPlayers());
+      if (selectedServer) {
+        knownPlayersStorage.removeKnownPlayer(playerName, selectedServer.id);
+        setKnownPlayers(knownPlayersStorage.getKnownPlayers(selectedServer.id));
+      }
     }
   };
 

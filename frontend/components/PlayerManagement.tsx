@@ -3,7 +3,8 @@
 import { useState, useEffect, useMemo } from 'react';
 import { Search, Filter, UserPlus, Edit3, Save, X, Trash2, Crown, UserX, ChevronUp, ChevronDown } from 'lucide-react';
 import { Player, KnownPlayer, SortField, SortDirection, PlayerFilter } from '@/types';
-import { serverApi, knownPlayersStorage } from '@/lib/api';
+import { knownPlayersStorage } from '@/lib/api';
+import { getSelectedRedMServer } from '@/lib/redmServerStorage';
 
 export default function PlayerManagement() {
   const [players, setPlayers] = useState<Player[]>([]);
@@ -13,6 +14,7 @@ export default function PlayerManagement() {
   const [editingPlayer, setEditingPlayer] = useState<string | null>(null);
   const [editForm, setEditForm] = useState<Partial<KnownPlayer>>({});
   const [mounted, setMounted] = useState(false);
+  const [selectedServer, setSelectedServer] = useState<ReturnType<typeof getSelectedRedMServer>>(null);
 
   // Sorting and filtering state
   const [sortField, setSortField] = useState<SortField>('name');
@@ -25,16 +27,38 @@ export default function PlayerManagement() {
 
   useEffect(() => {
     setMounted(true);
+    const server = getSelectedRedMServer();
+    setSelectedServer(server);
+
+    // Listen for server selection changes
+    const handleServerChange = () => {
+      const server = getSelectedRedMServer();
+      setSelectedServer(server);
+    };
+
+    window.addEventListener('serverSelectionChanged', handleServerChange);
+    window.addEventListener('storage', (e) => {
+      if (e.key === 'activeRedMServerId') {
+        handleServerChange();
+      }
+    });
+
+    return () => {
+      window.removeEventListener('serverSelectionChanged', handleServerChange);
+    };
   }, []);
 
   useEffect(() => {
-    if (!mounted) return;
+    if (!mounted || !selectedServer) return;
 
     const fetchPlayers = async () => {
       try {
-        const data = await serverApi.getPlayers();
-        setPlayers(data);
-        setError(null);
+        const playersRes = await fetch(`/api/server-proxy/players?serverIp=${selectedServer.ip}&serverPort=${selectedServer.port}`);
+        if (playersRes.ok) {
+          const data = await playersRes.json();
+          setPlayers(data);
+          setError(null);
+        }
       } catch (err) {
         setError('Failed to fetch player list');
         console.error('Error fetching players:', err);
@@ -44,16 +68,16 @@ export default function PlayerManagement() {
     };
 
     const loadKnownPlayers = () => {
-      setKnownPlayers(knownPlayersStorage.getKnownPlayers());
+      setKnownPlayers(knownPlayersStorage.getKnownPlayers(selectedServer.id));
     };
 
     fetchPlayers();
     loadKnownPlayers();
-    
+
     const interval = setInterval(fetchPlayers, 30000); // Update every 30 seconds
 
     return () => clearInterval(interval);
-  }, [mounted]);
+  }, [mounted, selectedServer]);
 
   // Merge online players with known player data
   const mergedPlayers = useMemo(() => {
@@ -155,15 +179,19 @@ export default function PlayerManagement() {
       notes: editForm.notes,
     };
 
-    knownPlayersStorage.saveKnownPlayer(knownPlayer);
-    setKnownPlayers(knownPlayersStorage.getKnownPlayers());
+    if (selectedServer) {
+      knownPlayersStorage.saveKnownPlayer(knownPlayer, selectedServer.id);
+      setKnownPlayers(knownPlayersStorage.getKnownPlayers(selectedServer.id));
+    }
     setEditingPlayer(null);
     setEditForm({});
   };
 
   const handleRemoveKnownPlayer = (playerName: string) => {
-    knownPlayersStorage.removeKnownPlayer(playerName);
-    setKnownPlayers(knownPlayersStorage.getKnownPlayers());
+    if (selectedServer) {
+      knownPlayersStorage.removeKnownPlayer(playerName, selectedServer.id);
+      setKnownPlayers(knownPlayersStorage.getKnownPlayers(selectedServer.id));
+    }
   };
 
   const getPingColor = (ping: number) => {

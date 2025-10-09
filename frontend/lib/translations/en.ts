@@ -4,7 +4,7 @@ export const en = {
     dashboard: 'Dashboard',
     admin: 'Admin',
     servicos: 'Services',
-    atlantaServer: 'Atlanta Server',
+    atlantaServer: 'Server',
     channelParser: 'Channel Parser',
   },
 

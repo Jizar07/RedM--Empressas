@@ -5,542 +5,402 @@
   "year": 2025,
   "plantRankings": [
     {
-      "workerId": "470361257497722886",
-      "workerName": "Kenai Comanches",
+      "workerId": "431957051275739156",
+      "workerName": "Fernanda Silva",
       "plants": {
-        "thisWeek": 6980,
-        "allTime": 6980
-      },
-      "animals": {
-        "thisWeek": 28,
-        "allTime": 28
-      },
-      "ferrovia": {
-        "thisWeek": 0,
-        "allTime": 0
-      },
-      "lastActivity": "2025-09-23T11:02:26.470Z"
-    },
-    {
-      "workerId": "234380781479395338",
-      "workerName": "Gaioto Silva",
-      "plants": {
-        "thisWeek": 4020,
-        "allTime": 4020
-      },
-      "animals": {
-        "thisWeek": 12,
-        "allTime": 12
-      },
-      "ferrovia": {
-        "thisWeek": 0,
-        "allTime": 0
-      },
-      "lastActivity": "2025-09-23T11:02:26.470Z"
-    },
-    {
-      "workerId": "398270963969425408",
-      "workerName": "john Weslley",
-      "plants": {
-        "thisWeek": 4000,
-        "allTime": 20000
-      },
-      "animals": {
-        "thisWeek": 8,
-        "allTime": 32
-      },
-      "ferrovia": {
-        "thisWeek": 0,
-        "allTime": 0
-      },
-      "lastActivity": "2025-09-23T11:02:26.470Z"
-    },
-    {
-      "workerId": "695109023741116496",
-      "workerName": "yuri westside",
-      "plants": {
-        "thisWeek": 3450,
-        "allTime": 3450
-      },
-      "animals": {
-        "thisWeek": 36,
-        "allTime": 36
-      },
-      "ferrovia": {
-        "thisWeek": 0,
-        "allTime": 0
-      },
-      "lastActivity": "2025-09-23T11:02:26.470Z"
-    },
-    {
-      "workerId": "414405166079672323",
-      "workerName": "mixel laffon",
-      "plants": {
-        "thisWeek": 2820,
-        "allTime": 2820
-      },
-      "animals": {
-        "thisWeek": 16,
-        "allTime": 16
-      },
-      "ferrovia": {
-        "thisWeek": 0,
-        "allTime": 0
-      },
-      "lastActivity": "2025-09-23T11:02:26.470Z"
-    },
-    {
-      "workerId": "940279402145669241",
-      "workerName": "Tereza Mcfell",
-      "plants": {
-        "thisWeek": 2750,
-        "allTime": 2750
-      },
-      "animals": {
-        "thisWeek": 12,
-        "allTime": 12
-      },
-      "ferrovia": {
-        "thisWeek": 0,
-        "allTime": 0
-      },
-      "lastActivity": "2025-09-23T11:02:26.470Z"
-    },
-    {
-      "workerId": "845126525602365501",
-      "workerName": "Florencio Laffon",
-      "plants": {
-        "thisWeek": 2190,
-        "allTime": 2190
-      },
-      "animals": {
-        "thisWeek": 8,
-        "allTime": 8
-      },
-      "ferrovia": {
-        "thisWeek": 0,
-        "allTime": 0
-      },
-      "lastActivity": "2025-09-23T11:02:26.470Z"
-    },
-    {
-      "workerId": "1258184736963039265",
-      "workerName": "Gabriel Borges",
-      "plants": {
-        "thisWeek": 1770,
-        "allTime": 1770
-      },
-      "animals": {
-        "thisWeek": 16,
-        "allTime": 16
-      },
-      "ferrovia": {
-        "thisWeek": 0,
-        "allTime": 0
-      },
-      "lastActivity": "2025-09-23T11:02:26.470Z"
-    },
-    {
-      "workerId": "333664599549411329",
-      "workerName": "Johnny Rocks",
-      "plants": {
-        "thisWeek": 990,
-        "allTime": 5680
-      },
-      "animals": {
-        "thisWeek": 0,
-        "allTime": 0
-      },
-      "ferrovia": {
-        "thisWeek": 0,
-        "allTime": 0
-      },
-      "lastActivity": "2025-09-23T11:02:26.470Z"
-    },
-    {
-      "workerId": "976320273601146973",
-      "workerName": "Nina Vatore",
-      "plants": {
-        "thisWeek": 610,
-        "allTime": 3160
-      },
-      "animals": {
-        "thisWeek": 0,
-        "allTime": 8
-      },
-      "ferrovia": {
-        "thisWeek": 0,
-        "allTime": 0
-      },
-      "lastActivity": "2025-09-23T11:02:26.470Z"
-    },
-    {
-      "workerId": "473199499490230273",
-      "workerName": "Nathy Miller",
-      "plants": {
-        "thisWeek": 520,
-        "allTime": 5521
+        "thisWeek": 11950,
+        "allTime": 11950
       },
       "animals": {
         "thisWeek": 4,
         "allTime": 4
       },
       "ferrovia": {
-        "thisWeek": 0,
-        "allTime": 0
+        "thisWeek": 2,
+        "allTime": 2
       },
-      "lastActivity": "2025-09-23T11:02:26.470Z"
+      "lastActivity": "2025-10-08T16:36:59.318Z"
     },
     {
-      "workerId": "949397147030274059",
-      "workerName": "Izzynha Evans",
+      "workerId": "206587400703574019",
+      "workerName": "Cosmo Versace",
       "plants": {
-        "thisWeek": 500,
-        "allTime": 500
+        "thisWeek": 11180,
+        "allTime": 11180
       },
       "animals": {
         "thisWeek": 0,
-        "allTime": 0
+        "allTime": 20
       },
       "ferrovia": {
-        "thisWeek": 4,
-        "allTime": 4
+        "thisWeek": 2,
+        "allTime": 2
       },
-      "lastActivity": "2025-09-23T11:02:26.470Z"
+      "lastActivity": "2025-10-08T16:36:59.318Z"
     },
     {
-      "workerId": "1117649799181783130",
-      "workerName": "Ubirajara Cauamb",
+      "workerId": "758683527108624404",
+      "workerName": "Romano Delaerva",
       "plants": {
-        "thisWeek": 500,
-        "allTime": 500
+        "thisWeek": 11080,
+        "allTime": 17030
       },
       "animals": {
+        "thisWeek": 122,
+        "allTime": 222
+      },
+      "ferrovia": {
         "thisWeek": 8,
         "allTime": 8
       },
-      "ferrovia": {
-        "thisWeek": 0,
-        "allTime": 0
-      },
-      "lastActivity": "2025-09-23T11:02:26.470Z"
-    },
-    {
-      "workerId": "372161270176153601",
-      "workerName": "Jizar Stoffeliz",
-      "plants": {
-        "thisWeek": 400,
-        "allTime": 20665
-      },
-      "animals": {
-        "thisWeek": 0,
-        "allTime": 0
-      },
-      "ferrovia": {
-        "thisWeek": 0,
-        "allTime": 0
-      },
-      "lastActivity": "2025-09-23T11:02:26.469Z"
-    },
-    {
-      "workerId": "1324174429953065020",
-      "workerName": "biel silva",
-      "plants": {
-        "thisWeek": 370,
-        "allTime": 1470
-      },
-      "animals": {
-        "thisWeek": 8,
-        "allTime": 8
-      },
-      "ferrovia": {
-        "thisWeek": 0,
-        "allTime": 0
-      },
-      "lastActivity": "2025-09-23T11:02:26.470Z"
-    }
-  ],
-  "animalRankings": [
-    {
-      "workerId": "695109023741116496",
-      "workerName": "yuri westside",
-      "plants": {
-        "thisWeek": 3450,
-        "allTime": 3450
-      },
-      "animals": {
-        "thisWeek": 36,
-        "allTime": 36
-      },
-      "ferrovia": {
-        "thisWeek": 0,
-        "allTime": 0
-      },
-      "lastActivity": "2025-09-23T11:02:26.470Z"
+      "lastActivity": "2025-10-08T16:36:59.318Z"
     },
     {
       "workerId": "470361257497722886",
       "workerName": "Kenai Comanches",
       "plants": {
-        "thisWeek": 6980,
-        "allTime": 6980
+        "thisWeek": 9070,
+        "allTime": 41554
       },
       "animals": {
-        "thisWeek": 28,
-        "allTime": 28
+        "thisWeek": 32,
+        "allTime": 208
+      },
+      "ferrovia": {
+        "thisWeek": 6,
+        "allTime": 6
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "324682324614578179",
+      "workerName": "Garcia Jidoki",
+      "plants": {
+        "thisWeek": 8350,
+        "allTime": 12840
+      },
+      "animals": {
+        "thisWeek": 92,
+        "allTime": 144
       },
       "ferrovia": {
         "thisWeek": 0,
         "allTime": 0
       },
-      "lastActivity": "2025-09-23T11:02:26.470Z"
+      "lastActivity": "2025-10-08T16:36:59.318Z"
     },
     {
-      "workerId": "671877868497666089",
-      "workerName": "Thomas Shelby",
+      "workerId": "835165941267693659",
+      "workerName": "Ragnar Lothbrok",
       "plants": {
-        "thisWeek": 0,
-        "allTime": 0
+        "thisWeek": 7120,
+        "allTime": 7120
       },
       "animals": {
-        "thisWeek": 16,
-        "allTime": 16
+        "thisWeek": 0,
+        "allTime": 0
       },
       "ferrovia": {
-        "thisWeek": 0,
-        "allTime": 0
-      },
-      "lastActivity": "2025-09-23T11:02:26.470Z"
-    },
-    {
-      "workerId": "414405166079672323",
-      "workerName": "mixel laffon",
-      "plants": {
-        "thisWeek": 2820,
-        "allTime": 2820
-      },
-      "animals": {
-        "thisWeek": 16,
-        "allTime": 16
-      },
-      "ferrovia": {
-        "thisWeek": 0,
-        "allTime": 0
-      },
-      "lastActivity": "2025-09-23T11:02:26.470Z"
-    },
-    {
-      "workerId": "1258184736963039265",
-      "workerName": "Gabriel Borges",
-      "plants": {
-        "thisWeek": 1770,
-        "allTime": 1770
-      },
-      "animals": {
-        "thisWeek": 16,
-        "allTime": 16
-      },
-      "ferrovia": {
-        "thisWeek": 0,
-        "allTime": 0
-      },
-      "lastActivity": "2025-09-23T11:02:26.470Z"
-    },
-    {
-      "workerId": "940279402145669241",
-      "workerName": "Tereza Mcfell",
-      "plants": {
-        "thisWeek": 2750,
-        "allTime": 2750
-      },
-      "animals": {
-        "thisWeek": 12,
-        "allTime": 12
-      },
-      "ferrovia": {
-        "thisWeek": 0,
-        "allTime": 0
-      },
-      "lastActivity": "2025-09-23T11:02:26.470Z"
-    },
-    {
-      "workerId": "234380781479395338",
-      "workerName": "Gaioto Silva",
-      "plants": {
-        "thisWeek": 4020,
-        "allTime": 4020
-      },
-      "animals": {
-        "thisWeek": 12,
-        "allTime": 12
-      },
-      "ferrovia": {
-        "thisWeek": 0,
-        "allTime": 0
-      },
-      "lastActivity": "2025-09-23T11:02:26.470Z"
-    },
-    {
-      "workerId": "398270963969425408",
-      "workerName": "john Weslley",
-      "plants": {
-        "thisWeek": 4000,
-        "allTime": 20000
-      },
-      "animals": {
-        "thisWeek": 8,
-        "allTime": 32
-      },
-      "ferrovia": {
-        "thisWeek": 0,
-        "allTime": 0
-      },
-      "lastActivity": "2025-09-23T11:02:26.470Z"
-    },
-    {
-      "workerId": "845126525602365501",
-      "workerName": "Florencio Laffon",
-      "plants": {
-        "thisWeek": 2190,
-        "allTime": 2190
-      },
-      "animals": {
-        "thisWeek": 8,
-        "allTime": 8
-      },
-      "ferrovia": {
-        "thisWeek": 0,
-        "allTime": 0
-      },
-      "lastActivity": "2025-09-23T11:02:26.470Z"
-    },
-    {
-      "workerId": "1324174429953065020",
-      "workerName": "biel silva",
-      "plants": {
-        "thisWeek": 370,
-        "allTime": 1470
-      },
-      "animals": {
-        "thisWeek": 8,
-        "allTime": 8
-      },
-      "ferrovia": {
-        "thisWeek": 0,
-        "allTime": 0
-      },
-      "lastActivity": "2025-09-23T11:02:26.470Z"
-    },
-    {
-      "workerId": "1117649799181783130",
-      "workerName": "Ubirajara Cauamb",
-      "plants": {
-        "thisWeek": 500,
-        "allTime": 500
-      },
-      "animals": {
-        "thisWeek": 8,
-        "allTime": 8
-      },
-      "ferrovia": {
-        "thisWeek": 0,
-        "allTime": 0
-      },
-      "lastActivity": "2025-09-23T11:02:26.470Z"
-    },
-    {
-      "workerId": "473199499490230273",
-      "workerName": "Nathy Miller",
-      "plants": {
-        "thisWeek": 520,
-        "allTime": 5521
-      },
-      "animals": {
         "thisWeek": 4,
         "allTime": 4
       },
-      "ferrovia": {
-        "thisWeek": 0,
-        "allTime": 0
-      },
-      "lastActivity": "2025-09-23T11:02:26.470Z"
-    }
-  ],
-  "ferroviaRankings": [
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
     {
-      "workerId": "unknown",
-      "workerName": "Santiago Bowdin",
+      "workerId": "481612456792424448",
+      "workerName": "Cleber Versace",
       "plants": {
-        "thisWeek": 0,
-        "allTime": 0
+        "thisWeek": 7080,
+        "allTime": 7080
+      },
+      "animals": {
+        "thisWeek": 8,
+        "allTime": 8
+      },
+      "ferrovia": {
+        "thisWeek": 2,
+        "allTime": 2
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "1083891336614248478",
+      "workerName": "Jeovan Westphal",
+      "plants": {
+        "thisWeek": 5400,
+        "allTime": 5400
       },
       "animals": {
         "thisWeek": 0,
         "allTime": 0
       },
       "ferrovia": {
-        "thisWeek": 226,
-        "allTime": 914
-      },
-      "lastActivity": "2025-10-08T15:10:05.041Z"
-    },
-    {
-      "workerId": "273987353456934913",
-      "workerName": "Souzz Ramirez",
-      "plants": {
-        "thisWeek": 0,
-        "allTime": 600
-      },
-      "animals": {
         "thisWeek": 0,
         "allTime": 0
       },
-      "ferrovia": {
-        "thisWeek": 12,
-        "allTime": 12
-      },
-      "lastActivity": "2025-09-23T11:02:26.470Z"
+      "lastActivity": "2025-10-08T16:36:59.318Z"
     },
     {
-      "workerId": "584129725052747798",
-      "workerName": "Cliff Dillimore",
+      "workerId": "1295901408264196181",
+      "workerName": "Maria Vitória",
       "plants": {
+        "thisWeek": 5010,
+        "allTime": 8162
+      },
+      "animals": {
+        "thisWeek": 20,
+        "allTime": 57
+      },
+      "ferrovia": {
         "thisWeek": 0,
+        "allTime": 0
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "695109023741116496",
+      "workerName": "yuri westside",
+      "plants": {
+        "thisWeek": 4010,
+        "allTime": 22760
+      },
+      "animals": {
+        "thisWeek": 48,
+        "allTime": 232
+      },
+      "ferrovia": {
+        "thisWeek": 10,
         "allTime": 10
       },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "398270963969425408",
+      "workerName": "john Weslley",
+      "plants": {
+        "thisWeek": 2100,
+        "allTime": 40910
+      },
       "animals": {
+        "thisWeek": 18,
+        "allTime": 178
+      },
+      "ferrovia": {
         "thisWeek": 0,
         "allTime": 0
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "728800620064014367",
+      "workerName": "Red Oliver",
+      "plants": {
+        "thisWeek": 2100,
+        "allTime": 2100
+      },
+      "animals": {
+        "thisWeek": 7,
+        "allTime": 7
+      },
+      "ferrovia": {
+        "thisWeek": 0,
+        "allTime": 0
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "1384209105610211338",
+      "workerName": "Draven Lima",
+      "plants": {
+        "thisWeek": 1670,
+        "allTime": 1670
+      },
+      "animals": {
+        "thisWeek": 12,
+        "allTime": 12
       },
       "ferrovia": {
         "thisWeek": 4,
         "allTime": 4
       },
-      "lastActivity": "2025-09-23T11:02:26.470Z"
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "940279402145669241",
+      "workerName": "Tereza Mcfell",
+      "plants": {
+        "thisWeek": 1540,
+        "allTime": 8930
+      },
+      "animals": {
+        "thisWeek": 10,
+        "allTime": 48
+      },
+      "ferrovia": {
+        "thisWeek": 0,
+        "allTime": 0
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "487809893923946517",
+      "workerName": "Matheus Watanabe",
+      "plants": {
+        "thisWeek": 1220,
+        "allTime": 1220
+      },
+      "animals": {
+        "thisWeek": 24,
+        "allTime": 24
+      },
+      "ferrovia": {
+        "thisWeek": 0,
+        "allTime": 0
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "1117649799181783130",
+      "workerName": "Ubirajara Cauamb",
+      "plants": {
+        "thisWeek": 1125,
+        "allTime": 3625
+      },
+      "animals": {
+        "thisWeek": 12,
+        "allTime": 66
+      },
+      "ferrovia": {
+        "thisWeek": 0,
+        "allTime": 0
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "522217368500568082",
+      "workerName": "Nico Chimichurri",
+      "plants": {
+        "thisWeek": 1000,
+        "allTime": 6090
+      },
+      "animals": {
+        "thisWeek": 8,
+        "allTime": 56
+      },
+      "ferrovia": {
+        "thisWeek": 0,
+        "allTime": 0
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "845711436730597417",
+      "workerName": "Anthony Versace",
+      "plants": {
+        "thisWeek": 1000,
+        "allTime": 2000
+      },
+      "animals": {
+        "thisWeek": 16,
+        "allTime": 48
+      },
+      "ferrovia": {
+        "thisWeek": 0,
+        "allTime": 0
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "268794827305517057",
+      "workerName": "Pedro Sonoro",
+      "plants": {
+        "thisWeek": 1000,
+        "allTime": 1000
+      },
+      "animals": {
+        "thisWeek": 0,
+        "allTime": 0
+      },
+      "ferrovia": {
+        "thisWeek": 0,
+        "allTime": 0
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "409011012986208258",
+      "workerName": "Rex Solossano",
+      "plants": {
+        "thisWeek": 1000,
+        "allTime": 1000
+      },
+      "animals": {
+        "thisWeek": 0,
+        "allTime": 0
+      },
+      "ferrovia": {
+        "thisWeek": 0,
+        "allTime": 0
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "862576444740075530",
+      "workerName": "jurandi labareda",
+      "plants": {
+        "thisWeek": 990,
+        "allTime": 1990
+      },
+      "animals": {
+        "thisWeek": 16,
+        "allTime": 32
+      },
+      "ferrovia": {
+        "thisWeek": 0,
+        "allTime": 0
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "751113851432337449",
+      "workerName": "MARGELI VESTPHAL",
+      "plants": {
+        "thisWeek": 850,
+        "allTime": 1350
+      },
+      "animals": {
+        "thisWeek": 8,
+        "allTime": 16
+      },
+      "ferrovia": {
+        "thisWeek": 0,
+        "allTime": 0
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
     },
     {
       "workerId": "949397147030274059",
       "workerName": "Izzynha Evans",
       "plants": {
-        "thisWeek": 500,
-        "allTime": 500
+        "thisWeek": 600,
+        "allTime": 950
       },
       "animals": {
-        "thisWeek": 0,
-        "allTime": 0
+        "thisWeek": 60,
+        "allTime": 106
       },
       "ferrovia": {
-        "thisWeek": 4,
-        "allTime": 4
+        "thisWeek": 14,
+        "allTime": 14
       },
-      "lastActivity": "2025-09-23T11:02:26.470Z"
+      "lastActivity": "2025-10-08T16:36:59.318Z"
     },
     {
       "workerId": "614876929266417672",
       "workerName": "Notorius Bowdin",
       "plants": {
-        "thisWeek": 0,
-        "allTime": 2511
+        "thisWeek": 500,
+        "allTime": 3011
       },
       "animals": {
         "thisWeek": 0,
@@ -550,7 +410,640 @@
         "thisWeek": 2,
         "allTime": 2
       },
-      "lastActivity": "2025-09-23T11:02:26.469Z"
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "1316586037136461845",
+      "workerName": "Wilian slow",
+      "plants": {
+        "thisWeek": 490,
+        "allTime": 490
+      },
+      "animals": {
+        "thisWeek": 0,
+        "allTime": 0
+      },
+      "ferrovia": {
+        "thisWeek": 0,
+        "allTime": 0
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    }
+  ],
+  "animalRankings": [
+    {
+      "workerId": "758683527108624404",
+      "workerName": "Romano Delaerva",
+      "plants": {
+        "thisWeek": 11080,
+        "allTime": 17030
+      },
+      "animals": {
+        "thisWeek": 122,
+        "allTime": 222
+      },
+      "ferrovia": {
+        "thisWeek": 8,
+        "allTime": 8
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "324682324614578179",
+      "workerName": "Garcia Jidoki",
+      "plants": {
+        "thisWeek": 8350,
+        "allTime": 12840
+      },
+      "animals": {
+        "thisWeek": 92,
+        "allTime": 144
+      },
+      "ferrovia": {
+        "thisWeek": 0,
+        "allTime": 0
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "959122593523335188",
+      "workerName": "Ingrid Dangerous",
+      "plants": {
+        "thisWeek": 0,
+        "allTime": 8190
+      },
+      "animals": {
+        "thisWeek": 84,
+        "allTime": 267
+      },
+      "ferrovia": {
+        "thisWeek": 0,
+        "allTime": 0
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "949397147030274059",
+      "workerName": "Izzynha Evans",
+      "plants": {
+        "thisWeek": 600,
+        "allTime": 950
+      },
+      "animals": {
+        "thisWeek": 60,
+        "allTime": 106
+      },
+      "ferrovia": {
+        "thisWeek": 14,
+        "allTime": 14
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "695109023741116496",
+      "workerName": "yuri westside",
+      "plants": {
+        "thisWeek": 4010,
+        "allTime": 22760
+      },
+      "animals": {
+        "thisWeek": 48,
+        "allTime": 232
+      },
+      "ferrovia": {
+        "thisWeek": 10,
+        "allTime": 10
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "470361257497722886",
+      "workerName": "Kenai Comanches",
+      "plants": {
+        "thisWeek": 9070,
+        "allTime": 41554
+      },
+      "animals": {
+        "thisWeek": 32,
+        "allTime": 208
+      },
+      "ferrovia": {
+        "thisWeek": 6,
+        "allTime": 6
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "487809893923946517",
+      "workerName": "Matheus Watanabe",
+      "plants": {
+        "thisWeek": 1220,
+        "allTime": 1220
+      },
+      "animals": {
+        "thisWeek": 24,
+        "allTime": 24
+      },
+      "ferrovia": {
+        "thisWeek": 0,
+        "allTime": 0
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "1295901408264196181",
+      "workerName": "Maria Vitória",
+      "plants": {
+        "thisWeek": 5010,
+        "allTime": 8162
+      },
+      "animals": {
+        "thisWeek": 20,
+        "allTime": 57
+      },
+      "ferrovia": {
+        "thisWeek": 0,
+        "allTime": 0
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "398270963969425408",
+      "workerName": "john Weslley",
+      "plants": {
+        "thisWeek": 2100,
+        "allTime": 40910
+      },
+      "animals": {
+        "thisWeek": 18,
+        "allTime": 178
+      },
+      "ferrovia": {
+        "thisWeek": 0,
+        "allTime": 0
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "845711436730597417",
+      "workerName": "Anthony Versace",
+      "plants": {
+        "thisWeek": 1000,
+        "allTime": 2000
+      },
+      "animals": {
+        "thisWeek": 16,
+        "allTime": 48
+      },
+      "ferrovia": {
+        "thisWeek": 0,
+        "allTime": 0
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "862576444740075530",
+      "workerName": "jurandi labareda",
+      "plants": {
+        "thisWeek": 990,
+        "allTime": 1990
+      },
+      "animals": {
+        "thisWeek": 16,
+        "allTime": 32
+      },
+      "ferrovia": {
+        "thisWeek": 0,
+        "allTime": 0
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "1117649799181783130",
+      "workerName": "Ubirajara Cauamb",
+      "plants": {
+        "thisWeek": 1125,
+        "allTime": 3625
+      },
+      "animals": {
+        "thisWeek": 12,
+        "allTime": 66
+      },
+      "ferrovia": {
+        "thisWeek": 0,
+        "allTime": 0
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "1384209105610211338",
+      "workerName": "Draven Lima",
+      "plants": {
+        "thisWeek": 1670,
+        "allTime": 1670
+      },
+      "animals": {
+        "thisWeek": 12,
+        "allTime": 12
+      },
+      "ferrovia": {
+        "thisWeek": 4,
+        "allTime": 4
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "940279402145669241",
+      "workerName": "Tereza Mcfell",
+      "plants": {
+        "thisWeek": 1540,
+        "allTime": 8930
+      },
+      "animals": {
+        "thisWeek": 10,
+        "allTime": 48
+      },
+      "ferrovia": {
+        "thisWeek": 0,
+        "allTime": 0
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "522217368500568082",
+      "workerName": "Nico Chimichurri",
+      "plants": {
+        "thisWeek": 1000,
+        "allTime": 6090
+      },
+      "animals": {
+        "thisWeek": 8,
+        "allTime": 56
+      },
+      "ferrovia": {
+        "thisWeek": 0,
+        "allTime": 0
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "751113851432337449",
+      "workerName": "MARGELI VESTPHAL",
+      "plants": {
+        "thisWeek": 850,
+        "allTime": 1350
+      },
+      "animals": {
+        "thisWeek": 8,
+        "allTime": 16
+      },
+      "ferrovia": {
+        "thisWeek": 0,
+        "allTime": 0
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "481612456792424448",
+      "workerName": "Cleber Versace",
+      "plants": {
+        "thisWeek": 7080,
+        "allTime": 7080
+      },
+      "animals": {
+        "thisWeek": 8,
+        "allTime": 8
+      },
+      "ferrovia": {
+        "thisWeek": 2,
+        "allTime": 2
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "728800620064014367",
+      "workerName": "Red Oliver",
+      "plants": {
+        "thisWeek": 2100,
+        "allTime": 2100
+      },
+      "animals": {
+        "thisWeek": 7,
+        "allTime": 7
+      },
+      "ferrovia": {
+        "thisWeek": 0,
+        "allTime": 0
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "141250620593012736",
+      "workerName": "Santiago Bowdin",
+      "plants": {
+        "thisWeek": 0,
+        "allTime": 1781
+      },
+      "animals": {
+        "thisWeek": 4,
+        "allTime": 36
+      },
+      "ferrovia": {
+        "thisWeek": 0,
+        "allTime": 0
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "311732968806678529",
+      "workerName": "Bob Eastwood",
+      "plants": {
+        "thisWeek": 0,
+        "allTime": 3170
+      },
+      "animals": {
+        "thisWeek": 4,
+        "allTime": 48
+      },
+      "ferrovia": {
+        "thisWeek": 4,
+        "allTime": 4
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "431957051275739156",
+      "workerName": "Fernanda Silva",
+      "plants": {
+        "thisWeek": 11950,
+        "allTime": 11950
+      },
+      "animals": {
+        "thisWeek": 4,
+        "allTime": 4
+      },
+      "ferrovia": {
+        "thisWeek": 2,
+        "allTime": 2
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    }
+  ],
+  "ferroviaRankings": [
+    {
+      "workerId": "unknown",
+      "workerName": "Endo D. Barth",
+      "plants": {
+        "thisWeek": 0,
+        "allTime": 0
+      },
+      "animals": {
+        "thisWeek": 0,
+        "allTime": 0
+      },
+      "ferrovia": {
+        "thisWeek": 43,
+        "allTime": 951
+      },
+      "lastActivity": "2025-10-09T14:19:53.448Z"
+    },
+    {
+      "workerId": "949397147030274059",
+      "workerName": "Izzynha Evans",
+      "plants": {
+        "thisWeek": 600,
+        "allTime": 950
+      },
+      "animals": {
+        "thisWeek": 60,
+        "allTime": 106
+      },
+      "ferrovia": {
+        "thisWeek": 14,
+        "allTime": 14
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "273987353456934913",
+      "workerName": "Souzz Ramirez",
+      "plants": {
+        "thisWeek": 0,
+        "allTime": 1100
+      },
+      "animals": {
+        "thisWeek": 0,
+        "allTime": 0
+      },
+      "ferrovia": {
+        "thisWeek": 10,
+        "allTime": 12
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "695109023741116496",
+      "workerName": "yuri westside",
+      "plants": {
+        "thisWeek": 4010,
+        "allTime": 22760
+      },
+      "animals": {
+        "thisWeek": 48,
+        "allTime": 232
+      },
+      "ferrovia": {
+        "thisWeek": 10,
+        "allTime": 10
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "758683527108624404",
+      "workerName": "Romano Delaerva",
+      "plants": {
+        "thisWeek": 11080,
+        "allTime": 17030
+      },
+      "animals": {
+        "thisWeek": 122,
+        "allTime": 222
+      },
+      "ferrovia": {
+        "thisWeek": 8,
+        "allTime": 8
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "333664599549411329",
+      "workerName": "Johnny Rocks",
+      "plants": {
+        "thisWeek": 0,
+        "allTime": 8380
+      },
+      "animals": {
+        "thisWeek": 0,
+        "allTime": 0
+      },
+      "ferrovia": {
+        "thisWeek": 6,
+        "allTime": 6
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "470361257497722886",
+      "workerName": "Kenai Comanches",
+      "plants": {
+        "thisWeek": 9070,
+        "allTime": 41554
+      },
+      "animals": {
+        "thisWeek": 32,
+        "allTime": 208
+      },
+      "ferrovia": {
+        "thisWeek": 6,
+        "allTime": 6
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "1204772480305209384",
+      "workerName": "BONNIE BENNETT",
+      "plants": {
+        "thisWeek": 0,
+        "allTime": 9879
+      },
+      "animals": {
+        "thisWeek": 0,
+        "allTime": 26
+      },
+      "ferrovia": {
+        "thisWeek": 4,
+        "allTime": 4
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "584129725052747798",
+      "workerName": "Cliff Dillimore",
+      "plants": {
+        "thisWeek": 0,
+        "allTime": 17
+      },
+      "animals": {
+        "thisWeek": 0,
+        "allTime": 0
+      },
+      "ferrovia": {
+        "thisWeek": 4,
+        "allTime": 4
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "1127730801182777355",
+      "workerName": "Thony Gustav",
+      "plants": {
+        "thisWeek": 0,
+        "allTime": 1200
+      },
+      "animals": {
+        "thisWeek": 0,
+        "allTime": 8
+      },
+      "ferrovia": {
+        "thisWeek": 4,
+        "allTime": 4
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "588934801508270082",
+      "workerName": "Chris Rubble",
+      "plants": {
+        "thisWeek": 0,
+        "allTime": 4130
+      },
+      "animals": {
+        "thisWeek": 0,
+        "allTime": 0
+      },
+      "ferrovia": {
+        "thisWeek": 4,
+        "allTime": 4
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "311732968806678529",
+      "workerName": "Bob Eastwood",
+      "plants": {
+        "thisWeek": 0,
+        "allTime": 3170
+      },
+      "animals": {
+        "thisWeek": 4,
+        "allTime": 48
+      },
+      "ferrovia": {
+        "thisWeek": 4,
+        "allTime": 4
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "1384209105610211338",
+      "workerName": "Draven Lima",
+      "plants": {
+        "thisWeek": 1670,
+        "allTime": 1670
+      },
+      "animals": {
+        "thisWeek": 12,
+        "allTime": 12
+      },
+      "ferrovia": {
+        "thisWeek": 4,
+        "allTime": 4
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "835165941267693659",
+      "workerName": "Ragnar Lothbrok",
+      "plants": {
+        "thisWeek": 7120,
+        "allTime": 7120
+      },
+      "animals": {
+        "thisWeek": 0,
+        "allTime": 0
+      },
+      "ferrovia": {
+        "thisWeek": 4,
+        "allTime": 4
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "614876929266417672",
+      "workerName": "Notorius Bowdin",
+      "plants": {
+        "thisWeek": 500,
+        "allTime": 3011
+      },
+      "animals": {
+        "thisWeek": 0,
+        "allTime": 0
+      },
+      "ferrovia": {
+        "thisWeek": 2,
+        "allTime": 2
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
     },
     {
       "workerId": "198538680686608384",
@@ -567,8 +1060,59 @@
         "thisWeek": 2,
         "allTime": 2
       },
-      "lastActivity": "2025-09-23T11:02:26.470Z"
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "206587400703574019",
+      "workerName": "Cosmo Versace",
+      "plants": {
+        "thisWeek": 11180,
+        "allTime": 11180
+      },
+      "animals": {
+        "thisWeek": 0,
+        "allTime": 20
+      },
+      "ferrovia": {
+        "thisWeek": 2,
+        "allTime": 2
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "431957051275739156",
+      "workerName": "Fernanda Silva",
+      "plants": {
+        "thisWeek": 11950,
+        "allTime": 11950
+      },
+      "animals": {
+        "thisWeek": 4,
+        "allTime": 4
+      },
+      "ferrovia": {
+        "thisWeek": 2,
+        "allTime": 2
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "481612456792424448",
+      "workerName": "Cleber Versace",
+      "plants": {
+        "thisWeek": 7080,
+        "allTime": 7080
+      },
+      "animals": {
+        "thisWeek": 8,
+        "allTime": 8
+      },
+      "ferrovia": {
+        "thisWeek": 2,
+        "allTime": 2
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
     }
   ],
-  "lastUpdated": "2025-10-08T15:10:05.041Z"
+  "lastUpdated": "2025-10-09T14:19:53.448Z"
 }

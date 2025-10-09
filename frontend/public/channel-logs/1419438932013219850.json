@@ -1,8 +1,288 @@
 {
   "channelId": "1419438932013219850",
-  "lastUpdated": "2025-10-08T14:16:01.449Z",
-  "messageCount": 340,
+  "lastUpdated": "2025-10-09T13:24:22.377Z",
+  "messageCount": 368,
   "messages": [
+    {
+      "id": "1425836289957036143",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: WEAPON_PISTOL_MAUSER x1\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 09/10/2025 - 10:24:22",
+      "timestamp": "2025-10-09T13:24:22.283Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: WEAPON_PISTOL_MAUSER x1\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 09/10/2025 - 10:24:22",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425836273200795688",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: WEAPON_PISTOL_MAUSER x1\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 09/10/2025 - 10:24:18",
+      "timestamp": "2025-10-09T13:24:18.288Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nMover Item para Loja\nItem adicionado:: WEAPON_PISTOL_MAUSER x1\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 09/10/2025 - 10:24:18",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425742251841294356",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorepeaternormal x10\nComprador:: MARIA VITORIA | FIXO: 78112\nPreço Total:: $18.5\nData:: 09/10/2025 -  04:10:41",
+      "timestamp": "2025-10-09T07:10:41.849Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorepeaternormal x10\nComprador:: MARIA VITORIA | FIXO: 78112\nPreço Total:: $18.5\nData:: 09/10/2025 -  04:10:41",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425699020575342603",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorevolverexpress x5\nComprador:: Vincent Versace | FIXO: 78629\nPreço Total:: $52.5\nData:: 09/10/2025 -  01:18:54",
+      "timestamp": "2025-10-09T04:18:54.712Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorevolverexpress x5\nComprador:: Vincent Versace | FIXO: 78629\nPreço Total:: $52.5\nData:: 09/10/2025 -  01:18:54",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425698643607814246",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammopistolexpress x1\nComprador:: Vincent Versace | FIXO: 78629\nPreço Total:: $10\nData:: 09/10/2025 -  01:17:24",
+      "timestamp": "2025-10-09T04:17:24.836Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammopistolexpress x1\nComprador:: Vincent Versace | FIXO: 78629\nPreço Total:: $10\nData:: 09/10/2025 -  01:17:24",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425698617104269322",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammopistolnormal x1\nComprador:: Vincent Versace | FIXO: 78629\nPreço Total:: $1.85\nData:: 09/10/2025 -  01:17:18",
+      "timestamp": "2025-10-09T04:17:18.517Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammopistolnormal x1\nComprador:: Vincent Versace | FIXO: 78629\nPreço Total:: $1.85\nData:: 09/10/2025 -  01:17:18",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425698595402682398",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorepeaternormal x1\nComprador:: Vincent Versace | FIXO: 78629\nPreço Total:: $1.85\nData:: 09/10/2025 -  01:17:13",
+      "timestamp": "2025-10-09T04:17:13.343Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorepeaternormal x1\nComprador:: Vincent Versace | FIXO: 78629\nPreço Total:: $1.85\nData:: 09/10/2025 -  01:17:13",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425698295157755935",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorevolverexpress x1\nComprador:: Vincent Versace | FIXO: 78629\nPreço Total:: $10.5\nData:: 09/10/2025 -  01:16:01",
+      "timestamp": "2025-10-09T04:16:01.759Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorevolverexpress x1\nComprador:: Vincent Versace | FIXO: 78629\nPreço Total:: $10.5\nData:: 09/10/2025 -  01:16:01",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425686738101075989",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammopistolexpress x1\nComprador:: Cosmo Versace | FIXO: 78447\nPreço Total:: $10\nData:: 09/10/2025 -  00:30:06",
+      "timestamp": "2025-10-09T03:30:06.342Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammopistolexpress x1\nComprador:: Cosmo Versace | FIXO: 78447\nPreço Total:: $10\nData:: 09/10/2025 -  00:30:06",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425686711157002312",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorifleexpress x1\nComprador:: Cosmo Versace | FIXO: 78447\nPreço Total:: $13\nData:: 09/10/2025 -  00:29:59",
+      "timestamp": "2025-10-09T03:29:59.918Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorifleexpress x1\nComprador:: Cosmo Versace | FIXO: 78447\nPreço Total:: $13\nData:: 09/10/2025 -  00:29:59",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425667638587035688",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorifleexpress x1\nComprador:: Cosmo Versace | FIXO: 78447\nPreço Total:: $13\nData:: 08/10/2025 -  23:14:12",
+      "timestamp": "2025-10-09T02:14:12.663Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorifleexpress x1\nComprador:: Cosmo Versace | FIXO: 78447\nPreço Total:: $13\nData:: 08/10/2025 -  23:14:12",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425667364556636303",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammopistolexpress x1\nComprador:: Cosmo Versace | FIXO: 78447\nPreço Total:: $10\nData:: 08/10/2025 -  23:13:07",
+      "timestamp": "2025-10-09T02:13:07.329Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammopistolexpress x1\nComprador:: Cosmo Versace | FIXO: 78447\nPreço Total:: $10\nData:: 08/10/2025 -  23:13:07",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425654446528008194",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorevolverexpress x1\nComprador:: Margarida Versace | FIXO: 78457\nPreço Total:: $10.5\nData:: 08/10/2025 -  22:21:47",
+      "timestamp": "2025-10-09T01:21:47.431Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorevolverexpress x1\nComprador:: Margarida Versace | FIXO: 78457\nPreço Total:: $10.5\nData:: 08/10/2025 -  22:21:47",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425623585543946241",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammoshotgunnormal x5\nComprador:: Kenai Comanches | FIXO: 78096\nPreço Total:: $10\nData:: 08/10/2025 -  20:19:09",
+      "timestamp": "2025-10-08T23:19:09.599Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammoshotgunnormal x5\nComprador:: Kenai Comanches | FIXO: 78096\nPreço Total:: $10\nData:: 08/10/2025 -  20:19:09",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425623212812927067",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammopistolexpress x8\nComprador:: Kenai Comanches | FIXO: 78096\nPreço Total:: $80\nData:: 08/10/2025 -  20:17:40",
+      "timestamp": "2025-10-08T23:17:40.733Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammopistolexpress x8\nComprador:: Kenai Comanches | FIXO: 78096\nPreço Total:: $80\nData:: 08/10/2025 -  20:17:40",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425623146173698068",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorifleexpress x5\nComprador:: Kenai Comanches | FIXO: 78096\nPreço Total:: $65\nData:: 08/10/2025 -  20:17:24",
+      "timestamp": "2025-10-08T23:17:24.845Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorifleexpress x5\nComprador:: Kenai Comanches | FIXO: 78096\nPreço Total:: $65\nData:: 08/10/2025 -  20:17:24",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425623130898169887",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorifleexpress x5\nComprador:: Kenai Comanches | FIXO: 78096\nPreço Total:: $65\nData:: 08/10/2025 -  20:17:21",
+      "timestamp": "2025-10-08T23:17:21.203Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorifleexpress x5\nComprador:: Kenai Comanches | FIXO: 78096\nPreço Total:: $65\nData:: 08/10/2025 -  20:17:21",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425597966277804201",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorevolverexpress x3\nComprador:: jurandi labareda | FIXO: 78581\nPreço Total:: $31.5\nData:: 08/10/2025 -  18:37:21",
+      "timestamp": "2025-10-08T21:37:21.490Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorevolverexpress x3\nComprador:: jurandi labareda | FIXO: 78581\nPreço Total:: $31.5\nData:: 08/10/2025 -  18:37:21",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425597897612988526",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammopistolexpress x3\nComprador:: jurandi labareda | FIXO: 78581\nPreço Total:: $30\nData:: 08/10/2025 -  18:37:04",
+      "timestamp": "2025-10-08T21:37:05.119Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammopistolexpress x3\nComprador:: jurandi labareda | FIXO: 78581\nPreço Total:: $30\nData:: 08/10/2025 -  18:37:04",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425584608912609383",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammopistolexpress x5\nComprador:: jurandi labareda | FIXO: 78581\nPreço Total:: $50\nData:: 08/10/2025 -  17:44:16",
+      "timestamp": "2025-10-08T20:44:16.846Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammopistolexpress x5\nComprador:: jurandi labareda | FIXO: 78581\nPreço Total:: $50\nData:: 08/10/2025 -  17:44:16",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425584167621624061",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: WEAPON_PISTOL_SEMIAUTO x1\nComprador:: jurandi labareda | FIXO: 78581\nPreço Total:: $50\nData:: 08/10/2025 -  17:42:31",
+      "timestamp": "2025-10-08T20:42:31.634Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: WEAPON_PISTOL_SEMIAUTO x1\nComprador:: jurandi labareda | FIXO: 78581\nPreço Total:: $50\nData:: 08/10/2025 -  17:42:31",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425578983088722076",
+      "author": "Polly Bowdin",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: ammopistolexpress x5\nFuncionario:: Polly Bowdin | FIXO: 2009\nData:: 08/10/2025 -  17:21:55",
+      "timestamp": "2025-10-08T20:21:55.545Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: ammopistolexpress x5\nFuncionario:: Polly Bowdin | FIXO: 2009\nData:: 08/10/2025 -  17:21:55",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425578966781132894",
+      "author": "Polly Bowdin",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: ammoshotgunnormal x6\nFuncionario:: Polly Bowdin | FIXO: 2009\nData:: 08/10/2025 -  17:21:51",
+      "timestamp": "2025-10-08T20:21:51.657Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: ammoshotgunnormal x6\nFuncionario:: Polly Bowdin | FIXO: 2009\nData:: 08/10/2025 -  17:21:51",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425578952147337377",
+      "author": "Polly Bowdin",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: ammorifleexpress x10\nFuncionario:: Polly Bowdin | FIXO: 2009\nData:: 08/10/2025 -  17:21:48",
+      "timestamp": "2025-10-08T20:21:48.168Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: ammorifleexpress x10\nFuncionario:: Polly Bowdin | FIXO: 2009\nData:: 08/10/2025 -  17:21:48",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425578705757012130",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: segurorua x3\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 08/10/2025 -  17:20:49",
+      "timestamp": "2025-10-08T20:20:49.424Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: segurorua x3\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 08/10/2025 -  17:20:49",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425578693807575231",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: ammorifleexpress x10\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 08/10/2025 -  17:20:46",
+      "timestamp": "2025-10-08T20:20:46.575Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: ammorifleexpress x10\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 08/10/2025 -  17:20:46",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425578675218419762",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: ammorifleexpress x10\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 08/10/2025 -  17:20:41",
+      "timestamp": "2025-10-08T20:20:42.143Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nRetirar item da Loja\nItem Retirado:: ammorifleexpress x10\nFuncionario:: Endo D. Barth | FIXO: 76312\nData:: 08/10/2025 -  17:20:41",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1425538294615249049",
+      "author": "Armaria",
+      "content": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorepeaterexpress x10\nComprador:: Fernanda Silva | FIXO: 78633\nPreço Total:: $130\nData:: 08/10/2025 -  14:40:14",
+      "timestamp": "2025-10-08T17:40:14.657Z",
+      "source": "discord",
+      "channelId": "1419438932013219850",
+      "embedContent": "REGISTRO - REGISTRO - ARMARIA BOWDIN - 2503\nCompra na Loja\nItem Comprado:: ammorepeaterexpress x10\nComprador:: Fernanda Silva | FIXO: 78633\nPreço Total:: $130\nData:: 08/10/2025 -  14:40:14",
+      "rawEmbeds": []
+    },
     {
       "id": "1425486900407566346",
       "author": "Endo D. Barth",

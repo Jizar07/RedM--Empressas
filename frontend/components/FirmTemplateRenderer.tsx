@@ -18,6 +18,7 @@ import BercarioPayments from './BercarioPayments';
 import EstoqueCDP from './EstoqueCDP';
 import FazendaWorkers from './FazendaWorkers';
 import FazendaCDPAnalytics from './FazendaCDPAnalytics';
+import ComprehensiveAnalytics from './ComprehensiveAnalytics';
 import FerroviaDashboard from './FerroviaDashboard';
 import FerroviaPayments from './FerroviaPayments';
 import FerroviaWorkers from './FerroviaWorkers';
@@ -99,7 +100,7 @@ export default function FirmTemplateRenderer({ firm, activeComponent }: FirmTemp
       case 'workers':
         return <FazendaWorkers firm={firm} />;
       case 'analytics':
-        return <FazendaCDPAnalytics firm={firm} />;
+        return <ComprehensiveAnalytics />;
       default:
         return <TemplateFirmDashboard firm={firm} template={templateConfig} />;
     }

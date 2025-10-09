@@ -1,13 +1,13 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { 
-  Server, Users, Activity, RefreshCw, ExternalLink, Search, 
-  ChevronUp, ChevronDown, Star, StarOff, Edit, Trash2, 
+import {
+  Server, Users, Activity, RefreshCw, ExternalLink, Search,
+  ChevronUp, ChevronDown, Star, StarOff, Edit, Trash2,
   UserPlus, Clock, Zap, CheckCircle, AlertCircle, Circle,
   Wifi, WifiOff, Filter, ArrowUpDown, ArrowUp, ArrowDown
 } from 'lucide-react';
-import { useSocket } from '../hooks/useSocket';
+import { getSelectedRedMServer } from '../lib/redmServerStorage';
 
 // Interfaces for proper typing
 interface ServerInfo {
@@ -47,9 +47,6 @@ interface KnownPlayer {
 
 
 const ServerMonitor = () => {
-  // Use Socket.io for real-time updates
-  const { socket, isConnected, serverData } = useSocket();
-  
   const [serverInfo, setServerInfo] = useState<ServerInfo | null>(null);
   const [players, setPlayers] = useState<Player[]>([]);
   const [dynamicInfo, setDynamicInfo] = useState<DynamicInfo | null>(null);
@@ -75,52 +72,47 @@ const ServerMonitor = () => {
   const [knownSortOrder, setKnownSortOrder] = useState<'asc' | 'desc'>('asc');
   const [showOfflinePlayers, setShowOfflinePlayers] = useState(true);
 
-  // Server constants
-  const SERVER_IP = '131.196.197.140';
-  const SERVER_PORT = '30120';
-  const TXADMIN_PORT = '40120';
-  const BASE_URL = `https://${SERVER_IP}:${SERVER_PORT}`;
-  const TXADMIN_URL = `http://${SERVER_IP}:${TXADMIN_PORT}`;
-  const DISCORD_INVITE = 'discord.gg/condado';
-
-  // Server endpoints
-  const endpoints = [
-    { url: '/info.json', status: 'online', description: 'Server configuration and resources' },
-    { url: '/players.json', status: 'online', description: 'Real-time player list' },
-    { url: '/dynamic.json', status: 'online', description: 'Server status and metadata' },
-    { url: `${TXADMIN_URL}/`, status: 'auth', description: 'txAdmin panel (requires login)' },
-    { url: '/api', status: 'partial', description: 'API endpoints (authentication required)' }
-  ];
+  // Selected server state
+  const [selectedServer, setSelectedServer] = useState<ReturnType<typeof getSelectedRedMServer>>(null);
 
   // Fetch server data from API proxy endpoints
   const fetchServerData = async () => {
     try {
+      const server = getSelectedRedMServer();
+
+      if (!server) {
+        setError('No server selected. Please select a server from the Server tab.');
+        setLoading(false);
+        return;
+      }
+
+      setSelectedServer(server);
       setLoading(true);
       setError(null);
-      
+
       const [infoRes, playersRes, dynamicRes] = await Promise.all([
-        fetch('/api/server-proxy/info'),
-        fetch('/api/server-proxy/players'),
-        fetch('/api/server-proxy/dynamic')
+        fetch(`/api/server-proxy/info?serverIp=${server.ip}&serverPort=${server.port}`),
+        fetch(`/api/server-proxy/players?serverIp=${server.ip}&serverPort=${server.port}`),
+        fetch(`/api/server-proxy/dynamic?serverIp=${server.ip}&serverPort=${server.port}`)
       ]);
-      
+
       if (infoRes.ok) {
         const info = await infoRes.json();
         setServerInfo(info);
       }
-      
+
       if (playersRes.ok) {
         const playersData = await playersRes.json();
         setPlayers(playersData);
       }
-      
+
       if (dynamicRes.ok) {
         const dynamic = await dynamicRes.json();
         setDynamicInfo(dynamic);
       }
-      
+
       setLastUpdate(new Date());
-      
+
     } catch (error: any) {
       console.error('Error fetching server data:', error);
       setError('Failed to fetch server data');
@@ -129,39 +121,23 @@ const ServerMonitor = () => {
     }
   };
 
-  // Manual refresh - force socket reconnection
+  // Manual refresh
   const handleManualRefresh = async () => {
     setIsRefreshing(true);
-    if (socket) {
-      socket.disconnect();
-      socket.connect();
-    }
-    setTimeout(() => setIsRefreshing(false), 1000);
+    await fetchServerData();
+    setTimeout(() => setIsRefreshing(false), 500);
   };
 
-  // Fetch known players from localStorage (independent of backend)
-  const fetchKnownPlayers = () => {
+  // Fetch known players from localStorage (per-server)
+  const fetchKnownPlayers = (serverId: string) => {
     try {
-      const savedPlayers = localStorage.getItem('serverMonitor_knownPlayers');
+      const storageKey = `serverMonitor_knownPlayers_${serverId}`;
+      const savedPlayers = localStorage.getItem(storageKey);
       if (savedPlayers) {
         setKnownPlayers(JSON.parse(savedPlayers));
       } else {
-        // Initialize with default known player
-        const defaultPlayers = {
-          'GM Stoffel': {
-            name_id: 'GM Stoffel',
-            display_name: 'GM Stoffel',
-            pombo: 'ADMIN001',
-            job: 'Game Master',
-            is_online: false,
-            last_seen_id: 1,
-            current_ping: 0,
-            last_login: new Date(Date.now() - 1000 * 60 * 60 * 2).toISOString(),
-            last_logout: new Date(Date.now() - 1000 * 60 * 30).toISOString()
-          }
-        };
-        setKnownPlayers(defaultPlayers);
-        localStorage.setItem('serverMonitor_knownPlayers', JSON.stringify(defaultPlayers));
+        // Start with empty known players for new servers
+        setKnownPlayers({});
       }
     } catch (error) {
       console.error('Error loading known players:', error);
@@ -172,16 +148,19 @@ const ServerMonitor = () => {
 
   // Update known players status - moved to useEffect for better optimization
 
-  // Add/Update known player (using localStorage)
+  // Add/Update known player (using localStorage, per-server)
   const handleSaveKnownPlayer = (playerData: KnownPlayer) => {
+    if (!selectedServer) return;
+
     try {
       const updatedPlayers = {
         ...knownPlayers,
         [playerData.name_id]: playerData
       };
-      
+
       setKnownPlayers(updatedPlayers);
-      localStorage.setItem('serverMonitor_knownPlayers', JSON.stringify(updatedPlayers));
+      const storageKey = `serverMonitor_knownPlayers_${selectedServer.id}`;
+      localStorage.setItem(storageKey, JSON.stringify(updatedPlayers));
       setEditDialogOpen(false);
       setEditingPlayer(null);
     } catch (error) {
@@ -190,16 +169,18 @@ const ServerMonitor = () => {
     }
   };
 
-  // Remove known player (using localStorage)
+  // Remove known player (using localStorage, per-server)
   const handleRemoveKnownPlayer = (nameId: string) => {
+    if (!selectedServer) return;
     if (!window.confirm('Remove this known player?')) return;
-    
+
     try {
       const updatedPlayers = { ...knownPlayers };
       delete updatedPlayers[nameId];
-      
+
       setKnownPlayers(updatedPlayers);
-      localStorage.setItem('serverMonitor_knownPlayers', JSON.stringify(updatedPlayers));
+      const storageKey = `serverMonitor_knownPlayers_${selectedServer.id}`;
+      localStorage.setItem(storageKey, JSON.stringify(updatedPlayers));
     } catch (error) {
       console.error('Error removing known player:', error);
       setError('Failed to remove player.');
@@ -229,30 +210,72 @@ const ServerMonitor = () => {
 
   // Initialize component
   useEffect(() => {
-    fetchKnownPlayers();
-    // Remove manual API calls - using Socket.io instead
+    // Load selected server on mount
+    const server = getSelectedRedMServer();
+    if (server) {
+      setSelectedServer(server);
+      fetchKnownPlayers(server.id);
+    }
+
+    // Listen for storage changes (when server selection changes)
+    const handleStorageChange = (e: StorageEvent) => {
+      if (e.key === 'activeRedMServerId') {
+        const server = getSelectedRedMServer();
+        setSelectedServer(server);
+      }
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+
+    // Also listen for custom event for same-tab updates
+    const handleServerChange = () => {
+      const server = getSelectedRedMServer();
+      setSelectedServer(server);
+    };
+
+    window.addEventListener('serverSelectionChanged', handleServerChange);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+      window.removeEventListener('serverSelectionChanged', handleServerChange);
+    };
   }, []);
 
-  // Update state when socket data changes
+  // Fetch data when selected server changes and setup auto-refresh
   useEffect(() => {
-    if (serverData.info) {
-      setServerInfo(serverData.info);
-      setPlayers(serverData.players);
-      setDynamicInfo(serverData.dynamic);
-      setLastUpdate(new Date(serverData.lastUpdate || Date.now()));
-      setLoading(false);
+    if (selectedServer) {
+      // Clear all previous server data
+      setServerInfo(null);
+      setPlayers([]);
+      setDynamicInfo(null);
+      setKnownPlayers({});
+      setError(null);
+
+      // Load known players for this server
+      fetchKnownPlayers(selectedServer.id);
+
+      // Initial fetch
+      fetchServerData();
+
+      // Auto-refresh every 30 seconds
+      const intervalId = setInterval(() => {
+        fetchServerData();
+      }, 30000);
+
+      // Cleanup interval on unmount or server change
+      return () => clearInterval(intervalId);
     }
-  }, [serverData]);
+  }, [selectedServer]);
 
   // Update known players status when players list changes
   useEffect(() => {
-    // Skip if no known players to update
-    if (Object.keys(knownPlayers).length === 0) return;
-    
+    // Skip if no server selected or no known players to update
+    if (!selectedServer || Object.keys(knownPlayers).length === 0) return;
+
     // Create updated known players
     const updatedKnownPlayers = { ...knownPlayers };
     let hasChanges = false;
-    
+
     // Mark all as offline first
     Object.keys(updatedKnownPlayers).forEach(nameId => {
       if (updatedKnownPlayers[nameId].is_online) {
@@ -261,7 +284,7 @@ const ServerMonitor = () => {
         hasChanges = true;
       }
     });
-    
+
     // Mark online players
     players.forEach(player => {
       if (updatedKnownPlayers[player.name]) {
@@ -275,13 +298,14 @@ const ServerMonitor = () => {
         }
       }
     });
-    
+
     // Only update state if there are actual changes
     if (hasChanges) {
       setKnownPlayers(updatedKnownPlayers);
-      localStorage.setItem('serverMonitor_knownPlayers', JSON.stringify(updatedKnownPlayers));
+      const storageKey = `serverMonitor_knownPlayers_${selectedServer.id}`;
+      localStorage.setItem(storageKey, JSON.stringify(updatedKnownPlayers));
     }
-  }, [players]); // Re-run when players array changes
+  }, [players, selectedServer]); // Re-run when players array or selected server changes
 
   // Filter and sort players
   const filteredAndSortedPlayers = players
@@ -479,7 +503,20 @@ const ServerMonitor = () => {
     }));
   };
 
-  if (loading) {
+  // Show error or loading state if no server selected
+  if (!selectedServer && !loading) {
+    return (
+      <div className="flex flex-col justify-center items-center h-64 space-y-4">
+        <AlertCircle className="h-12 w-12 text-gray-400" />
+        <div className="text-center">
+          <h3 className="text-lg font-semibold text-gray-900 mb-2">No Server Selected</h3>
+          <p className="text-gray-600">Please add and select a server to view server data.</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (loading && !selectedServer) {
     return (
       <div className="flex justify-center items-center h-64">
         <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-red-600"></div>
@@ -493,7 +530,7 @@ const ServerMonitor = () => {
       <div className="flex justify-between items-center">
         <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
           <Server className="h-6 w-6" />
-          Server Monitor - Atlanta Season 2
+          Server Monitor - {selectedServer?.name || 'No Server Selected'}
         </h2>
         <button
           onClick={handleManualRefresh}
@@ -518,13 +555,6 @@ const ServerMonitor = () => {
           <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
             <CheckCircle className="h-5 w-5 text-green-500" />
             Server Status
-            {/* Socket.io connection indicator */}
-            <span className={`ml-auto flex items-center gap-1 text-xs px-2 py-1 rounded-full ${
-              isConnected ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
-            }`}>
-              <div className={`w-2 h-2 rounded-full ${isConnected ? 'bg-green-500' : 'bg-red-500'} ${isConnected ? 'animate-pulse' : ''}`}></div>
-              {isConnected ? 'Live' : 'Disconnected'}
-            </span>
           </h3>
           
           {dynamicInfo ? (
@@ -558,17 +588,10 @@ const ServerMonitor = () => {
               </div>
 
               <div className="flex flex-wrap gap-2 mt-4">
-                <span className="px-3 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded-full flex items-center gap-1">
-                  <Clock className="h-3 w-3" />
-                  3 Anos Online
+                <span className="px-3 py-1 bg-gray-100 text-gray-800 text-xs font-medium rounded-full flex items-center gap-1">
+                  <Server className="h-3 w-3" />
+                  {selectedServer?.ip}:{selectedServer?.port}
                 </span>
-                <button
-                  onClick={() => window.open(`https://${DISCORD_INVITE}`, '_blank')}
-                  className="px-3 py-1 bg-purple-100 text-purple-800 text-xs font-medium rounded-full hover:bg-purple-200 transition-colors flex items-center gap-1"
-                >
-                  <ExternalLink className="h-3 w-3" />
-                  {DISCORD_INVITE}
-                </button>
               </div>
             </div>
           ) : (
@@ -585,32 +608,35 @@ const ServerMonitor = () => {
             <ExternalLink className="h-5 w-5 text-blue-500" />
             Server Endpoints
           </h3>
-          
-          <div className="space-y-3">
-            {endpoints.map((endpoint, index) => (
-              <div key={index} className="flex justify-between items-center py-2 px-3 bg-gray-50 rounded-lg">
-                <div>
-                  <p className="text-sm font-medium text-gray-900">{endpoint.url}</p>
-                  <p className="text-xs text-gray-500">{endpoint.description}</p>
-                </div>
-                <span className={`px-2 py-1 text-xs font-medium rounded-full ${
-                  endpoint.status === 'online' ? 'bg-green-100 text-green-800' :
-                  endpoint.status === 'auth' ? 'bg-yellow-100 text-yellow-800' : 'bg-gray-100 text-gray-800'
-                }`}>
-                  {endpoint.status === 'online' ? 'Online' : endpoint.status === 'auth' ? 'Auth Required' : 'Partial'}
-                </span>
-              </div>
-            ))}
-          </div>
 
-          <div className="flex gap-2 mt-4">
-            <button
-              onClick={() => window.open(TXADMIN_URL, '_blank')}
-              className="flex items-center gap-2 px-3 py-2 text-sm border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
-            >
-              <ExternalLink className="h-4 w-4" />
-              txAdmin Panel
-            </button>
+          <div className="space-y-3">
+            <div className="flex justify-between items-center py-2 px-3 bg-gray-50 rounded-lg">
+              <div>
+                <p className="text-sm font-medium text-gray-900">/info.json</p>
+                <p className="text-xs text-gray-500">Server configuration and resources</p>
+              </div>
+              <span className="px-2 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">
+                {serverInfo ? 'Online' : 'Offline'}
+              </span>
+            </div>
+            <div className="flex justify-between items-center py-2 px-3 bg-gray-50 rounded-lg">
+              <div>
+                <p className="text-sm font-medium text-gray-900">/players.json</p>
+                <p className="text-xs text-gray-500">Real-time player list</p>
+              </div>
+              <span className="px-2 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">
+                {players.length > 0 ? 'Online' : 'Offline'}
+              </span>
+            </div>
+            <div className="flex justify-between items-center py-2 px-3 bg-gray-50 rounded-lg">
+              <div>
+                <p className="text-sm font-medium text-gray-900">/dynamic.json</p>
+                <p className="text-xs text-gray-500">Server status and metadata</p>
+              </div>
+              <span className="px-2 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">
+                {dynamicInfo ? 'Online' : 'Offline'}
+              </span>
+            </div>
           </div>
         </div>
       </div>

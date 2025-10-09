@@ -213,39 +213,43 @@ router.get('/', async (_req: Request, res: Response) => {
             const sessionPath = path.join(archivedDir, file);
             const sessionData = JSON.parse(fs.readFileSync(sessionPath, 'utf8'));
 
-            // Parse plant transactions
+            // Parse plant transactions - ONLY count actual deposits, not withdrawals
             if (sessionData.plantTransactions && Array.isArray(sessionData.plantTransactions)) {
-              sessionData.plantTransactions.forEach((transaction: any, index: number) => {
-                allActivities.push({
-                  id: `${file}_plant_${index}`,
-                  sessionId: sessionData.sessionId || file.replace('.json', ''),
-                  workerId: sessionData.workerId || 'unknown',
-                  workerName: sessionData.workerName || 'Unknown Worker',
-                  type: 'plant_deposit',
-                  quantity: transaction.quantity || 1,
-                  itemName: transaction.itemName,
-                  timestamp: transaction.timestamp || sessionData.startTime || new Date().toISOString(),
-                  originalMessage: `Plant deposit: ${transaction.itemName} (${transaction.quantity})`
+              sessionData.plantTransactions
+                .filter((transaction: any) => transaction.type === 'plant_deposited')
+                .forEach((transaction: any, index: number) => {
+                  allActivities.push({
+                    id: `${file}_plant_${index}`,
+                    sessionId: sessionData.sessionId || file.replace('.json', ''),
+                    workerId: sessionData.workerId || 'unknown',
+                    workerName: sessionData.workerName || 'Unknown Worker',
+                    type: 'plant_deposit',
+                    quantity: transaction.quantity || 1,
+                    itemName: transaction.itemName,
+                    timestamp: transaction.timestamp || sessionData.startTime || new Date().toISOString(),
+                    originalMessage: `Plant deposit: ${transaction.itemName} (${transaction.quantity})`
+                  });
                 });
-              });
             }
 
-            // Parse animal transactions
+            // Parse animal transactions - ONLY count completed deliveries
             if (sessionData.animalTransactions && Array.isArray(sessionData.animalTransactions)) {
-              sessionData.animalTransactions.forEach((transaction: any, index: number) => {
-                allActivities.push({
-                  id: `${file}_animal_${index}`,
-                  sessionId: sessionData.sessionId || file.replace('.json', ''),
-                  workerId: sessionData.workerId || 'unknown',
-                  workerName: sessionData.workerName || 'Unknown Worker',
-                  type: 'animal_delivery',
-                  quantity: transaction.quantity || 1,
-                  amount: transaction.amount,
-                  animalType: transaction.animalType || 'general',
-                  timestamp: transaction.timestamp || sessionData.startTime || new Date().toISOString(),
-                  originalMessage: `Animal delivery: ${transaction.animalType} (${transaction.quantity}) for $${transaction.amount}`
+              sessionData.animalTransactions
+                .filter((transaction: any) => transaction.type === 'delivery_completed')
+                .forEach((transaction: any, index: number) => {
+                  allActivities.push({
+                    id: `${file}_animal_${index}`,
+                    sessionId: sessionData.sessionId || file.replace('.json', ''),
+                    workerId: sessionData.workerId || 'unknown',
+                    workerName: sessionData.workerName || 'Unknown Worker',
+                    type: 'animal_delivery',
+                    quantity: transaction.quantity || 1,
+                    amount: transaction.amount,
+                    animalType: transaction.animalType || 'general',
+                    timestamp: transaction.timestamp || sessionData.startTime || new Date().toISOString(),
+                    originalMessage: `Animal delivery: ${transaction.animalType} (${transaction.quantity}) for $${transaction.amount}`
+                  });
                 });
-              });
             }
 
             // Parse general transactions (legacy format)

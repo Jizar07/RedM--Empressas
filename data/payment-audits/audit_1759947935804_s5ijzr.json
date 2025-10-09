@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1759947935804_s5ijzr",
+  "sessionId": "session_1759888978400_v1gyi",
+  "managerId": "141250620593012736",
+  "managerName": "r3dley",
+  "workerId": "835165941267693659",
+  "workerName": "Ragnar Lothbrok",
+  "amountPaid": 1315.2,
+  "paidAt": "2025-10-08T18:25:35.804Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-08T18:20:35.804Z",
+    "endTime": "2025-10-08T18:35:35.804Z"
+  }
+}

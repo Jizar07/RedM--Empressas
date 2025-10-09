@@ -1,9 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Server, Users, Globe, Clock, Activity, Zap, HardDrive, Cpu, Wifi, MapPin } from 'lucide-react';
+import { Server, Users, Globe, Clock, Activity, Zap, HardDrive, Cpu, Wifi, MapPin, AlertCircle } from 'lucide-react';
 import { ServerInfo, Player } from '@/types';
-import { serverApi } from '@/lib/api';
+import { getSelectedRedMServer } from '@/lib/redmServerStorage';
 
 export default function EnhancedServerStatus() {
   const [serverInfo, setServerInfo] = useState<ServerInfo | null>(null);
@@ -11,29 +11,70 @@ export default function EnhancedServerStatus() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [mounted, setMounted] = useState(false);
+  const [selectedServer, setSelectedServer] = useState<ReturnType<typeof getSelectedRedMServer>>(null);
 
   useEffect(() => {
     setMounted(true);
+    const server = getSelectedRedMServer();
+    setSelectedServer(server);
+
+    // Listen for server selection changes
+    const handleServerChange = () => {
+      const server = getSelectedRedMServer();
+      setSelectedServer(server);
+      setLoading(true);
+      setError(null);
+    };
+
+    window.addEventListener('serverSelectionChanged', handleServerChange);
+    window.addEventListener('storage', (e) => {
+      if (e.key === 'activeRedMServerId') {
+        handleServerChange();
+      }
+    });
+
+    return () => {
+      window.removeEventListener('serverSelectionChanged', handleServerChange);
+    };
   }, []);
 
   useEffect(() => {
-    if (!mounted) return;
-    
+    if (!mounted || !selectedServer) return;
+
     const fetchServerData = async () => {
       try {
-        const [serverData, playersData] = await Promise.allSettled([
-          serverApi.getStatus(),
-          serverApi.getPlayers()
+        const serverIp = selectedServer.ip;
+        const serverPort = selectedServer.port;
+
+        const [infoRes, playersRes, dynamicRes] = await Promise.allSettled([
+          fetch(`/api/server-proxy/info?serverIp=${serverIp}&serverPort=${serverPort}`),
+          fetch(`/api/server-proxy/players?serverIp=${serverIp}&serverPort=${serverPort}`),
+          fetch(`/api/server-proxy/dynamic?serverIp=${serverIp}&serverPort=${serverPort}`)
         ]);
-        
-        if (serverData.status === 'fulfilled') {
-          setServerInfo(serverData.value);
+
+        if (infoRes.status === 'fulfilled' && infoRes.value.ok) {
+          const infoData = await infoRes.value.json();
+          const playersData = playersRes.status === 'fulfilled' && playersRes.value.ok
+            ? await playersRes.value.json()
+            : [];
+          const dynamicData = dynamicRes.status === 'fulfilled' && dynamicRes.value.ok
+            ? await dynamicRes.value.json()
+            : null;
+
+          setServerInfo({
+            online: true,
+            hostname: infoData.vars?.sv_projectName || infoData.vars?.sv_hostname || selectedServer.name,
+            players: dynamicData?.clients || playersData.length || 0,
+            maxPlayers: parseInt(infoData.vars?.sv_maxClients) || selectedServer.maxPlayers,
+            gametype: infoData.vars?.gametype || 'RedM RP',
+            mapname: infoData.vars?.mapname || 'rdr3',
+            uptime: 'Unknown',
+          });
+          setPlayers(playersData);
+        } else {
+          throw new Error('Failed to fetch server data');
         }
-        
-        if (playersData.status === 'fulfilled') {
-          setPlayers(playersData.value);
-        }
-        
+
         setError(null);
       } catch (err) {
         setError('Failed to fetch server data');
@@ -47,7 +88,21 @@ export default function EnhancedServerStatus() {
     const interval = setInterval(fetchServerData, 15000); // Update every 15 seconds
 
     return () => clearInterval(interval);
-  }, [mounted]);
+  }, [mounted, selectedServer]);
+
+  if (!selectedServer) {
+    return (
+      <div className="bg-white dark:bg-gray-800 rounded-lg p-12 text-center">
+        <AlertCircle className="h-16 w-16 text-orange-500 mx-auto mb-4" />
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+          No Server Selected
+        </h3>
+        <p className="text-gray-600 dark:text-gray-400 mb-6">
+          Please select a RedM server from the list above to view server status
+        </p>
+      </div>
+    );
+  }
 
   if (loading) {
     return (

@@ -5,7 +5,38 @@ This file is synchronized with: https://github.com/Jizar07/RedM--Empressas
 
 ## Version History
 
-### [0.057] - 2025-10-09 **[CURRENT VERSION]**
+### [0.058] - 2025-10-09 **[CURRENT VERSION]**
+- **MULTI-SERVER SELECTION FIX**: Fixed real-time server selection and per-server data isolation
+- **KEY FIXES**:
+  - Removed `window.location.reload()` from server selection (caused full page reload)
+  - Removed Socket.io hardcoded Atlanta server dependency from ServerMonitor.tsx
+  - Made all components listen for `serverSelectionChanged` custom event
+  - Implemented per-server known players storage with server-scoped keys
+- **REAL-TIME UPDATES**:
+  - EnhancedServerStatus now auto-updates when server selection changes
+  - KnownPlayersCard maintains separate favorites per server
+  - PlayerManagement tracks per-server known players
+  - All components refresh data every 15-30 seconds for active server
+- **DATA ISOLATION**:
+  - Known players storage changed from global `knownPlayers` to `knownPlayers_${serverId}`
+  - Server selection triggers immediate data fetch without page reload
+  - No data bleeding between different servers
+- **URL FORMAT SUPPORT**:
+  - Added support for `https://servers.redm.net/servers/detail/xxxxx` format
+  - Implemented `resolveServerId()` to convert server IDs to IP:port using cfx.re API
+  - Updated placeholder and instructions in RedMServerBrowser
+- **FILES MODIFIED**:
+  - frontend/app/page.tsx - Removed page reload callbacks
+  - frontend/components/EnhancedServerStatus.tsx - Added server selection listeners
+  - frontend/components/KnownPlayersCard.tsx - Per-server storage implementation
+  - frontend/components/PlayerManagement.tsx - Per-server storage implementation
+  - frontend/components/ServerMonitor.tsx - Removed socket.io, added auto-refresh
+  - frontend/lib/api.ts - Added serverId parameter to knownPlayersStorage functions
+  - frontend/lib/redmServersApi.ts - Added resolveServerId and URL parsing
+  - frontend/lib/redmServerStorage.ts - Added serverSelectionChanged event dispatch
+- **RESULT**: Selecting different servers updates all data in real-time without page reload, each server has isolated known players list
+
+### [0.057] - 2025-10-09
 - **CRITICAL BUG FIX**: Removed animal cost deduction from backend worker payments
 - **PAYMENT FORMULA CORRECTION**: Backend now only deducts Adubo3, not animal raising costs
 - **KEY FIX**:

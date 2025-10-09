@@ -1,0 +1,97 @@
+{
+  "sessionId": "session_1759846536663_21lf6u",
+  "workerId": "206587400703574019",
+  "workerName": "Cosmo Versace",
+  "amount": 473.75,
+  "paidBy": "198538680686608384",
+  "paidByName": "Barth",
+  "paidAt": "2025-10-08T18:39:13.404Z",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Adubo3",
+      "quantity": 50,
+      "transactionId": "tx_1759846536665_hum3k",
+      "timestamp": "2025-10-07T14:15:36.665Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Black Berry Semente",
+      "quantity": 50,
+      "transactionId": "tx_1759846548799_5cc1f",
+      "timestamp": "2025-10-07T14:15:48.799Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Adubo3",
+      "quantity": 100,
+      "transactionId": "tx_1759880701607_oq436j",
+      "timestamp": "2025-10-07T23:45:01.607Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Creekplum Semente",
+      "quantity": 100,
+      "transactionId": "tx_1759944798575_83ztn5",
+      "timestamp": "2025-10-08T17:33:18.575Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Adubo3",
+      "quantity": 100,
+      "transactionId": "tx_1759946451485_picg8",
+      "timestamp": "2025-10-08T18:00:51.485Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Creekplum",
+      "quantity": 500,
+      "transactionId": "tx_1759947870646_kvv87",
+      "timestamp": "2025-10-08T18:24:30.646Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 45,
+      "transactionId": "tx_1759947873808_1d2cdb",
+      "timestamp": "2025-10-08T18:24:33.808Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 100,
+      "transactionId": "tx_1759947875920_7976bh",
+      "timestamp": "2025-10-08T18:24:35.920Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Black Berry",
+      "quantity": 50,
+      "transactionId": "tx_1759947877927_tvtdq",
+      "timestamp": "2025-10-08T18:24:37.927Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Creekplum",
+      "quantity": 500,
+      "transactionId": "tx_1759948038256_9sl47r",
+      "timestamp": "2025-10-08T18:27:18.256Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Creekplum",
+      "quantity": 500,
+      "transactionId": "tx_1759948329168_ebony",
+      "timestamp": "2025-10-08T18:32:09.168Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Creekplum",
+      "quantity": 500,
+      "transactionId": "tx_1759948465941_k5ymy",
+      "timestamp": "2025-10-08T18:34:25.941Z"
+    }
+  ],
+  "animalTransactions": [],
+  "financialTransactions": []
+}

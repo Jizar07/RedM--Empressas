@@ -15,8 +15,9 @@ interface WorkerChannelMapping {
 
 interface TransactionData {
   workerName: string;
-  type: 'seed_taken' | 'plant_deposited' | 'animals_taken' | 'delivery_completed' | 'bercario_purchase';
+  type: 'seed_taken' | 'plant_deposited' | 'animals_taken' | 'delivery_completed' | 'bercario_purchase' | 'inventory_added' | 'inventory_removed';
   itemName?: string;
+  itemCategory?: string; // plantas, materiais, produtos, caixas, animais, sementes, outros
   animalType?: string;
   quantity: number;
   amount?: number;
@@ -354,6 +355,44 @@ export class WorkerChannelService {
               quantity: transaction.quantity,
               amount: transaction.amount,
               description: `Comprou ${transaction.quantity} ${transaction.itemName} no Berçário`
+            }
+          );
+          break;
+
+        case 'inventory_added':
+          if (!transaction.itemName || !transaction.itemCategory) {
+            console.error('❌ Inventory addition missing item name or category');
+            return false;
+          }
+
+          await this.activityService.addInventoryTransaction(
+            workerMapping.workerId,
+            workerMapping.workerName,
+            workerMapping.channelId,
+            {
+              type: 'inventory_added',
+              itemName: transaction.itemName,
+              itemCategory: transaction.itemCategory,
+              quantity: transaction.quantity
+            }
+          );
+          break;
+
+        case 'inventory_removed':
+          if (!transaction.itemName || !transaction.itemCategory) {
+            console.error('❌ Inventory removal missing item name or category');
+            return false;
+          }
+
+          await this.activityService.addInventoryTransaction(
+            workerMapping.workerId,
+            workerMapping.workerName,
+            workerMapping.channelId,
+            {
+              type: 'inventory_removed',
+              itemName: transaction.itemName,
+              itemCategory: transaction.itemCategory,
+              quantity: transaction.quantity
             }
           );
           break;

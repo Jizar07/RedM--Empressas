@@ -24,6 +24,7 @@ export interface FirmConfig {
   id: string;
   name: string;
   description?: string;
+  emoji?: string;
   channelId: string;
   allowedRoles: string[];
   enabled: boolean;

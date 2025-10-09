@@ -1307,5 +1307,38 @@
     "invitedBy": "Barth",
     "approved": true,
     "registeredAt": "2025-10-08T14:26:18.067Z"
+  },
+  {
+    "userId": "496728102831915008",
+    "username": "avilaperoni",
+    "ingameName": "JANE LOTHBROK",
+    "mailId": "6186",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "Garcia Jidoki | 832",
+    "approved": true,
+    "registeredAt": "2025-10-08T21:29:19.336Z"
+  },
+  {
+    "userId": "909045185688768543",
+    "username": "dianamaia",
+    "ingameName": "Diana Maia",
+    "mailId": "6187",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "Garcia Jidoki | 832",
+    "approved": true,
+    "registeredAt": "2025-10-08T21:29:21.130Z"
+  },
+  {
+    "userId": "645598935209082880",
+    "username": "criptz_",
+    "ingameName": "Vincent Versace",
+    "mailId": "6085",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "Cosmo Versace | 5974",
+    "approved": true,
+    "registeredAt": "2025-10-09T03:35:35.912Z"
   }
 ]

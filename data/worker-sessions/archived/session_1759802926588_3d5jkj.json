@@ -1,0 +1,43 @@
+{
+  "workerId": "1220921749827223605",
+  "workerName": "Dalila Watanabe",
+  "channelId": "1424939849575698464",
+  "sessionId": "session_1759802926588_3d5jkj",
+  "startTime": "2025-10-07T02:08:46.589Z",
+  "lastActivity": "2025-10-07T02:39:25.391Z",
+  "status": "stale",
+  "plantTransactions": [],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Vaca",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759802926590_8pnmgm",
+      "timestamp": "2025-10-07T02:08:46.590Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759804765391_uhuew",
+      "timestamp": "2025-10-07T02:39:25.391Z"
+    }
+  ],
+  "financialTransactions": [],
+  "totalCredits": 160,
+  "embedMessageId": "1424949209534173286",
+  "animalExpectations": [
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759802926590_8pnmgm",
+      "takenTimestamp": "2025-10-07T02:08:46.590Z"
+    }
+  ],
+  "inventoryTransactions": [],
+  "completedAt": "2025-10-09T11:09:21.129Z",
+  "notes": "Auto-archived due to inactivity"
+}
