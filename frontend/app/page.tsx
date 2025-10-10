@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { useServer } from '@/contexts/ServerContext';
-import { Server, Users, Bot, Activity, MessageSquare, Settings, BarChart3, Shield, Package, Truck, Send, FileText, Gavel, ChefHat, DollarSign, Building, Receipt } from 'lucide-react';
+import { Server, Users, Bot, Activity, MessageSquare, Settings, BarChart3, Shield, Package, Truck, Send, FileText, Gavel, ChefHat, DollarSign, Building, Receipt, Database } from 'lucide-react';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import AuthButton from '@/components/AuthButton';
 import ServerDropdown from '@/components/ServerDropdown';
@@ -33,7 +33,6 @@ const OrdersSettings = dynamic(() => import('@/components/OrdersSettings'), { ss
 const OrdersManagement = dynamic(() => import('@/components/OrdersManagement'), { ssr: false });
 const OrdersDashboard = dynamic(() => import('@/components/OrdersDashboard'), { ssr: false });
 const ChannelLogsConfig = dynamic(() => import('@/components/ChannelLogsConfig'), { ssr: false });
-const DiscordCommands = dynamic(() => import('@/components/DiscordCommands'), { ssr: false });
 const ModerationSettings = dynamic(() => import('@/components/ModerationSettings'), { ssr: false });
 const Recipes = dynamic(() => import('@/components/Recipes'), { ssr: false });
 const PriceList = dynamic(() => import('@/components/PriceList'), { ssr: false });
@@ -42,6 +41,7 @@ const TrabalhadoresBW = dynamic(() => import('@/components/TrabalhadoresBW'), { 
 const FirmManagement = dynamic(() => import('@/components/FirmManagement'), { ssr: false });
 const PaymentSettings = dynamic(() => import('@/components/PaymentSettings'), { ssr: false });
 const WorkerPaymentReceipts = dynamic(() => import('@/components/WorkerPaymentReceipts'), { ssr: false });
+const ExportDataManagement = dynamic(() => import('@/components/ExportDataManagement'), { ssr: false });
 const GenericFirmDashboard = dynamic(() => import('@/components/GenericFirmDashboard'), { ssr: false });
 const FirmTemplateRenderer = dynamic(() => import('@/components/FirmTemplateRenderer'), { ssr: false });
 const UserMenu = dynamic(() => import('@/components/UserMenu'), { ssr: false });
@@ -485,14 +485,6 @@ export default function HomePage() {
                     <p className="text-xs text-gray-500 dark:text-gray-400">{t('admin.channelLogsConfigDesc')}</p>
                   </button>
                   <button
-                    onClick={() => changeTab('discord-commands')}
-                    className="p-4 border-2 border-gray-200 dark:border-gray-700 rounded-lg hover:border-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors text-left"
-                  >
-                    <Users className="h-6 w-6 text-gray-600 dark:text-gray-400 mb-2" />
-                    <h4 className="font-medium text-gray-900 dark:text-white mb-1">{t('admin.discordCommands')}</h4>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">{t('admin.discordCommandsDesc')}</p>
-                  </button>
-                  <button
                     onClick={() => changeTab('moderation-settings')}
                     className="p-4 border-2 border-gray-200 dark:border-gray-700 rounded-lg hover:border-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors text-left"
                   >
@@ -523,6 +515,14 @@ export default function HomePage() {
                     <Building className="h-6 w-6 text-gray-600 dark:text-gray-400 mb-2" />
                     <h4 className="font-medium text-gray-900 dark:text-white mb-1">{t('admin.firmManagement')}</h4>
                     <p className="text-xs text-gray-500 dark:text-gray-400">{t('admin.firmManagementDesc')}</p>
+                  </button>
+                  <button
+                    onClick={() => changeTab('data-export')}
+                    className="p-4 border-2 border-gray-200 dark:border-gray-700 rounded-lg hover:border-purple-500 hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-colors text-left"
+                  >
+                    <Database className="h-6 w-6 text-gray-600 dark:text-gray-400 mb-2" />
+                    <h4 className="font-medium text-gray-900 dark:text-white mb-1">Data Export</h4>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">Export farm data to Excel-compatible CSV files</p>
                   </button>
                 </div>
               </div>
@@ -608,11 +608,11 @@ export default function HomePage() {
         {activeTab === 'registration-analytics' && <RegistrationAnalytics />}
         {activeTab === 'orders-settings' && <OrdersSettings />}
         {activeTab === 'channel-logs-config' && <ChannelLogsConfig />}
-        {activeTab === 'discord-commands' && <DiscordCommands />}
         {activeTab === 'moderation-settings' && <ModerationSettings />}
         {activeTab === 'payment-settings' && <PaymentSettings />}
         {activeTab === 'payment-receipts' && <WorkerPaymentReceipts />}
         {activeTab === 'firm-management' && <FirmManagement />}
+        {activeTab === 'data-export' && <ExportDataManagement />}
 
         {/* Servicos Section */}
         {(activeTab === 'servicos' || activeTab === 'orders-dashboard' || activeTab === 'orders-management' || activeTab === 'recipes' || activeTab === 'price-list') && (

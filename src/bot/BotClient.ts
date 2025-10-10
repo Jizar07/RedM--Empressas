@@ -9,7 +9,6 @@ import BotStatusService from '../services/BotStatusService';
 import { MultiChannelForwarder } from '../services/MultiChannelForwarder';
 import { WeeklyRankingService } from '../services/WeeklyRankingService';
 import { createDynamicRegistrationCommand } from './dynamicCommandRegistration';
-import { initializeDynamicCommands } from '../api/routes/discord-commands';
 
 export interface Command {
   name: string;
@@ -66,10 +65,7 @@ export class BotClient extends Client {
     
     // Register slash commands
     await this.registerCommands();
-    
-    // Initialize dynamic commands
-    await this.initializeDynamicCommands();
-    
+
     // Initialize RegistrationService with bot client
     RegistrationService.setClient(this);
     
@@ -183,11 +179,4 @@ export class BotClient extends Client {
     }
   }
   
-  private async initializeDynamicCommands(): Promise<void> {
-    try {
-      await initializeDynamicCommands(this);
-    } catch (error) {
-      console.error('❌ Error initializing dynamic commands:', error);
-    }
-  }
 }

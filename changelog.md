@@ -5,7 +5,33 @@ This file is synchronized with: https://github.com/Jizar07/RedM--Empressas
 
 ## Version History
 
-### [0.059] - 2025-10-09 **[CURRENT VERSION]**
+### [0.060] - 2025-10-09 **[CURRENT VERSION]**
+- **EXPORT DATA MANAGEMENT FIX**: Fixed channel selection issue preventing users from selecting firm channels for data export
+- **KEY FIX**:
+  - Created missing Next.js API proxy route for `/api/firms-config/system/monitored-channels`
+  - Frontend was calling backend route directly, resulting in 404 error
+  - Added serverId parameter to loadMonitoredChannels() API call
+- **TECHNICAL IMPLEMENTATION**:
+  - Created `frontend/app/api/firms-config/system/monitored-channels/route.ts` (Next.js proxy)
+  - Proxies requests to backend Express API with serverId parameter
+  - Follows same pattern as existing `discord-channels` proxy route
+  - Updated `ExportDataManagement.tsx` to pass serverId query parameter
+- **BUG FIXED**:
+  - Error: `GET /api/firms-config/system/monitored-channels 404 (Not Found)`
+  - Error: `SyntaxError: Unexpected token '<', "<!DOCTYPE "... is not valid JSON`
+  - Channel selection showing "0 firm channels available" despite 103 Discord channels loading
+- **EXPORT SYSTEM FEATURES** (all working):
+  - Report type filtering: Only selected report types generate (detailed/summary/breakdown)
+  - Channel filtering: Only channels configured as firms are selectable
+  - Monitored channels loaded from backend firm configuration
+  - Data structure correctly mapped from objects to channelIds array
+- **FILES CREATED**:
+  - frontend/app/api/firms-config/system/monitored-channels/route.ts - Next.js proxy route
+- **FILES MODIFIED**:
+  - frontend/components/ExportDataManagement.tsx - Added serverId parameter to API call
+- **RESULT**: Channel selection fully functional - users can now select firm channels for CSV data export
+
+### [0.059] - 2025-10-09
 - **MULTI-SUPPLIER ORDER SYSTEM**: Complete implementation of multi-supplier order selection in Discord bot and frontend
 - **KEY FEATURES**:
   - ONE order sent to MULTIPLE suppliers (first-come-first-served)

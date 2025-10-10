@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1760054517858_amnfqz",
+  "sessionId": "session_1759894491870_2bojgn",
+  "managerId": "1127730801182777355",
+  "managerName": "thony",
+  "workerId": "1295901408264196181",
+  "workerName": "Maria Vitória",
+  "amountPaid": 5332.3,
+  "paidAt": "2025-10-10T00:01:57.858Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-09T23:56:57.858Z",
+    "endTime": "2025-10-10T00:11:57.858Z"
+  }
+}

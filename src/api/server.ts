@@ -21,7 +21,6 @@ import botApiRoutes from './routes/bot-api';
 import internalApiRoutes from './routes/internal-api';
 import userChannelLinkRoutes from './routes/user-channel-link';
 import forceSyncRoutes from './routes/force-sync';
-import discordCommandsRoutes from './routes/discord-commands';
 import serviceSubmissionsRoutes from './routes/service-submissions';
 import farmServiceConfigRoutes from './routes/farm-service-config';
 import farmServiceDataRoutes from './routes/farm-service-data';
@@ -40,6 +39,8 @@ import globalWorkerAnalyticsRoutes from './routes/global-worker-analytics';
 import weeklySalesRoutes from './routes/weekly-sales';
 import inventoryAnalyticsRoutes from './routes/inventory-analytics';
 import comprehensiveAnalyticsRoutes from './routes/comprehensive-analytics';
+import exportDataRoutes from './routes/export-data';
+import discordChannelsRoutes from './routes/discord-channels';
 import FerroviaSessionService from '../services/FerroviaSessionService';
 import DiscordRoleService from '../services/DiscordRoleService';
 import OrdersService from '../services/OrdersService';
@@ -136,8 +137,6 @@ export async function startApiServer(bot: BotClient): Promise<void> {
   app.use('/api/channel-logs', channelLogsConfigRoutes);
   app.use('/api', botApiRoutes);
   
-  // Discord commands management
-  app.use('/api/discord', discordCommandsRoutes);
   
   // Farm service submissions
   app.use('/api/service-submissions', serviceSubmissionsRoutes);
@@ -192,7 +191,13 @@ export async function startApiServer(bot: BotClient): Promise<void> {
 
   // Worker prices management routes
   app.use('/api', workerPricesRoutes);
-  
+
+  // Export data management routes
+  app.use('/api/export-data', exportDataRoutes);
+
+  // Discord channels routes
+  app.use('/api/discord-channels', discordChannelsRoutes);
+
   // Internal API Routes (NO AUTHENTICATION - for system-to-system communication)
   app.use('/api/internal', internalApiRoutes);
   

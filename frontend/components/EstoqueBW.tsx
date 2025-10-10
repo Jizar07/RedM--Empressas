@@ -311,11 +311,11 @@ export default function EstoqueBW({ firm }: EstoqueBWProps = {}) {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-gray-900">📦 Estoque - Fazenda BW</h1>
+      <h1 className="text-2xl font-bold text-gray-900 dark:text-white">📦 Estoque - Fazenda BW</h1>
 
       {error && (
-        <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-          <p className="text-red-800">{error}</p>
+        <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
+          <p className="text-red-800 dark:text-red-300">{error}</p>
         </div>
       )}
 
@@ -351,9 +351,9 @@ export default function EstoqueBW({ firm }: EstoqueBWProps = {}) {
       </div>
 
       {/* Extension Status */}
-      <div className={`rounded-lg p-4 ${totalItems > 0 ? 'bg-blue-100' : 'bg-yellow-100'}`}>
+      <div className={`rounded-lg p-4 ${totalItems > 0 ? 'bg-blue-100 dark:bg-blue-900/20' : 'bg-yellow-100 dark:bg-yellow-900/20'}`}>
         <div className="flex items-center gap-2">
-          <h2 className="text-lg font-semibold">
+          <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
             🔗 Status: {totalItems > 0 ? 'Dados da extensão carregados' : 'Aguardando dados da extensão...'}
           </h2>
           {totalItems > 0 && (
@@ -365,22 +365,22 @@ export default function EstoqueBW({ firm }: EstoqueBWProps = {}) {
       </div>
 
       {/* Filters and Search */}
-      <div className="bg-white rounded-lg shadow p-4">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4 transition-colors">
         <div className="flex items-center gap-4 flex-wrap">
           <div className="flex-1 min-w-64">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500" size={20} />
               <input
                 type="text"
                 placeholder="Pesquisar itens..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors"
               />
               {searchTerm && (
                 <button
                   onClick={() => setSearchTerm('')}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300 transition-colors"
                 >
                   <X size={20} />
                 </button>
@@ -388,10 +388,10 @@ export default function EstoqueBW({ firm }: EstoqueBWProps = {}) {
             </div>
           </div>
 
-          <select 
-            value={selectedCategory} 
+          <select
+            value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
-            className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors"
           >
             <option value="todos">Todas as Categorias</option>
             {Object.entries(categories).map(([key, name]) => (
@@ -406,23 +406,23 @@ export default function EstoqueBW({ firm }: EstoqueBWProps = {}) {
               onChange={(e) => setShowZeroQuantity(e.target.checked)}
               className="rounded"
             />
-            <span className="text-sm">Mostrar Zero</span>
+            <span className="text-sm text-gray-700 dark:text-gray-300">Mostrar Zero</span>
           </label>
         </div>
       </div>
 
       {/* Inventory Table */}
-      <div className="bg-white rounded-lg shadow">
-        <div className="p-4 border-b flex items-center justify-between">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow transition-colors">
+        <div className="p-4 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <h3 className="text-lg font-semibold">📦 Lista de Estoque</h3>
-            <span className="px-2 py-1 bg-blue-100 text-blue-800 text-sm rounded">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">📦 Lista de Estoque</h3>
+            <span className="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 text-sm rounded">
               {paginatedItems.length} itens
             </span>
           </div>
-          <button 
+          <button
             onClick={() => setInventoryExpanded(!inventoryExpanded)}
-            className="p-1 hover:bg-gray-100 rounded"
+            className="p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded text-gray-700 dark:text-gray-300 transition-colors"
           >
             {inventoryExpanded ? <ChevronUp /> : <ChevronDown />}
           </button>
@@ -431,30 +431,30 @@ export default function EstoqueBW({ firm }: EstoqueBWProps = {}) {
         {inventoryExpanded && (
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-gray-50">
+              <thead className="bg-gray-50 dark:bg-gray-700">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    <button 
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                    <button
                       onClick={() => handleSort('nome')}
-                      className="flex items-center gap-1 hover:text-gray-700"
+                      className="flex items-center gap-1 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
                     >
                       Nome do Item
                       {sortColumn === 'nome' && (sortDirection === 'asc' ? '↑' : '↓')}
                     </button>
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    <button 
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                    <button
                       onClick={() => handleSort('categoria')}
-                      className="flex items-center gap-1 hover:text-gray-700"
+                      className="flex items-center gap-1 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
                     >
                       Categoria
                       {sortColumn === 'categoria' && (sortDirection === 'asc' ? '↑' : '↓')}
                     </button>
                   </th>
-                  <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    <button 
+                  <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                    <button
                       onClick={() => handleSort('quantidade')}
-                      className="flex items-center gap-1 hover:text-gray-700 mx-auto"
+                      className="flex items-center gap-1 hover:text-gray-700 dark:hover:text-gray-300 mx-auto transition-colors"
                     >
                       Quantidade
                       {sortColumn === 'quantidade' && (sortDirection === 'asc' ? '↑' : '↓')}
@@ -462,10 +462,10 @@ export default function EstoqueBW({ firm }: EstoqueBWProps = {}) {
                   </th>
                 </tr>
               </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
+              <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
                 {paginatedItems.length === 0 ? (
                   <tr>
-                    <td colSpan={3} className="px-6 py-12 text-center text-gray-500">
+                    <td colSpan={3} className="px-6 py-12 text-center text-gray-500 dark:text-gray-400">
                       {searchTerm ? 'Nenhum item encontrado para a pesquisa' :
                        selectedCategory !== 'todos' ? `Nenhum item na categoria "${categories[selectedCategory as keyof typeof categories]}"` :
                        'Nenhum item no estoque'}
@@ -473,23 +473,23 @@ export default function EstoqueBW({ firm }: EstoqueBWProps = {}) {
                   </tr>
                 ) : (
                   paginatedItems.map((item) => (
-                    <tr key={item.id} className="hover:bg-gray-50">
+                    <tr key={item.id} className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div>
-                          <div className="text-sm font-medium text-gray-900">{item.displayName}</div>
-                          <div className="text-sm text-gray-500">ID: {item.id}</div>
+                          <div className="text-sm font-medium text-gray-900 dark:text-white">{item.displayName}</div>
+                          <div className="text-sm text-gray-500 dark:text-gray-400">ID: {item.id}</div>
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <span className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">
+                        <span className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300">
                           {categories[item.categoria as keyof typeof categories] || 'Outros'}
                         </span>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-center">
                         <span className={`inline-flex px-2 py-1 text-sm font-semibold rounded-full ${
-                          item.quantidade > 100 ? 'bg-green-100 text-green-800' :
-                          item.quantidade > 10 ? 'bg-yellow-100 text-yellow-800' :
-                          item.quantidade > 0 ? 'bg-blue-100 text-blue-800' : 'bg-red-100 text-red-800'
+                          item.quantidade > 100 ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300' :
+                          item.quantidade > 10 ? 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-300' :
+                          item.quantidade > 0 ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300' : 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300'
                         }`}>
                           {item.quantidade}
                         </span>
@@ -504,22 +504,22 @@ export default function EstoqueBW({ firm }: EstoqueBWProps = {}) {
 
         {/* Pagination */}
         {totalPages > 1 && (
-          <div className="px-6 py-4 border-t flex items-center justify-between">
-            <div className="text-sm text-gray-500">
+          <div className="px-6 py-4 border-t border-gray-200 dark:border-gray-700 flex items-center justify-between">
+            <div className="text-sm text-gray-500 dark:text-gray-400">
               Página {currentPage} de {totalPages} ({paginatedItems.length} itens)
             </div>
             <div className="flex gap-2">
               <button
                 onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
                 disabled={currentPage === 1}
-                className="px-3 py-1 border border-gray-300 rounded disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
+                className="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 transition-colors"
               >
                 Anterior
               </button>
               <button
                 onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
                 disabled={currentPage === totalPages}
-                className="px-3 py-1 border border-gray-300 rounded disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
+                className="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 transition-colors"
               >
                 Próximo
               </button>

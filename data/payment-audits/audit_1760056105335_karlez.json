@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1760056105335_karlez",
+  "sessionId": "session_1759975121397_mgbal",
+  "managerId": "949397147030274059",
+  "managerName": "๖ۣۜζ͜͡ɪᴢᴢʏɴʜᴀ🎀",
+  "workerId": "758683527108624404",
+  "workerName": "Romano Delaerva",
+  "amountPaid": 5599.3,
+  "paidAt": "2025-10-10T00:28:25.335Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-10T00:23:25.335Z",
+    "endTime": "2025-10-10T00:38:25.335Z"
+  }
+}

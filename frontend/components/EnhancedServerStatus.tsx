@@ -109,13 +109,13 @@ export default function EnhancedServerStatus() {
       <div className="space-y-6">
         {/* Loading skeleton */}
         <div className="animate-pulse space-y-4">
-          <div className="h-32 bg-gray-200 rounded-lg"></div>
+          <div className="h-32 bg-gray-200 dark:bg-gray-700 rounded-lg"></div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {[...Array(3)].map((_, i) => (
-              <div key={i} className="h-24 bg-gray-200 rounded-lg"></div>
+              <div key={i} className="h-24 bg-gray-200 dark:bg-gray-700 rounded-lg"></div>
             ))}
           </div>
-          <div className="h-64 bg-gray-200 rounded-lg"></div>
+          <div className="h-64 bg-gray-200 dark:bg-gray-700 rounded-lg"></div>
         </div>
       </div>
     );
@@ -165,21 +165,21 @@ export default function EnhancedServerStatus() {
       {/* Server Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {/* Players Online */}
-        <div className="bg-white rounded-lg p-6 shadow-sm border">
+        <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700 transition-colors">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-gray-500 text-sm font-medium uppercase tracking-wider">Players Online</p>
-              <p className="text-3xl font-bold text-gray-900 mt-2">
+              <p className="text-gray-500 dark:text-gray-400 text-sm font-medium uppercase tracking-wider">Players Online</p>
+              <p className="text-3xl font-bold text-gray-900 dark:text-white mt-2">
                 {serverInfo?.players || 0}
               </p>
               <div className="flex items-center mt-2">
-                <div className="flex-1 bg-gray-200 rounded-full h-2 mr-2">
+                <div className="flex-1 bg-gray-200 dark:bg-gray-700 rounded-full h-2 mr-2">
                   <div
-                    className="bg-blue-600 h-2 rounded-full transition-all duration-300"
+                    className="bg-blue-600 dark:bg-blue-500 h-2 rounded-full transition-all duration-300"
                     style={{ width: `${Math.min(playerPercentage, 100)}%` }}
                   ></div>
                 </div>
-                <span className="text-gray-500 text-xs">
+                <span className="text-gray-500 dark:text-gray-400 text-xs">
                   {playerPercentage.toFixed(0)}%
                 </span>
               </div>
@@ -191,14 +191,14 @@ export default function EnhancedServerStatus() {
         </div>
 
         {/* Server Capacity */}
-        <div className="bg-white rounded-lg p-6 shadow-sm border">
+        <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700 transition-colors">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-gray-500 text-sm font-medium uppercase tracking-wider">Max Capacity</p>
-              <p className="text-3xl font-bold text-gray-900 mt-2">
+              <p className="text-gray-500 dark:text-gray-400 text-sm font-medium uppercase tracking-wider">Max Capacity</p>
+              <p className="text-3xl font-bold text-gray-900 dark:text-white mt-2">
                 {serverInfo?.maxPlayers || 0}
               </p>
-              <p className="text-gray-500 text-sm mt-2">Available slots</p>
+              <p className="text-gray-500 dark:text-gray-400 text-sm mt-2">Available slots</p>
             </div>
             <div className="p-3 bg-green-50 rounded-full">
               <Zap className="h-6 w-6 text-green-600" />
@@ -207,14 +207,14 @@ export default function EnhancedServerStatus() {
         </div>
 
         {/* Resources */}
-        <div className="bg-white rounded-lg p-6 shadow-sm border">
+        <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700 transition-colors">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-gray-500 text-sm font-medium uppercase tracking-wider">Resources</p>
-              <p className="text-3xl font-bold text-gray-900 mt-2">
+              <p className="text-gray-500 dark:text-gray-400 text-sm font-medium uppercase tracking-wider">Resources</p>
+              <p className="text-3xl font-bold text-gray-900 dark:text-white mt-2">
                 {serverInfo?.resources?.length || 0}
               </p>
-              <p className="text-gray-500 text-sm mt-2">Loaded mods</p>
+              <p className="text-gray-500 dark:text-gray-400 text-sm mt-2">Loaded mods</p>
             </div>
             <div className="p-3 bg-purple-50 rounded-full">
               <HardDrive className="h-6 w-6 text-purple-600" />
@@ -223,14 +223,14 @@ export default function EnhancedServerStatus() {
         </div>
 
         {/* Uptime */}
-        <div className="bg-white rounded-lg p-6 shadow-sm border">
+        <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700 transition-colors">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-gray-500 text-sm font-medium uppercase tracking-wider">Uptime</p>
-              <p className="text-2xl font-bold text-gray-900 mt-2">
+              <p className="text-gray-500 dark:text-gray-400 text-sm font-medium uppercase tracking-wider">Uptime</p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-white mt-2">
                 {serverInfo?.uptime || 'N/A'}
               </p>
-              <p className="text-gray-500 text-sm mt-2">Server runtime</p>
+              <p className="text-gray-500 dark:text-gray-400 text-sm mt-2">Server runtime</p>
             </div>
             <div className="p-3 bg-orange-50 rounded-full">
               <Clock className="h-6 w-6 text-orange-600" />
@@ -242,28 +242,28 @@ export default function EnhancedServerStatus() {
       {/* Server Information Panel */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Server Details */}
-        <div className="bg-white rounded-lg p-6 shadow-sm border">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-            <Globe className="h-5 w-5 text-gray-600 mr-2" />
+        <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700 transition-colors">
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
+            <Globe className="h-5 w-5 text-gray-600 dark:text-gray-400 mr-2" />
             Server Information
           </h3>
           <div className="space-y-4">
-            <div className="flex justify-between py-2 border-b border-gray-100">
-              <span className="text-gray-600 font-medium">Server Name</span>
-              <span className="text-gray-900 font-mono text-sm">
+            <div className="flex justify-between py-2 border-b border-gray-100 dark:border-gray-700">
+              <span className="text-gray-600 dark:text-gray-400 font-medium">Server Name</span>
+              <span className="text-gray-900 dark:text-white font-mono text-sm">
                 {serverInfo?.hostname || 'Loading...'}
               </span>
             </div>
-            <div className="flex justify-between py-2 border-b border-gray-100">
-              <span className="text-gray-600 font-medium">Game Type</span>
-              <span className="text-gray-900">{serverInfo?.gametype || 'RedM'}</span>
+            <div className="flex justify-between py-2 border-b border-gray-100 dark:border-gray-700">
+              <span className="text-gray-600 dark:text-gray-400 font-medium">Game Type</span>
+              <span className="text-gray-900 dark:text-white">{serverInfo?.gametype || 'RedM'}</span>
             </div>
-            <div className="flex justify-between py-2 border-b border-gray-100">
-              <span className="text-gray-600 font-medium">Map</span>
-              <span className="text-gray-900">{serverInfo?.mapname || 'rdr3'}</span>
+            <div className="flex justify-between py-2 border-b border-gray-100 dark:border-gray-700">
+              <span className="text-gray-600 dark:text-gray-400 font-medium">Map</span>
+              <span className="text-gray-900 dark:text-white">{serverInfo?.mapname || 'rdr3'}</span>
             </div>
-            <div className="flex justify-between py-2 border-b border-gray-100">
-              <span className="text-gray-600 font-medium">Status</span>
+            <div className="flex justify-between py-2 border-b border-gray-100 dark:border-gray-700">
+              <span className="text-gray-600 dark:text-gray-400 font-medium">Status</span>
               <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
                 serverInfo?.online 
                   ? 'bg-green-100 text-green-800' 
@@ -276,26 +276,26 @@ export default function EnhancedServerStatus() {
         </div>
 
         {/* Connection Info */}
-        <div className="bg-white rounded-lg p-6 shadow-sm border">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-            <Wifi className="h-5 w-5 text-gray-600 mr-2" />
+        <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700 transition-colors">
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
+            <Wifi className="h-5 w-5 text-gray-600 dark:text-gray-400 mr-2" />
             Connection Info
           </h3>
           <div className="space-y-4">
-            <div className="bg-gray-50 p-4 rounded-lg">
-              <p className="text-sm text-gray-600 mb-2">Connect via FiveM/RedM:</p>
-              <p className="font-mono text-sm bg-white p-2 rounded border">
+            <div className="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+              <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">Connect via FiveM/RedM:</p>
+              <p className="font-mono text-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-2 rounded border border-gray-200 dark:border-gray-600">
                 connect 131.196.197.140:30120
               </p>
             </div>
             <div className="grid grid-cols-2 gap-4 text-sm">
               <div>
-                <span className="text-gray-600">Server IP:</span>
-                <p className="font-mono text-gray-900">131.196.197.140</p>
+                <span className="text-gray-600 dark:text-gray-400">Server IP:</span>
+                <p className="font-mono text-gray-900 dark:text-white">131.196.197.140</p>
               </div>
               <div>
-                <span className="text-gray-600">Port:</span>
-                <p className="font-mono text-gray-900">30120</p>
+                <span className="text-gray-600 dark:text-gray-400">Port:</span>
+                <p className="font-mono text-gray-900 dark:text-white">30120</p>
               </div>
             </div>
           </div>
@@ -305,7 +305,7 @@ export default function EnhancedServerStatus() {
 
       {/* Last Updated */}
       {mounted && (
-        <div className="text-center text-sm text-gray-500">
+        <div className="text-center text-sm text-gray-500 dark:text-gray-400">
           Last updated: {new Date().toLocaleTimeString()} • Auto-refresh every 15 seconds
         </div>
       )}

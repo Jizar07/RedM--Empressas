@@ -134,14 +134,14 @@ const RecipeCalculator: React.FC = () => {
 
   const getSourceColor = (source: string): string => {
     const colors = {
-      'farm': 'bg-green-100 text-green-800 border-green-300',
-      'artesanato': 'bg-orange-100 text-orange-800 border-orange-300',
-      'veterinaria': 'bg-red-100 text-red-800 border-red-300',
-      'mineradora': 'bg-purple-100 text-purple-800 border-purple-300',
-      'ferraria': 'bg-gray-100 text-gray-800 border-gray-300',
-      'raw': 'bg-blue-100 text-blue-800 border-blue-300'
+      'farm': 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 border-green-300 dark:border-green-700',
+      'artesanato': 'bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-300 border-orange-300 dark:border-orange-700',
+      'veterinaria': 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300 border-red-300 dark:border-red-700',
+      'mineradora': 'bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300 border-purple-300 dark:border-purple-700',
+      'ferraria': 'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300 border-gray-300 dark:border-gray-600',
+      'raw': 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 border-blue-300 dark:border-blue-700'
     };
-    return colors[source] || 'bg-gray-100 text-gray-800 border-gray-300';
+    return colors[source] || 'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300 border-gray-300 dark:border-gray-600';
   };
 
   const getSourceName = (source: string): string => {
@@ -158,17 +158,17 @@ const RecipeCalculator: React.FC = () => {
 
   return (
     <div className="max-w-6xl mx-auto p-6">
-      <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-6 transition-colors">
         <div className="flex items-center gap-3 mb-6">
-          <Calculator className="h-8 w-8 text-blue-600" />
-          <h1 className="text-3xl font-bold text-gray-900">Calculadora de Receitas</h1>
+          <Calculator className="h-8 w-8 text-blue-600 dark:text-blue-400" />
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Calculadora de Receitas</h1>
         </div>
 
         {/* Search and Input Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
           {/* Recipe Search */}
           <div className="md:col-span-2 relative">
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Selecionar Receita
             </label>
             <div className="relative">
@@ -178,23 +178,23 @@ const RecipeCalculator: React.FC = () => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Digite o nome da receita... (ex: Libidgel Suino)"
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-blue-500 dark:focus:border-blue-400 transition-colors"
               />
             </div>
 
             {/* Dropdown */}
             {showDropdown && filteredRecipes.length > 0 && (
-              <div className="absolute z-10 mt-1 w-full bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-y-auto">
+              <div className="absolute z-10 mt-1 w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md shadow-lg max-h-60 overflow-y-auto transition-colors">
                 {filteredRecipes.map((recipe) => (
                   <button
                     key={recipe.id}
                     onClick={() => selectRecipe(recipe)}
-                    className="w-full px-4 py-2 text-left hover:bg-gray-50 flex items-center gap-2"
+                    className="w-full px-4 py-2 text-left hover:bg-gray-50 dark:hover:bg-gray-700 flex items-center gap-2 transition-colors"
                   >
                     <span className="text-lg">{getSourceIcon(recipe.source)}</span>
                     <div>
-                      <div className="font-medium">{recipe.portugueseName}</div>
-                      <div className="text-sm text-gray-500">
+                      <div className="font-medium text-gray-900 dark:text-white">{recipe.portugueseName}</div>
+                      <div className="text-sm text-gray-500 dark:text-gray-400">
                         {getSourceName(recipe.source)} • {recipe.outputQuantity} unidades
                       </div>
                     </div>
@@ -206,7 +206,7 @@ const RecipeCalculator: React.FC = () => {
 
           {/* Quantity Input */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Quantidade Desejada
             </label>
             <input
@@ -214,20 +214,20 @@ const RecipeCalculator: React.FC = () => {
               value={quantity}
               onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
               min="1"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-blue-500 dark:focus:border-blue-400 transition-colors"
             />
           </div>
         </div>
 
         {/* Selected Recipe Display */}
         {selectedRecipe && (
-          <div className="bg-gray-50 p-4 rounded-lg mb-4">
+          <div className="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg mb-4 transition-colors">
             <div className="flex items-center gap-3">
               <span className="text-2xl">{getSourceIcon(selectedRecipe.source)}</span>
               <div>
-                <h3 className="font-semibold text-lg">{selectedRecipe.portugueseName}</h3>
-                <div className="flex items-center gap-2 text-sm text-gray-600">
-                  <span className={`px-2 py-1 rounded-full text-xs border ${getSourceColor(selectedRecipe.source)}`}>
+                <h3 className="font-semibold text-lg text-gray-900 dark:text-white">{selectedRecipe.portugueseName}</h3>
+                <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                  <span className={`px-2 py-1 rounded-full text-xs border transition-colors ${getSourceColor(selectedRecipe.source)}`}>
                     {getSourceName(selectedRecipe.source)}
                   </span>
                   <span>Produz {selectedRecipe.outputQuantity} unidades por batch</span>
@@ -241,7 +241,7 @@ const RecipeCalculator: React.FC = () => {
         <button
           onClick={calculateBreakdown}
           disabled={!selectedRecipe || loading}
-          className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center justify-center gap-2 font-medium"
+          className="w-full bg-blue-600 dark:bg-blue-500 text-white py-3 px-4 rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 disabled:bg-gray-400 dark:disabled:bg-gray-600 disabled:cursor-not-allowed flex items-center justify-center gap-2 font-medium transition-colors"
         >
           {loading ? (
             <>
@@ -258,7 +258,7 @@ const RecipeCalculator: React.FC = () => {
 
         {/* Error Display */}
         {error && (
-          <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg flex items-center gap-2 text-red-700">
+          <div className="mt-4 p-4 bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-700 rounded-lg flex items-center gap-2 text-red-700 dark:text-red-300 transition-colors">
             <AlertCircle className="h-5 w-5" />
             {error}
           </div>
@@ -269,51 +269,51 @@ const RecipeCalculator: React.FC = () => {
       {breakdown && (
         <div className="space-y-6">
           {/* Summary */}
-          <div className="bg-white rounded-lg shadow-lg p-6">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 transition-colors">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
               <Package className="h-6 w-6" />
               Resumo da Produção
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div className="bg-blue-50 p-4 rounded-lg">
-                <div className="text-2xl font-bold text-blue-600">{breakdown.requestedQuantity}</div>
-                <div className="text-sm text-blue-800">Quantidade Solicitada</div>
+              <div className="bg-blue-50 dark:bg-blue-900/30 p-4 rounded-lg transition-colors">
+                <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">{breakdown.requestedQuantity}</div>
+                <div className="text-sm text-blue-800 dark:text-blue-300">Quantidade Solicitada</div>
               </div>
-              <div className="bg-green-50 p-4 rounded-lg">
-                <div className="text-2xl font-bold text-green-600">{breakdown.batchesNeeded}</div>
-                <div className="text-sm text-green-800">Batches Necessários</div>
+              <div className="bg-green-50 dark:bg-green-900/30 p-4 rounded-lg transition-colors">
+                <div className="text-2xl font-bold text-green-600 dark:text-green-400">{breakdown.batchesNeeded}</div>
+                <div className="text-sm text-green-800 dark:text-green-300">Batches Necessários</div>
               </div>
-              <div className="bg-purple-50 p-4 rounded-lg">
-                <div className="text-2xl font-bold text-purple-600">{breakdown.batchesNeeded * breakdown.recipe.outputQuantity}</div>
-                <div className="text-sm text-purple-800">Total Produzido</div>
+              <div className="bg-purple-50 dark:bg-purple-900/30 p-4 rounded-lg transition-colors">
+                <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">{breakdown.batchesNeeded * breakdown.recipe.outputQuantity}</div>
+                <div className="text-sm text-purple-800 dark:text-purple-300">Total Produzido</div>
               </div>
-              <div className="bg-orange-50 p-4 rounded-lg">
-                <div className="text-2xl font-bold text-orange-600">{Object.keys(breakdown.materialsBySource).length}</div>
-                <div className="text-sm text-orange-800">Fontes Diferentes</div>
+              <div className="bg-orange-50 dark:bg-orange-900/30 p-4 rounded-lg transition-colors">
+                <div className="text-2xl font-bold text-orange-600 dark:text-orange-400">{Object.keys(breakdown.materialsBySource).length}</div>
+                <div className="text-sm text-orange-800 dark:text-orange-300">Fontes Diferentes</div>
               </div>
             </div>
           </div>
 
           {/* Materials by Source */}
-          <div className="bg-white rounded-lg shadow-lg p-6">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">📋 Lista de Materiais por Fonte</h2>
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 transition-colors">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">📋 Lista de Materiais por Fonte</h2>
 
             <div className="grid gap-6">
               {Object.entries(breakdown.materialsBySource).map(([source, materials]) => (
-                <div key={source} className="border rounded-lg overflow-hidden">
-                  <div className={`px-4 py-3 font-semibold text-lg flex items-center gap-2 ${getSourceColor(source)}`}>
+                <div key={source} className="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden transition-colors">
+                  <div className={`px-4 py-3 font-semibold text-lg flex items-center gap-2 transition-colors ${getSourceColor(source)}`}>
                     <span className="text-xl">{getSourceIcon(source)}</span>
                     {getSourceName(source)}
                     <span className="ml-auto text-sm font-normal">
                       {materials.length} {materials.length === 1 ? 'item' : 'itens'}
                     </span>
                   </div>
-                  <div className="p-4">
+                  <div className="p-4 bg-white dark:bg-gray-800 transition-colors">
                     <div className="grid gap-2">
                       {materials.map((material, index) => (
-                        <div key={index} className="flex justify-between items-center p-2 bg-gray-50 rounded">
-                          <span className="font-medium">{material.portugueseName}</span>
-                          <span className="bg-white px-2 py-1 rounded text-sm font-semibold">
+                        <div key={index} className="flex justify-between items-center p-2 bg-gray-50 dark:bg-gray-700 rounded transition-colors">
+                          <span className="font-medium text-gray-900 dark:text-white">{material.portugueseName}</span>
+                          <span className="bg-white dark:bg-gray-600 px-2 py-1 rounded text-sm font-semibold text-gray-900 dark:text-white transition-colors">
                             {material.quantity.toLocaleString()} unidades
                           </span>
                         </div>
@@ -327,21 +327,21 @@ const RecipeCalculator: React.FC = () => {
 
           {/* Crafting Steps */}
           {breakdown.craftingSteps.length > 1 && (
-            <div className="bg-white rounded-lg shadow-lg p-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">🔄 Ordem de Produção</h2>
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 transition-colors">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">🔄 Ordem de Produção</h2>
 
               <div className="space-y-4">
                 {breakdown.craftingSteps.reverse().map((step) => (
-                  <div key={step.step} className="border border-gray-200 rounded-lg p-4">
-                    <div className="font-semibold text-lg mb-3 flex items-center gap-2">
-                      <span className="bg-blue-100 text-blue-800 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">
+                  <div key={step.step} className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 transition-colors">
+                    <div className="font-semibold text-lg mb-3 flex items-center gap-2 text-gray-900 dark:text-white">
+                      <span className="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold transition-colors">
                         {breakdown.craftingSteps.length - step.step + 1}
                       </span>
                       {step.description}
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
                       {step.materials.map((material, index) => (
-                        <div key={index} className="flex items-center gap-2 text-sm bg-gray-50 p-2 rounded">
+                        <div key={index} className="flex items-center gap-2 text-sm bg-gray-50 dark:bg-gray-700 p-2 rounded text-gray-900 dark:text-white transition-colors">
                           <span className="text-lg">{getSourceIcon(material.source)}</span>
                           <span>{material.quantity} {material.portugueseName}</span>
                         </div>

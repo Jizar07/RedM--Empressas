@@ -689,19 +689,19 @@ const Recipes = () => {
   return (
     <div className="space-y-6">
       <div className="card p-6">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2 transition-colors">
           <ChefHat className="h-6 w-6" />
           Receitas & Encomendas
         </h2>
 
         {/* Tab Navigation */}
-        <div className="flex space-x-1 bg-gray-100 rounded-lg p-1 mb-6">
+        <div className="flex space-x-1 bg-gray-100 dark:bg-gray-700 rounded-lg p-1 mb-6 transition-colors">
           <button
             onClick={() => setCurrentTab(0)}
             className={`flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-colors ${
               currentTab === 0
-                ? 'bg-white text-red-600 shadow-sm'
-                : 'text-gray-600 hover:text-gray-900'
+                ? 'bg-white dark:bg-gray-600 text-red-600 dark:text-red-400 shadow-sm'
+                : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
             }`}
           >
             <ChefHat className="h-4 w-4" />
@@ -711,8 +711,8 @@ const Recipes = () => {
             onClick={() => setCurrentTab(1)}
             className={`flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-colors ${
               currentTab === 1
-                ? 'bg-white text-red-600 shadow-sm'
-                : 'text-gray-600 hover:text-gray-900'
+                ? 'bg-white dark:bg-gray-600 text-red-600 dark:text-red-400 shadow-sm'
+                : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
             }`}
           >
             <ShoppingCart className="h-4 w-4" />
@@ -722,8 +722,8 @@ const Recipes = () => {
             onClick={() => setCurrentTab(2)}
             className={`flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-colors ${
               currentTab === 2
-                ? 'bg-white text-red-600 shadow-sm'
-                : 'text-gray-600 hover:text-gray-900'
+                ? 'bg-white dark:bg-gray-600 text-red-600 dark:text-red-400 shadow-sm'
+                : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
             }`}
           >
             <BarChart3 className="h-4 w-4" />
@@ -733,8 +733,8 @@ const Recipes = () => {
             onClick={() => setCurrentTab(3)}
             className={`flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-colors ${
               currentTab === 3
-                ? 'bg-white text-red-600 shadow-sm'
-                : 'text-gray-600 hover:text-gray-900'
+                ? 'bg-white dark:bg-gray-600 text-red-600 dark:text-red-400 shadow-sm'
+                : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
             }`}
           >
             <Calculator className="h-4 w-4" />
@@ -745,10 +745,10 @@ const Recipes = () => {
         {currentTab === 0 && (
           <div className="space-y-6">
             {/* Info Alert */}
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-              <h3 className="font-semibold text-blue-900 mb-1">💡 Sistema de Cálculo de Custos:</h3>
-              <p className="text-blue-800">
-                Os custos são calculados automaticamente baseado na lista de preços atual. 
+            <div className="bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-700 rounded-lg p-4 transition-colors">
+              <h3 className="font-semibold text-blue-900 dark:text-blue-300 mb-1 transition-colors">💡 Sistema de Cálculo de Custos:</h3>
+              <p className="text-blue-800 dark:text-blue-200 transition-colors">
+                Os custos são calculados automaticamente baseado na lista de preços atual.
                 Preços não encontrados usam valores padrão estimados.
               </p>
             </div>
@@ -762,16 +762,16 @@ const Recipes = () => {
                 const lucroMax = calcularLucroReceita(receita, precoVenda.max);
                 
                 return (
-                  <div key={receita.id} className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+                  <div key={receita.id} className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-sm transition-colors">
                     <div className="flex items-center justify-between mb-4">
-                      <h3 className="text-lg font-semibold text-gray-900">{receita.nome}</h3>
+                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white transition-colors">{receita.nome}</h3>
                       <span className={`px-2 py-1 text-xs font-medium rounded-full ${getCategoriaColor(receita.categoria)}`}>
                         {receita.categoria}
                       </span>
                     </div>
 
                     <div className="mb-4">
-                      <p className="text-sm text-gray-600 flex items-center gap-1">
+                      <p className="text-sm text-gray-600 dark:text-gray-400 flex items-center gap-1 transition-colors">
                         <ChefHat className="h-4 w-4" />
                         Produz: <span className="font-medium">{receita.produz} unidades</span>
                       </p>
@@ -780,7 +780,7 @@ const Recipes = () => {
                     {/* Materials */}
                     <div className="mb-4">
                       <details className="group">
-                        <summary className="cursor-pointer text-sm font-medium text-gray-700 mb-2 list-none">
+                        <summary className="cursor-pointer text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 list-none transition-colors">
                           <div className="flex items-center justify-between">
                             <span>Materiais Necessários</span>
                             <span className="group-open:rotate-180 transition-transform">▼</span>
@@ -790,13 +790,13 @@ const Recipes = () => {
                           {receita.materiais.map((material, index) => {
                             const precoUnitario = getPrecoItem(material.item);
                             const custoMaterial = precoUnitario * material.quantidade;
-                            
+
                             return (
-                              <div key={index} className="flex justify-between items-center py-1 px-2 bg-gray-50 rounded">
-                                <span>{material.nome}</span>
+                              <div key={index} className="flex justify-between items-center py-1 px-2 bg-gray-50 dark:bg-gray-700 rounded transition-colors">
+                                <span className="text-gray-900 dark:text-gray-100">{material.nome}</span>
                                 <div className="text-right">
-                                  <div>{material.quantidade}</div>
-                                  <div className="text-gray-500">${custoMaterial.toFixed(2)}</div>
+                                  <div className="text-gray-900 dark:text-gray-100">{material.quantidade}</div>
+                                  <div className="text-gray-500 dark:text-gray-400">${custoMaterial.toFixed(2)}</div>
                                 </div>
                               </div>
                             );
@@ -806,53 +806,53 @@ const Recipes = () => {
                     </div>
 
                     {/* Cost Summary */}
-                    <div className="bg-blue-50 rounded-lg p-3 mb-3">
+                    <div className="bg-blue-50 dark:bg-blue-900/30 rounded-lg p-3 mb-3 transition-colors">
                       <div className="flex justify-between items-center mb-2">
-                        <span className="text-sm text-gray-700 flex items-center gap-1">
+                        <span className="text-sm text-gray-700 dark:text-gray-300 flex items-center gap-1 transition-colors">
                           <DollarSign className="h-4 w-4" />
                           Custo Total:
                         </span>
-                        <span className="font-semibold text-red-600">${custoTotal.toFixed(2)}</span>
+                        <span className="font-semibold text-red-600 dark:text-red-400">${custoTotal.toFixed(2)}</span>
                       </div>
                       <div className="flex justify-between items-center">
-                        <span className="text-sm text-gray-700 flex items-center gap-1">
+                        <span className="text-sm text-gray-700 dark:text-gray-300 flex items-center gap-1 transition-colors">
                           <TrendingUp className="h-4 w-4" />
                           Custo por Unidade:
                         </span>
-                        <span className="font-semibold text-blue-600">${custoPorUnidade.toFixed(2)}</span>
+                        <span className="font-semibold text-blue-600 dark:text-blue-400">${custoPorUnidade.toFixed(2)}</span>
                       </div>
                     </div>
 
                     {/* Profit Analysis */}
-                    <div className="bg-green-50 border border-green-200 rounded-lg p-3">
-                      <h4 className="text-sm font-semibold text-green-900 mb-2 flex items-center gap-1">
+                    <div className="bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-700 rounded-lg p-3 transition-colors">
+                      <h4 className="text-sm font-semibold text-green-900 dark:text-green-300 mb-2 flex items-center gap-1 transition-colors">
                         <TrendingUp className="h-4 w-4" />
                         Análise de Lucro:
                       </h4>
-                      
+
                       {precoVenda.estimado && (
-                        <p className="text-xs text-orange-600 mb-2">⚠️ Preços estimados (não encontrado na lista)</p>
+                        <p className="text-xs text-orange-600 dark:text-orange-400 mb-2">⚠️ Preços estimados (não encontrado na lista)</p>
                       )}
-                      
+
                       <div className="space-y-1 text-xs">
-                        <div className="flex justify-between">
+                        <div className="flex justify-between text-gray-900 dark:text-gray-100">
                           <span>Preço Min/Max:</span>
                           <span className="font-medium">${precoVenda.min.toFixed(2)} - ${precoVenda.max.toFixed(2)}</span>
                         </div>
-                        
+
                         <div className="flex justify-between">
-                          <span>Lucro Max:</span>
-                          <span className={`font-medium ${lucroMax.lucro_unitario > 0 ? 'text-green-600' : 'text-red-600'}`}>
+                          <span className="text-gray-900 dark:text-gray-100">Lucro Max:</span>
+                          <span className={`font-medium ${lucroMax.lucro_unitario > 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
                             ${lucroMax.lucro_unitario.toFixed(2)} ({lucroMax.margem_lucro.toFixed(1)}%)
                           </span>
                         </div>
-                        
-                        <div className="pt-1 border-t border-green-200">
+
+                        <div className="pt-1 border-t border-green-200 dark:border-green-700">
                           <div className="flex justify-between">
-                            <span className="font-medium text-green-800">💰 Melhor Ponto de Venda:</span>
-                            <span className="font-bold text-green-800">${precoVenda.max.toFixed(2)}</span>
+                            <span className="font-medium text-green-800 dark:text-green-300">💰 Melhor Ponto de Venda:</span>
+                            <span className="font-bold text-green-800 dark:text-green-300">${precoVenda.max.toFixed(2)}</span>
                           </div>
-                          <p className="text-xs text-gray-600 text-right">
+                          <p className="text-xs text-gray-600 dark:text-gray-400 text-right">
                             Lucro total por lote: ${lucroMax.lucro_total.toFixed(2)}
                           </p>
                         </div>
@@ -864,25 +864,25 @@ const Recipes = () => {
             </div>
 
             {/* Summary Table */}
-            <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
-              <div className="px-6 py-4 border-b border-gray-200">
-                <h3 className="text-lg font-semibold text-gray-900">📊 Resumo de Custos</h3>
+            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden transition-colors">
+              <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white transition-colors">📊 Resumo de Custos</h3>
               </div>
               <div className="overflow-x-auto">
-                <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-gray-50">
+                <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                  <thead className="bg-gray-50 dark:bg-gray-700">
                     <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Receita</th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Categoria</th>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Produz</th>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Custo Total</th>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Custo/Unidade</th>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Preço Sugerido</th>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Lucro/Unidade</th>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Margem Max</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider transition-colors">Receita</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider transition-colors">Categoria</th>
+                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider transition-colors">Produz</th>
+                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider transition-colors">Custo Total</th>
+                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider transition-colors">Custo/Unidade</th>
+                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider transition-colors">Preço Sugerido</th>
+                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider transition-colors">Lucro/Unidade</th>
+                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider transition-colors">Margem Max</th>
                     </tr>
                   </thead>
-                  <tbody className="bg-white divide-y divide-gray-200">
+                  <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700 transition-colors">
                     {recipes
                       .sort((a, b) => calcularCustoPorUnidade(a) - calcularCustoPorUnidade(b))
                       .map((receita) => {
@@ -893,30 +893,30 @@ const Recipes = () => {
                         
                         return (
                           <tr key={receita.id}>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{receita.nome}</td>
+                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white transition-colors">{receita.nome}</td>
                             <td className="px-6 py-4 whitespace-nowrap">
                               <span className={`px-2 py-1 text-xs font-medium rounded-full ${getCategoriaColor(receita.categoria)}`}>
                                 {receita.categoria}
                               </span>
                             </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">{receita.produz}</td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">${custoTotal.toFixed(2)}</td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">${custoPorUnidade.toFixed(2)}</td>
+                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white text-right transition-colors">{receita.produz}</td>
+                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white text-right transition-colors">${custoTotal.toFixed(2)}</td>
+                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white text-right transition-colors">${custoPorUnidade.toFixed(2)}</td>
                             <td className="px-6 py-4 whitespace-nowrap text-right">
-                              <div className="text-sm font-medium text-blue-600">${precoVenda.max.toFixed(2)}</div>
+                              <div className="text-sm font-medium text-blue-600 dark:text-blue-400">${precoVenda.max.toFixed(2)}</div>
                               {precoVenda.estimado && (
-                                <div className="text-xs text-orange-600">(estimado)</div>
+                                <div className="text-xs text-orange-600 dark:text-orange-400">(estimado)</div>
                               )}
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap text-right">
-                              <div className={`text-sm font-medium ${lucroMax.lucro_unitario > 0 ? 'text-green-600' : 'text-red-600'}`}>
+                              <div className={`text-sm font-medium ${lucroMax.lucro_unitario > 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
                                 ${lucroMax.lucro_unitario.toFixed(2)}
                               </div>
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap text-right">
                               <div className={`text-sm font-medium ${
-                                lucroMax.margem_lucro > 50 ? 'text-green-600' : 
-                                lucroMax.margem_lucro > 20 ? 'text-yellow-600' : 'text-red-600'
+                                lucroMax.margem_lucro > 50 ? 'text-green-600 dark:text-green-400' :
+                                lucroMax.margem_lucro > 20 ? 'text-yellow-600 dark:text-yellow-400' : 'text-red-600 dark:text-red-400'
                               }`}>
                                 {lucroMax.margem_lucro.toFixed(1)}%
                               </div>
@@ -935,15 +935,15 @@ const Recipes = () => {
           <div className="space-y-6">
             {/* Header with Add Button */}
             <div className="flex justify-between items-start">
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 flex-1 mr-4">
-                <h3 className="font-semibold text-blue-900 mb-1">📦 Sistema de Encomendas:</h3>
-                <p className="text-blue-800">
+              <div className="bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-700 rounded-lg p-4 flex-1 mr-4 transition-colors">
+                <h3 className="font-semibold text-blue-900 dark:text-blue-300 mb-1 transition-colors">📦 Sistema de Encomendas:</h3>
+                <p className="text-blue-800 dark:text-blue-200 transition-colors">
                   Gerencie pedidos de clientes com cálculo automático de custos e lucro.
                 </p>
               </div>
               <button
                 onClick={() => handleOpenOrderDialog()}
-                className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors whitespace-nowrap"
+                className="flex items-center gap-2 px-4 py-2 bg-red-600 dark:bg-red-700 text-white rounded-lg hover:bg-red-700 dark:hover:bg-red-600 transition-colors whitespace-nowrap"
               >
                 <Plus className="h-4 w-4" />
                 Nova Encomenda
@@ -951,10 +951,10 @@ const Recipes = () => {
             </div>
 
             {encomendas.length === 0 ? (
-              <div className="text-center py-16 bg-gray-50 rounded-lg">
-                <ShoppingCart className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Nenhuma encomenda cadastrada</h3>
-                <p className="text-gray-600 mb-4">Clique em "Nova Encomenda" para começar</p>
+              <div className="text-center py-16 bg-gray-50 dark:bg-gray-700 rounded-lg transition-colors">
+                <ShoppingCart className="h-16 w-16 text-gray-400 dark:text-gray-500 mx-auto mb-4" />
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 transition-colors">Nenhuma encomenda cadastrada</h3>
+                <p className="text-gray-600 dark:text-gray-400 mb-4 transition-colors">Clique em "Nova Encomenda" para começar</p>
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -979,11 +979,11 @@ const Recipes = () => {
                   const margemLucro = ((lucroTotal / vendaTotal) * 100);
 
                   return (
-                    <div key={order.id} className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+                    <div key={order.id} className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-sm transition-colors">
                       <div className="flex justify-between items-start mb-4">
                         <div>
-                          <h3 className="text-lg font-semibold text-gray-900">{order.cliente}</h3>
-                          <p className="text-sm text-gray-600 flex items-center gap-1">
+                          <h3 className="text-lg font-semibold text-gray-900 dark:text-white transition-colors">{order.cliente}</h3>
+                          <p className="text-sm text-gray-600 dark:text-gray-400 flex items-center gap-1 transition-colors">
                             <Mail className="h-4 w-4" />
                             Pombo: {order.pombo}
                           </p>
@@ -991,13 +991,13 @@ const Recipes = () => {
                         <div className="flex gap-1">
                           <button
                             onClick={() => handleOpenOrderDialog(order)}
-                            className="p-1 text-blue-600 hover:bg-blue-50 rounded"
+                            className="p-1 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded transition-colors"
                           >
                             <Edit className="h-4 w-4" />
                           </button>
                           <button
                             onClick={() => handleDeleteOrder(order.id)}
-                            className="p-1 text-red-600 hover:bg-red-50 rounded"
+                            className="p-1 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded transition-colors"
                           >
                             <Trash2 className="h-4 w-4" />
                           </button>
@@ -1005,31 +1005,31 @@ const Recipes = () => {
                       </div>
 
                       <div className="mb-4">
-                        <h4 className="font-medium text-gray-900">{order.item} - {order.quantidade} unidades</h4>
-                        <p className="text-sm text-gray-600">${order.preco_unitario.toFixed(2)} por unidade</p>
+                        <h4 className="font-medium text-gray-900 dark:text-white transition-colors">{order.item} - {order.quantidade} unidades</h4>
+                        <p className="text-sm text-gray-600 dark:text-gray-400 transition-colors">${order.preco_unitario.toFixed(2)} por unidade</p>
                       </div>
 
-                      <div className="bg-gray-50 rounded-lg p-3 mb-4">
+                      <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-3 mb-4 transition-colors">
                         <div className="grid grid-cols-2 gap-4">
                           <div>
-                            <p className="text-xs text-gray-600">Custo Estimado:</p>
-                            <p className="font-semibold text-red-600">${custoTotal.toFixed(2)}</p>
+                            <p className="text-xs text-gray-600 dark:text-gray-400 transition-colors">Custo Estimado:</p>
+                            <p className="font-semibold text-red-600 dark:text-red-400">${custoTotal.toFixed(2)}</p>
                           </div>
                           <div>
-                            <p className="text-xs text-gray-600">Valor de Venda:</p>
-                            <p className="font-semibold text-blue-600">${vendaTotal.toFixed(2)}</p>
+                            <p className="text-xs text-gray-600 dark:text-gray-400 transition-colors">Valor de Venda:</p>
+                            <p className="font-semibold text-blue-600 dark:text-blue-400">${vendaTotal.toFixed(2)}</p>
                           </div>
                           <div>
-                            <p className="text-xs text-gray-600">Lucro Estimado:</p>
-                            <p className={`font-semibold ${lucroTotal > 0 ? 'text-green-600' : 'text-red-600'}`}>
+                            <p className="text-xs text-gray-600 dark:text-gray-400 transition-colors">Lucro Estimado:</p>
+                            <p className={`font-semibold ${lucroTotal > 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
                               ${lucroTotal.toFixed(2)}
                             </p>
                           </div>
                           <div>
-                            <p className="text-xs text-gray-600">Margem:</p>
+                            <p className="text-xs text-gray-600 dark:text-gray-400 transition-colors">Margem:</p>
                             <p className={`font-semibold ${
-                              margemLucro > 30 ? 'text-green-600' : 
-                              margemLucro > 10 ? 'text-yellow-600' : 'text-red-600'
+                              margemLucro > 30 ? 'text-green-600 dark:text-green-400' :
+                              margemLucro > 10 ? 'text-yellow-600 dark:text-yellow-400' : 'text-red-600 dark:text-red-400'
                             }`}>
                               {margemLucro.toFixed(1)}%
                             </p>
@@ -1038,8 +1038,8 @@ const Recipes = () => {
                       </div>
 
                       {order.observacoes && (
-                        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-2 mb-4">
-                          <p className="text-sm text-yellow-800">
+                        <div className="bg-yellow-50 dark:bg-yellow-900/30 border border-yellow-200 dark:border-yellow-700 rounded-lg p-2 mb-4 transition-colors">
+                          <p className="text-sm text-yellow-800 dark:text-yellow-200 transition-colors">
                             <strong>Obs:</strong> {order.observacoes}
                           </p>
                         </div>
@@ -1047,13 +1047,13 @@ const Recipes = () => {
 
                       <div className="flex justify-between items-center">
                         <span className={`px-2 py-1 text-xs font-medium rounded-full ${
-                          order.status === 'concluida' 
-                            ? 'bg-green-100 text-green-800' 
-                            : 'bg-yellow-100 text-yellow-800'
+                          order.status === 'concluida'
+                            ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300'
+                            : 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-300'
                         }`}>
                           {order.status || 'pendente'}
                         </span>
-                        <span className="text-xs text-gray-500">
+                        <span className="text-xs text-gray-500 dark:text-gray-400 transition-colors">
                           {new Date(order.data_criacao).toLocaleDateString()}
                         </span>
                       </div>
@@ -1081,100 +1081,100 @@ const Recipes = () => {
       {/* Order Dialog */}
       {openOrderDialog && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-lg w-full max-w-md">
+          <div className="bg-white dark:bg-gray-800 rounded-lg w-full max-w-md transition-colors">
             <div className="p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 transition-colors">
                 {editingOrder ? 'Editar Encomenda' : 'Nova Encomenda'}
               </h3>
 
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Nome do Cliente</label>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 transition-colors">Nome do Cliente</label>
                   <input
                     type="text"
                     value={orderForm.cliente}
                     onChange={(e) => setOrderForm({ ...orderForm, cliente: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors"
                     required
                   />
                 </div>
-                
+
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Código do Pombo</label>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 transition-colors">Código do Pombo</label>
                   <input
                     type="text"
                     value={orderForm.pombo}
                     onChange={(e) => setOrderForm({ ...orderForm, pombo: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors"
                     required
                   />
-                  <p className="text-xs text-gray-500 mt-1">Código de identificação do correio</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 transition-colors">Código de identificação do correio</p>
                 </div>
-                
+
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Item/Produto</label>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 transition-colors">Item/Produto</label>
                   <input
                     type="text"
                     value={orderForm.item}
                     onChange={(e) => setOrderForm({ ...orderForm, item: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors"
                     required
                   />
-                  <p className="text-xs text-gray-500 mt-1">Nome do item que o cliente quer</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 transition-colors">Nome do item que o cliente quer</p>
                 </div>
-                
+
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Quantidade</label>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 transition-colors">Quantidade</label>
                     <input
                       type="number"
                       value={orderForm.quantidade}
                       onChange={(e) => setOrderForm({ ...orderForm, quantidade: parseInt(e.target.value) || 1 })}
                       min="1"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors"
                       required
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Preço Unitário ($)</label>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 transition-colors">Preço Unitário ($)</label>
                     <input
                       type="number"
                       step="0.01"
                       value={orderForm.preco_unitario}
                       onChange={(e) => setOrderForm({ ...orderForm, preco_unitario: parseFloat(e.target.value) || 0 })}
                       min="0"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors"
                       required
                     />
                   </div>
                 </div>
-                
+
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Observações</label>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 transition-colors">Observações</label>
                   <textarea
                     value={orderForm.observacoes}
                     onChange={(e) => setOrderForm({ ...orderForm, observacoes: e.target.value })}
                     rows={3}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors"
                   />
-                  <p className="text-xs text-gray-500 mt-1">Informações adicionais sobre a encomenda</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 transition-colors">Informações adicionais sobre a encomenda</p>
                 </div>
 
                 {orderForm.item && orderForm.quantidade > 0 && orderForm.preco_unitario > 0 && (
-                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
-                    <h4 className="font-medium text-blue-900 mb-2">💰 Análise Financeira:</h4>
+                  <div className="bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-700 rounded-lg p-3 transition-colors">
+                    <h4 className="font-medium text-blue-900 dark:text-blue-300 mb-2 transition-colors">💰 Análise Financeira:</h4>
                     <div className="grid grid-cols-3 gap-4">
                       <div>
-                        <p className="text-xs text-gray-600">Custo Estimado:</p>
-                        <p className="font-semibold text-red-600">${calcularCustoEncomenda(orderForm).toFixed(2)}</p>
+                        <p className="text-xs text-gray-600 dark:text-gray-400 transition-colors">Custo Estimado:</p>
+                        <p className="font-semibold text-red-600 dark:text-red-400">${calcularCustoEncomenda(orderForm).toFixed(2)}</p>
                       </div>
                       <div>
-                        <p className="text-xs text-gray-600">Valor Total:</p>
-                        <p className="font-semibold text-blue-600">${(orderForm.preco_unitario * orderForm.quantidade).toFixed(2)}</p>
+                        <p className="text-xs text-gray-600 dark:text-gray-400 transition-colors">Valor Total:</p>
+                        <p className="font-semibold text-blue-600 dark:text-blue-400">${(orderForm.preco_unitario * orderForm.quantidade).toFixed(2)}</p>
                       </div>
                       <div>
-                        <p className="text-xs text-gray-600">Lucro Estimado:</p>
-                        <p className={`font-semibold ${calcularLucroEncomenda(orderForm) > 0 ? 'text-green-600' : 'text-red-600'}`}>
+                        <p className="text-xs text-gray-600 dark:text-gray-400 transition-colors">Lucro Estimado:</p>
+                        <p className={`font-semibold ${calcularLucroEncomenda(orderForm) > 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
                           ${calcularLucroEncomenda(orderForm).toFixed(2)}
                         </p>
                       </div>
@@ -1186,14 +1186,14 @@ const Recipes = () => {
               <div className="flex justify-end gap-3 mt-6">
                 <button
                   onClick={handleCloseOrderDialog}
-                  className="px-4 py-2 text-gray-600 hover:text-gray-800 transition-colors"
+                  className="px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors"
                 >
                   Cancelar
                 </button>
                 <button
                   onClick={handleSaveOrder}
                   disabled={!orderForm.cliente || !orderForm.pombo || !orderForm.item || orderForm.quantidade <= 0}
-                  className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="px-4 py-2 bg-red-600 dark:bg-red-700 text-white rounded-lg hover:bg-red-700 dark:hover:bg-red-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {editingOrder ? 'Atualizar' : 'Criar'} Encomenda
                 </button>

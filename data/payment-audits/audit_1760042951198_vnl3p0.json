@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1760042951198_vnl3p0",
+  "sessionId": "session_1759960643686_noi9tf",
+  "managerId": "588934801508270082",
+  "managerName": "chrisbam",
+  "workerId": "496728102831915008",
+  "workerName": "JANE LOTHBROK",
+  "amountPaid": 567.5,
+  "paidAt": "2025-10-09T20:49:11.198Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-09T20:44:11.198Z",
+    "endTime": "2025-10-09T20:59:11.198Z"
+  }
+}

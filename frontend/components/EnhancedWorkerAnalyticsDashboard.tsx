@@ -160,8 +160,8 @@ const EnhancedWorkerAnalyticsDashboard: React.FC<Props> = ({
       </div>
 
       {/* Navigation Tabs */}
-      <div className="bg-white rounded-lg shadow-sm">
-        <div className="border-b border-gray-200">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm transition-colors">
+        <div className="border-b border-gray-200 dark:border-gray-700">
           <nav className="flex space-x-8 px-6">
             {[
               { id: 'overview', name: 'Overview', icon: BarChart3 },
@@ -179,7 +179,7 @@ const EnhancedWorkerAnalyticsDashboard: React.FC<Props> = ({
                   className={`flex items-center space-x-2 py-4 px-1 border-b-2 font-medium text-sm transition-colors ${
                     isActive
                       ? 'border-indigo-600 text-indigo-600'
-                      : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                      : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600'
                   }`}
                 >
                   <Icon className="h-4 w-4" />
@@ -191,7 +191,7 @@ const EnhancedWorkerAnalyticsDashboard: React.FC<Props> = ({
         </div>
 
         {/* Filters */}
-        <div className="p-6 border-b border-gray-200">
+        <div className="p-6 border-b border-gray-200 dark:border-gray-700">
           <div className="flex items-center space-x-4">
             <div className="flex-1 relative">
               <Search className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
@@ -200,13 +200,13 @@ const EnhancedWorkerAnalyticsDashboard: React.FC<Props> = ({
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="Search workers..."
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors"
               />
             </div>
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
+              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-2 focus:ring-indigo-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors"
             >
               <option value="efficiency">Sort by Efficiency</option>
               <option value="productivity">Sort by Productivity</option>
@@ -216,7 +216,7 @@ const EnhancedWorkerAnalyticsDashboard: React.FC<Props> = ({
             <select
               value={filterBy}
               onChange={(e) => setFilterBy(e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
+              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-2 focus:ring-indigo-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors"
             >
               <option value="all">All Activities</option>
               <option value="crafting">Crafting</option>
@@ -234,30 +234,30 @@ const EnhancedWorkerAnalyticsDashboard: React.FC<Props> = ({
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Team Metrics */}
             <div className="lg:col-span-1 space-y-6">
-              <div className="bg-white rounded-lg shadow-sm p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">📊 Team Metrics</h3>
+              <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6 transition-colors">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">📊 Team Metrics</h3>
                 <div className="space-y-4">
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-600">Average Efficiency</span>
-                    <span className="font-semibold">
+                    <span className="text-gray-600 dark:text-gray-400">Average Efficiency</span>
+                    <span className="font-semibold text-gray-900 dark:text-white">
                       {((workers.reduce((sum, w) => sum + w.sessionEfficiency, 0) / workers.length) * 100).toFixed(1)}%
                     </span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-600">Total Value Created</span>
-                    <span className="font-semibold">
+                    <span className="text-gray-600 dark:text-gray-400">Total Value Created</span>
+                    <span className="font-semibold text-gray-900 dark:text-white">
                       ${workers.reduce((sum, w) => sum + w.totalValueCreated, 0).toFixed(2)}
                     </span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-600">Active Recipes</span>
-                    <span className="font-semibold">
+                    <span className="text-gray-600 dark:text-gray-400">Active Recipes</span>
+                    <span className="font-semibold text-gray-900 dark:text-white">
                       {workers.filter(w => w.currentIntent?.type === 'crafting').length}
                     </span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-600">Completion Rate</span>
-                    <span className="font-semibold">
+                    <span className="text-gray-600 dark:text-gray-400">Completion Rate</span>
+                    <span className="font-semibold text-gray-900 dark:text-white">
                       {((workers.reduce((sum, w) => sum + w.productivityMetrics.completionRate, 0) / workers.length) * 100).toFixed(1)}%
                     </span>
                   </div>
@@ -265,8 +265,8 @@ const EnhancedWorkerAnalyticsDashboard: React.FC<Props> = ({
               </div>
 
               {/* Activity Distribution */}
-              <div className="bg-white rounded-lg shadow-sm p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">🎯 Activity Distribution</h3>
+              <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6 transition-colors">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">🎯 Activity Distribution</h3>
                 <div className="space-y-3">
                   {['crafting', 'planting', 'animal_care', 'maintenance', 'unknown'].map(activity => {
                     const count = workers.filter(w => w.currentIntent?.type === activity).length;
@@ -274,9 +274,9 @@ const EnhancedWorkerAnalyticsDashboard: React.FC<Props> = ({
                     return (
                       <div key={activity} className="flex items-center space-x-3">
                         <div className="w-3 h-3 rounded-full bg-gray-400"></div>
-                        <span className="flex-1 capitalize text-sm">{activity.replace('_', ' ')}</span>
-                        <span className="text-sm font-medium">{count}</span>
-                        <div className="w-16 bg-gray-200 rounded-full h-2">
+                        <span className="flex-1 capitalize text-sm text-gray-700 dark:text-gray-300">{activity.replace('_', ' ')}</span>
+                        <span className="text-sm font-medium text-gray-900 dark:text-white">{count}</span>
+                        <div className="w-16 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                           <div
                             className="bg-indigo-500 h-2 rounded-full"
                             style={{ width: `${percentage}%` }}
@@ -291,15 +291,15 @@ const EnhancedWorkerAnalyticsDashboard: React.FC<Props> = ({
 
             {/* Worker List */}
             <div className="lg:col-span-2">
-              <div className="bg-white rounded-lg shadow-sm">
-                <div className="p-6 border-b border-gray-200">
-                  <h3 className="text-lg font-semibold text-gray-900">👥 Worker Overview</h3>
+              <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm transition-colors">
+                <div className="p-6 border-b border-gray-200 dark:border-gray-700">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">👥 Worker Overview</h3>
                 </div>
-                <div className="divide-y divide-gray-200">
+                <div className="divide-y divide-gray-200 dark:divide-gray-700">
                   {filteredWorkers.map(worker => (
                     <div
                       key={worker.workerId}
-                      className="p-6 hover:bg-gray-50 cursor-pointer"
+                      className="p-6 hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer transition-colors"
                       onClick={() => onWorkerSelect?.(worker.workerId)}
                     >
                       <div className="flex items-center space-x-4">
@@ -310,7 +310,7 @@ const EnhancedWorkerAnalyticsDashboard: React.FC<Props> = ({
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center space-x-2">
-                            <h4 className="font-medium text-gray-900">{worker.workerName}</h4>
+                            <h4 className="font-medium text-gray-900 dark:text-white">{worker.workerName}</h4>
                             {worker.performanceFlags.map(flag => (
                               <span
                                 key={flag}
@@ -328,7 +328,7 @@ const EnhancedWorkerAnalyticsDashboard: React.FC<Props> = ({
                           <div className="flex items-center space-x-4 mt-1">
                             <div className="flex items-center space-x-1">
                               {getIntentIcon(worker.currentIntent?.type)}
-                              <span className="text-sm text-gray-600">
+                              <span className="text-sm text-gray-600 dark:text-gray-400">
                                 {worker.currentIntent?.purpose || 'No active intent'}
                               </span>
                             </div>
@@ -338,27 +338,27 @@ const EnhancedWorkerAnalyticsDashboard: React.FC<Props> = ({
                           </div>
                         </div>
                         <div className="flex-shrink-0 text-right">
-                          <div className="text-lg font-semibold text-gray-900">
+                          <div className="text-lg font-semibold text-gray-900 dark:text-white">
                             {(worker.sessionEfficiency * 100).toFixed(1)}%
                           </div>
-                          <div className="text-sm text-gray-500">Efficiency</div>
+                          <div className="text-sm text-gray-500 dark:text-gray-400">Efficiency</div>
                         </div>
                         <div className="flex-shrink-0 text-right">
-                          <div className="text-lg font-semibold text-gray-900">
+                          <div className="text-lg font-semibold text-gray-900 dark:text-white">
                             ${worker.totalValueCreated.toFixed(0)}
                           </div>
-                          <div className="text-sm text-gray-500">Value</div>
+                          <div className="text-sm text-gray-500 dark:text-gray-400">Value</div>
                         </div>
                       </div>
 
                       {/* Progress indicators */}
                       <div className="mt-3 flex items-center space-x-4">
                         <div className="flex-1">
-                          <div className="flex justify-between text-xs text-gray-600 mb-1">
+                          <div className="flex justify-between text-xs text-gray-600 dark:text-gray-400 mb-1">
                             <span>Session Progress</span>
                             <span>{worker.completedGoals.length} goals</span>
                           </div>
-                          <div className="w-full bg-gray-200 rounded-full h-2">
+                          <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                             <div
                               className="bg-indigo-500 h-2 rounded-full"
                               style={{ width: `${worker.sessionEfficiency * 100}%` }}
@@ -366,7 +366,7 @@ const EnhancedWorkerAnalyticsDashboard: React.FC<Props> = ({
                           </div>
                         </div>
                         {worker.currentIntent?.estimatedCompletionTime && (
-                          <div className="text-xs text-gray-500">
+                          <div className="text-xs text-gray-500 dark:text-gray-400">
                             <Clock className="w-3 h-3 inline mr-1" />
                             ETA: {new Date(worker.currentIntent.estimatedCompletionTime).toLocaleTimeString()}
                           </div>
@@ -383,13 +383,13 @@ const EnhancedWorkerAnalyticsDashboard: React.FC<Props> = ({
         {selectedTab === 'intents' && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredWorkers.filter(w => w.currentIntent).map(worker => (
-              <div key={worker.workerId} className="bg-white rounded-lg shadow-sm p-6">
+              <div key={worker.workerId} className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6 transition-colors">
                 <div className="flex items-center space-x-3 mb-4">
                   <div className="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center">
                     {getIntentIcon(worker.currentIntent?.type)}
                   </div>
                   <div>
-                    <h4 className="font-medium text-gray-900">{worker.workerName}</h4>
+                    <h4 className="font-medium text-gray-900 dark:text-white">{worker.workerName}</h4>
                     <span className={`px-2 py-1 text-xs rounded-full ${getConfidenceColor(worker.currentIntent?.confidence)}`}>
                       {worker.currentIntent?.confidence} confidence
                     </span>
@@ -398,16 +398,16 @@ const EnhancedWorkerAnalyticsDashboard: React.FC<Props> = ({
 
                 <div className="space-y-3">
                   <div>
-                    <h5 className="font-medium text-gray-900 mb-1">Current Purpose</h5>
-                    <p className="text-sm text-gray-600">{worker.currentIntent?.purpose}</p>
+                    <h5 className="font-medium text-gray-900 dark:text-white mb-1">Current Purpose</h5>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">{worker.currentIntent?.purpose}</p>
                   </div>
 
                   {worker.currentIntent?.nextExpectedActions.length > 0 && (
                     <div>
-                      <h5 className="font-medium text-gray-900 mb-2">Next Actions</h5>
+                      <h5 className="font-medium text-gray-900 dark:text-white mb-2">Next Actions</h5>
                       <ul className="space-y-1">
                         {worker.currentIntent.nextExpectedActions.map((action, index) => (
-                          <li key={index} className="flex items-center space-x-2 text-sm text-gray-600">
+                          <li key={index} className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
                             <ArrowUp className="w-3 h-3" />
                             <span>{action}</span>
                           </li>
@@ -418,13 +418,13 @@ const EnhancedWorkerAnalyticsDashboard: React.FC<Props> = ({
 
                   {worker.predictiveInsights.resourceNeeds.length > 0 && (
                     <div>
-                      <h5 className="font-medium text-gray-900 mb-2">Resource Needs</h5>
+                      <h5 className="font-medium text-gray-900 dark:text-white mb-2">Resource Needs</h5>
                       <div className="space-y-1">
                         {worker.predictiveInsights.resourceNeeds.map((need, index) => (
                           <div key={index} className="flex items-center justify-between text-sm">
-                            <span className="text-gray-600">{need.itemName}</span>
+                            <span className="text-gray-600 dark:text-gray-400">{need.itemName}</span>
                             <div className="flex items-center space-x-2">
-                              <span className="font-medium">{need.quantity}</span>
+                              <span className="font-medium text-gray-900 dark:text-white">{need.quantity}</span>
                               <span className={`px-2 py-1 text-xs rounded-full ${
                                 need.urgency === 'high' ? 'bg-red-100 text-red-800' :
                                 need.urgency === 'medium' ? 'bg-yellow-100 text-yellow-800' :
@@ -447,14 +447,14 @@ const EnhancedWorkerAnalyticsDashboard: React.FC<Props> = ({
         {selectedTab === 'performance' && (
           <div className="space-y-6">
             {filteredWorkers.map(worker => (
-              <div key={worker.workerId} className="bg-white rounded-lg shadow-sm p-6">
+              <div key={worker.workerId} className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6 transition-colors">
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center space-x-3">
                     <div className="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center">
                       <User className="w-5 h-5 text-indigo-600" />
                     </div>
                     <div>
-                      <h4 className="font-medium text-gray-900">{worker.workerName}</h4>
+                      <h4 className="font-medium text-gray-900 dark:text-white">{worker.workerName}</h4>
                       <div className="flex items-center space-x-2">
                         {worker.performanceFlags.map(flag => (
                           <span
@@ -468,43 +468,43 @@ const EnhancedWorkerAnalyticsDashboard: React.FC<Props> = ({
                     </div>
                   </div>
                   <div className="text-right">
-                    <div className="text-2xl font-bold text-gray-900">
+                    <div className="text-2xl font-bold text-gray-900 dark:text-white">
                       {(worker.sessionEfficiency * 100).toFixed(1)}%
                     </div>
-                    <div className="text-sm text-gray-500">Overall Efficiency</div>
+                    <div className="text-sm text-gray-500 dark:text-gray-400">Overall Efficiency</div>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                  <div className="text-center p-4 bg-gray-50 rounded-lg">
-                    <div className="text-2xl font-bold text-gray-900">
+                  <div className="text-center p-4 bg-gray-50 dark:bg-gray-700 rounded-lg transition-colors">
+                    <div className="text-2xl font-bold text-gray-900 dark:text-white">
                       {worker.productivityMetrics.activitiesPerHour.toFixed(1)}
                     </div>
-                    <div className="text-sm text-gray-500">Activities/Hour</div>
+                    <div className="text-sm text-gray-500 dark:text-gray-400">Activities/Hour</div>
                   </div>
-                  <div className="text-center p-4 bg-gray-50 rounded-lg">
-                    <div className="text-2xl font-bold text-gray-900">
+                  <div className="text-center p-4 bg-gray-50 dark:bg-gray-700 rounded-lg transition-colors">
+                    <div className="text-2xl font-bold text-gray-900 dark:text-white">
                       {(worker.productivityMetrics.completionRate * 100).toFixed(1)}%
                     </div>
-                    <div className="text-sm text-gray-500">Completion Rate</div>
+                    <div className="text-sm text-gray-500 dark:text-gray-400">Completion Rate</div>
                   </div>
-                  <div className="text-center p-4 bg-gray-50 rounded-lg">
-                    <div className="text-2xl font-bold text-gray-900">
+                  <div className="text-center p-4 bg-gray-50 dark:bg-gray-700 rounded-lg transition-colors">
+                    <div className="text-2xl font-bold text-gray-900 dark:text-white">
                       {(worker.productivityMetrics.resourceUtilizationScore * 100).toFixed(1)}%
                     </div>
-                    <div className="text-sm text-gray-500">Resource Efficiency</div>
+                    <div className="text-sm text-gray-500 dark:text-gray-400">Resource Efficiency</div>
                   </div>
-                  <div className="text-center p-4 bg-gray-50 rounded-lg">
-                    <div className="text-2xl font-bold text-gray-900">
+                  <div className="text-center p-4 bg-gray-50 dark:bg-gray-700 rounded-lg transition-colors">
+                    <div className="text-2xl font-bold text-gray-900 dark:text-white">
                       ${worker.totalValueCreated.toFixed(0)}
                     </div>
-                    <div className="text-sm text-gray-500">Value Created</div>
+                    <div className="text-sm text-gray-500 dark:text-gray-400">Value Created</div>
                   </div>
                 </div>
 
                 {/* Time Distribution Chart */}
                 <div>
-                  <h5 className="font-medium text-gray-900 mb-3">Time Distribution</h5>
+                  <h5 className="font-medium text-gray-900 dark:text-white mb-3">Time Distribution</h5>
                   <div className="space-y-2">
                     {Object.entries(worker.timeSpentByActivity).map(([activity, time]) => {
                       const totalTime = Object.values(worker.timeSpentByActivity).reduce((sum, t) => sum + t, 0);
@@ -513,15 +513,15 @@ const EnhancedWorkerAnalyticsDashboard: React.FC<Props> = ({
                       return (
                         <div key={activity} className="flex items-center space-x-3">
                           <div className={`w-3 h-3 rounded-full ${getActivityColor(activity)}`}></div>
-                          <span className="flex-1 capitalize text-sm">{activity.replace(/([A-Z])/g, ' $1')}</span>
-                          <span className="text-sm font-medium">{time.toFixed(0)}min</span>
-                          <div className="w-24 bg-gray-200 rounded-full h-2">
+                          <span className="flex-1 capitalize text-sm text-gray-700 dark:text-gray-300">{activity.replace(/([A-Z])/g, ' $1')}</span>
+                          <span className="text-sm font-medium text-gray-900 dark:text-white">{time.toFixed(0)}min</span>
+                          <div className="w-24 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                             <div
                               className={`h-2 rounded-full ${getActivityColor(activity)}`}
                               style={{ width: `${percentage}%` }}
                             ></div>
                           </div>
-                          <span className="text-xs text-gray-500 w-12">{percentage.toFixed(1)}%</span>
+                          <span className="text-xs text-gray-500 dark:text-gray-400 w-12">{percentage.toFixed(1)}%</span>
                         </div>
                       );
                     })}
@@ -535,37 +535,37 @@ const EnhancedWorkerAnalyticsDashboard: React.FC<Props> = ({
         {selectedTab === 'specializations' && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredWorkers.map(worker => (
-              <div key={worker.workerId} className="bg-white rounded-lg shadow-sm p-6">
+              <div key={worker.workerId} className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6 transition-colors">
                 <div className="flex items-center space-x-3 mb-4">
                   <div className="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center">
                     <Award className="w-5 h-5 text-indigo-600" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-gray-900">{worker.workerName}</h4>
-                    <div className="text-sm text-gray-500">
+                    <h4 className="font-medium text-gray-900 dark:text-white">{worker.workerName}</h4>
+                    <div className="text-sm text-gray-500 dark:text-gray-400">
                       Specialization Score: {(worker.productivityMetrics.specializationScore * 100).toFixed(1)}%
                     </div>
                   </div>
                 </div>
 
                 <div className="space-y-4">
-                  <h5 className="font-medium text-gray-900">Skill Areas</h5>
+                  <h5 className="font-medium text-gray-900 dark:text-white">Skill Areas</h5>
                   {worker.workerSpecializations.map((spec, index) => (
                     <div key={index} className="space-y-2">
                       <div className="flex items-center justify-between">
-                        <span className="capitalize text-sm font-medium">{spec.area.replace('_', ' ')}</span>
+                        <span className="capitalize text-sm font-medium text-gray-900 dark:text-white">{spec.area.replace('_', ' ')}</span>
                         <div className="flex items-center space-x-2">
-                          <span className="text-sm text-gray-600">{spec.totalActivities} activities</span>
-                          <span className="text-sm font-medium">{(spec.skillLevel * 100).toFixed(0)}%</span>
+                          <span className="text-sm text-gray-600 dark:text-gray-400">{spec.totalActivities} activities</span>
+                          <span className="text-sm font-medium text-gray-900 dark:text-white">{(spec.skillLevel * 100).toFixed(0)}%</span>
                         </div>
                       </div>
-                      <div className="w-full bg-gray-200 rounded-full h-2">
+                      <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                         <div
                           className="bg-indigo-500 h-2 rounded-full"
                           style={{ width: `${spec.skillLevel * 100}%` }}
                         ></div>
                       </div>
-                      <div className="text-xs text-gray-500">
+                      <div className="text-xs text-gray-500 dark:text-gray-400">
                         Avg Efficiency: {(spec.averageEfficiency * 100).toFixed(1)}%
                       </div>
                     </div>
@@ -582,24 +582,24 @@ const EnhancedWorkerAnalyticsDashboard: React.FC<Props> = ({
               w.predictiveInsights.recommendations.length > 0 ||
               w.predictiveInsights.riskFactors.length > 0
             ).map(worker => (
-              <div key={worker.workerId} className="bg-white rounded-lg shadow-sm p-6">
+              <div key={worker.workerId} className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6 transition-colors">
                 <div className="flex items-center space-x-3 mb-4">
                   <div className="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center">
                     <Lightbulb className="w-5 h-5 text-indigo-600" />
                   </div>
-                  <h4 className="font-medium text-gray-900">{worker.workerName}</h4>
+                  <h4 className="font-medium text-gray-900 dark:text-white">{worker.workerName}</h4>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-6">
                   {worker.predictiveInsights.recommendations.length > 0 && (
                     <div>
-                      <h5 className="flex items-center space-x-2 font-medium text-gray-900 mb-3">
+                      <h5 className="flex items-center space-x-2 font-medium text-gray-900 dark:text-white mb-3">
                         <CheckCircle className="w-4 h-4 text-green-600" />
                         <span>Recommendations</span>
                       </h5>
                       <ul className="space-y-2">
                         {worker.predictiveInsights.recommendations.map((rec, index) => (
-                          <li key={index} className="flex items-start space-x-2 text-sm text-gray-600">
+                          <li key={index} className="flex items-start space-x-2 text-sm text-gray-600 dark:text-gray-400">
                             <ArrowUp className="w-3 h-3 mt-0.5 text-green-600" />
                             <span>{rec}</span>
                           </li>
@@ -610,13 +610,13 @@ const EnhancedWorkerAnalyticsDashboard: React.FC<Props> = ({
 
                   {worker.predictiveInsights.riskFactors.length > 0 && (
                     <div>
-                      <h5 className="flex items-center space-x-2 font-medium text-gray-900 mb-3">
+                      <h5 className="flex items-center space-x-2 font-medium text-gray-900 dark:text-white mb-3">
                         <AlertTriangle className="w-4 h-4 text-yellow-600" />
                         <span>Risk Factors</span>
                       </h5>
                       <ul className="space-y-2">
                         {worker.predictiveInsights.riskFactors.map((risk, index) => (
-                          <li key={index} className="flex items-start space-x-2 text-sm text-gray-600">
+                          <li key={index} className="flex items-start space-x-2 text-sm text-gray-600 dark:text-gray-400">
                             <AlertTriangle className="w-3 h-3 mt-0.5 text-yellow-600" />
                             <span>{risk}</span>
                           </li>
@@ -627,53 +627,53 @@ const EnhancedWorkerAnalyticsDashboard: React.FC<Props> = ({
                 </div>
 
                 {/* Goals and Achievements */}
-                <div className="mt-6 pt-6 border-t border-gray-200">
+                <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <h5 className="flex items-center space-x-2 font-medium text-gray-900 mb-3">
+                      <h5 className="flex items-center space-x-2 font-medium text-gray-900 dark:text-white mb-3">
                         <Target className="w-4 h-4 text-green-600" />
                         <span>Completed Goals ({worker.completedGoals.length})</span>
                       </h5>
                       {worker.completedGoals.length > 0 ? (
                         <ul className="space-y-1">
                           {worker.completedGoals.slice(0, 3).map((goal, index) => (
-                            <li key={index} className="text-sm text-gray-600 flex items-center space-x-2">
+                            <li key={index} className="text-sm text-gray-600 dark:text-gray-400 flex items-center space-x-2">
                               <CheckCircle className="w-3 h-3 text-green-600" />
                               <span>{goal}</span>
                             </li>
                           ))}
                           {worker.completedGoals.length > 3 && (
-                            <li className="text-xs text-gray-500">
+                            <li className="text-xs text-gray-500 dark:text-gray-400">
                               +{worker.completedGoals.length - 3} more...
                             </li>
                           )}
                         </ul>
                       ) : (
-                        <p className="text-sm text-gray-500">No goals completed yet</p>
+                        <p className="text-sm text-gray-500 dark:text-gray-400">No goals completed yet</p>
                       )}
                     </div>
 
                     <div>
-                      <h5 className="flex items-center space-x-2 font-medium text-gray-900 mb-3">
+                      <h5 className="flex items-center space-x-2 font-medium text-gray-900 dark:text-white mb-3">
                         <XCircle className="w-4 h-4 text-red-600" />
                         <span>Abandoned Activities ({worker.abandonedActivities.length})</span>
                       </h5>
                       {worker.abandonedActivities.length > 0 ? (
                         <ul className="space-y-1">
                           {worker.abandonedActivities.slice(0, 3).map((activity, index) => (
-                            <li key={index} className="text-sm text-gray-600 flex items-center space-x-2">
+                            <li key={index} className="text-sm text-gray-600 dark:text-gray-400 flex items-center space-x-2">
                               <XCircle className="w-3 h-3 text-red-600" />
                               <span>{activity}</span>
                             </li>
                           ))}
                           {worker.abandonedActivities.length > 3 && (
-                            <li className="text-xs text-gray-500">
+                            <li className="text-xs text-gray-500 dark:text-gray-400">
                               +{worker.abandonedActivities.length - 3} more...
                             </li>
                           )}
                         </ul>
                       ) : (
-                        <p className="text-sm text-gray-500">No abandoned activities</p>
+                        <p className="text-sm text-gray-500 dark:text-gray-400">No abandoned activities</p>
                       )}
                     </div>
                   </div>

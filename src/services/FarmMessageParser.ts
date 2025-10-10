@@ -418,11 +418,11 @@ export class FarmMessageParser {
   private parseSaleMessage(content: string, base: ParsedActivity): ParsedActivity {
     const salePattern = /vendeu\s+(\d+)\s+animais?\s+no\s+matadouro/i;
     const match = content.match(salePattern);
-    
+
     if (match) {
       const valueMatch = content.match(/\$?([\d,\.]+)/);
       const animalCount = parseInt(match[1]);
-      
+
       return {
         ...base,
         tipo: 'venda',

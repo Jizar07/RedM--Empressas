@@ -205,10 +205,10 @@ export default function PlayerManagement() {
     return (
       <div className="card p-6">
         <div className="animate-pulse">
-          <div className="h-6 bg-gray-200 rounded mb-4"></div>
+          <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded mb-4"></div>
           <div className="space-y-3">
             {[...Array(5)].map((_, i) => (
-              <div key={i} className="h-12 bg-gray-200 rounded"></div>
+              <div key={i} className="h-12 bg-gray-200 dark:bg-gray-700 rounded"></div>
             ))}
           </div>
         </div>
@@ -219,10 +219,10 @@ export default function PlayerManagement() {
   return (
     <div className="card p-6">
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-bold text-gray-900">Player Management</h2>
-        <div className="flex items-center space-x-2 text-sm text-gray-600">
+        <h2 className="text-xl font-bold text-gray-900 dark:text-white">Player Management</h2>
+        <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
           <span>{filteredAndSortedPlayers.length} players</span>
-          <span className="text-gray-400">•</span>
+          <span className="text-gray-400 dark:text-gray-500">•</span>
           <span>{knownPlayers.length} known</span>
         </div>
       </div>
@@ -238,7 +238,7 @@ export default function PlayerManagement() {
               placeholder="Search players..."
               value={filters.search}
               onChange={(e) => setFilters(prev => ({ ...prev, search: e.target.value }))}
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-redm-500 focus:border-transparent"
+              className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-redm-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
             />
           </div>
         </div>
@@ -272,11 +272,11 @@ export default function PlayerManagement() {
       <div className="overflow-x-auto">
         <table className="w-full">
           <thead>
-            <tr className="border-b border-gray-200">
+            <tr className="border-b border-gray-200 dark:border-gray-700">
               <th className="text-left py-3 px-4">
                 <button
                   onClick={() => handleSort('name')}
-                  className="flex items-center space-x-1 hover:text-redm-600 font-medium"
+                  className="flex items-center space-x-1 hover:text-redm-600 dark:hover:text-redm-400 font-medium text-gray-700 dark:text-gray-300 transition-colors"
                 >
                   <span>Player</span>
                   {sortField === 'name' && (
@@ -289,7 +289,7 @@ export default function PlayerManagement() {
               <th className="text-left py-3 px-4">
                 <button
                   onClick={() => handleSort('id')}
-                  className="flex items-center space-x-1 hover:text-redm-600 font-medium"
+                  className="flex items-center space-x-1 hover:text-redm-600 dark:hover:text-redm-400 font-medium text-gray-700 dark:text-gray-300 transition-colors"
                 >
                   <span>Boot</span>
                   {sortField === 'id' && (
@@ -302,7 +302,7 @@ export default function PlayerManagement() {
               <th className="text-left py-3 px-4">
                 <button
                   onClick={() => handleSort('ping')}
-                  className="flex items-center space-x-1 hover:text-redm-600 font-medium"
+                  className="flex items-center space-x-1 hover:text-redm-600 dark:hover:text-redm-400 font-medium text-gray-700 dark:text-gray-300 transition-colors"
                 >
                   <span>Ping</span>
                   {sortField === 'ping' && (
@@ -312,12 +312,12 @@ export default function PlayerManagement() {
                   )}
                 </button>
               </th>
-              <th className="text-left py-3 px-4">Actions</th>
+              <th className="text-left py-3 px-4 text-gray-700 dark:text-gray-300">Actions</th>
             </tr>
           </thead>
           <tbody>
             {filteredAndSortedPlayers.map((player) => (
-              <tr key={player.id} className="border-b border-gray-100 hover:bg-gray-50">
+              <tr key={player.id} className="border-b border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
                 {editingPlayer === player.name ? (
                   <EditPlayerRow
                     editForm={editForm}
@@ -342,7 +342,7 @@ export default function PlayerManagement() {
         </table>
 
         {filteredAndSortedPlayers.length === 0 && (
-          <div className="text-center py-8 text-gray-500">
+          <div className="text-center py-8 text-gray-500 dark:text-gray-400">
             No players found matching current filters
           </div>
         )}
@@ -368,16 +368,16 @@ function PlayerRow({
       <td className="py-3 px-4">
         <div>
           <div className="flex items-center space-x-2">
-            <span className="font-medium">{player.displayName || player.name}</span>
+            <span className="font-medium text-gray-900 dark:text-white">{player.displayName || player.name}</span>
             {player.isKnown && <Crown className="h-4 w-4 text-yellow-500" />}
           </div>
           {player.displayName && player.displayName !== player.name && (
-            <div className="text-sm text-gray-500">({player.name})</div>
+            <div className="text-sm text-gray-500 dark:text-gray-400">({player.name})</div>
           )}
         </div>
       </td>
       <td className="py-3 px-4">
-        <div className="text-sm">
+        <div className="text-sm text-gray-700 dark:text-gray-300">
           <div className="font-mono">{player.id}</div>
           {player.mailId && <div>Mail: {player.mailId}</div>}
         </div>
@@ -432,21 +432,21 @@ function EditPlayerRow({
               placeholder="Display Name"
               value={editForm.displayName || ''}
               onChange={(e) => setEditForm(prev => ({ ...prev, displayName: e.target.value }))}
-              className="px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-redm-500"
+              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded focus:ring-2 focus:ring-redm-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
             />
             <input
               type="text"
               placeholder="Mail ID"
               value={editForm.mailId || ''}
               onChange={(e) => setEditForm(prev => ({ ...prev, mailId: e.target.value }))}
-              className="px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-redm-500"
+              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded focus:ring-2 focus:ring-redm-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
             />
           </div>
           <textarea
             placeholder="Notes"
             value={editForm.notes || ''}
             onChange={(e) => setEditForm(prev => ({ ...prev, notes: e.target.value }))}
-            className="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-redm-500"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded focus:ring-2 focus:ring-redm-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
             rows={2}
           />
           <div className="flex items-center space-x-2">

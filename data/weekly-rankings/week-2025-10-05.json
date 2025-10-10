@@ -792,7 +792,7 @@
   "ferroviaRankings": [
     {
       "workerId": "unknown",
-      "workerName": "Endo D. Barth",
+      "workerName": "Bob Eastwood",
       "plants": {
         "thisWeek": 0,
         "allTime": 0
@@ -802,10 +802,10 @@
         "allTime": 0
       },
       "ferrovia": {
-        "thisWeek": 56,
-        "allTime": 964
+        "thisWeek": 72,
+        "allTime": 980
       },
-      "lastActivity": "2025-10-09T17:20:07.523Z"
+      "lastActivity": "2025-10-09T23:52:11.236Z"
     },
     {
       "workerId": "949397147030274059",
@@ -1114,5 +1114,5 @@
       "lastActivity": "2025-10-08T16:36:59.318Z"
     }
   ],
-  "lastUpdated": "2025-10-09T17:20:07.523Z"
+  "lastUpdated": "2025-10-09T23:52:11.236Z"
 }

@@ -135,7 +135,7 @@ export default function FarmServiceOverview() {
     return (
       <div className="flex items-center justify-center p-8">
         <RefreshCw className="h-8 w-8 animate-spin text-blue-500" />
-        <span className="ml-2 text-gray-600">Loading farm service data...</span>
+        <span className="ml-2 text-gray-600 dark:text-gray-400">Loading farm service data...</span>
       </div>
     );
   }
@@ -162,7 +162,7 @@ export default function FarmServiceOverview() {
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-gray-900">Farm Service Overview</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Farm Service Overview</h2>
         <button
           onClick={fetchData}
           className="flex items-center px-3 py-2 text-sm bg-blue-600 text-white rounded hover:bg-blue-700"
@@ -175,42 +175,42 @@ export default function FarmServiceOverview() {
       {/* Statistics Cards */}
       {overview && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm transition-colors">
             <div className="flex items-center">
               <Users className="h-8 w-8 text-blue-500" />
               <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600">Active Players</p>
-                <p className="text-2xl font-bold text-gray-900">{overview.totalPlayers}</p>
+                <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Active Players</p>
+                <p className="text-2xl font-bold text-gray-900 dark:text-white">{overview.totalPlayers}</p>
               </div>
             </div>
           </div>
 
-          <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm transition-colors">
             <div className="flex items-center">
               <DollarSign className="h-8 w-8 text-green-500" />
               <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600">Total Earnings</p>
-                <p className="text-2xl font-bold text-gray-900">${overview.totalEarnings.toFixed(2)}</p>
+                <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Total Earnings</p>
+                <p className="text-2xl font-bold text-gray-900 dark:text-white">${overview.totalEarnings.toFixed(2)}</p>
               </div>
             </div>
           </div>
 
-          <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm transition-colors">
             <div className="flex items-center">
               <Activity className="h-8 w-8 text-purple-500" />
               <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600">Total Services</p>
-                <p className="text-2xl font-bold text-gray-900">{overview.totalServices}</p>
+                <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Total Services</p>
+                <p className="text-2xl font-bold text-gray-900 dark:text-white">{overview.totalServices}</p>
               </div>
             </div>
           </div>
 
-          <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm transition-colors">
             <div className="flex items-center">
               <TrendingUp className="h-8 w-8 text-orange-500" />
               <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600">Service Types</p>
-                <p className="text-sm text-gray-900">
+                <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Service Types</p>
+                <p className="text-sm text-gray-900 dark:text-white">
                   🐄 {overview.totalAnimalServices} | 🌾 {overview.totalPlantServices}
                 </p>
               </div>
@@ -222,56 +222,56 @@ export default function FarmServiceOverview() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Top Players */}
         {overview && (
-          <div className="bg-white rounded-lg border border-gray-200 shadow-sm">
-            <div className="px-6 py-4 border-b border-gray-200">
-              <h3 className="text-lg font-semibold text-gray-900">Top Players</h3>
+          <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm transition-colors">
+            <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Top Players</h3>
             </div>
             <div className="p-6">
               <div className="space-y-4">
                 {overview.players.slice(0, 10).map((player, index) => (
                   <div key={player.playerName}>
-                    <div 
-                      className="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg cursor-pointer"
+                    <div
+                      className="flex items-center justify-between p-3 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg cursor-pointer transition-colors"
                       onClick={() => fetchPlayerReceipts(player.playerName)}
                     >
                       <div className="flex items-center">
-                        {expandedPlayer === player.playerName ? 
-                          <ChevronDown className="h-4 w-4 text-gray-400 mr-2" /> :
-                          <ChevronRight className="h-4 w-4 text-gray-400 mr-2" />
+                        {expandedPlayer === player.playerName ?
+                          <ChevronDown className="h-4 w-4 text-gray-400 dark:text-gray-500 mr-2" /> :
+                          <ChevronRight className="h-4 w-4 text-gray-400 dark:text-gray-500 mr-2" />
                         }
                         <div className="flex items-center">
-                          <span className="text-sm font-medium text-gray-500 mr-3">#{index + 1}</span>
+                          <span className="text-sm font-medium text-gray-500 dark:text-gray-400 mr-3">#{index + 1}</span>
                           <div>
-                            <p className="font-medium text-gray-900">{player.playerName}</p>
-                            <p className="text-sm text-gray-500">
+                            <p className="font-medium text-gray-900 dark:text-white">{player.playerName}</p>
+                            <p className="text-sm text-gray-500 dark:text-gray-400">
                               {player.totalServices} services • Last: {formatDate(player.lastService)}
                             </p>
                           </div>
                         </div>
                       </div>
                       <div className="text-right">
-                        <p className="font-semibold text-gray-900">${player.totalEarnings.toFixed(2)}</p>
-                        <p className="text-sm text-gray-500">
+                        <p className="font-semibold text-gray-900 dark:text-white">${player.totalEarnings.toFixed(2)}</p>
+                        <p className="text-sm text-gray-500 dark:text-gray-400">
                           🐄 {player.animalServices} | 🌾 {player.plantServices}
                         </p>
                       </div>
                     </div>
-                    
+
                     {/* Player Receipts */}
                     {expandedPlayer === player.playerName && playerReceipts[player.playerName] && (
-                      <div className="ml-8 mt-2 space-y-2 border-l-2 border-gray-200 pl-4">
+                      <div className="ml-8 mt-2 space-y-2 border-l-2 border-gray-200 dark:border-gray-700 pl-4">
                         {playerReceipts[player.playerName].slice(0, 5).map((receipt) => (
                           <div key={receipt.receiptId} className="flex items-center justify-between py-2">
                             <div className="flex items-center">
                               {getStatusIcon(receipt)}
-                              <span className="ml-2 text-sm">
-                                #{receipt.receiptId} - {receipt.serviceType === 'animal' ? '🐄' : '🌾'} 
+                              <span className="ml-2 text-sm text-gray-900 dark:text-white">
+                                #{receipt.receiptId} - {receipt.serviceType === 'animal' ? '🐄' : '🌾'}
                                 {receipt.quantity} {receipt.animalType || receipt.plantName}
                               </span>
                             </div>
                             <div className="text-right">
-                              <p className="text-sm font-medium">${receipt.playerPayment.toFixed(2)}</p>
-                              <p className="text-xs text-gray-500">{getStatusText(receipt)}</p>
+                              <p className="text-sm font-medium text-gray-900 dark:text-white">${receipt.playerPayment.toFixed(2)}</p>
+                              <p className="text-xs text-gray-500 dark:text-gray-400">{getStatusText(receipt)}</p>
                             </div>
                           </div>
                         ))}
@@ -285,29 +285,29 @@ export default function FarmServiceOverview() {
         )}
 
         {/* Recent Activity */}
-        <div className="bg-white rounded-lg border border-gray-200 shadow-sm">
-          <div className="px-6 py-4 border-b border-gray-200">
-            <h3 className="text-lg font-semibold text-gray-900">Recent Activity</h3>
+        <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm transition-colors">
+          <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Recent Activity</h3>
           </div>
           <div className="p-6">
             <div className="space-y-4">
               {recentReceipts.map((receipt) => (
-                <div key={receipt.receiptId} className="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg">
+                <div key={receipt.receiptId} className="flex items-center justify-between p-3 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg transition-colors">
                   <div className="flex items-center">
                     {getStatusIcon(receipt)}
                     <div className="ml-3">
-                      <p className="text-sm font-medium text-gray-900">
+                      <p className="text-sm font-medium text-gray-900 dark:text-white">
                         {receipt.playerName}
                       </p>
-                      <p className="text-sm text-gray-500">
+                      <p className="text-sm text-gray-500 dark:text-gray-400">
                         {receipt.serviceType === 'animal' ? '🐄' : '🌾'} {receipt.quantity} {receipt.animalType || receipt.plantName}
                       </p>
-                      <p className="text-xs text-gray-400">{formatDate(receipt.timestamp)}</p>
+                      <p className="text-xs text-gray-400 dark:text-gray-500">{formatDate(receipt.timestamp)}</p>
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="text-sm font-semibold text-gray-900">${receipt.playerPayment.toFixed(2)}</p>
-                    <p className="text-xs text-gray-500">#{receipt.receiptId}</p>
+                    <p className="text-sm font-semibold text-gray-900 dark:text-white">${receipt.playerPayment.toFixed(2)}</p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">#{receipt.receiptId}</p>
                   </div>
                 </div>
               ))}

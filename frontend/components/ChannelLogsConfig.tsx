@@ -135,14 +135,14 @@ export default function ChannelLogsConfig() {
             <MessageSquare className="h-6 w-6 text-white" />
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">Channel Logs Configuration</h2>
-            <p className="text-gray-600">Configure Discord channels to send logs to external systems</p>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Channel Logs Configuration</h2>
+            <p className="text-gray-600 dark:text-gray-400">Configure Discord channels to send logs to external systems</p>
           </div>
         </div>
 
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-          <h3 className="font-semibold text-blue-900 mb-2">How it works:</h3>
-          <ul className="text-sm text-blue-800 space-y-1">
+        <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 transition-colors">
+          <h3 className="font-semibold text-blue-900 dark:text-blue-300 mb-2">How it works:</h3>
+          <ul className="text-sm text-blue-800 dark:text-blue-300 space-y-1">
             <li>• Bot monitors configured Discord channels for new messages</li>
             <li>• Messages are sent to your specified endpoints in real-time</li>
             <li>• Frontend (3051): Real-time dashboard display & activity tracking</li>
@@ -152,15 +152,15 @@ export default function ChannelLogsConfig() {
         </div>
         
         {/* New Channel Alert */}
-        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mt-4">
+        <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-4 mt-4 transition-colors">
           <div className="flex items-start space-x-3">
-            <AlertCircle className="h-5 w-5 text-yellow-600 mt-0.5" />
+            <AlertCircle className="h-5 w-5 text-yellow-600 dark:text-yellow-400 mt-0.5" />
             <div>
-              <h3 className="font-semibold text-yellow-900 mb-1">New Development Channel Available!</h3>
-              <p className="text-sm text-yellow-800">
-                The devs now send logs to channel <code className="bg-yellow-100 px-1 rounded">1409214475403526174</code>
+              <h3 className="font-semibold text-yellow-900 dark:text-yellow-300 mb-1">New Development Channel Available!</h3>
+              <p className="text-sm text-yellow-800 dark:text-yellow-300">
+                The devs now send logs to channel <code className="bg-yellow-100 dark:bg-yellow-900/40 px-1 rounded">1409214475403526174</code>
               </p>
-              <p className="text-sm text-yellow-700 mt-1">
+              <p className="text-sm text-yellow-700 dark:text-yellow-400 mt-1">
                 Configure this channel below to receive real-time farm activity updates directly from the game server.
               </p>
             </div>
@@ -171,11 +171,11 @@ export default function ChannelLogsConfig() {
       {/* Current Mappings */}
       <div className="card p-6">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-semibold text-gray-900">Active Channel Mappings</h3>
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Active Channel Mappings</h3>
           <button
             onClick={saveMappings}
             disabled={saving}
-            className="flex items-center space-x-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:opacity-50"
+            className="flex items-center space-x-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:opacity-50 transition-colors"
           >
             <Save className="h-4 w-4" />
             <span>{saving ? 'Saving...' : 'Save All'}</span>
@@ -185,28 +185,28 @@ export default function ChannelLogsConfig() {
         {isLoading ? (
           <div className="text-center py-8">
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto"></div>
-            <p className="text-gray-600 mt-2">Loading mappings...</p>
+            <p className="text-gray-600 dark:text-gray-400 mt-2">Loading mappings...</p>
           </div>
         ) : mappings.length === 0 ? (
-          <div className="text-center py-8 text-gray-500">
-            <MessageSquare className="h-12 w-12 mx-auto mb-3 text-gray-300" />
+          <div className="text-center py-8 text-gray-500 dark:text-gray-400">
+            <MessageSquare className="h-12 w-12 mx-auto mb-3 text-gray-300 dark:text-gray-600" />
             <p>No channel mappings configured yet</p>
             <p className="text-sm">Add your first mapping below</p>
           </div>
         ) : (
           <div className="space-y-4">
             {mappings.map((mapping) => (
-              <div key={mapping.id} className="border border-gray-200 rounded-lg p-4">
+              <div key={mapping.id} className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 transition-colors">
                 <div className="flex items-start justify-between">
                   <div className="flex-1 space-y-3">
                     <div className="flex items-center space-x-4">
                       <div className="flex items-center space-x-2">
-                        <span className="text-sm font-medium text-gray-700">Channel ID:</span>
+                        <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Channel ID:</span>
                         <input
                           type="text"
                           value={mapping.channelId}
                           onChange={(e) => updateMapping(mapping.id, { channelId: e.target.value })}
-                          className="px-3 py-1 border border-gray-300 rounded text-sm font-mono"
+                          className="px-3 py-1 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded text-sm font-mono transition-colors"
                           placeholder="1234567890123456789"
                         />
                       </div>
@@ -215,24 +215,24 @@ export default function ChannelLogsConfig() {
                           type="checkbox"
                           checked={mapping.enabled}
                           onChange={(e) => updateMapping(mapping.id, { enabled: e.target.checked })}
-                          className="rounded border-gray-300"
+                          className="rounded border-gray-300 dark:border-gray-600"
                         />
-                        <span className="text-sm text-gray-700">Enabled</span>
+                        <span className="text-sm text-gray-700 dark:text-gray-300">Enabled</span>
                       </div>
                     </div>
 
                     <div className="flex items-center space-x-2">
-                      <span className="text-sm font-medium text-gray-700">Endpoint:</span>
+                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Endpoint:</span>
                       <input
                         type="text"
                         value={mapping.systemEndpoint}
                         onChange={(e) => updateMapping(mapping.id, { systemEndpoint: e.target.value })}
-                        className="flex-1 px-3 py-1 border border-gray-300 rounded text-sm font-mono"
+                        className="flex-1 px-3 py-1 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded text-sm font-mono transition-colors"
                         placeholder="http://localhost:3050/api/webhook/channel-logs"
                       />
                       <button
                         onClick={() => testEndpoint(mapping.systemEndpoint)}
-                        className="px-3 py-1 text-xs bg-gray-100 text-gray-700 rounded hover:bg-gray-200"
+                        className="px-3 py-1 text-xs bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
                       >
                         Test
                       </button>
@@ -244,7 +244,7 @@ export default function ChannelLogsConfig() {
                         type="text"
                         value={mapping.description || ''}
                         onChange={(e) => updateMapping(mapping.id, { description: e.target.value })}
-                        className="w-full px-3 py-1 border border-gray-300 rounded text-sm"
+                        className="w-full px-3 py-1 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded text-sm transition-colors"
                         placeholder="Description (optional)"
                       />
                     </div>
@@ -252,7 +252,7 @@ export default function ChannelLogsConfig() {
 
                   <button
                     onClick={() => removeMapping(mapping.id)}
-                    className="ml-4 p-2 text-red-600 hover:bg-red-50 rounded"
+                    className="ml-4 p-2 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded transition-colors"
                   >
                     <Trash2 className="h-4 w-4" />
                   </button>
@@ -265,11 +265,11 @@ export default function ChannelLogsConfig() {
 
       {/* Add New Mapping */}
       <div className="card p-6">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Add New Channel Mapping</h3>
-        
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Add New Channel Mapping</h3>
+
         {/* Preset Endpoint Selection */}
         <div className="mb-6">
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
             Select Endpoint Type
           </label>
           <div className="grid grid-cols-3 gap-3">
@@ -279,46 +279,46 @@ export default function ChannelLogsConfig() {
                 setNewMapping({ ...newMapping, systemEndpoint: 'http://localhost:3051/api/webhook/channel-messages' });
               }}
               className={`px-4 py-3 rounded-lg border-2 transition-all ${
-                endpointType === 'frontend' 
-                  ? 'border-blue-500 bg-blue-50 text-blue-700' 
-                  : 'border-gray-200 hover:border-gray-300'
+                endpointType === 'frontend'
+                  ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300'
+                  : 'border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600'
               }`}
             >
               <Monitor className="h-5 w-5 mx-auto mb-1" />
               <div className="text-sm font-medium">Frontend Dashboard</div>
-              <div className="text-xs text-gray-500">Port 3051</div>
+              <div className="text-xs text-gray-500 dark:text-gray-400">Port 3051</div>
             </button>
-            
+
             <button
               onClick={() => {
                 setEndpointType('backend');
                 setNewMapping({ ...newMapping, systemEndpoint: 'http://localhost:3050/api/bot-data/channel-logs' });
               }}
               className={`px-4 py-3 rounded-lg border-2 transition-all ${
-                endpointType === 'backend' 
-                  ? 'border-blue-500 bg-blue-50 text-blue-700' 
-                  : 'border-gray-200 hover:border-gray-300'
+                endpointType === 'backend'
+                  ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300'
+                  : 'border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600'
               }`}
             >
               <Settings className="h-5 w-5 mx-auto mb-1" />
               <div className="text-sm font-medium">Backend System</div>
-              <div className="text-xs text-gray-500">Port 3050</div>
+              <div className="text-xs text-gray-500 dark:text-gray-400">Port 3050</div>
             </button>
-            
+
             <button
               onClick={() => {
                 setEndpointType('custom');
                 setNewMapping({ ...newMapping, systemEndpoint: '' });
               }}
               className={`px-4 py-3 rounded-lg border-2 transition-all ${
-                endpointType === 'custom' 
-                  ? 'border-blue-500 bg-blue-50 text-blue-700' 
-                  : 'border-gray-200 hover:border-gray-300'
+                endpointType === 'custom'
+                  ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300'
+                  : 'border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600'
               }`}
             >
               <Link className="h-5 w-5 mx-auto mb-1" />
               <div className="text-sm font-medium">Custom URL</div>
-              <div className="text-xs text-gray-500">External System</div>
+              <div className="text-xs text-gray-500 dark:text-gray-400">External System</div>
             </button>
           </div>
         </div>
@@ -326,24 +326,24 @@ export default function ChannelLogsConfig() {
         <div className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                 Discord Channel ID
               </label>
               <input
                 type="text"
                 value={newMapping.channelId || ''}
                 onChange={(e) => setNewMapping({ ...newMapping, channelId: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg font-mono"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg font-mono transition-colors"
                 placeholder="1404583987778949130"
               />
               <div className="flex items-center justify-between mt-1">
-                <p className="text-xs text-gray-500">
+                <p className="text-xs text-gray-500 dark:text-gray-400">
                   Right-click channel → Copy Channel ID
                 </p>
                 <button
                   type="button"
                   onClick={() => setNewMapping({ ...newMapping, channelId: '1409214475403526174' })}
-                  className="text-xs text-blue-600 hover:text-blue-700 font-medium"
+                  className="text-xs text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium transition-colors"
                 >
                   Use Dev Channel
                 </button>
@@ -351,7 +351,7 @@ export default function ChannelLogsConfig() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                 System Endpoint URL
               </label>
               <div className="relative">
@@ -359,17 +359,17 @@ export default function ChannelLogsConfig() {
                   type="text"
                   value={newMapping.systemEndpoint || ''}
                   onChange={(e) => setNewMapping({ ...newMapping, systemEndpoint: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg font-mono"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg font-mono transition-colors"
                   placeholder="http://localhost:3050/api/webhook/channel-logs"
                   readOnly={endpointType !== 'custom'}
                 />
                 {endpointType !== 'custom' && (
                   <div className="absolute right-2 top-1/2 -translate-y-1/2">
-                    <span className="text-xs bg-gray-100 px-2 py-1 rounded">Auto-filled</span>
+                    <span className="text-xs bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded">Auto-filled</span>
                   </div>
                 )}
               </div>
-              <p className="text-xs text-gray-500 mt-1">
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                 {endpointType === 'frontend' 
                   ? 'Sends to frontend dashboard for real-time activity display'
                   : endpointType === 'backend'
@@ -381,21 +381,21 @@ export default function ChannelLogsConfig() {
 
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
               Description (Optional)
             </label>
             <input
               type="text"
               value={newMapping.description || ''}
               onChange={(e) => setNewMapping({ ...newMapping, description: e.target.value })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg transition-colors"
               placeholder="e.g., Farm logs channel for system integration"
             />
           </div>
 
           <button
             onClick={addMapping}
-            className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+            className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
           >
             <Plus className="h-4 w-4" />
             <span>Add Channel Mapping</span>

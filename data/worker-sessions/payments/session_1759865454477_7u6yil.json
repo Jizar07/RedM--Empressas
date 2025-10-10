@@ -1,0 +1,146 @@
+{
+  "sessionId": "session_1759865454477_7u6yil",
+  "workerId": "588934801508270082",
+  "workerName": "Chris Rubble",
+  "amount": 617.5,
+  "paidBy": "588934801508270082",
+  "paidByName": "chrisbam",
+  "paidAt": "2025-10-09T19:23:58.300Z",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Junco",
+      "quantity": 100,
+      "transactionId": "tx_1759865454479_wugp7i",
+      "timestamp": "2025-10-07T19:30:54.479Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente Trigo",
+      "quantity": 100,
+      "transactionId": "tx_1759865467237_rv0mv4",
+      "timestamp": "2025-10-07T19:31:07.237Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Adubo3",
+      "quantity": 200,
+      "transactionId": "tx_1759868530328_rs4yam",
+      "timestamp": "2025-10-07T20:22:10.328Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Oregano Semente",
+      "quantity": 20,
+      "transactionId": "tx_1760031457587_59zmdc",
+      "timestamp": "2025-10-09T17:37:37.587Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Black Currant Semente",
+      "quantity": 20,
+      "transactionId": "tx_1760031969032_tbjv2b",
+      "timestamp": "2025-10-09T17:46:09.032Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Prairie Poppy Semente",
+      "quantity": 40,
+      "transactionId": "tx_1760031992739_76xkt",
+      "timestamp": "2025-10-09T17:46:32.739Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Oregano",
+      "quantity": 300,
+      "transactionId": "tx_1760033925862_cnuei",
+      "timestamp": "2025-10-09T18:18:45.862Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Oregano",
+      "quantity": 210,
+      "transactionId": "tx_1760033964958_q1whzo",
+      "timestamp": "2025-10-09T18:19:24.958Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Black Berry",
+      "quantity": 200,
+      "transactionId": "tx_1760034106189_kel3i",
+      "timestamp": "2025-10-09T18:21:46.189Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Black Berry",
+      "quantity": 200,
+      "transactionId": "tx_1760034114384_xpes1e",
+      "timestamp": "2025-10-09T18:21:54.384Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Black Berry",
+      "quantity": 100,
+      "transactionId": "tx_1760034119501_nvchyc",
+      "timestamp": "2025-10-09T18:21:59.501Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Black Berry",
+      "quantity": 10,
+      "transactionId": "tx_1760034230931_l9l2xe",
+      "timestamp": "2025-10-09T18:23:50.931Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Coffeebeans",
+      "quantity": 200,
+      "transactionId": "tx_1760034239461_ro27qp",
+      "timestamp": "2025-10-09T18:23:59.461Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Coffeebeans",
+      "quantity": 160,
+      "transactionId": "tx_1760034244756_aadlcf",
+      "timestamp": "2025-10-09T18:24:04.756Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Crows Garlic",
+      "quantity": 100,
+      "transactionId": "tx_1760034249534_msldib",
+      "timestamp": "2025-10-09T18:24:09.534Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Coffeebeans",
+      "quantity": 340,
+      "transactionId": "tx_1760034517991_sqnpta",
+      "timestamp": "2025-10-09T18:28:37.991Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 250,
+      "transactionId": "tx_1760036231923_iduy1d",
+      "timestamp": "2025-10-09T18:57:11.923Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Oleander Sage",
+      "quantity": 400,
+      "transactionId": "tx_1760036307877_0sjipe",
+      "timestamp": "2025-10-09T18:58:27.877Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Parasol Mushroom Semente",
+      "quantity": 20,
+      "transactionId": "tx_1760036497941_0oqwto",
+      "timestamp": "2025-10-09T19:01:37.941Z"
+    }
+  ],
+  "animalTransactions": [],
+  "financialTransactions": []
+}

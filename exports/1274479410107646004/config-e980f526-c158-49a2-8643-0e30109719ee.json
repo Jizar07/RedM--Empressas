@@ -1,0 +1,23 @@
+{
+  "channels": [
+    "1414735729082499072"
+  ],
+  "dateRange": {
+    "start": "2025-09-02",
+    "end": "2025-10-09"
+  },
+  "filters": {
+    "categories": [
+      "supply_chain",
+      "inventario",
+      "financeiro"
+    ],
+    "minConfidence": "medium"
+  },
+  "reportTypes": [
+    "detailed",
+    "summary",
+    "breakdown"
+  ],
+  "outputDir": "C:\\Users\\jizar\\OneDrive\\Documents\\DiscordBot\\exports\\1274479410107646004"
+}

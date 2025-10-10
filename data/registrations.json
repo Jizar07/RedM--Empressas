@@ -1340,5 +1340,27 @@
     "invitedBy": "Cosmo Versace | 5974",
     "approved": true,
     "registeredAt": "2025-10-09T03:35:35.912Z"
+  },
+  {
+    "userId": "940279402145669241",
+    "username": "malfeitosaa",
+    "ingameName": "Tereza Mcfell",
+    "mailId": "445",
+    "functionId": "func_1758806802577",
+    "functionName": "Gerente",
+    "invitedBy": "Santiago Bowdin | 2512",
+    "approved": true,
+    "registeredAt": "2025-10-09T18:17:28.530Z"
+  },
+  {
+    "userId": "547535579458306059",
+    "username": "feitosa.x7",
+    "ingameName": "johnny Brown",
+    "mailId": "6224",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "Gama",
+    "approved": true,
+    "registeredAt": "2025-10-10T00:37:05.462Z"
   }
 ]

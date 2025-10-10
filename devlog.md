@@ -4,6 +4,25 @@ This is a local timestamped file to track all development changes and prompts.
 
 ## Log Entries
 
+### 2025-10-09 20:48:49
+**Action**: Export Data Management - Channel Selection Fix
+**Prompt**: User requested fix for channel selection issue (channels showing 0 firm channels available despite 103 Discord channels loading)
+**Changes**:
+- **Critical Bug**: Frontend calling `/api/firms-config/system/monitored-channels` returned 404 error
+- **Root Cause**: Next.js proxy route missing - backend route existed but frontend had no proxy
+- **Created Next.js Proxy Route**:
+  - Created `frontend/app/api/firms-config/system/monitored-channels/route.ts`
+  - Follows same pattern as `discord-channels` proxy route
+  - Proxies requests from frontend to backend Express API
+- **Updated Frontend Component**:
+  - Modified `loadMonitoredChannels()` in `ExportDataManagement.tsx`
+  - Added `serverId` query parameter to API call (line 139)
+- **Previous Implementation**:
+  - Report type filtering successfully implemented (only selected reports generate)
+  - Channel filtering logic added (only show firm-tracked channels)
+  - Fixed data structure mapping from array of objects to channelIds array
+- **Result**: Channel selection now working - loads monitored firm channels and filters display to only show channels configured as firms. Export system respects both report type settings and channel selection.
+
 ### 2025-10-09 13:44:20
 **Action**: Multi-Supplier Order System - Discord & Frontend
 **Prompt**: User requested multi-supplier selection in Discord bot's fazer-encomendas flow, then requested the same for frontend with usernames instead of Discord IDs.

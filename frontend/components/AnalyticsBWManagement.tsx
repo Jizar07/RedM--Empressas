@@ -288,33 +288,33 @@ export default function AnalyticsBWManagement({ recentActivity, usuarios, invent
 
           {currentTab === 'users' && (
             <div className="space-y-6">
-              <h3 className="text-lg font-semibold">👥 Analytics de Usuários</h3>
-              
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">👥 Analytics de Usuários</h3>
+
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <div className="bg-white rounded-lg border p-4">
-                  <h4 className="font-semibold mb-4">Distribuição por Função</h4>
+                <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4 transition-colors">
+                  <h4 className="font-semibold mb-4 text-gray-900 dark:text-white">Distribuição por Função</h4>
                   <div className="space-y-3">
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between text-gray-900 dark:text-gray-300">
                       <span>👷 Trabalhadores</span>
                       <span className="font-medium">{userAnalytics.byRole.trabalhador}</span>
                     </div>
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between text-gray-900 dark:text-gray-300">
                       <span>👑 Gerentes</span>
                       <span className="font-medium">{userAnalytics.byRole.gerente}</span>
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-white rounded-lg border p-4">
-                  <h4 className="font-semibold mb-4">👑 Usuários Mais Ativos</h4>
+                <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4 transition-colors">
+                  <h4 className="font-semibold mb-4 text-gray-900 dark:text-white">👑 Usuários Mais Ativos</h4>
                   <div className="space-y-2">
                     {activityAnalytics.byAuthor.slice(0, 5).map(([user, count]: any, index) => (
-                      <div key={user} className="flex items-center justify-between">
+                      <div key={user} className="flex items-center justify-between text-gray-900 dark:text-gray-300">
                         <div className="flex items-center gap-2">
                           <span className="text-sm font-medium">{index + 1}.</span>
                           <span className="text-sm">{user}</span>
                         </div>
-                        <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium">
+                        <span className="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 px-2 py-1 rounded text-xs font-medium">
                           {count} atividades
                         </span>
                       </div>
@@ -327,19 +327,19 @@ export default function AnalyticsBWManagement({ recentActivity, usuarios, invent
 
           {currentTab === 'inventory' && (
             <div className="space-y-6">
-              <h3 className="text-lg font-semibold">📦 Analytics de Inventário</h3>
-              
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">📦 Analytics de Inventário</h3>
+
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <div className="bg-white rounded-lg border p-4">
-                  <h4 className="font-semibold mb-4">🔝 Top Itens por Quantidade</h4>
+                <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4 transition-colors">
+                  <h4 className="font-semibold mb-4 text-gray-900 dark:text-white">🔝 Top Itens por Quantidade</h4>
                   <div className="space-y-2">
                     {inventoryAnalytics.topItems.slice(0, 5).map(([id, item]: any, index) => (
-                      <div key={id} className="flex items-center justify-between">
+                      <div key={id} className="flex items-center justify-between text-gray-900 dark:text-gray-300">
                         <div className="flex items-center gap-2">
                           <span className="text-sm font-medium">{index + 1}.</span>
                           <span className="text-sm">{item.nome}</span>
                         </div>
-                        <span className="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-medium">
+                        <span className="bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 px-2 py-1 rounded text-xs font-medium">
                           {item.quantidade}
                         </span>
                       </div>
@@ -347,13 +347,13 @@ export default function AnalyticsBWManagement({ recentActivity, usuarios, invent
                   </div>
                 </div>
 
-                <div className="bg-white rounded-lg border p-4">
-                  <h4 className="font-semibold mb-4">⚠️ Itens com Estoque Baixo</h4>
+                <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4 transition-colors">
+                  <h4 className="font-semibold mb-4 text-gray-900 dark:text-white">⚠️ Itens com Estoque Baixo</h4>
                   <div className="space-y-2">
                     {inventoryAnalytics.lowStockItems.slice(0, 5).map(([id, item]: any) => (
-                      <div key={id} className="flex items-center justify-between">
+                      <div key={id} className="flex items-center justify-between text-gray-900 dark:text-gray-300">
                         <span className="text-sm">{item.nome}</span>
-                        <span className="bg-red-100 text-red-800 px-2 py-1 rounded text-xs font-medium">
+                        <span className="bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300 px-2 py-1 rounded text-xs font-medium">
                           {item.quantidade}
                         </span>
                       </div>
@@ -362,13 +362,13 @@ export default function AnalyticsBWManagement({ recentActivity, usuarios, invent
                 </div>
               </div>
 
-              <div className="bg-white rounded-lg border p-4">
-                <h4 className="font-semibold mb-4">📊 Distribuição por Categoria</h4>
+              <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4 transition-colors">
+                <h4 className="font-semibold mb-4 text-gray-900 dark:text-white">📊 Distribuição por Categoria</h4>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   {Object.entries(inventoryAnalytics.categoryDistribution).map(([category, quantity]: any) => (
-                    <div key={category} className="text-center p-3 bg-gray-50 rounded">
-                      <div className="text-lg font-bold text-gray-900">{quantity}</div>
-                      <div className="text-sm text-gray-600 capitalize">{category}</div>
+                    <div key={category} className="text-center p-3 bg-gray-50 dark:bg-gray-700 rounded transition-colors">
+                      <div className="text-lg font-bold text-gray-900 dark:text-white">{quantity}</div>
+                      <div className="text-sm text-gray-600 dark:text-gray-400 capitalize">{category}</div>
                     </div>
                   ))}
                 </div>
@@ -378,8 +378,8 @@ export default function AnalyticsBWManagement({ recentActivity, usuarios, invent
 
           {currentTab === 'payments' && (
             <div className="space-y-6">
-              <h3 className="text-lg font-semibold">💰 Analytics de Pagamentos</h3>
-              
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">💰 Analytics de Pagamentos</h3>
+
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <MetricCard
                   title="Pagamentos Realizados"
@@ -404,21 +404,21 @@ export default function AnalyticsBWManagement({ recentActivity, usuarios, invent
                 />
               </div>
 
-              <div className="bg-white rounded-lg border p-4">
-                <h4 className="font-semibold mb-4">📋 Pagamentos Recentes</h4>
+              <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4 transition-colors">
+                <h4 className="font-semibold mb-4 text-gray-900 dark:text-white">📋 Pagamentos Recentes</h4>
                 <div className="space-y-2">
                   {paymentAnalytics.recentPayments.map((payment: any) => (
-                    <div key={payment.id} className="flex items-center justify-between p-2 bg-gray-50 rounded">
+                    <div key={payment.id} className="flex items-center justify-between p-2 bg-gray-50 dark:bg-gray-700 rounded transition-colors">
                       <div>
-                        <div className="font-medium text-sm">{payment.usuario_nome}</div>
-                        <div className="text-xs text-gray-600">{payment.descricao}</div>
+                        <div className="font-medium text-sm text-gray-900 dark:text-white">{payment.usuario_nome}</div>
+                        <div className="text-xs text-gray-600 dark:text-gray-400">{payment.descricao}</div>
                       </div>
                       <div className="text-right">
-                        <div className="font-medium">${payment.valor.toFixed(2)}</div>
+                        <div className="font-medium text-gray-900 dark:text-white">${payment.valor.toFixed(2)}</div>
                         <div className={`text-xs px-2 py-1 rounded ${
-                          payment.status === 'pago' ? 'bg-green-100 text-green-800' :
-                          payment.status === 'pendente' ? 'bg-yellow-100 text-yellow-800' :
-                          'bg-red-100 text-red-800'
+                          payment.status === 'pago' ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300' :
+                          payment.status === 'pendente' ? 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-300' :
+                          'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300'
                         }`}>
                           {payment.status}
                         </div>
@@ -432,16 +432,16 @@ export default function AnalyticsBWManagement({ recentActivity, usuarios, invent
 
           {currentTab === 'activity' && (
             <div className="space-y-6">
-              <h3 className="text-lg font-semibold">⚡ Analytics de Atividades</h3>
-              
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">⚡ Analytics de Atividades</h3>
+
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <div className="bg-white rounded-lg border p-4">
-                  <h4 className="font-semibold mb-4">📈 Atividades por Tipo</h4>
+                <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4 transition-colors">
+                  <h4 className="font-semibold mb-4 text-gray-900 dark:text-white">📈 Atividades por Tipo</h4>
                   <div className="space-y-2">
                     {Object.entries(activityAnalytics.byType).map(([type, count]: any) => (
-                      <div key={type} className="flex items-center justify-between">
+                      <div key={type} className="flex items-center justify-between text-gray-900 dark:text-gray-300">
                         <span className="text-sm capitalize">{type}</span>
-                        <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium">
+                        <span className="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 px-2 py-1 rounded text-xs font-medium">
                           {count}
                         </span>
                       </div>
@@ -449,13 +449,13 @@ export default function AnalyticsBWManagement({ recentActivity, usuarios, invent
                   </div>
                 </div>
 
-                <div className="bg-white rounded-lg border p-4">
-                  <h4 className="font-semibold mb-4">🏷️ Atividades por Categoria</h4>
+                <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4 transition-colors">
+                  <h4 className="font-semibold mb-4 text-gray-900 dark:text-white">🏷️ Atividades por Categoria</h4>
                   <div className="space-y-2">
                     {Object.entries(activityAnalytics.byCategory).map(([category, count]: any) => (
-                      <div key={category} className="flex items-center justify-between">
+                      <div key={category} className="flex items-center justify-between text-gray-900 dark:text-gray-300">
                         <span className="text-sm capitalize">{category}</span>
-                        <span className="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-medium">
+                        <span className="bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 px-2 py-1 rounded text-xs font-medium">
                           {count}
                         </span>
                       </div>
@@ -464,13 +464,13 @@ export default function AnalyticsBWManagement({ recentActivity, usuarios, invent
                 </div>
               </div>
 
-              <div className="bg-white rounded-lg border p-4">
-                <h4 className="font-semibold mb-4">📅 Timeline de Atividades</h4>
+              <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4 transition-colors">
+                <h4 className="font-semibold mb-4 text-gray-900 dark:text-white">📅 Timeline de Atividades</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                   {Object.entries(activityAnalytics.timeline).slice(-8).map(([date, count]: any) => (
-                    <div key={date} className="text-center p-3 bg-gray-50 rounded">
-                      <div className="text-lg font-bold text-gray-900">{count}</div>
-                      <div className="text-xs text-gray-600">{new Date(date).toLocaleDateString('pt-BR')}</div>
+                    <div key={date} className="text-center p-3 bg-gray-50 dark:bg-gray-700 rounded transition-colors">
+                      <div className="text-lg font-bold text-gray-900 dark:text-white">{count}</div>
+                      <div className="text-xs text-gray-600 dark:text-gray-400">{new Date(date).toLocaleDateString('pt-BR')}</div>
                     </div>
                   ))}
                 </div>

@@ -1,0 +1,76 @@
+{
+  "sessionId": "session_1759960643686_noi9tf",
+  "workerId": "496728102831915008",
+  "workerName": "JANE LOTHBROK",
+  "amount": 567.5,
+  "paidBy": "588934801508270082",
+  "paidByName": "chrisbam",
+  "paidAt": "2025-10-09T20:49:11.197Z",
+  "plantTransactions": [
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 340,
+      "transactionId": "tx_1759960643688_t8iykx",
+      "timestamp": "2025-10-08T21:57:23.688Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 50,
+      "transactionId": "tx_1760029593226_c6q8bj",
+      "timestamp": "2025-10-09T17:06:33.226Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1760033145337_dk1mr6",
+      "timestamp": "2025-10-09T18:05:45.337Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 460,
+      "transactionId": "tx_1760033160806_ycn88h",
+      "timestamp": "2025-10-09T18:06:00.806Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Adubo3",
+      "quantity": 40,
+      "transactionId": "tx_1760039234013_cx7okd",
+      "timestamp": "2025-10-09T19:47:14.013Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Junco",
+      "quantity": 50,
+      "transactionId": "tx_1760039272692_eq0tp",
+      "timestamp": "2025-10-09T19:47:52.692Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Adubo3",
+      "quantity": 10,
+      "transactionId": "tx_1760039328640_c708ll",
+      "timestamp": "2025-10-09T19:48:48.640Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 500,
+      "transactionId": "tx_1760041266304_t4bhmk",
+      "timestamp": "2025-10-09T20:21:06.304Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 470,
+      "transactionId": "tx_1760042450973_mr749",
+      "timestamp": "2025-10-09T20:40:50.973Z"
+    }
+  ],
+  "animalTransactions": [],
+  "financialTransactions": []
+}

@@ -279,11 +279,11 @@ export const ProductionDashboard: React.FC<ProductionDashboardProps> = ({
   if (inventoryError) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="flex flex-col items-center gap-2 text-red-600">
+        <div className="flex flex-col items-center gap-2 text-red-600 dark:text-red-400">
           <AlertTriangle className="h-8 w-8" />
           <div className="text-center">
             <p className="font-medium">Erro ao carregar dados do inventário</p>
-            <p className="text-sm text-gray-600">{inventoryError}</p>
+            <p className="text-sm text-gray-600 dark:text-gray-400">{inventoryError}</p>
           </div>
         </div>
       </div>
@@ -293,7 +293,7 @@ export const ProductionDashboard: React.FC<ProductionDashboardProps> = ({
   if (firmsLoading || inventoryLoading || loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="flex items-center gap-2 text-gray-600">
+        <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
           <RefreshCw className="h-5 w-5 animate-spin" />
           Analisando oportunidades de produção...
         </div>
@@ -303,12 +303,12 @@ export const ProductionDashboard: React.FC<ProductionDashboardProps> = ({
 
   if (!optimizer || !recommendationEngine) {
     return (
-      <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-        <div className="flex items-center gap-2 text-yellow-800">
+      <div className="bg-yellow-50 dark:bg-yellow-900/30 border border-yellow-200 dark:border-yellow-700 rounded-lg p-4 transition-colors">
+        <div className="flex items-center gap-2 text-yellow-800 dark:text-yellow-300">
           <AlertTriangle className="h-5 w-5" />
           <div>
             <p>Aguardando dados do inventário e receitas para análise...</p>
-            <p className="text-sm mt-1 text-yellow-600">
+            <p className="text-sm mt-1 text-yellow-600 dark:text-yellow-400">
               Inventário: {inventoryArray.length} itens • Receitas: {recipes.length}
             </p>
           </div>
@@ -370,17 +370,17 @@ export const ProductionDashboard: React.FC<ProductionDashboardProps> = ({
 
       {/* Top Recommendation Alert */}
       {metrics.topRecommendation && (
-        <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+        <div className="bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-700 rounded-lg p-4 transition-colors">
           <div className="flex items-start gap-3">
-            <Lightbulb className="h-5 w-5 text-green-600 mt-0.5" />
+            <Lightbulb className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5" />
             <div className="flex-1">
-              <h3 className="font-semibold text-green-900">
+              <h3 className="font-semibold text-green-900 dark:text-green-300">
                 {metrics.topRecommendation.title}
               </h3>
-              <p className="text-green-800 mt-1">
+              <p className="text-green-800 dark:text-green-400 mt-1">
                 {metrics.topRecommendation.description}
               </p>
-              <div className="flex items-center gap-4 mt-2 text-sm text-green-700">
+              <div className="flex items-center gap-4 mt-2 text-sm text-green-700 dark:text-green-400">
                 <span>💰 Lucro: ${metrics.topRecommendation.impact.profitPotential.toFixed(2)}</span>
                 <span>⏱️ Tempo: {metrics.topRecommendation.impact.timeToExecute}</span>
                 <span>📊 Risco: {metrics.topRecommendation.impact.riskLevel}</span>
@@ -391,7 +391,7 @@ export const ProductionDashboard: React.FC<ProductionDashboardProps> = ({
       )}
 
       {/* Tab Navigation */}
-      <div className="border-b border-gray-200">
+      <div className="border-b border-gray-200 dark:border-gray-700 transition-colors">
         <nav className="flex space-x-8">
           {[
             { id: 'overview', label: 'Visão Geral', icon: BarChart3 },
@@ -404,8 +404,8 @@ export const ProductionDashboard: React.FC<ProductionDashboardProps> = ({
               onClick={() => setActiveTab(tab.id as any)}
               className={`flex items-center gap-2 py-4 px-2 border-b-2 font-medium text-sm transition-colors ${
                 activeTab === tab.id
-                  ? 'border-blue-500 text-blue-600'
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                  ? 'border-blue-500 text-blue-600 dark:text-blue-400'
+                  : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600'
               }`}
             >
               <tab.icon className="h-4 w-4" />
@@ -473,21 +473,21 @@ interface MetricCardProps {
 
 const MetricCard: React.FC<MetricCardProps> = ({ icon: Icon, title, value, change, color }) => {
   const colorClasses = {
-    green: 'bg-green-50 text-green-600 border-green-200',
-    blue: 'bg-blue-50 text-blue-600 border-blue-200',
-    purple: 'bg-purple-50 text-purple-600 border-purple-200',
-    orange: 'bg-orange-50 text-orange-600 border-orange-200'
+    green: 'bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-400 border-green-200 dark:border-green-700',
+    blue: 'bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-700',
+    purple: 'bg-purple-50 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 border-purple-200 dark:border-purple-700',
+    orange: 'bg-orange-50 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 border-orange-200 dark:border-orange-700'
   };
 
   const changeClasses = {
-    high: 'text-green-600',
-    medium: 'text-yellow-600',
-    low: 'text-red-600',
-    neutral: 'text-gray-600'
+    high: 'text-green-600 dark:text-green-400',
+    medium: 'text-yellow-600 dark:text-yellow-400',
+    low: 'text-red-600 dark:text-red-400',
+    neutral: 'text-gray-600 dark:text-gray-400'
   };
 
   return (
-    <div className={`border rounded-lg p-4 ${colorClasses[color]}`}>
+    <div className={`border rounded-lg p-4 transition-colors ${colorClasses[color]}`}>
       <div className="flex items-center justify-between">
         <Icon className="h-6 w-6" />
         <span className={`text-xs font-medium ${changeClasses[change]}`}>
@@ -495,8 +495,8 @@ const MetricCard: React.FC<MetricCardProps> = ({ icon: Icon, title, value, chang
         </span>
       </div>
       <div className="mt-4">
-        <p className="text-2xl font-bold text-gray-900">{value}</p>
-        <p className="text-sm text-gray-600 mt-1">{title}</p>
+        <p className="text-2xl font-bold text-gray-900 dark:text-white">{value}</p>
+        <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{title}</p>
       </div>
     </div>
   );
@@ -509,21 +509,21 @@ const OverviewTab: React.FC<{
   metrics: DashboardMetrics;
 }> = ({ scenarios, recommendations, metrics }) => (
   <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-    <div className="bg-white border border-gray-200 rounded-lg p-6">
-      <h3 className="text-lg font-semibold mb-4">Top Oportunidades</h3>
+    <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 transition-colors">
+      <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Top Oportunidades</h3>
       <div className="space-y-4">
         {scenarios.map((scenario, index) => (
-          <div key={scenario.recipe.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+          <div key={scenario.recipe.id} className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700 rounded-lg transition-colors">
             <div className="flex-1">
-              <h4 className="font-medium">{scenario.recipe.nome}</h4>
-              <p className="text-sm text-gray-600">
+              <h4 className="font-medium text-gray-900 dark:text-white">{scenario.recipe.nome}</h4>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
                 Lucro: ${scenario.totalProfit.toFixed(2)} | ROI: {scenario.roiPercentage.toFixed(1)}%
               </p>
             </div>
-            <div className={`px-2 py-1 rounded-full text-xs font-medium ${
-              scenario.productionViability === 'high' ? 'bg-green-100 text-green-800' :
-              scenario.productionViability === 'medium' ? 'bg-yellow-100 text-yellow-800' :
-              'bg-red-100 text-red-800'
+            <div className={`px-2 py-1 rounded-full text-xs font-medium transition-colors ${
+              scenario.productionViability === 'high' ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300' :
+              scenario.productionViability === 'medium' ? 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-300' :
+              'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300'
             }`}>
               {scenario.productionViability}
             </div>
@@ -532,25 +532,25 @@ const OverviewTab: React.FC<{
       </div>
     </div>
 
-    <div className="bg-white border border-gray-200 rounded-lg p-6">
-      <h3 className="text-lg font-semibold mb-4">Recomendações Urgentes</h3>
+    <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 transition-colors">
+      <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Recomendações Urgentes</h3>
       <div className="space-y-4">
         {recommendations.map((rec, index) => (
-          <div key={rec.id} className="flex items-start gap-3 p-3 border border-gray-200 rounded-lg">
-            <div className={`p-1 rounded-full ${
-              rec.priority === 'urgent' ? 'bg-red-100' :
-              rec.priority === 'high' ? 'bg-orange-100' :
-              'bg-blue-100'
+          <div key={rec.id} className="flex items-start gap-3 p-3 border border-gray-200 dark:border-gray-700 rounded-lg transition-colors">
+            <div className={`p-1 rounded-full transition-colors ${
+              rec.priority === 'urgent' ? 'bg-red-100 dark:bg-red-900/30' :
+              rec.priority === 'high' ? 'bg-orange-100 dark:bg-orange-900/30' :
+              'bg-blue-100 dark:bg-blue-900/30'
             }`}>
               <AlertTriangle className={`h-4 w-4 ${
-                rec.priority === 'urgent' ? 'text-red-600' :
-                rec.priority === 'high' ? 'text-orange-600' :
-                'text-blue-600'
+                rec.priority === 'urgent' ? 'text-red-600 dark:text-red-400' :
+                rec.priority === 'high' ? 'text-orange-600 dark:text-orange-400' :
+                'text-blue-600 dark:text-blue-400'
               }`} />
             </div>
             <div className="flex-1">
-              <h4 className="font-medium text-sm">{rec.title}</h4>
-              <p className="text-xs text-gray-600 mt-1">{rec.description}</p>
+              <h4 className="font-medium text-sm text-gray-900 dark:text-white">{rec.title}</h4>
+              <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">{rec.description}</p>
             </div>
           </div>
         ))}
@@ -565,56 +565,56 @@ const RecommendationsTab: React.FC<{
 }> = ({ recommendations, optimizer }) => (
   <div className="space-y-4">
     {recommendations.map((rec) => (
-      <div key={rec.id} className="bg-white border border-gray-200 rounded-lg p-6">
+      <div key={rec.id} className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 transition-colors">
         <div className="flex items-start justify-between mb-4">
           <div className="flex-1">
             <div className="flex items-center gap-2 mb-2">
-              <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                rec.priority === 'urgent' ? 'bg-red-100 text-red-800' :
-                rec.priority === 'high' ? 'bg-orange-100 text-orange-800' :
-                rec.priority === 'medium' ? 'bg-yellow-100 text-yellow-800' :
-                'bg-gray-100 text-gray-800'
+              <span className={`px-2 py-1 rounded-full text-xs font-medium transition-colors ${
+                rec.priority === 'urgent' ? 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300' :
+                rec.priority === 'high' ? 'bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-300' :
+                rec.priority === 'medium' ? 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-300' :
+                'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300'
               }`}>
                 {rec.priority.toUpperCase()}
               </span>
-              <span className="text-xs text-gray-500">{rec.category.replace('_', ' ').toUpperCase()}</span>
+              <span className="text-xs text-gray-500 dark:text-gray-400">{rec.category.replace('_', ' ').toUpperCase()}</span>
             </div>
-            <h3 className="text-lg font-semibold">{rec.title}</h3>
-            <p className="text-gray-600 mt-1">{rec.description}</p>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{rec.title}</h3>
+            <p className="text-gray-600 dark:text-gray-400 mt-1">{rec.description}</p>
           </div>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
           <div className="text-center">
-            <p className="text-2xl font-bold text-green-600">${rec.impact.profitPotential.toFixed(2)}</p>
-            <p className="text-sm text-gray-600">Lucro Potencial</p>
+            <p className="text-2xl font-bold text-green-600 dark:text-green-400">${rec.impact.profitPotential.toFixed(2)}</p>
+            <p className="text-sm text-gray-600 dark:text-gray-400">Lucro Potencial</p>
           </div>
           <div className="text-center">
-            <p className="text-lg font-semibold">{rec.impact.timeToExecute}</p>
-            <p className="text-sm text-gray-600">Tempo</p>
+            <p className="text-lg font-semibold text-gray-900 dark:text-white">{rec.impact.timeToExecute}</p>
+            <p className="text-sm text-gray-600 dark:text-gray-400">Tempo</p>
           </div>
           <div className="text-center">
             <p className={`text-lg font-semibold ${
-              rec.impact.riskLevel === 'low' ? 'text-green-600' :
-              rec.impact.riskLevel === 'medium' ? 'text-yellow-600' :
-              'text-red-600'
+              rec.impact.riskLevel === 'low' ? 'text-green-600 dark:text-green-400' :
+              rec.impact.riskLevel === 'medium' ? 'text-yellow-600 dark:text-yellow-400' :
+              'text-red-600 dark:text-red-400'
             }`}>
               {rec.impact.riskLevel.toUpperCase()}
             </p>
-            <p className="text-sm text-gray-600">Risco</p>
+            <p className="text-sm text-gray-600 dark:text-gray-400">Risco</p>
           </div>
           <div className="text-center">
-            <p className="text-lg font-semibold">{rec.impact.resourcesRequired.length}</p>
-            <p className="text-sm text-gray-600">Recursos</p>
+            <p className="text-lg font-semibold text-gray-900 dark:text-white">{rec.impact.resourcesRequired.length}</p>
+            <p className="text-sm text-gray-600 dark:text-gray-400">Recursos</p>
           </div>
         </div>
 
         {rec.impact.resourcesRequired.length > 0 && (
           <div className="mb-4">
-            <h4 className="font-medium mb-2">Recursos Necessários:</h4>
+            <h4 className="font-medium mb-2 text-gray-900 dark:text-white">Recursos Necessários:</h4>
             <div className="flex flex-wrap gap-2">
               {rec.impact.resourcesRequired.map((resource, index) => (
-                <span key={index} className="px-2 py-1 bg-blue-100 text-blue-800 text-sm rounded-full">
+                <span key={index} className="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 text-sm rounded-full transition-colors">
                   {resource}
                 </span>
               ))}
@@ -622,7 +622,7 @@ const RecommendationsTab: React.FC<{
           </div>
         )}
 
-        <div className="text-sm text-gray-600">
+        <div className="text-sm text-gray-600 dark:text-gray-400">
           <span className="font-medium">Tempo:</span> {rec.impact.timeToExecute} |
           <span className="font-medium ml-2">Risco:</span> {rec.impact.riskLevel}
         </div>
@@ -643,11 +643,11 @@ const ScenariosTab: React.FC<{
     {/* Filters */}
     <div className="flex items-center gap-4">
       <div className="flex items-center gap-2">
-        <Filter className="h-4 w-4 text-gray-500" />
+        <Filter className="h-4 w-4 text-gray-500 dark:text-gray-400" />
         <select
           value={filterCategory}
           onChange={(e) => setFilterCategory(e.target.value)}
-          className="border border-gray-300 rounded-lg px-3 py-2"
+          className="border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors"
         >
           {categories.map(cat => (
             <option key={cat} value={cat}>
@@ -658,11 +658,11 @@ const ScenariosTab: React.FC<{
       </div>
 
       <div className="flex items-center gap-2">
-        <ArrowUpDown className="h-4 w-4 text-gray-500" />
+        <ArrowUpDown className="h-4 w-4 text-gray-500 dark:text-gray-400" />
         <select
           value={sortBy}
           onChange={(e) => setSortBy(e.target.value)}
-          className="border border-gray-300 rounded-lg px-3 py-2"
+          className="border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors"
         >
           <option value="profit">Maior Lucro</option>
           <option value="roi">Maior ROI</option>
@@ -672,82 +672,82 @@ const ScenariosTab: React.FC<{
     </div>
 
     {/* Scenarios Table */}
-    <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
-      <table className="min-w-full divide-y divide-gray-200">
-        <thead className="bg-gray-50">
+    <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden transition-colors">
+      <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+        <thead className="bg-gray-50 dark:bg-gray-700 transition-colors">
           <tr>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
               Receita
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
               Categoria
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
               Lucro Total
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
               ROI
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
               Produção
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
               Viabilidade
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
               Status
             </th>
           </tr>
         </thead>
-        <tbody className="bg-white divide-y divide-gray-200">
+        <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700 transition-colors">
           {scenarios.map((scenario) => (
-            <tr key={scenario.recipe.id} className="hover:bg-gray-50">
+            <tr key={scenario.recipe.id} className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
               <td className="px-6 py-4 whitespace-nowrap">
                 <div>
-                  <div className="text-sm font-medium text-gray-900">{scenario.recipe.nome}</div>
-                  <div className="text-sm text-gray-500">Produz {scenario.recipe.produz} unidades</div>
+                  <div className="text-sm font-medium text-gray-900 dark:text-white">{scenario.recipe.nome}</div>
+                  <div className="text-sm text-gray-500 dark:text-gray-400">Produz {scenario.recipe.produz} unidades</div>
                 </div>
               </td>
               <td className="px-6 py-4 whitespace-nowrap">
-                <span className="px-2 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-800">
+                <span className="px-2 py-1 text-xs font-medium rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 transition-colors">
                   {scenario.recipe.categoria}
                 </span>
               </td>
               <td className="px-6 py-4 whitespace-nowrap">
-                <div className="text-sm font-medium text-gray-900">${scenario.totalProfit.toFixed(2)}</div>
-                <div className="text-sm text-gray-500">${scenario.profitPerUnit.toFixed(2)}/unidade</div>
+                <div className="text-sm font-medium text-gray-900 dark:text-white">${scenario.totalProfit.toFixed(2)}</div>
+                <div className="text-sm text-gray-500 dark:text-gray-400">${scenario.profitPerUnit.toFixed(2)}/unidade</div>
               </td>
               <td className="px-6 py-4 whitespace-nowrap">
                 <div className={`text-sm font-medium ${
-                  scenario.roiPercentage > 50 ? 'text-green-600' :
-                  scenario.roiPercentage > 20 ? 'text-yellow-600' :
-                  'text-red-600'
+                  scenario.roiPercentage > 50 ? 'text-green-600 dark:text-green-400' :
+                  scenario.roiPercentage > 20 ? 'text-yellow-600 dark:text-yellow-400' :
+                  'text-red-600 dark:text-red-400'
                 }`}>
                   {scenario.roiPercentage.toFixed(1)}%
                 </div>
               </td>
               <td className="px-6 py-4 whitespace-nowrap">
-                <div className="text-sm text-gray-900">{scenario.recommendedProduction} unidades</div>
-                <div className="text-sm text-gray-500">Máx: {scenario.totalPossibleProduction}</div>
+                <div className="text-sm text-gray-900 dark:text-white">{scenario.recommendedProduction} unidades</div>
+                <div className="text-sm text-gray-500 dark:text-gray-400">Máx: {scenario.totalPossibleProduction}</div>
               </td>
               <td className="px-6 py-4 whitespace-nowrap">
-                <span className={`px-2 py-1 text-xs font-medium rounded-full ${
-                  scenario.productionViability === 'high' ? 'bg-green-100 text-green-800' :
-                  scenario.productionViability === 'medium' ? 'bg-yellow-100 text-yellow-800' :
-                  scenario.productionViability === 'low' ? 'bg-orange-100 text-orange-800' :
-                  'bg-red-100 text-red-800'
+                <span className={`px-2 py-1 text-xs font-medium rounded-full transition-colors ${
+                  scenario.productionViability === 'high' ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300' :
+                  scenario.productionViability === 'medium' ? 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-300' :
+                  scenario.productionViability === 'low' ? 'bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-300' :
+                  'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300'
                 }`}>
                   {scenario.productionViability}
                 </span>
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-sm">
-                <div className="text-gray-600">
+                <div className="text-gray-600 dark:text-gray-400">
                   {scenario.missingMaterials.length > 0 ? (
-                    <span className="text-red-600">
+                    <span className="text-red-600 dark:text-red-400">
                       Faltam {scenario.missingMaterials.length} materiais
                     </span>
                   ) : (
-                    <span className="text-green-600">
+                    <span className="text-green-600 dark:text-green-400">
                       ✅ Pronto para produzir
                     </span>
                   )}
@@ -789,24 +789,24 @@ const MarketTab: React.FC<{
 
   return (
     <div className="space-y-6">
-      <div className="bg-white border border-gray-200 rounded-lg p-6">
-        <h3 className="text-lg font-semibold mb-4">Itens Mais Valiosos no Inventário</h3>
+      <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 transition-colors">
+        <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Itens Mais Valiosos no Inventário</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {marketData.map((item) => (
-            <div key={item.id} className="border border-gray-200 rounded-lg p-4">
+            <div key={item.id} className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 transition-colors">
               <div className="flex justify-between items-start mb-2">
-                <h4 className="font-medium">{item.name}</h4>
-                <span className={`px-2 py-1 text-xs rounded-full ${
-                  item.volatility > 0.5 ? 'bg-red-100 text-red-800' :
-                  item.volatility > 0.2 ? 'bg-yellow-100 text-yellow-800' :
-                  'bg-green-100 text-green-800'
+                <h4 className="font-medium text-gray-900 dark:text-white">{item.name}</h4>
+                <span className={`px-2 py-1 text-xs rounded-full transition-colors ${
+                  item.volatility > 0.5 ? 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300' :
+                  item.volatility > 0.2 ? 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-300' :
+                  'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300'
                 }`}>
                   {item.volatility > 0.5 ? 'Alta Volatilidade' :
                    item.volatility > 0.2 ? 'Volatilidade Média' :
                    'Preço Estável'}
                 </span>
               </div>
-              <div className="space-y-1 text-sm text-gray-600">
+              <div className="space-y-1 text-sm text-gray-600 dark:text-gray-400">
                 <div className="flex justify-between">
                   <span>Preço Médio:</span>
                   <span className="font-medium">${item.price.toFixed(2)}</span>
@@ -817,7 +817,7 @@ const MarketTab: React.FC<{
                 </div>
                 <div className="flex justify-between">
                   <span>Valor Total:</span>
-                  <span className="font-medium text-green-600">${item.value.toFixed(2)}</span>
+                  <span className="font-medium text-green-600 dark:text-green-400">${item.value.toFixed(2)}</span>
                 </div>
               </div>
             </div>

@@ -312,7 +312,7 @@ export default function FarmServiceManagement() {
     return (
       <div className="flex items-center justify-center p-8">
         <RefreshCw className="h-8 w-8 animate-spin text-blue-500" />
-        <span className="ml-2 text-gray-600">Loading receipts...</span>
+        <span className="ml-2 text-gray-600 dark:text-gray-400">Loading receipts...</span>
       </div>
     );
   }
@@ -320,9 +320,9 @@ export default function FarmServiceManagement() {
   return (
     <div className="space-y-6">
       {/* Header with Stats */}
-      <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+      <div className="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm transition-colors">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-2xl font-bold text-gray-900">Farm Service Management</h2>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Farm Service Management</h2>
           <div className="flex gap-2">
             <button
               onClick={exportToCSV}
@@ -343,56 +343,56 @@ export default function FarmServiceManagement() {
         
         {/* Stats Cards */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          <div className="bg-gray-50 p-3 rounded">
-            <p className="text-xs text-gray-600">Total</p>
-            <p className="text-xl font-bold text-gray-900">{stats.total}</p>
+          <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded transition-colors">
+            <p className="text-xs text-gray-600 dark:text-gray-400">Total</p>
+            <p className="text-xl font-bold text-gray-900 dark:text-white">{stats.total}</p>
           </div>
-          <div className="bg-gray-50 p-3 rounded">
-            <p className="text-xs text-gray-600">Pending</p>
-            <p className="text-xl font-bold text-gray-900">{stats.pending}</p>
+          <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded transition-colors">
+            <p className="text-xs text-gray-600 dark:text-gray-400">Pending</p>
+            <p className="text-xl font-bold text-gray-900 dark:text-white">{stats.pending}</p>
           </div>
-          <div className="bg-yellow-50 p-3 rounded">
-            <p className="text-xs text-yellow-600">Approved</p>
-            <p className="text-xl font-bold text-yellow-900">{stats.approved}</p>
+          <div className="bg-yellow-50 dark:bg-yellow-900/20 p-3 rounded transition-colors">
+            <p className="text-xs text-yellow-600 dark:text-yellow-400">Approved</p>
+            <p className="text-xl font-bold text-yellow-900 dark:text-yellow-300">{stats.approved}</p>
           </div>
-          <div className="bg-green-50 p-3 rounded">
-            <p className="text-xs text-green-600">Paid</p>
-            <p className="text-xl font-bold text-green-900">{stats.paid}</p>
+          <div className="bg-green-50 dark:bg-green-900/20 p-3 rounded transition-colors">
+            <p className="text-xs text-green-600 dark:text-green-400">Paid</p>
+            <p className="text-xl font-bold text-green-900 dark:text-green-300">{stats.paid}</p>
           </div>
-          <div className="bg-red-50 p-3 rounded">
-            <p className="text-xs text-red-600">Rejected</p>
-            <p className="text-xl font-bold text-red-900">{stats.rejected}</p>
+          <div className="bg-red-50 dark:bg-red-900/20 p-3 rounded transition-colors">
+            <p className="text-xs text-red-600 dark:text-red-400">Rejected</p>
+            <p className="text-xl font-bold text-red-900 dark:text-red-300">{stats.rejected}</p>
           </div>
-          <div className="bg-blue-50 p-3 rounded">
-            <p className="text-xs text-blue-600">Total Paid</p>
-            <p className="text-xl font-bold text-blue-900">${stats.totalEarnings.toFixed(2)}</p>
+          <div className="bg-blue-50 dark:bg-blue-900/20 p-3 rounded transition-colors">
+            <p className="text-xs text-blue-600 dark:text-blue-400">Total Paid</p>
+            <p className="text-xl font-bold text-blue-900 dark:text-blue-300">${stats.totalEarnings.toFixed(2)}</p>
           </div>
         </div>
       </div>
 
       {/* Filters */}
-      <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
+      <div className="bg-white dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm transition-colors">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Search</label>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Search</label>
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400 dark:text-gray-500" />
               <input
                 type="text"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="Receipt, player, item..."
-                className="pl-10 pr-3 py-2 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="pl-10 pr-3 py-2 w-full border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
               />
             </div>
           </div>
-          
+
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Status</label>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Status</label>
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="px-3 py-2 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="px-3 py-2 w-full border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
             >
               <option value="all">All Status</option>
               <option value="pending">Pending</option>
@@ -401,26 +401,26 @@ export default function FarmServiceManagement() {
               <option value="rejected">Rejected</option>
             </select>
           </div>
-          
+
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Service Type</label>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Service Type</label>
             <select
               value={serviceTypeFilter}
               onChange={(e) => setServiceTypeFilter(e.target.value)}
-              className="px-3 py-2 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="px-3 py-2 w-full border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
             >
               <option value="all">All Types</option>
               <option value="animal">Animal</option>
               <option value="planta">Plant</option>
             </select>
           </div>
-          
+
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Player</label>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Player</label>
             <select
               value={playerFilter}
               onChange={(e) => setPlayerFilter(e.target.value)}
-              className="px-3 py-2 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="px-3 py-2 w-full border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
             >
               <option value="all">All Players</option>
               {uniquePlayers.map(player => (
@@ -428,21 +428,21 @@ export default function FarmServiceManagement() {
               ))}
             </select>
           </div>
-          
+
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Date Range</label>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Date Range</label>
             <div className="flex gap-2">
               <input
                 type="date"
                 value={dateRange.start}
                 onChange={(e) => setDateRange({ ...dateRange, start: e.target.value })}
-                className="px-2 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="px-2 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
               />
               <input
                 type="date"
                 value={dateRange.end}
                 onChange={(e) => setDateRange({ ...dateRange, end: e.target.value })}
-                className="px-2 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="px-2 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
               />
             </div>
           </div>
@@ -450,13 +450,13 @@ export default function FarmServiceManagement() {
       </div>
 
       {/* Table */}
-      <div className="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
+      <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm overflow-hidden transition-colors">
         <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-50">
+          <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+            <thead className="bg-gray-50 dark:bg-gray-700">
               <tr>
-                <th 
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                <th
+                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
                   onClick={() => handleSort('receiptId')}
                 >
                   <div className="flex items-center">
@@ -466,8 +466,8 @@ export default function FarmServiceManagement() {
                     )}
                   </div>
                 </th>
-                <th 
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                <th
+                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
                   onClick={() => handleSort('timestamp')}
                 >
                   <div className="flex items-center">
@@ -477,8 +477,8 @@ export default function FarmServiceManagement() {
                     )}
                   </div>
                 </th>
-                <th 
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                <th
+                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
                   onClick={() => handleSort('playerName')}
                 >
                   <div className="flex items-center">
@@ -488,8 +488,8 @@ export default function FarmServiceManagement() {
                     )}
                   </div>
                 </th>
-                <th 
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                <th
+                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
                   onClick={() => handleSort('serviceType')}
                 >
                   <div className="flex items-center">
@@ -499,11 +499,11 @@ export default function FarmServiceManagement() {
                     )}
                   </div>
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                   Item
                 </th>
-                <th 
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                <th
+                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
                   onClick={() => handleSort('quantity')}
                 >
                   <div className="flex items-center">
@@ -513,8 +513,8 @@ export default function FarmServiceManagement() {
                     )}
                   </div>
                 </th>
-                <th 
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                <th
+                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
                   onClick={() => handleSort('playerPayment')}
                 >
                   <div className="flex items-center">
@@ -524,8 +524,8 @@ export default function FarmServiceManagement() {
                     )}
                   </div>
                 </th>
-                <th 
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                <th
+                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
                   onClick={() => handleSort('status')}
                 >
                   <div className="flex items-center">
@@ -535,49 +535,49 @@ export default function FarmServiceManagement() {
                     )}
                   </div>
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                   Actions
                 </th>
               </tr>
             </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
+            <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
               {filteredReceipts.map((receipt) => (
-                <tr key={receipt.receiptId} className="hover:bg-gray-50">
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                <tr key={receipt.receiptId} className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
                     #{receipt.receiptId}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
                     {formatDate(receipt.timestamp)}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
                     {receipt.playerName}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
                     {receipt.serviceType === 'animal' ? '🐄 Animal' : '🌾 Plant'}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
                     {receipt.animalType || receipt.plantName}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
                     {receipt.quantity}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
                     ${receipt.playerPayment.toFixed(2)}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     {getStatusBadge(receipt)}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
                     <div className="flex items-center space-x-2">
                       <button
                         onClick={() => handleEdit(receipt)}
-                        className="text-blue-600 hover:text-blue-900"
+                        className="text-blue-600 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300"
                       >
                         <Edit className="h-4 w-4" />
                       </button>
                       <button
                         onClick={() => handleDelete(receipt.receiptId)}
-                        className="text-red-600 hover:text-red-900"
+                        className="text-red-600 dark:text-red-400 hover:text-red-900 dark:hover:text-red-300"
                       >
                         <Trash2 className="h-4 w-4" />
                       </button>
@@ -588,9 +588,9 @@ export default function FarmServiceManagement() {
             </tbody>
           </table>
         </div>
-        
+
         {filteredReceipts.length === 0 && (
-          <div className="text-center py-8 text-gray-500">
+          <div className="text-center py-8 text-gray-500 dark:text-gray-400">
             No receipts found matching your filters
           </div>
         )}
@@ -599,54 +599,54 @@ export default function FarmServiceManagement() {
       {/* Edit Modal */}
       {showEditModal && editingReceipt && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-6 w-full max-w-md">
-            <h3 className="text-lg font-semibold mb-4">Edit Receipt #{editingReceipt.receiptId}</h3>
-            
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-6 w-full max-w-md transition-colors">
+            <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Edit Receipt #{editingReceipt.receiptId}</h3>
+
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Player Name</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Player Name</label>
                 <input
                   type="text"
                   value={editingReceipt.playerName}
                   onChange={(e) => setEditingReceipt({ ...editingReceipt, playerName: e.target.value })}
-                  className="px-3 py-2 w-full border border-gray-300 rounded-lg"
+                  className="px-3 py-2 w-full border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                 />
               </div>
-              
+
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Quantity</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Quantity</label>
                 <input
                   type="number"
                   value={editingReceipt.quantity}
                   onChange={(e) => setEditingReceipt({ ...editingReceipt, quantity: parseInt(e.target.value) })}
-                  className="px-3 py-2 w-full border border-gray-300 rounded-lg"
+                  className="px-3 py-2 w-full border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                 />
               </div>
-              
+
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Payment</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Payment</label>
                 <input
                   type="number"
                   step="0.01"
                   value={editingReceipt.playerPayment}
                   onChange={(e) => setEditingReceipt({ ...editingReceipt, playerPayment: parseFloat(e.target.value) })}
-                  className="px-3 py-2 w-full border border-gray-300 rounded-lg"
+                  className="px-3 py-2 w-full border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                 />
               </div>
-              
+
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Status</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Status</label>
                 <select
                   value={editingReceipt.status}
                   onChange={(e) => setEditingReceipt({ ...editingReceipt, status: e.target.value })}
-                  className="px-3 py-2 w-full border border-gray-300 rounded-lg"
+                  className="px-3 py-2 w-full border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                 >
                   <option value="PENDING_APPROVAL">Pending</option>
                   <option value="APPROVED">Approved</option>
                   <option value="REJECTED">Rejected</option>
                 </select>
               </div>
-              
+
               <div className="flex items-center space-x-2">
                 <input
                   type="checkbox"
@@ -654,14 +654,14 @@ export default function FarmServiceManagement() {
                   onChange={(e) => setEditingReceipt({ ...editingReceipt, paid: e.target.checked })}
                   className="h-4 w-4 text-blue-600 rounded"
                 />
-                <label className="text-sm font-medium text-gray-700">Paid</label>
+                <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Paid</label>
               </div>
             </div>
-            
+
             <div className="flex justify-end space-x-2 mt-6">
               <button
                 onClick={() => setShowEditModal(false)}
-                className="px-4 py-2 text-gray-700 bg-gray-200 rounded hover:bg-gray-300"
+                className="px-4 py-2 text-gray-700 dark:text-gray-300 bg-gray-200 dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600"
               >
                 Cancel
               </button>

@@ -57,8 +57,9 @@ class ChannelAnalyzer {
   private detailedRecords: TransactionRecord[] = [];
   private startDate?: Date;
   private endDate?: Date;
+  private reportTypes: string[];
 
-  constructor(channelId: string, startDate?: string, endDate?: string) {
+  constructor(channelId: string, startDate?: string, endDate?: string, reportTypes?: string) {
     this.channelId = channelId;
     this.parser = FarmMessageParser.getInstance();
 
@@ -69,6 +70,9 @@ class ChannelAnalyzer {
     if (endDate) {
       this.endDate = new Date(endDate + 'T23:59:59.999Z');
     }
+
+    // Parse report types (comma-separated string)
+    this.reportTypes = reportTypes ? reportTypes.split(',') : ['detailed', 'summary', 'breakdown'];
 
     this.client = new Client({
       intents: [
@@ -111,6 +115,12 @@ class ChannelAnalyzer {
       const messages = await this.fetchAllMessages(channel);
       console.log(`📊 Retrieved ${messages.length} messages`);
 
+      if (messages.length === 0) {
+        console.warn('⚠️ No messages found in the specified date range!');
+        console.warn(`   Date range: ${this.startDate?.toISOString().split('T')[0] || 'any'} to ${this.endDate?.toISOString().split('T')[0] || 'any'}`);
+        console.warn('   Tip: Make sure your date range is in the past and contains actual Discord messages.');
+      }
+
       console.log('🔍 Parsing messages...');
       await this.parseMessages(messages);
 
@@ -120,8 +130,10 @@ class ChannelAnalyzer {
       console.log('✅ Analysis complete!');
     } catch (error) {
       console.error('❌ Error during analysis:', error);
+      throw error; // Re-throw to trigger process.exit(1) in main
     } finally {
-      await this.client.destroy();
+      // Don't await destroy() - it can hang. Just call it and let process.exit() handle cleanup
+      this.client.destroy().catch(err => console.warn('⚠️ Error destroying client:', err));
     }
   }
 
@@ -199,6 +211,7 @@ class ChannelAnalyzer {
   private async parseMessages(messages: Message[]): Promise<void> {
     let parseCount = 0;
     let successCount = 0;
+    let failedSamples: string[] = [];
 
     for (const message of messages) {
       parseCount++;
@@ -229,6 +242,12 @@ class ChannelAnalyzer {
           if (embedParsed.parseSuccess) {
             await this.processParsedActivity(embedParsed, message);
             successCount++;
+          } else {
+            // Log sample of failed messages for debugging
+            if (failedSamples.length < 5) {
+              const preview = message.content.substring(0, 100) || `[Embed: ${message.embeds[0]?.title || 'No title'}]`;
+              failedSamples.push(`${message.author.username}: ${preview}`);
+            }
           }
         }
       } catch (error) {
@@ -237,6 +256,14 @@ class ChannelAnalyzer {
     }
 
     console.log(`📊 Parsing complete: ${successCount}/${parseCount} messages successfully parsed`);
+
+    if (successCount === 0 && failedSamples.length > 0) {
+      console.warn('⚠️ NO MESSAGES WERE PARSED! Sample of failed messages:');
+      failedSamples.forEach((sample, i) => {
+        console.warn(`   ${i + 1}. ${sample}`);
+      });
+      console.warn('💡 Tip: Check if the message format matches FarmMessageParser patterns');
+    }
   }
 
   /**
@@ -279,6 +306,12 @@ class ChannelAnalyzer {
       return this.parseItemAddedEmbed(fields, base);
     } else if (title.includes('BAÚ ORGANIZAÇÃO - REMOVER ITEM')) {
       return this.parseItemRemovedEmbed(fields, base);
+    } else if (title.includes('ENTREGA COMPLETA')) {
+      return this.parseFerroviaMissionEmbed(fields, base);
+    } else if (title.includes('COOPERATIVA - SACOU')) {
+      return this.parseFerroviaSaqueEmbed(fields, base);
+    } else if (title.includes('COOPERATIVA - DEPOSITOU')) {
+      return this.parseFerroviaDepositoEmbed(fields, base);
     }
 
     return base;
@@ -376,6 +409,88 @@ class ChannelAnalyzer {
           parseSuccess: true,
           confidence: 'high',
           content: `${base.autor} removeu ${quantity}x ${itemName}`
+        };
+      }
+    }
+    return base;
+  }
+
+  /**
+   * Parse Ferrovia mission completion embed (ENTREGA COMPLETA)
+   */
+  private parseFerroviaMissionEmbed(fields: any[], base: ParsedActivity): ParsedActivity {
+    const recompensaField = fields.find(f => f.name.includes('Recompensa'));
+    const entregasField = fields.find(f => f.name.includes('Entregas Completadas'));
+    const missaoField = fields.find(f => f.name.includes('Missão'));
+
+    if (recompensaField) {
+      const recompensaMatch = recompensaField.value.match(/\$?\s*([0-9,]+)/);
+      if (recompensaMatch) {
+        const reward = parseFloat(recompensaMatch[1].replace(/,/g, ''));
+        const deliveries = entregasField ? parseInt(entregasField.value.match(/\d+/)?.[0] || '0') : 0;
+        const missionType = missaoField ? parseInt(missaoField.value.match(/\d+/)?.[0] || '0') : 0;
+
+        return {
+          ...base,
+          tipo: 'supply_chain',
+          categoria: 'supply_chain',
+          item: `Ferrovia Missão ${missionType}`,
+          quantidade: deliveries,
+          valor: reward,
+          supplyChainType: 'FERROVIA_MISSION_COMPLETED',
+          parseSuccess: true,
+          confidence: 'high',
+          content: `${base.autor} completou missão Ferrovia (${deliveries} entregas, recompensa: $${reward})`
+        };
+      }
+    }
+    return base;
+  }
+
+  /**
+   * Parse Ferrovia money withdrawal embed (COOPERATIVA - SACOU)
+   */
+  private parseFerroviaSaqueEmbed(fields: any[], base: ParsedActivity): ParsedActivity {
+    const quantiaField = fields.find(f => f.name.includes('Quantia'));
+    if (quantiaField) {
+      const quantiaMatch = quantiaField.value.match(/\$?\s*([0-9,]+)/);
+      if (quantiaMatch) {
+        const amount = parseFloat(quantiaMatch[1].replace(/,/g, ''));
+        return {
+          ...base,
+          tipo: 'saque',
+          categoria: 'financeiro',
+          item: 'Money',
+          valor: amount,
+          supplyChainType: 'MONEY_WITHDRAWN_FROM_FERROVIA',
+          parseSuccess: true,
+          confidence: 'high',
+          content: `${base.autor} sacou $${amount} da Ferrovia`
+        };
+      }
+    }
+    return base;
+  }
+
+  /**
+   * Parse Ferrovia money deposit embed (COOPERATIVA - DEPOSITOU)
+   */
+  private parseFerroviaDepositoEmbed(fields: any[], base: ParsedActivity): ParsedActivity {
+    const quantiaField = fields.find(f => f.name.includes('Quantia'));
+    if (quantiaField) {
+      const quantiaMatch = quantiaField.value.match(/\$?\s*([0-9,]+)/);
+      if (quantiaMatch) {
+        const amount = parseFloat(quantiaMatch[1].replace(/,/g, ''));
+        return {
+          ...base,
+          tipo: 'deposito',
+          categoria: 'financeiro',
+          item: 'Money',
+          valor: amount,
+          supplyChainType: 'MONEY_DEPOSITED_TO_INVENTORY',
+          parseSuccess: true,
+          confidence: 'high',
+          content: `${base.autor} depositou $${amount} na Ferrovia`
         };
       }
     }
@@ -589,14 +704,20 @@ class ChannelAnalyzer {
       // Directory already exists
     }
 
-    // Generate detailed transactions CSV
-    await this.generateDetailedTransactionsCSV(outputDir, filenameSuffix);
+    // Generate selected report types
+    console.log(`📊 Report types to generate: ${this.reportTypes.join(', ')}`);
 
-    // Generate worker summary CSV
-    await this.generateWorkerSummaryCSV(outputDir, filenameSuffix);
+    if (this.reportTypes.includes('detailed')) {
+      await this.generateDetailedTransactionsCSV(outputDir, filenameSuffix);
+    }
 
-    // Generate activity breakdown CSV
-    await this.generateActivityBreakdownCSV(outputDir, filenameSuffix);
+    if (this.reportTypes.includes('summary')) {
+      await this.generateWorkerSummaryCSV(outputDir, filenameSuffix);
+    }
+
+    if (this.reportTypes.includes('breakdown')) {
+      await this.generateActivityBreakdownCSV(outputDir, filenameSuffix);
+    }
 
     console.log(`📁 Reports saved to: ${outputDir}`);
   }
@@ -706,6 +827,7 @@ async function main() {
   const channelId = process.argv[2] || '1412325130926948362'; // Default to Fazenda CDP
   const startDate = process.argv[3]; // Optional start date filter (YYYY-MM-DD)
   const endDate = process.argv[4]; // Optional end date filter (YYYY-MM-DD)
+  const reportTypes = process.argv[5]; // Optional report types (comma-separated: detailed,summary,breakdown)
 
   console.log(`🎯 Target Channel ID: ${channelId}`);
   if (startDate) {
@@ -714,11 +836,16 @@ async function main() {
   if (endDate) {
     console.log(`📅 End Date: ${endDate}`);
   }
+  if (reportTypes) {
+    console.log(`📊 Report Types: ${reportTypes}`);
+  }
 
-  const analyzer = new ChannelAnalyzer(channelId, startDate, endDate);
+  const analyzer = new ChannelAnalyzer(channelId, startDate, endDate, reportTypes);
 
   try {
     await analyzer.analyze();
+    console.log('🎉 Script completed successfully, exiting...');
+    process.exit(0); // Explicitly exit to ensure spawned process closes
   } catch (error) {
     console.error('❌ Fatal error:', error);
     process.exit(1);

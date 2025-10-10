@@ -97,7 +97,24 @@ When you see "/update" command from the user, perform the following actions:
 3. Update changelog.md if there are version-worthy changes
 4. Update CLAUDE.md if there are architectural or command changes
 
-## Recent Major Updates (v0.059) **[CURRENT VERSION]**
+## Recent Major Updates (v0.060) **[CURRENT VERSION]**
+
+### Export Data Management - Channel Selection Fix (v0.060)
+- **Feature**: Fixed critical channel selection issue in Export Data Management preventing firm channel selection
+- **Key Fix**: Created missing Next.js API proxy route for monitored channels endpoint
+- **Root Cause**: Frontend calling backend route directly resulted in 404 error, no Next.js proxy existed
+- **Technical Implementation**:
+  - Created `frontend/app/api/firms-config/system/monitored-channels/route.ts` proxy route
+  - Added serverId parameter to frontend `loadMonitoredChannels()` API call
+  - Follows same pattern as existing `discord-channels` proxy route
+- **Export System Features** (fully working):
+  - Report type filtering: Only selected report types generate (detailed/summary/breakdown)
+  - Channel filtering: Only channels configured as firms are selectable
+  - Monitored channels loaded from backend firm configuration
+  - Data correctly mapped from objects to channelIds array
+- **Result**: Channel selection fully functional - users can select firm channels for CSV data export
+
+## Previous Major Updates (v0.059)
 
 ### Multi-Supplier Order System - Discord & Frontend (v0.059)
 - **Feature**: Complete implementation of multi-supplier order selection in Discord bot and frontend

@@ -209,35 +209,35 @@ export default function PaymentSettings() {
   return (
     <div className="p-6 max-w-4xl">
       <div className="flex items-center gap-3 mb-6">
-        <div className="p-2 bg-blue-100 rounded-lg">
-          <DollarSign className="w-6 h-6 text-blue-600" />
+        <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
+          <DollarSign className="w-6 h-6 text-blue-600 dark:text-blue-400" />
         </div>
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Payment Settings</h1>
-          <p className="text-gray-600">Configure default pricing and verification settings for the payment system</p>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Payment Settings</h1>
+          <p className="text-gray-600 dark:text-gray-400">Configure default pricing and verification settings for the payment system</p>
         </div>
       </div>
 
       {/* Status Messages */}
       {error && (
-        <div className="mb-4 p-3 bg-red-100 border border-red-300 text-red-700 rounded-lg flex items-center gap-2">
+        <div className="mb-4 p-3 bg-red-100 dark:bg-red-900/30 border border-red-300 dark:border-red-800 text-red-700 dark:text-red-400 rounded-lg flex items-center gap-2">
           <AlertTriangle className="w-4 h-4" />
           {error}
         </div>
       )}
 
       {success && (
-        <div className="mb-4 p-3 bg-green-100 border border-green-300 text-green-700 rounded-lg">
+        <div className="mb-4 p-3 bg-green-100 dark:bg-green-900/30 border border-green-300 dark:border-green-800 text-green-700 dark:text-green-400 rounded-lg">
           {success}
         </div>
       )}
 
       <div className="space-y-6">
         {/* System Status */}
-        <div className="bg-white rounded-lg border border-gray-200 p-6">
+        <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
           <div className="flex items-center gap-3 mb-4">
-            <Settings className="w-5 h-5 text-gray-600" />
-            <h2 className="text-lg font-semibold">System Status</h2>
+            <Settings className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+            <h2 className="text-lg font-semibold text-gray-900 dark:text-white">System Status</h2>
           </div>
 
           <div className="flex items-center gap-4">
@@ -246,13 +246,13 @@ export default function PaymentSettings() {
                 type="checkbox"
                 checked={config.enabled}
                 onChange={(e) => setConfig(prev => ({ ...prev, enabled: e.target.checked }))}
-                className="rounded border-gray-300"
+                className="rounded border-gray-300 dark:border-gray-600"
               />
-              <span className="text-sm font-medium">Enable Payment System</span>
+              <span className="text-sm font-medium text-gray-900 dark:text-white">Enable Payment System</span>
             </label>
 
             {config.lastUpdated && (
-              <span className="text-sm text-gray-500">
+              <span className="text-sm text-gray-500 dark:text-gray-400">
                 Last updated: {new Date(config.lastUpdated).toLocaleString()}
               </span>
             )}
@@ -260,127 +260,127 @@ export default function PaymentSettings() {
         </div>
 
         {/* Default Pricing */}
-        <div className="bg-white rounded-lg border border-gray-200 p-6">
+        <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
           <div className="flex items-center gap-3 mb-4">
-            <DollarSign className="w-5 h-5 text-green-600" />
-            <h2 className="text-lg font-semibold">Default Pricing</h2>
+            <DollarSign className="w-5 h-5 text-green-600 dark:text-green-400" />
+            <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Default Pricing</h2>
           </div>
-          <p className="text-sm text-gray-600 mb-4">
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
             These values will appear as defaults in the payment modal. Users can still override them.
           </p>
 
           <div className="space-y-6">
             {/* Worker Payment Rates */}
             <div>
-              <h3 className="text-sm font-semibold text-gray-700 mb-3">Worker Payment Rates</h3>
+              <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">Worker Payment Rates</h3>
               <div className="grid md:grid-cols-3 gap-4">
                 {/* Plants */}
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-gray-700">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                     🌾 Plants (per unit)
                   </label>
                   <div className="relative">
-                    <span className="absolute left-3 top-2 text-gray-500">$</span>
+                    <span className="absolute left-3 top-2 text-gray-500 dark:text-gray-400">$</span>
                     <input
                       type="number"
                       step="0.01"
                       min="0"
                       value={config.defaultPrices.plants.unitPrice}
                       onChange={(e) => updateDefaultPrice('plants', parseFloat(e.target.value) || 0)}
-                      className="pl-8 w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      className="pl-8 w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                       placeholder="0.25"
                     />
                   </div>
-                  <p className="text-xs text-gray-500">{config.defaultPrices.plants.description}</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">{config.defaultPrices.plants.description}</p>
                 </div>
 
                 {/* Animals */}
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-gray-700">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                     🐄 Animals (per service)
                   </label>
                   <div className="relative">
-                    <span className="absolute left-3 top-2 text-gray-500">$</span>
+                    <span className="absolute left-3 top-2 text-gray-500 dark:text-gray-400">$</span>
                     <input
                       type="number"
                       step="0.01"
                       min="0"
                       value={config.defaultPrices.animals.unitPrice}
                       onChange={(e) => updateDefaultPrice('animals', parseFloat(e.target.value) || 0)}
-                      className="pl-8 w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      className="pl-8 w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                       placeholder="160.00"
                     />
                   </div>
-                  <p className="text-xs text-gray-500">{config.defaultPrices.animals.description}</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">{config.defaultPrices.animals.description}</p>
                 </div>
 
                 {/* Ferrovia */}
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-gray-700">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                     🚂 Ferrovia (per mission)
                   </label>
                   <div className="relative">
-                    <span className="absolute left-3 top-2 text-gray-500">$</span>
+                    <span className="absolute left-3 top-2 text-gray-500 dark:text-gray-400">$</span>
                     <input
                       type="number"
                       step="0.01"
                       min="0"
                       value={config.defaultPrices.ferrovia.unitPrice}
                       onChange={(e) => updateDefaultPrice('ferrovia', parseFloat(e.target.value) || 0)}
-                      className="pl-8 w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      className="pl-8 w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                       placeholder="250.00"
                     />
                   </div>
-                  <p className="text-xs text-gray-500">{config.defaultPrices.ferrovia.description}</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">{config.defaultPrices.ferrovia.description}</p>
                 </div>
               </div>
             </div>
 
             {/* Raising Costs */}
             <div>
-              <h3 className="text-sm font-semibold text-gray-700 mb-3">Raising Costs (for Analytics)</h3>
-              <p className="text-xs text-gray-600 mb-3">
+              <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">Raising Costs (for Analytics)</h3>
+              <p className="text-xs text-gray-600 dark:text-gray-400 mb-3">
                 Cost to raise each item (animals, seeds, feed). Used to calculate profit margins in analytics.
               </p>
               <div className="grid md:grid-cols-2 gap-4">
                 {/* Plant Cost */}
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-gray-700">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                     🌱 Plant Cost (per unit)
                   </label>
                   <div className="relative">
-                    <span className="absolute left-3 top-2 text-gray-500">$</span>
+                    <span className="absolute left-3 top-2 text-gray-500 dark:text-gray-400">$</span>
                     <input
                       type="number"
                       step="0.01"
                       min="0"
                       value={config.defaultPrices.plants.costPerUnit}
                       onChange={(e) => updateDefaultCost('plants', parseFloat(e.target.value) || 0)}
-                      className="pl-8 w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      className="pl-8 w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                       placeholder="0.00"
                     />
                   </div>
-                  <p className="text-xs text-gray-500">Cost of seeds (usually negligible)</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">Cost of seeds (usually negligible)</p>
                 </div>
 
                 {/* Animal Cost */}
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-gray-700">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                     🐄 Animal Cost (per animal)
                   </label>
                   <div className="relative">
-                    <span className="absolute left-3 top-2 text-gray-500">$</span>
+                    <span className="absolute left-3 top-2 text-gray-500 dark:text-gray-400">$</span>
                     <input
                       type="number"
                       step="0.01"
                       min="0"
                       value={config.defaultPrices.animals.costPerUnit}
                       onChange={(e) => updateDefaultCost('animals', parseFloat(e.target.value) || 0)}
-                      className="pl-8 w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      className="pl-8 w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                       placeholder="23.00"
                     />
                   </div>
-                  <p className="text-xs text-gray-500">Cost to raise (animals + feed). Default: $23/animal ($92 per 4 animals)</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">Cost to raise (animals + feed). Default: $23/animal ($92 per 4 animals)</p>
                 </div>
               </div>
             </div>
@@ -388,12 +388,12 @@ export default function PaymentSettings() {
         </div>
 
         {/* Inventory Verification */}
-        <div className="bg-white rounded-lg border border-gray-200 p-6">
+        <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6 transition-colors">
           <div className="flex items-center gap-3 mb-4">
-            <Shield className="w-5 h-5 text-blue-600" />
-            <h2 className="text-lg font-semibold">Inventory Verification</h2>
+            <Shield className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+            <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Inventory Verification</h2>
           </div>
-          <p className="text-sm text-gray-600 mb-4">
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
             Settings for verifying that managers actually withdrew money from inventory before making payments.
           </p>
 
@@ -403,14 +403,14 @@ export default function PaymentSettings() {
                 type="checkbox"
                 checked={config.inventoryVerification.enabled}
                 onChange={(e) => updateInventoryVerification('enabled', e.target.checked)}
-                className="rounded border-gray-300"
+                className="rounded border-gray-300 dark:border-gray-600"
               />
-              <span className="text-sm font-medium">Enable inventory verification</span>
+              <span className="text-sm font-medium text-gray-900 dark:text-white">Enable inventory verification</span>
             </label>
 
             <div className="grid md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                   <Clock className="w-4 h-4 inline mr-1" />
                   Time Window (minutes)
                 </label>
@@ -420,14 +420,14 @@ export default function PaymentSettings() {
                   max="1440"
                   value={config.inventoryVerification.timeWindowMinutes}
                   onChange={(e) => updateInventoryVerification('timeWindowMinutes', parseInt(e.target.value) || 30)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                   placeholder="30"
                 />
-                <p className="text-xs text-gray-500">How far back to check for withdrawals</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">How far back to check for withdrawals</p>
               </div>
 
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                   Tolerance ($)
                 </label>
                 <input
@@ -437,28 +437,28 @@ export default function PaymentSettings() {
                   max="10"
                   value={config.inventoryVerification.tolerance}
                   onChange={(e) => updateInventoryVerification('tolerance', parseFloat(e.target.value) || 0.01)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                   placeholder="0.01"
                 />
-                <p className="text-xs text-gray-500">Acceptable difference between withdrawal and payment</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">Acceptable difference between withdrawal and payment</p>
               </div>
             </div>
           </div>
         </div>
 
         {/* Role Permissions */}
-        <div className="bg-white rounded-lg border border-gray-200 p-6">
+        <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6 transition-colors">
           <div className="flex items-center gap-3 mb-4">
-            <Shield className="w-5 h-5 text-purple-600" />
-            <h2 className="text-lg font-semibold">Role Permissions</h2>
+            <Shield className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+            <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Role Permissions</h2>
           </div>
-          <p className="text-sm text-gray-600 mb-4">
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
             Configure which Discord roles can use the payment system.
           </p>
 
           <div className="grid md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                 Manager Roles (can create payments)
               </label>
               <textarea
@@ -471,14 +471,14 @@ export default function PaymentSettings() {
                   }
                 }))}
                 rows={3}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                 placeholder="One role ID per line"
               />
-              <p className="text-xs text-gray-500">One Discord role ID per line</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400">One Discord role ID per line</p>
             </div>
 
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                 Farm Owner Roles (can verify payments)
               </label>
               <textarea
@@ -491,10 +491,10 @@ export default function PaymentSettings() {
                   }
                 }))}
                 rows={3}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                 placeholder="One role ID per line"
               />
-              <p className="text-xs text-gray-500">One Discord role ID per line</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400">One Discord role ID per line</p>
             </div>
           </div>
         </div>
@@ -504,7 +504,7 @@ export default function PaymentSettings() {
           <button
             onClick={resetToDefaults}
             disabled={saving}
-            className="px-4 py-2 text-gray-600 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+            className="px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
           >
             Reset to Defaults
           </button>
@@ -513,7 +513,7 @@ export default function PaymentSettings() {
             <button
               onClick={loadConfig}
               disabled={loading || saving}
-              className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
+              className="flex items-center gap-2 px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
             >
               <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
               Reload
@@ -522,7 +522,7 @@ export default function PaymentSettings() {
             <button
               onClick={saveConfig}
               disabled={saving}
-              className="flex items-center gap-2 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50"
+              className="flex items-center gap-2 px-6 py-2 bg-blue-600 dark:bg-blue-500 text-white rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors disabled:opacity-50"
             >
               {saving ? (
                 <RefreshCw className="w-4 h-4 animate-spin" />
