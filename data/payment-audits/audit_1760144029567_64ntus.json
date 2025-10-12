@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1760144029567_64ntus",
+  "sessionId": "session_1760101253261_qenpep",
+  "managerId": "198538680686608384",
+  "managerName": "Barth",
+  "workerId": "206587400703574019",
+  "workerName": "Cosmo Versace",
+  "amountPaid": 1000,
+  "paidAt": "2025-10-11T00:53:49.567Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-11T00:48:49.567Z",
+    "endTime": "2025-10-11T01:03:49.567Z"
+  }
+}

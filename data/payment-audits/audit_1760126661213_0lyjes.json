@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1760126661213_0lyjes",
+  "sessionId": "session_1760032034195_rua28b",
+  "managerId": "588934801508270082",
+  "managerName": "chrisbam",
+  "workerId": "835165941267693659",
+  "workerName": "Ragnar Lothbrok",
+  "amountPaid": 2170,
+  "paidAt": "2025-10-10T20:04:21.213Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-10T19:59:21.213Z",
+    "endTime": "2025-10-10T20:14:21.213Z"
+  }
+}

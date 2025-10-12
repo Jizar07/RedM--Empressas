@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1760061333606_2oi847",
+  "sessionId": "session_1760047094951_s4o174",
+  "managerId": "273987353456934913",
+  "managerName": "𝓢𝓸𝓾𝔃𝔃 🏄🏾",
+  "workerId": "311732968806678529",
+  "workerName": "Bob Eastwood",
+  "amountPaid": 642.5,
+  "paidAt": "2025-10-10T01:55:33.606Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-10T01:50:33.606Z",
+    "endTime": "2025-10-10T02:05:33.606Z"
+  }
+}

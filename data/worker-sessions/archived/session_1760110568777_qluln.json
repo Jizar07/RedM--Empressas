@@ -1,0 +1,146 @@
+{
+  "workerId": "723691255871045652",
+  "workerName": "marques boone",
+  "channelId": "1426229964386209873",
+  "sessionId": "session_1760110568777_qluln",
+  "startTime": "2025-10-10T15:36:08.777Z",
+  "lastActivity": "2025-10-10T16:48:42.070Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 100,
+      "transactionId": "tx_1760110568779_s8qc2d",
+      "timestamp": "2025-10-10T15:36:08.779Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 100,
+      "transactionId": "tx_1760110590825_m5k88h",
+      "timestamp": "2025-10-10T15:36:30.825Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 100,
+      "transactionId": "tx_1760114567998_qatnw",
+      "timestamp": "2025-10-10T16:42:47.998Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 100,
+      "transactionId": "tx_1760114602575_nrix1",
+      "timestamp": "2025-10-10T16:43:22.575Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 100,
+      "transactionId": "tx_1760114607176_kdsqv",
+      "timestamp": "2025-10-10T16:43:27.176Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 100,
+      "transactionId": "tx_1760114613595_kz8rgk",
+      "timestamp": "2025-10-10T16:43:33.595Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 100,
+      "transactionId": "tx_1760114618252_o2w66m",
+      "timestamp": "2025-10-10T16:43:38.252Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 100,
+      "transactionId": "tx_1760114905022_tsqb74",
+      "timestamp": "2025-10-10T16:48:25.022Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 100,
+      "transactionId": "tx_1760114909347_gqm08m",
+      "timestamp": "2025-10-10T16:48:29.347Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 100,
+      "transactionId": "tx_1760114913236_5ie0si",
+      "timestamp": "2025-10-10T16:48:33.236Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 100,
+      "transactionId": "tx_1760114917608_lmve6",
+      "timestamp": "2025-10-10T16:48:37.608Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 100,
+      "transactionId": "tx_1760114922070_zpsfpc",
+      "timestamp": "2025-10-10T16:48:42.070Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Ovelha Macho",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1760110736433_hokvha",
+      "timestamp": "2025-10-10T15:38:56.433Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1760111470331_rs4k9m",
+      "timestamp": "2025-10-10T15:51:10.331Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1760114133000_d03p9l",
+      "timestamp": "2025-10-10T16:35:33.000Z"
+    }
+  ],
+  "financialTransactions": [],
+  "inventoryTransactions": [],
+  "totalCredits": 595,
+  "embedMessageId": "1426250100602310817",
+  "seedExpectations": [
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 100,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 1000,
+      "isComplete": true,
+      "transactionId": "tx_1760110590825_m5k88h"
+    }
+  ],
+  "animalExpectations": [
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1760110736433_hokvha",
+      "takenTimestamp": "2025-10-10T15:38:56.433Z"
+    }
+  ],
+  "completedAt": "2025-10-10T17:00:41.013Z",
+  "notes": "Pago por Barth (198538680686608384)"
+}

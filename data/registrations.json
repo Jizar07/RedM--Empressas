@@ -1362,5 +1362,104 @@
     "invitedBy": "Gama",
     "approved": true,
     "registeredAt": "2025-10-10T00:37:05.462Z"
+  },
+  {
+    "userId": "1351585092736258048",
+    "username": "jvszx_037",
+    "ingameName": "Raimundo Laberada",
+    "mailId": "0000",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "Nina Vatore | 0000",
+    "approved": true,
+    "registeredAt": "2025-10-10T01:53:08.327Z"
+  },
+  {
+    "userId": "546144926027612173",
+    "username": "slayermatheus",
+    "ingameName": "Matheus versace",
+    "mailId": "6230",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "Cosmo Versace | 5974",
+    "approved": true,
+    "registeredAt": "2025-10-10T04:04:21.437Z"
+  },
+  {
+    "userId": "546144926027612173",
+    "username": "slayermatheus",
+    "ingameName": "Matheus Versace",
+    "mailId": "6230",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "Cosmo Versace | 5974",
+    "approved": true,
+    "registeredAt": "2025-10-10T04:10:59.351Z"
+  },
+  {
+    "userId": "499051536614162435",
+    "username": "vidal.ps",
+    "ingameName": "Vidal Boone",
+    "mailId": "0",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "Barth",
+    "approved": true,
+    "registeredAt": "2025-10-10T15:25:34.036Z"
+  },
+  {
+    "userId": "723691255871045652",
+    "username": "marques.fxp7",
+    "ingameName": "marques boone",
+    "mailId": "1234",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "Barth",
+    "approved": true,
+    "registeredAt": "2025-10-10T15:25:51.148Z"
+  },
+  {
+    "userId": "499051536614162435",
+    "username": "vidal.ps",
+    "ingameName": "Vidal Boone",
+    "mailId": "0000",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "Barth",
+    "approved": true,
+    "registeredAt": "2025-10-10T15:28:38.517Z"
+  },
+  {
+    "userId": "723691255871045652",
+    "username": "marques.fxp7",
+    "ingameName": "marques boone",
+    "mailId": "1234",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "Barth",
+    "approved": true,
+    "registeredAt": "2025-10-10T15:28:41.021Z"
+  },
+  {
+    "userId": "954035307915907113",
+    "username": "hajiin_",
+    "ingameName": "Aiden Blake",
+    "mailId": "6174",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "Bob Eastwood | 434",
+    "approved": true,
+    "registeredAt": "2025-10-11T20:28:13.282Z"
+  },
+  {
+    "userId": "206587400703574019",
+    "username": "barroso",
+    "ingameName": "Cosmo Versace",
+    "mailId": "5974",
+    "functionId": "func_1758806802577",
+    "functionName": "Gerente",
+    "invitedBy": "Izzynha Evans | 1383",
+    "approved": true,
+    "registeredAt": "2025-10-11T23:58:48.164Z"
   }
 ]

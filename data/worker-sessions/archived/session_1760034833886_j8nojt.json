@@ -1,0 +1,26 @@
+{
+  "workerId": "940279402145669241",
+  "workerName": "Tereza Mcfell",
+  "channelId": "1425910054430834760",
+  "sessionId": "session_1760034833886_j8nojt",
+  "startTime": "2025-10-09T18:33:53.886Z",
+  "lastActivity": "2025-10-09T18:33:53.889Z",
+  "status": "stale",
+  "plantTransactions": [
+    {
+      "type": "plant_deposited",
+      "itemName": "Sugar",
+      "quantity": 1,
+      "transactionId": "tx_1760034833889_gox70g",
+      "timestamp": "2025-10-09T18:33:53.889Z"
+    }
+  ],
+  "animalTransactions": [],
+  "financialTransactions": [],
+  "inventoryTransactions": [],
+  "totalCredits": 0.25,
+  "embedMessageId": "1425914186126331974",
+  "seedExpectations": [],
+  "completedAt": "2025-10-12T14:37:31.085Z",
+  "notes": "Auto-archived due to inactivity"
+}

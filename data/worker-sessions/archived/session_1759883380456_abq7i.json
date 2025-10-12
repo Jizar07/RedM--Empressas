@@ -1,0 +1,101 @@
+{
+  "workerId": "1127730801182777355",
+  "workerName": "Thony Gustav",
+  "channelId": "1420791388882206803",
+  "sessionId": "session_1759883380456_abq7i",
+  "startTime": "2025-10-08T00:29:40.456Z",
+  "lastActivity": "2025-10-09T22:42:51.976Z",
+  "status": "stale",
+  "plantTransactions": [
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 150,
+      "transactionId": "tx_1759884152411_xxybs",
+      "timestamp": "2025-10-08T00:42:32.411Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 200,
+      "transactionId": "tx_1759965642758_egelh",
+      "timestamp": "2025-10-08T23:20:42.758Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 200,
+      "transactionId": "tx_1759965649174_g69rfr",
+      "timestamp": "2025-10-08T23:20:49.174Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 100,
+      "transactionId": "tx_1759965654955_l0fknc",
+      "timestamp": "2025-10-08T23:20:54.955Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 200,
+      "transactionId": "tx_1760038128383_7pcuy",
+      "timestamp": "2025-10-09T19:28:48.383Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 200,
+      "transactionId": "tx_1760038132879_ok5v7",
+      "timestamp": "2025-10-09T19:28:52.879Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 200,
+      "transactionId": "tx_1760049754414_xz67il",
+      "timestamp": "2025-10-09T22:42:34.414Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 200,
+      "transactionId": "tx_1760049767968_nl1ajl",
+      "timestamp": "2025-10-09T22:42:47.968Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 100,
+      "transactionId": "tx_1760049771976_vfu1f4",
+      "timestamp": "2025-10-09T22:42:51.976Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Porco",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759883380458_2o1rs",
+      "timestamp": "2025-10-08T00:29:40.458Z"
+    }
+  ],
+  "financialTransactions": [],
+  "totalCredits": 387.5,
+  "embedMessageId": "1425976842724184096",
+  "animalExpectations": [
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759883380458_2o1rs",
+      "takenTimestamp": "2025-10-08T00:29:40.458Z"
+    }
+  ],
+  "seedExpectations": [],
+  "inventoryTransactions": [],
+  "completedAt": "2025-10-12T14:37:31.073Z",
+  "notes": "Auto-archived due to inactivity"
+}

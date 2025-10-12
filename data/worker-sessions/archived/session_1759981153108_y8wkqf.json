@@ -1,0 +1,154 @@
+{
+  "workerId": "645598935209082880",
+  "workerName": "Vincent Versace",
+  "channelId": "1425688123848917104",
+  "sessionId": "session_1759981153108_y8wkqf",
+  "startTime": "2025-10-09T03:39:13.108Z",
+  "lastActivity": "2025-10-09T06:34:51.295Z",
+  "status": "stale",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 100,
+      "transactionId": "tx_1759981912257_dsrwlf",
+      "timestamp": "2025-10-09T03:51:52.257Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1759985279164_a8g44j",
+      "timestamp": "2025-10-09T04:47:59.164Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 490,
+      "transactionId": "tx_1759988631553_oygise",
+      "timestamp": "2025-10-09T05:43:51.553Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 10,
+      "transactionId": "tx_1759988688899_jmwnve",
+      "timestamp": "2025-10-09T05:44:48.899Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Touro",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759981153110_rjzly9",
+      "timestamp": "2025-10-09T03:39:13.110Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759983170247_se2cxm",
+      "timestamp": "2025-10-09T04:12:50.247Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Touro",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759988865985_r37zyg",
+      "timestamp": "2025-10-09T05:47:45.985Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Cabra",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759988906575_tlt47l",
+      "timestamp": "2025-10-09T05:48:26.575Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759991074507_w1kec8",
+      "timestamp": "2025-10-09T06:24:34.507Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Burro",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759991599528_16dfm",
+      "timestamp": "2025-10-09T06:33:19.528Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Ovelha Femea",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759991691295_3bxxi9",
+      "timestamp": "2025-10-09T06:34:51.295Z"
+    }
+  ],
+  "financialTransactions": [],
+  "inventoryTransactions": [],
+  "totalCredits": 170,
+  "embedMessageId": "1425733234641076295",
+  "animalExpectations": [
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759981153110_rjzly9",
+      "takenTimestamp": "2025-10-09T03:39:13.110Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759988865985_r37zyg",
+      "takenTimestamp": "2025-10-09T05:47:45.985Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759988906575_tlt47l",
+      "takenTimestamp": "2025-10-09T05:48:26.575Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759991599528_16dfm",
+      "takenTimestamp": "2025-10-09T06:33:19.528Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759991691295_3bxxi9",
+      "takenTimestamp": "2025-10-09T06:34:51.295Z"
+    }
+  ],
+  "seedExpectations": [
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 100,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 1000,
+      "isComplete": true,
+      "transactionId": "tx_1759981912257_dsrwlf"
+    }
+  ],
+  "completedAt": "2025-10-12T14:37:31.082Z",
+  "notes": "Auto-archived due to inactivity"
+}

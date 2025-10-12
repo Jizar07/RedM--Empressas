@@ -1,0 +1,20 @@
+{
+  "sessionId": "session_1760134363425_1p8c5",
+  "workerId": "1204772480305209384",
+  "workerName": "BONNIE BENNETT",
+  "amount": 160,
+  "paidBy": "1204772480305209384",
+  "paidByName": "𝑻𝒐́𝒙𝒊𝒄𝒂 𓆩♡𓆪",
+  "paidAt": "2025-10-10T22:16:38.071Z",
+  "plantTransactions": [],
+  "animalTransactions": [
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1760134363427_ofico",
+      "timestamp": "2025-10-10T22:12:43.427Z"
+    }
+  ],
+  "financialTransactions": []
+}

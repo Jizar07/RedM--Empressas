@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1760115592679_7bv77x",
+  "sessionId": "session_1760110257060_gzua4m",
+  "managerId": "198538680686608384",
+  "managerName": "Barth",
+  "workerId": "499051536614162435",
+  "workerName": "Vidal Boone",
+  "amountPaid": 570,
+  "paidAt": "2025-10-10T16:59:52.679Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-10T16:54:52.679Z",
+    "endTime": "2025-10-10T17:09:52.679Z"
+  }
+}

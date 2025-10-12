@@ -1,0 +1,40 @@
+{
+  "workerId": "909045185688768543",
+  "workerName": "Diana Maia",
+  "channelId": "1425595954240950386",
+  "sessionId": "session_1759959373267_7osdom",
+  "startTime": "2025-10-08T21:36:13.267Z",
+  "lastActivity": "2025-10-08T21:48:20.049Z",
+  "status": "stale",
+  "plantTransactions": [
+    {
+      "type": "plant_deposited",
+      "itemName": "Creekplum",
+      "quantity": 390,
+      "transactionId": "tx_1759959373271_ompwsk",
+      "timestamp": "2025-10-08T21:36:13.271Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Creekplum",
+      "quantity": 120,
+      "transactionId": "tx_1759960095969_wioz6",
+      "timestamp": "2025-10-08T21:48:15.969Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 310,
+      "transactionId": "tx_1759960100049_cd49ec",
+      "timestamp": "2025-10-08T21:48:20.049Z"
+    }
+  ],
+  "animalTransactions": [],
+  "financialTransactions": [],
+  "inventoryTransactions": [],
+  "totalCredits": 205,
+  "embedMessageId": "1425600731544682507",
+  "seedExpectations": [],
+  "completedAt": "2025-10-12T14:37:31.081Z",
+  "notes": "Auto-archived due to inactivity"
+}

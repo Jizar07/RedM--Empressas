@@ -1,0 +1,55 @@
+{
+  "sessionId": "session_1760059787432_47gdj7",
+  "workerId": "206587400703574019",
+  "workerName": "Cosmo Versace",
+  "amount": 500,
+  "paidBy": "949397147030274059",
+  "paidByName": "๖ۣۜζ͜͡ɪᴢᴢʏɴʜᴀ🎀",
+  "paidAt": "2025-10-10T03:07:42.821Z",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente Trigo",
+      "quantity": 100,
+      "transactionId": "tx_1760059787436_5sk5ka",
+      "timestamp": "2025-10-10T01:29:47.436Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Adubo3",
+      "quantity": 100,
+      "transactionId": "tx_1760060550609_82zvmm",
+      "timestamp": "2025-10-10T01:42:30.609Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1760061473677_e1qh8m",
+      "timestamp": "2025-10-10T01:57:53.677Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1760061640006_uramm",
+      "timestamp": "2025-10-10T02:00:40.006Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1760061816786_oaurvj",
+      "timestamp": "2025-10-10T02:03:36.786Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1760061978810_zbvbp8",
+      "timestamp": "2025-10-10T02:06:18.810Z"
+    }
+  ],
+  "animalTransactions": [],
+  "financialTransactions": []
+}

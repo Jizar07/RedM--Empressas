@@ -5,7 +5,31 @@ This file is synchronized with: https://github.com/Jizar07/RedM--Empressas
 
 ## Version History
 
-### [0.060] - 2025-10-09 **[CURRENT VERSION]**
+### [0.061] - 2025-10-12 **[CURRENT VERSION]**
+- **WEEKLY RANKING SYSTEM FIX**: Complete overhaul of ranking calculation with proper date-range filtering
+- **KEY FIX**: Rankings now calculate from actual session transactions filtered by current week timestamp
+- **THREE DATA SOURCES**:
+  - Active worker sessions: `data/worker-sessions/active-sessions.json`
+  - Archived worker sessions: `data/worker-sessions/archived/*.json`
+  - Ferrovia sessions: `data/supply-chain/active-sessions.json`
+- **DATE-RANGE FILTERING**: All transactions filtered by timestamp within current week boundaries (Sunday 00:00 to Saturday 23:59 Brazil time)
+- **ROOT CAUSE RESOLVED**:
+  - `getCurrentWeekRankings()` was reading stale `thisWeek` counters from `ranking-totals.json`
+  - Weekly reset wasn't regenerating week file with actual data
+  - Only archived sessions were scanned, missing active sessions
+- **TECHNICAL IMPLEMENTATION** (`src/services/WeeklyRankingService.ts:178-365`):
+  - Created `processSession()` helper function to scan transactions
+  - Added timestamp validation: `txTime >= weekStartTime && txTime <= weekEndTime`
+  - Plant counting: Filter `tx.type === 'plant_deposited'` within date range
+  - Animal counting: Filter `tx.type === 'delivery_completed'` within date range
+  - Ferrovia counting: Filter `mission.status === 'completed'` with `completedAt` within date range
+  - Enhanced `resetWeeklyRankings()` to zero out all `thisWeek` counters (lines 286-294)
+- **FILES MODIFIED**:
+  - src/services/WeeklyRankingService.ts - Complete date-range filtering system
+  - src/services/WorkerActivityService.ts - Ranking update calls in transaction handlers
+- **RESULT**: Weekly rankings now show ONLY activities from current week (October 12+) with accurate real-time data calculated from actual session files, not stale counters
+
+### [0.060] - 2025-10-09
 - **EXPORT DATA MANAGEMENT FIX**: Fixed channel selection issue preventing users from selecting firm channels for data export
 - **KEY FIX**:
   - Created missing Next.js API proxy route for `/api/firms-config/system/monitored-channels`

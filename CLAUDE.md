@@ -97,7 +97,29 @@ When you see "/update" command from the user, perform the following actions:
 3. Update changelog.md if there are version-worthy changes
 4. Update CLAUDE.md if there are architectural or command changes
 
-## Recent Major Updates (v0.060) **[CURRENT VERSION]**
+## Recent Major Updates (v0.061) **[CURRENT VERSION]**
+
+### Weekly Ranking System - Date Range Filtering Fix (v0.061)
+- **Feature**: Complete overhaul of ranking calculation system to use proper date-range filtering from session transactions
+- **Key Fix**: Rankings now calculate from ALL session files (active + archived + ferrovia) filtered by current week timestamp
+- **Root Cause**: `getCurrentWeekRankings()` was reading stale `thisWeek` counters from `ranking-totals.json` instead of scanning actual transactions
+- **Three Data Sources**:
+  - Active worker sessions: `data/worker-sessions/active-sessions.json`
+  - Archived worker sessions: `data/worker-sessions/archived/*.json`
+  - Ferrovia sessions: `data/supply-chain/active-sessions.json`
+- **Technical Implementation** (`src/services/WeeklyRankingService.ts:178-365`):
+  - Created `processSession()` helper to scan plant/animal transactions from each session
+  - Timestamp filtering: `txTime >= weekStartTime && txTime <= weekEndTime`
+  - Plants: Filter `tx.type === 'plant_deposited'` within current week
+  - Animals: Filter `tx.type === 'delivery_completed'` within current week
+  - Ferrovia: Filter `mission.status === 'completed'` with `completedAt` within current week
+  - Enhanced `resetWeeklyRankings()` to zero out all `thisWeek` counters during Sunday reset
+- **Worker Activity Integration** (`src/services/WorkerActivityService.ts`):
+  - Added ranking update calls in `addPlantTransaction()` for real-time plant tracking
+  - Added ranking update calls in `addAnimalTransaction()` for real-time animal tracking
+- **Result**: Weekly rankings display ONLY activities from current week with accurate real-time data, no more stale counters from previous weeks
+
+## Previous Major Updates (v0.060)
 
 ### Export Data Management - Channel Selection Fix (v0.060)
 - **Feature**: Fixed critical channel selection issue in Export Data Management preventing firm channel selection

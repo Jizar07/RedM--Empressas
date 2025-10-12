@@ -1,0 +1,26 @@
+{
+  "workerId": "198538680686608384",
+  "workerName": "Endo D. Barth",
+  "channelId": "1423800379677868085",
+  "sessionId": "session_1760056362919_ml4bj",
+  "startTime": "2025-10-10T00:32:42.919Z",
+  "lastActivity": "2025-10-10T00:32:42.921Z",
+  "status": "stale",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Adubo3",
+      "quantity": 100,
+      "transactionId": "tx_1760056362921_xeoum",
+      "timestamp": "2025-10-10T00:32:42.921Z"
+    }
+  ],
+  "animalTransactions": [],
+  "financialTransactions": [],
+  "inventoryTransactions": [],
+  "totalCredits": 0,
+  "embedMessageId": "1426004485293080682",
+  "seedExpectations": [],
+  "completedAt": "2025-10-12T07:37:30.575Z",
+  "notes": "Auto-archived due to inactivity"
+}

@@ -103,6 +103,28 @@ export default function WorkerRankings({ onClose }: WorkerRankingsProps) {
     fetchRankings();
   }, []);
 
+  // Listen for real-time ranking updates via Discord activity events
+  useEffect(() => {
+    const handleDiscordActivity = () => {
+      console.log('📊 Discord activity detected, refreshing rankings...');
+      // Debounce: wait a bit for backend to process and update rankings
+      setTimeout(() => {
+        fetchRankings();
+      }, 2000); // 2 second delay to ensure backend has processed the activity
+    };
+
+    // Listen for Discord message events dispatched by browser extension
+    window.addEventListener('newDiscordMessage', handleDiscordActivity);
+
+    // Also listen for explicit ranking update events (if backend needs to trigger)
+    window.addEventListener('rankingsUpdated', handleDiscordActivity);
+
+    return () => {
+      window.removeEventListener('newDiscordMessage', handleDiscordActivity);
+      window.removeEventListener('rankingsUpdated', handleDiscordActivity);
+    };
+  }, []);
+
   const getRankIcon = (rank: number) => {
     switch (rank) {
       case 1: return <Crown className="w-5 h-5 text-yellow-500" />;

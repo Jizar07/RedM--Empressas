@@ -792,7 +792,7 @@
   "ferroviaRankings": [
     {
       "workerId": "unknown",
-      "workerName": "Bob Eastwood",
+      "workerName": "Santiago Bowdin",
       "plants": {
         "thisWeek": 0,
         "allTime": 0
@@ -802,10 +802,10 @@
         "allTime": 0
       },
       "ferrovia": {
-        "thisWeek": 72,
-        "allTime": 980
+        "thisWeek": 148,
+        "allTime": 1056
       },
-      "lastActivity": "2025-10-09T23:52:11.236Z"
+      "lastActivity": "2025-10-11T23:22:00.894Z"
     },
     {
       "workerId": "949397147030274059",
@@ -1114,5 +1114,5 @@
       "lastActivity": "2025-10-08T16:36:59.318Z"
     }
   ],
-  "lastUpdated": "2025-10-09T23:52:11.236Z"
+  "lastUpdated": "2025-10-11T23:22:00.894Z"
 }

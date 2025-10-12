@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1760075724614_ix05ip",
+  "sessionId": "session_1759980529539_jahkul",
+  "managerId": "1127730801182777355",
+  "managerName": "thony",
+  "workerId": "481612456792424448",
+  "workerName": "Cleber Versace",
+  "amountPaid": 445,
+  "paidAt": "2025-10-10T05:55:24.614Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-10T05:50:24.614Z",
+    "endTime": "2025-10-10T06:05:24.614Z"
+  }
+}

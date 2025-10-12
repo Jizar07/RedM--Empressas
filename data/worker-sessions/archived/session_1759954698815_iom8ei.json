@@ -1,0 +1,80 @@
+{
+  "workerId": "614115703229775904",
+  "workerName": "Sasa Pietra",
+  "channelId": "1424205328664363098",
+  "sessionId": "session_1759954698815_iom8ei",
+  "startTime": "2025-10-08T20:18:18.815Z",
+  "lastActivity": "2025-10-08T22:01:24.774Z",
+  "status": "stale",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Creekplum Semente",
+      "quantity": 100,
+      "transactionId": "tx_1759954698818_vv899g",
+      "timestamp": "2025-10-08T20:18:18.818Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 100,
+      "transactionId": "tx_1759954713427_srz0up",
+      "timestamp": "2025-10-08T20:18:33.427Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Creekplum",
+      "quantity": 500,
+      "transactionId": "tx_1759957815150_5la7u4",
+      "timestamp": "2025-10-08T21:10:15.150Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Creekplum",
+      "quantity": 500,
+      "transactionId": "tx_1759957975540_iwt992",
+      "timestamp": "2025-10-08T21:12:55.540Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1759960734153_7a2yp",
+      "timestamp": "2025-10-08T21:58:54.153Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1759960884774_b68xts",
+      "timestamp": "2025-10-08T22:01:24.774Z"
+    }
+  ],
+  "animalTransactions": [],
+  "financialTransactions": [],
+  "inventoryTransactions": [],
+  "totalCredits": 500,
+  "embedMessageId": "1425604022202536026",
+  "seedExpectations": [
+    {
+      "seedType": "Creekplum Semente",
+      "seedQuantity": 100,
+      "expectedPlantType": "Creekplum Semente",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759954698818_vv899g"
+    },
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 100,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 1000,
+      "isComplete": true,
+      "transactionId": "tx_1759954713427_srz0up"
+    }
+  ],
+  "completedAt": "2025-10-12T14:37:31.079Z",
+  "notes": "Auto-archived due to inactivity"
+}

@@ -1,0 +1,57 @@
+{
+  "workerId": "470361257497722886",
+  "workerName": "Kenai Comanches",
+  "channelId": "1424920214407221269",
+  "sessionId": "session_1759883226848_1rrfuw",
+  "startTime": "2025-10-08T00:27:06.848Z",
+  "lastActivity": "2025-10-08T01:17:52.508Z",
+  "status": "stale",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente Trigo",
+      "quantity": 100,
+      "transactionId": "tx_1759883226850_3j675",
+      "timestamp": "2025-10-08T00:27:06.850Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1759885476630_81235",
+      "timestamp": "2025-10-08T01:04:36.630Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 190,
+      "transactionId": "tx_1759885583674_r6drij",
+      "timestamp": "2025-10-08T01:06:23.674Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 340,
+      "transactionId": "tx_1759886272508_raiunc",
+      "timestamp": "2025-10-08T01:17:52.508Z"
+    }
+  ],
+  "animalTransactions": [],
+  "financialTransactions": [],
+  "totalCredits": 257.5,
+  "embedMessageId": "1425291075337326687",
+  "seedExpectations": [
+    {
+      "seedType": "Semente Trigo",
+      "seedQuantity": 100,
+      "expectedPlantType": "Trigo",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 1000,
+      "isComplete": true,
+      "transactionId": "tx_1759883226850_3j675"
+    }
+  ],
+  "inventoryTransactions": [],
+  "completedAt": "2025-10-10T21:37:28.053Z",
+  "notes": "Auto-archived due to inactivity"
+}

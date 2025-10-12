@@ -1,0 +1,26 @@
+{
+  "weekStart": "2025-10-12T04:00:00.000Z",
+  "category": "plants",
+  "winners": {
+    "first": {
+      "workerId": "431957051275739156",
+      "workerName": "Fernanda Silva",
+      "count": 11950,
+      "prize": 2500
+    },
+    "second": {
+      "workerId": "206587400703574019",
+      "workerName": "Cosmo Versace",
+      "count": 11180,
+      "prize": 1500
+    },
+    "third": {
+      "workerId": "758683527108624404",
+      "workerName": "Romano Delaerva",
+      "count": 11080,
+      "prize": 1000
+    }
+  },
+  "totalPaid": 5000,
+  "paidAt": null
+}

@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1760230707807_yl9f83",
+  "sessionId": "session_1760068957504_259z9q",
+  "managerId": "1204772480305209384",
+  "managerName": "𝑻𝒐́𝒙𝒊𝒄𝒂 𓆩♡𓆪",
+  "workerId": "511682836835860530",
+  "workerName": "Silveta Braga",
+  "amountPaid": 2772.5,
+  "paidAt": "2025-10-12T00:58:27.807Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-12T00:53:27.807Z",
+    "endTime": "2025-10-12T01:08:27.807Z"
+  }
+}

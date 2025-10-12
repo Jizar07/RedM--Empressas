@@ -1,0 +1,106 @@
+{
+  "workerId": "311732968806678529",
+  "workerName": "Bob Eastwood",
+  "channelId": "1424077079569502299",
+  "sessionId": "session_1760047094951_s4o174",
+  "startTime": "2025-10-09T21:58:14.951Z",
+  "lastActivity": "2025-10-09T23:35:36.844Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Junco",
+      "quantity": 100,
+      "transactionId": "tx_1760047094954_6hqkb",
+      "timestamp": "2025-10-09T21:58:14.954Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Adubo3",
+      "quantity": 100,
+      "transactionId": "tx_1760047100118_318cnn",
+      "timestamp": "2025-10-09T21:58:20.118Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 500,
+      "transactionId": "tx_1760049723433_o39wx",
+      "timestamp": "2025-10-09T22:42:03.433Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 500,
+      "transactionId": "tx_1760049817734_okfuiy",
+      "timestamp": "2025-10-09T22:43:37.734Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 340,
+      "transactionId": "tx_1760049892772_62sbao",
+      "timestamp": "2025-10-09T22:44:52.772Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 490,
+      "transactionId": "tx_1760050191124_06fmi",
+      "timestamp": "2025-10-09T22:49:51.124Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Junco",
+      "quantity": 100,
+      "transactionId": "tx_1760050276697_jcbqql",
+      "timestamp": "2025-10-09T22:51:16.697Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Ovelha Macho",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1760047157800_uofuwl",
+      "timestamp": "2025-10-09T21:59:17.800Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1760052936844_k09ky",
+      "timestamp": "2025-10-09T23:35:36.844Z"
+    }
+  ],
+  "financialTransactions": [],
+  "inventoryTransactions": [],
+  "totalCredits": 642.5,
+  "embedMessageId": "1425990117809721476",
+  "seedExpectations": [
+    {
+      "seedType": "Semente de Junco",
+      "seedQuantity": 100,
+      "expectedPlantType": "Junco",
+      "expectedPlantQuantity": 2000,
+      "plantsFulfilled": 2000,
+      "isComplete": true,
+      "transactionId": "tx_1760047094954_6hqkb",
+      "aduboUsed": 100,
+      "aduboCost": 75
+    }
+  ],
+  "animalExpectations": [
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1760047157800_uofuwl",
+      "takenTimestamp": "2025-10-09T21:59:17.800Z"
+    }
+  ],
+  "completedAt": "2025-10-10T01:55:33.600Z",
+  "notes": "Pago por 𝓢𝓸𝓾𝔃𝔃 🏄🏾 (273987353456934913)"
+}

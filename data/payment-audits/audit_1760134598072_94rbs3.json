@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1760134598072_94rbs3",
+  "sessionId": "session_1760134363425_1p8c5",
+  "managerId": "1204772480305209384",
+  "managerName": "𝑻𝒐́𝒙𝒊𝒄𝒂 𓆩♡𓆪",
+  "workerId": "1204772480305209384",
+  "workerName": "BONNIE BENNETT",
+  "amountPaid": 160,
+  "paidAt": "2025-10-10T22:16:38.072Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-10T22:11:38.072Z",
+    "endTime": "2025-10-10T22:26:38.072Z"
+  }
+}

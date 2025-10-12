@@ -173,7 +173,7 @@ export class WeeklyRankingService {
   }
 
   /**
-   * Load current week's rankings
+   * Load current week's rankings - CALCULATES FROM ARCHIVED SESSIONS BY DATE RANGE
    */
   public getCurrentWeekRankings(): WeeklyRankings {
     const filename = this.getCurrentWeekFilename();
@@ -188,8 +188,10 @@ export class WeeklyRankingService {
       }
     }
 
-    // Create new week file with current rankings from all-time totals
-    const allTimeTotals = this.getAllTimeTotals();
+    // Create new week file by calculating from archived sessions within date range
+    const weekStartTime = start.getTime();
+    const weekEndTime = end.getTime();
+
     const newWeekData: WeeklyRankings = {
       weekStart: start.toISOString(),
       weekEnd: end.toISOString(),
@@ -201,30 +203,170 @@ export class WeeklyRankingService {
       lastUpdated: new Date().toISOString()
     };
 
-    // Populate initial rankings from all-time totals (with current week data)
-    for (const workerId in allTimeTotals) {
-      const worker = allTimeTotals[workerId];
+    // Calculate thisWeek stats by reading ALL sessions (active + archived) and filtering by timestamp
+    const allTimeTotals = this.getAllTimeTotals();
+    const thisWeekStats: Record<string, { plants: number; animals: number; ferrovia: number; workerName: string }> = {};
 
-      // Add to plant rankings if they have activity this week
-      if (worker.plants.thisWeek > 0) {
-        newWeekData.plantRankings.push({ ...worker });
+    // Helper function to process a session
+    const processSession = (sessionData: any, source: string) => {
+      const workerId = sessionData.workerId;
+      const workerName = sessionData.workerName;
+
+      if (!workerId) return;
+
+      if (!thisWeekStats[workerId]) {
+        thisWeekStats[workerId] = { plants: 0, animals: 0, ferrovia: 0, workerName: workerName || 'Unknown' };
       }
 
-      // Add to animal rankings if they have activity this week
-      if (worker.animals.thisWeek > 0) {
-        newWeekData.animalRankings.push({ ...worker });
+      // Count plant deposits within this week's date range
+      if (sessionData.plantTransactions && Array.isArray(sessionData.plantTransactions)) {
+        sessionData.plantTransactions
+          .filter((tx: any) => tx.type === 'plant_deposited')
+          .forEach((tx: any) => {
+            const txTime = new Date(tx.timestamp).getTime();
+            if (txTime >= weekStartTime && txTime <= weekEndTime) {
+              thisWeekStats[workerId].plants += tx.quantity || 0;
+            }
+          });
       }
 
-      // Add to ferrovia rankings if they have activity this week
-      if (worker.ferrovia.thisWeek > 0) {
-        newWeekData.ferroviaRankings.push({ ...worker });
+      // Count animal deliveries within this week's date range
+      if (sessionData.animalTransactions && Array.isArray(sessionData.animalTransactions)) {
+        sessionData.animalTransactions
+          .filter((tx: any) => tx.type === 'delivery_completed')
+          .forEach((tx: any) => {
+            const txTime = new Date(tx.timestamp).getTime();
+            if (txTime >= weekStartTime && txTime <= weekEndTime) {
+              thisWeekStats[workerId].animals += tx.quantity || 0;
+            }
+          });
       }
+
+      // Count ferrovia missions (if we have mission completion tracking)
+      // For now, we'll check supply-chain active sessions separately
+    };
+
+    // 1. Read ACTIVE sessions from worker-sessions/active-sessions.json
+    const activeSessionsFile = path.join(this.dataDir, 'worker-sessions', 'active-sessions.json');
+    if (fs.existsSync(activeSessionsFile)) {
+      try {
+        const activeSessions = JSON.parse(fs.readFileSync(activeSessionsFile, 'utf8'));
+        if (Array.isArray(activeSessions)) {
+          activeSessions.forEach(session => processSession(session, 'active'));
+        } else if (typeof activeSessions === 'object') {
+          Object.values(activeSessions).forEach(session => processSession(session, 'active'));
+        }
+        console.log(`📊 Processed active worker sessions`);
+      } catch (err) {
+        console.warn(`⚠️ Failed to read active sessions:`, err);
+      }
+    }
+
+    // 2. Read ARCHIVED session files
+    const archivedDir = path.join(this.dataDir, 'worker-sessions', 'archived');
+    if (fs.existsSync(archivedDir)) {
+      const sessionFiles = fs.readdirSync(archivedDir).filter(file => file.endsWith('.json'));
+      for (const file of sessionFiles) {
+        try {
+          const sessionPath = path.join(archivedDir, file);
+          const sessionData = JSON.parse(fs.readFileSync(sessionPath, 'utf8'));
+          processSession(sessionData, 'archived');
+        } catch (err) {
+          console.warn(`⚠️ Failed to parse archived session ${file}:`, err);
+        }
+      }
+      console.log(`📊 Processed ${sessionFiles.length} archived sessions`);
+    }
+
+    // 3. Read FERROVIA active sessions from supply-chain/active-sessions.json
+    const ferroviaSessionsFile = path.join(this.dataDir, 'supply-chain', 'active-sessions.json');
+    if (fs.existsSync(ferroviaSessionsFile)) {
+      try {
+        const ferroviaSessions = JSON.parse(fs.readFileSync(ferroviaSessionsFile, 'utf8'));
+        if (Array.isArray(ferroviaSessions)) {
+          ferroviaSessions.forEach((session: any) => {
+            const workerId = session.workerId;
+            if (!workerId) return;
+
+            if (!thisWeekStats[workerId]) {
+              thisWeekStats[workerId] = { plants: 0, animals: 0, ferrovia: 0, workerName: session.workerName || 'Unknown' };
+            }
+
+            // Count completed missions within date range
+            if (session.missions && Array.isArray(session.missions)) {
+              session.missions.forEach((mission: any) => {
+                if (mission.status === 'completed' && mission.completedAt) {
+                  const missionTime = new Date(mission.completedAt).getTime();
+                  if (missionTime >= weekStartTime && missionTime <= weekEndTime) {
+                    thisWeekStats[workerId].ferrovia += 1;
+                  }
+                }
+              });
+            }
+          });
+        } else if (typeof ferroviaSessions === 'object') {
+          Object.values(ferroviaSessions).forEach((session: any) => {
+            const workerId = session.workerId;
+            if (!workerId) return;
+
+            if (!thisWeekStats[workerId]) {
+              thisWeekStats[workerId] = { plants: 0, animals: 0, ferrovia: 0, workerName: session.workerName || 'Unknown' };
+            }
+
+            // Count completed missions
+            if (session.missions && Array.isArray(session.missions)) {
+              session.missions.forEach((mission: any) => {
+                if (mission.status === 'completed' && mission.completedAt) {
+                  const missionTime = new Date(mission.completedAt).getTime();
+                  if (missionTime >= weekStartTime && missionTime <= weekEndTime) {
+                    thisWeekStats[workerId].ferrovia += 1;
+                  }
+                }
+              });
+            }
+          });
+        }
+        console.log(`📊 Processed ferrovia sessions`);
+      } catch (err) {
+        console.warn(`⚠️ Failed to read ferrovia sessions:`, err);
+      }
+    }
+
+    // Build rankings from calculated thisWeek stats
+    for (const workerId in thisWeekStats) {
+      const stats = thisWeekStats[workerId];
+      const allTimeData = allTimeTotals[workerId];
+
+      // Use all-time data if available, otherwise create from thisWeek stats
+      const workerData: WorkerWeeklyStats = {
+        workerId,
+        workerName: stats.workerName,
+        plants: {
+          thisWeek: stats.plants,
+          allTime: allTimeData ? allTimeData.plants.allTime : stats.plants
+        },
+        animals: {
+          thisWeek: stats.animals,
+          allTime: allTimeData ? allTimeData.animals.allTime : stats.animals
+        },
+        ferrovia: {
+          thisWeek: stats.ferrovia,
+          allTime: allTimeData ? allTimeData.ferrovia.allTime : stats.ferrovia
+        },
+        lastActivity: allTimeData ? allTimeData.lastActivity : new Date().toISOString()
+      };
+
+      // Add to rankings arrays if they have activity this week
+      if (stats.plants > 0) newWeekData.plantRankings.push({ ...workerData });
+      if (stats.animals > 0) newWeekData.animalRankings.push({ ...workerData });
+      if (stats.ferrovia > 0) newWeekData.ferroviaRankings.push({ ...workerData });
     }
 
     // Sort the rankings
     this.sortRankings(newWeekData);
 
     fs.writeFileSync(filename, JSON.stringify(newWeekData, null, 2));
+    console.log(`📊 Created new week file with ${newWeekData.plantRankings.length} plant workers, ${newWeekData.animalRankings.length} animal workers`);
     return newWeekData;
   }
 
@@ -274,6 +416,7 @@ export class WeeklyRankingService {
 
     // Update all-time totals
     allTimeTotals[workerId][type].allTime += count;
+    allTimeTotals[workerId][type].thisWeek += count; // CRITICAL: Also update thisWeek counter
     allTimeTotals[workerId].lastActivity = new Date().toISOString();
     allTimeTotals[workerId].workerName = workerName; // Update name in case it changed
 
@@ -380,6 +523,16 @@ export class WeeklyRankingService {
     if (fs.existsSync(currentFile)) {
       fs.unlinkSync(currentFile);
     }
+
+    // CRITICAL: Reset all "thisWeek" counters to 0 in ranking-totals.json
+    const allTimeTotals = this.getAllTimeTotals();
+    for (const workerId in allTimeTotals) {
+      allTimeTotals[workerId].plants.thisWeek = 0;
+      allTimeTotals[workerId].animals.thisWeek = 0;
+      allTimeTotals[workerId].ferrovia.thisWeek = 0;
+    }
+    this.saveAllTimeTotals(allTimeTotals);
+    console.log('🔄 Reset thisWeek counters to 0 for all workers');
 
     // Trigger Discord update with new week
     this.scheduleDiscordUpdate();

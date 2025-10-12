@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1760115641016_m1nbu7",
+  "sessionId": "session_1760110568777_qluln",
+  "managerId": "198538680686608384",
+  "managerName": "Barth",
+  "workerId": "723691255871045652",
+  "workerName": "marques boone",
+  "amountPaid": 595,
+  "paidAt": "2025-10-10T17:00:41.016Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-10T16:55:41.016Z",
+    "endTime": "2025-10-10T17:10:41.016Z"
+  }
+}

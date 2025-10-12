@@ -1,0 +1,37 @@
+{
+  "sessionId": "session_1760120979756_rhkiej",
+  "workerId": "1204772480305209384",
+  "workerName": "BONNIE BENNETT",
+  "amount": 62.5,
+  "paidBy": "614876929266417672",
+  "paidByName": "puddingbach",
+  "paidAt": "2025-10-10T21:41:30.012Z",
+  "plantTransactions": [
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 200,
+      "transactionId": "tx_1760120979758_9txgd6",
+      "timestamp": "2025-10-10T18:29:39.758Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Crows Garlic",
+      "quantity": 50,
+      "transactionId": "tx_1760123164702_1ru67c",
+      "timestamp": "2025-10-10T19:06:04.702Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Bode",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1760132463494_18iva",
+      "timestamp": "2025-10-10T21:41:03.494Z"
+    }
+  ],
+  "financialTransactions": []
+}

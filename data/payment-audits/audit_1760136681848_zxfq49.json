@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1760136681848_zxfq49",
+  "sessionId": "session_1760043152172_6xb0n",
+  "managerId": "614876929266417672",
+  "managerName": "puddingbach",
+  "workerId": "324682324614578179",
+  "workerName": "Garcia Jidoki",
+  "amountPaid": 2767.5,
+  "paidAt": "2025-10-10T22:51:21.848Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-10T22:46:21.848Z",
+    "endTime": "2025-10-10T23:01:21.848Z"
+  }
+}

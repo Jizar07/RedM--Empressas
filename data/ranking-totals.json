@@ -20,7 +20,7 @@
     "workerId": "614876929266417672",
     "workerName": "Notorius Bowdin",
     "plants": {
-      "thisWeek": 500,
+      "thisWeek": 0,
       "allTime": 3011
     },
     "animals": {
@@ -28,7 +28,7 @@
       "allTime": 0
     },
     "ferrovia": {
-      "thisWeek": 2,
+      "thisWeek": 0,
       "allTime": 2
     },
     "lastActivity": "2025-10-08T16:36:59.318Z"
@@ -41,7 +41,7 @@
       "allTime": 1781
     },
     "animals": {
-      "thisWeek": 4,
+      "thisWeek": 0,
       "allTime": 36
     },
     "ferrovia": {
@@ -113,7 +113,7 @@
       "allTime": 26
     },
     "ferrovia": {
-      "thisWeek": 4,
+      "thisWeek": 0,
       "allTime": 4
     },
     "lastActivity": "2025-10-08T16:36:59.318Z"
@@ -130,7 +130,7 @@
       "allTime": 0
     },
     "ferrovia": {
-      "thisWeek": 6,
+      "thisWeek": 0,
       "allTime": 6
     },
     "lastActivity": "2025-10-08T16:36:59.318Z"
@@ -147,7 +147,7 @@
       "allTime": 0
     },
     "ferrovia": {
-      "thisWeek": 10,
+      "thisWeek": 0,
       "allTime": 12
     },
     "lastActivity": "2025-10-08T16:36:59.318Z"
@@ -198,7 +198,7 @@
       "allTime": 0
     },
     "ferrovia": {
-      "thisWeek": 2,
+      "thisWeek": 0,
       "allTime": 2
     },
     "lastActivity": "2025-10-08T16:36:59.318Z"
@@ -258,11 +258,11 @@
     "workerId": "398270963969425408",
     "workerName": "john Weslley",
     "plants": {
-      "thisWeek": 2100,
+      "thisWeek": 0,
       "allTime": 40910
     },
     "animals": {
-      "thisWeek": 18,
+      "thisWeek": 0,
       "allTime": 178
     },
     "ferrovia": {
@@ -300,7 +300,7 @@
       "allTime": 0
     },
     "ferrovia": {
-      "thisWeek": 4,
+      "thisWeek": 0,
       "allTime": 4
     },
     "lastActivity": "2025-10-08T16:36:59.318Z"
@@ -394,15 +394,15 @@
     "workerId": "949397147030274059",
     "workerName": "Izzynha Evans",
     "plants": {
-      "thisWeek": 600,
+      "thisWeek": 0,
       "allTime": 950
     },
     "animals": {
-      "thisWeek": 60,
+      "thisWeek": 0,
       "allTime": 106
     },
     "ferrovia": {
-      "thisWeek": 14,
+      "thisWeek": 0,
       "allTime": 14
     },
     "lastActivity": "2025-10-08T16:36:59.318Z"
@@ -411,15 +411,15 @@
     "workerId": "695109023741116496",
     "workerName": "yuri westside",
     "plants": {
-      "thisWeek": 4010,
+      "thisWeek": 0,
       "allTime": 22760
     },
     "animals": {
-      "thisWeek": 48,
+      "thisWeek": 0,
       "allTime": 232
     },
     "ferrovia": {
-      "thisWeek": 10,
+      "thisWeek": 0,
       "allTime": 10
     },
     "lastActivity": "2025-10-08T16:36:59.318Z"
@@ -462,15 +462,15 @@
     "workerId": "470361257497722886",
     "workerName": "Kenai Comanches",
     "plants": {
-      "thisWeek": 9070,
+      "thisWeek": 0,
       "allTime": 41554
     },
     "animals": {
-      "thisWeek": 32,
+      "thisWeek": 0,
       "allTime": 208
     },
     "ferrovia": {
-      "thisWeek": 6,
+      "thisWeek": 0,
       "allTime": 6
     },
     "lastActivity": "2025-10-08T16:36:59.318Z"
@@ -479,11 +479,11 @@
     "workerId": "940279402145669241",
     "workerName": "Tereza Mcfell",
     "plants": {
-      "thisWeek": 1540,
+      "thisWeek": 0,
       "allTime": 8930
     },
     "animals": {
-      "thisWeek": 10,
+      "thisWeek": 0,
       "allTime": 48
     },
     "ferrovia": {
@@ -513,11 +513,11 @@
     "workerId": "1117649799181783130",
     "workerName": "Ubirajara Cauamb",
     "plants": {
-      "thisWeek": 1125,
+      "thisWeek": 0,
       "allTime": 3625
     },
     "animals": {
-      "thisWeek": 12,
+      "thisWeek": 0,
       "allTime": 66
     },
     "ferrovia": {
@@ -528,7 +528,7 @@
   },
   "unknown": {
     "workerId": "unknown",
-    "workerName": "Bob Eastwood",
+    "workerName": "Endo D. Barth",
     "plants": {
       "thisWeek": 0,
       "allTime": 0
@@ -538,10 +538,10 @@
       "allTime": 0
     },
     "ferrovia": {
-      "thisWeek": 6,
-      "allTime": 980
+      "thisWeek": 1,
+      "allTime": 1067
     },
-    "lastActivity": "2025-10-09T23:52:11.236Z"
+    "lastActivity": "2025-10-12T15:47:24.228Z"
   },
   "266262427329495041": {
     "workerId": "266262427329495041",
@@ -572,7 +572,7 @@
       "allTime": 8
     },
     "ferrovia": {
-      "thisWeek": 4,
+      "thisWeek": 0,
       "allTime": 4
     },
     "lastActivity": "2025-10-08T16:36:59.318Z"
@@ -657,7 +657,7 @@
       "allTime": 0
     },
     "ferrovia": {
-      "thisWeek": 4,
+      "thisWeek": 0,
       "allTime": 4
     },
     "lastActivity": "2025-10-08T16:36:59.318Z"
@@ -683,11 +683,11 @@
     "workerId": "1295901408264196181",
     "workerName": "Maria Vitória",
     "plants": {
-      "thisWeek": 5010,
+      "thisWeek": 0,
       "allTime": 8162
     },
     "animals": {
-      "thisWeek": 20,
+      "thisWeek": 0,
       "allTime": 57
     },
     "ferrovia": {
@@ -721,7 +721,7 @@
       "allTime": 8190
     },
     "animals": {
-      "thisWeek": 84,
+      "thisWeek": 0,
       "allTime": 267
     },
     "ferrovia": {
@@ -836,11 +836,11 @@
     "workerId": "522217368500568082",
     "workerName": "Nico Chimichurri",
     "plants": {
-      "thisWeek": 1000,
+      "thisWeek": 0,
       "allTime": 6090
     },
     "animals": {
-      "thisWeek": 8,
+      "thisWeek": 0,
       "allTime": 56
     },
     "ferrovia": {
@@ -904,11 +904,11 @@
     "workerId": "845711436730597417",
     "workerName": "Anthony Versace",
     "plants": {
-      "thisWeek": 1000,
+      "thisWeek": 0,
       "allTime": 2000
     },
     "animals": {
-      "thisWeek": 16,
+      "thisWeek": 0,
       "allTime": 48
     },
     "ferrovia": {
@@ -921,7 +921,7 @@
     "workerId": "206587400703574019",
     "workerName": "Cosmo Versace",
     "plants": {
-      "thisWeek": 11180,
+      "thisWeek": 0,
       "allTime": 11180
     },
     "animals": {
@@ -929,7 +929,7 @@
       "allTime": 20
     },
     "ferrovia": {
-      "thisWeek": 2,
+      "thisWeek": 0,
       "allTime": 2
     },
     "lastActivity": "2025-10-08T16:36:59.318Z"
@@ -938,11 +938,11 @@
     "workerId": "751113851432337449",
     "workerName": "MARGELI VESTPHAL",
     "plants": {
-      "thisWeek": 850,
+      "thisWeek": 0,
       "allTime": 1350
     },
     "animals": {
-      "thisWeek": 8,
+      "thisWeek": 0,
       "allTime": 16
     },
     "ferrovia": {
@@ -955,11 +955,11 @@
     "workerId": "862576444740075530",
     "workerName": "jurandi labareda",
     "plants": {
-      "thisWeek": 990,
+      "thisWeek": 0,
       "allTime": 1990
     },
     "animals": {
-      "thisWeek": 16,
+      "thisWeek": 0,
       "allTime": 32
     },
     "ferrovia": {
@@ -976,11 +976,11 @@
       "allTime": 3170
     },
     "animals": {
-      "thisWeek": 4,
+      "thisWeek": 0,
       "allTime": 48
     },
     "ferrovia": {
-      "thisWeek": 4,
+      "thisWeek": 0,
       "allTime": 4
     },
     "lastActivity": "2025-10-08T16:36:59.318Z"
@@ -989,15 +989,15 @@
     "workerId": "758683527108624404",
     "workerName": "Romano Delaerva",
     "plants": {
-      "thisWeek": 11080,
+      "thisWeek": 0,
       "allTime": 17030
     },
     "animals": {
-      "thisWeek": 122,
+      "thisWeek": 0,
       "allTime": 222
     },
     "ferrovia": {
-      "thisWeek": 8,
+      "thisWeek": 0,
       "allTime": 8
     },
     "lastActivity": "2025-10-08T16:36:59.318Z"
@@ -1006,11 +1006,11 @@
     "workerId": "324682324614578179",
     "workerName": "Garcia Jidoki",
     "plants": {
-      "thisWeek": 8350,
+      "thisWeek": 0,
       "allTime": 12840
     },
     "animals": {
-      "thisWeek": 92,
+      "thisWeek": 0,
       "allTime": 144
     },
     "ferrovia": {
@@ -1023,15 +1023,15 @@
     "workerId": "431957051275739156",
     "workerName": "Fernanda Silva",
     "plants": {
-      "thisWeek": 11950,
+      "thisWeek": 0,
       "allTime": 11950
     },
     "animals": {
-      "thisWeek": 4,
+      "thisWeek": 0,
       "allTime": 4
     },
     "ferrovia": {
-      "thisWeek": 2,
+      "thisWeek": 0,
       "allTime": 2
     },
     "lastActivity": "2025-10-08T16:36:59.318Z"
@@ -1040,11 +1040,11 @@
     "workerId": "487809893923946517",
     "workerName": "Matheus Watanabe",
     "plants": {
-      "thisWeek": 1220,
+      "thisWeek": 0,
       "allTime": 1220
     },
     "animals": {
-      "thisWeek": 24,
+      "thisWeek": 0,
       "allTime": 24
     },
     "ferrovia": {
@@ -1057,7 +1057,7 @@
     "workerId": "1316586037136461845",
     "workerName": "Wilian slow",
     "plants": {
-      "thisWeek": 490,
+      "thisWeek": 0,
       "allTime": 490
     },
     "animals": {
@@ -1074,15 +1074,15 @@
     "workerId": "1384209105610211338",
     "workerName": "Draven Lima",
     "plants": {
-      "thisWeek": 1670,
+      "thisWeek": 0,
       "allTime": 1670
     },
     "animals": {
-      "thisWeek": 12,
+      "thisWeek": 0,
       "allTime": 12
     },
     "ferrovia": {
-      "thisWeek": 4,
+      "thisWeek": 0,
       "allTime": 4
     },
     "lastActivity": "2025-10-08T16:36:59.318Z"
@@ -1091,7 +1091,7 @@
     "workerId": "268794827305517057",
     "workerName": "Pedro Sonoro",
     "plants": {
-      "thisWeek": 1000,
+      "thisWeek": 0,
       "allTime": 1000
     },
     "animals": {
@@ -1108,7 +1108,7 @@
     "workerId": "1083891336614248478",
     "workerName": "Jeovan Westphal",
     "plants": {
-      "thisWeek": 5400,
+      "thisWeek": 0,
       "allTime": 5400
     },
     "animals": {
@@ -1125,7 +1125,7 @@
     "workerId": "409011012986208258",
     "workerName": "Rex Solossano",
     "plants": {
-      "thisWeek": 1000,
+      "thisWeek": 0,
       "allTime": 1000
     },
     "animals": {
@@ -1142,7 +1142,7 @@
     "workerId": "835165941267693659",
     "workerName": "Ragnar Lothbrok",
     "plants": {
-      "thisWeek": 7120,
+      "thisWeek": 0,
       "allTime": 7120
     },
     "animals": {
@@ -1150,7 +1150,7 @@
       "allTime": 0
     },
     "ferrovia": {
-      "thisWeek": 4,
+      "thisWeek": 0,
       "allTime": 4
     },
     "lastActivity": "2025-10-08T16:36:59.318Z"
@@ -1159,11 +1159,11 @@
     "workerId": "728800620064014367",
     "workerName": "Red Oliver",
     "plants": {
-      "thisWeek": 2100,
+      "thisWeek": 0,
       "allTime": 2100
     },
     "animals": {
-      "thisWeek": 7,
+      "thisWeek": 0,
       "allTime": 7
     },
     "ferrovia": {
@@ -1176,15 +1176,15 @@
     "workerId": "481612456792424448",
     "workerName": "Cleber Versace",
     "plants": {
-      "thisWeek": 7080,
+      "thisWeek": 0,
       "allTime": 7080
     },
     "animals": {
-      "thisWeek": 8,
+      "thisWeek": 0,
       "allTime": 8
     },
     "ferrovia": {
-      "thisWeek": 2,
+      "thisWeek": 0,
       "allTime": 2
     },
     "lastActivity": "2025-10-08T16:36:59.318Z"

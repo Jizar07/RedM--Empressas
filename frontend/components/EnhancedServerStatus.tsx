@@ -12,6 +12,8 @@ export default function EnhancedServerStatus() {
   const [error, setError] = useState<string | null>(null);
   const [mounted, setMounted] = useState(false);
   const [selectedServer, setSelectedServer] = useState<ReturnType<typeof getSelectedRedMServer>>(null);
+  const [refreshKey, setRefreshKey] = useState(0); // Force interval restart
+  const [lastUpdate, setLastUpdate] = useState<Date | null>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -20,10 +22,12 @@ export default function EnhancedServerStatus() {
 
     // Listen for server selection changes
     const handleServerChange = () => {
+      console.log('🔄 Server selection changed, restarting polling...');
       const server = getSelectedRedMServer();
       setSelectedServer(server);
       setLoading(true);
       setError(null);
+      setRefreshKey(prev => prev + 1); // Force interval restart
     };
 
     window.addEventListener('serverSelectionChanged', handleServerChange);
@@ -41,10 +45,14 @@ export default function EnhancedServerStatus() {
   useEffect(() => {
     if (!mounted || !selectedServer) return;
 
+    console.log(`📊 Starting server data polling for ${selectedServer.name} (${selectedServer.ip}:${selectedServer.port})`);
+
     const fetchServerData = async () => {
       try {
         const serverIp = selectedServer.ip;
         const serverPort = selectedServer.port;
+
+        console.log(`🔍 Fetching server data: ${serverIp}:${serverPort} @ ${new Date().toLocaleTimeString()}`);
 
         const [infoRes, playersRes, dynamicRes] = await Promise.allSettled([
           fetch(`/api/server-proxy/info?serverIp=${serverIp}&serverPort=${serverPort}`),
@@ -61,16 +69,21 @@ export default function EnhancedServerStatus() {
             ? await dynamicRes.value.json()
             : null;
 
+          const newPlayerCount = dynamicData?.clients || playersData.length || 0;
+          console.log(`🔄 BEFORE setState: players = ${newPlayerCount}`);
+
           setServerInfo({
             online: true,
             hostname: infoData.vars?.sv_projectName || infoData.vars?.sv_hostname || selectedServer.name,
-            players: dynamicData?.clients || playersData.length || 0,
+            players: newPlayerCount,
             maxPlayers: parseInt(infoData.vars?.sv_maxClients) || selectedServer.maxPlayers,
             gametype: infoData.vars?.gametype || 'RedM RP',
             mapname: infoData.vars?.mapname || 'rdr3',
             uptime: 'Unknown',
           });
           setPlayers(playersData);
+          setLastUpdate(new Date());
+          console.log(`✅ Server data updated: ${newPlayerCount} players online`);
         } else {
           throw new Error('Failed to fetch server data');
         }
@@ -78,7 +91,7 @@ export default function EnhancedServerStatus() {
         setError(null);
       } catch (err) {
         setError('Failed to fetch server data');
-        console.error('Error fetching server data:', err);
+        console.error('❌ Error fetching server data:', err);
       } finally {
         setLoading(false);
       }
@@ -86,9 +99,13 @@ export default function EnhancedServerStatus() {
 
     fetchServerData();
     const interval = setInterval(fetchServerData, 15000); // Update every 15 seconds
+    console.log('⏰ Polling interval started (15 seconds)');
 
-    return () => clearInterval(interval);
-  }, [mounted, selectedServer]);
+    return () => {
+      console.log('🛑 Clearing polling interval');
+      clearInterval(interval);
+    };
+  }, [mounted, selectedServer, refreshKey]);
 
   if (!selectedServer) {
     return (
@@ -121,9 +138,14 @@ export default function EnhancedServerStatus() {
     );
   }
 
-  const playerPercentage = serverInfo?.maxPlayers 
-    ? (serverInfo.players / serverInfo.maxPlayers) * 100 
+  const playerPercentage = serverInfo?.maxPlayers
+    ? (serverInfo.players / serverInfo.maxPlayers) * 100
     : 0;
+
+  // Debug: Log what's actually being rendered
+  if (serverInfo) {
+    console.log(`🎨 RENDERING: ${serverInfo.players}/${serverInfo.maxPlayers} players`);
+  }
 
   return (
     <div className="space-y-6">
@@ -285,17 +307,17 @@ export default function EnhancedServerStatus() {
             <div className="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
               <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">Connect via FiveM/RedM:</p>
               <p className="font-mono text-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-2 rounded border border-gray-200 dark:border-gray-600">
-                connect 131.196.197.140:30120
+                connect {selectedServer.ip}:{selectedServer.port}
               </p>
             </div>
             <div className="grid grid-cols-2 gap-4 text-sm">
               <div>
                 <span className="text-gray-600 dark:text-gray-400">Server IP:</span>
-                <p className="font-mono text-gray-900 dark:text-white">131.196.197.140</p>
+                <p className="font-mono text-gray-900 dark:text-white">{selectedServer.ip}</p>
               </div>
               <div>
                 <span className="text-gray-600 dark:text-gray-400">Port:</span>
-                <p className="font-mono text-gray-900 dark:text-white">30120</p>
+                <p className="font-mono text-gray-900 dark:text-white">{selectedServer.port}</p>
               </div>
             </div>
           </div>
@@ -304,9 +326,9 @@ export default function EnhancedServerStatus() {
 
 
       {/* Last Updated */}
-      {mounted && (
+      {mounted && lastUpdate && (
         <div className="text-center text-sm text-gray-500 dark:text-gray-400">
-          Last updated: {new Date().toLocaleTimeString()} • Auto-refresh every 15 seconds
+          Last updated: {lastUpdate.toLocaleTimeString()} • Auto-refresh every 15 seconds
         </div>
       )}
     </div>

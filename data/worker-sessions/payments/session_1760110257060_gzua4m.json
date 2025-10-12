@@ -1,0 +1,132 @@
+{
+  "sessionId": "session_1760110257060_gzua4m",
+  "workerId": "499051536614162435",
+  "workerName": "Vidal Boone",
+  "amount": 570,
+  "paidBy": "198538680686608384",
+  "paidByName": "Barth",
+  "paidAt": "2025-10-10T16:59:52.678Z",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente Trigo",
+      "quantity": 100,
+      "transactionId": "tx_1760110257062_mbwof",
+      "timestamp": "2025-10-10T15:30:57.062Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 100,
+      "transactionId": "tx_1760114637192_pcctaq",
+      "timestamp": "2025-10-10T16:43:57.192Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 100,
+      "transactionId": "tx_1760114639688_aj4ohpp",
+      "timestamp": "2025-10-10T16:43:59.688Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 100,
+      "transactionId": "tx_1760114642621_qr7iug",
+      "timestamp": "2025-10-10T16:44:02.621Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 100,
+      "transactionId": "tx_1760114645084_wde01",
+      "timestamp": "2025-10-10T16:44:05.084Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 100,
+      "transactionId": "tx_1760114648241_ag2m",
+      "timestamp": "2025-10-10T16:44:08.241Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 100,
+      "transactionId": "tx_1760114976320_l500z",
+      "timestamp": "2025-10-10T16:49:36.320Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 100,
+      "transactionId": "tx_1760114979600_tdh2v",
+      "timestamp": "2025-10-10T16:49:39.600Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 100,
+      "transactionId": "tx_1760114981580_zhsylh",
+      "timestamp": "2025-10-10T16:49:41.580Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 100,
+      "transactionId": "tx_1760114984135_4dwlke",
+      "timestamp": "2025-10-10T16:49:44.135Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 100,
+      "transactionId": "tx_1760114987209_a8ha4n",
+      "timestamp": "2025-10-10T16:49:47.209Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Ovelha Femea",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1760110814016_l7f23m",
+      "timestamp": "2025-10-10T15:40:14.016Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1760111116834_noubkh",
+      "timestamp": "2025-10-10T15:45:16.834Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Porca",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1760111227338_aqjmhm",
+      "timestamp": "2025-10-10T15:47:07.338Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1760114050833_p9kgrw",
+      "timestamp": "2025-10-10T16:34:10.833Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Porco",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1760115499780_t2ulta",
+      "timestamp": "2025-10-10T16:58:19.780Z"
+    }
+  ],
+  "financialTransactions": []
+}

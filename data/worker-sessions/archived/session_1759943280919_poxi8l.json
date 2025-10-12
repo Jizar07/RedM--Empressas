@@ -1,0 +1,43 @@
+{
+  "workerId": "1235055429260935321",
+  "workerName": "smith ramirez",
+  "channelId": "1416447193685950595",
+  "sessionId": "session_1759943280919_poxi8l",
+  "startTime": "2025-10-08T17:08:00.919Z",
+  "lastActivity": "2025-10-08T17:38:09.322Z",
+  "status": "stale",
+  "plantTransactions": [],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Touro",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759943280921_f2hy0e",
+      "timestamp": "2025-10-08T17:08:00.921Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759945089322_vh9y28",
+      "timestamp": "2025-10-08T17:38:09.322Z"
+    }
+  ],
+  "financialTransactions": [],
+  "inventoryTransactions": [],
+  "totalCredits": 160,
+  "embedMessageId": "1425537786693287937",
+  "animalExpectations": [
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759943280921_f2hy0e",
+      "takenTimestamp": "2025-10-08T17:08:00.921Z"
+    }
+  ],
+  "completedAt": "2025-10-12T02:37:30.180Z",
+  "notes": "Auto-archived due to inactivity"
+}

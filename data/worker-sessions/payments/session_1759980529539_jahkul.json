@@ -1,0 +1,60 @@
+{
+  "sessionId": "session_1759980529539_jahkul",
+  "workerId": "481612456792424448",
+  "workerName": "Cleber Versace",
+  "amount": 445,
+  "paidBy": "1127730801182777355",
+  "paidByName": "thony",
+  "paidAt": "2025-10-10T05:55:24.613Z",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 50,
+      "transactionId": "tx_1759981928597_hn1h06",
+      "timestamp": "2025-10-09T03:52:08.597Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 500,
+      "transactionId": "tx_1759984787949_jmnij",
+      "timestamp": "2025-10-09T04:39:47.949Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Ovelha Femea",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759980529541_pite83",
+      "timestamp": "2025-10-09T03:28:49.541Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759983290301_6prro",
+      "timestamp": "2025-10-09T04:14:50.301Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Ovelha Macho",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759983960142_862r6",
+      "timestamp": "2025-10-09T04:26:00.142Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759986214569_q59gdm",
+      "timestamp": "2025-10-09T05:03:34.569Z"
+    }
+  ],
+  "financialTransactions": []
+}

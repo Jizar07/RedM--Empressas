@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1760066582101_t9f7ny",
+  "sessionId": "session_1760029428042_60b9nk",
+  "managerId": "949397147030274059",
+  "managerName": "๖ۣۜζ͜͡ɪᴢᴢʏɴʜᴀ🎀",
+  "workerId": "511682836835860530",
+  "workerName": "Silveta Braga",
+  "amountPaid": 1622.5,
+  "paidAt": "2025-10-10T03:23:02.101Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-10T03:18:02.101Z",
+    "endTime": "2025-10-10T03:33:02.101Z"
+  }
+}

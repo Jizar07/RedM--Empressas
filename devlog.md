@@ -4,6 +4,33 @@ This is a local timestamped file to track all development changes and prompts.
 
 ## Log Entries
 
+### 2025-10-12 11:54:42
+**Action**: Weekly Ranking System - Date Range Filtering Fix
+**Prompt**: User reported weekly rankings showing stale data from previous week (October 8th) instead of current week (October 12th onwards)
+**Changes**:
+- **Critical Bug**: Weekly rankings were reading stale `thisWeek` counters from `ranking-totals.json` instead of calculating from actual transaction timestamps
+- **Root Cause Analysis**:
+  - `getCurrentWeekRankings()` only read archived sessions, missing active sessions
+  - No date-range filtering - inherited old `thisWeek` values blindly
+  - Weekly reset zeroed counters but new week file was never regenerated
+- **Core Fix - Date Range Filtering** (`src/services/WeeklyRankingService.ts:178-365`):
+  - **Calculate from Sessions**: Read ALL worker session files and filter by timestamp
+  - **Three Data Sources**:
+    1. Active worker sessions: `data/worker-sessions/active-sessions.json`
+    2. Archived worker sessions: `data/worker-sessions/archived/*.json`
+    3. Ferrovia sessions: `data/supply-chain/active-sessions.json`
+  - **Timestamp Filtering**: For each transaction, check if `tx.timestamp` falls within current week boundaries (Sunday 00:00 to Saturday 23:59 Brazil time)
+  - **Transaction Counting**:
+    - Plants: Filter `tx.type === 'plant_deposited'` within date range
+    - Animals: Filter `tx.type === 'delivery_completed'` within date range
+    - Ferrovia: Filter `mission.status === 'completed'` within date range
+  - **Dynamic Ranking Generation**: Build rankings ONLY from transactions within the current week's date range
+- **Weekly Reset Enhancement** (`resetWeeklyRankings()` lines 286-294):
+  - Added code to zero out ALL `thisWeek` counters in `ranking-totals.json` during weekly reset
+  - Ensures clean slate for new week
+- **Removed Manual Script Approach**: User rejected manual data fix - wanted core code fixed instead
+- **Result**: Weekly rankings now show ONLY activities from current week (October 12+ filtered by timestamp). System recalculates from actual session files every time, ensuring accurate real-time data without relying on stale counters.
+
 ### 2025-10-09 20:48:49
 **Action**: Export Data Management - Channel Selection Fix
 **Prompt**: User requested fix for channel selection issue (channels showing 0 firm channels available despite 103 Discord channels loading)

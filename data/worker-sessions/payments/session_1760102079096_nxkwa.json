@@ -1,0 +1,97 @@
+{
+  "sessionId": "session_1760102079096_nxkwa",
+  "workerId": "588934801508270082",
+  "workerName": "Chris Rubble",
+  "amount": 772.5,
+  "paidBy": "588934801508270082",
+  "paidByName": "chrisbam",
+  "paidAt": "2025-10-10T16:35:29.896Z",
+  "plantTransactions": [
+    {
+      "type": "plant_deposited",
+      "itemName": "Coffeebeans",
+      "quantity": 420,
+      "transactionId": "tx_1760102079099_in0o88",
+      "timestamp": "2025-10-10T13:14:39.099Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Oleander Sage",
+      "quantity": 500,
+      "transactionId": "tx_1760102117660_bvbed",
+      "timestamp": "2025-10-10T13:15:17.660Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Oleander Sage",
+      "quantity": 120,
+      "transactionId": "tx_1760102153943_o2d01",
+      "timestamp": "2025-10-10T13:15:53.943Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Creekplum",
+      "quantity": 380,
+      "transactionId": "tx_1760102156924_ikdnpb",
+      "timestamp": "2025-10-10T13:15:56.924Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Creekplum",
+      "quantity": 500,
+      "transactionId": "tx_1760102221896_n9690i",
+      "timestamp": "2025-10-10T13:17:01.896Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Creekplum",
+      "quantity": 420,
+      "transactionId": "tx_1760102315260_728mco",
+      "timestamp": "2025-10-10T13:18:35.260Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Creekplum",
+      "quantity": 500,
+      "transactionId": "tx_1760102341635_5e8sms",
+      "timestamp": "2025-10-10T13:19:01.635Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Black Currant Semente",
+      "quantity": 20,
+      "transactionId": "tx_1760102617310_ktkc6i",
+      "timestamp": "2025-10-10T13:23:37.310Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Black Currant Semente",
+      "quantity": 80,
+      "transactionId": "tx_1760102633121_hgcd78",
+      "timestamp": "2025-10-10T13:23:53.121Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Adubo3",
+      "quantity": 90,
+      "transactionId": "tx_1760105021924_coxsc",
+      "timestamp": "2025-10-10T14:03:41.924Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 200,
+      "transactionId": "tx_1760107340151_zqmhyl",
+      "timestamp": "2025-10-10T14:42:20.151Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 50,
+      "transactionId": "tx_1760111353933_klw31q",
+      "timestamp": "2025-10-10T15:49:13.933Z"
+    }
+  ],
+  "animalTransactions": [],
+  "financialTransactions": []
+}

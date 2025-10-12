@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1760230384815_29g0ve",
+  "sessionId": "session_1759945390855_lrlagn",
+  "managerId": "1204772480305209384",
+  "managerName": "𝑻𝒐́𝒙𝒊𝒄𝒂 𓆩♡𓆪",
+  "workerId": "728800620064014367",
+  "workerName": "Red Oliver",
+  "amountPaid": 2285,
+  "paidAt": "2025-10-12T00:53:04.815Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-12T00:48:04.815Z",
+    "endTime": "2025-10-12T01:03:04.815Z"
+  }
+}

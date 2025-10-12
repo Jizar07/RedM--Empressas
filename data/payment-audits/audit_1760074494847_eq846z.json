@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1760074494847_eq846z",
+  "sessionId": "session_1759846921581_snsle8",
+  "managerId": "1127730801182777355",
+  "managerName": "thony",
+  "workerId": "936115736382959656",
+  "workerName": "Kemell Versace",
+  "amountPaid": 672.5,
+  "paidAt": "2025-10-10T05:34:54.847Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-10T05:29:54.847Z",
+    "endTime": "2025-10-10T05:44:54.847Z"
+  }
+}

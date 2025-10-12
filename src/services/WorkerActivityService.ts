@@ -5,6 +5,7 @@ import PaymentAuditService from './PaymentAuditService';
 import { SessionCleanupService } from '../utils/SessionCleanupService';
 import WeeklySalesService from './WeeklySalesService';
 import ItemTranslationService from './ItemTranslationService';
+import { WeeklyRankingService } from './WeeklyRankingService';
 
 interface PlantTransaction {
   type: 'seed_taken' | 'plant_deposited';
@@ -914,6 +915,12 @@ export class WorkerActivityService {
 
     console.log(`🌱 Added plant transaction for ${workerName}: ${transaction.type} - ${transaction.quantity} ${transaction.itemName}`);
 
+    // Update weekly rankings for plant deposits (not seed withdrawals)
+    if (transaction.type === 'plant_deposited') {
+      const weeklyRankingService = WeeklyRankingService.getInstance();
+      weeklyRankingService.updateWorkerStats(workerId, workerName, 'plants', transaction.quantity);
+    }
+
     // Update the embed
     this.updateWorkerEmbed(session);
   }
@@ -957,12 +964,18 @@ export class WorkerActivityService {
     await this.recalculateSessionCredits(session);
     this.saveActiveSessions();
     
-    const logMessage = transaction.type === 'animals_taken' 
+    const logMessage = transaction.type === 'animals_taken'
       ? `🐄 Added animals taken for ${workerName}: ${transaction.quantity} ${transaction.animalType || 'animals'} - Cost: $${transaction.cost || 0}`
       : `💰 Added delivery completion for ${workerName}: ${transaction.quantity} animals - Earned: $${transaction.amount || 0}`;
-    
+
     console.log(logMessage);
-    
+
+    // Update weekly rankings for animal deliveries (not when taking animals)
+    if (transaction.type === 'delivery_completed') {
+      const weeklyRankingService = WeeklyRankingService.getInstance();
+      weeklyRankingService.updateWorkerStats(workerId, workerName, 'animals', transaction.quantity);
+    }
+
     // Update the embed
     this.updateWorkerEmbed(session);
   }

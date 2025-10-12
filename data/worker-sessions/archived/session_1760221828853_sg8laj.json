@@ -1,0 +1,73 @@
+{
+  "workerId": "206587400703574019",
+  "workerName": "Cosmo Versace",
+  "channelId": "1423043541701230804",
+  "sessionId": "session_1760221828853_sg8laj",
+  "startTime": "2025-10-11T22:30:28.853Z",
+  "lastActivity": "2025-10-11T23:20:54.677Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente Trigo",
+      "quantity": 100,
+      "transactionId": "tx_1760221828855_56e7jo",
+      "timestamp": "2025-10-11T22:30:28.855Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Adubo3",
+      "quantity": 100,
+      "transactionId": "tx_1760222898070_w8aqh",
+      "timestamp": "2025-10-11T22:48:18.070Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1760224085186_kavzoh",
+      "timestamp": "2025-10-11T23:08:05.186Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1760224380502_xplaih",
+      "timestamp": "2025-10-11T23:13:00.502Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1760224630144_nqsntg",
+      "timestamp": "2025-10-11T23:17:10.144Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Trigo",
+      "quantity": 500,
+      "transactionId": "tx_1760224854677_jw7tio",
+      "timestamp": "2025-10-11T23:20:54.677Z"
+    }
+  ],
+  "animalTransactions": [],
+  "financialTransactions": [],
+  "inventoryTransactions": [],
+  "totalCredits": 500,
+  "embedMessageId": "1426711191954128976",
+  "seedExpectations": [
+    {
+      "seedType": "Semente Trigo",
+      "seedQuantity": 100,
+      "expectedPlantType": "Trigo",
+      "expectedPlantQuantity": 2000,
+      "plantsFulfilled": 2000,
+      "isComplete": true,
+      "transactionId": "tx_1760221828855_56e7jo",
+      "aduboUsed": 100,
+      "aduboCost": 75
+    }
+  ],
+  "completedAt": "2025-10-11T23:26:31.233Z",
+  "notes": "Pago por ๖ۣۜζ͜͡ɪᴢᴢʏɴʜᴀ🎀 (949397147030274059)"
+}

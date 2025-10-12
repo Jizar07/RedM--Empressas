@@ -1,0 +1,96 @@
+{
+  "weekStart": "2025-10-12T04:00:00.000Z",
+  "weekEnd": "2025-10-19T03:59:59.999Z",
+  "weekNumber": 42,
+  "year": 2025,
+  "plantRankings": [
+    {
+      "workerId": "728800620064014367",
+      "workerName": "Red Oliver",
+      "plants": {
+        "thisWeek": 1000,
+        "allTime": 2100
+      },
+      "animals": {
+        "thisWeek": 0,
+        "allTime": 7
+      },
+      "ferrovia": {
+        "thisWeek": 0,
+        "allTime": 0
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "141250620593012736",
+      "workerName": "Santiago Bowdin",
+      "plants": {
+        "thisWeek": 500,
+        "allTime": 1781
+      },
+      "animals": {
+        "thisWeek": 0,
+        "allTime": 36
+      },
+      "ferrovia": {
+        "thisWeek": 0,
+        "allTime": 0
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "398270963969425408",
+      "workerName": "John Weslley",
+      "plants": {
+        "thisWeek": 50,
+        "allTime": 40910
+      },
+      "animals": {
+        "thisWeek": 0,
+        "allTime": 178
+      },
+      "ferrovia": {
+        "thisWeek": 0,
+        "allTime": 0
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "372161270176153601",
+      "workerName": "Jizar Stoffeliz",
+      "plants": {
+        "thisWeek": 16,
+        "allTime": 17282
+      },
+      "animals": {
+        "thisWeek": 0,
+        "allTime": 516
+      },
+      "ferrovia": {
+        "thisWeek": 0,
+        "allTime": 0
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    },
+    {
+      "workerId": "198538680686608384",
+      "workerName": "Endo D. Barth",
+      "plants": {
+        "thisWeek": 1,
+        "allTime": 1820
+      },
+      "animals": {
+        "thisWeek": 0,
+        "allTime": 0
+      },
+      "ferrovia": {
+        "thisWeek": 0,
+        "allTime": 2
+      },
+      "lastActivity": "2025-10-08T16:36:59.318Z"
+    }
+  ],
+  "animalRankings": [],
+  "ferroviaRankings": [],
+  "lastUpdated": "2025-10-12T15:52:48.380Z"
+}

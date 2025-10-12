@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1760231064869_z79bul",
+  "sessionId": "session_1760150551783_uh6vul",
+  "managerId": "1204772480305209384",
+  "managerName": "𝑻𝒐́𝒙𝒊𝒄𝒂 𓆩♡𓆪",
+  "workerId": "835165941267693659",
+  "workerName": "Ragnar Lothbrok",
+  "amountPaid": 3851.1,
+  "paidAt": "2025-10-12T01:04:24.869Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-12T00:59:24.869Z",
+    "endTime": "2025-10-12T01:14:24.869Z"
+  }
+}

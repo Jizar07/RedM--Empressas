@@ -1,0 +1,101 @@
+{
+  "workerId": "590207324845637642",
+  "workerName": "Margarida Versace",
+  "channelId": "1423525150338580531",
+  "sessionId": "session_1759981544975_qkxtym",
+  "startTime": "2025-10-09T03:45:44.975Z",
+  "lastActivity": "2025-10-09T04:50:54.520Z",
+  "status": "stale",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Oleander Sage Semente",
+      "quantity": 50,
+      "transactionId": "tx_1759981583835_c6568l",
+      "timestamp": "2025-10-09T03:46:23.835Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Oleander Sage",
+      "quantity": 500,
+      "transactionId": "tx_1759984418310_9phdgg",
+      "timestamp": "2025-10-09T04:33:38.310Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Ovelha Femea",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759981544978_f5icvb",
+      "timestamp": "2025-10-09T03:45:44.978Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Galinha",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759982281116_7yao3p",
+      "timestamp": "2025-10-09T03:58:01.116Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1759984083908_kobxdr",
+      "timestamp": "2025-10-09T04:28:03.908Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Ovelha Macho",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1759985454520_ouqgsf",
+      "timestamp": "2025-10-09T04:50:54.520Z"
+    }
+  ],
+  "financialTransactions": [],
+  "inventoryTransactions": [],
+  "totalCredits": 45,
+  "embedMessageId": "1425707074867691540",
+  "animalExpectations": [
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1759981544978_f5icvb",
+      "takenTimestamp": "2025-10-09T03:45:44.978Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759982281116_7yao3p",
+      "takenTimestamp": "2025-10-09T03:58:01.116Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759985454520_ouqgsf",
+      "takenTimestamp": "2025-10-09T04:50:54.520Z"
+    }
+  ],
+  "seedExpectations": [
+    {
+      "seedType": "Oleander Sage Semente",
+      "seedQuantity": 50,
+      "expectedPlantType": "Oleander Sage Semente",
+      "expectedPlantQuantity": 500,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759981583835_c6568l"
+    }
+  ],
+  "completedAt": "2025-10-12T14:37:31.084Z",
+  "notes": "Auto-archived due to inactivity"
+}

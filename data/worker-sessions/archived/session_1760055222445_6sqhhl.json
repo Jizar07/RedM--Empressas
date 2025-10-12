@@ -1,0 +1,45 @@
+{
+  "workerId": "1295901408264196181",
+  "workerName": "Maria Vitória",
+  "channelId": "1420559828786352190",
+  "sessionId": "session_1760055222445_6sqhhl",
+  "startTime": "2025-10-10T00:13:42.445Z",
+  "lastActivity": "2025-10-10T05:48:58.220Z",
+  "status": "stale",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Junco",
+      "quantity": 200,
+      "transactionId": "tx_1760075338220_dmtx8h",
+      "timestamp": "2025-10-10T05:48:58.220Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1760055222447_20c736",
+      "timestamp": "2025-10-10T00:13:42.447Z"
+    }
+  ],
+  "financialTransactions": [],
+  "inventoryTransactions": [],
+  "totalCredits": 160,
+  "embedMessageId": "1426084075118268486",
+  "animalExpectations": [],
+  "seedExpectations": [
+    {
+      "seedType": "Semente de Junco",
+      "seedQuantity": 200,
+      "expectedPlantType": "Junco",
+      "expectedPlantQuantity": 2000,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1760075338220_dmtx8h"
+    }
+  ],
+  "completedAt": "2025-10-12T14:37:31.089Z",
+  "notes": "Auto-archived due to inactivity"
+}

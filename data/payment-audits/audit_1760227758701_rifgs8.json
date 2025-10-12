@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1760227758701_rifgs8",
+  "sessionId": "session_1760220108306_6105u",
+  "managerId": "206587400703574019",
+  "managerName": "𝓑𝓪𝓻𝓻𝓸𝓼𝓸",
+  "workerId": "481612456792424448",
+  "workerName": "Cleber Versace",
+  "amountPaid": 977.5,
+  "paidAt": "2025-10-12T00:09:18.701Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-12T00:04:18.701Z",
+    "endTime": "2025-10-12T00:19:18.701Z"
+  }
+}

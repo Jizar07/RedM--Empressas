@@ -1,0 +1,26 @@
+{
+  "workerId": "496728102831915008",
+  "workerName": "JANE LOTHBROK",
+  "channelId": "1425595947525865572",
+  "sessionId": "session_1760046476534_rofjnm",
+  "startTime": "2025-10-09T21:47:56.534Z",
+  "lastActivity": "2025-10-09T21:47:56.536Z",
+  "status": "stale",
+  "plantTransactions": [],
+  "animalTransactions": [
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1760046476536_xcml47",
+      "timestamp": "2025-10-09T21:47:56.536Z"
+    }
+  ],
+  "financialTransactions": [],
+  "inventoryTransactions": [],
+  "totalCredits": 160,
+  "embedMessageId": "1425963018818293831",
+  "animalExpectations": [],
+  "completedAt": "2025-10-12T14:37:31.087Z",
+  "notes": "Auto-archived due to inactivity"
+}

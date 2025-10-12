@@ -1,0 +1,52 @@
+{
+  "workerId": "1204772480305209384",
+  "workerName": "BONNIE BENNETT",
+  "channelId": "1416502543990915132",
+  "sessionId": "session_1760120979756_rhkiej",
+  "startTime": "2025-10-10T18:29:39.756Z",
+  "lastActivity": "2025-10-10T21:41:03.494Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "plant_deposited",
+      "itemName": "Milho",
+      "quantity": 200,
+      "transactionId": "tx_1760120979758_9txgd6",
+      "timestamp": "2025-10-10T18:29:39.758Z"
+    },
+    {
+      "type": "plant_deposited",
+      "itemName": "Crows Garlic",
+      "quantity": 50,
+      "transactionId": "tx_1760123164702_1ru67c",
+      "timestamp": "2025-10-10T19:06:04.702Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Bode",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1760132463494_18iva",
+      "timestamp": "2025-10-10T21:41:03.494Z"
+    }
+  ],
+  "financialTransactions": [],
+  "inventoryTransactions": [],
+  "totalCredits": 62.5,
+  "embedMessageId": "1426323675048579239",
+  "seedExpectations": [],
+  "animalExpectations": [
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1760132463494_18iva",
+      "takenTimestamp": "2025-10-10T21:41:03.494Z"
+    }
+  ],
+  "completedAt": "2025-10-10T21:41:30.009Z",
+  "notes": "Pago por puddingbach (614876929266417672)"
+}

@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1760114129897_1xwot9",
+  "sessionId": "session_1760102079096_nxkwa",
+  "managerId": "588934801508270082",
+  "managerName": "chrisbam",
+  "workerId": "588934801508270082",
+  "workerName": "Chris Rubble",
+  "amountPaid": 772.5,
+  "paidAt": "2025-10-10T16:35:29.897Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-10T16:30:29.897Z",
+    "endTime": "2025-10-10T16:45:29.897Z"
+  }
+}

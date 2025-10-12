@@ -1,0 +1,36 @@
+{
+  "workerId": "372161270176153601",
+  "workerName": "Jizar Stoffeliz",
+  "channelId": "1420763696560476240",
+  "sessionId": "session_1759937861381_ahrcgo",
+  "startTime": "2025-10-08T15:37:41.381Z",
+  "lastActivity": "2025-10-08T15:37:41.383Z",
+  "status": "stale",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Creekplum Semente",
+      "quantity": 50,
+      "transactionId": "tx_1759937861383_99uje1",
+      "timestamp": "2025-10-08T15:37:41.383Z"
+    }
+  ],
+  "animalTransactions": [],
+  "financialTransactions": [],
+  "totalCredits": 0,
+  "embedMessageId": "1425507454732468255",
+  "seedExpectations": [
+    {
+      "seedType": "Creekplum Semente",
+      "seedQuantity": 50,
+      "expectedPlantType": "Creekplum Semente",
+      "expectedPlantQuantity": 500,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1759937861383_99uje1"
+    }
+  ],
+  "inventoryTransactions": [],
+  "completedAt": "2025-10-12T14:37:31.075Z",
+  "notes": "Auto-archived due to inactivity"
+}
