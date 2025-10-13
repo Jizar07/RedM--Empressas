@@ -1,8 +1,18 @@
 {
   "channelId": "1412325130926948362",
-  "lastUpdated": "2025-10-13T15:33:11.121Z",
+  "lastUpdated": "2025-10-13T16:04:04.825Z",
   "messageCount": 1000,
   "messages": [
+    {
+      "id": "1427326028669517855",
+      "author": "Zeca Trindade",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: sheep_female x4\nAutor:: Zeca Trindade | FIXO: 72334\nData:: 13/10/2025 - 13:04:03",
+      "timestamp": "2025-10-13T16:04:03.670Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: sheep_female x4\nAutor:: Zeca Trindade | FIXO: 72334\nData:: 13/10/2025 - 13:04:03",
+      "rawEmbeds": []
+    },
     {
       "id": "1427318257282449480",
       "author": "Zeca Trindade",
@@ -9991,16 +10001,6 @@
       "source": "discord",
       "channelId": "1412325130926948362",
       "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: arado x1\nAutor:: John Weslley | FIXO: 550\nData:: 12/10/2025 - 17:00:10",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1427022915286597792",
-      "author": "Cosmo Versace",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixarustica x175\nAutor:: Cosmo Versace | FIXO: 78447\nData:: 12/10/2025 - 16:59:35",
-      "timestamp": "2025-10-12T19:59:35.808Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: caixarustica x175\nAutor:: Cosmo Versace | FIXO: 78447\nData:: 12/10/2025 - 16:59:35",
       "rawEmbeds": []
     }
   ]

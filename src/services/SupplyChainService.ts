@@ -158,6 +158,7 @@ export interface SupplyChainSession {
   sessionId: string;
   workerId: string;
   workerName: string;
+  serverId?: string; // Discord server/guild ID for multi-server support
   role: WorkerRole;
   status: SessionStatus;
   startTime: Date;
@@ -190,13 +191,11 @@ export interface RevenueDistribution {
 export class SupplyChainService {
   private static instance: SupplyChainService | null = null;
   private static writeQueue: FileWriteQueue = new FileWriteQueue();
-  private sessionsFilePath: string;
-  private archivedSessionsPath: string;
+  private dataDir: string;
   private activeSessions: Map<string, SupplyChainSession> = new Map();
 
   private constructor() {
-    this.sessionsFilePath = path.join(process.cwd(), 'data', 'supply-chain', 'active-sessions.json');
-    this.archivedSessionsPath = path.join(process.cwd(), 'data', 'supply-chain', 'archived');
+    this.dataDir = path.join(process.cwd(), 'data', 'supply-chain');
     this.ensureDirectories();
     this.loadActiveSessions();
   }
@@ -209,10 +208,42 @@ export class SupplyChainService {
     return SupplyChainService.instance;
   }
 
+  /**
+   * Get path for server-specific sessions file with fallback to legacy
+   */
+  private getSessionsPath(serverId?: string): string {
+    if (serverId) {
+      const serverPath = path.join(this.dataDir, serverId, 'active-sessions.json');
+      // Check if server-specific path exists
+      if (require('fs').existsSync(path.dirname(serverPath))) {
+        return serverPath;
+      }
+    }
+    // Fallback to legacy path
+    return path.join(this.dataDir, 'active-sessions.json');
+  }
+
+  /**
+   * Get path for server-specific archived sessions directory
+   */
+  private getArchivedPath(serverId?: string): string {
+    if (serverId) {
+      const serverPath = path.join(this.dataDir, serverId, 'archived');
+      if (require('fs').existsSync(serverPath)) {
+        return serverPath;
+      }
+    }
+    // Fallback to legacy path
+    return path.join(this.dataDir, 'archived');
+  }
+
   private async ensureDirectories(): Promise<void> {
     try {
-      await fs.mkdir(path.dirname(this.sessionsFilePath), { recursive: true });
-      await fs.mkdir(this.archivedSessionsPath, { recursive: true });
+      // Ensure base data directory exists
+      await fs.mkdir(this.dataDir, { recursive: true });
+
+      // Legacy paths
+      await fs.mkdir(path.join(this.dataDir, 'archived'), { recursive: true });
     } catch (error) {
       console.error('Error creating supply chain directories:', error);
     }
@@ -220,23 +251,60 @@ export class SupplyChainService {
 
   private async loadActiveSessions(): Promise<void> {
     try {
-      const data = await fs.readFile(this.sessionsFilePath, 'utf-8');
-      const sessions: SupplyChainSession[] = JSON.parse(data);
-      
-      sessions.forEach(session => {
-        // Convert string dates back to Date objects
-        session.startTime = new Date(session.startTime);
-        session.lastActivity = new Date(session.lastActivity);
-        session.openResponsibilities.dueDate = new Date(session.openResponsibilities.dueDate);
-        session.openResponsibilities.startDate = new Date(session.openResponsibilities.startDate);
-        session.transactions.forEach(transaction => {
-          transaction.timestamp = new Date(transaction.timestamp);
-        });
-        
-        this.activeSessions.set(session.workerId, session);
-      });
+      // Load sessions from all server directories + legacy path
+      const serverDirs: string[] = [];
 
-      console.log(`📊 Loaded ${sessions.length} active supply chain sessions`);
+      // Check for server-specific directories
+      const syncFs = require('fs');
+      if (syncFs.existsSync(this.dataDir)) {
+        const entries = syncFs.readdirSync(this.dataDir, { withFileTypes: true });
+        for (const entry of entries) {
+          if (entry.isDirectory() && entry.name.match(/^\d+$/)) {
+            // Looks like a server ID directory
+            serverDirs.push(entry.name);
+          }
+        }
+      }
+
+      // Add legacy path (undefined = no serverId)
+      serverDirs.push('');
+
+      let totalLoaded = 0;
+
+      for (const serverId of serverDirs) {
+        const sessionsFile = this.getSessionsPath(serverId || undefined);
+        if (!syncFs.existsSync(sessionsFile)) {
+          continue;
+        }
+
+        const data = await fs.readFile(sessionsFile, 'utf-8');
+        const sessions: SupplyChainSession[] = JSON.parse(data);
+
+        console.log(`📂 Loading sessions for server: ${serverId || 'legacy'}...`);
+
+        sessions.forEach(session => {
+          // Convert string dates back to Date objects
+          session.startTime = new Date(session.startTime);
+          session.lastActivity = new Date(session.lastActivity);
+          session.openResponsibilities.dueDate = new Date(session.openResponsibilities.dueDate);
+          session.openResponsibilities.startDate = new Date(session.openResponsibilities.startDate);
+          session.transactions.forEach(transaction => {
+            transaction.timestamp = new Date(transaction.timestamp);
+          });
+
+          // Set serverId if not already set (for legacy sessions)
+          if (!session.serverId && serverId) {
+            session.serverId = serverId;
+          }
+
+          this.activeSessions.set(session.workerId, session);
+          totalLoaded++;
+        });
+
+        console.log(`📊 Loaded ${sessions.length} active supply chain sessions from ${serverId || 'legacy'}`);
+      }
+
+      console.log(`✅ Total sessions loaded: ${totalLoaded} across all servers`);
     } catch (error) {
       if ((error as NodeJS.ErrnoException).code !== 'ENOENT') {
         console.error('Error loading supply chain sessions:', error);
@@ -489,10 +557,19 @@ export class SupplyChainService {
     }
 
     try {
+      // Get server-specific archive path
+      const archivedSessionsPath = this.getArchivedPath(session.serverId);
+
+      // Ensure archive directory exists
+      const syncFs = require('fs');
+      if (!syncFs.existsSync(archivedSessionsPath)) {
+        await fs.mkdir(archivedSessionsPath, { recursive: true });
+      }
+
       // Save to archived folder
       const archiveFileName = `session_${session.sessionId}_${Date.now()}.json`;
-      const archivePath = path.join(this.archivedSessionsPath, archiveFileName);
-      
+      const archivePath = path.join(archivedSessionsPath, archiveFileName);
+
       const archivedSession = {
         ...session,
         archivedAt: new Date(),
@@ -500,12 +577,12 @@ export class SupplyChainService {
       };
 
       await fs.writeFile(archivePath, JSON.stringify(archivedSession, null, 2));
-      
+
       // Remove from active sessions
       this.activeSessions.delete(workerId);
       await this.saveActiveSessions();
-      
-      console.log(`📦 Archived supply chain session ${session.sessionId} for ${session.workerName}`);
+
+      console.log(`📦 Archived supply chain session ${session.sessionId} for ${session.workerName} (server: ${session.serverId || 'legacy'})`);
       return true;
     } catch (error) {
       console.error('Error archiving supply chain session:', error);
@@ -670,23 +747,51 @@ export class SupplyChainService {
 
   // Enhanced saveActiveSessions with better error handling and file locking
   private async saveActiveSessions(): Promise<void> {
-    return SupplyChainService.writeQueue.enqueue(this.sessionsFilePath, async () => {
-      try {
-        const sessions = Array.from(this.activeSessions.values());
-        const tempFile = this.sessionsFilePath + '.tmp';
+    try {
+      // Group sessions by serverId
+      const sessionsByServer = new Map<string, SupplyChainSession[]>();
 
-        // Write to temporary file first
-        await fs.writeFile(tempFile, JSON.stringify(sessions, null, 2));
-
-        // Atomic rename to avoid corruption
-        await fs.rename(tempFile, this.sessionsFilePath);
-
-        console.log(`💾 Saved ${sessions.length} active supply chain sessions`);
-      } catch (error) {
-        console.error('❌ Error saving active sessions:', error);
-        throw error;
+      for (const session of this.activeSessions.values()) {
+        const serverId = session.serverId || 'legacy';
+        if (!sessionsByServer.has(serverId)) {
+          sessionsByServer.set(serverId, []);
+        }
+        sessionsByServer.get(serverId)!.push(session);
       }
-    });
+
+      let totalSaved = 0;
+
+      // Save each server's sessions to its own file
+      for (const [serverId, serverSessions] of sessionsByServer.entries()) {
+        const sessionsFile = this.getSessionsPath(serverId === 'legacy' ? undefined : serverId);
+
+        // Ensure server directory exists
+        const sessionDir = path.dirname(sessionsFile);
+        const syncFs = require('fs');
+        if (!syncFs.existsSync(sessionDir)) {
+          await fs.mkdir(sessionDir, { recursive: true });
+        }
+
+        // Use writeQueue for atomic write with server-specific key
+        await SupplyChainService.writeQueue.enqueue(sessionsFile, async () => {
+          const tempFile = sessionsFile + '.tmp';
+
+          // Write to temporary file first
+          await fs.writeFile(tempFile, JSON.stringify(serverSessions, null, 2));
+
+          // Atomic rename to avoid corruption
+          await fs.rename(tempFile, sessionsFile);
+        });
+
+        totalSaved += serverSessions.length;
+        console.log(`💾 Saved ${serverSessions.length} active supply chain sessions for ${serverId === 'legacy' ? 'legacy' : `server ${serverId}`}`);
+      }
+
+      console.log(`✅ Total saved: ${totalSaved} sessions across ${sessionsByServer.size} servers`);
+    } catch (error) {
+      console.error('❌ Error saving active sessions:', error);
+      throw error;
+    }
   }
 
   // Create plant expectation when plants are withdrawn for box making
@@ -900,8 +1005,9 @@ export class SupplyChainService {
         return;
       }
 
-      // Verify file persistence
-      const fileData = await fs.readFile(this.sessionsFilePath, 'utf-8');
+      // Verify file persistence - use correct server-specific file
+      const sessionsFile = this.getSessionsPath(newSession.serverId);
+      const fileData = await fs.readFile(sessionsFile, 'utf-8');
       const fileSessions: SupplyChainSession[] = JSON.parse(fileData);
       const fileSession = fileSessions.find(s => s.workerId === workerId);
       

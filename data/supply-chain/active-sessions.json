@@ -20961,7 +20961,7 @@
     "role": "worker",
     "status": "active",
     "startTime": "2025-10-08T21:50:33.455Z",
-    "lastActivity": "2025-10-13T12:20:05.440Z",
+    "lastActivity": "2025-10-13T15:59:00.381Z",
     "transactions": [
       {
         "transactionId": "tx_1760010616459_709x75zwj",
@@ -21210,6 +21210,14 @@
         "quantity": 50,
         "timestamp": "2025-10-13T12:20:05.411Z",
         "originalMessage": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cornseed x50\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 13/10/2025 - 09:20:04"
+      },
+      {
+        "transactionId": "tx_1760371140356_tdlfw5oou",
+        "type": "FERROVIA_MISSION_COMPLETED",
+        "itemName": "ferrovia_mission",
+        "quantity": 250,
+        "timestamp": "2025-10-13T15:59:00.356Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 1800\nRecompensa:: 1000\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 13/10/2025 - 12:59:00"
       }
     ],
     "openResponsibilities": {
@@ -21218,12 +21226,12 @@
       "dueDate": "2025-10-09T21:50:33.455Z",
       "startDate": "2025-10-08T21:50:33.455Z"
     },
-    "totalBoxesProcessed": 1500,
+    "totalBoxesProcessed": 1750,
     "totalRevenueGenerated": 0,
     "totalRevenueReturned": 0,
     "totalMoneyWithdrawn": 0,
     "totalMoneyDeposited": 0,
-    "totalPaymentOwed": 1500
+    "totalPaymentOwed": 1750
   },
   {
     "sessionId": "c73eb321-2e57-4ecf-a2bf-5c3657016d68",

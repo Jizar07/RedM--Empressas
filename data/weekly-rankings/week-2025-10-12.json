@@ -534,6 +534,24 @@
       "lastActivity": "2025-10-12T16:38:18.911Z"
     }
   ],
-  "ferroviaRankings": [],
-  "lastUpdated": "2025-10-13T15:47:24.386Z"
+  "ferroviaRankings": [
+    {
+      "workerId": "unknown",
+      "workerName": "Romano Delaerva",
+      "plants": {
+        "thisWeek": 0,
+        "allTime": 0
+      },
+      "animals": {
+        "thisWeek": 0,
+        "allTime": 0
+      },
+      "ferrovia": {
+        "thisWeek": 1,
+        "allTime": 1133
+      },
+      "lastActivity": "2025-10-13T15:59:04.861Z"
+    }
+  ],
+  "lastUpdated": "2025-10-13T15:59:04.861Z"
 }

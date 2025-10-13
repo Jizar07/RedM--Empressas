@@ -528,7 +528,7 @@
   },
   "unknown": {
     "workerId": "unknown",
-    "workerName": "Ragnar Lothbrok",
+    "workerName": "Romano Delaerva",
     "plants": {
       "thisWeek": 0,
       "allTime": 0
@@ -538,10 +538,10 @@
       "allTime": 0
     },
     "ferrovia": {
-      "thisWeek": 66,
-      "allTime": 1132
+      "thisWeek": 67,
+      "allTime": 1133
     },
-    "lastActivity": "2025-10-13T15:32:12.567Z"
+    "lastActivity": "2025-10-13T15:59:04.861Z"
   },
   "266262427329495041": {
     "workerId": "266262427329495041",

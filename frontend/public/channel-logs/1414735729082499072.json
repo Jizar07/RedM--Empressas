@@ -1,8 +1,18 @@
 {
   "channelId": "1414735729082499072",
-  "lastUpdated": "2025-10-13T15:32:12.521Z",
+  "lastUpdated": "2025-10-13T15:59:04.815Z",
   "messageCount": 1000,
   "messages": [
+    {
+      "id": "1427324756188856372",
+      "author": "Romano Delaerva",
+      "content": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 1800\nRecompensa:: 1000\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 13/10/2025 - 12:59:00",
+      "timestamp": "2025-10-13T15:59:00.287Z",
+      "source": "discord",
+      "channelId": "1414735729082499072",
+      "embedContent": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 1800\nRecompensa:: 1000\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 13/10/2025 - 12:59:00",
+      "rawEmbeds": []
+    },
     {
       "id": "1427318001186898030",
       "author": "Ragnar Lothbrok",
@@ -9991,16 +10001,6 @@
       "source": "discord",
       "channelId": "1414735729082499072",
       "embedContent": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 00:29:01",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1420250569708146749",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 966\nRecompensa:: 1000\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 00:28:42",
-      "timestamp": "2025-09-24T03:28:42.798Z",
-      "source": "discord",
-      "channelId": "1414735729082499072",
-      "embedContent": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 966\nRecompensa:: 1000\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 00:28:42",
       "rawEmbeds": []
     }
   ]

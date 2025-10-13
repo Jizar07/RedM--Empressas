@@ -1,7 +1,53 @@
 {
-  "lastUpdated": "2025-10-13T15:32:12.836Z",
+  "lastUpdated": "2025-10-13T15:59:05.141Z",
   "messageCount": 1000,
   "messages": [
+    {
+      "id": "1427324756188856372",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 1800\nRecompensa:: 1000\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 13/10/2025 - 12:59:00",
+      "timestamp": "2025-10-13T15:59:00.287Z",
+      "raw_embeds": [
+        {
+          "title": "ENTREGA COMPLETA - 3 ROTAS",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Missão:`",
+              "value": "```prolog\n2\n```",
+              "inline": true
+            },
+            {
+              "name": "`Entregas Completadas:`",
+              "value": "```prolog\n1800\n```",
+              "inline": true
+            },
+            {
+              "name": "`Recompensa:`",
+              "value": "```prolog\n1000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nRomano Delaerva | FIXO: 2520\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n13/10/2025 - 12:59:00\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 1800\nRecompensa:: 1000\nAutor:: Romano Delaerva | FIXO: 2520\nData:: 13/10/2025 - 12:59:00",
+      "rawEmbeds": []
+    },
     {
       "id": "1427318001186898030",
       "author": "ferrovia",
@@ -42442,52 +42488,6 @@
         }
       ],
       "embedContent": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 24/09/2025 - 13:05:13",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1420440883849072768",
-      "author": "ferrovia",
-      "content": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 981\nRecompensa:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 24/09/2025 - 13:04:57",
-      "timestamp": "2025-09-24T16:04:57.225Z",
-      "raw_embeds": [
-        {
-          "title": "ENTREGA COMPLETA - 3 ROTAS",
-          "description": null,
-          "fields": [
-            {
-              "name": "`Empresa:`",
-              "value": "```prolog\ncooperativa_bowdin\n```",
-              "inline": true
-            },
-            {
-              "name": "`Missão:`",
-              "value": "```prolog\n2\n```",
-              "inline": true
-            },
-            {
-              "name": "`Entregas Completadas:`",
-              "value": "```prolog\n981\n```",
-              "inline": true
-            },
-            {
-              "name": "`Recompensa:`",
-              "value": "```prolog\n1000\n```",
-              "inline": true
-            },
-            {
-              "name": "`Autor:`",
-              "value": "```prolog\nBartholomeu Dias | FIXO: 76312\n```",
-              "inline": true
-            },
-            {
-              "name": "`Data:`",
-              "value": "```prolog\n24/09/2025 - 13:04:57\n```",
-              "inline": false
-            }
-          ]
-        }
-      ],
-      "embedContent": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 981\nRecompensa:: 1000\nAutor:: Bartholomeu Dias | FIXO: 76312\nData:: 24/09/2025 - 13:04:57",
       "rawEmbeds": []
     }
   ]
