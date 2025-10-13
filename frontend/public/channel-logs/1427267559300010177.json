@@ -1,8 +1,18 @@
 {
   "channelId": "1427267559300010177",
-  "lastUpdated": "2025-10-13T16:23:49.240Z",
-  "messageCount": 20,
+  "lastUpdated": "2025-10-13T16:36:54.305Z",
+  "messageCount": 21,
   "messages": [
+    {
+      "id": "1427334292345847889",
+      "author": "Bau da Fazenda",
+      "content": "REGISTRO - REGISTRO - fazenda_22\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $160.0\nAção:: Maximo Pokaropa vendeu 1 animais no matadouro\nSaldo após depósito:: $1992.0\nData:: 13/10/2025 - 13:37:08",
+      "timestamp": "2025-10-13T16:36:53.884Z",
+      "source": "discord",
+      "channelId": "1427267559300010177",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_22\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $160.0\nAção:: Maximo Pokaropa vendeu 1 animais no matadouro\nSaldo após depósito:: $1992.0\nData:: 13/10/2025 - 13:37:08",
+      "rawEmbeds": []
+    },
     {
       "id": "1427330999565418737",
       "author": "Maximo Pokaropa",

@@ -64,7 +64,7 @@ interface UpdateFirmRequest extends Partial<CreateFirmRequest> {
 export class FirmConfigService {
   private static instance: FirmConfigService;
   private configPath: string;
-  private config: FirmsConfig | null = null;
+  private configCache: Map<string, FirmsConfig> = new Map();
 
   private constructor() {
     this.configPath = path.join(process.cwd(), 'data', 'firms-config.json');
@@ -91,16 +91,9 @@ export class FirmConfigService {
   }
 
   private createDefaultConfig(): void {
-    const defaultConfig: FirmsConfig = {
-      version: '1.0.0',
-      lastUpdated: new Date().toISOString(),
-      firms: {},
-      settings: {
-        defaultEndpointType: 'frontend',
-        maxFirmsPerUser: 10,
-        enableRoleSync: true,
-        monitoringInterval: 30000
-      }
+    // Create with servers structure for multi-server support
+    const defaultConfig = {
+      servers: {} as Record<string, FirmsConfig>
     };
 
     try {
@@ -111,46 +104,122 @@ export class FirmConfigService {
     }
   }
 
-  private loadConfig(): FirmsConfig {
+  private loadConfig(serverId?: string): FirmsConfig {
     try {
-      if (this.config) {
-        return this.config;
+      // Check cache first
+      const cacheKey = serverId || 'legacy';
+      if (this.configCache.has(cacheKey)) {
+        return this.configCache.get(cacheKey)!;
       }
 
       const configData = fs.readFileSync(this.configPath, 'utf-8');
-      this.config = JSON.parse(configData);
-      return this.config!; // We know it's not null at this point
+      const fileData = JSON.parse(configData);
+
+      // Check if it's the new server-based structure
+      if (fileData.servers && typeof fileData.servers === 'object') {
+        if (serverId && fileData.servers[serverId]) {
+          this.configCache.set(cacheKey, fileData.servers[serverId]);
+          return fileData.servers[serverId];
+        }
+        // If serverId not found, use first available server or create default
+        const firstServerId = Object.keys(fileData.servers)[0];
+        if (firstServerId) {
+          this.configCache.set(cacheKey, fileData.servers[firstServerId]);
+          return fileData.servers[firstServerId];
+        }
+        // No servers configured, return default
+        const defaultConfig: FirmsConfig = {
+          version: '1.0.0',
+          lastUpdated: new Date().toISOString(),
+          firms: {},
+          settings: {
+            defaultEndpointType: 'frontend',
+            maxFirmsPerUser: 10,
+            enableRoleSync: true,
+            monitoringInterval: 30000
+          }
+        };
+        this.configCache.set(cacheKey, defaultConfig);
+        return defaultConfig;
+      } else {
+        // Legacy format - use as-is
+        this.configCache.set(cacheKey, fileData);
+        return fileData;
+      }
     } catch (error) {
       console.error('❌ Error loading firms config:', error);
-      this.createDefaultConfig();
-      return this.loadConfig();
+      // Return default config
+      const defaultConfig: FirmsConfig = {
+        version: '1.0.0',
+        lastUpdated: new Date().toISOString(),
+        firms: {},
+        settings: {
+          defaultEndpointType: 'frontend',
+          maxFirmsPerUser: 10,
+          enableRoleSync: true,
+          monitoringInterval: 30000
+        }
+      };
+      this.configCache.set(serverId || 'legacy', defaultConfig);
+      return defaultConfig;
     }
   }
 
-  private saveConfig(config: FirmsConfig): void {
+  private saveConfig(config: FirmsConfig, serverId?: string): void {
     try {
       config.lastUpdated = new Date().toISOString();
-      fs.writeFileSync(this.configPath, JSON.stringify(config, null, 2));
-      this.config = config;
-      console.log('💾 Firms configuration saved successfully');
+
+      let fileData: any = {};
+
+      // Load existing file if it exists
+      if (fs.existsSync(this.configPath)) {
+        fileData = JSON.parse(fs.readFileSync(this.configPath, 'utf-8'));
+      }
+
+      // Ensure servers structure exists
+      if (!fileData.servers) {
+        fileData.servers = {};
+      }
+
+      if (serverId) {
+        // Save to specific server
+        fileData.servers[serverId] = config;
+      } else {
+        // If no serverId, save to first available server or create legacy entry
+        const firstServerId = Object.keys(fileData.servers)[0];
+        if (firstServerId) {
+          fileData.servers[firstServerId] = config;
+        } else {
+          // Fallback: save as legacy format (for backward compatibility)
+          fileData = config;
+        }
+      }
+
+      fs.writeFileSync(this.configPath, JSON.stringify(fileData, null, 2));
+
+      // Clear cache
+      const cacheKey = serverId || 'legacy';
+      this.configCache.delete(cacheKey);
+
+      console.log(`💾 Firms configuration saved successfully [${serverId || 'legacy'}]`);
     } catch (error) {
       console.error('❌ Error saving firms config:', error);
       throw new Error('Failed to save firms configuration');
     }
   }
 
-  public getAllFirms(): Record<string, FirmConfig> {
-    const config = this.loadConfig();
+  public getAllFirms(serverId?: string): Record<string, FirmConfig> {
+    const config = this.loadConfig(serverId);
     return config.firms;
   }
 
-  public getFirm(firmId: string): FirmConfig | null {
-    const config = this.loadConfig();
+  public getFirm(firmId: string, serverId?: string): FirmConfig | null {
+    const config = this.loadConfig(serverId);
     return config.firms[firmId] || null;
   }
 
   public getFirmsForRoles(userRoles: string[], serverId?: string): FirmConfig[] {
-    const config = this.loadConfig();
+    const config = this.loadConfig(serverId);
     const userRolesLower = userRoles.map(role => role.toLowerCase());
 
     return Object.values(config.firms).filter(firm => {
@@ -171,7 +240,7 @@ export class FirmConfigService {
   }
 
   public createFirm(request: CreateFirmRequest): FirmConfig {
-    const config = this.loadConfig();
+    const config = this.loadConfig(request.serverId);
     
     // Generate firm ID from name
     const firmId = request.name.toLowerCase()
@@ -220,14 +289,16 @@ export class FirmConfigService {
     };
 
     config.firms[firmId] = newFirm;
-    this.saveConfig(config);
-    
-    console.log(`✅ Created new firm: ${newFirm.name} (${firmId})`);
+    this.saveConfig(config, request.serverId);
+
+    console.log(`✅ Created new firm: ${newFirm.name} (${firmId}) [${request.serverId}]`);
     return newFirm;
   }
 
   public updateFirm(request: UpdateFirmRequest): FirmConfig {
-    const config = this.loadConfig();
+    // Use serverId from request or from existing firm
+    const serverId = request.serverId || this.getFirm(request.id)?.serverId;
+    const config = this.loadConfig(serverId);
     const existingFirm = config.firms[request.id];
 
     if (!existingFirm) {
@@ -256,29 +327,41 @@ export class FirmConfigService {
     };
 
     config.firms[request.id] = updatedFirm;
-    this.saveConfig(config);
-    
-    console.log(`✅ Updated firm: ${updatedFirm.name} (${request.id})`);
+    this.saveConfig(config, serverId);
+
+    console.log(`✅ Updated firm: ${updatedFirm.name} (${request.id}) [${serverId || 'legacy'}]`);
     return updatedFirm;
   }
 
-  public deleteFirm(firmId: string): boolean {
-    const config = this.loadConfig();
-    
+  public deleteFirm(firmId: string, serverId?: string): boolean {
+    // If serverId not provided, try to get it from the firm
+    if (!serverId) {
+      const firm = this.getFirm(firmId);
+      serverId = firm?.serverId;
+    }
+
+    const config = this.loadConfig(serverId);
+
     if (!config.firms[firmId]) {
       throw new Error(`Firm with ID "${firmId}" not found`);
     }
 
     const firmName = config.firms[firmId].name;
     delete config.firms[firmId];
-    this.saveConfig(config);
-    
-    console.log(`🗑️ Deleted firm: ${firmName} (${firmId})`);
+    this.saveConfig(config, serverId);
+
+    console.log(`🗑️ Deleted firm: ${firmName} (${firmId}) [${serverId || 'legacy'}]`);
     return true;
   }
 
-  public toggleFirmEnabled(firmId: string, enabled: boolean): FirmConfig {
-    const config = this.loadConfig();
+  public toggleFirmEnabled(firmId: string, enabled: boolean, serverId?: string): FirmConfig {
+    // If serverId not provided, try to get it from the firm
+    if (!serverId) {
+      const firm = this.getFirm(firmId);
+      serverId = firm?.serverId;
+    }
+
+    const config = this.loadConfig(serverId);
     const firm = config.firms[firmId];
 
     if (!firm) {
@@ -288,31 +371,31 @@ export class FirmConfigService {
     firm.enabled = enabled;
     firm.monitoring.enabled = enabled;
     firm.updatedAt = new Date().toISOString();
-    
+
     config.firms[firmId] = firm;
-    this.saveConfig(config);
-    
-    console.log(`${enabled ? '🟢' : '🔴'} Firm ${firm.name} ${enabled ? 'enabled' : 'disabled'}`);
+    this.saveConfig(config, serverId);
+
+    console.log(`${enabled ? '🟢' : '🔴'} Firm ${firm.name} ${enabled ? 'enabled' : 'disabled'} [${serverId || 'legacy'}]`);
     return firm;
   }
 
-  public getSettings(): FirmsConfig['settings'] {
-    const config = this.loadConfig();
+  public getSettings(serverId?: string): FirmsConfig['settings'] {
+    const config = this.loadConfig(serverId);
     return config.settings;
   }
 
-  public updateSettings(settings: Partial<FirmsConfig['settings']>): FirmsConfig['settings'] {
-    const config = this.loadConfig();
+  public updateSettings(settings: Partial<FirmsConfig['settings']>, serverId?: string): FirmsConfig['settings'] {
+    const config = this.loadConfig(serverId);
     config.settings = { ...config.settings, ...settings };
-    this.saveConfig(config);
-    
-    console.log('⚙️ Firms settings updated');
+    this.saveConfig(config, serverId);
+
+    console.log(`⚙️ Firms settings updated [${serverId || 'legacy'}]`);
     return config.settings;
   }
 
-  public getMonitoredChannels(): Array<{ firmId: string; channelId: string; endpoint: string }> {
-    const config = this.loadConfig();
-    
+  public getMonitoredChannels(serverId?: string): Array<{ firmId: string; channelId: string; endpoint: string }> {
+    const config = this.loadConfig(serverId);
+
     return Object.values(config.firms)
       .filter(firm => firm.enabled && firm.monitoring.enabled)
       .map(firm => ({
@@ -322,21 +405,22 @@ export class FirmConfigService {
       }));
   }
 
-  public getFirmByChannelId(channelId: string): FirmConfig | null {
-    const config = this.loadConfig();
-    
+  public getFirmByChannelId(channelId: string, serverId?: string): FirmConfig | null {
+    const config = this.loadConfig(serverId);
+
     for (const firm of Object.values(config.firms)) {
       if (firm.channelId === channelId && firm.enabled) {
         return firm;
       }
     }
-    
+
     return null;
   }
 
   // Force reload config from file (useful for hot-reloading)
-  public reloadConfig(): void {
-    this.config = null;
-    console.log('🔄 Firms configuration reloaded from file');
+  public reloadConfig(serverId?: string): void {
+    const cacheKey = serverId || 'legacy';
+    this.configCache.delete(cacheKey);
+    console.log(`🔄 Firms configuration reloaded from file [${serverId || 'legacy'}]`);
   }
 }

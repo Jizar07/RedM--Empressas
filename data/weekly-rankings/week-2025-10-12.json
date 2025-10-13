@@ -352,14 +352,14 @@
         "allTime": 17282
       },
       "animals": {
-        "thisWeek": 4,
-        "allTime": 520
+        "thisWeek": 5,
+        "allTime": 521
       },
       "ferrovia": {
         "thisWeek": 0,
         "allTime": 0
       },
-      "lastActivity": "2025-10-13T16:22:59.999Z"
+      "lastActivity": "2025-10-13T16:36:53.990Z"
     },
     {
       "workerId": "198538680686608384",
@@ -553,5 +553,5 @@
       "lastActivity": "2025-10-13T16:28:58.128Z"
     }
   ],
-  "lastUpdated": "2025-10-13T16:28:58.128Z"
+  "lastUpdated": "2025-10-13T16:36:53.990Z"
 }
