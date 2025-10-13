@@ -27,7 +27,7 @@ export class WeeklySalesService {
   private dataDir: string;
 
   private constructor() {
-    this.dataDir = path.join(process.cwd(), 'data', 'weekly-sales');
+    this.dataDir = path.join(process.cwd(), 'data');
     this.ensureDataDirectory();
   }
 
@@ -38,9 +38,25 @@ export class WeeklySalesService {
     return WeeklySalesService.instance;
   }
 
+  /**
+   * Get path for server-specific weekly sales directory
+   */
+  private getDataDir(serverId?: string): string {
+    if (serverId) {
+      const serverPath = path.join(this.dataDir, 'weekly-sales', serverId);
+      if (fs.existsSync(serverPath)) {
+        return serverPath;
+      }
+    }
+    // Fallback to legacy path
+    return path.join(this.dataDir, 'weekly-sales');
+  }
+
   private ensureDataDirectory(): void {
-    if (!fs.existsSync(this.dataDir)) {
-      fs.mkdirSync(this.dataDir, { recursive: true });
+    // Ensure legacy directory exists
+    const legacyDir = path.join(this.dataDir, 'weekly-sales');
+    if (!fs.existsSync(legacyDir)) {
+      fs.mkdirSync(legacyDir, { recursive: true });
       console.log('📁 Created weekly sales directory');
     }
   }
@@ -93,16 +109,17 @@ export class WeeklySalesService {
   /**
    * Get the file path for a week's data
    */
-  private getWeekFilePath(weekIdentifier: string): string {
-    return path.join(this.dataDir, `week-${weekIdentifier}.json`);
+  private getWeekFilePath(weekIdentifier: string, serverId?: string): string {
+    const dataDir = this.getDataDir(serverId);
+    return path.join(dataDir, `week-${weekIdentifier}.json`);
   }
 
   /**
    * Load or create weekly data for the current week
    */
-  public getCurrentWeekData(): WeeklyData {
+  public getCurrentWeekData(serverId?: string): WeeklyData {
     const weekIdentifier = this.getWeekIdentifier();
-    const filePath = this.getWeekFilePath(weekIdentifier);
+    const filePath = this.getWeekFilePath(weekIdentifier, serverId);
 
     if (fs.existsSync(filePath)) {
       try {
@@ -135,8 +152,8 @@ export class WeeklySalesService {
       lastUpdated: new Date()
     };
 
-    this.saveWeekData(weekData);
-    console.log(`📊 Created new weekly sales tracking for week ${weekIdentifier}`);
+    this.saveWeekData(weekData, serverId);
+    console.log(`📊 Created new weekly sales tracking for week ${weekIdentifier} [${serverId || 'legacy'}]`);
 
     return weekData;
   }
@@ -144,11 +161,18 @@ export class WeeklySalesService {
   /**
    * Save weekly data to file
    */
-  private saveWeekData(weekData: WeeklyData): void {
+  private saveWeekData(weekData: WeeklyData, serverId?: string): void {
     try {
-      const filePath = this.getWeekFilePath(weekData.weekIdentifier);
+      const filePath = this.getWeekFilePath(weekData.weekIdentifier, serverId);
+
+      // Ensure directory exists
+      const dataDir = path.dirname(filePath);
+      if (!fs.existsSync(dataDir)) {
+        fs.mkdirSync(dataDir, { recursive: true });
+      }
+
       fs.writeFileSync(filePath, JSON.stringify(weekData, null, 2));
-      console.log(`💾 Saved weekly sales data for week ${weekData.weekIdentifier}`);
+      console.log(`💾 Saved weekly sales data for week ${weekData.weekIdentifier} [${serverId || 'legacy'}]`);
     } catch (error) {
       console.error('❌ Error saving weekly data:', error);
     }
@@ -157,8 +181,8 @@ export class WeeklySalesService {
   /**
    * Add a new sale transaction to the current week
    */
-  public addSaleTransaction(transaction: Omit<SaleTransaction, 'transactionId'>): void {
-    const weekData = this.getCurrentWeekData();
+  public addSaleTransaction(transaction: Omit<SaleTransaction, 'transactionId'>, serverId?: string): void {
+    const weekData = this.getCurrentWeekData(serverId);
 
     const saleTransaction: SaleTransaction = {
       ...transaction,
@@ -170,24 +194,24 @@ export class WeeklySalesService {
     weekData.totalTransactions++;
     weekData.lastUpdated = new Date();
 
-    this.saveWeekData(weekData);
+    this.saveWeekData(weekData, serverId);
 
-    console.log(`💰 Added sale to weekly tracking: ${transaction.workerName} - ${transaction.quantity}x ${transaction.itemName} = $${transaction.amount.toFixed(2)}`);
+    console.log(`💰 Added sale to weekly tracking: ${transaction.workerName} - ${transaction.quantity}x ${transaction.itemName} = $${transaction.amount.toFixed(2)} [${serverId || 'legacy'}]`);
     console.log(`📊 Week ${weekData.weekIdentifier} totals: $${weekData.totalSales.toFixed(2)} (${weekData.totalTransactions} transactions)`);
   }
 
   /**
    * Get current week's total sales
    */
-  public getCurrentWeekTotalSales(): number {
-    const weekData = this.getCurrentWeekData();
+  public getCurrentWeekTotalSales(serverId?: string): number {
+    const weekData = this.getCurrentWeekData(serverId);
     return weekData.totalSales;
   }
 
   /**
    * Get current week information
    */
-  public getCurrentWeekInfo(): {
+  public getCurrentWeekInfo(serverId?: string): {
     weekIdentifier: string;
     weekStart: Date;
     weekEnd: Date;
@@ -195,7 +219,7 @@ export class WeeklySalesService {
     totalTransactions: number;
     dateRange: string;
   } {
-    const weekData = this.getCurrentWeekData();
+    const weekData = this.getCurrentWeekData(serverId);
 
     // Format date range for display (DD/MM - DD/MM)
     const startFormatted = weekData.weekStart.toLocaleDateString('pt-BR', {
@@ -220,14 +244,20 @@ export class WeeklySalesService {
   /**
    * Get all weekly sales data for analytics
    */
-  public getAllWeeklyData(): WeeklyData[] {
+  public getAllWeeklyData(serverId?: string): WeeklyData[] {
     try {
-      const files = fs.readdirSync(this.dataDir)
+      const dataDir = this.getDataDir(serverId);
+
+      if (!fs.existsSync(dataDir)) {
+        return [];
+      }
+
+      const files = fs.readdirSync(dataDir)
         .filter(file => file.startsWith('week-') && file.endsWith('.json'))
         .sort(); // Sort by filename (which includes date)
 
       return files.map(file => {
-        const filePath = path.join(this.dataDir, file);
+        const filePath = path.join(dataDir, file);
         const data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
         // Restore Date objects
@@ -251,17 +281,17 @@ export class WeeklySalesService {
   /**
    * Clean up old weekly data (optional - keep last 12 weeks)
    */
-  public cleanupOldData(weeksToKeep: number = 12): void {
+  public cleanupOldData(weeksToKeep: number = 12, serverId?: string): void {
     try {
-      const allData = this.getAllWeeklyData();
+      const allData = this.getAllWeeklyData(serverId);
 
       if (allData.length > weeksToKeep) {
         const toDelete = allData.slice(0, allData.length - weeksToKeep);
 
         toDelete.forEach(week => {
-          const filePath = this.getWeekFilePath(week.weekIdentifier);
+          const filePath = this.getWeekFilePath(week.weekIdentifier, serverId);
           fs.unlinkSync(filePath);
-          console.log(`🗑️ Cleaned up old weekly data: ${week.weekIdentifier}`);
+          console.log(`🗑️ Cleaned up old weekly data: ${week.weekIdentifier} [${serverId || 'legacy'}]`);
         });
       }
     } catch (error) {
