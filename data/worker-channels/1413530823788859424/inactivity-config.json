@@ -1,0 +1,10 @@
+{
+  "enabled": true,
+  "inactivityThresholdDays": 10,
+  "warningDays": [
+    7,
+    8,
+    9
+  ],
+  "excludedWorkerIds": []
+}

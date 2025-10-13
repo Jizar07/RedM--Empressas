@@ -97,7 +97,32 @@ When you see "/update" command from the user, perform the following actions:
 3. Update changelog.md if there are version-worthy changes
 4. Update CLAUDE.md if there are architectural or command changes
 
-## Recent Major Updates (v0.061) **[CURRENT VERSION]**
+## Recent Major Updates (v0.062) **[CURRENT VERSION]**
+
+### Worker Embed Calculation Fix - Triple Root Cause Resolution (v0.062)
+- **Feature**: Complete fix for incorrect plant pricing in worker embed line items while totals were correct
+- **Three Critical Bugs Fixed**: Systematic resolution of pricing calculation errors across multiple code paths
+- **Key Fix #1 - `recalculateSessionCredits()` Wrong Field** (lines 813-814):
+  - Root Cause: Used `paymentConfig.defaultPrices.plants.basePrice` (undefined) instead of `unitPrice`
+  - Fixed: Changed to `paymentConfig.defaultPrices.plants.unitPrice` and `animals.unitPrice`
+  - Impact: Session total credits now calculated with correct server-specific pricing
+- **Key Fix #2 - `groupPlantTransactionsByTypeAsync()` Missing Server Pricing** (lines 644-676):
+  - Root Cause: Function called `getWorkerPrices()` without serverId parameter
+  - Result: Embed line items showed "$300.00" using wrong default $0.15/plant instead of $0.25/plant
+  - Fixed: Added `serverId?: string` parameter, replaced with PaymentConfigService using server-specific unitPrice
+- **Key Fix #3 - Function Calls Missing serverId Parameter** (lines 1462, 1478, 1770, 1786):
+  - Root Cause: All 4 calls to grouping function not passing session.serverId
+  - Fixed: Updated all calls to pass `session.serverId` for registered and unregistered plants
+- **Worker Session Migration**: Created migration script moving 31 workers from legacy to Cabra da Peste server (1274479410107646004)
+- **Reload System**: Implemented `reloadAllSessions()` method (lines 2461-2481) to clear in-memory sessions and reload from disk
+- **Backend API Enhancement**: Created `/reload-and-recalculate` endpoint combining session reload with embed recalculation
+- **Technical Implementation** (`src/services/WorkerActivityService.ts`):
+  - Fixed three separate calculation paths: session totals, embed line items, embed totals
+  - All now use PaymentConfigService with correct server-specific unitPrice field
+  - Successfully updated all 32 worker embeds with correct pricing
+- **Result**: Cabra da Peste embeds now show "2000 Milho ($500.00)" using correct $0.25/plant in BOTH line items AND totals
+
+## Previous Major Updates (v0.061)
 
 ### Weekly Ranking System - Date Range Filtering Fix (v0.061)
 - **Feature**: Complete overhaul of ranking calculation system to use proper date-range filtering from session transactions

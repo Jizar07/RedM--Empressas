@@ -1,5 +1,5 @@
-import { 
-  Events, 
+import {
+  Events,
   Interaction,
   ModalBuilder,
   TextInputBuilder,
@@ -16,6 +16,7 @@ import {
 import axios from 'axios';
 import RegistrationService from '../../services/RegistrationService';
 import BotStatusService from '../../services/BotStatusService';
+import CategoryManager from '../../utils/CategoryManager';
 import config from '../../config/config';
 
 // Store temporary registration data
@@ -394,13 +395,36 @@ async function handleInviterSelection(interaction: UserSelectMenuInteraction): P
           const channelNameTemplate = formConfig.postRegistration.channelNameFormat || '{ingameName}';
           const channelName = substituteTemplateVariables(channelNameTemplate, templateVars);
           console.log(`🏷️ Channel name template: "${channelNameTemplate}" → final name: "${channelName}"`);
-          
+
+          // Check category capacity and handle overflow before creating channel
+          let categoryToUse = selectedFunctionData.categoryId;
+          let categoryNameToUse = selectedFunctionData.categoryName;
+
+          if (interaction.client && guildId) {
+            console.log(`📊 Checking category capacity for overflow handling...`);
+            const categoryManager = CategoryManager.getInstance();
+            const overflowResult = await categoryManager.checkAndHandleOverflow(
+              interaction.client,
+              guildId,
+              guildId, // serverId = guildId
+              selectedFunctionData.displayName
+            );
+
+            if (overflowResult) {
+              categoryToUse = overflowResult.categoryId;
+              categoryNameToUse = overflowResult.categoryName;
+              console.log(`✅ Using category: ${categoryNameToUse} (${categoryToUse})`);
+            } else {
+              console.warn(`⚠️ Category overflow check failed, using original category`);
+            }
+          }
+
           BotStatusService.creatingChannel();
           const channelResult = await RegistrationService.createChannelForUser(
             interaction.user.id,
             channelName,
-            selectedFunctionData.categoryId,
-            selectedFunctionData,
+            categoryToUse, // Use potentially new overflow category
+            { ...selectedFunctionData, categoryId: categoryToUse, categoryName: categoryNameToUse },
             interaction.guild?.id
           );
           
@@ -429,7 +453,8 @@ async function handleInviterSelection(interaction: UserSelectMenuInteraction): P
                     workerId: interaction.user.id,
                     workerName: tempData.ingameName,
                     channelId: channelResult.channelId,
-                    registrationId: undefined // Will be set later if needed
+                    registrationId: undefined, // Will be set later if needed
+                    serverId: guildId // CRITICAL: Pass guild ID for multi-server support
                   },
                   {
                     headers: {

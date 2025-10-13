@@ -24,7 +24,13 @@ export default {
     if (botClient.multiChannelForwarder) {
       botClient.multiChannelForwarder.initializeWorkerChannelService(client);
     }
-    
+
+    // Start channel inactivity daily checks
+    if (botClient.channelInactivityService) {
+      botClient.channelInactivityService.startDailyCheck();
+      console.log('✅ Channel inactivity monitoring started');
+    }
+
     // Test channel access
     const testChannelId = '1412325130926948362';
     try {

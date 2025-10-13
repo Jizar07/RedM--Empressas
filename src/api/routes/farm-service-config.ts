@@ -60,13 +60,22 @@ const defaultConfig: FarmServiceConfig = {
   }
 };
 
-const configPath = path.join(process.cwd(), 'data', 'farm-service-config.json');
+// Helper function to get server-specific config path
+function getConfigPath(serverId?: string): string {
+  if (serverId) {
+    return path.join(process.cwd(), 'data', 'farm-service-config', serverId, 'config.json');
+  }
+  // Legacy path
+  return path.join(process.cwd(), 'data', 'farm-service-config.json');
+}
 
 // Get farm service configuration
-router.get('/config', async (_req: Request, res: Response): Promise<void> => {
+router.get('/config', async (req: Request, res: Response): Promise<void> => {
   try {
+    const serverId = req.query.serverId as string | undefined;
+    const configPath = getConfigPath(serverId);
     let config = defaultConfig;
-    
+
     try {
       // Try to read existing config
       const configData = await fs.readFile(configPath, 'utf-8');
@@ -74,10 +83,13 @@ router.get('/config', async (_req: Request, res: Response): Promise<void> => {
       config = { ...defaultConfig, ...existingConfig };
     } catch {
       // Config file doesn't exist, use defaults
-      console.log('Farm service config file not found, using defaults');
+      console.log(`Farm service config file not found for server ${serverId || 'legacy'}, using defaults`);
     }
-    
-    res.json(config);
+
+    res.json({
+      ...config,
+      serverId: serverId || 'legacy'
+    });
   } catch (error: any) {
     console.error('Error getting farm service config:', error);
     res.status(500).json({
@@ -89,8 +101,9 @@ router.get('/config', async (_req: Request, res: Response): Promise<void> => {
 // Save farm service configuration
 router.post('/config', async (req: Request, res: Response): Promise<void> => {
   try {
-    const config: FarmServiceConfig = req.body;
-    
+    const { serverId, ...config } = req.body;
+    const configPath = getConfigPath(serverId);
+
     // Validate config structure
     if (!config || typeof config !== 'object') {
       res.status(400).json({
@@ -98,22 +111,23 @@ router.post('/config', async (req: Request, res: Response): Promise<void> => {
       });
       return;
     }
-    
+
     // Ensure data directory exists
     const dataDir = path.dirname(configPath);
     await fs.mkdir(dataDir, { recursive: true });
-    
+
     // Save configuration
     await fs.writeFile(configPath, JSON.stringify(config, null, 2));
-    
-    // Update environment variable if Discord channel changed
-    if (config.discordSettings?.channelId) {
+
+    // Update environment variable if Discord channel changed (only for legacy)
+    if (!serverId && config.discordSettings?.channelId) {
       process.env.RECEIPTS_CHANNEL_ID = config.discordSettings.channelId;
     }
-    
+
     res.json({
       success: true,
-      message: 'Farm service configuration saved successfully'
+      message: 'Farm service configuration saved successfully',
+      serverId: serverId || 'legacy'
     });
   } catch (error: any) {
     console.error('Error saving farm service config:', error);
@@ -124,28 +138,33 @@ router.post('/config', async (req: Request, res: Response): Promise<void> => {
 });
 
 // Get farm service statistics
-router.get('/stats', async (_req: Request, res: Response): Promise<void> => {
+router.get('/stats', async (req: Request, res: Response): Promise<void> => {
   try {
-    const playersDir = path.join(process.cwd(), 'data', 'players');
+    const serverId = req.query.serverId as string | undefined;
+    const playersDir = serverId
+      ? path.join(process.cwd(), 'data', 'players', serverId)
+      : path.join(process.cwd(), 'data', 'players');
+
     const stats = {
       totalPlayers: 0,
       totalServices: 0,
       totalEarnings: 0,
       animalServices: 0,
       plantServices: 0,
-      averageEarnings: 0
+      averageEarnings: 0,
+      serverId: serverId || 'legacy'
     };
-    
+
     try {
       const players = await fs.readdir(playersDir);
       stats.totalPlayers = players.length;
-      
+
       for (const player of players) {
         try {
           const summaryPath = path.join(playersDir, player, 'summary.json');
           const summaryData = await fs.readFile(summaryPath, 'utf-8');
           const summary = JSON.parse(summaryData);
-          
+
           stats.totalServices += summary.totalServices || 0;
           stats.totalEarnings += summary.totalEarnings || 0;
           stats.animalServices += summary.animalServices || 0;
@@ -154,12 +173,13 @@ router.get('/stats', async (_req: Request, res: Response): Promise<void> => {
           // Player summary doesn't exist
         }
       }
-      
+
       stats.averageEarnings = stats.totalPlayers > 0 ? stats.totalEarnings / stats.totalPlayers : 0;
     } catch {
-      // Players directory doesn't exist
+      // Players directory doesn't exist - return empty stats
+      console.log(`Players directory not found for server ${serverId || 'legacy'}`);
     }
-    
+
     res.json(stats);
   } catch (error: any) {
     console.error('Error getting farm service stats:', error);
@@ -170,31 +190,44 @@ router.get('/stats', async (_req: Request, res: Response): Promise<void> => {
 });
 
 // Reset farm service data (admin only)
-router.delete('/reset', async (_req: Request, res: Response): Promise<void> => {
+router.delete('/reset', async (req: Request, res: Response): Promise<void> => {
   try {
-    const playersDir = path.join(process.cwd(), 'data', 'players');
-    const uploadsDir = path.join(process.cwd(), 'uploads', 'screenshots');
-    
+    const serverId = req.query.serverId as string | undefined;
+    const configPath = getConfigPath(serverId);
+
+    const playersDir = serverId
+      ? path.join(process.cwd(), 'data', 'players', serverId)
+      : path.join(process.cwd(), 'data', 'players');
+
+    const uploadsDir = serverId
+      ? path.join(process.cwd(), 'uploads', 'screenshots', serverId)
+      : path.join(process.cwd(), 'uploads', 'screenshots');
+
     // Remove all player data
     try {
       await fs.rm(playersDir, { recursive: true, force: true });
+      console.log(`Removed player data for server ${serverId || 'legacy'}`);
     } catch {
       // Directory doesn't exist
     }
-    
+
     // Remove all screenshots
     try {
       await fs.rm(uploadsDir, { recursive: true, force: true });
+      console.log(`Removed screenshots for server ${serverId || 'legacy'}`);
     } catch {
       // Directory doesn't exist
     }
-    
+
     // Reset configuration to defaults
+    const configDir = path.dirname(configPath);
+    await fs.mkdir(configDir, { recursive: true });
     await fs.writeFile(configPath, JSON.stringify(defaultConfig, null, 2));
-    
+
     res.json({
       success: true,
-      message: 'Farm service data reset successfully'
+      message: 'Farm service data reset successfully',
+      serverId: serverId || 'legacy'
     });
   } catch (error: any) {
     console.error('Error resetting farm service data:', error);

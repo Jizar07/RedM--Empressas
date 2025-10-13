@@ -1,10 +1,33 @@
 import { Router, Request, Response } from 'express';
 import WorkerChannelService from '../../services/WorkerChannelService';
+import path from 'path';
 
 const router = Router();
 
 // Global worker channel service instance
 let workerChannelService: WorkerChannelService | null = null;
+
+// Helper function to get server-specific paths
+function getServerPaths(serverId?: string) {
+  const basePath = process.cwd();
+
+  if (serverId) {
+    return {
+      registrations: path.join(basePath, 'data', 'registrations', serverId, 'registrations.json'),
+      archivedSessions: path.join(basePath, 'data', 'worker-sessions', serverId, 'archived'),
+      payments: path.join(basePath, 'data', 'worker-sessions', serverId, 'payments'),
+      ferroviaEmbeds: path.join(basePath, 'data', 'ferrovia-embeds', serverId, 'active-embeds.json')
+    };
+  } else {
+    // Legacy paths
+    return {
+      registrations: path.join(basePath, 'data', 'registrations.json'),
+      archivedSessions: path.join(basePath, 'data', 'worker-sessions', 'archived'),
+      payments: path.join(basePath, 'data', 'worker-sessions', 'payments'),
+      ferroviaEmbeds: path.join(basePath, 'data', 'ferrovia-embeds', 'active-embeds.json')
+    };
+  }
+}
 
 // Initialize the service with Discord client
 export function initializeWorkerChannelService(client: any) {
@@ -36,24 +59,25 @@ function authenticateBot(req: Request, res: Response, next: any): void {
 router.post('/', authenticateBot, async (req: Request, res: Response) => {
   try {
     if (!workerChannelService) {
-      return res.status(503).json({ 
-        success: false, 
-        error: 'Worker channel service not initialized' 
+      return res.status(503).json({
+        success: false,
+        error: 'Worker channel service not initialized'
       });
     }
 
     const transactionData = req.body;
-    console.log(`📨 Received worker activity: ${transactionData.workerName} - ${transactionData.type}`);
+    const serverId = req.body.serverId as string | undefined;
+    console.log(`📨 Received worker activity: ${transactionData.workerName} - ${transactionData.type} [Server: ${serverId || 'legacy'}]`);
 
     // Validate required fields
     if (!transactionData.workerName || !transactionData.type || !transactionData.timestamp) {
-      return res.status(400).json({ 
-        success: false, 
-        error: 'Missing required fields: workerName, type, timestamp' 
+      return res.status(400).json({
+        success: false,
+        error: 'Missing required fields: workerName, type, timestamp'
       });
     }
 
-    // Process the transaction
+    // Process the transaction with serverId
     const success = await workerChannelService.processWorkerTransaction({
       workerName: transactionData.workerName,
       type: transactionData.type,
@@ -63,20 +87,21 @@ router.post('/', authenticateBot, async (req: Request, res: Response) => {
       amount: transactionData.amount,
       timestamp: new Date(transactionData.timestamp),
       originalMessage: transactionData.originalMessage
-    });
+    }, serverId);
 
     if (success) {
       console.log(`✅ Successfully processed worker activity for ${transactionData.workerName}`);
-      return res.json({ 
-        success: true, 
+      return res.json({
+        success: true,
         message: 'Worker activity processed successfully',
         workerName: transactionData.workerName,
-        type: transactionData.type
+        type: transactionData.type,
+        serverId: serverId || 'legacy'
       });
     } else {
       console.log(`⚠️ Worker activity processing failed for ${transactionData.workerName}`);
-      return res.status(404).json({ 
-        success: false, 
+      return res.status(404).json({
+        success: false,
         error: 'Worker not found or processing failed',
         workerName: transactionData.workerName
       });
@@ -84,9 +109,9 @@ router.post('/', authenticateBot, async (req: Request, res: Response) => {
 
   } catch (error) {
     console.error('❌ Error processing worker activity:', error);
-    return res.status(500).json({ 
-      success: false, 
-      error: 'Internal server error' 
+    return res.status(500).json({
+      success: false,
+      error: 'Internal server error'
     });
   }
 });
@@ -98,10 +123,11 @@ router.get('/mapping/:workerId', authenticateBot, async (req: Request, res: Resp
       return res.status(503).json({ error: 'Service not initialized' });
     }
 
-    const mapping = workerChannelService.getWorkerChannel(req.params.workerId);
-    
+    const serverId = req.query.serverId as string | undefined;
+    const mapping = workerChannelService.getWorkerChannel(req.params.workerId, serverId);
+
     if (mapping) {
-      return res.json({ success: true, mapping });
+      return res.json({ success: true, mapping, serverId: serverId || 'legacy' });
     } else {
       return res.status(404).json({ success: false, error: 'Worker mapping not found' });
     }
@@ -119,18 +145,19 @@ router.post('/mapping', authenticateBot, async (req: Request, res: Response) => 
       return res.status(503).json({ error: 'Service not initialized' });
     }
 
-    const { workerId, workerName, channelId, registrationId } = req.body;
-    
+    const { workerId, workerName, channelId, registrationId, serverId } = req.body;
+
     if (!workerId || !workerName || !channelId) {
       return res.status(400).json({ error: 'Missing required fields: workerId, workerName, channelId' });
     }
 
-    workerChannelService.registerWorkerChannel(workerId, workerName, channelId, registrationId);
-    
-    console.log(`📝 Registered worker channel mapping: ${workerName} (${workerId}) → ${channelId}`);
-    return res.json({ 
-      success: true, 
-      message: 'Worker channel mapping registered successfully' 
+    workerChannelService.registerWorkerChannel(workerId, workerName, channelId, registrationId, serverId);
+
+    console.log(`📝 Registered worker channel mapping: ${workerName} (${workerId}) → ${channelId} [Server: ${serverId || 'legacy'}]`);
+    return res.json({
+      success: true,
+      message: 'Worker channel mapping registered successfully',
+      serverId: serverId || 'legacy'
     });
 
   } catch (error) {
@@ -140,20 +167,22 @@ router.post('/mapping', authenticateBot, async (req: Request, res: Response) => 
 });
 
 // Get all worker mappings
-router.get('/mappings', authenticateBot, async (_req: Request, res: Response) => {
+router.get('/mappings', authenticateBot, async (req: Request, res: Response) => {
   try {
     if (!workerChannelService) {
       return res.status(503).json({ error: 'Service not initialized' });
     }
 
-    const mappings = workerChannelService.getAllWorkerMappings();
-    const activeCount = workerChannelService.getActiveWorkersCount();
-    
-    return res.json({ 
-      success: true, 
+    const serverId = req.query.serverId as string | undefined;
+    const mappings = workerChannelService.getAllWorkerMappings(serverId);
+    const activeCount = workerChannelService.getActiveWorkersCount(serverId);
+
+    return res.json({
+      success: true,
       mappings,
       activeCount,
-      total: mappings.length
+      total: Object.keys(mappings).length,
+      serverId: serverId || 'legacy'
     });
 
   } catch (error) {
@@ -163,21 +192,23 @@ router.get('/mappings', authenticateBot, async (_req: Request, res: Response) =>
 });
 
 // Get active worker sessions
-router.get('/sessions', authenticateBot, async (_req: Request, res: Response) => {
+router.get('/sessions', authenticateBot, async (req: Request, res: Response) => {
   try {
     if (!workerChannelService) {
       return res.status(503).json({ error: 'Service not initialized' });
     }
 
+    const serverId = req.query.serverId as string | undefined;
     const activityService = workerChannelService.getActivityService();
-    const activeSessions = activityService.getAllActiveSessions();
-    const activeCount = activityService.getActiveSessionsCount();
-    
-    return res.json({ 
-      success: true, 
+    const activeSessions = activityService.getAllActiveSessions(serverId);
+    const activeCount = activityService.getActiveSessionsCount(serverId);
+
+    return res.json({
+      success: true,
       sessions: activeSessions,
       activeCount,
-      total: activeSessions.length
+      total: activeSessions.length,
+      serverId: serverId || 'legacy'
     });
 
   } catch (error) {
@@ -193,26 +224,27 @@ router.post('/pay/:workerId', authenticateBot, async (req: Request, res: Respons
       return res.status(503).json({ error: 'Service not initialized' });
     }
 
-    const { managerId, managerName } = req.body;
+    const { managerId, managerName, serverId } = req.body;
     const workerId = req.params.workerId;
-    
+
     if (!managerId || !managerName) {
       return res.status(400).json({ error: 'Missing required fields: managerId, managerName' });
     }
 
     const activityService = workerChannelService.getActivityService();
-    const success = await activityService.payWorker(workerId, managerId, managerName);
-    
+    const success = await activityService.payWorker(workerId, managerId, managerName, serverId);
+
     if (success) {
-      console.log(`💰 Worker ${workerId} paid by ${managerName}`);
-      return res.json({ 
-        success: true, 
-        message: 'Worker paid successfully' 
+      console.log(`💰 Worker ${workerId} paid by ${managerName} [Server: ${serverId || 'legacy'}]`);
+      return res.json({
+        success: true,
+        message: 'Worker paid successfully',
+        serverId: serverId || 'legacy'
       });
     } else {
-      return res.status(404).json({ 
-        success: false, 
-        error: 'Worker session not found or already paid' 
+      return res.status(404).json({
+        success: false,
+        error: 'Worker session not found or already paid'
       });
     }
 
@@ -230,8 +262,8 @@ router.put('/transaction/:workerId/:transactionId', authenticateBot, async (req:
     }
 
     const { workerId, transactionId } = req.params;
-    const { newItemName, newQuantity, newAmount } = req.body;
-    
+    const { newItemName, newQuantity, newAmount, serverId } = req.body;
+
     // Validate that at least one field is provided
     if ((!newItemName || newItemName.trim() === '') && newQuantity === undefined && newAmount === undefined) {
       return res.status(400).json({ error: 'At least one of newItemName, newQuantity, or newAmount is required' });
@@ -257,23 +289,25 @@ router.put('/transaction/:workerId/:transactionId', authenticateBot, async (req:
 
     const activityService = workerChannelService.getActivityService();
     const success = await activityService.editTransaction(
-      workerId, 
-      transactionId, 
+      workerId,
+      transactionId,
       newItemName ? newItemName.trim() : undefined,
       parsedQuantity,
-      parsedAmount
+      parsedAmount,
+      serverId
     );
-    
+
     if (success) {
-      console.log(`✏️ Transaction ${transactionId} edited for worker ${workerId}`);
-      return res.json({ 
-        success: true, 
-        message: 'Transaction edited successfully' 
+      console.log(`✏️ Transaction ${transactionId} edited for worker ${workerId} [Server: ${serverId || 'legacy'}]`);
+      return res.json({
+        success: true,
+        message: 'Transaction edited successfully',
+        serverId: serverId || 'legacy'
       });
     } else {
-      return res.status(404).json({ 
-        success: false, 
-        error: 'Transaction not found or edit failed' 
+      return res.status(404).json({
+        success: false,
+        error: 'Transaction not found or edit failed'
       });
     }
 
@@ -291,20 +325,22 @@ router.delete('/transaction/:workerId/:transactionId', authenticateBot, async (r
     }
 
     const { workerId, transactionId } = req.params;
+    const serverId = req.query.serverId as string | undefined;
 
     const activityService = workerChannelService.getActivityService();
-    const success = await activityService.deleteTransaction(workerId, transactionId);
-    
+    const success = await activityService.deleteTransaction(workerId, transactionId, serverId);
+
     if (success) {
-      console.log(`🗑️ Transaction ${transactionId} deleted for worker ${workerId}`);
-      return res.json({ 
-        success: true, 
-        message: 'Transaction deleted successfully' 
+      console.log(`🗑️ Transaction ${transactionId} deleted for worker ${workerId} [Server: ${serverId || 'legacy'}]`);
+      return res.json({
+        success: true,
+        message: 'Transaction deleted successfully',
+        serverId: serverId || 'legacy'
       });
     } else {
-      return res.status(404).json({ 
-        success: false, 
-        error: 'Transaction not found or delete failed' 
+      return res.status(404).json({
+        success: false,
+        error: 'Transaction not found or delete failed'
       });
     }
 
@@ -315,14 +351,24 @@ router.delete('/transaction/:workerId/:transactionId', authenticateBot, async (r
 });
 
 // Get all registered workers with activity summary
-router.get('/all-workers', authenticateBot, async (_req: Request, res: Response) => {
+router.get('/all-workers', authenticateBot, async (req: Request, res: Response) => {
   try {
     const fs = require('fs');
-    const path = require('path');
+    const serverId = req.query.serverId as string | undefined;
+    const paths = getServerPaths(serverId);
 
     // Load registered workers
-    const registrationsPath = path.join(process.cwd(), 'data', 'registrations.json');
-    const registrations = JSON.parse(fs.readFileSync(registrationsPath, 'utf8'));
+    if (!fs.existsSync(paths.registrations)) {
+      return res.json({
+        success: true,
+        workers: [],
+        total: 0,
+        activeCount: 0,
+        serverId: serverId || 'legacy'
+      });
+    }
+
+    const registrations = JSON.parse(fs.readFileSync(paths.registrations, 'utf8'));
 
     // Get active sessions
     if (!workerChannelService) {
@@ -330,11 +376,11 @@ router.get('/all-workers', authenticateBot, async (_req: Request, res: Response)
     }
 
     const activityService = workerChannelService.getActivityService();
-    const activeSessions = activityService.getAllActiveSessions();
+    const activeSessions = activityService.getAllActiveSessions(serverId);
 
-    // Load archived sessions
-    const archivedDir = path.join(process.cwd(), 'data', 'worker-sessions', 'archived');
-    const paymentsDir = path.join(process.cwd(), 'data', 'worker-sessions', 'payments');
+    // Use server-specific paths
+    const archivedDir = paths.archivedSessions;
+    const paymentsDir = paths.payments;
 
     // Deduplicate registrations by Discord ID (keep most recent)
     const deduplicatedRegistrations = new Map();
@@ -398,7 +444,8 @@ router.get('/all-workers', authenticateBot, async (_req: Request, res: Response)
       success: true,
       workers: allWorkers,
       total: allWorkers.length,
-      activeCount: activeSessions.length
+      activeCount: activeSessions.length,
+      serverId: serverId || 'legacy'
     });
 
   } catch (error) {
@@ -411,16 +458,23 @@ router.get('/all-workers', authenticateBot, async (_req: Request, res: Response)
 router.get('/worker-details/:workerId', authenticateBot, async (req: Request, res: Response) => {
   try {
     const fs = require('fs');
-    const path = require('path');
     const { workerId } = req.params;
+    const serverId = req.query.serverId as string | undefined;
+    const paths = getServerPaths(serverId);
 
     if (!workerChannelService) {
       return res.status(503).json({ error: 'Service not initialized' });
     }
 
     // Get registration data
-    const registrationsPath = path.join(process.cwd(), 'data', 'registrations.json');
-    const registrations = JSON.parse(fs.readFileSync(registrationsPath, 'utf8'));
+    if (!fs.existsSync(paths.registrations)) {
+      return res.status(404).json({
+        success: false,
+        error: 'No registrations found for this server'
+      });
+    }
+
+    const registrations = JSON.parse(fs.readFileSync(paths.registrations, 'utf8'));
 
     // Try to find registration by direct Discord ID match first
     let registration = registrations.find((r: any) => r.userId === workerId);
@@ -445,16 +499,15 @@ router.get('/worker-details/:workerId', authenticateBot, async (req: Request, re
 
     // Get active session using the actual worker ID
     const activityService = workerChannelService.getActivityService();
-    const activeSession = activityService.getWorkerSession(actualWorkerId);
+    const activeSession = activityService.getWorkerSession(actualWorkerId, serverId);
 
-    // Get archived sessions
+    // Get archived sessions (use server-specific path)
     const archivedSessions: any[] = [];
-    const archivedDir = path.join(process.cwd(), 'data', 'worker-sessions', 'archived');
-    if (fs.existsSync(archivedDir)) {
-      const files = fs.readdirSync(archivedDir);
+    if (fs.existsSync(paths.archivedSessions)) {
+      const files = fs.readdirSync(paths.archivedSessions);
       files.forEach((file: string) => {
         try {
-          const content = JSON.parse(fs.readFileSync(path.join(archivedDir, file), 'utf8'));
+          const content = JSON.parse(fs.readFileSync(path.join(paths.archivedSessions, file), 'utf8'));
           if (content.workerId === actualWorkerId) {
             archivedSessions.push(content);
           }
@@ -464,14 +517,13 @@ router.get('/worker-details/:workerId', authenticateBot, async (req: Request, re
       });
     }
 
-    // Get payment records
+    // Get payment records (use server-specific path)
     const paymentRecords: any[] = [];
-    const paymentsDir = path.join(process.cwd(), 'data', 'worker-sessions', 'payments');
-    if (fs.existsSync(paymentsDir)) {
-      const files = fs.readdirSync(paymentsDir);
+    if (fs.existsSync(paths.payments)) {
+      const files = fs.readdirSync(paths.payments);
       files.forEach((file: string) => {
         try {
-          const content = JSON.parse(fs.readFileSync(path.join(paymentsDir, file), 'utf8'));
+          const content = JSON.parse(fs.readFileSync(path.join(paths.payments, file), 'utf8'));
           if (content.workerId === actualWorkerId) {
             paymentRecords.push(content);
           }
@@ -481,11 +533,10 @@ router.get('/worker-details/:workerId', authenticateBot, async (req: Request, re
       });
     }
 
-    // Get Ferrovia session data
+    // Get Ferrovia session data (use server-specific path)
     let ferroviaSession = null;
-    const ferroviaPath = path.join(process.cwd(), 'data', 'ferrovia-embeds', 'active-embeds.json');
-    if (fs.existsSync(ferroviaPath)) {
-      const ferroviaData = JSON.parse(fs.readFileSync(ferroviaPath, 'utf8'));
+    if (fs.existsSync(paths.ferroviaEmbeds)) {
+      const ferroviaData = JSON.parse(fs.readFileSync(paths.ferroviaEmbeds, 'utf8'));
       ferroviaSession = ferroviaData[actualWorkerId] || null;
     }
 
@@ -517,11 +568,89 @@ router.get('/worker-details/:workerId', authenticateBot, async (req: Request, re
         payments: paymentRecords,
         archivedSessions,
         ferroviaSession
-      }
+      },
+      serverId: serverId || 'legacy'
     });
 
   } catch (error) {
     console.error('❌ Error getting worker details:', error);
+    return res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Reload all sessions from disk and recalculate embeds
+router.post('/reload-and-recalculate', authenticateBot, async (req: Request, res: Response) => {
+  try {
+    if (!workerChannelService) {
+      return res.status(503).json({ error: 'Service not initialized' });
+    }
+
+    const activityService = workerChannelService.getActivityService();
+
+    console.log(`🔄 API: Reloading all sessions from disk and recalculating embeds...`);
+
+    // Step 1: Reload sessions from disk
+    const reloadResult = activityService.reloadAllSessions();
+    console.log(`✅ Reloaded ${reloadResult.loaded} sessions from ${reloadResult.servers.length} servers`);
+
+    // Step 2: Recalculate all embeds with correct pricing
+    const recalcResult = await activityService.recalculateAllActiveSessions();
+
+    if (recalcResult.errors.length > 0) {
+      return res.status(207).json({
+        success: true,
+        message: 'Reload and recalculation completed with some errors',
+        reloaded: reloadResult.loaded,
+        servers: reloadResult.servers,
+        updated: recalcResult.updated,
+        errors: recalcResult.errors
+      });
+    }
+
+    return res.json({
+      success: true,
+      message: 'All sessions reloaded and embeds recalculated successfully',
+      reloaded: reloadResult.loaded,
+      servers: reloadResult.servers,
+      updated: recalcResult.updated
+    });
+
+  } catch (error) {
+    console.error('❌ Error reloading and recalculating:', error);
+    return res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Recalculate ALL active session embeds with correct server-specific pricing
+router.post('/recalculate-all-embeds', authenticateBot, async (req: Request, res: Response) => {
+  try {
+    if (!workerChannelService) {
+      return res.status(503).json({ error: 'Service not initialized' });
+    }
+
+    const activityService = workerChannelService.getActivityService();
+
+    console.log(`🔄 API: Recalculating all active session embeds with correct pricing...`);
+
+    const result = await activityService.recalculateAllActiveSessions();
+
+    if (result.errors.length > 0) {
+      return res.status(207).json({
+        success: true,
+        message: 'Recalculation completed with some errors',
+        updated: result.updated,
+        errors: result.errors
+      });
+    }
+
+    return res.json({
+      success: true,
+      message: 'All embeds recalculated successfully',
+      updated: result.updated
+    });
+
+  } catch (error) {
+    console.error('❌ Error recalculating embeds:', error);
     return res.status(500).json({ error: 'Internal server error' });
   }
 });

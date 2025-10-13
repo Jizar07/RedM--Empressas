@@ -4,6 +4,33 @@ This is a local timestamped file to track all development changes and prompts.
 
 ## Log Entries
 
+### 2025-10-13 17:57:32
+**Action**: Worker Embed Calculation Fix - Triple Root Cause Resolution
+**Prompt**: User reported worker embeds showing incorrect plant calculations in line items (2000 plants = $300.00 instead of $500.00) despite totals being correct
+**Changes**:
+- **Critical Bug #1 - `recalculateSessionCredits()` Wrong Field** (`src/services/WorkerActivityService.ts:813-814`):
+  - Root Cause: Used `paymentConfig.defaultPrices.plants.basePrice` (undefined) instead of `unitPrice`
+  - Result: Session total credits calculated with wrong/undefined pricing
+  - Fixed: Changed to `paymentConfig.defaultPrices.plants.unitPrice` and `animals.unitPrice`
+- **Critical Bug #2 - `groupPlantTransactionsByTypeAsync()` Missing Server Pricing** (`lines 644-676`):
+  - Root Cause: Function called `getWorkerPrices()` without serverId parameter for embed display calculations
+  - Result: Embed line items showed "$300.00" using wrong default $0.15/plant instead of server-specific $0.25/plant
+  - Fixed:
+    1. Added `serverId?: string` parameter to function signature
+    2. Replaced `getWorkerPrices()` with PaymentConfigService using server-specific pricing
+    3. Used `paymentConfig.defaultPrices.plants.unitPrice` directly
+- **Critical Bug #3 - Function Calls Missing serverId Parameter** (`lines 1462, 1478, 1770, 1786`):
+  - Root Cause: All 4 calls to `groupPlantTransactionsByTypeAsync()` not passing session.serverId
+  - Result: Grouping function couldn't get server-specific pricing even after fix #2
+  - Fixed: Updated all 4 calls (registered plants and unregistered plants) to pass `session.serverId`
+- **Worker Session Migration**: Created migration script moving 31 workers from legacy to Cabra da Peste server (1274479410107646004)
+- **Reload System**: Implemented `reloadAllSessions()` method to clear in-memory sessions and reload from disk
+- **Backend API Enhancement**: Created `/reload-and-recalculate` endpoint combining session reload with embed recalculation
+- **Complete System Fix**: Ran reload-and-recalculate successfully updating all 32 worker embeds
+- **Expected Result**: Cabra da Peste embeds now show "2000 Milho ($500.00)" using correct $0.25/plant in both line items AND totals
+- **User Frustration Level**: EXTREME - Multiple attempts with caps-lock messages until final root cause discovered
+- **Result**: All three calculation paths (session totals, embed line items, embed totals) now use correct server-specific pricing
+
 ### 2025-10-12 11:54:42
 **Action**: Weekly Ranking System - Date Range Filtering Fix
 **Prompt**: User reported weekly rankings showing stale data from previous week (October 8th) instead of current week (October 12th onwards)

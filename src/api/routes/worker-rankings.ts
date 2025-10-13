@@ -185,9 +185,12 @@ function calculateRankings(activities: WorkerActivity[], type: 'plant_deposit' |
 }
 
 // Get worker rankings
-router.get('/', async (_req: Request, res: Response) => {
+router.get('/', async (req: Request, res: Response) => {
   try {
-    const channelLogsDir = path.join(process.cwd(), 'frontend', 'public', 'channel-logs');
+    const serverId = req.query.serverId as string | undefined;
+    const channelLogsDir = serverId
+      ? path.join(process.cwd(), 'frontend', 'public', 'channel-logs', serverId)
+      : path.join(process.cwd(), 'frontend', 'public', 'channel-logs');
     const allActivities: WorkerActivity[] = [];
 
     // Read activities from all channel log files
@@ -202,7 +205,9 @@ router.get('/', async (_req: Request, res: Response) => {
     }
 
     // Also check worker sessions for additional data
-    const workerSessionsDir = path.join(process.cwd(), 'data', 'worker-sessions');
+    const workerSessionsDir = serverId
+      ? path.join(process.cwd(), 'data', 'worker-sessions', serverId)
+      : path.join(process.cwd(), 'data', 'worker-sessions');
     if (fs.existsSync(workerSessionsDir)) {
       const archivedDir = path.join(workerSessionsDir, 'archived');
       if (fs.existsSync(archivedDir)) {
@@ -303,7 +308,7 @@ router.get('/', async (_req: Request, res: Response) => {
 
     console.log(`📈 Rankings calculated: ${plantServices.length} plant, ${animalServices.length} animal, ${ferroviaMissions.length} ferrovia`);
 
-    return res.json(response);
+    return res.json({ ...response, serverId: serverId || 'legacy' });
   } catch (error) {
     console.error('❌ Error calculating worker rankings:', error);
     return res.status(500).json({
@@ -379,6 +384,7 @@ router.get('/weekly/prizes', async (req: Request, res: Response) => {
 
 // Get rankings for a specific category
 router.get('/:category', async (req: Request, res: Response) => {
+  const serverId = req.query.serverId as string | undefined;
   const { category } = req.params;
 
   if (!['plant', 'animal', 'ferrovia'].includes(category)) {
@@ -416,7 +422,8 @@ router.get('/:category', async (req: Request, res: Response) => {
     return res.json({
       category,
       rankings: result,
-      lastUpdated: response.lastUpdated
+      lastUpdated: response.lastUpdated,
+      serverId: serverId || 'legacy'
     });
   } catch (error) {
     console.error(`❌ Error getting ${category} rankings:`, error);

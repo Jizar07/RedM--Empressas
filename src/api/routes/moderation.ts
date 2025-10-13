@@ -4,7 +4,13 @@ import path from 'path';
 
 const router = Router();
 
-const CONFIG_PATH = path.join(process.cwd(), 'data', 'moderation-config.json');
+// Helper function for server-specific config path
+function getConfigPath(serverId?: string): string {
+  if (serverId) {
+    return path.join(process.cwd(), 'data', 'moderation-config', serverId, 'moderation-config.json');
+  }
+  return path.join(process.cwd(), 'data', 'moderation-config.json');
+}
 
 interface ModerationConfig {
   clearCommand: {
@@ -57,34 +63,36 @@ const defaultConfig: ModerationConfig = {
   }
 };
 
-function ensureDataDir() {
-  const dataDir = path.dirname(CONFIG_PATH);
+function ensureDataDir(configPath: string) {
+  const dataDir = path.dirname(configPath);
   if (!fs.existsSync(dataDir)) {
     fs.mkdirSync(dataDir, { recursive: true });
   }
 }
 
-function loadConfig(): ModerationConfig {
-  ensureDataDir();
-  
-  if (fs.existsSync(CONFIG_PATH)) {
+function loadConfig(serverId?: string): ModerationConfig {
+  const configPath = getConfigPath(serverId);
+  ensureDataDir(configPath);
+
+  if (fs.existsSync(configPath)) {
     try {
-      const data = fs.readFileSync(CONFIG_PATH, 'utf-8');
+      const data = fs.readFileSync(configPath, 'utf-8');
       return JSON.parse(data);
     } catch (error) {
       console.error('Error loading moderation config:', error);
       return defaultConfig;
     }
   }
-  
+
   return defaultConfig;
 }
 
-function saveConfig(config: ModerationConfig): void {
-  ensureDataDir();
-  
+function saveConfig(config: ModerationConfig, serverId?: string): void {
+  const configPath = getConfigPath(serverId);
+  ensureDataDir(configPath);
+
   try {
-    fs.writeFileSync(CONFIG_PATH, JSON.stringify(config, null, 2));
+    fs.writeFileSync(configPath, JSON.stringify(config, null, 2));
   } catch (error) {
     console.error('Error saving moderation config:', error);
     throw error;
@@ -92,10 +100,11 @@ function saveConfig(config: ModerationConfig): void {
 }
 
 // Get moderation configuration
-router.get('/config', (_req: Request, res: Response) => {
+router.get('/config', (req: Request, res: Response) => {
   try {
-    const config = loadConfig();
-    res.json(config);
+    const serverId = req.query.serverId as string | undefined;
+    const config = loadConfig(serverId);
+    res.json({ ...config, serverId: serverId || 'legacy' });
   } catch (error) {
     console.error('Error getting moderation config:', error);
     res.status(500).json({ error: 'Failed to load configuration' });
@@ -105,15 +114,19 @@ router.get('/config', (_req: Request, res: Response) => {
 // Update moderation configuration
 router.post('/config', (req: Request, res: Response) => {
   try {
-    const config: ModerationConfig = req.body;
-    saveConfig(config);
-    
+    const { serverId, ...config } = req.body;
+    saveConfig(config as ModerationConfig, serverId);
+
     // Emit config update event for the bot to reload
     if (req.app.locals.bot) {
-      req.app.locals.bot.emit('moderationConfigUpdate', config);
+      req.app.locals.bot.emit('moderationConfigUpdate', config, serverId);
     }
-    
-    res.json({ success: true, message: 'Configuration saved successfully' });
+
+    res.json({
+      success: true,
+      message: 'Configuration saved successfully',
+      serverId: serverId || 'legacy'
+    });
   } catch (error) {
     console.error('Error saving moderation config:', error);
     res.status(500).json({ error: 'Failed to save configuration' });

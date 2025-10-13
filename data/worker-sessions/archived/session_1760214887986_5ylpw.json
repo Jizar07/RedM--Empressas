@@ -1,0 +1,45 @@
+{
+  "workerId": "954035307915907113",
+  "workerName": "Aiden Blake",
+  "channelId": "1426667735043145810",
+  "sessionId": "session_1760214887986_5ylpw",
+  "startTime": "2025-10-11T20:34:47.986Z",
+  "lastActivity": "2025-10-11T20:37:31.536Z",
+  "status": "stale",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 100,
+      "transactionId": "tx_1760214887989_awp39",
+      "timestamp": "2025-10-11T20:34:47.989Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Adubo3",
+      "quantity": 100,
+      "transactionId": "tx_1760215051536_309anp",
+      "timestamp": "2025-10-11T20:37:31.536Z"
+    }
+  ],
+  "animalTransactions": [],
+  "financialTransactions": [],
+  "inventoryTransactions": [],
+  "totalCredits": 0,
+  "embedMessageId": "1426670073837518984",
+  "seedExpectations": [
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 100,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 2000,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1760214887989_awp39",
+      "aduboUsed": 100,
+      "aduboCost": 75
+    }
+  ],
+  "completedAt": "2025-10-13T20:47:57.845Z",
+  "notes": "Auto-archived due to inactivity"
+}

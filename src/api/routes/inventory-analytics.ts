@@ -4,6 +4,21 @@ import path from 'path';
 
 const router = Router();
 
+// Helper function for server-specific paths
+function getWorkerSessionsPaths(serverId?: string) {
+  const basePath = process.cwd();
+  if (serverId) {
+    return {
+      archived: path.join(basePath, 'data', 'worker-sessions', serverId, 'archived'),
+      active: path.join(basePath, 'data', 'worker-sessions', serverId, 'active-sessions.json')
+    };
+  }
+  return {
+    archived: path.join(basePath, 'data', 'worker-sessions', 'archived'),
+    active: path.join(basePath, 'data', 'worker-sessions', 'active-sessions.json')
+  };
+}
+
 interface CategoryStats {
   category: string;
   totalAdded: number;
@@ -36,13 +51,15 @@ interface WorkerCategoryActivity {
  * Get inventory analytics by category
  * GET /api/inventory-analytics/by-category
  */
-router.get('/by-category', async (_req: Request, res: Response) => {
+router.get('/by-category', async (req: Request, res: Response) => {
   try {
+    const serverId = req.query.serverId as string | undefined;
     const categoryStats: { [category: string]: CategoryStats } = {};
 
     // Read all archived sessions
-    const archivedDir = path.join(process.cwd(), 'data', 'worker-sessions', 'archived');
-    const activeSessionsFile = path.join(process.cwd(), 'data', 'worker-sessions', 'active-sessions.json');
+    const paths = getWorkerSessionsPaths(serverId);
+    const archivedDir = paths.archived;
+    const activeSessionsFile = paths.active;
 
     // Process archived sessions
     if (fs.existsSync(archivedDir)) {
@@ -85,7 +102,8 @@ router.get('/by-category', async (_req: Request, res: Response) => {
       success: true,
       data: categoriesArray,
       totalCategories: categoriesArray.length,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
+      serverId: serverId || 'legacy'
     });
 
   } catch (error) {
@@ -102,15 +120,17 @@ router.get('/by-category', async (_req: Request, res: Response) => {
  * Get comprehensive analytics combining all data
  * GET /api/inventory-analytics/comprehensive
  */
-router.get('/comprehensive', async (_req: Request, res: Response) => {
+router.get('/comprehensive', async (req: Request, res: Response) => {
   try {
+    const serverId = req.query.serverId as string | undefined;
     const categoryStats: { [category: string]: CategoryStats } = {};
     const workerStats: { [workerId: string]: WorkerCategoryActivity } = {};
     let totalSessions = 0;
     let totalTransactions = 0;
 
-    const archivedDir = path.join(process.cwd(), 'data', 'worker-sessions', 'archived');
-    const activeSessionsFile = path.join(process.cwd(), 'data', 'worker-sessions', 'active-sessions.json');
+    const paths = getWorkerSessionsPaths(serverId);
+    const archivedDir = paths.archived;
+    const activeSessionsFile = paths.active;
 
     // Process archived sessions
     if (fs.existsSync(archivedDir)) {
@@ -207,7 +227,8 @@ router.get('/comprehensive', async (_req: Request, res: Response) => {
         byWorker: workersArray.slice(0, 20), // Top 20 workers
         topItems,
         timestamp: new Date().toISOString()
-      }
+      },
+      serverId: serverId || 'legacy'
     });
 
   } catch (error) {
@@ -226,6 +247,7 @@ router.get('/comprehensive', async (_req: Request, res: Response) => {
  */
 router.get('/category/:categoryName', async (req: Request, res: Response) => {
   try {
+    const serverId = req.query.serverId as string | undefined;
     const { categoryName } = req.params;
     const categoryStats: CategoryStats = {
       category: categoryName,
@@ -236,8 +258,9 @@ router.get('/category/:categoryName', async (req: Request, res: Response) => {
       items: {}
     };
 
-    const archivedDir = path.join(process.cwd(), 'data', 'worker-sessions', 'archived');
-    const activeSessionsFile = path.join(process.cwd(), 'data', 'worker-sessions', 'active-sessions.json');
+    const paths = getWorkerSessionsPaths(serverId);
+    const archivedDir = paths.archived;
+    const activeSessionsFile = paths.active;
 
     // Process archived sessions
     if (fs.existsSync(archivedDir)) {
@@ -292,7 +315,8 @@ router.get('/category/:categoryName', async (req: Request, res: Response) => {
         items: itemsArray,
         uniqueItems: itemsArray.length
       },
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
+      serverId: serverId || 'legacy'
     });
 
   } catch (error) {
@@ -311,6 +335,7 @@ router.get('/category/:categoryName', async (req: Request, res: Response) => {
  */
 router.get('/worker/:workerId', async (req: Request, res: Response) => {
   try {
+    const serverId = req.query.serverId as string | undefined;
     const { workerId } = req.params;
     const workerActivity: WorkerCategoryActivity = {
       workerId,
@@ -319,8 +344,9 @@ router.get('/worker/:workerId', async (req: Request, res: Response) => {
       totalActivities: 0
     };
 
-    const archivedDir = path.join(process.cwd(), 'data', 'worker-sessions', 'archived');
-    const activeSessionsFile = path.join(process.cwd(), 'data', 'worker-sessions', 'active-sessions.json');
+    const paths = getWorkerSessionsPaths(serverId);
+    const archivedDir = paths.archived;
+    const activeSessionsFile = paths.active;
 
     // Process archived sessions
     if (fs.existsSync(archivedDir)) {
@@ -360,7 +386,8 @@ router.get('/worker/:workerId', async (req: Request, res: Response) => {
     return res.json({
       success: true,
       data: workerActivity,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
+      serverId: serverId || 'legacy'
     });
 
   } catch (error) {

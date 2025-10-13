@@ -5,13 +5,14 @@ import SupplyChainService from '../../services/SupplyChainService';
 const router = Router();
 
 // Get user performance metrics for Ferrovia fraud detection
-router.get('/user-metrics', async (_req: Request, res: Response) => {
+router.get('/user-metrics', async (req: Request, res: Response) => {
   try {
+    const serverId = req.query.serverId as string | undefined;
     const boxOriginAnalyzer = BoxOriginAnalyzer.getInstance();
     const supplyChainService = SupplyChainService.getInstance();
 
     // Get all active sessions to find unique users
-    const allSessions = await supplyChainService.getAllActiveSessions();
+    const allSessions = await supplyChainService.getAllActiveSessions(serverId);
     const uniqueUsers = new Map<string, { userId: string; userName: string }>();
 
     // Extract unique users
@@ -41,7 +42,7 @@ router.get('/user-metrics', async (_req: Request, res: Response) => {
       return b.externalBoxPercentage - a.externalBoxPercentage;
     });
 
-    res.json({ metrics: userMetrics });
+    res.json({ metrics: userMetrics, serverId: serverId || 'legacy' });
   } catch (error) {
     console.error('Error generating Ferrovia user metrics:', error);
     res.status(500).json({
@@ -54,12 +55,13 @@ router.get('/user-metrics', async (_req: Request, res: Response) => {
 // Get detailed analysis for a specific user
 router.get('/user-metrics/:userId', async (req: Request, res: Response) => {
   try {
+    const serverId = req.query.serverId as string | undefined;
     const { userId } = req.params;
     const boxOriginAnalyzer = BoxOriginAnalyzer.getInstance();
     const supplyChainService = SupplyChainService.getInstance();
 
     // Get user sessions
-    const userSessions = await supplyChainService.getSessionsByWorkerId(userId);
+    const userSessions = await supplyChainService.getSessionsByWorkerId(userId, serverId);
     if (userSessions.length === 0) {
       res.status(404).json({ error: 'User not found or no sessions available' });
       return;
@@ -86,7 +88,8 @@ router.get('/user-metrics/:userId', async (req: Request, res: Response) => {
     res.json({
       userMetrics,
       sessionAnalyses,
-      totalSessions: userSessions.length
+      totalSessions: userSessions.length,
+      serverId: serverId || 'legacy'
     });
   } catch (error) {
     console.error('Error getting user detailed metrics:', error);
@@ -98,13 +101,14 @@ router.get('/user-metrics/:userId', async (req: Request, res: Response) => {
 });
 
 // Get fraud detection summary
-router.get('/fraud-summary', async (_req: Request, res: Response) => {
+router.get('/fraud-summary', async (req: Request, res: Response) => {
   try {
+    const serverId = req.query.serverId as string | undefined;
     const boxOriginAnalyzer = BoxOriginAnalyzer.getInstance();
     const supplyChainService = SupplyChainService.getInstance();
 
     // Get all sessions for summary statistics
-    const allSessions = await supplyChainService.getAllActiveSessions();
+    const allSessions = await supplyChainService.getAllActiveSessions(serverId);
 
     let totalFarmLoss = 0;
     let totalExternalBoxes = 0;
@@ -142,7 +146,7 @@ router.get('/fraud-summary', async (_req: Request, res: Response) => {
       fraudDetectionRate: totalSessions > 0 ? ((highRiskSessions + mediumRiskSessions) / totalSessions * 100) : 0
     };
 
-    res.json({ summary });
+    res.json({ summary, serverId: serverId || 'legacy' });
   } catch (error) {
     console.error('Error generating fraud summary:', error);
     res.status(500).json({

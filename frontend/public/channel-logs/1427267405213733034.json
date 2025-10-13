@@ -1,8 +1,88 @@
 {
   "channelId": "1427267405213733034",
-  "lastUpdated": "2025-10-13T15:17:45.762Z",
-  "messageCount": 1,
+  "lastUpdated": "2025-10-13T17:25:56.140Z",
+  "messageCount": 9,
   "messages": [
+    {
+      "id": "1427346631845482676",
+      "author": "Maximo Pokaropa",
+      "content": "REGISTRO - REGISTRO - Sacas de Cenoura/Maca - Pombos 27 | 96 | 444\nMover Item para Loja\nItem adicionado:: sacadecenoura x1\nAutor:: Maximo Pokaropa | FIXO: 78748\nData:: 13/10/2025 - 14:26:09",
+      "timestamp": "2025-10-13T17:25:55.850Z",
+      "source": "discord",
+      "channelId": "1427267405213733034",
+      "embedContent": "REGISTRO - REGISTRO - Sacas de Cenoura/Maca - Pombos 27 | 96 | 444\nMover Item para Loja\nItem adicionado:: sacadecenoura x1\nAutor:: Maximo Pokaropa | FIXO: 78748\nData:: 13/10/2025 - 14:26:09",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1427346595065761802",
+      "author": "Maximo Pokaropa",
+      "content": "REGISTRO - REGISTRO - Sacas de Cenoura/Maca - Pombos 27 | 96 | 444\nMover Item para Loja\nItem adicionado:: sacademaca x17\nAutor:: Maximo Pokaropa | FIXO: 78748\nData:: 13/10/2025 - 14:26:01",
+      "timestamp": "2025-10-13T17:25:47.081Z",
+      "source": "discord",
+      "channelId": "1427267405213733034",
+      "embedContent": "REGISTRO - REGISTRO - Sacas de Cenoura/Maca - Pombos 27 | 96 | 444\nMover Item para Loja\nItem adicionado:: sacademaca x17\nAutor:: Maximo Pokaropa | FIXO: 78748\nData:: 13/10/2025 - 14:26:01",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1427338930402885773",
+      "author": "Loja da Fazenda",
+      "content": "REGISTRO - REGISTRO - Sacas de Cenoura/Maca - Pombos 27 | 96 | 444\nCompra na Loja\nItem Comprado:: sacademaca x21\nComprador:: Everol Loreve | FIXO: 78985\nPreço Total:: $1050\nData:: 13/10/2025 -  13:55:33",
+      "timestamp": "2025-10-13T16:55:19.683Z",
+      "source": "discord",
+      "channelId": "1427267405213733034",
+      "embedContent": "REGISTRO - REGISTRO - Sacas de Cenoura/Maca - Pombos 27 | 96 | 444\nCompra na Loja\nItem Comprado:: sacademaca x21\nComprador:: Everol Loreve | FIXO: 78985\nPreço Total:: $1050\nData:: 13/10/2025 -  13:55:33",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1427338923226697739",
+      "author": "Loja da Fazenda",
+      "content": "REGISTRO - REGISTRO - Sacas de Cenoura/Maca - Pombos 27 | 96 | 444\nCompra na Loja\nItem Comprado:: sacadecenoura x33\nComprador:: Everol Loreve | FIXO: 78985\nPreço Total:: $1650\nData:: 13/10/2025 -  13:55:32",
+      "timestamp": "2025-10-13T16:55:17.972Z",
+      "source": "discord",
+      "channelId": "1427267405213733034",
+      "embedContent": "REGISTRO - REGISTRO - Sacas de Cenoura/Maca - Pombos 27 | 96 | 444\nCompra na Loja\nItem Comprado:: sacadecenoura x33\nComprador:: Everol Loreve | FIXO: 78985\nPreço Total:: $1650\nData:: 13/10/2025 -  13:55:32",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1427338761393672233",
+      "author": "Maximo Pokaropa",
+      "content": "REGISTRO - REGISTRO - Sacas de Cenoura/Maca - Pombos 27 | 96 | 444\nMover Item para Loja\nItem adicionado:: sacademaca x21\nAutor:: Maximo Pokaropa | FIXO: 78748\nData:: 13/10/2025 - 13:54:53",
+      "timestamp": "2025-10-13T16:54:39.388Z",
+      "source": "discord",
+      "channelId": "1427267405213733034",
+      "embedContent": "REGISTRO - REGISTRO - Sacas de Cenoura/Maca - Pombos 27 | 96 | 444\nMover Item para Loja\nItem adicionado:: sacademaca x21\nAutor:: Maximo Pokaropa | FIXO: 78748\nData:: 13/10/2025 - 13:54:53",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1427338736173191300",
+      "author": "Maximo Pokaropa",
+      "content": "REGISTRO - REGISTRO - Sacas de Cenoura/Maca - Pombos 27 | 96 | 444\nRetirar item da Loja\nItem Retirado:: sacademaca x21\nFuncionario:: Maximo Pokaropa | FIXO: 78748\nData:: 13/10/2025 -  13:54:47",
+      "timestamp": "2025-10-13T16:54:33.375Z",
+      "source": "discord",
+      "channelId": "1427267405213733034",
+      "embedContent": "REGISTRO - REGISTRO - Sacas de Cenoura/Maca - Pombos 27 | 96 | 444\nRetirar item da Loja\nItem Retirado:: sacademaca x21\nFuncionario:: Maximo Pokaropa | FIXO: 78748\nData:: 13/10/2025 -  13:54:47",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1427338724332540035",
+      "author": "Maximo Pokaropa",
+      "content": "REGISTRO - REGISTRO - Sacas de Cenoura/Maca - Pombos 27 | 96 | 444\nMover Item para Loja\nItem adicionado:: sacadecenoura x33\nAutor:: Maximo Pokaropa | FIXO: 78748\nData:: 13/10/2025 - 13:54:44",
+      "timestamp": "2025-10-13T16:54:30.552Z",
+      "source": "discord",
+      "channelId": "1427267405213733034",
+      "embedContent": "REGISTRO - REGISTRO - Sacas de Cenoura/Maca - Pombos 27 | 96 | 444\nMover Item para Loja\nItem adicionado:: sacadecenoura x33\nAutor:: Maximo Pokaropa | FIXO: 78748\nData:: 13/10/2025 - 13:54:44",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1427338691944255498",
+      "author": "Maximo Pokaropa",
+      "content": "REGISTRO - REGISTRO - Sacas de Cenoura/Maca - Pombos 27 | 96 | 444\nRetirar item da Loja\nItem Retirado:: sacadecenoura x33\nFuncionario:: Maximo Pokaropa | FIXO: 78748\nData:: 13/10/2025 -  13:54:37",
+      "timestamp": "2025-10-13T16:54:22.830Z",
+      "source": "discord",
+      "channelId": "1427267405213733034",
+      "embedContent": "REGISTRO - REGISTRO - Sacas de Cenoura/Maca - Pombos 27 | 96 | 444\nRetirar item da Loja\nItem Retirado:: sacadecenoura x33\nFuncionario:: Maximo Pokaropa | FIXO: 78748\nData:: 13/10/2025 -  13:54:37",
+      "rawEmbeds": []
+    },
     {
       "id": "1427314375542444114",
       "author": "Maximo Pokaropa",

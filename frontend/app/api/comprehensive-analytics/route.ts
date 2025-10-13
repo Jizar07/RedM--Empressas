@@ -4,7 +4,14 @@ const API_BASE_URL = process.env.API_URL || 'http://localhost:3050/api';
 
 export async function GET(request: NextRequest) {
   try {
-    const response = await fetch(`${API_BASE_URL}/comprehensive-analytics`, {
+    const serverId = request.nextUrl.searchParams.get('serverId');
+
+    const url = new URL(`${API_BASE_URL}/comprehensive-analytics`);
+    if (serverId) {
+      url.searchParams.set('serverId', serverId);
+    }
+
+    const response = await fetch(url.toString(), {
       method: 'GET',
       headers: {
         'Accept': 'application/json',

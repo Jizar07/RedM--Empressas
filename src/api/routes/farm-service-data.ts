@@ -4,6 +4,15 @@ import path from 'path';
 
 const router = Router();
 
+// Helper function to get server-specific players directory
+function getPlayersDir(serverId?: string): string {
+  if (serverId) {
+    return path.join(process.cwd(), 'data', 'players', serverId);
+  }
+  // Legacy path
+  return path.join(process.cwd(), 'data', 'players');
+}
+
 interface Receipt {
   receiptId: string;
   timestamp: string;
@@ -31,10 +40,11 @@ interface PlayerSummary {
 }
 
 // Get all farm service data (overview)
-router.get('/overview', async (_req: Request, res: Response) => {
+router.get('/overview', async (req: Request, res: Response) => {
   try {
-    const playersDir = path.join(process.cwd(), 'data', 'players');
-    
+    const serverId = req.query.serverId as string | undefined;
+    const playersDir = getPlayersDir(serverId);
+
     if (!fs.existsSync(playersDir)) {
       res.json({
         totalPlayers: 0,
@@ -42,7 +52,8 @@ router.get('/overview', async (_req: Request, res: Response) => {
         totalServices: 0,
         totalAnimalServices: 0,
         totalPlantServices: 0,
-        players: []
+        players: [],
+        serverId: serverId || 'legacy'
       });
       return;
     }
@@ -79,7 +90,8 @@ router.get('/overview', async (_req: Request, res: Response) => {
       totalServices,
       totalAnimalServices,
       totalPlantServices,
-      players
+      players,
+      serverId: serverId || 'legacy'
     });
   } catch (error) {
     console.error('Error getting farm service overview:', error);
@@ -90,9 +102,10 @@ router.get('/overview', async (_req: Request, res: Response) => {
 // Get recent receipts
 router.get('/recent-receipts', async (req: Request, res: Response) => {
   try {
+    const serverId = req.query.serverId as string | undefined;
     const limit = parseInt(req.query.limit as string) || 50;
-    const playersDir = path.join(process.cwd(), 'data', 'players');
-    
+    const playersDir = getPlayersDir(serverId);
+
     if (!fs.existsSync(playersDir)) {
       res.json([]);
       return;
@@ -106,7 +119,7 @@ router.get('/recent-receipts', async (req: Request, res: Response) => {
         const receiptsDir = path.join(playersDir, playerDir, 'receipts');
         if (fs.existsSync(receiptsDir)) {
           const receiptFiles = fs.readdirSync(receiptsDir);
-          
+
           for (const receiptFile of receiptFiles) {
             if (receiptFile.endsWith('.json')) {
               const receiptPath = path.join(receiptsDir, receiptFile);
@@ -122,7 +135,7 @@ router.get('/recent-receipts', async (req: Request, res: Response) => {
 
     // Sort by timestamp (newest first) and limit
     allReceipts.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
-    
+
     res.json(allReceipts.slice(0, limit));
   } catch (error) {
     console.error('Error getting recent receipts:', error);
@@ -133,9 +146,11 @@ router.get('/recent-receipts', async (req: Request, res: Response) => {
 // Get receipts for specific player
 router.get('/player/:playerName/receipts', async (req: Request, res: Response) => {
   try {
+    const serverId = req.query.serverId as string | undefined;
     const playerName = req.params.playerName;
-    const receiptsDir = path.join(process.cwd(), 'data', 'players', playerName, 'receipts');
-    
+    const playersDir = getPlayersDir(serverId);
+    const receiptsDir = path.join(playersDir, playerName, 'receipts');
+
     if (!fs.existsSync(receiptsDir)) {
       res.json([]);
       return;
@@ -158,7 +173,7 @@ router.get('/player/:playerName/receipts', async (req: Request, res: Response) =
 
     // Sort by timestamp (newest first)
     receipts.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
-    
+
     res.json(receipts);
   } catch (error) {
     console.error('Error getting player receipts:', error);
@@ -170,22 +185,27 @@ router.get('/player/:playerName/receipts', async (req: Request, res: Response) =
 router.put('/receipt/:receiptId', async (req: Request, res: Response) => {
   try {
     const { receiptId } = req.params;
-    const updatedData = req.body;
-    const playersDir = path.join(process.cwd(), 'data', 'players');
-    
+    const { serverId, ...updatedData } = req.body;
+    const playersDir = getPlayersDir(serverId);
+
+    if (!fs.existsSync(playersDir)) {
+      res.status(404).json({ error: 'Receipt not found' });
+      return;
+    }
+
     // Find the receipt
     const playerDirs = fs.readdirSync(playersDir);
     let found = false;
-    
+
     for (const playerDir of playerDirs) {
       const receiptPath = path.join(playersDir, playerDir, 'receipts', `${receiptId}.json`);
-      
+
       if (fs.existsSync(receiptPath)) {
         // Update the receipt
         const receipt = JSON.parse(fs.readFileSync(receiptPath, 'utf-8'));
         const updated = { ...receipt, ...updatedData, editedAt: new Date().toISOString() };
         fs.writeFileSync(receiptPath, JSON.stringify(updated, null, 2));
-        
+
         // Update player summary if payment changed
         if (updatedData.playerPayment && updatedData.playerPayment !== receipt.playerPayment) {
           const summaryPath = path.join(playersDir, playerDir, 'summary.json');
@@ -195,13 +215,13 @@ router.put('/receipt/:receiptId', async (req: Request, res: Response) => {
             fs.writeFileSync(summaryPath, JSON.stringify(summary, null, 2));
           }
         }
-        
+
         found = true;
-        res.json({ success: true, receipt: updated });
+        res.json({ success: true, receipt: updated, serverId: serverId || 'legacy' });
         break;
       }
     }
-    
+
     if (!found) {
       res.status(404).json({ error: 'Receipt not found' });
     }
@@ -214,45 +234,51 @@ router.put('/receipt/:receiptId', async (req: Request, res: Response) => {
 // Delete receipt
 router.delete('/receipt/:receiptId', async (req: Request, res: Response) => {
   try {
+    const serverId = req.query.serverId as string | undefined;
     const { receiptId } = req.params;
-    const playersDir = path.join(process.cwd(), 'data', 'players');
-    
+    const playersDir = getPlayersDir(serverId);
+
+    if (!fs.existsSync(playersDir)) {
+      res.status(404).json({ error: 'Receipt not found' });
+      return;
+    }
+
     // Find and delete the receipt
     const playerDirs = fs.readdirSync(playersDir);
     let found = false;
-    
+
     for (const playerDir of playerDirs) {
       const receiptPath = path.join(playersDir, playerDir, 'receipts', `${receiptId}.json`);
-      
+
       if (fs.existsSync(receiptPath)) {
         // Read receipt before deleting to update summary
         const receipt = JSON.parse(fs.readFileSync(receiptPath, 'utf-8'));
-        
+
         // Delete the receipt file
         fs.unlinkSync(receiptPath);
-        
+
         // Update player summary
         const summaryPath = path.join(playersDir, playerDir, 'summary.json');
         if (fs.existsSync(summaryPath)) {
           const summary = JSON.parse(fs.readFileSync(summaryPath, 'utf-8'));
           summary.totalEarnings -= receipt.playerPayment;
           summary.totalServices -= 1;
-          
+
           if (receipt.serviceType === 'animal') {
             summary.animalServices -= 1;
           } else {
             summary.plantServices -= 1;
           }
-          
+
           fs.writeFileSync(summaryPath, JSON.stringify(summary, null, 2));
         }
-        
+
         found = true;
-        res.json({ success: true, message: 'Receipt deleted successfully' });
+        res.json({ success: true, message: 'Receipt deleted successfully', serverId: serverId || 'legacy' });
         break;
       }
     }
-    
+
     if (!found) {
       res.status(404).json({ error: 'Receipt not found' });
     }
@@ -265,18 +291,20 @@ router.delete('/receipt/:receiptId', async (req: Request, res: Response) => {
 // Get all receipts with filters
 router.get('/receipts', async (req: Request, res: Response) => {
   try {
-    const { 
-      status, 
-      serviceType, 
-      playerName, 
-      startDate, 
+    const {
+      serverId: serverIdQuery,
+      status,
+      serviceType,
+      playerName,
+      startDate,
       endDate,
       sortBy = 'timestamp',
       sortOrder = 'desc'
     } = req.query;
-    
-    const playersDir = path.join(process.cwd(), 'data', 'players');
-    
+
+    const serverId = serverIdQuery as string | undefined;
+    const playersDir = getPlayersDir(serverId);
+
     if (!fs.existsSync(playersDir)) {
       res.json([]);
       return;
@@ -288,23 +316,23 @@ router.get('/receipts', async (req: Request, res: Response) => {
     for (const playerDir of playerDirs) {
       // Skip if filtering by player and doesn't match
       if (playerName && playerDir !== playerName) continue;
-      
+
       try {
         const receiptsDir = path.join(playersDir, playerDir, 'receipts');
         if (fs.existsSync(receiptsDir)) {
           const receiptFiles = fs.readdirSync(receiptsDir);
-          
+
           for (const receiptFile of receiptFiles) {
             if (receiptFile.endsWith('.json')) {
               const receiptPath = path.join(receiptsDir, receiptFile);
               const receipt = JSON.parse(fs.readFileSync(receiptPath, 'utf-8'));
-              
+
               // Apply filters
               if (status && receipt.status !== status) continue;
               if (serviceType && receipt.serviceType !== serviceType) continue;
               if (startDate && new Date(receipt.timestamp) < new Date(startDate as string)) continue;
               if (endDate && new Date(receipt.timestamp) > new Date(endDate as string)) continue;
-              
+
               allReceipts.push(receipt);
             }
           }
@@ -317,7 +345,7 @@ router.get('/receipts', async (req: Request, res: Response) => {
     // Sort receipts
     allReceipts.sort((a, b) => {
       let compareValue = 0;
-      
+
       switch (sortBy) {
         case 'playerPayment':
           compareValue = a.playerPayment - b.playerPayment;
@@ -332,10 +360,10 @@ router.get('/receipts', async (req: Request, res: Response) => {
         default:
           compareValue = new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime();
       }
-      
+
       return sortOrder === 'desc' ? -compareValue : compareValue;
     });
-    
+
     res.json(allReceipts);
   } catch (error) {
     console.error('Error getting receipts:', error);

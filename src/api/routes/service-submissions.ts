@@ -8,10 +8,26 @@ import type { BotClient } from '../../bot/BotClient';
 
 const router = Router();
 
+// Helper functions for server-specific paths
+function getPlayersDir(serverId?: string): string {
+  if (serverId) {
+    return path.join(process.cwd(), 'data', 'players', serverId);
+  }
+  return path.join(process.cwd(), 'data', 'players');
+}
+
+function getUploadsDir(serverId?: string): string {
+  if (serverId) {
+    return path.join(process.cwd(), 'uploads', 'screenshots', serverId);
+  }
+  return path.join(process.cwd(), 'uploads', 'screenshots');
+}
+
 // Configure multer for file uploads
 const storage = multer.diskStorage({
-  destination: async (_req, _file, cb) => {
-    const uploadDir = path.join(process.cwd(), 'uploads', 'screenshots');
+  destination: async (req, _file, cb) => {
+    const serverId = (req.body as any).serverId as string | undefined;
+    const uploadDir = getUploadsDir(serverId);
     await fs.mkdir(uploadDir, { recursive: true });
     cb(null, uploadDir);
   },
@@ -67,18 +83,19 @@ function generateReceiptId(): string {
 }
 
 // Save receipt to player folder
-async function saveReceipt(receipt: Receipt): Promise<void> {
+async function saveReceipt(receipt: Receipt, serverId?: string): Promise<void> {
   try {
-    const playerDir = path.join(process.cwd(), 'data', 'players', receipt.playerName);
+    const playersDir = getPlayersDir(serverId);
+    const playerDir = path.join(playersDir, receipt.playerName);
     const receiptsDir = path.join(playerDir, 'receipts');
-    
+
     // Create directories
     await fs.mkdir(receiptsDir, { recursive: true });
-    
+
     // Save receipt JSON
     const receiptPath = path.join(receiptsDir, `${receipt.receiptId}.json`);
     await fs.writeFile(receiptPath, JSON.stringify(receipt, null, 2));
-    
+
     // Update player summary
     const summaryPath = path.join(playerDir, 'summary.json');
     let summary = {
@@ -89,14 +106,14 @@ async function saveReceipt(receipt: Receipt): Promise<void> {
       plantServices: 0,
       lastService: receipt.timestamp
     };
-    
+
     try {
       const existingSummary = await fs.readFile(summaryPath, 'utf-8');
       summary = JSON.parse(existingSummary);
     } catch {
       // File doesn't exist yet
     }
-    
+
     // Update summary
     summary.totalEarnings += receipt.playerPayment;
     summary.totalServices += 1;
@@ -106,7 +123,7 @@ async function saveReceipt(receipt: Receipt): Promise<void> {
       summary.plantServices += 1;
     }
     summary.lastService = receipt.timestamp;
-    
+
     await fs.writeFile(summaryPath, JSON.stringify(summary, null, 2));
   } catch (error) {
     console.error('Error saving receipt:', error);
@@ -192,8 +209,9 @@ router.post('/', upload.single('screenshot'), async (req: Request, res: Response
       });
       return;
     }
-    
+
     const {
+      serverId,
       playerName,
       serviceType,
       animalType,
@@ -278,25 +296,26 @@ router.post('/', upload.single('screenshot'), async (req: Request, res: Response
         extractedText: ocrResult.extractedText
       };
     }
-    
+
     // Save receipt to player folder
-    await saveReceipt(receipt);
-    
+    await saveReceipt(receipt, serverId);
+
     // Send to Discord if bot is available
     const bot = req.app.locals.bot;
     if (bot) {
       await sendDiscordReceipt(bot, receipt);
     }
-    
+
     // Return success response
     res.json({
       success: true,
       receipt: {
         ...receipt,
         screenshotPath: `/uploads/screenshots/${path.basename(screenshotPath)}`
-      }
+      },
+      serverId: serverId || 'legacy'
     });
-    
+
   } catch (error: any) {
     console.error('Service submission error:', error);
     res.status(500).json({
@@ -309,9 +328,11 @@ router.post('/', upload.single('screenshot'), async (req: Request, res: Response
 // Get player history
 router.get('/player/:playerName', async (req: Request, res: Response): Promise<void> => {
   try {
+    const serverId = req.query.serverId as string | undefined;
     const { playerName } = req.params;
-    const playerDir = path.join(process.cwd(), 'data', 'players', playerName);
-    
+    const playersDir = getPlayersDir(serverId);
+    const playerDir = path.join(playersDir, playerName);
+
     // Check if player exists
     try {
       await fs.access(playerDir);
@@ -322,16 +343,16 @@ router.get('/player/:playerName', async (req: Request, res: Response): Promise<v
       });
       return;
     }
-    
+
     // Read summary
     const summaryPath = path.join(playerDir, 'summary.json');
     const summary = JSON.parse(await fs.readFile(summaryPath, 'utf-8'));
-    
+
     // Read recent receipts
     const receiptsDir = path.join(playerDir, 'receipts');
     const receiptFiles = await fs.readdir(receiptsDir);
     const receipts = [];
-    
+
     // Get last 10 receipts
     const recentFiles = receiptFiles.slice(-10);
     for (const file of recentFiles) {
@@ -339,13 +360,14 @@ router.get('/player/:playerName', async (req: Request, res: Response): Promise<v
       const receipt = JSON.parse(await fs.readFile(receiptPath, 'utf-8'));
       receipts.push(receipt);
     }
-    
+
     res.json({
       success: true,
       summary,
-      receipts: receipts.reverse() // Most recent first
+      receipts: receipts.reverse(), // Most recent first
+      serverId: serverId || 'legacy'
     });
-    
+
   } catch (error: any) {
     console.error('Error fetching player history:', error);
     res.status(500).json({
@@ -356,31 +378,33 @@ router.get('/player/:playerName', async (req: Request, res: Response): Promise<v
 });
 
 // Get all recent receipts
-router.get('/recent', async (_req: Request, res: Response): Promise<void> => {
+router.get('/recent', async (req: Request, res: Response): Promise<void> => {
   try {
-    const playersDir = path.join(process.cwd(), 'data', 'players');
+    const serverId = req.query.serverId as string | undefined;
+    const playersDir = getPlayersDir(serverId);
     const allReceipts: Receipt[] = [];
-    
+
     // Check if players directory exists
     try {
       await fs.access(playersDir);
     } catch {
       res.json({
         success: true,
-        receipts: []
+        receipts: [],
+        serverId: serverId || 'legacy'
       });
       return;
     }
-    
+
     // Read all player directories
     const players = await fs.readdir(playersDir);
-    
+
     for (const player of players) {
       const receiptsDir = path.join(playersDir, player, 'receipts');
-      
+
       try {
         const receiptFiles = await fs.readdir(receiptsDir);
-        
+
         for (const file of receiptFiles) {
           const receiptPath = path.join(receiptsDir, file);
           const receipt = JSON.parse(await fs.readFile(receiptPath, 'utf-8'));
@@ -390,17 +414,18 @@ router.get('/recent', async (_req: Request, res: Response): Promise<void> => {
         // Player has no receipts yet
       }
     }
-    
+
     // Sort by timestamp and return last 20
-    allReceipts.sort((a, b) => 
+    allReceipts.sort((a, b) =>
       new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
     );
-    
+
     res.json({
       success: true,
-      receipts: allReceipts.slice(0, 20)
+      receipts: allReceipts.slice(0, 20),
+      serverId: serverId || 'legacy'
     });
-    
+
   } catch (error: any) {
     console.error('Error fetching recent receipts:', error);
     res.status(500).json({

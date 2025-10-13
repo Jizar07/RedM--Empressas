@@ -5,7 +5,38 @@ This file is synchronized with: https://github.com/Jizar07/RedM--Empressas
 
 ## Version History
 
-### [0.061] - 2025-10-12 **[CURRENT VERSION]**
+### [0.062] - 2025-10-13 **[CURRENT VERSION]**
+- **WORKER EMBED CALCULATION FIX**: Complete resolution of incorrect plant pricing in worker embed displays
+- **THREE CRITICAL BUGS FIXED**: Systematic resolution of pricing calculation errors across multiple code paths
+- **KEY FIX #1 - `recalculateSessionCredits()` Wrong Field**:
+  - Lines 813-814 used `paymentConfig.defaultPrices.plants.basePrice` (undefined) instead of `unitPrice`
+  - Changed to `paymentConfig.defaultPrices.plants.unitPrice` for correct session total calculations
+- **KEY FIX #2 - `groupPlantTransactionsByTypeAsync()` Missing Server Pricing**:
+  - Function called `getWorkerPrices()` without serverId, using wrong default $0.15/plant pricing
+  - Added `serverId?: string` parameter to function signature
+  - Replaced `getWorkerPrices()` with PaymentConfigService using server-specific unitPrice
+  - Fixed embed line item calculations to show correct server-specific pricing ($0.25/plant for Cabra da Peste)
+- **KEY FIX #3 - Function Calls Missing serverId Parameter**:
+  - All 4 calls to `groupPlantTransactionsByTypeAsync()` (lines 1462, 1478, 1770, 1786) not passing session.serverId
+  - Updated all calls to pass `session.serverId` for both registered and unregistered plants
+- **WORKER SESSION MIGRATION**:
+  - Created migration script moving 31 workers from legacy to Cabra da Peste server (1274479410107646004)
+  - Only maximo-pokaropa and matoaka-pocahontas assigned to Fazenda Bot server
+- **RELOAD SYSTEM**:
+  - Implemented `reloadAllSessions()` method to clear in-memory sessions and reload from disk
+  - Created `/reload-and-recalculate` API endpoint combining session reload with embed updates
+  - Successfully updated all 32 worker embeds with correct pricing
+- **TECHNICAL IMPLEMENTATION** (`src/services/WorkerActivityService.ts`):
+  - Lines 813-814: Changed `basePrice` to `unitPrice` in session credit calculations
+  - Lines 644-676: Added serverId parameter and PaymentConfigService integration to grouping function
+  - Lines 1462, 1478, 1770, 1786: Updated all function calls to pass session.serverId
+  - Lines 2461-2481: Added reloadAllSessions() method for file-to-memory sync
+- **FILES MODIFIED**:
+  - src/services/WorkerActivityService.ts - Three critical pricing fixes and reload method
+  - src/api/routes/worker-activity.ts - New reload-and-recalculate endpoint
+- **RESULT**: Worker embeds now show correct pricing in BOTH line items ("2000 Milho ($500.00)") AND totals ("Total a Receber: $500.00") using proper server-specific rates
+
+### [0.061] - 2025-10-12
 - **WEEKLY RANKING SYSTEM FIX**: Complete overhaul of ranking calculation with proper date-range filtering
 - **KEY FIX**: Rankings now calculate from actual session transactions filtered by current week timestamp
 - **THREE DATA SOURCES**:

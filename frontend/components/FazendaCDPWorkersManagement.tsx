@@ -10,6 +10,7 @@ import {
 import { FirmConfig } from '@/types/firms';
 import { useInventoryManager } from '@/hooks/useInventoryManager';
 import { WorkerInventoryStats } from '@/types/inventory';
+import { useServer } from '@/contexts/ServerContext';
 
 interface FazendaCDPWorkersManagementProps {
   firm: FirmConfig;
@@ -45,6 +46,9 @@ export default function FazendaCDPWorkersManagement({
   const [workerSessions, setWorkerSessions] = useState<any[]>([]);
   const [sessionsLoading, setSessionsLoading] = useState(true);
 
+  // Get selected server for multi-server support
+  const { selectedServerId } = useServer();
+
   // Use the unified inventory manager hook
   const {
     inventoryData,
@@ -57,17 +61,19 @@ export default function FazendaCDPWorkersManagement({
   useEffect(() => {
     const fetchWorkerSessions = async () => {
       try {
-        const response = await fetch('http://localhost:3050/api/worker-activity/sessions', {
-          headers: {
-            'x-bot-token': process.env.NEXT_PUBLIC_DISCORD_TOKEN || ''
-          }
-        });
+        // Use Next.js API proxy route with server-specific filtering
+        const params = new URLSearchParams();
+        if (selectedServerId) {
+          params.set('serverId', selectedServerId);
+        }
+
+        const response = await fetch(`/api/worker-activity/sessions?${params.toString()}`);
 
         if (response.ok) {
           const data = await response.json();
           if (data.success) {
             setWorkerSessions(data.sessions || []);
-            console.log(`✅ Loaded ${data.sessions?.length || 0} active worker sessions`);
+            console.log(`✅ Loaded ${data.sessions?.length || 0} active worker sessions for server ${selectedServerId || 'all'}`);
           }
         } else {
           console.error('Failed to fetch worker sessions:', response.status);
@@ -83,7 +89,7 @@ export default function FazendaCDPWorkersManagement({
     // Refresh sessions every 30 seconds
     const interval = setInterval(fetchWorkerSessions, 30000);
     return () => clearInterval(interval);
-  }, []);
+  }, [selectedServerId]);
 
   // Get worker data from inventory manager analytics
   const workerStats = useMemo(() => {
@@ -696,6 +702,7 @@ export default function FazendaCDPWorkersManagement({
         <WorkerDetailModal
           worker={selectedWorkerStats}
           workerProfile={workerProfiles.get(selectedWorkerStats.userId)}
+          serverId={selectedServerId}
           onClose={() => {
             setShowDetailModal(false);
             setSelectedWorkerStats(null);
@@ -1071,6 +1078,7 @@ function WorkerAnalyticsModal({ worker, workerProfile, onClose }: WorkerAnalytic
 interface WorkerDetailModalProps {
   worker: WorkerInventoryStats;
   workerProfile?: WorkerProfile;
+  serverId?: string | null;
   onClose: () => void;
 }
 
@@ -1134,7 +1142,7 @@ interface WorkerDetailData {
   };
 }
 
-function WorkerDetailModal({ worker, workerProfile, onClose }: WorkerDetailModalProps) {
+function WorkerDetailModal({ worker, workerProfile, serverId, onClose }: WorkerDetailModalProps) {
   const [detailData, setDetailData] = useState<WorkerDetailData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -1142,18 +1150,26 @@ function WorkerDetailModal({ worker, workerProfile, onClose }: WorkerDetailModal
 
   useEffect(() => {
     fetchWorkerDetails();
-  }, [worker.userId]);
+  }, [worker.userId, serverId]);
 
   const fetchWorkerDetails = async () => {
     try {
       setLoading(true);
       setError(null);
 
-      const response = await fetch(`http://localhost:3050/api/global-worker-analytics/worker/${worker.userId}?includeActivities=true&includeTransfers=true&includeRecipes=true&limit=100`, {
-        headers: {
-          'x-bot-token': process.env.NEXT_PUBLIC_DISCORD_TOKEN || ''
-        }
+      // Use Next.js API proxy route with server-specific filtering
+      const params = new URLSearchParams({
+        includeActivities: 'true',
+        includeTransfers: 'true',
+        includeRecipes: 'true',
+        limit: '100'
       });
+
+      if (serverId) {
+        params.set('serverId', serverId);
+      }
+
+      const response = await fetch(`/api/global-worker-analytics/${worker.userId}?${params.toString()}`);
 
       if (!response.ok) {
         throw new Error(`Failed to fetch worker details: ${response.status}`);
@@ -1161,6 +1177,7 @@ function WorkerDetailModal({ worker, workerProfile, onClose }: WorkerDetailModal
 
       const data = await response.json();
       setDetailData(data);
+      console.log(`✅ Loaded worker details for ${worker.userName} on server ${serverId || 'all'}`);
     } catch (err) {
       console.error('Error fetching worker details:', err);
       setError(err instanceof Error ? err.message : 'Failed to load worker details');

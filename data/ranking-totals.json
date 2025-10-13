@@ -398,14 +398,14 @@
       "allTime": 4984
     },
     "animals": {
-      "thisWeek": 16,
-      "allTime": 122
+      "thisWeek": 20,
+      "allTime": 126
     },
     "ferrovia": {
       "thisWeek": 0,
       "allTime": 14
     },
-    "lastActivity": "2025-10-13T07:52:52.072Z"
+    "lastActivity": "2025-10-13T21:29:47.815Z"
   },
   "695109023741116496": {
     "workerId": "695109023741116496",
@@ -528,7 +528,7 @@
   },
   "unknown": {
     "workerId": "unknown",
-    "workerName": "Endo D. Barth",
+    "workerName": "garcia jidoki",
     "plants": {
       "thisWeek": 0,
       "allTime": 0
@@ -538,10 +538,10 @@
       "allTime": 0
     },
     "ferrovia": {
-      "thisWeek": 70,
-      "allTime": 1136
+      "thisWeek": 85,
+      "allTime": 1151
     },
-    "lastActivity": "2025-10-13T16:28:58.128Z"
+    "lastActivity": "2025-10-13T21:54:24.109Z"
   },
   "266262427329495041": {
     "workerId": "266262427329495041",
@@ -564,8 +564,8 @@
     "workerId": "1127730801182777355",
     "workerName": "Thony Gustav",
     "plants": {
-      "thisWeek": 0,
-      "allTime": 1200
+      "thisWeek": 900,
+      "allTime": 2100
     },
     "animals": {
       "thisWeek": 0,
@@ -575,7 +575,7 @@
       "thisWeek": 0,
       "allTime": 4
     },
-    "lastActivity": "2025-10-08T16:36:59.318Z"
+    "lastActivity": "2025-10-13T20:48:52.405Z"
   },
   "808461479040909322": {
     "workerId": "808461479040909322",
@@ -649,8 +649,8 @@
     "workerId": "588934801508270082",
     "workerName": "Chris Rubble",
     "plants": {
-      "thisWeek": 4000,
-      "allTime": 8130
+      "thisWeek": 7690,
+      "allTime": 11820
     },
     "animals": {
       "thisWeek": 0,
@@ -660,7 +660,7 @@
       "thisWeek": 0,
       "allTime": 4
     },
-    "lastActivity": "2025-10-13T06:29:15.831Z"
+    "lastActivity": "2025-10-13T21:23:14.547Z"
   },
   "676963159940136960": {
     "workerId": "676963159940136960",
@@ -717,18 +717,18 @@
     "workerId": "959122593523335188",
     "workerName": "Ingrid Dangerous",
     "plants": {
-      "thisWeek": 0,
-      "allTime": 8190
+      "thisWeek": 500,
+      "allTime": 8690
     },
     "animals": {
-      "thisWeek": 0,
-      "allTime": 267
+      "thisWeek": 8,
+      "allTime": 275
     },
     "ferrovia": {
       "thisWeek": 0,
       "allTime": 0
     },
-    "lastActivity": "2025-10-08T16:36:59.318Z"
+    "lastActivity": "2025-10-13T21:22:41.829Z"
   },
   "141243288572264449": {
     "workerId": "141243288572264449",
@@ -989,25 +989,25 @@
     "workerId": "758683527108624404",
     "workerName": "Romano Delaerva",
     "plants": {
-      "thisWeek": 2970,
-      "allTime": 20000
+      "thisWeek": 4800,
+      "allTime": 21830
     },
     "animals": {
-      "thisWeek": 36,
-      "allTime": 258
+      "thisWeek": 52,
+      "allTime": 274
     },
     "ferrovia": {
       "thisWeek": 0,
       "allTime": 8
     },
-    "lastActivity": "2025-10-13T15:29:32.032Z"
+    "lastActivity": "2025-10-13T22:01:11.914Z"
   },
   "324682324614578179": {
     "workerId": "324682324614578179",
     "workerName": "Garcia Jidoki",
     "plants": {
-      "thisWeek": 3800,
-      "allTime": 16640
+      "thisWeek": 3810,
+      "allTime": 16650
     },
     "animals": {
       "thisWeek": 0,
@@ -1017,7 +1017,7 @@
       "thisWeek": 0,
       "allTime": 0
     },
-    "lastActivity": "2025-10-13T00:30:12.489Z"
+    "lastActivity": "2025-10-13T21:58:11.469Z"
   },
   "431957051275739156": {
     "workerId": "431957051275739156",
@@ -1142,8 +1142,8 @@
     "workerId": "835165941267693659",
     "workerName": "Ragnar Lothbrok",
     "plants": {
-      "thisWeek": 5390,
-      "allTime": 12510
+      "thisWeek": 8890,
+      "allTime": 16010
     },
     "animals": {
       "thisWeek": 20,
@@ -1153,7 +1153,7 @@
       "thisWeek": 0,
       "allTime": 4
     },
-    "lastActivity": "2025-10-13T14:55:49.891Z"
+    "lastActivity": "2025-10-13T22:00:06.076Z"
   },
   "728800620064014367": {
     "workerId": "728800620064014367",
@@ -1227,8 +1227,8 @@
     "workerId": "1228497902201077862",
     "workerName": "Alceu Dispor",
     "plants": {
-      "thisWeek": 2076,
-      "allTime": 2076
+      "thisWeek": 2736,
+      "allTime": 2736
     },
     "animals": {
       "thisWeek": 12,
@@ -1238,7 +1238,7 @@
       "thisWeek": 0,
       "allTime": 0
     },
-    "lastActivity": "2025-10-13T03:23:19.515Z"
+    "lastActivity": "2025-10-13T19:37:39.685Z"
   },
   "645598935209082880": {
     "workerId": "645598935209082880",
@@ -1282,6 +1282,23 @@
       "allTime": 0
     },
     "animals": {
+      "thisWeek": 32,
+      "allTime": 32
+    },
+    "ferrovia": {
+      "thisWeek": 0,
+      "allTime": 0
+    },
+    "lastActivity": "2025-10-13T18:46:15.641Z"
+  },
+  "511682836835860530": {
+    "workerId": "511682836835860530",
+    "workerName": "Silveta Braga",
+    "plants": {
+      "thisWeek": 3980,
+      "allTime": 3980
+    },
+    "animals": {
       "thisWeek": 16,
       "allTime": 16
     },
@@ -1289,6 +1306,23 @@
       "thisWeek": 0,
       "allTime": 0
     },
-    "lastActivity": "2025-10-13T15:22:49.461Z"
+    "lastActivity": "2025-10-13T21:59:14.155Z"
+  },
+  "231905970228428800": {
+    "workerId": "231905970228428800",
+    "workerName": "Ze Bode",
+    "plants": {
+      "thisWeek": 2000,
+      "allTime": 2000
+    },
+    "animals": {
+      "thisWeek": 0,
+      "allTime": 0
+    },
+    "ferrovia": {
+      "thisWeek": 0,
+      "allTime": 0
+    },
+    "lastActivity": "2025-10-13T20:46:10.451Z"
   }
 }

@@ -6,6 +6,7 @@ import { SessionCleanupService } from '../utils/SessionCleanupService';
 import WeeklySalesService from './WeeklySalesService';
 import ItemTranslationService from './ItemTranslationService';
 import { WeeklyRankingService } from './WeeklyRankingService';
+import PaymentConfigService from './PaymentConfigService';
 
 interface PlantTransaction {
   type: 'seed_taken' | 'plant_deposited';
@@ -640,13 +641,17 @@ export class WorkerActivityService {
   }
 
   // Group plant transactions by type and time period for cleaner display
-  private async groupPlantTransactionsByTypeAsync(transactions: PlantTransaction[]): Promise<{ [itemName: string]: { quantity: number; count: number; credits: number; firstTimestamp: Date; lastTimestamp: Date } }> {
+  private async groupPlantTransactionsByTypeAsync(transactions: PlantTransaction[], serverId?: string): Promise<{ [itemName: string]: { quantity: number; count: number; credits: number; firstTimestamp: Date; lastTimestamp: Date } }> {
     const grouped: { [itemName: string]: { quantity: number; count: number; credits: number; firstTimestamp: Date; lastTimestamp: Date } } = {};
-    const prices = await this.getWorkerPrices();
+
+    // CRITICAL FIX: Use PaymentConfigService with server-specific pricing
+    const paymentConfigService = PaymentConfigService.getInstance();
+    const paymentConfig = await paymentConfigService.getConfig(serverId);
+    const plantPrice = paymentConfig.defaultPrices.plants.unitPrice;
 
     transactions.forEach(transaction => {
       const itemName = transaction.itemName;
-      const credits = transaction.quantity * prices.plantPrice;
+      const credits = transaction.quantity * plantPrice;
 
       if (!grouped[itemName]) {
         grouped[itemName] = {
@@ -804,7 +809,16 @@ export class WorkerActivityService {
   }
 
   private async recalculateSessionCredits(session: WorkerSession): Promise<void> {
-    const prices = await this.getWorkerPrices();
+    // ✅ FIXED: Use PaymentConfigService with server-specific config
+    const paymentConfigService = PaymentConfigService.getInstance();
+    const paymentConfig = await paymentConfigService.getConfig(session.serverId);
+
+    // Extract pricing from server-specific payment config - CRITICAL FIX: Use unitPrice not basePrice
+    const plantPrice = paymentConfig.defaultPrices.plants.unitPrice;
+    const animalPrice = paymentConfig.defaultPrices.animals.unitPrice;
+
+    console.log(`💰 Using server-specific prices for ${session.serverId || 'legacy'}: plants=$${plantPrice}, animals=$${animalPrice}`);
+
     let totalCredits = 0;
 
     // Calculate plant credits - Pay for ALL registered plants deposited
@@ -812,9 +826,9 @@ export class WorkerActivityService {
       .filter(t => t.type === 'plant_deposited')
       .forEach(transaction => {
         // Pay for ALL plants deposited regardless of seed expectations
-        const plantCredit = transaction.quantity * prices.plantPrice;
+        const plantCredit = transaction.quantity * plantPrice;
         totalCredits += plantCredit;
-        console.log(`💰 Plant payment (registered): ${transaction.quantity} ${transaction.itemName} = $${plantCredit.toFixed(2)}`);
+        console.log(`💰 Plant payment (registered): ${transaction.quantity} ${transaction.itemName} = $${plantCredit.toFixed(2)} (rate: $${plantPrice})`);
 
         // Still update seed expectations for tracking purposes
         this.updateSeedExpectations(session, transaction.itemName, transaction.quantity);
@@ -823,9 +837,9 @@ export class WorkerActivityService {
     // Calculate unregistered plant credits - Pay for ALL unregistered plants detected
     if (session.unregisteredPlants && session.unregisteredPlants.length > 0) {
       session.unregisteredPlants.forEach(transaction => {
-        const plantCredit = transaction.quantity * prices.plantPrice;
+        const plantCredit = transaction.quantity * plantPrice;
         totalCredits += plantCredit;
-        console.log(`💰 Plant payment (unregistered): ${transaction.quantity} ${transaction.itemName} = $${plantCredit.toFixed(2)}`);
+        console.log(`💰 Plant payment (unregistered): ${transaction.quantity} ${transaction.itemName} = $${plantCredit.toFixed(2)} (rate: $${plantPrice})`);
       });
     }
 
@@ -841,6 +855,8 @@ export class WorkerActivityService {
     totalCredits += deliveryAmount;  // Workers paid full $160 per delivery
 
     session.totalCredits = totalCredits;
+
+    console.log(`💰 Total credits calculated for ${session.workerName}: $${totalCredits.toFixed(2)}`);
   }
 
   /**
@@ -934,7 +950,7 @@ export class WorkerActivityService {
     }
   }
 
-  public getOrCreateSession(workerId: string, workerName: string, channelId: string): WorkerSession {
+  public async getOrCreateSession(workerId: string, workerName: string, channelId: string): Promise<WorkerSession> {
     let session = this.activeSessions.get(workerId);
 
     // CRITICAL FIX: If session exists but is not active, remove it completely
@@ -953,16 +969,29 @@ export class WorkerActivityService {
         session = undefined;
       }
     }
-    
+
     if (!session) {
       // Enhanced: Ensure completely clean session creation
       console.log(`🆕 Creating fresh session for worker ${workerName} (${workerId})`);
-      
+
+      // ✅ CRITICAL FIX: Get serverId from Discord channel's guild
+      let serverId: string | undefined;
+      try {
+        const channel = await this.client.channels.fetch(channelId);
+        if (channel && 'guild' in channel && channel.guild) {
+          serverId = channel.guild.id;
+          console.log(`🔍 Detected serverId from channel: ${serverId}`);
+        }
+      } catch (error) {
+        console.error(`❌ Error fetching channel ${channelId} to get serverId:`, error);
+      }
+
       session = {
         workerId,
         workerName,
         channelId,
         sessionId: this.generateSessionId(),
+        serverId, // ✅ FIX: Set serverId from guild
         startTime: new Date(),
         lastActivity: new Date(),
         status: 'active',
@@ -974,10 +1003,10 @@ export class WorkerActivityService {
         // Explicitly set embedMessageId to undefined to force new embed creation
         embedMessageId: undefined
       };
-      
+
       this.activeSessions.set(workerId, session);
       this.saveActiveSessions();
-      console.log(`✅ Created new active session for worker ${workerName} (${workerId})`);
+      console.log(`✅ Created new active session for worker ${workerName} (${workerId}) on server ${serverId || 'unknown'}`);
     }
 
     return session;
@@ -991,7 +1020,7 @@ export class WorkerActivityService {
       await this.cleanupPaidSession(workerId);
     }
 
-    const session = this.getOrCreateSession(workerId, workerName, channelId);
+    const session = await this.getOrCreateSession(workerId, workerName, channelId);
     
     const plantTransaction: PlantTransaction = {
       ...transaction,
@@ -1054,7 +1083,7 @@ export class WorkerActivityService {
       await this.cleanupPaidSession(workerId);
     }
 
-    const session = this.getOrCreateSession(workerId, workerName, channelId);
+    const session = await this.getOrCreateSession(workerId, workerName, channelId);
     
     const animalTransaction: AnimalTransaction = {
       ...transaction,
@@ -1109,7 +1138,7 @@ export class WorkerActivityService {
       await this.cleanupPaidSession(workerId);
     }
 
-    const session = this.getOrCreateSession(workerId, workerName, channelId);
+    const session = await this.getOrCreateSession(workerId, workerName, channelId);
 
     // Initialize financialTransactions array if it doesn't exist
     if (!session.financialTransactions) {
@@ -1156,7 +1185,7 @@ export class WorkerActivityService {
       await this.cleanupPaidSession(workerId);
     }
 
-    const session = this.getOrCreateSession(workerId, workerName, channelId);
+    const session = await this.getOrCreateSession(workerId, workerName, channelId);
 
     // Initialize inventoryTransactions array if it doesn't exist
     if (!session.inventoryTransactions) {
@@ -1430,7 +1459,7 @@ export class WorkerActivityService {
 
       // Add registered plants
       if (plantsDeposited.length > 0) {
-        const groupedPlants = await this.groupPlantTransactionsByTypeAsync(plantsDeposited);
+        const groupedPlants = await this.groupPlantTransactionsByTypeAsync(plantsDeposited, session.serverId);
         plantLines.push('**Registradas:**');
 
         Object.entries(groupedPlants).forEach(([itemName, data]) => {
@@ -1446,7 +1475,7 @@ export class WorkerActivityService {
 
       // Add unregistered plants (detected today)
       if (unregisteredPlants.length > 0) {
-        const groupedUnregistered = await this.groupPlantTransactionsByTypeAsync(unregisteredPlants);
+        const groupedUnregistered = await this.groupPlantTransactionsByTypeAsync(unregisteredPlants, session.serverId);
         if (plantsDeposited.length > 0) {
           plantLines.push(''); // Empty line separator
         }
@@ -1738,7 +1767,7 @@ export class WorkerActivityService {
 
       // Add registered plants
       if (plantsDeposited.length > 0) {
-        const groupedPlants = await this.groupPlantTransactionsByTypeAsync(plantsDeposited);
+        const groupedPlants = await this.groupPlantTransactionsByTypeAsync(plantsDeposited, session.serverId);
         plantLines.push('**Registradas:**');
 
         Object.entries(groupedPlants).forEach(([itemName, data]) => {
@@ -1754,7 +1783,7 @@ export class WorkerActivityService {
 
       // Add unregistered plants (detected today)
       if (unregisteredPlants.length > 0) {
-        const groupedUnregistered = await this.groupPlantTransactionsByTypeAsync(unregisteredPlants);
+        const groupedUnregistered = await this.groupPlantTransactionsByTypeAsync(unregisteredPlants, session.serverId);
         if (plantsDeposited.length > 0) {
           plantLines.push(''); // Empty line separator
         }
@@ -2075,12 +2104,67 @@ export class WorkerActivityService {
     console.log(`🗂️ Session archived and removed from active sessions: ${session.workerName} (${session.sessionId})`);
   }
 
-  public getActiveSessionsCount(): number {
-    return this.activeSessions.size;
+  public getActiveSessionsCount(serverId?: string): number {
+    if (!serverId) {
+      return this.activeSessions.size;
+    }
+
+    // Count sessions for specific server
+    return Array.from(this.activeSessions.values())
+      .filter(session => session.serverId === serverId)
+      .length;
   }
 
-  public getAllActiveSessions(): WorkerSession[] {
-    return Array.from(this.activeSessions.values());
+  public getAllActiveSessions(serverId?: string): WorkerSession[] {
+    const sessions = Array.from(this.activeSessions.values());
+
+    if (!serverId) {
+      // Return all sessions if no serverId specified (legacy behavior)
+      return sessions;
+    }
+
+    // Filter sessions by serverId
+    return sessions.filter(session => session.serverId === serverId);
+  }
+
+  /**
+   * Recalculate ALL active sessions with correct server-specific pricing and update their embeds
+   * Use this to fix sessions that were calculated with wrong rates
+   */
+  public async recalculateAllActiveSessions(): Promise<{ updated: number; errors: string[] }> {
+    console.log(`🔄 Starting recalculation of ALL active sessions with server-specific pricing...`);
+
+    const sessions = this.getAllActiveSessions();
+    let updated = 0;
+    const errors: string[] = [];
+
+    for (const session of sessions) {
+      try {
+        console.log(`♻️ Recalculating ${session.workerName} (${session.sessionId})...`);
+
+        // Recalculate credits with server-specific pricing
+        await this.recalculateSessionCredits(session);
+
+        // Update the Discord embed with correct calculations
+        await this.updateWorkerEmbed(session);
+
+        updated++;
+        console.log(`✅ Updated ${session.workerName}: $${session.totalCredits.toFixed(2)}`);
+      } catch (error: any) {
+        const errorMsg = `Failed to update ${session.workerName}: ${error.message}`;
+        console.error(`❌ ${errorMsg}`);
+        errors.push(errorMsg);
+      }
+    }
+
+    this.saveActiveSessions();
+
+    console.log(`✨ Recalculation complete: ${updated}/${sessions.length} sessions updated successfully`);
+    if (errors.length > 0) {
+      console.error(`⚠️ ${errors.length} errors occurred:`, errors);
+    }
+
+    return { updated, errors };
   }
 
   public getWorkerSession(workerId: string): WorkerSession | undefined {
@@ -2372,6 +2456,32 @@ export class WorkerActivityService {
     }
 
     return truncatedContent;
+  }
+
+  /**
+   * Reload all sessions from disk (from all server directories)
+   * Use this after migrating sessions or when in-memory data is stale
+   */
+  public reloadAllSessions(): { loaded: number; servers: string[] } {
+    console.log(`🔄 Reloading all sessions from disk...`);
+
+    // Clear in-memory sessions
+    const previousCount = this.activeSessions.size;
+    this.activeSessions.clear();
+    console.log(`🧹 Cleared ${previousCount} in-memory sessions`);
+
+    // Reload from disk
+    this.loadActiveSessions();
+
+    const loadedCount = this.activeSessions.size;
+    const servers = Array.from(new Set(
+      Array.from(this.activeSessions.values()).map(s => s.serverId || 'legacy')
+    ));
+
+    console.log(`✅ Reloaded ${loadedCount} sessions from disk`);
+    console.log(`📊 Servers: ${servers.join(', ')}`);
+
+    return { loaded: loadedCount, servers };
   }
 }
 

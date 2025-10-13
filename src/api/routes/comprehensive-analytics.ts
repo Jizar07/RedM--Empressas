@@ -5,6 +5,25 @@ import PaymentConfigService from '../../services/PaymentConfigService';
 
 const router = Router();
 
+// Helper function for server-specific paths
+function getServerPaths(serverId?: string) {
+  const basePath = process.cwd();
+  if (serverId) {
+    return {
+      registrations: path.join(basePath, 'data', 'registrations', serverId, 'registrations.json'),
+      payments: path.join(basePath, 'data', 'worker-sessions', serverId, 'payments'),
+      archived: path.join(basePath, 'data', 'worker-sessions', serverId, 'archived'),
+      active: path.join(basePath, 'data', 'worker-sessions', serverId, 'active-sessions.json')
+    };
+  }
+  return {
+    registrations: path.join(basePath, 'data', 'registrations.json'),
+    payments: path.join(basePath, 'data', 'worker-sessions', 'payments'),
+    archived: path.join(basePath, 'data', 'worker-sessions', 'archived'),
+    active: path.join(basePath, 'data', 'worker-sessions', 'active-sessions.json')
+  };
+}
+
 interface PlantStats {
   itemName: string;
   deposited: number;
@@ -43,8 +62,9 @@ interface WorkerAnalytics {
  * Get comprehensive analytics from existing session data
  * GET /api/comprehensive-analytics
  */
-router.get('/', async (_req: Request, res: Response) => {
+router.get('/', async (req: Request, res: Response) => {
   try {
+    const serverId = req.query.serverId as string | undefined;
     const workerAnalytics: { [workerId: string]: WorkerAnalytics } = {};
     const globalPlantStats: { [itemName: string]: { deposited: number; seedsTaken: number } } = {};
     const globalAnimalStats = {
@@ -60,30 +80,31 @@ router.get('/', async (_req: Request, res: Response) => {
     let totalWorkers = 0;
 
     // Load payment config for cost settings
-    const paymentConfig = await PaymentConfigService.getInstance().getConfig();
+    const paymentConfig = await PaymentConfigService.getInstance().getConfig(serverId);
     const animalCostPerUnit = paymentConfig.defaultPrices.animals.costPerUnit;
 
+    // Get server-specific paths
+    const paths = getServerPaths(serverId);
+
     // Load registrations to check for manager roles
-    const registrationsPath = path.join(process.cwd(), 'data', 'registrations.json');
     const managerRoles = new Set(['❪★❱ Gerentes', '👑│CEO']);
     const managerUserIds = new Set<string>();
 
-    if (fs.existsSync(registrationsPath)) {
-      const registrations = JSON.parse(fs.readFileSync(registrationsPath, 'utf8'));
+    if (fs.existsSync(paths.registrations)) {
+      const registrations = JSON.parse(fs.readFileSync(paths.registrations, 'utf8'));
       // TODO: We need to check Discord roles, not registration data
       // For now, marking all as workers (will calculate with 75% split)
     }
 
     // Load payment data
-    const paymentsDir = path.join(process.cwd(), 'data', 'worker-sessions', 'payments');
     const paymentsBySession: { [sessionId: string]: number } = {};
 
-    if (fs.existsSync(paymentsDir)) {
-      const paymentFiles = fs.readdirSync(paymentsDir);
+    if (fs.existsSync(paths.payments)) {
+      const paymentFiles = fs.readdirSync(paths.payments);
       for (const file of paymentFiles) {
         if (!file.endsWith('.json')) continue;
         try {
-          const paymentPath = path.join(paymentsDir, file);
+          const paymentPath = path.join(paths.payments, file);
           const paymentData = JSON.parse(fs.readFileSync(paymentPath, 'utf8'));
           paymentsBySession[paymentData.sessionId] = paymentData.amount || 0;
         } catch (error) {
@@ -92,8 +113,8 @@ router.get('/', async (_req: Request, res: Response) => {
       }
     }
 
-    const archivedDir = path.join(process.cwd(), 'data', 'worker-sessions', 'archived');
-    const activeSessionsFile = path.join(process.cwd(), 'data', 'worker-sessions', 'active-sessions.json');
+    const archivedDir = paths.archived;
+    const activeSessionsFile = paths.active;
 
     // Process archived sessions
     if (fs.existsSync(archivedDir)) {
@@ -165,7 +186,8 @@ router.get('/', async (_req: Request, res: Response) => {
         animals: globalAnimalStats,
         purchases: financialList,
         timestamp: new Date().toISOString()
-      }
+      },
+      serverId: serverId || 'legacy'
     });
 
   } catch (error) {

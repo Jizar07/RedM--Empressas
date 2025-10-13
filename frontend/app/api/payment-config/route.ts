@@ -4,7 +4,14 @@ const API_BASE_URL = process.env.API_URL || 'http://localhost:3050/api';
 
 export async function GET(request: NextRequest) {
   try {
-    const response = await fetch(`${API_BASE_URL}/payment-config`, {
+    const serverId = request.nextUrl.searchParams.get('serverId');
+
+    const url = new URL(`${API_BASE_URL}/payment-config`);
+    if (serverId) {
+      url.searchParams.set('serverId', serverId);
+    }
+
+    const response = await fetch(url.toString(), {
       method: 'GET',
       headers: {
         'Accept': 'application/json',
@@ -35,6 +42,7 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
+    // Body already contains serverId from frontend
 
     const response = await fetch(`${API_BASE_URL}/payment-config`, {
       method: 'POST',

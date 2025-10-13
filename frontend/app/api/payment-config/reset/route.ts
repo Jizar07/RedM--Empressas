@@ -4,12 +4,16 @@ const API_BASE_URL = process.env.API_URL || 'http://localhost:3050/api';
 
 export async function POST(request: NextRequest) {
   try {
+    const body = await request.json();
+    // Body contains serverId from frontend
+
     const response = await fetch(`${API_BASE_URL}/payment-config/reset`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
+      body: JSON.stringify(body),
     });
 
     if (!response.ok) {

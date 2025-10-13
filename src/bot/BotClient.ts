@@ -8,6 +8,7 @@ import MessageManagerService from '../services/MessageManagerService';
 import BotStatusService from '../services/BotStatusService';
 import { MultiChannelForwarder } from '../services/MultiChannelForwarder';
 import { WeeklyRankingService } from '../services/WeeklyRankingService';
+import ChannelInactivityService from '../services/ChannelInactivityService';
 import { createDynamicRegistrationCommand } from './dynamicCommandRegistration';
 
 export interface Command {
@@ -24,7 +25,8 @@ export class BotClient extends Client {
   public statusService: typeof BotStatusService;
   public multiChannelForwarder!: MultiChannelForwarder;
   public weeklyRankingService: WeeklyRankingService;
-  
+  public channelInactivityService: ChannelInactivityService;
+
   constructor() {
     super({
       intents: [
@@ -45,13 +47,14 @@ export class BotClient extends Client {
         Partials.Reaction,
       ],
     });
-    
+
     this.commands = new Collection();
     this.cooldowns = new Collection();
     this.messageManager = new MessageManagerService(this);
     this.statusService = BotStatusService;
     this.multiChannelForwarder = MultiChannelForwarder.getInstance();
     this.weeklyRankingService = WeeklyRankingService.getInstance();
+    this.channelInactivityService = ChannelInactivityService.getInstance();
   }
   
   public async init(): Promise<void> {
@@ -73,6 +76,9 @@ export class BotClient extends Client {
 
     // Initialize WeeklyRankingService with bot client
     this.weeklyRankingService.initialize(this);
+
+    // Initialize ChannelInactivityService with bot client
+    this.channelInactivityService.initialize(this);
 
     // Login to Discord
     await this.login(config.discord.token);
