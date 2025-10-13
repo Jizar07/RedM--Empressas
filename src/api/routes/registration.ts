@@ -94,9 +94,10 @@ router.get('/discord/categories', async (req: any, res: Response): Promise<any> 
 });
 
 // Get registration form configuration (temporarily bypass auth)
-router.get('/config', async (_req: any, res: Response): Promise<any> => {
+router.get('/config', async (req: any, res: Response): Promise<any> => {
   try {
-    const config = await RegistrationService.getFormConfig();
+    const serverId = req.query.serverId as string | undefined;
+    const config = await RegistrationService.getFormConfig(serverId);
     res.json(config);
   } catch (error) {
     console.error('Error fetching form config:', error);
@@ -107,7 +108,16 @@ router.get('/config', async (_req: any, res: Response): Promise<any> => {
 // Update registration form configuration (temporarily bypass auth)
 router.put('/config', async (req: any, res: Response): Promise<any> => {
   try {
-    const config = await RegistrationService.updateFormConfig(req.body);
+    const serverId = req.body.serverId || req.query.serverId as string;
+
+    if (!serverId) {
+      return res.status(400).json({ error: 'serverId is required' });
+    }
+
+    // Extract config from body (remove serverId from config object)
+    const { serverId: _, ...configData } = req.body;
+
+    const config = await RegistrationService.updateFormConfig(configData, serverId);
     res.json(config);
   } catch (error) {
     console.error('Error updating form config:', error);

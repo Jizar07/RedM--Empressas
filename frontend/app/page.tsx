@@ -5,11 +5,15 @@ import dynamic from 'next/dynamic';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { useServer } from '@/contexts/ServerContext';
+import { useOnboarding } from '@/contexts/OnboardingContext';
 import { Server, Users, Bot, Activity, MessageSquare, Settings, BarChart3, Shield, Package, Truck, Send, FileText, Gavel, ChefHat, DollarSign, Building, Receipt, Database } from 'lucide-react';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import AuthButton from '@/components/AuthButton';
 import ServerDropdown from '@/components/ServerDropdown';
 import SplashPage from '@/components/SplashPage';
+import AddBotInstructionsModal from '@/components/AddBotInstructionsModal';
+import ServerSelectionModal from '@/components/ServerSelectionModal';
+import FirmSetupInstructionsModal from '@/components/FirmSetupInstructionsModal';
 import RoleGuard from '@/components/RoleGuard';
 import ThemeToggle from '@/components/ThemeToggle';
 import LanguageToggle from '@/components/LanguageToggle';
@@ -57,6 +61,13 @@ export default function HomePage() {
   const searchParams = useSearchParams();
   const { data: session, status } = useSession();
   const { t } = useTranslation();
+  const {
+    hasSeenAddBotInstructions,
+    hasSelectedServer,
+    hasSeenFirmInstructions,
+    markServerSelected,
+    markFirmInstructionsSeen
+  } = useOnboarding();
 
   // Debug logging
   console.log('NextAuth session debug:', { session, status });
@@ -70,6 +81,11 @@ export default function HomePage() {
   const { accessibleFirms, loading: firmsLoading } = useFirmAccess(true);
   const [isInitialLoad, setIsInitialLoad] = useState(true);
   const [translationsLoaded, setTranslationsLoaded] = useState(false);
+
+  // Onboarding modal state
+  const [showAddBotModal, setShowAddBotModal] = useState(false);
+  const [showServerSelectionModal, setShowServerSelectionModal] = useState(false);
+  const [showFirmInstructionsModal, setShowFirmInstructionsModal] = useState(false);
 
   // Load translations BEFORE showing page
   useEffect(() => {
@@ -95,17 +111,52 @@ export default function HomePage() {
 
   // Wait for all APIs to complete before showing content
   useEffect(() => {
-    if (!firmsLoading && accessibleFirms.length > 0 && translationsLoaded) {
+    if (!firmsLoading && translationsLoaded) {
       // Small delay to ensure all state updates are done
       const timer = setTimeout(() => {
         setIsInitialLoad(false);
       }, 100);
       return () => clearTimeout(timer);
     }
-  }, [firmsLoading, accessibleFirms, translationsLoaded]);
-  
+  }, [firmsLoading, translationsLoaded]);
+
+  // Onboarding flow logic - triggers after successful authentication
+  useEffect(() => {
+    // Only run when authenticated and not loading
+    if (status === 'authenticated' && session) {
+      // Step 1: Check if user has selected a server
+      if (!selectedServerId && !showServerSelectionModal) {
+        setShowServerSelectionModal(true);
+        return;
+      }
+
+      // Step 2: After server selection, show firm instructions if not seen
+      if (selectedServerId && !hasSeenFirmInstructions && !showFirmInstructionsModal) {
+        const timer = setTimeout(() => {
+          setShowFirmInstructionsModal(true);
+        }, 500); // Small delay for better UX
+        return () => clearTimeout(timer);
+      }
+    }
+  }, [status, session, selectedServerId, hasSeenFirmInstructions, showServerSelectionModal, showFirmInstructionsModal]);
+
   // Temporary: Always show admin tabs for testing
   const showAdminTabs = true;
+
+  // Onboarding modal handlers
+  const handleShowAddBotInstructions = () => {
+    setShowAddBotModal(true);
+  };
+
+  const handleServerSelectionComplete = () => {
+    setShowServerSelectionModal(false);
+    // Firm instructions modal will show automatically via useEffect
+  };
+
+  const handleGoToFirmManagement = () => {
+    setShowFirmInstructionsModal(false);
+    changeTab('firm-management');
+  };
 
   // Helper function to change tab and update URL
   const changeTab = (tabId: string) => {
@@ -264,7 +315,21 @@ export default function HomePage() {
 
   // Show splash page for unauthenticated users ONLY
   if (status === 'unauthenticated' || (!session && status !== 'loading')) {
-    return <SplashPage botStats={botStats} />;
+    return (
+      <>
+        <SplashPage
+          botStats={botStats}
+          onShowAddBotInstructions={handleShowAddBotInstructions}
+        />
+
+        {/* Add Bot Instructions Modal */}
+        <AddBotInstructionsModal
+          isOpen={showAddBotModal}
+          onClose={() => setShowAddBotModal(false)}
+          onComplete={() => setShowAddBotModal(false)}
+        />
+      </>
+    );
   }
 
   // CRITICAL: Wait for initial firms load to prevent flicker
@@ -832,6 +897,19 @@ export default function HomePage() {
           </div>
         </div>
       </footer>
+
+      {/* Onboarding Modals */}
+      <ServerSelectionModal
+        isOpen={showServerSelectionModal}
+        onClose={() => setShowServerSelectionModal(false)}
+        onComplete={handleServerSelectionComplete}
+      />
+
+      <FirmSetupInstructionsModal
+        isOpen={showFirmInstructionsModal}
+        onClose={() => setShowFirmInstructionsModal(false)}
+        onGoToFirmManagement={handleGoToFirmManagement}
+      />
       </div>
     // </ProtectedRoute>
   );

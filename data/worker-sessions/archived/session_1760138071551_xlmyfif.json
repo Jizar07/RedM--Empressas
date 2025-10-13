@@ -1,0 +1,101 @@
+{
+  "workerId": "751113851432337449",
+  "workerName": "Margeli Vestphal",
+  "channelId": "1424910593873281045",
+  "sessionId": "session_1760138071551_xlmyfif",
+  "startTime": "2025-10-10T23:14:31.551Z",
+  "lastActivity": "2025-10-11T00:01:49.880Z",
+  "status": "stale",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Red Sage Semente",
+      "quantity": 25,
+      "transactionId": "tx_1760139288618_z9mxffd",
+      "timestamp": "2025-10-10T23:34:48.618Z"
+    }
+  ],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Mula",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1760138071553_h5ts7",
+      "timestamp": "2025-10-10T23:14:31.553Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1760138667627_l53kr",
+      "timestamp": "2025-10-10T23:24:27.627Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Ovelha Macho",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1760138903759_7tdrdf",
+      "timestamp": "2025-10-10T23:28:23.759Z"
+    },
+    {
+      "type": "animals_taken",
+      "animalType": "Ovelha Femea",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1760139179286_mtnaj",
+      "timestamp": "2025-10-10T23:32:59.286Z"
+    },
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1760140909880_5py7w",
+      "timestamp": "2025-10-11T00:01:49.880Z"
+    }
+  ],
+  "financialTransactions": [],
+  "inventoryTransactions": [],
+  "totalCredits": 320,
+  "embedMessageId": "1426359101801107540",
+  "animalExpectations": [
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1760138071553_h5ts7",
+      "takenTimestamp": "2025-10-10T23:14:31.553Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 4,
+      "isComplete": true,
+      "transactionId": "tx_1760138903759_7tdrdf",
+      "takenTimestamp": "2025-10-10T23:28:23.759Z"
+    },
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1760139179286_mtnaj",
+      "takenTimestamp": "2025-10-10T23:32:59.286Z"
+    }
+  ],
+  "seedExpectations": [
+    {
+      "seedType": "Red Sage Semente",
+      "seedQuantity": 25,
+      "expectedPlantType": "Red Sage Semente",
+      "expectedPlantQuantity": 250,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1760139288618_z9mxffd"
+    }
+  ],
+  "completedAt": "2025-10-13T11:52:45.196Z",
+  "notes": "Auto-archived due to inactivity"
+}

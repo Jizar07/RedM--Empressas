@@ -1,0 +1,36 @@
+{
+  "workerId": "645598935209082880",
+  "workerName": "Vincent Versace",
+  "channelId": "1425688123848917104",
+  "sessionId": "session_1760324243533_utd7w",
+  "startTime": "2025-10-13T02:57:23.533Z",
+  "lastActivity": "2025-10-13T02:57:23.536Z",
+  "status": "paid",
+  "plantTransactions": [],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Cabra",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1760324243536_bfnj7f",
+      "timestamp": "2025-10-13T02:57:23.536Z"
+    }
+  ],
+  "financialTransactions": [],
+  "inventoryTransactions": [],
+  "totalCredits": 0,
+  "embedMessageId": "1427128057856131207",
+  "animalExpectations": [
+    {
+      "animalsTaken": 4,
+      "animalsDelivered": 0,
+      "isComplete": false,
+      "transactionId": "tx_1760324243536_bfnj7f",
+      "takenTimestamp": "2025-10-13T02:57:23.536Z"
+    }
+  ],
+  "completedAt": "2025-10-13T03:04:18.271Z",
+  "notes": "Pago por ๖ۣۜζ͜͡ɪᴢᴢʏɴʜᴀ🎀 (949397147030274059)"
+}

@@ -65,7 +65,7 @@ export class PaymentConfigService {
   private static instance: PaymentConfigService | null = null;
   private dataDir: string;
   private dataFile: string;
-  private config: PaymentConfig | null = null;
+  private configCache: Map<string, PaymentConfig> = new Map();
 
   private constructor() {
     this.dataDir = path.join(process.cwd(), 'data');
@@ -90,43 +90,85 @@ export class PaymentConfigService {
     }
   }
 
-  public async getConfig(): Promise<PaymentConfig> {
-    if (this.config) {
-      return this.config;
-    }
-
+  private async loadFullConfig(): Promise<{ servers: Record<string, PaymentConfig> }> {
     try {
       await fs.access(this.dataFile);
       const data = await fs.readFile(this.dataFile, 'utf-8');
-      this.config = JSON.parse(data);
-      console.log('📄 Loaded payment configuration from file');
-      return this.config!;
+      return JSON.parse(data);
     } catch (error) {
-      // File doesn't exist or is invalid, create default
-      console.log('📄 Creating default payment configuration');
-      await this.updateConfig(defaultConfig);
-      return defaultConfig;
+      // File doesn't exist, return empty servers object
+      return { servers: {} };
     }
   }
 
-  public async updateConfig(config: PaymentConfig): Promise<void> {
+  public async getConfig(serverId?: string): Promise<PaymentConfig> {
+    // Check cache first
+    if (serverId && this.configCache.has(serverId)) {
+      return this.configCache.get(serverId)!;
+    }
+
+    const fullConfig = await this.loadFullConfig();
+
+    // If no serverId provided, return first server's config (backward compatibility)
+    if (!serverId) {
+      if (fullConfig.servers) {
+        const firstServerId = Object.keys(fullConfig.servers)[0];
+        if (firstServerId) {
+          console.log(`📄 No serverId provided, returning config for first server: ${firstServerId}`);
+          return fullConfig.servers[firstServerId];
+        }
+      }
+      // Fallback to default config if no servers exist
+      console.log('📄 No servers found, returning default config');
+      return defaultConfig;
+    }
+
+    // Return server-specific config
+    if (fullConfig.servers && fullConfig.servers[serverId]) {
+      const config = fullConfig.servers[serverId];
+      this.configCache.set(serverId, config);
+      console.log(`📄 Loaded payment configuration for server ${serverId}`);
+      return config;
+    }
+
+    // Server config doesn't exist, create default
+    console.log(`📄 Creating default payment configuration for server ${serverId}`);
+    await this.updateConfig(defaultConfig, serverId);
+    return defaultConfig;
+  }
+
+  public async updateConfig(config: PaymentConfig, serverId: string): Promise<void> {
     try {
+      const fullConfig = await this.loadFullConfig();
+
+      // Ensure servers object exists
+      if (!fullConfig.servers) {
+        fullConfig.servers = {};
+      }
+
+      // Update server's config
       config.lastUpdated = new Date().toISOString();
-      await fs.writeFile(this.dataFile, JSON.stringify(config, null, 2));
-      this.config = config;
-      console.log('💾 Payment configuration saved successfully');
+      fullConfig.servers[serverId] = config;
+
+      // Save full config
+      await fs.writeFile(this.dataFile, JSON.stringify(fullConfig, null, 2));
+
+      // Update cache
+      this.configCache.set(serverId, config);
+
+      console.log(`💾 Payment configuration saved successfully for server ${serverId}`);
     } catch (error) {
       console.error('❌ Error saving payment configuration:', error);
       throw new Error('Failed to save payment configuration');
     }
   }
 
-  public async getDefaultPrices(): Promise<{
+  public async getDefaultPrices(serverId?: string): Promise<{
     plants: number;
     animals: number;
     ferrovia: number;
   }> {
-    const config = await this.getConfig();
+    const config = await this.getConfig(serverId);
     return {
       plants: config.defaultPrices.plants.unitPrice,
       animals: config.defaultPrices.animals.unitPrice,
@@ -134,45 +176,45 @@ export class PaymentConfigService {
     };
   }
 
-  public async getInventoryVerificationSettings(): Promise<{
+  public async getInventoryVerificationSettings(serverId?: string): Promise<{
     enabled: boolean;
     timeWindowMinutes: number;
     tolerance: number;
   }> {
-    const config = await this.getConfig();
+    const config = await this.getConfig(serverId);
     return config.inventoryVerification;
   }
 
-  public async getRolePermissions(): Promise<{
+  public async getRolePermissions(serverId?: string): Promise<{
     managerRoles: string[];
     farmOwnerRoles: string[];
   }> {
-    const config = await this.getConfig();
+    const config = await this.getConfig(serverId);
     return config.rolePermissions;
   }
 
-  public async isEnabled(): Promise<boolean> {
-    const config = await this.getConfig();
+  public async isEnabled(serverId?: string): Promise<boolean> {
+    const config = await this.getConfig(serverId);
     return config.enabled;
   }
 
-  public async validateManagerRole(roleIds: string[]): Promise<boolean> {
-    const config = await this.getConfig();
+  public async validateManagerRole(roleIds: string[], serverId?: string): Promise<boolean> {
+    const config = await this.getConfig(serverId);
     return roleIds.some(roleId =>
       config.rolePermissions.managerRoles.includes(roleId)
     );
   }
 
-  public async validateFarmOwnerRole(roleIds: string[]): Promise<boolean> {
-    const config = await this.getConfig();
+  public async validateFarmOwnerRole(roleIds: string[], serverId?: string): Promise<boolean> {
+    const config = await this.getConfig(serverId);
     return roleIds.some(roleId =>
       config.rolePermissions.farmOwnerRoles.includes(roleId)
     );
   }
 
-  public async resetToDefaults(): Promise<void> {
-    console.log('🔄 Resetting payment configuration to defaults');
-    await this.updateConfig(defaultConfig);
+  public async resetToDefaults(serverId: string): Promise<void> {
+    console.log(`🔄 Resetting payment configuration to defaults for server ${serverId}`);
+    await this.updateConfig(defaultConfig, serverId);
   }
 }
 

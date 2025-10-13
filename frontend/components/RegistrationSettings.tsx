@@ -130,15 +130,13 @@ export default function RegistrationSettings() {
   });
 
   useEffect(() => {
-    fetchConfig();
-  }, []);
-
-  useEffect(() => {
     if (selectedServerId) {
+      fetchConfig();
       fetchDiscordRoles();
       fetchDiscordCategories();
     } else {
-      // Clear roles and categories when no server is selected
+      // Clear everything when no server is selected
+      setConfig(null);
       setDiscordRoles([]);
       setDiscordCategories([]);
       setRolesError(null);
@@ -146,8 +144,13 @@ export default function RegistrationSettings() {
   }, [selectedServerId]);
 
   const fetchConfig = async () => {
+    if (!selectedServerId) {
+      setLoading(false);
+      return;
+    }
+
     try {
-      const response = await fetch('http://localhost:3050/api/registration/config');
+      const response = await fetch(`http://localhost:3050/api/registration/config?serverId=${selectedServerId}`);
       const data = await response.json();
       setConfig(data);
     } catch (error) {
@@ -209,7 +212,7 @@ export default function RegistrationSettings() {
   };
 
   const saveConfig = async () => {
-    if (!config) return;
+    if (!config || !selectedServerId) return;
 
     setSaving(true);
     try {
@@ -218,7 +221,10 @@ export default function RegistrationSettings() {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(config)
+        body: JSON.stringify({
+          ...config,
+          serverId: selectedServerId
+        })
       });
 
       if (response.ok) {
@@ -276,7 +282,10 @@ export default function RegistrationSettings() {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(updatedConfig)
+        body: JSON.stringify({
+          ...updatedConfig,
+          serverId: selectedServerId
+        })
       });
 
       if (response.ok) {
@@ -321,7 +330,10 @@ export default function RegistrationSettings() {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(updatedConfig)
+        body: JSON.stringify({
+          ...updatedConfig,
+          serverId: selectedServerId
+        })
       });
 
       if (response.ok) {
@@ -376,7 +388,10 @@ export default function RegistrationSettings() {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(updatedConfig)
+        body: JSON.stringify({
+          ...updatedConfig,
+          serverId: selectedServerId
+        })
       });
 
       if (response.ok) {
@@ -410,7 +425,10 @@ export default function RegistrationSettings() {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(updatedConfig)
+        body: JSON.stringify({
+          ...updatedConfig,
+          serverId: selectedServerId
+        })
       });
 
       if (response.ok) {
@@ -450,7 +468,10 @@ export default function RegistrationSettings() {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(updatedConfig)
+        body: JSON.stringify({
+          ...updatedConfig,
+          serverId: selectedServerId
+        })
       });
 
       if (response.ok) {

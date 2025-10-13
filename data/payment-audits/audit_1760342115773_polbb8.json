@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1760342115773_polbb8",
+  "sessionId": "session_1760324600832_f4e8s",
+  "managerId": "949397147030274059",
+  "managerName": "๖ۣۜζ͜͡ɪᴢᴢʏɴʜᴀ🎀",
+  "workerId": "949397147030274059",
+  "workerName": "Izzynha Evans",
+  "amountPaid": 1648.5,
+  "paidAt": "2025-10-13T07:55:15.773Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-13T07:50:15.773Z",
+    "endTime": "2025-10-13T08:05:15.773Z"
+  }
+}

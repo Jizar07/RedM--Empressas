@@ -4,14 +4,27 @@ import { FirmConfigService } from '../../services/FirmConfigService';
 const router = Router();
 const firmService = FirmConfigService.getInstance();
 
-// Get all firms
-router.get('/', async (_req: Request, res: Response) => {
+// Get all firms (optionally filtered by serverId)
+router.get('/', async (req: Request, res: Response) => {
   try {
-    const firms = firmService.getAllFirms();
+    const serverId = req.query.serverId as string | undefined;
+    const allFirms = firmService.getAllFirms();
+
+    // Filter firms by serverId if provided
+    let firms = allFirms;
+    if (serverId) {
+      firms = Object.fromEntries(
+        Object.entries(allFirms).filter(([_, firm]) =>
+          firm.serverId === serverId || firm.guildId === serverId
+        )
+      );
+    }
+
     res.json({
       success: true,
       firms,
-      count: Object.keys(firms).length
+      count: Object.keys(firms).length,
+      serverId: serverId || 'all'
     });
   } catch (error) {
     console.error('❌ Error fetching firms:', error);
@@ -53,8 +66,8 @@ router.get('/:firmId', async (req: Request, res: Response) => {
 // Get firms accessible to user based on roles
 router.post('/accessible', async (req: Request, res: Response) => {
   try {
-    const { userRoles } = req.body;
-    
+    const { userRoles, serverId } = req.body;
+
     if (!Array.isArray(userRoles)) {
       return res.status(400).json({
         success: false,
@@ -62,13 +75,15 @@ router.post('/accessible', async (req: Request, res: Response) => {
       });
     }
 
-    const accessibleFirms = firmService.getFirmsForRoles(userRoles);
-    
+    // Pass serverId to filter firms by server
+    const accessibleFirms = firmService.getFirmsForRoles(userRoles, serverId);
+
     return res.json({
       success: true,
       firms: accessibleFirms,
       count: accessibleFirms.length,
-      userRoles
+      userRoles,
+      serverId: serverId || 'all'
     });
   } catch (error) {
     console.error('❌ Error fetching accessible firms:', error);

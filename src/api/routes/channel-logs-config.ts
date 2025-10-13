@@ -7,6 +7,7 @@ const router = Router();
 
 interface ChannelLogMapping {
   id: string;
+  serverId: string; // Discord guild/server ID this mapping belongs to
   channelId: string;
   channelName?: string;
   systemEndpoint: string;
@@ -32,8 +33,8 @@ async function ensureDataDirectory(): Promise<void> {
   }
 }
 
-// Load config from file
-async function loadConfig(): Promise<ChannelLogsConfig> {
+// Load full config from file
+async function loadFullConfig(): Promise<ChannelLogsConfig> {
   try {
     await ensureDataDirectory();
     const data = await fs.readFile(CONFIG_FILE_PATH, 'utf-8');
@@ -47,23 +48,56 @@ async function loadConfig(): Promise<ChannelLogsConfig> {
   }
 }
 
-// Save config to file
-async function saveConfig(config: ChannelLogsConfig): Promise<void> {
+// Load config filtered by serverId
+async function loadConfig(serverId?: string): Promise<ChannelLogsConfig> {
+  const fullConfig = await loadFullConfig();
+
+  // If no serverId provided, return all mappings (backward compatibility)
+  if (!serverId) {
+    return fullConfig;
+  }
+
+  // Filter mappings by serverId
+  const filteredMappings = fullConfig.mappings.filter(m => m.serverId === serverId);
+
+  return {
+    mappings: filteredMappings,
+    lastUpdated: fullConfig.lastUpdated
+  };
+}
+
+// Save config to file (updates specific server's mappings)
+async function saveConfig(mappings: ChannelLogMapping[], serverId?: string): Promise<void> {
   await ensureDataDirectory();
-  config.lastUpdated = new Date().toISOString();
-  await fs.writeFile(CONFIG_FILE_PATH, JSON.stringify(config, null, 2));
+
+  const fullConfig = await loadFullConfig();
+
+  if (!serverId) {
+    // If no serverId, replace all mappings (backward compatibility)
+    fullConfig.mappings = mappings;
+  } else {
+    // Remove old mappings for this server
+    fullConfig.mappings = fullConfig.mappings.filter(m => m.serverId !== serverId);
+
+    // Add new mappings for this server
+    fullConfig.mappings.push(...mappings);
+  }
+
+  fullConfig.lastUpdated = new Date().toISOString();
+  await fs.writeFile(CONFIG_FILE_PATH, JSON.stringify(fullConfig, null, 2));
 }
 
 // GET /api/channel-logs/config - Get current configuration
-router.get('/config', async (_req: Request, res: Response): Promise<void> => {
+router.get('/config', async (req: Request, res: Response): Promise<void> => {
   try {
-    const config = await loadConfig();
+    const serverId = req.query.serverId as string | undefined;
+    const config = await loadConfig(serverId);
     res.json(config);
   } catch (error) {
     console.error('Error loading channel logs config:', error);
-    res.status(500).json({ 
-      success: false, 
-      error: 'Failed to load configuration' 
+    res.status(500).json({
+      success: false,
+      error: 'Failed to load configuration'
     });
   }
 });
@@ -71,12 +105,12 @@ router.get('/config', async (_req: Request, res: Response): Promise<void> => {
 // POST /api/channel-logs/config - Save configuration
 router.post('/config', async (req: Request, res: Response): Promise<void> => {
   try {
-    const { mappings } = req.body;
+    const { mappings, serverId } = req.body;
 
     if (!Array.isArray(mappings)) {
-      res.status(400).json({ 
-        success: false, 
-        error: 'mappings must be an array' 
+      res.status(400).json({
+        success: false,
+        error: 'mappings must be an array'
       });
       return;
     }
@@ -84,42 +118,43 @@ router.post('/config', async (req: Request, res: Response): Promise<void> => {
     // Validate each mapping
     for (const mapping of mappings) {
       if (!mapping.id || !mapping.channelId || !mapping.systemEndpoint) {
-        res.status(400).json({ 
-          success: false, 
-          error: 'Each mapping must have id, channelId, and systemEndpoint' 
+        res.status(400).json({
+          success: false,
+          error: 'Each mapping must have id, channelId, and systemEndpoint'
         });
         return;
       }
 
       if (!Array.isArray(mapping.messageTypes)) {
-        res.status(400).json({ 
-          success: false, 
-          error: 'messageTypes must be an array' 
+        res.status(400).json({
+          success: false,
+          error: 'messageTypes must be an array'
         });
         return;
       }
+
+      // Ensure serverId is present in each mapping
+      if (serverId && !mapping.serverId) {
+        mapping.serverId = serverId;
+      }
     }
 
-    const config: ChannelLogsConfig = {
-      mappings,
-      lastUpdated: new Date().toISOString()
-    };
+    await saveConfig(mappings, serverId);
 
-    await saveConfig(config);
+    console.log(`📁 Channel logs configuration updated for ${serverId ? `server ${serverId}` : 'all servers'}: ${mappings.length} mappings`);
 
-    console.log(`📁 Channel logs configuration updated: ${mappings.length} mappings`);
-
-    res.json({ 
-      success: true, 
+    res.json({
+      success: true,
       message: 'Configuration saved successfully',
-      mappings: mappings.length
+      mappings: mappings.length,
+      serverId: serverId || 'all'
     });
 
   } catch (error) {
     console.error('Error saving channel logs config:', error);
-    res.status(500).json({ 
-      success: false, 
-      error: 'Failed to save configuration' 
+    res.status(500).json({
+      success: false,
+      error: 'Failed to save configuration'
     });
   }
 });

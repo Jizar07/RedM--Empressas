@@ -1,0 +1,26 @@
+{
+  "workerId": "645598935209082880",
+  "workerName": "Vincent Versace",
+  "channelId": "1425688123848917104",
+  "sessionId": "session_1760323358350_05tlhs",
+  "startTime": "2025-10-13T02:42:38.350Z",
+  "lastActivity": "2025-10-13T02:42:38.352Z",
+  "status": "paid",
+  "plantTransactions": [],
+  "animalTransactions": [
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1760323358352_56o3lk",
+      "timestamp": "2025-10-13T02:42:38.352Z"
+    }
+  ],
+  "financialTransactions": [],
+  "inventoryTransactions": [],
+  "totalCredits": 160,
+  "embedMessageId": "1427124344978673836",
+  "animalExpectations": [],
+  "completedAt": "2025-10-13T02:54:36.436Z",
+  "notes": "Pago por ๖ۣۜζ͜͡ɪᴢᴢʏɴʜᴀ🎀 (949397147030274059)"
+}

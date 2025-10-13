@@ -1,34 +1,38 @@
 {
-  "enabled": true,
-  "defaultPrices": {
-    "plants": {
-      "unitPrice": 0.25,
-      "costPerUnit": 0.01,
-      "description": "Preço padrão por planta depositada"
-    },
-    "animals": {
-      "unitPrice": 160,
-      "costPerUnit": 3.5,
-      "description": "Preço padrão por serviço animal concluído"
-    },
-    "ferrovia": {
-      "unitPrice": 250,
-      "description": "Preço padrão por missão ferrovia concluída"
+  "servers": {
+    "1274479410107646004": {
+      "enabled": true,
+      "defaultPrices": {
+        "plants": {
+          "unitPrice": 0.25,
+          "costPerUnit": 0.01,
+          "description": "Preço padrão por planta depositada"
+        },
+        "animals": {
+          "unitPrice": 160,
+          "costPerUnit": 3.5,
+          "description": "Preço padrão por serviço animal concluído"
+        },
+        "ferrovia": {
+          "unitPrice": 250,
+          "description": "Preço padrão por missão ferrovia concluída"
+        }
+      },
+      "inventoryVerification": {
+        "enabled": true,
+        "timeWindowMinutes": 30,
+        "tolerance": 0.01
+      },
+      "rolePermissions": {
+        "managerRoles": [
+          "1274479410107646008",
+          "1274479410107646009"
+        ],
+        "farmOwnerRoles": [
+          "1274479410107646006"
+        ]
+      },
+      "lastUpdated": "2025-10-08T19:30:45.972Z"
     }
-  },
-  "inventoryVerification": {
-    "enabled": true,
-    "timeWindowMinutes": 30,
-    "tolerance": 0.01
-  },
-  "rolePermissions": {
-    "managerRoles": [
-      "1274479410107646008",
-      "1274479410107646009"
-    ],
-    "farmOwnerRoles": [
-      "1274479410107646006"
-    ]
-  },
-  "lastUpdated": "2025-10-08T19:30:45.972Z"
+  }
 }

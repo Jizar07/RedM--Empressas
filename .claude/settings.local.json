@@ -50,7 +50,9 @@
       "Read(//c/Users/jizar/OneDrive/Documents/Stoffel Bot/**)",
       "Bash(npx tsx:*)",
       "Read(//c/Users/jizar/OneDrive/Pictures/Screenshots/**)",
-      "Bash(dir:*)"
+      "Bash(dir:*)",
+      "WebFetch(domain:docs.google.com)",
+      "WebFetch(domain:doc-00-ao-sheets.googleusercontent.com)"
     ],
     "deny": [],
     "ask": []

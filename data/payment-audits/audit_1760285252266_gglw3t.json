@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1760285252266_gglw3t",
+  "sessionId": "session_1760060057097_4mrnd",
+  "managerId": "198538680686608384",
+  "managerName": "Barth",
+  "workerId": "758683527108624404",
+  "workerName": "Romano Delaerva",
+  "amountPaid": 3532.5,
+  "paidAt": "2025-10-12T16:07:32.266Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-12T16:02:32.266Z",
+    "endTime": "2025-10-12T16:17:32.266Z"
+  }
+}

@@ -32,6 +32,7 @@ export default function EnhancedFirmConfigModal({ firm, onSave, onCancel }: Enha
   const [formData, setFormData] = useState<EnhancedCreateFirmRequest>({
     name: '',
     description: '',
+    serverId: selectedServerId || '', // Discord guild ID this firm belongs to
     channelId: '',
     allowedRoles: [],
     monitoring: {
@@ -96,6 +97,7 @@ export default function EnhancedFirmConfigModal({ firm, onSave, onCancel }: Enha
       setFormData({
         name: firm.name,
         description: firm.description || '',
+        serverId: firm.serverId || firm.guildId || '', // Populate serverId from existing firm
         channelId: firm.channelId,
         allowedRoles: firm.allowedRoles,
         monitoring: firm.monitoring,
@@ -343,7 +345,11 @@ export default function EnhancedFirmConfigModal({ firm, onSave, onCancel }: Enha
                         onClick={() => {
                           setSelectedGuild(guild);
                           setDiscordRoles([]);
-                          setFormData(prev => ({ ...prev, allowedRoles: [] }));
+                          setFormData(prev => ({
+                            ...prev,
+                            serverId: guild.id, // Update serverId when guild is selected
+                            allowedRoles: []
+                          }));
                           fetchDiscordRoles(guild.id);
                         }}
                         className={`p-4 border-2 rounded-lg cursor-pointer transition-colors ${

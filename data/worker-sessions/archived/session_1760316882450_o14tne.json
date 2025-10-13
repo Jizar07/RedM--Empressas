@@ -1,0 +1,26 @@
+{
+  "workerId": "1228497902201077862",
+  "workerName": "Alceu Dispor",
+  "channelId": "1427053805199032484",
+  "sessionId": "session_1760316882450_o14tne",
+  "startTime": "2025-10-13T00:54:42.450Z",
+  "lastActivity": "2025-10-13T00:54:42.453Z",
+  "status": "paid",
+  "plantTransactions": [
+    {
+      "type": "plant_deposited",
+      "itemName": "Algodão",
+      "quantity": 115,
+      "transactionId": "tx_1760316882453_dfkibp",
+      "timestamp": "2025-10-13T00:54:42.453Z"
+    }
+  ],
+  "animalTransactions": [],
+  "financialTransactions": [],
+  "inventoryTransactions": [],
+  "totalCredits": 28.75,
+  "embedMessageId": "1427097183420813565",
+  "seedExpectations": [],
+  "completedAt": "2025-10-13T02:21:38.595Z",
+  "notes": "Pago por 𝓑𝓪𝓻𝓻𝓸𝓼𝓸 (206587400703574019)"
+}

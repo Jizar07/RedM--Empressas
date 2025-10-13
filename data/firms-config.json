@@ -1,11 +1,13 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2025-09-22T12:03:25.157Z",
+  "lastUpdated": "2025-10-13T14:53:59.714Z",
   "firms": {
     "fazenda-cabra-da-peste": {
       "id": "fazenda-cabra-da-peste",
       "name": "Fazenda",
       "description": "",
+      "serverId": "1274479410107646004",
+      "guildId": "1274479410107646004",
       "channelId": "1412325130926948362",
       "allowedRoles": [
         "1274479410107646008"
@@ -34,6 +36,8 @@
       "id": "ferrovia",
       "name": "Ferrovia",
       "description": "",
+      "serverId": "1274479410107646004",
+      "guildId": "1274479410107646004",
       "channelId": "1414735729082499072",
       "allowedRoles": [
         "1274479410107646009",
@@ -67,6 +71,8 @@
       "id": "bercario",
       "name": "Bercario",
       "description": "",
+      "serverId": "1274479410107646004",
+      "guildId": "1274479410107646004",
       "channelId": "1406811401036497036",
       "allowedRoles": [
         "1274479410107646008"
@@ -95,6 +101,8 @@
       "id": "veterinaria",
       "name": "Veterinaria",
       "description": "",
+      "serverId": "1274479410107646004",
+      "guildId": "1274479410107646004",
       "channelId": "1419341131459723324",
       "allowedRoles": [
         "1274479410107646008"
@@ -123,6 +131,8 @@
       "id": "armaria",
       "name": "Armaria",
       "description": "",
+      "serverId": "1274479410107646004",
+      "guildId": "1274479410107646004",
       "channelId": "1419438932013219850",
       "allowedRoles": [
         "1274479410107646006",
@@ -147,6 +157,96 @@
       },
       "createdAt": "2025-09-22T12:03:25.157Z",
       "updatedAt": "2025-09-22T12:03:25.157Z"
+    },
+    "fazenda": {
+      "id": "fazenda",
+      "name": "Fazenda",
+      "description": "",
+      "serverId": "1413530823788859424",
+      "guildId": "1413530823788859424",
+      "channelId": "1427267559300010177",
+      "allowedRoles": [
+        "1413531619494461510"
+      ],
+      "enabled": true,
+      "monitoring": {
+        "endpoint": "https://fazenda.stoffeltech.com/api/webhook/channel-messages",
+        "endpointType": "frontend",
+        "messageTypes": [
+          "ALL"
+        ],
+        "enabled": true
+      },
+      "display": {
+        "itemTranslations": "global",
+        "bankingEnabled": true,
+        "theme": {
+          "primaryColor": "#16a34a",
+          "secondaryColor": "#15803d"
+        }
+      },
+      "createdAt": "2025-10-13T14:52:26.348Z",
+      "updatedAt": "2025-10-13T14:52:26.348Z"
+    },
+    "loja-da-fazenda": {
+      "id": "loja-da-fazenda",
+      "name": "Loja da Fazenda",
+      "description": "",
+      "serverId": "1413530823788859424",
+      "guildId": "1413530823788859424",
+      "channelId": "1427267405213733034",
+      "allowedRoles": [
+        "1413531619494461510"
+      ],
+      "enabled": true,
+      "monitoring": {
+        "endpoint": "https://fazenda.stoffeltech.com/api/webhook/channel-messages",
+        "endpointType": "frontend",
+        "messageTypes": [
+          "ALL"
+        ],
+        "enabled": true
+      },
+      "display": {
+        "itemTranslations": "global",
+        "bankingEnabled": true,
+        "theme": {
+          "primaryColor": "#16a34a",
+          "secondaryColor": "#15803d"
+        }
+      },
+      "createdAt": "2025-10-13T14:53:14.444Z",
+      "updatedAt": "2025-10-13T14:53:14.444Z"
+    },
+    "bau-da-casa": {
+      "id": "bau-da-casa",
+      "name": "Bau da Casa",
+      "description": "",
+      "serverId": "1413530823788859424",
+      "guildId": "1413530823788859424",
+      "channelId": "1413532710302912695",
+      "allowedRoles": [
+        "1413531619494461510"
+      ],
+      "enabled": true,
+      "monitoring": {
+        "endpoint": "https://fazenda.stoffeltech.com/api/webhook/channel-messages",
+        "endpointType": "frontend",
+        "messageTypes": [
+          "ALL"
+        ],
+        "enabled": true
+      },
+      "display": {
+        "itemTranslations": "global",
+        "bankingEnabled": true,
+        "theme": {
+          "primaryColor": "#16a34a",
+          "secondaryColor": "#15803d"
+        }
+      },
+      "createdAt": "2025-10-13T14:53:59.714Z",
+      "updatedAt": "2025-10-13T14:53:59.714Z"
     }
   },
   "settings": {

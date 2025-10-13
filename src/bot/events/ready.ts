@@ -9,12 +9,18 @@ export default {
   async execute(client: Client) {
     console.log(`✅ Bot is ready! Logged in as ${client.user?.tag}`);
     console.log(`📊 Serving ${client.guilds.cache.size} guilds`);
-    
+
+    const botClient = client as any;
+
+    // Register slash commands to all guilds (now that guilds are cached)
+    if (botClient.registerCommands) {
+      await botClient.registerCommands();
+    }
+
     // Initialize dynamic status system
     BotStatusService.setClient(client);
-    
+
     // Initialize WorkerChannelService in MultiChannelForwarder
-    const botClient = client as any;
     if (botClient.multiChannelForwarder) {
       botClient.multiChannelForwarder.initializeWorkerChannelService(client);
     }

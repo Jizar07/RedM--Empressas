@@ -1,102 +1,217 @@
 {
-  "formId": "registration_form",
-  "functions": [
-    {
-      "id": "func_1758806802577",
-      "displayName": "Gerente",
-      "discordRoleId": "1274479410107646008",
-      "discordRoleName": "❪★❱ Gerentes",
-      "description": "",
-      "order": 0,
-      "active": true,
-      "categoryId": "1274521961908928533",
-      "categoryName": "📚| Gerentes",
-      "channelEmojiPrefix": "🧑‍💼・",
-      "channelPermissions": {
-        "allowedRoles": [
-          "1274479410107646006"
-        ],
-        "channelTopic": ""
+  "servers": {
+    "1274479410107646004": {
+      "formId": "registration_form",
+      "functions": [
+        {
+          "id": "func_1760359339764",
+          "displayName": "Funcionario",
+          "discordRoleId": "1274479410107646009",
+          "discordRoleName": "👨🏻‍🌾│Funcionários",
+          "description": "",
+          "order": 0,
+          "active": true,
+          "categoryId": "1415217611939119125",
+          "categoryName": "FUNCIONARIOS 2.0",
+          "channelEmojiPrefix": "🌾・",
+          "channelPermissions": {
+            "allowedRoles": [
+              "1274479410107646008"
+            ],
+            "channelTopic": ""
+          }
+        },
+        {
+          "id": "func_1760365741439",
+          "displayName": "Gerentes",
+          "discordRoleId": "1274479410107646008",
+          "discordRoleName": "❪★❱ Gerentes",
+          "description": "",
+          "order": 1,
+          "active": true,
+          "categoryId": "1274521961908928533",
+          "categoryName": "📚| Gerentes",
+          "channelPermissions": {
+            "allowedRoles": [
+              "1274479410107646006"
+            ],
+            "channelTopic": ""
+          }
+        }
+      ],
+      "settings": {
+        "oneTimeOnly": true,
+        "requiresVerification": false,
+        "welcomeMessage": "Bem-vindo à Fazenda ! Seu registro foi processado.",
+        "embedColor": "#FF0000",
+        "channelId": "1415645926009077841",
+        "serverIP": "",
+        "serverPort": ""
+      },
+      "command": {
+        "name": "register-setup",
+        "description": "Deploy the registration form to a channel",
+        "permissions": "Administrator"
+      },
+      "formDisplay": {
+        "title": "🎮 Registro da Fazenda",
+        "description": "**Bem-vindo a Fazenda **\n\nPara ter acesso ao servidor, você precisa completar o processo de registro.\n\n**Informações Necessárias:**\n• Seu nome completo no condado\n• Seu Pombo\n• Sua função\n• Quem te convidou para a Familia\n\nClique no botão **Registrar** abaixo para começar.",
+        "footerText": "stoffeltech • Sistema de Registro",
+        "embedColor": "#00b3ff",
+        "button": {
+          "text": "Registrar",
+          "emoji": "🧾",
+          "style": "Primary"
+        }
+      },
+      "steps": {
+        "step1": {
+          "modalTitle": "Fazenda - Passo 1/3",
+          "nameLabel": "Nome completo no Condado",
+          "namePlaceholder": "Digite seu nome completo no condado",
+          "pomboLabel": "Pombo",
+          "pomboPlaceholder": "Digite seu pombo"
+        },
+        "step2": {
+          "embedTitle": "Passo 2/3 - Sua função",
+          "embedDescription": "Selecione sua função",
+          "dropdownPlaceholder": "Selecione sua função/trabalho na Familia"
+        },
+        "step3": {
+          "embedTitle": "Passo 3/3 - Quem te convidou?",
+          "embedDescription": "Selecione quem te convidou para a Fazenda :\n\n✨ **Digite para buscar** - Você pode digitar o nome da pessoa para encontrá-la rapidamente!",
+          "dropdownPlaceholder": "Selecione quem te convidou para a Familia"
+        }
+      },
+      "postRegistration": {
+        "nicknameFormat": "{ingameName} | {pombo}",
+        "sendDM": true,
+        "dmTitle": "Bem-vindo à Fazenda !",
+        "dmMessage": "Olá {ingameName},\n\nSeu registro como **{functionName}** foi aprovado!\n\nAgora você tem acesso aos canais específicos da sua função.\n\nAproveite seu tempo na Fazenda Cabra da Peste!",
+        "assignRoles": true,
+        "welcomeChannelMessage": true,
+        "createChannel": true,
+        "channelNameFormat": "{ingameName}"
+      },
+      "messages": {
+        "alreadyRegistered": "❌ Você já está registrado!",
+        "sessionExpired": "❌ Registration session expired. Please start again.",
+        "registrationSuccess": "✅ Registro Realizado com Sucesso!",
+        "errorGeneric": "❌ An error occurred. Please try again.",
+        "permissionDenied": "❌ This is not your registration form."
       }
     },
-    {
-      "id": "func_1757681433033",
-      "displayName": "Funcionario",
-      "discordRoleId": "1274479410107646009",
-      "discordRoleName": "👨🏻‍🌾│Funcionários",
-      "description": "",
-      "order": 1,
-      "active": true,
-      "categoryId": "1415217611939119125",
-      "categoryName": "FUNCIONARIOS 2.0",
-      "channelEmojiPrefix": "🌾・",
-      "channelPermissions": {
-        "allowedRoles": [
-          "1274479410107646008"
-        ],
-        "channelTopic": ""
+    "1413530823788859424": {
+      "formId": "registration_form",
+      "functions": [
+        {
+          "id": "func_1760365671501",
+          "displayName": "Fazendeiro",
+          "discordRoleId": "1413531395485204530",
+          "discordRoleName": "🌾・Fazendeiro(a)",
+          "description": "",
+          "order": 0,
+          "active": true,
+          "categoryId": "1413532110844854373",
+          "categoryName": "👨‍🌾・Fazendeiros",
+          "channelEmojiPrefix": "🌾",
+          "channelPermissions": {
+            "allowedRoles": [
+              "1413531619494461510"
+            ],
+            "channelTopic": ""
+          }
+        },
+        {
+          "id": "func_1760367984126",
+          "displayName": "Gerentes",
+          "discordRoleId": "1413531619494461510",
+          "discordRoleName": "Gerente",
+          "description": "",
+          "order": 1,
+          "active": true,
+          "categoryId": "1427311002139234495",
+          "categoryName": "📚| Gerentes",
+          "channelPermissions": {
+            "allowedRoles": [
+              "1413531619494461510"
+            ],
+            "channelTopic": ""
+          }
+        }
+      ],
+      "settings": {
+        "oneTimeOnly": true,
+        "requiresVerification": false,
+        "welcomeMessage": "Bem-vindo! Seu registro foi processado.",
+        "embedColor": "#FF0000",
+        "channelId": "",
+        "serverIP": "",
+        "serverPort": ""
+      },
+      "command": {
+        "name": "register-setup",
+        "description": "Deploy the registration form to a channel",
+        "permissions": "Administrator"
+      },
+      "formDisplay": {
+        "title": "🎮 Registro do Servidor",
+        "description": "**Bem-vindo ao Servidor!**\n\nPara ter acesso ao servidor, você precisa completar o processo de registro.\n\n**Informações Necessárias:**\n• Seu nome completo no condado\n• Seu Pombo\n• Sua função\n• Quem te convidou\n\nClique no botão **Registrar** abaixo para começar.",
+        "footerText": "Sistema de Registro",
+        "embedColor": "#00b3ff",
+        "button": {
+          "text": "Registrar",
+          "emoji": "🧾",
+          "style": "Primary"
+        }
+      },
+      "steps": {
+        "step1": {
+          "modalTitle": "Registro - Passo 1/3",
+          "nameLabel": "Nome completo no Condado",
+          "namePlaceholder": "Digite seu nome completo no condado",
+          "pomboLabel": "Pombo",
+          "pomboPlaceholder": "Digite seu pombo"
+        },
+        "step2": {
+          "embedTitle": "Passo 2/3 - Sua função",
+          "embedDescription": "Selecione sua função",
+          "dropdownPlaceholder": "Selecione sua função/trabalho"
+        },
+        "step3": {
+          "embedTitle": "Passo 3/3 - Quem te convidou?",
+          "embedDescription": "Selecione quem te convidou:\n\n✨ **Digite para buscar** - Você pode digitar o nome da pessoa para encontrá-la rapidamente!",
+          "dropdownPlaceholder": "Selecione quem te convidou"
+        }
+      },
+      "postRegistration": {
+        "nicknameFormat": "{ingameName} | {pombo}",
+        "sendDM": true,
+        "dmTitle": "Bem-vindo!",
+        "dmMessage": "Olá {ingameName},\n\nSeu registro como **{functionName}** foi aprovado!\n\nAgora você tem acesso aos canais específicos da sua função.\n\nAproveite seu tempo no servidor!",
+        "assignRoles": true,
+        "welcomeChannelMessage": true,
+        "createChannel": true,
+        "channelNameFormat": "{ingameName}"
+      },
+      "messages": {
+        "alreadyRegistered": "❌ Você já está registrado!",
+        "sessionExpired": "❌ Registration session expired. Please start again.",
+        "registrationSuccess": "✅ Registro Realizado com Sucesso!",
+        "errorGeneric": "❌ An error occurred. Please try again.",
+        "permissionDenied": "❌ This is not your registration form."
+      }
+    },
+    "undefined": {
+      "settings": {
+        "oneTimeOnly": true,
+        "requiresVerification": false,
+        "welcomeMessage": "Bem-vindo à Fazenda ! Seu registro foi processado.",
+        "embedColor": "#FF0000",
+        "channelId": "1413570988775309332",
+        "serverIP": "",
+        "serverPort": ""
       }
     }
-  ],
-  "settings": {
-    "oneTimeOnly": true,
-    "requiresVerification": false,
-    "welcomeMessage": "Bem-vindo à Fazenda Cabra da Peste! Seu registro foi processado.",
-    "embedColor": "#FF0000",
-    "channelId": "1415645926009077841",
-    "serverIP": "",
-    "serverPort": ""
-  },
-  "command": {
-    "name": "register-setup",
-    "description": "Deploy the registration form to a channel",
-    "permissions": "Administrator"
-  },
-  "formDisplay": {
-    "title": "🎮 Registro da Fazenda Cabra da Peste",
-    "description": "**Bem-vindo a Fazenda Cabra da Peste**\n\nPara ter acesso ao servidor, você precisa completar o processo de registro.\n\n**Informações Necessárias:**\n• Seu nome completo no condado\n• Seu Pombo\n• Sua função\n• Quem te convidou para a Familia\n\nClique no botão **Registrar** abaixo para começar.",
-    "footerText": "stoffeltech • Sistema de Registro",
-    "embedColor": "#00b3ff",
-    "button": {
-      "text": "Registrar",
-      "emoji": "🧾",
-      "style": "Primary"
-    }
-  },
-  "steps": {
-    "step1": {
-      "modalTitle": "Fazenda Cabra da Peste - Passo 1/3",
-      "nameLabel": "Nome completo no Condado",
-      "namePlaceholder": "Digite seu nome completo no condado",
-      "pomboLabel": "Pombo",
-      "pomboPlaceholder": "Digite seu pombo"
-    },
-    "step2": {
-      "embedTitle": "Passo 2/3 - Sua função",
-      "embedDescription": "Selecione sua função",
-      "dropdownPlaceholder": "Selecione sua função/trabalho na Familia"
-    },
-    "step3": {
-      "embedTitle": "Passo 3/3 - Quem te convidou?",
-      "embedDescription": "Selecione quem te convidou para a Fazenda Cabra da Peste:\n\n✨ **Digite para buscar** - Você pode digitar o nome da pessoa para encontrá-la rapidamente!",
-      "dropdownPlaceholder": "Selecione quem te convidou para a Familia"
-    }
-  },
-  "postRegistration": {
-    "nicknameFormat": "{ingameName} | {pombo}",
-    "sendDM": true,
-    "dmTitle": "Bem-vindo à Fazenda Cabra da Peste!",
-    "dmMessage": "Olá {ingameName},\n\nSeu registro como **{functionName}** foi aprovado!\n\nAgora você tem acesso aos canais específicos da sua função.\n\nAproveite seu tempo na Fazenda Cabra da Peste!",
-    "assignRoles": true,
-    "welcomeChannelMessage": true,
-    "createChannel": true,
-    "channelNameFormat": "{ingameName}"
-  },
-  "messages": {
-    "alreadyRegistered": "❌ Você já está registrado!",
-    "sessionExpired": "❌ Registration session expired. Please start again.",
-    "registrationSuccess": "✅ Registro Realizado com Sucesso!",
-    "errorGeneric": "❌ An error occurred. Please try again.",
-    "permissionDenied": "❌ This is not your registration form."
   }
 }

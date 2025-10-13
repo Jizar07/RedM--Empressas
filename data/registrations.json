@@ -1461,5 +1461,126 @@
     "invitedBy": "Izzynha Evans | 1383",
     "approved": true,
     "registeredAt": "2025-10-11T23:58:48.164Z"
+  },
+  {
+    "userId": "1228497902201077862",
+    "username": "chacal_kal",
+    "ingameName": "Alceu Dispor",
+    "mailId": "5587",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "smith ramirez | 1025",
+    "approved": true,
+    "registeredAt": "2025-10-12T22:02:19.862Z"
+  },
+  {
+    "userId": "1224152669434675254",
+    "username": "kelsonkmv",
+    "ingameName": "kelson moises",
+    "mailId": "6295",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "Izzynha Evans | 1383",
+    "approved": true,
+    "registeredAt": "2025-10-12T22:10:34.843Z"
+  },
+  {
+    "userId": "1351585092736258048",
+    "username": "jvszx_037",
+    "ingameName": "Raimundo Laberada",
+    "mailId": "nao",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "Nina Vatore | 0000",
+    "approved": true,
+    "registeredAt": "2025-10-12T22:13:00.292Z"
+  },
+  {
+    "userId": "990418779848720425",
+    "username": "faisca_171",
+    "ingameName": "Jenuario Labareda",
+    "mailId": "Nao",
+    "functionId": "func_1757681433033",
+    "functionName": "Funcionario",
+    "invitedBy": "Nina Vatore | 0000",
+    "approved": true,
+    "registeredAt": "2025-10-12T22:13:20.451Z"
+  },
+  {
+    "userId": "969273317469089802",
+    "username": "zecabrazil",
+    "ingameName": "Zeca Trindade",
+    "mailId": "2917",
+    "functionId": "func_1760359723112",
+    "functionName": "Gerente",
+    "invitedBy": "Santiago Bowdin | 2512",
+    "approved": true,
+    "registeredAt": "2025-10-13T12:49:14.079Z"
+  },
+  {
+    "userId": "372161270176153601",
+    "username": "jizarstoffel",
+    "ingameName": "Maximo Pokaropa",
+    "mailId": "444",
+    "functionId": "func_1760365741439",
+    "functionName": "Gerentes",
+    "invitedBy": "GM Stoffel",
+    "approved": true,
+    "registeredAt": "2025-10-13T15:01:30.082Z"
+  },
+  {
+    "userId": "372161270176153601",
+    "username": "jizarstoffel",
+    "ingameName": "Maximo Pokaropa",
+    "mailId": "444",
+    "functionId": "func_1760359339764",
+    "functionName": "Funcionario",
+    "invitedBy": "GM Stoffel",
+    "approved": true,
+    "registeredAt": "2025-10-13T15:02:28.038Z"
+  },
+  {
+    "userId": "372161270176153601",
+    "username": "jizarstoffel",
+    "ingameName": "Maximo Pokaropa",
+    "mailId": "444",
+    "functionId": "func_1760365741439",
+    "functionName": "Gerentes",
+    "invitedBy": "GM Stoffel",
+    "approved": true,
+    "registeredAt": "2025-10-13T15:06:51.690Z"
+  },
+  {
+    "userId": "372161270176153601",
+    "username": "jizarstoffel",
+    "ingameName": "Maximo Pokaropa",
+    "mailId": "444",
+    "functionId": "func_1760365741439",
+    "functionName": "Gerentes",
+    "invitedBy": "Fazenda Bot",
+    "approved": true,
+    "registeredAt": "2025-10-13T15:11:54.512Z"
+  },
+  {
+    "userId": "372161270176153601",
+    "username": "jizarstoffel",
+    "ingameName": "Maximo Pokaropa",
+    "mailId": "444",
+    "functionId": "func_1760367984126",
+    "functionName": "Gerentes",
+    "invitedBy": "Fazenda Bot",
+    "approved": true,
+    "registeredAt": "2025-10-13T15:19:45.528Z"
+  },
+  {
+    "userId": "1178875542527807562",
+    "username": "lully_rp",
+    "ingameName": "Matoaka Pocahontas",
+    "mailId": "96",
+    "functionId": "func_1760365671501",
+    "functionName": "Fazendeiro",
+    "invitedBy": "Stoffel Bot",
+    "approved": true,
+    "registeredAt": "2025-10-13T15:21:22.406Z"
   }
 ]

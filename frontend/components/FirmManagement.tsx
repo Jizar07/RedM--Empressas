@@ -5,8 +5,10 @@ import { Building, Plus, Settings, Trash2, Edit, Eye, EyeOff, Monitor, AlertCirc
 import { FirmConfig, CreateFirmRequest, EndpointPreset, DEFAULT_ENDPOINT_PRESETS } from '../types/firms';
 import EnhancedFirmConfigModal from './EnhancedFirmConfigModal';
 import MonitoringDashboard from './MonitoringDashboard';
+import { useServer } from '../contexts/ServerContext';
 
 export default function FirmManagement() {
+  const { selectedServerId } = useServer();
   const [firms, setFirms] = useState<Record<string, FirmConfig>>({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -16,15 +18,22 @@ export default function FirmManagement() {
   const [deletingFirm, setDeletingFirm] = useState<string | null>(null);
 
   useEffect(() => {
-    fetchFirms();
-  }, []);
+    if (selectedServerId) {
+      fetchFirms();
+    } else {
+      setFirms({});
+      setLoading(false);
+    }
+  }, [selectedServerId]);
 
   const fetchFirms = async () => {
+    if (!selectedServerId) return;
+
     try {
       setLoading(true);
       setError(null);
-      
-      const response = await fetch('http://localhost:3050/api/firms-config');
+
+      const response = await fetch(`http://localhost:3050/api/firms-config?serverId=${selectedServerId}`);
       const data = await response.json();
       
       if (data.success) {

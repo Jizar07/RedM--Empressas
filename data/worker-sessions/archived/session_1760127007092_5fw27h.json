@@ -1,0 +1,52 @@
+{
+  "workerId": "588934801508270082",
+  "workerName": "Chris Rubble",
+  "channelId": "1424912913579245660",
+  "sessionId": "session_1760127007092_5fw27h",
+  "startTime": "2025-10-10T20:10:07.092Z",
+  "lastActivity": "2025-10-10T20:11:23.174Z",
+  "status": "stale",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Creeking Thyme Semente",
+      "quantity": 49,
+      "transactionId": "tx_1760127007094_ie46j",
+      "timestamp": "2025-10-10T20:10:07.094Z"
+    },
+    {
+      "type": "seed_taken",
+      "itemName": "Blood Flower Semente",
+      "quantity": 2,
+      "transactionId": "tx_1760127083174_aphf5j",
+      "timestamp": "2025-10-10T20:11:23.174Z"
+    }
+  ],
+  "animalTransactions": [],
+  "financialTransactions": [],
+  "inventoryTransactions": [],
+  "totalCredits": 0,
+  "embedMessageId": "1426301108912918600",
+  "seedExpectations": [
+    {
+      "seedType": "Creeking Thyme Semente",
+      "seedQuantity": 49,
+      "expectedPlantType": "Creeking Thyme Semente",
+      "expectedPlantQuantity": 490,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1760127007094_ie46j"
+    },
+    {
+      "seedType": "Blood Flower Semente",
+      "seedQuantity": 2,
+      "expectedPlantType": "Blood Flower Semente",
+      "expectedPlantQuantity": 20,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1760127083174_aphf5j"
+    }
+  ],
+  "completedAt": "2025-10-13T03:52:44.633Z",
+  "notes": "Auto-archived due to inactivity"
+}

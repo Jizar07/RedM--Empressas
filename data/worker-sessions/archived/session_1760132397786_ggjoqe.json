@@ -1,0 +1,36 @@
+{
+  "workerId": "470361257497722886",
+  "workerName": "Kenai Comanches",
+  "channelId": "1424920214407221269",
+  "sessionId": "session_1760132397786_ggjoqe",
+  "startTime": "2025-10-10T21:39:57.786Z",
+  "lastActivity": "2025-10-10T21:39:57.788Z",
+  "status": "stale",
+  "plantTransactions": [
+    {
+      "type": "seed_taken",
+      "itemName": "Semente de Milho",
+      "quantity": 100,
+      "transactionId": "tx_1760132397788_6rxl0g",
+      "timestamp": "2025-10-10T21:39:57.788Z"
+    }
+  ],
+  "animalTransactions": [],
+  "financialTransactions": [],
+  "inventoryTransactions": [],
+  "totalCredits": 0,
+  "embedMessageId": "1426323399625670707",
+  "seedExpectations": [
+    {
+      "seedType": "Semente de Milho",
+      "seedQuantity": 100,
+      "expectedPlantType": "Milho",
+      "expectedPlantQuantity": 1000,
+      "plantsFulfilled": 0,
+      "isComplete": false,
+      "transactionId": "tx_1760132397788_6rxl0g"
+    }
+  ],
+  "completedAt": "2025-10-13T11:52:45.195Z",
+  "notes": "Auto-archived due to inactivity"
+}

@@ -5,14 +5,16 @@ const router = Router();
 const paymentConfigService = PaymentConfigService.getInstance();
 
 // GET /api/payment-config - Get current payment configuration
-router.get('/', async (_req: Request, res: Response) => {
+router.get('/', async (req: Request, res: Response) => {
   try {
-    console.log('📄 Getting payment configuration');
-    const config = await paymentConfigService.getConfig();
+    const serverId = req.query.serverId as string | undefined;
+    console.log(`📄 Getting payment configuration${serverId ? ` for server ${serverId}` : ''}`);
+    const config = await paymentConfigService.getConfig(serverId);
 
     res.json({
       success: true,
-      data: config
+      data: config,
+      serverId: serverId || 'default'
     });
   } catch (error: any) {
     console.error('❌ Error getting payment config:', error);
@@ -27,8 +29,16 @@ router.get('/', async (_req: Request, res: Response) => {
 // POST /api/payment-config - Update payment configuration
 router.post('/', async (req: Request, res: Response) => {
   try {
-    console.log('💾 Updating payment configuration');
-    const config: PaymentConfig = req.body;
+    const { serverId, ...config } = req.body as PaymentConfig & { serverId?: string };
+
+    if (!serverId) {
+      return res.status(400).json({
+        success: false,
+        error: 'serverId is required'
+      });
+    }
+
+    console.log(`💾 Updating payment configuration for server ${serverId}`);
 
     // Validate required fields
     if (!config.defaultPrices || !config.inventoryVerification || !config.rolePermissions) {
@@ -74,12 +84,13 @@ router.post('/', async (req: Request, res: Response) => {
       });
     }
 
-    await paymentConfigService.updateConfig(config);
+    await paymentConfigService.updateConfig(config as PaymentConfig, serverId);
 
     return res.json({
       success: true,
       message: 'Payment configuration updated successfully',
-      data: config
+      data: config,
+      serverId
     });
   } catch (error: any) {
     console.error('❌ Error updating payment config:', error);
@@ -92,16 +103,26 @@ router.post('/', async (req: Request, res: Response) => {
 });
 
 // POST /api/payment-config/reset - Reset to default configuration
-router.post('/reset', async (_req: Request, res: Response) => {
+router.post('/reset', async (req: Request, res: Response) => {
   try {
-    console.log('🔄 Resetting payment configuration to defaults');
-    await paymentConfigService.resetToDefaults();
-    const config = await paymentConfigService.getConfig();
+    const { serverId } = req.body;
+
+    if (!serverId) {
+      return res.status(400).json({
+        success: false,
+        error: 'serverId is required'
+      });
+    }
+
+    console.log(`🔄 Resetting payment configuration to defaults for server ${serverId}`);
+    await paymentConfigService.resetToDefaults(serverId);
+    const config = await paymentConfigService.getConfig(serverId);
 
     res.json({
       success: true,
       message: 'Payment configuration reset to defaults',
-      data: config
+      data: config,
+      serverId
     });
   } catch (error: any) {
     console.error('❌ Error resetting payment config:', error);
@@ -114,13 +135,15 @@ router.post('/reset', async (_req: Request, res: Response) => {
 });
 
 // GET /api/payment-config/defaults - Get default pricing for command use
-router.get('/defaults', async (_req: Request, res: Response) => {
+router.get('/defaults', async (req: Request, res: Response) => {
   try {
-    const defaults = await paymentConfigService.getDefaultPrices();
+    const serverId = req.query.serverId as string | undefined;
+    const defaults = await paymentConfigService.getDefaultPrices(serverId);
 
     res.json({
       success: true,
-      data: defaults
+      data: defaults,
+      serverId: serverId || 'default'
     });
   } catch (error: any) {
     console.error('❌ Error getting payment defaults:', error);

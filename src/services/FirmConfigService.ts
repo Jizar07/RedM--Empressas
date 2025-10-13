@@ -23,6 +23,8 @@ interface FirmConfig {
   id: string;
   name: string;
   description?: string;
+  serverId: string; // Discord guild ID this firm belongs to
+  guildId: string;  // Alias for serverId for clarity
   channelId: string;
   allowedRoles: string[];
   enabled: boolean;
@@ -47,6 +49,7 @@ interface FirmsConfig {
 interface CreateFirmRequest {
   name: string;
   description?: string;
+  serverId: string; // Required: Discord guild ID this firm belongs to
   channelId: string;
   allowedRoles: string[];
   monitoring: Omit<FirmMonitoring, 'enabled'>;
@@ -146,18 +149,23 @@ export class FirmConfigService {
     return config.firms[firmId] || null;
   }
 
-  public getFirmsForRoles(userRoles: string[]): FirmConfig[] {
+  public getFirmsForRoles(userRoles: string[], serverId?: string): FirmConfig[] {
     const config = this.loadConfig();
     const userRolesLower = userRoles.map(role => role.toLowerCase());
-    
+
     return Object.values(config.firms).filter(firm => {
       if (!firm.enabled) return false;
-      
+
+      // Filter by serverId if provided
+      if (serverId && firm.serverId !== serverId && firm.guildId !== serverId) {
+        return false;
+      }
+
       // Check if user has any of the required roles for this firm
-      const hasAccess = firm.allowedRoles.some(requiredRole => 
+      const hasAccess = firm.allowedRoles.some(requiredRole =>
         userRolesLower.includes(requiredRole.toLowerCase())
       );
-      
+
       return hasAccess;
     });
   }
@@ -197,6 +205,8 @@ export class FirmConfigService {
       id: firmId,
       name: request.name,
       description: request.description,
+      serverId: request.serverId,
+      guildId: request.serverId, // Set guildId same as serverId
       channelId: request.channelId,
       allowedRoles: request.allowedRoles,
       enabled: true,

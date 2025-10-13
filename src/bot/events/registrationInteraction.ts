@@ -60,11 +60,19 @@ export default {
 
 async function handleRegistrationStart(interaction: ButtonInteraction): Promise<any> {
   try {
-    // Get configuration for messages
-    const config = await RegistrationService.getFormConfig();
-    
-    // Check if user is already registered
-    const isRegistered = await RegistrationService.isUserRegistered(interaction.user.id);
+    const guildId = interaction.guild?.id;
+    if (!guildId) {
+      return await interaction.reply({
+        content: '❌ This command can only be used in a server.',
+        ephemeral: true
+      });
+    }
+
+    // Get configuration for messages - PASS GUILD ID AS SERVER ID
+    const config = await RegistrationService.getFormConfig(guildId);
+
+    // Check if user is already registered - PASS GUILD ID AS SERVER ID
+    const isRegistered = await RegistrationService.isUserRegistered(interaction.user.id, guildId);
     
     if (isRegistered) {
       return await interaction.reply({
@@ -102,7 +110,7 @@ async function handleRegistrationStart(interaction: ButtonInteraction): Promise<
     await interaction.showModal(infoModal);
   } catch (error) {
     console.error('Error starting registration:', error);
-    const config = await RegistrationService.getFormConfig();
+    const config = await RegistrationService.getFormConfig(interaction.guild?.id);
     await interaction.reply({
       content: config?.messages?.errorGeneric || '❌ An error occurred. Please try again later.',
       ephemeral: true
@@ -113,7 +121,15 @@ async function handleRegistrationStart(interaction: ButtonInteraction): Promise<
 // Step 1: Handle info submission (name and pombo)
 async function handleInfoSubmit(interaction: ModalSubmitInteraction): Promise<any> {
   try {
-    const config = await RegistrationService.getFormConfig();
+    const guildId = interaction.guild?.id;
+    if (!guildId) {
+      return await interaction.reply({
+        content: '❌ This command can only be used in a server.',
+        ephemeral: true
+      });
+    }
+
+    const config = await RegistrationService.getFormConfig(guildId);
     const userId = interaction.customId.split('_')[2];
     
     if (userId !== interaction.user.id) {
@@ -175,7 +191,7 @@ async function handleInfoSubmit(interaction: ModalSubmitInteraction): Promise<an
 
   } catch (error) {
     console.error('Error handling info submit:', error);
-    const config = await RegistrationService.getFormConfig();
+    const config = await RegistrationService.getFormConfig(interaction.guild?.id);
     await interaction.reply({
       content: config?.messages?.errorGeneric || '❌ An error occurred. Please try again.',
       ephemeral: true
@@ -186,9 +202,16 @@ async function handleInfoSubmit(interaction: ModalSubmitInteraction): Promise<an
 // Step 3: Handle function selection
 async function handleFunctionSelection(interaction: StringSelectMenuInteraction): Promise<any> {
   await interaction.deferUpdate(); // Use deferUpdate to edit the same message
-  
+
   try {
-    const config = await RegistrationService.getFormConfig();
+    const guildId = interaction.guild?.id;
+    if (!guildId) {
+      return await interaction.editReply({
+        content: '❌ This command can only be used in a server.',
+      });
+    }
+
+    const config = await RegistrationService.getFormConfig(guildId);
     const userId = interaction.customId.split('_')[2];
     
     if (userId !== interaction.user.id) {
@@ -240,19 +263,26 @@ async function handleFunctionSelection(interaction: StringSelectMenuInteraction)
 
   } catch (error) {
     console.error('Error handling function selection:', error);
-    const config = await RegistrationService.getFormConfig();
+    const config = await RegistrationService.getFormConfig(interaction.guild?.id);
     await interaction.editReply({
       content: config?.messages?.errorGeneric || '❌ An error occurred. Please try again.',
     });
   }
 }
 
-// Step 3: Handle inviter selection  
+// Step 3: Handle inviter selection
 async function handleInviterSelection(interaction: UserSelectMenuInteraction): Promise<any> {
   await interaction.deferUpdate(); // Use deferUpdate to edit the same message
-  
+
   try {
-    const formConfig = await RegistrationService.getFormConfig();
+    const guildId = interaction.guild?.id;
+    if (!guildId) {
+      return await interaction.editReply({
+        content: '❌ This command can only be used in a server.',
+      });
+    }
+
+    const formConfig = await RegistrationService.getFormConfig(guildId);
     const userId = interaction.customId.split('_')[2];
     
     if (userId !== interaction.user.id) {
@@ -283,7 +313,7 @@ async function handleInviterSelection(interaction: UserSelectMenuInteraction): P
       });
     }
 
-    // Submit registration via API
+    // Submit registration via API - PASS GUILD ID AS SERVER ID
     const response = await axios.post(
       `http://localhost:${config.api.port}/api/registration/submit`,
       {
@@ -292,7 +322,8 @@ async function handleInviterSelection(interaction: UserSelectMenuInteraction): P
         ingameName: tempData.ingameName,
         mailId: tempData.pombo,
         functionId: tempData.functionId,
-        invitedBy: inviterDisplayName
+        invitedBy: inviterDisplayName,
+        serverId: guildId  // CRITICAL: Pass guild ID as server ID
       },
       {
         headers: {
@@ -480,11 +511,11 @@ async function handleInviterSelection(interaction: UserSelectMenuInteraction): P
     }
   } catch (error: any) {
     console.error('Error handling inviter selection:', error);
-    
+
     // Clean up temp data
     registrationData.delete(interaction.user.id);
-    
-    const errorConfig = await RegistrationService.getFormConfig();
+
+    const errorConfig = await RegistrationService.getFormConfig(interaction.guild?.id);
     let errorMessage = errorConfig?.messages?.errorGeneric || '❌ An error occurred during registration.';
     
     if (error.response?.data?.error) {

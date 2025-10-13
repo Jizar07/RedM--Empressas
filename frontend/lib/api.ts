@@ -27,6 +27,9 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
+// Export the axios instance for direct use
+export { api };
+
 export const serverApi = {
   // Get server status (try internal first, fallback to authenticated)
   getStatus: async (): Promise<ServerInfo> => {

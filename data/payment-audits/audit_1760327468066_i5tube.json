@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1760327468066_i5tube",
+  "sessionId": "session_1760322238960_um4yrh",
+  "managerId": "1235055429260935321",
+  "managerName": "AnDuRiNhaa",
+  "workerId": "1228497902201077862",
+  "workerName": "Alceu Dispor",
+  "amountPaid": 515.25,
+  "paidAt": "2025-10-13T03:51:08.066Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-13T03:46:08.066Z",
+    "endTime": "2025-10-13T04:01:08.066Z"
+  }
+}

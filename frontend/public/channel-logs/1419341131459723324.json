@@ -1,8 +1,288 @@
 {
   "channelId": "1419341131459723324",
-  "lastUpdated": "2025-10-12T14:56:29.966Z",
-  "messageCount": 840,
+  "lastUpdated": "2025-10-13T07:12:47.532Z",
+  "messageCount": 868,
   "messages": [
+    {
+      "id": "1427192329768271922",
+      "author": "Chris Rubble",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: LibidgelOvino x10\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 04:12:47",
+      "timestamp": "2025-10-13T07:12:47.368Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: LibidgelOvino x10\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 04:12:47",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1427192309115650049",
+      "author": "Chris Rubble",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: LibidgelSuino x9\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 04:12:42",
+      "timestamp": "2025-10-13T07:12:42.444Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: LibidgelSuino x9\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 04:12:42",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1427192291059306539",
+      "author": "Chris Rubble",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: LibidgelSuino x80\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 04:12:38",
+      "timestamp": "2025-10-13T07:12:38.139Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: LibidgelSuino x80\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 04:12:38",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1427184152213458994",
+      "author": "Chris Rubble",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: seringadevidro x120\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:40:17",
+      "timestamp": "2025-10-13T06:40:17.687Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: seringadevidro x120\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:40:17",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1427184048043724902",
+      "author": "Chris Rubble",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: rotulo x200\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:39:52",
+      "timestamp": "2025-10-13T06:39:52.851Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: rotulo x200\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:39:52",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1427184031170039890",
+      "author": "Chris Rubble",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: embalagem x200\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:39:48",
+      "timestamp": "2025-10-13T06:39:48.828Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: embalagem x200\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:39:48",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1427184017052012585",
+      "author": "Chris Rubble",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: capsulaplastica x200\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:39:45",
+      "timestamp": "2025-10-13T06:39:45.462Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: capsulaplastica x200\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:39:45",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1427183986609754245",
+      "author": "Chris Rubble",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: LibidgelCaprino x40\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:39:38",
+      "timestamp": "2025-10-13T06:39:38.204Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: LibidgelCaprino x40\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:39:38",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1427183966150197248",
+      "author": "Chris Rubble",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: LibidgelAsneiro x40\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:39:33",
+      "timestamp": "2025-10-13T06:39:33.326Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: LibidgelAsneiro x40\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:39:33",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1427183948785520640",
+      "author": "Chris Rubble",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: Libidgelbovino x26\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:39:29",
+      "timestamp": "2025-10-13T06:39:29.186Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: Libidgelbovino x26\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:39:29",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1427183933778301060",
+      "author": "Chris Rubble",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: LibidgelAviario x26\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:39:25",
+      "timestamp": "2025-10-13T06:39:25.608Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: LibidgelAviario x26\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:39:25",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1427183916850089994",
+      "author": "Chris Rubble",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: Libidgelbovino x60\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:39:21",
+      "timestamp": "2025-10-13T06:39:21.572Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: Libidgelbovino x60\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:39:21",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1427183901486612582",
+      "author": "Chris Rubble",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: LibidgelAviario x60\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:39:17",
+      "timestamp": "2025-10-13T06:39:17.909Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - INSERIR ITEM\nItem adicionado:: LibidgelAviario x60\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:39:17",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1427182272385388546",
+      "author": "Chris Rubble",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: rotulo x200\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:32:49",
+      "timestamp": "2025-10-13T06:32:49.501Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: rotulo x200\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:32:49",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1427182250952495184",
+      "author": "Chris Rubble",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: embalagem x200\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:32:44",
+      "timestamp": "2025-10-13T06:32:44.391Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: embalagem x200\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:32:44",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1427182234191921235",
+      "author": "Chris Rubble",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: capsulaplastica x200\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:32:40",
+      "timestamp": "2025-10-13T06:32:40.395Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: capsulaplastica x200\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:32:40",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1427181991656296459",
+      "author": "Chris Rubble",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: embalagem x150\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:31:42",
+      "timestamp": "2025-10-13T06:31:42.570Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: embalagem x150\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:31:42",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1427181976246419536",
+      "author": "Chris Rubble",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: embalagem x200\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:31:38",
+      "timestamp": "2025-10-13T06:31:38.896Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: embalagem x200\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:31:38",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1427181851021283402",
+      "author": "Chris Rubble",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: seringadevidro x100\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:31:09",
+      "timestamp": "2025-10-13T06:31:09.040Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: seringadevidro x100\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:31:09",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1427181828665770056",
+      "author": "Chris Rubble",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: capsulaplastica x200\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:31:03",
+      "timestamp": "2025-10-13T06:31:03.710Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: capsulaplastica x200\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:31:03",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1427181807786393635",
+      "author": "Chris Rubble",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: rotulo x200\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:30:58",
+      "timestamp": "2025-10-13T06:30:58.732Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: rotulo x200\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:30:58",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1427181667516285028",
+      "author": "Chris Rubble",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: Libidgelbovino x16\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:30:25",
+      "timestamp": "2025-10-13T06:30:25.289Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: Libidgelbovino x16\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:30:25",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1427181655415849043",
+      "author": "Chris Rubble",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: LibidgelOvino x20\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:30:22",
+      "timestamp": "2025-10-13T06:30:22.404Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: LibidgelOvino x20\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:30:22",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1427181638671929488",
+      "author": "Chris Rubble",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: LibidgelCaprino x20\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:30:18",
+      "timestamp": "2025-10-13T06:30:18.412Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: LibidgelCaprino x20\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:30:18",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1427181623010525246",
+      "author": "Chris Rubble",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: Libidgelbovino x20\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:30:14",
+      "timestamp": "2025-10-13T06:30:14.678Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: Libidgelbovino x20\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:30:14",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1427181606598086768",
+      "author": "Chris Rubble",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: LibidgelAsneiro x20\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:30:10",
+      "timestamp": "2025-10-13T06:30:10.765Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: LibidgelAsneiro x20\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:30:10",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1427181593428234282",
+      "author": "Chris Rubble",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: LibidgelAviario x16\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:30:07",
+      "timestamp": "2025-10-13T06:30:07.625Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: LibidgelAviario x16\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:30:07",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1427181585848995941",
+      "author": "Chris Rubble",
+      "content": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: LibidgelSuino x19\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:30:05",
+      "timestamp": "2025-10-13T06:30:05.818Z",
+      "source": "discord",
+      "channelId": "1419341131459723324",
+      "embedContent": "REGISTRO - REGISTRO CASA - #604\nBAÚ DA CASA - REMOVER ITEM\nItem removido:: LibidgelSuino x19\nAutor:: Chris Rubble | FIXO: 72751\nData:: 13/10/2025 - 03:30:05",
+      "rawEmbeds": []
+    },
     {
       "id": "1426946637112279102",
       "author": "Jizar Stoffeliz",

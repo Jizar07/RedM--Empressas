@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useTransition } from 'react';
+import { api } from '@/lib/api';
 import { FirmConfig } from '@/types/firms';
 import { useServer } from '@/contexts/ServerContext';
 
@@ -16,10 +17,9 @@ interface FirmAccess {
 const getMockUserRoles = async (): Promise<string[]> => {
   // For testing, automatically get all roles from all firms to give full access
   try {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3050/api';
-    const response = await fetch(`${apiUrl}/firms-config`);
-    const data = await response.json();
-    
+    const response = await api.get('/firms-config');
+    const data = response.data;
+
     if (data.success && data.firms) {
       const allRoles = new Set<string>();
       Object.values(data.firms).forEach((firm: any) => {
@@ -32,11 +32,11 @@ const getMockUserRoles = async (): Promise<string[]> => {
   } catch (error) {
     console.warn('Failed to fetch dynamic roles, using fallback:', error);
   }
-  
+
   // Fallback roles if API fails
   return [
     'Lider fazenda BW',
-    'Gerente fazenda BW', 
+    'Gerente fazenda BW',
     '🧪​| Cientista',
     '⛴️​| Lider Hidrovia BRAITHWAITE',
     '🚬|Lider Tabacaria',
@@ -69,15 +69,14 @@ export function useFirmAccess(shouldFetch: boolean = true): FirmAccess {
       // Get user roles (mock implementation) - runs in background
       const userRoles = await getMockUserRoles();
 
-      // Call firms API with user roles to get accessible firms - server filtering will be added automatically by axios interceptor
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3050/api';
-      const response = await fetch(`${apiUrl}/firms-config/accessible?serverId=${selectedServerId}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ userRoles, serverId: selectedServerId })
+      // Call firms API with user roles to get accessible firms
+      // serverId will be added automatically by axios interceptor from localStorage
+      const response = await api.post('/firms-config/accessible', {
+        userRoles,
+        serverId: selectedServerId
       });
 
-      const data = await response.json();
+      const data = response.data;
 
       if (data.success) {
         // Use startTransition to make this update non-blocking

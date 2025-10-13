@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { ChefHat, TrendingUp, DollarSign, Plus, Trash2, Edit, ShoppingCart, Mail, BarChart3, Calculator } from 'lucide-react';
+import { ChefHat, TrendingUp, DollarSign, Plus, Trash2, Edit, ShoppingCart, Mail, BarChart3, Calculator, Building2 } from 'lucide-react';
 import ProductionDashboard from './ProductionDashboard';
 import RecipeCalculator from './RecipeCalculator';
 
@@ -413,6 +413,61 @@ const Recipes = () => {
         { item: 'madeira_lapidada', quantidade: 3, nome: 'Madeira Lapidada' },
         { item: 'madeira_cilindrica', quantidade: 3, nome: 'Madeira Cilíndrica' }
       ]
+    },
+    // Downtown Recipes
+    {
+      id: 'licor_cafe',
+      nome: 'Licor de Café',
+      categoria: 'DOWNTOWN',
+      produz: 10,
+      materiais: [
+        { item: 'rotulo', quantidade: 6, nome: 'Rótulo' },
+        { item: 'po_de_cafe', quantidade: 3, nome: 'Pó de Café' },
+        { item: 'tampa_garrafa', quantidade: 2, nome: 'Tampa de Garrafa' }
+      ]
+    },
+    {
+      id: 'po_de_cafe_downtown',
+      nome: 'Pó de Café',
+      categoria: 'DOWNTOWN',
+      produz: 11,
+      materiais: [
+        { item: 'moedor', quantidade: 1, nome: 'Moedor' },
+        { item: 'cafe', quantidade: 1, nome: 'Café' },
+        { item: 'embalagem', quantidade: 1, nome: 'Embalagem' }
+      ]
+    },
+    {
+      id: 'saca_macas',
+      nome: 'Saca de Maças',
+      categoria: 'DOWNTOWN',
+      produz: 1,
+      materiais: [
+        { item: 'pano_grosso', quantidade: 10, nome: 'Pano Grosso' },
+        { item: 'maca', quantidade: 100, nome: 'Maça' }
+      ]
+    },
+    {
+      id: 'saca_cenouras',
+      nome: 'Saca de Cenouras',
+      categoria: 'DOWNTOWN',
+      produz: 1,
+      materiais: [
+        { item: 'pano_grosso', quantidade: 10, nome: 'Pano Grosso' },
+        { item: 'cenoura', quantidade: 100, nome: 'Cenoura' }
+      ]
+    },
+    {
+      id: 'polvora_downtown',
+      nome: 'Pólvora (Downtown)',
+      categoria: 'DOWNTOWN',
+      produz: 5,
+      materiais: [
+        { item: 'minerio_salitre', quantidade: 1, nome: 'Minério de Salitre' },
+        { item: 'minerio_manganes', quantidade: 1, nome: 'Minério de Manganês' },
+        { item: 'embalagem', quantidade: 1, nome: 'Embalagem' },
+        { item: 'carvao_vegetal', quantidade: 1, nome: 'Carvão Vegetal' }
+      ]
     }
   ];
 
@@ -529,9 +584,22 @@ const Recipes = () => {
       'boneca_de_pano': 3.00,
       'madeira_cubica': 0.20,
       'madeira_lapidada': 0.20,
-      'madeira_cilindrica': 0.20
+      'madeira_cilindrica': 0.20,
+      // Downtown materials (from spreadsheet)
+      'rotulo': 0.64, // avg of $0.55-$0.73
+      'po_de_cafe': 0.25, // avg of $0.21-$0.29
+      'tampa_garrafa': 0.15, // avg of $0.10-$0.20
+      'moedor': 1.40, // avg of $1.00-$1.80
+      'cafe': 0.13, // Plantações: avg of $0.10-$0.16
+      'embalagem': 0.65, // avg of $0.50-$0.80
+      'pano_grosso': 0.28, // avg of $0.20-$0.36
+      'maca': 0.13, // Plantações: avg of $0.10-$0.16
+      'cenoura': 0.13, // Plantações: avg of $0.10-$0.16
+      'minerio_salitre': 0.18, // avg of $0.14-$0.22
+      'minerio_manganes': 0.32, // avg of $0.26-$0.38
+      'carvao_vegetal': 0.17 // avg of $0.14-$0.20
     };
-    
+
     return fallbackPrices[itemId] || 0;
   };
 
@@ -564,12 +632,32 @@ const Recipes = () => {
       case 'CAIXAS': return 'bg-green-100 text-green-800';
       case 'VETERINARIA': return 'bg-pink-100 text-pink-800';
       case 'ARTESANATO': return 'bg-orange-100 text-orange-800';
+      case 'DOWNTOWN': return 'bg-yellow-100 text-yellow-800';
       default: return 'bg-gray-100 text-gray-800';
     }
   };
 
   const getPrecoVendaReceita = (receita: Recipe) => {
-    // Mock price data - replace with actual API call
+    // Real prices from Downtown 2026 spreadsheet
+    const downtownPrices: Record<string, { min: number; max: number }> = {
+      'licor_cafe': { min: 0.62, max: 0.79 },
+      'po_de_cafe_downtown': { min: 0.21, max: 0.29 },
+      'saca_macas': { min: 40.00, max: 60.00 },
+      'saca_cenouras': { min: 40.00, max: 60.00 },
+      'polvora_downtown': { min: 0.30, max: 0.50 }
+    };
+
+    // Check if this recipe has real prices from the spreadsheet
+    if (downtownPrices[receita.id]) {
+      return {
+        min: downtownPrices[receita.id].min,
+        max: downtownPrices[receita.id].max,
+        nome: receita.nome,
+        estimado: false
+      };
+    }
+
+    // Otherwise use estimated prices based on cost
     const custoUnitario = calcularCustoPorUnidade(receita);
     return {
       min: custoUnitario * 1.3,
@@ -739,6 +827,17 @@ const Recipes = () => {
           >
             <Calculator className="h-4 w-4" />
             Calculadora
+          </button>
+          <button
+            onClick={() => setCurrentTab(4)}
+            className={`flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+              currentTab === 4
+                ? 'bg-white dark:bg-gray-600 text-red-600 dark:text-red-400 shadow-sm'
+                : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
+            }`}
+          >
+            <Building2 className="h-4 w-4" />
+            Downtown
           </button>
         </div>
 
@@ -1074,6 +1173,137 @@ const Recipes = () => {
         {currentTab === 3 && (
           <div>
             <RecipeCalculator />
+          </div>
+        )}
+
+        {currentTab === 4 && (
+          <div className="space-y-6">
+            {/* Info Alert */}
+            <div className="bg-yellow-50 dark:bg-yellow-900/30 border border-yellow-200 dark:border-yellow-700 rounded-lg p-4 transition-colors">
+              <h3 className="font-semibold text-yellow-900 dark:text-yellow-300 mb-1 transition-colors">🏛️ Receitas Downtown:</h3>
+              <p className="text-yellow-800 dark:text-yellow-200 transition-colors">
+                Receitas especiais da região Downtown com cálculo automático de custos por unidade.
+              </p>
+            </div>
+
+            {/* Downtown Recipes Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {recipes.filter(r => r.categoria === 'DOWNTOWN').map((receita) => {
+                const custoTotal = calcularCustoReceita(receita);
+                const custoPorUnidade = calcularCustoPorUnidade(receita);
+                const precoVenda = getPrecoVendaReceita(receita);
+                const lucroMin = calcularLucroReceita(receita, precoVenda.min);
+                const lucroMax = calcularLucroReceita(receita, precoVenda.max);
+
+                return (
+                  <div key={receita.id} className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-sm transition-colors">
+                    <div className="flex items-center justify-between mb-4">
+                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white transition-colors">{receita.nome}</h3>
+                      <span className={`px-2 py-1 text-xs font-medium rounded-full ${getCategoriaColor(receita.categoria)}`}>
+                        {receita.categoria}
+                      </span>
+                    </div>
+
+                    <div className="mb-4">
+                      <p className="text-sm text-gray-600 dark:text-gray-400 flex items-center gap-1 transition-colors">
+                        <ChefHat className="h-4 w-4" />
+                        Produz: <span className="font-medium">{receita.produz} unidades</span>
+                      </p>
+                    </div>
+
+                    {/* Materials */}
+                    <div className="mb-4">
+                      <details className="group">
+                        <summary className="cursor-pointer text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 list-none transition-colors">
+                          <div className="flex items-center justify-between">
+                            <span>Materiais Necessários</span>
+                            <span className="group-open:rotate-180 transition-transform">▼</span>
+                          </div>
+                        </summary>
+                        <div className="space-y-1 text-xs">
+                          {receita.materiais.map((material, index) => {
+                            const precoUnitario = getPrecoItem(material.item);
+                            const custoMaterial = precoUnitario * material.quantidade;
+
+                            return (
+                              <div key={index} className="flex justify-between items-center py-1 px-2 bg-gray-50 dark:bg-gray-700 rounded transition-colors">
+                                <span className="text-gray-900 dark:text-gray-100">{material.nome}</span>
+                                <div className="text-right">
+                                  <div className="text-gray-900 dark:text-gray-100">{material.quantidade}</div>
+                                  <div className="text-gray-500 dark:text-gray-400">${custoMaterial.toFixed(2)}</div>
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </details>
+                    </div>
+
+                    {/* Cost Summary */}
+                    <div className="bg-blue-50 dark:bg-blue-900/30 rounded-lg p-3 mb-3 transition-colors">
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="text-sm text-gray-700 dark:text-gray-300 flex items-center gap-1 transition-colors">
+                          <DollarSign className="h-4 w-4" />
+                          Custo Total:
+                        </span>
+                        <span className="font-semibold text-red-600 dark:text-red-400">${custoTotal.toFixed(2)}</span>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm text-gray-700 dark:text-gray-300 flex items-center gap-1 transition-colors">
+                          <TrendingUp className="h-4 w-4" />
+                          Custo por Unidade:
+                        </span>
+                        <span className="font-semibold text-blue-600 dark:text-blue-400">${custoPorUnidade.toFixed(2)}</span>
+                      </div>
+                    </div>
+
+                    {/* Profit Analysis */}
+                    <div className="bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-700 rounded-lg p-3 transition-colors">
+                      <h4 className="text-sm font-semibold text-green-900 dark:text-green-300 mb-2 flex items-center gap-1 transition-colors">
+                        <TrendingUp className="h-4 w-4" />
+                        Análise de Lucro:
+                      </h4>
+
+                      {precoVenda.estimado && (
+                        <p className="text-xs text-orange-600 dark:text-orange-400 mb-2">⚠️ Preços estimados (não encontrado na lista)</p>
+                      )}
+
+                      <div className="space-y-1 text-xs">
+                        <div className="flex justify-between text-gray-900 dark:text-gray-100">
+                          <span>Preço Min/Max:</span>
+                          <span className="font-medium">${precoVenda.min.toFixed(2)} - ${precoVenda.max.toFixed(2)}</span>
+                        </div>
+
+                        <div className="flex justify-between">
+                          <span className="text-gray-900 dark:text-gray-100">Lucro Mín (${precoVenda.min.toFixed(2)}):</span>
+                          <span className={`font-medium ${lucroMin.lucro_unitario > 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
+                            ${lucroMin.lucro_unitario.toFixed(2)} ({lucroMin.margem_lucro.toFixed(1)}%)
+                          </span>
+                        </div>
+
+                        <div className="flex justify-between">
+                          <span className="text-gray-900 dark:text-gray-100">Lucro Max (${precoVenda.max.toFixed(2)}):</span>
+                          <span className={`font-medium ${lucroMax.lucro_unitario > 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
+                            ${lucroMax.lucro_unitario.toFixed(2)} ({lucroMax.margem_lucro.toFixed(1)}%)
+                          </span>
+                        </div>
+
+                        <div className="pt-1 border-t border-green-200 dark:border-green-700">
+                          <div className="flex justify-between mb-1">
+                            <span className="font-medium text-green-800 dark:text-green-300">💰 Cenário Mínimo:</span>
+                            <span className="font-bold text-green-800 dark:text-green-300">Lucro total: ${lucroMin.lucro_total.toFixed(2)}</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="font-medium text-green-800 dark:text-green-300">💰 Cenário Máximo:</span>
+                            <span className="font-bold text-green-800 dark:text-green-300">Lucro total: ${lucroMax.lucro_total.toFixed(2)}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         )}
       </div>

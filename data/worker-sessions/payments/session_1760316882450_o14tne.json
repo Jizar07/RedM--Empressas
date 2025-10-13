@@ -1,0 +1,20 @@
+{
+  "sessionId": "session_1760316882450_o14tne",
+  "workerId": "1228497902201077862",
+  "workerName": "Alceu Dispor",
+  "amount": 28.75,
+  "paidBy": "206587400703574019",
+  "paidByName": "𝓑𝓪𝓻𝓻𝓸𝓼𝓸",
+  "paidAt": "2025-10-13T02:21:38.597Z",
+  "plantTransactions": [
+    {
+      "type": "plant_deposited",
+      "itemName": "Algodão",
+      "quantity": 115,
+      "transactionId": "tx_1760316882453_dfkibp",
+      "timestamp": "2025-10-13T00:54:42.453Z"
+    }
+  ],
+  "animalTransactions": [],
+  "financialTransactions": []
+}

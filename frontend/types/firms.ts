@@ -25,6 +25,8 @@ export interface FirmConfig {
   name: string;
   description?: string;
   emoji?: string;
+  serverId: string; // Discord guild ID this firm belongs to
+  guildId: string;  // Alias for serverId for clarity
   channelId: string;
   allowedRoles: string[];
   enabled: boolean;
@@ -89,6 +91,7 @@ export interface MonitoringStatusData {
 export interface CreateFirmRequest {
   name: string;
   description?: string;
+  serverId: string; // Required: Discord guild ID this firm belongs to
   channelId: string;
   allowedRoles: string[];
   monitoring: Omit<FirmMonitoring, 'enabled'>;

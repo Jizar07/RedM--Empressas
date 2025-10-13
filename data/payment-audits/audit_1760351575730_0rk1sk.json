@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1760351575730_0rk1sk",
+  "sessionId": "session_1760325352156_hth9ke",
+  "managerId": "206587400703574019",
+  "managerName": "𝓑𝓪𝓻𝓻𝓸𝓼𝓸",
+  "workerId": "936115736382959656",
+  "workerName": "Kemell Versace",
+  "amountPaid": 1502.5,
+  "paidAt": "2025-10-13T10:32:55.730Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-13T10:27:55.730Z",
+    "endTime": "2025-10-13T10:42:55.730Z"
+  }
+}

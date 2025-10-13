@@ -41,6 +41,7 @@ import inventoryAnalyticsRoutes from './routes/inventory-analytics';
 import comprehensiveAnalyticsRoutes from './routes/comprehensive-analytics';
 import exportDataRoutes from './routes/export-data';
 import discordChannelsRoutes from './routes/discord-channels';
+import guildsRoutes from './routes/guilds';
 import FerroviaSessionService from '../services/FerroviaSessionService';
 import DiscordRoleService from '../services/DiscordRoleService';
 import OrdersService from '../services/OrdersService';
@@ -197,6 +198,9 @@ export async function startApiServer(bot: BotClient): Promise<void> {
 
   // Discord channels routes
   app.use('/api/discord-channels', discordChannelsRoutes);
+
+  // Guilds routes (bot presence checking, guild info)
+  app.use('/api/guilds', guildsRoutes);
 
   // Internal API Routes (NO AUTHENTICATION - for system-to-system communication)
   app.use('/api/internal', internalApiRoutes);

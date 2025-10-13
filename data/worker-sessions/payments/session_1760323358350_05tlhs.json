@@ -1,0 +1,20 @@
+{
+  "sessionId": "session_1760323358350_05tlhs",
+  "workerId": "645598935209082880",
+  "workerName": "Vincent Versace",
+  "amount": 160,
+  "paidBy": "949397147030274059",
+  "paidByName": "๖ۣۜζ͜͡ɪᴢᴢʏɴʜᴀ🎀",
+  "paidAt": "2025-10-13T02:54:36.439Z",
+  "plantTransactions": [],
+  "animalTransactions": [
+    {
+      "type": "delivery_completed",
+      "quantity": 4,
+      "amount": 160,
+      "transactionId": "tx_1760323358352_56o3lk",
+      "timestamp": "2025-10-13T02:42:38.352Z"
+    }
+  ],
+  "financialTransactions": []
+}

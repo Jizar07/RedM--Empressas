@@ -1,0 +1,37 @@
+{
+  "channelId": "1427267559300010177",
+  "lastUpdated": "2025-10-13T15:40:00.466Z",
+  "messageCount": 3,
+  "messages": [
+    {
+      "id": "1427319974027853945",
+      "author": "Bau da Fazenda",
+      "content": "REGISTRO - REGISTRO - fazenda_22\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $160.0\nAção:: Matoaka Pokahontas vendeu 4 animais no matadouro\nSaldo após depósito:: $1512.0\nData:: 13/10/2025 - 12:40:14",
+      "timestamp": "2025-10-13T15:40:00.131Z",
+      "source": "discord",
+      "channelId": "1427267559300010177",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_22\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $160.0\nAção:: Matoaka Pokahontas vendeu 4 animais no matadouro\nSaldo após depósito:: $1512.0\nData:: 13/10/2025 - 12:40:14",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1427319951328542886",
+      "author": "Maximo Pokaropa",
+      "content": "REGISTRO - REGISTRO - fazenda_22\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $1\nAutor:: Maximo Pokaropa | FIXO: 78748\nSaldo após depósito:: $1352.0\nData:: 13/10/2025 - 12:40:09",
+      "timestamp": "2025-10-13T15:39:54.719Z",
+      "source": "discord",
+      "channelId": "1427267559300010177",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_22\nCAIXA ORGANIZAÇÃO - DEPÓSITO\nValor depositado:: $1\nAutor:: Maximo Pokaropa | FIXO: 78748\nSaldo após depósito:: $1352.0\nData:: 13/10/2025 - 12:40:09",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1427319744305823787",
+      "author": "Maximo Pokaropa",
+      "content": "REGISTRO - REGISTRO - fazenda_22\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cutelodeacougueiro x1\nAutor:: Maximo Pokaropa | FIXO: 78748\nData:: 13/10/2025 - 12:39:19",
+      "timestamp": "2025-10-13T15:39:05.361Z",
+      "source": "discord",
+      "channelId": "1427267559300010177",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_22\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: cutelodeacougueiro x1\nAutor:: Maximo Pokaropa | FIXO: 78748\nData:: 13/10/2025 - 12:39:19",
+      "rawEmbeds": []
+    }
+  ]
+}

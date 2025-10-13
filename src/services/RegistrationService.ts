@@ -87,41 +87,145 @@ class RegistrationService {
   }
 
   // Get registration form configuration
-  async getFormConfig(): Promise<IRegistrationConfig | null> {
-    // Use file-based storage for persistence
-    console.log('Loading configuration from file storage');
-    return this.loadConfigFromFile();
+  async getFormConfig(serverId?: string): Promise<IRegistrationConfig | null> {
+    console.log('Loading configuration from file storage', serverId ? `for server ${serverId}` : '');
+
+    const fullConfig = this.loadConfigFromFile();
+
+    // If no serverId provided, return first server's config (backward compatibility)
+    if (!serverId) {
+      if (fullConfig.servers) {
+        const firstServerId = Object.keys(fullConfig.servers)[0];
+        if (firstServerId) {
+          console.log(`No serverId provided, returning config for first server: ${firstServerId}`);
+          return fullConfig.servers[firstServerId];
+        }
+      }
+      // Fallback to legacy flat structure if no servers object
+      return fullConfig;
+    }
+
+    // Return server-specific config
+    if (fullConfig.servers && fullConfig.servers[serverId]) {
+      return fullConfig.servers[serverId];
+    }
+
+    // No config found for this server - create and return default config
+    console.log(`No configuration found for server ${serverId}, creating default config`);
+    const defaultConfig = {
+      formId: 'registration_form',
+      functions: [],
+      settings: {
+        oneTimeOnly: true,
+        requiresVerification: false,
+        welcomeMessage: 'Bem-vindo! Seu registro foi processado.',
+        embedColor: '#FF0000',
+        channelId: '',
+        serverIP: '',
+        serverPort: ''
+      },
+      command: {
+        name: 'register-setup',
+        description: 'Deploy the registration form to a channel',
+        permissions: 'Administrator'
+      },
+      formDisplay: {
+        title: '🎮 Registro do Servidor',
+        description: '**Bem-vindo ao Servidor!**\n\nPara ter acesso ao servidor, você precisa completar o processo de registro.\n\n**Informações Necessárias:**\n• Seu nome completo no condado\n• Seu Pombo\n• Sua função\n• Quem te convidou\n\nClique no botão **Registrar** abaixo para começar.',
+        footerText: 'Sistema de Registro',
+        embedColor: '#00b3ff',
+        button: {
+          text: 'Registrar',
+          emoji: '🧾',
+          style: 'Primary'
+        }
+      },
+      steps: {
+        step1: {
+          modalTitle: 'Registro - Passo 1/3',
+          nameLabel: 'Nome completo no Condado',
+          namePlaceholder: 'Digite seu nome completo no condado',
+          pomboLabel: 'Pombo',
+          pomboPlaceholder: 'Digite seu pombo'
+        },
+        step2: {
+          embedTitle: 'Passo 2/3 - Sua função',
+          embedDescription: 'Selecione sua função',
+          dropdownPlaceholder: 'Selecione sua função/trabalho'
+        },
+        step3: {
+          embedTitle: 'Passo 3/3 - Quem te convidou?',
+          embedDescription: 'Selecione quem te convidou:\n\n✨ **Digite para buscar** - Você pode digitar o nome da pessoa para encontrá-la rapidamente!',
+          dropdownPlaceholder: 'Selecione quem te convidou'
+        }
+      },
+      postRegistration: {
+        nicknameFormat: '{ingameName} | {pombo}',
+        sendDM: true,
+        dmTitle: 'Bem-vindo!',
+        dmMessage: 'Olá {ingameName},\n\nSeu registro como **{functionName}** foi aprovado!\n\nAgora você tem acesso aos canais específicos da sua função.\n\nAproveite seu tempo no servidor!',
+        assignRoles: true,
+        welcomeChannelMessage: true,
+        createChannel: true,
+        channelNameFormat: '{ingameName}'
+      },
+      messages: {
+        alreadyRegistered: '❌ Você já está registrado!',
+        sessionExpired: '❌ Registration session expired. Please start again.',
+        registrationSuccess: '✅ Registro Realizado com Sucesso!',
+        errorGeneric: '❌ An error occurred. Please try again.',
+        permissionDenied: '❌ This is not your registration form.'
+      }
+    };
+
+    // Save the default config for this server
+    await this.updateFormConfig(defaultConfig as any, serverId);
+
+    return defaultConfig as any;
   }
 
   // Update registration form configuration
-  async updateFormConfig(config: Partial<IRegistrationConfig>): Promise<IRegistrationConfig> {
-    console.log('Updating configuration in file storage');
+  async updateFormConfig(config: Partial<IRegistrationConfig>, serverId: string): Promise<IRegistrationConfig> {
+    console.log('Updating configuration in file storage for server:', serverId);
     console.log('Config to update:', JSON.stringify(config, null, 2));
-    
-    // Load current config, merge with updates, and save
-    const currentConfig = this.loadConfigFromFile();
-    console.log('Current config:', JSON.stringify(currentConfig, null, 2));
-    
+
+    // Load current config
+    const fullConfig = this.loadConfigFromFile();
+    console.log('Current full config loaded');
+
+    // Ensure servers object exists
+    if (!fullConfig.servers) {
+      fullConfig.servers = {};
+    }
+
+    // Get current server config or create new one
+    const currentServerConfig = fullConfig.servers[serverId] || {};
+    console.log('Current server config:', JSON.stringify(currentServerConfig, null, 2));
+
     // Deep merge the configurations
-    const updatedConfig = {
-      ...currentConfig,
+    const updatedServerConfig = {
+      ...currentServerConfig,
       ...config,
       settings: {
-        ...currentConfig.settings,
+        ...currentServerConfig.settings,
         ...(config.settings || {})
       },
-      functions: config.functions !== undefined ? config.functions : currentConfig.functions
+      functions: config.functions !== undefined ? config.functions : currentServerConfig.functions
     };
-    
-    console.log('Updated config:', JSON.stringify(updatedConfig, null, 2));
-    this.saveConfigToFile(updatedConfig);
-    return updatedConfig as any;
+
+    // Update the server's config
+    fullConfig.servers[serverId] = updatedServerConfig;
+
+    console.log('Updated server config:', JSON.stringify(updatedServerConfig, null, 2));
+    this.saveConfigToFile(fullConfig);
+    return updatedServerConfig as any;
   }
 
   // Check if user is already registered
-  async isUserRegistered(_userId: string): Promise<boolean> {
+  async isUserRegistered(_userId: string, _serverId?: string): Promise<boolean> {
     // For now, always return false since we're using file-based storage
     // and don't have user registration persistence implemented yet
+    // TODO: Implement per-server registration tracking
     return false;
   }
 
@@ -155,11 +259,12 @@ class RegistrationService {
     mailId: string;
     functionId: string;
     invitedBy: string;
+    serverId?: string;  // CRITICAL: Add serverId parameter
   }): Promise<IUserRegistration> {
-    console.log('Submitting registration for user:', data.userId);
+    console.log('Submitting registration for user:', data.userId, 'in server:', data.serverId);
 
-    // Get function details from config
-    const config = await this.getFormConfig();
+    // Get function details from config - PASS SERVER ID
+    const config = await this.getFormConfig(data.serverId);
     if (!config) throw new Error('Registration form not configured');
 
     const selectedFunction = config.functions.find(f => f.id === data.functionId);

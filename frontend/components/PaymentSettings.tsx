@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Settings, Save, RefreshCw, DollarSign, Shield, Clock, AlertTriangle } from 'lucide-react';
+import { useServer } from '../contexts/ServerContext';
 
 interface PaymentConfig {
   enabled: boolean;
@@ -64,6 +65,7 @@ const defaultConfig: PaymentConfig = {
 };
 
 export default function PaymentSettings() {
+  const { selectedServerId } = useServer();
   const [config, setConfig] = useState<PaymentConfig>(defaultConfig);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -72,16 +74,22 @@ export default function PaymentSettings() {
 
   // Load configuration
   const loadConfig = async () => {
+    if (!selectedServerId) {
+      setLoading(false);
+      setError('Please select a server first');
+      return;
+    }
+
     try {
       setLoading(true);
       setError('');
 
-      const response = await fetch('/api/payment-config');
+      const response = await fetch(`/api/payment-config?serverId=${selectedServerId}`);
       const data = await response.json();
 
       if (data.success) {
         setConfig(data.data);
-        console.log('✅ Payment configuration loaded');
+        console.log('✅ Payment configuration loaded for server:', selectedServerId);
       } else {
         setError(data.error || 'Failed to load configuration');
       }
@@ -95,6 +103,11 @@ export default function PaymentSettings() {
 
   // Save configuration
   const saveConfig = async () => {
+    if (!selectedServerId) {
+      setError('Please select a server first');
+      return;
+    }
+
     try {
       setSaving(true);
       setError('');
@@ -105,7 +118,10 @@ export default function PaymentSettings() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(config),
+        body: JSON.stringify({
+          ...config,
+          serverId: selectedServerId
+        }),
       });
 
       const data = await response.json();
@@ -127,6 +143,11 @@ export default function PaymentSettings() {
 
   // Reset to defaults
   const resetToDefaults = async () => {
+    if (!selectedServerId) {
+      setError('Please select a server first');
+      return;
+    }
+
     if (!confirm('Are you sure you want to reset to default settings? This cannot be undone.')) {
       return;
     }
@@ -136,7 +157,11 @@ export default function PaymentSettings() {
       setError('');
 
       const response = await fetch('/api/payment-config/reset', {
-        method: 'POST'
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ serverId: selectedServerId })
       });
 
       const data = await response.json();
@@ -156,8 +181,14 @@ export default function PaymentSettings() {
   };
 
   useEffect(() => {
-    loadConfig();
-  }, []);
+    if (selectedServerId) {
+      loadConfig();
+    } else {
+      setConfig(defaultConfig);
+      setLoading(false);
+      setError('');
+    }
+  }, [selectedServerId]);
 
   const updateDefaultPrice = (service: 'plants' | 'animals' | 'ferrovia', price: number) => {
     setConfig(prev => ({

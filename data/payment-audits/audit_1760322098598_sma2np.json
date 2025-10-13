@@ -1,0 +1,15 @@
+{
+  "paymentId": "audit_1760322098598_sma2np",
+  "sessionId": "session_1760316882450_o14tne",
+  "managerId": "206587400703574019",
+  "managerName": "𝓑𝓪𝓻𝓻𝓸𝓼𝓸",
+  "workerId": "1228497902201077862",
+  "workerName": "Alceu Dispor",
+  "amountPaid": 28.75,
+  "paidAt": "2025-10-13T02:21:38.598Z",
+  "verificationStatus": "pending",
+  "timeWindow": {
+    "startTime": "2025-10-13T02:16:38.598Z",
+    "endTime": "2025-10-13T02:31:38.598Z"
+  }
+}

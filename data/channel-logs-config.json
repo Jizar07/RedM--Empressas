@@ -3,6 +3,7 @@
     {
       "id": "bercario-braithwaite-logs",
       "name": "Bercario Braithwaite Farm Logs",
+      "serverId": "1274479410107646004",
       "channelId": "1413532807430541552",
       "systemEndpoint": "https://fazenda.stoffeltech.com/api/webhook/channel-messages",
       "enabled": true,
@@ -13,6 +14,7 @@
     {
       "id": "ferrovia-money-logs",
       "name": "Ferrovia Money Transaction Logs",
+      "serverId": "1274479410107646004",
       "channelId": "1414735729082499072",
       "systemEndpoint": "https://fazenda.stoffeltech.com/api/webhook/channel-messages",
       "enabled": true,

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import AuthProvider from '@/components/AuthProvider'
 import { ServerProvider } from '@/contexts/ServerContext'
+import { OnboardingProvider } from '@/contexts/OnboardingContext'
 import { ThemeProvider } from '@/contexts/ThemeContext'
 import { LanguageProvider } from '@/contexts/LanguageContext'
 import ErrorBoundary from '@/components/ErrorBoundary'
@@ -24,11 +25,13 @@ export default function RootLayout({
             <ThemeProvider>
               <AuthProvider>
                 <ServerProvider>
-                  <div className="flex min-h-screen">
-                    <main className="flex-1">
-                      {children}
-                    </main>
-                  </div>
+                  <OnboardingProvider>
+                    <div className="flex min-h-screen">
+                      <main className="flex-1">
+                        {children}
+                      </main>
+                    </div>
+                  </OnboardingProvider>
                 </ServerProvider>
               </AuthProvider>
             </ThemeProvider>

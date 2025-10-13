@@ -1,0 +1,22 @@
+{
+  "sessionId": "session_1760324243533_utd7w",
+  "workerId": "645598935209082880",
+  "workerName": "Vincent Versace",
+  "amount": 0,
+  "paidBy": "949397147030274059",
+  "paidByName": "๖ۣۜζ͜͡ɪᴢᴢʏɴʜᴀ🎀",
+  "paidAt": "2025-10-13T03:04:18.274Z",
+  "plantTransactions": [],
+  "animalTransactions": [
+    {
+      "type": "animals_taken",
+      "animalType": "Cabra",
+      "quantity": 4,
+      "cost": 80,
+      "amount": 0,
+      "transactionId": "tx_1760324243536_bfnj7f",
+      "timestamp": "2025-10-13T02:57:23.536Z"
+    }
+  ],
+  "financialTransactions": []
+}

@@ -56,19 +56,18 @@ export class BotClient extends Client {
   
   public async init(): Promise<void> {
     console.log('🤖 Initializing bot...');
-    
+
     // Load events
     await this.loadEvents();
-    
+
     // Load commands
     await this.loadCommands();
-    
-    // Register slash commands
-    await this.registerCommands();
+
+    // NOTE: Command registration moved to ready event (after bot logs in and guilds are cached)
 
     // Initialize RegistrationService with bot client
     RegistrationService.setClient(this);
-    
+
     // Initialize OrdersService with bot client
     OrdersService.setClient(this);
 
@@ -145,27 +144,38 @@ export class BotClient extends Client {
     }
   }
   
-  private async registerCommands(): Promise<void> {
+  public async registerCommands(): Promise<void> {
     const commands = [];
-    
+
     for (const command of this.commands.values()) {
       if ((command as any).data) {
         commands.push((command as any).data.toJSON());
       }
     }
-    
+
     const rest = new REST({ version: '10' }).setToken(config.discord.token);
-    
+
     try {
       console.log(`🔄 Registering ${commands.length} slash commands...`);
-      
-      if (config.environment.isDevelopment && config.discord.guildId) {
-        // Register commands for development guild
-        await rest.put(
-          Routes.applicationGuildCommands(config.discord.clientId, config.discord.guildId),
-          { body: commands }
-        );
-        console.log(`✅ Registered commands for guild: ${config.discord.guildId}`);
+
+      if (config.environment.isDevelopment) {
+        // Register commands for ALL guilds the bot is in
+        const guilds = this.guilds.cache;
+        console.log(`📋 Found ${guilds.size} guilds, registering commands to all...`);
+
+        for (const [guildId, guild] of guilds) {
+          try {
+            await rest.put(
+              Routes.applicationGuildCommands(config.discord.clientId, guildId),
+              { body: commands }
+            );
+            console.log(`✅ Registered commands for guild: ${guild.name} (${guildId})`);
+          } catch (error) {
+            console.error(`❌ Error registering commands for guild ${guild.name} (${guildId}):`, error);
+          }
+        }
+
+        console.log(`✅ Finished registering commands to ${guilds.size} guilds`);
       } else {
         // Register global commands
         await rest.put(

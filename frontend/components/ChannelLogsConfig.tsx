@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Plus, Trash2, Save, MessageSquare, Link, Settings, Monitor, AlertCircle } from 'lucide-react';
+import { useServer } from '../contexts/ServerContext';
 
 interface ChannelLogMapping {
   id: string;
@@ -14,6 +15,7 @@ interface ChannelLogMapping {
 }
 
 export default function ChannelLogsConfig() {
+  const { selectedServerId } = useServer();
   const [mappings, setMappings] = useState<ChannelLogMapping[]>([]);
   const [newMapping, setNewMapping] = useState<Partial<ChannelLogMapping>>({
     channelId: '',
@@ -27,13 +29,22 @@ export default function ChannelLogsConfig() {
   const [saving, setSaving] = useState(false);
 
   useEffect(() => {
-    fetchMappings();
-  }, []);
+    if (selectedServerId) {
+      fetchMappings();
+    } else {
+      setMappings([]);
+      setIsLoading(false);
+    }
+  }, [selectedServerId]);
 
   const fetchMappings = async () => {
+    if (!selectedServerId) {
+      return;
+    }
+
     try {
       setIsLoading(true);
-      const response = await fetch('/api/channel-logs/config');
+      const response = await fetch(`/api/channel-logs/config?serverId=${selectedServerId}`);
       if (response.ok) {
         const data = await response.json();
         setMappings(data.mappings || []);
@@ -46,6 +57,11 @@ export default function ChannelLogsConfig() {
   };
 
   const saveMappings = async () => {
+    if (!selectedServerId) {
+      alert('Please select a server first');
+      return;
+    }
+
     try {
       setSaving(true);
       const response = await fetch('/api/channel-logs/config', {
@@ -53,11 +69,14 @@ export default function ChannelLogsConfig() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ mappings }),
+        body: JSON.stringify({
+          mappings,
+          serverId: selectedServerId
+        }),
       });
 
       if (response.ok) {
-        console.log('Channel log mappings saved successfully');
+        console.log('Channel log mappings saved successfully for server:', selectedServerId);
       } else {
         throw new Error('Failed to save mappings');
       }

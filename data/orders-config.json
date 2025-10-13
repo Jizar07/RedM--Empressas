@@ -5,6 +5,7 @@
       "id": "firm_1755616597781",
       "name": "🛥️┋ HIDROVIA BRAITHWAITE",
       "description": "",
+      "serverId": "1274479410107646004",
       "discordRoleIds": [
         "1403409669191503913"
       ],
@@ -27,6 +28,7 @@
       "id": "firm_1755616620195",
       "name": "🐄 ┋ FAZENDA BRAITHWAITE I",
       "description": "",
+      "serverId": "1274479410107646004",
       "discordRoleIds": [
         "1389443492312256584",
         "1385345704255426670"
@@ -51,6 +53,7 @@
       "id": "firm_1755616653056",
       "name": "🐄 ┋ FAZENDA BRAITHWAITE II",
       "description": "",
+      "serverId": "1274479410107646004",
       "discordRoleIds": [
         "1404938492714291341",
         "1404938411831197848"
@@ -75,6 +78,7 @@
       "id": "firm_1755616636555",
       "name": "🐄 ┋ FAZENDA BRAITHWAITE III",
       "description": "",
+      "serverId": "1274479410107646004",
       "discordRoleIds": [
         "1404941047347286196",
         "1404941846639153244"
@@ -105,6 +109,7 @@
       "id": "firm_1755616689011",
       "name": "🔫 ┋ ARMARIA VEIO",
       "description": "",
+      "serverId": "1274479410107646004",
       "discordRoleIds": [
         "1386824482311901194"
       ],
@@ -125,6 +130,7 @@
       "id": "firm_1755616711241",
       "name": "🐴 ┋ HARAS E CRUZAS",
       "description": "",
+      "serverId": "1274479410107646004",
       "discordRoleIds": [
         "1403410488532009152"
       ],
@@ -147,6 +153,7 @@
       "id": "firm_1755616741405",
       "name": "🟩┋ HAYALLA",
       "description": "",
+      "serverId": "1274479410107646004",
       "discordRoleIds": [
         "1402144126341742613"
       ],
