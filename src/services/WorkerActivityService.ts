@@ -69,6 +69,7 @@ interface WorkerSession {
   workerName: string;
   channelId: string;
   sessionId: string;
+  serverId?: string; // Discord server/guild ID for multi-server support
   startTime: Date;
   lastActivity: Date;
   status: 'active' | 'pending_payment' | 'paid' | 'rejected';
@@ -104,7 +105,7 @@ export class WorkerActivityService {
   private client: Client;
   private activeSessions: Map<string, WorkerSession> = new Map();
   private dataDir: string;
-  private serviceConfig!: ServiceConfig;
+  private serviceConfigCache: Map<string, ServiceConfig> = new Map(); // Per-server config cache
   private workerPricesCache: Map<string, { prices: WorkerPrices; fetchedAt: Date }> = new Map();
   private paymentAuditService: PaymentAuditService;
   private cleanupService: SessionCleanupService;
@@ -119,7 +120,7 @@ export class WorkerActivityService {
     this.weeklySalesService = WeeklySalesService.getInstance();
     this.translationService = ItemTranslationService.getInstance();
     this.ensureDataDirectory();
-    this.loadServiceConfig();
+    // Config loaded per-server on-demand, sessions loaded from all servers
     this.loadActiveSessions();
 
     // Start automatic cleanup service
@@ -133,28 +134,113 @@ export class WorkerActivityService {
     }
   }
 
-  private loadServiceConfig(): void {
+  /**
+   * Get path for server-specific sessions file with fallback to legacy
+   */
+  private getSessionsPath(serverId?: string): string {
+    if (serverId) {
+      const serverPath = path.join(this.dataDir, serverId, 'active-sessions.json');
+      // Check if server-specific path exists
+      if (fs.existsSync(path.dirname(serverPath))) {
+        return serverPath;
+      }
+    }
+    // Fallback to legacy path
+    return path.join(this.dataDir, 'active-sessions.json');
+  }
+
+  /**
+   * Get path for server-specific archived sessions directory
+   */
+  private getArchivedPath(serverId?: string): string {
+    if (serverId) {
+      const serverPath = path.join(this.dataDir, serverId, 'archived');
+      if (fs.existsSync(serverPath)) {
+        return serverPath;
+      }
+    }
+    // Fallback to legacy path
+    return path.join(this.dataDir, 'archived');
+  }
+
+  /**
+   * Load and cache service config per server
+   */
+  private getServiceConfig(serverId?: string): ServiceConfig {
+    // Return cached config if available
+    const cacheKey = serverId || 'default';
+    if (this.serviceConfigCache.has(cacheKey)) {
+      return this.serviceConfigCache.get(cacheKey)!;
+    }
+
+    // Load config from file
     try {
       const configPath = path.join(process.cwd(), 'data', 'farm-service-config.json');
       const configData = fs.readFileSync(configPath, 'utf8');
-      this.serviceConfig = JSON.parse(configData);
-      console.log('⚙️ Loaded farm service configuration');
+      const fullConfig = JSON.parse(configData);
+
+      let config: ServiceConfig;
+
+      // Check if new server-based structure
+      if (fullConfig.servers && serverId && fullConfig.servers[serverId]) {
+        config = fullConfig.servers[serverId];
+        console.log(`⚙️ Loaded farm service configuration for server ${serverId}`);
+      } else if (fullConfig.servers) {
+        // New structure but no serverId provided or not found - use first server's config as fallback
+        const firstServerId = Object.keys(fullConfig.servers)[0];
+        config = fullConfig.servers[firstServerId];
+        console.log(`⚙️ Loaded farm service configuration (fallback to ${firstServerId})`);
+      } else {
+        // Legacy structure - use as-is
+        config = fullConfig;
+        console.log('⚙️ Loaded farm service configuration (legacy format)');
+      }
+
+      // Cache the config
+      this.serviceConfigCache.set(cacheKey, config);
+      return config;
     } catch (error) {
       console.error('❌ Error loading service config:', error);
       // Default configuration
-      this.serviceConfig = {
-        plantPrices: { basic: 0.25, other: 0.25 }, // Will be overridden by dynamic pricing
+      const defaultConfig: ServiceConfig = {
+        plantPrices: { basic: 0.25, other: 0.25 },
         basicPlants: ['Milho', 'Trigo', 'Junco'],
         optimalAnimalIncome: 60,
         animalTypes: ['Bovino', 'Ovino', 'Suino', 'Caprino', 'Equino', 'Avino']
       };
+      this.serviceConfigCache.set(cacheKey, defaultConfig);
+      return defaultConfig;
     }
   }
 
   private loadActiveSessions(): void {
     try {
-      const sessionsFile = path.join(this.dataDir, 'active-sessions.json');
-      if (fs.existsSync(sessionsFile)) {
+      // Load sessions from all server directories + legacy path
+      const serverDirs: string[] = [];
+
+      // Check for server-specific directories
+      if (fs.existsSync(this.dataDir)) {
+        const entries = fs.readdirSync(this.dataDir, { withFileTypes: true });
+        for (const entry of entries) {
+          if (entry.isDirectory() && entry.name.match(/^\d+$/)) {
+            // Looks like a server ID directory
+            serverDirs.push(entry.name);
+          }
+        }
+      }
+
+      // Add legacy path (undefined = no serverId)
+      serverDirs.push('');
+
+      let totalLoaded = 0;
+      let totalSkipped = 0;
+
+      for (const serverId of serverDirs) {
+        const sessionsFile = this.getSessionsPath(serverId || undefined);
+        if (!fs.existsSync(sessionsFile)) {
+          continue;
+        }
+
         const data = fs.readFileSync(sessionsFile, 'utf8');
         const sessions = JSON.parse(data);
 
@@ -163,7 +249,9 @@ export class WorkerActivityService {
         let cleanedUp = false;
 
         // Get list of archived session IDs to prevent loading zombie sessions
-        const archivedSessionIds = this.getArchivedSessionIds();
+        const archivedSessionIds = this.getArchivedSessionIds(serverId || undefined);
+
+        console.log(`📂 Loading sessions for server: ${serverId || 'legacy'}...`);
 
         // Convert to Map and restore Date objects - ONLY for active sessions
         Object.entries(sessions).forEach(([workerId, session]: [string, any]) => {
@@ -228,18 +316,28 @@ export class WorkerActivityService {
             }));
           }
 
+          // Set serverId if not already set (for legacy sessions)
+          if (!session.serverId && serverId) {
+            session.serverId = serverId;
+          }
+
           this.activeSessions.set(workerId, session);
           loadedCount++;
         });
 
-        console.log(`📊 Loaded ${loadedCount} active worker sessions (skipped ${skippedCount} non-active sessions)`);
+        totalLoaded += loadedCount;
+        totalSkipped += skippedCount;
+
+        console.log(`📊 Loaded ${loadedCount} active worker sessions from ${serverId || 'legacy'} (skipped ${skippedCount} non-active sessions)`);
 
         // If we cleaned up any sessions, save immediately
         if (cleanedUp) {
-          console.log(`🧹 Cleaning up sessions file...`);
+          console.log(`🧹 Cleaning up sessions file for ${serverId || 'legacy'}...`);
           this.saveActiveSessions();
         }
       }
+
+      console.log(`✅ Total sessions loaded: ${totalLoaded} across all servers (skipped ${totalSkipped} non-active)`);
     } catch (error) {
       console.error('❌ Error loading active sessions:', error);
     }
@@ -247,21 +345,44 @@ export class WorkerActivityService {
 
   private saveActiveSessions(): void {
     try {
-      const sessionsFile = path.join(this.dataDir, 'active-sessions.json');
+      // Group sessions by serverId
+      const sessionsByServer = new Map<string, Map<string, WorkerSession>>();
 
-      // CRITICAL FIX: Only save sessions with 'active' status
-      const activeSessionsOnly = new Map();
       this.activeSessions.forEach((session, workerId) => {
-        if (session.status === 'active') {
-          activeSessionsOnly.set(workerId, session);
-        } else {
+        // CRITICAL FIX: Only save sessions with 'active' status
+        if (session.status !== 'active') {
           console.log(`⏭️ Excluding non-active session from save: ${session.workerName} (status: ${session.status})`);
+          return;
         }
+
+        const serverId = session.serverId || 'legacy';
+        if (!sessionsByServer.has(serverId)) {
+          sessionsByServer.set(serverId, new Map());
+        }
+        sessionsByServer.get(serverId)!.set(workerId, session);
       });
 
-      const sessions = Object.fromEntries(activeSessionsOnly);
-      fs.writeFileSync(sessionsFile, JSON.stringify(sessions, null, 2));
-      console.log(`💾 Saved ${activeSessionsOnly.size} active sessions to file (excluded ${this.activeSessions.size - activeSessionsOnly.size} non-active)`);
+      let totalSaved = 0;
+      let totalExcluded = this.activeSessions.size;
+
+      // Save each server's sessions to its own file
+      for (const [serverId, serverSessions] of sessionsByServer.entries()) {
+        const sessionsFile = this.getSessionsPath(serverId === 'legacy' ? undefined : serverId);
+
+        // Ensure server directory exists
+        const sessionDir = path.dirname(sessionsFile);
+        if (!fs.existsSync(sessionDir)) {
+          fs.mkdirSync(sessionDir, { recursive: true });
+        }
+
+        const sessions = Object.fromEntries(serverSessions);
+        fs.writeFileSync(sessionsFile, JSON.stringify(sessions, null, 2));
+        totalSaved += serverSessions.size;
+        console.log(`💾 Saved ${serverSessions.size} active sessions for ${serverId === 'legacy' ? 'legacy' : `server ${serverId}`}`);
+      }
+
+      totalExcluded -= totalSaved;
+      console.log(`✅ Total saved: ${totalSaved} sessions across ${sessionsByServer.size} servers (excluded ${totalExcluded} non-active)`);
     } catch (error) {
       console.error('❌ Error saving active sessions:', error);
     }
@@ -276,10 +397,10 @@ export class WorkerActivityService {
   }
 
   // Get all archived session IDs to prevent zombie sessions
-  private getArchivedSessionIds(): Set<string> {
+  private getArchivedSessionIds(serverId?: string): Set<string> {
     const archivedIds = new Set<string>();
     try {
-      const archiveDir = path.join(this.dataDir, 'archived');
+      const archiveDir = this.getArchivedPath(serverId);
       if (fs.existsSync(archiveDir)) {
         const files = fs.readdirSync(archiveDir);
         files.forEach(file => {
@@ -675,16 +796,16 @@ export class WorkerActivityService {
   }
 
   // @ts-ignore - Reserved for future use
-  private calculateAnimalPayment(quantity: number, _animalType?: string): number {
+  private calculateAnimalPayment(quantity: number, _animalType?: string, serverId?: string): number {
     // For now, use the base rate per animal
     // Could be enhanced with per-animal-type rates in the future
-    return quantity * (this.serviceConfig.optimalAnimalIncome / 4); // Assuming 4 animals per optimal income
+    const config = this.getServiceConfig(serverId);
+    return quantity * (config.optimalAnimalIncome / 4); // Assuming 4 animals per optimal income
   }
 
   private async recalculateSessionCredits(session: WorkerSession): Promise<void> {
     const prices = await this.getWorkerPrices();
     let totalCredits = 0;
-    let totalCosts = 0;
 
     // Calculate plant credits - Pay for ALL registered plants deposited
     session.plantTransactions

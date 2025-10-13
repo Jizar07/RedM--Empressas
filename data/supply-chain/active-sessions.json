@@ -11647,7 +11647,7 @@
     "role": "manager",
     "status": "active",
     "startTime": "2025-10-02T21:00:53.270Z",
-    "lastActivity": "2025-10-13T15:45:35.357Z",
+    "lastActivity": "2025-10-13T15:46:35.799Z",
     "transactions": [
       {
         "transactionId": "tx_1759441856629_uar68m1xw",
@@ -11825,6 +11825,38 @@
         "quantity": 10,
         "timestamp": "2025-10-13T15:45:35.357Z",
         "originalMessage": "REGISTRO - REGISTRO - fazenda_22\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Apple_Seed x10\nAutor:: Maximo Pokaropa | FIXO: 78748\nData:: 13/10/2025 - 12:45:49"
+      },
+      {
+        "transactionId": "tx_1760370384395_kl2xth9x0",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "Cotton_Seed ",
+        "quantity": 1,
+        "timestamp": "2025-10-13T15:46:24.395Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_22\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Cotton_Seed x1\nAutor:: Maximo Pokaropa | FIXO: 78748\nData:: 13/10/2025 - 12:46:38"
+      },
+      {
+        "transactionId": "tx_1760370388063_ocerr9a56",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "Coffee_Seed ",
+        "quantity": 1,
+        "timestamp": "2025-10-13T15:46:28.063Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_22\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Coffee_Seed x1\nAutor:: Maximo Pokaropa | FIXO: 78748\nData:: 13/10/2025 - 12:46:42"
+      },
+      {
+        "transactionId": "tx_1760370392133_vrxuxqbn4",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "Carrots_Seed ",
+        "quantity": 1,
+        "timestamp": "2025-10-13T15:46:32.133Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_22\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Carrots_Seed x1\nAutor:: Maximo Pokaropa | FIXO: 78748\nData:: 13/10/2025 - 12:46:46"
+      },
+      {
+        "transactionId": "tx_1760370395799_pjzg2jufn",
+        "type": "SEEDS_WITHDRAWN",
+        "itemName": "Corn_Seed ",
+        "quantity": 1,
+        "timestamp": "2025-10-13T15:46:35.799Z",
+        "originalMessage": "REGISTRO - REGISTRO - fazenda_22\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Corn_Seed x1\nAutor:: Maximo Pokaropa | FIXO: 78748\nData:: 13/10/2025 - 12:46:49"
       }
     ],
     "openResponsibilities": {

@@ -720,16 +720,39 @@ export class GlobalWorkerTracker {
       const fs = require('fs');
       const path = require('path');
 
-      // Read active worker sessions
-      const activeSessionsPath = path.join(process.cwd(), 'data', 'worker-sessions', 'active-sessions.json');
+      const dataDir = path.join(process.cwd(), 'data', 'worker-sessions');
+      const sessionFiles: string[] = [];
 
-      if (!fs.existsSync(activeSessionsPath)) {
-        console.log('⚠️ GlobalWorkerTracker: No active sessions file found');
+      // Check for server-specific directories
+      if (fs.existsSync(dataDir)) {
+        const entries = fs.readdirSync(dataDir, { withFileTypes: true });
+        for (const entry of entries) {
+          if (entry.isDirectory() && entry.name.match(/^\d+$/)) {
+            // Server-specific directory
+            const serverSessionFile = path.join(dataDir, entry.name, 'active-sessions.json');
+            if (fs.existsSync(serverSessionFile)) {
+              sessionFiles.push(serverSessionFile);
+            }
+          }
+        }
+      }
+
+      // Add legacy path
+      const legacyPath = path.join(dataDir, 'active-sessions.json');
+      if (fs.existsSync(legacyPath)) {
+        sessionFiles.push(legacyPath);
+      }
+
+      if (sessionFiles.length === 0) {
+        console.log('⚠️ GlobalWorkerTracker: No active sessions files found');
         return;
       }
 
-      const activeSessionsData = JSON.parse(fs.readFileSync(activeSessionsPath, 'utf8'));
       let syncedActivities = 0;
+
+      // Process each sessions file
+      for (const sessionsPath of sessionFiles) {
+        const activeSessionsData = JSON.parse(fs.readFileSync(sessionsPath, 'utf8'));
 
       // Process each active session
       for (const sessionData of Object.values(activeSessionsData)) {
@@ -786,6 +809,7 @@ export class GlobalWorkerTracker {
             }
           }
         }
+      }
       }
 
       if (syncedActivities > 0) {
