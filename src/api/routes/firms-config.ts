@@ -8,23 +8,13 @@ const firmService = FirmConfigService.getInstance();
 router.get('/', async (req: Request, res: Response) => {
   try {
     const serverId = req.query.serverId as string | undefined;
-    const allFirms = firmService.getAllFirms();
-
-    // Filter firms by serverId if provided
-    let firms = allFirms;
-    if (serverId) {
-      firms = Object.fromEntries(
-        Object.entries(allFirms).filter(([_, firm]) =>
-          firm.serverId === serverId || firm.guildId === serverId
-        )
-      );
-    }
+    const allFirms = firmService.getAllFirms(serverId);
 
     res.json({
       success: true,
-      firms,
-      count: Object.keys(firms).length,
-      serverId: serverId || 'all'
+      firms: allFirms,
+      count: Object.keys(allFirms).length,
+      serverId: serverId || 'legacy'
     });
   } catch (error) {
     console.error('❌ Error fetching firms:', error);
@@ -40,8 +30,9 @@ router.get('/', async (req: Request, res: Response) => {
 router.get('/:firmId', async (req: Request, res: Response) => {
   try {
     const { firmId } = req.params;
-    const firm = firmService.getFirm(firmId);
-    
+    const serverId = req.query.serverId as string | undefined;
+    const firm = firmService.getFirm(firmId, serverId);
+
     if (!firm) {
       return res.status(404).json({
         success: false,
@@ -136,14 +127,16 @@ router.post('/', async (req: Request, res: Response) => {
 router.put('/:firmId', async (req: Request, res: Response) => {
   try {
     const { firmId } = req.params;
-    const updateData = { ...req.body, id: firmId };
-    
+    const serverId = req.query.serverId as string | undefined;
+    const updateData = { ...req.body, id: firmId, serverId };
+
     const updatedFirm = firmService.updateFirm(updateData);
-    
+
     return res.json({
       success: true,
       message: 'Firm updated successfully',
-      firm: updatedFirm
+      firm: updatedFirm,
+      serverId: serverId || 'legacy'
     });
   } catch (error) {
     console.error('❌ Error updating firm:', error);
@@ -161,20 +154,22 @@ router.patch('/:firmId/toggle', async (req: Request, res: Response) => {
   try {
     const { firmId } = req.params;
     const { enabled } = req.body;
-    
+    const serverId = req.query.serverId as string | undefined;
+
     if (typeof enabled !== 'boolean') {
       return res.status(400).json({
         success: false,
         error: 'enabled field must be a boolean'
       });
     }
-    
-    const updatedFirm = firmService.toggleFirmEnabled(firmId, enabled);
-    
+
+    const updatedFirm = firmService.toggleFirmEnabled(firmId, enabled, serverId);
+
     return res.json({
       success: true,
       message: `Firm ${enabled ? 'enabled' : 'disabled'} successfully`,
-      firm: updatedFirm
+      firm: updatedFirm,
+      serverId: serverId || 'legacy'
     });
   } catch (error) {
     console.error('❌ Error toggling firm status:', error);
@@ -191,11 +186,13 @@ router.patch('/:firmId/toggle', async (req: Request, res: Response) => {
 router.delete('/:firmId', async (req: Request, res: Response) => {
   try {
     const { firmId } = req.params;
-    firmService.deleteFirm(firmId);
-    
+    const serverId = req.query.serverId as string | undefined;
+    firmService.deleteFirm(firmId, serverId);
+
     return res.json({
       success: true,
-      message: 'Firm deleted successfully'
+      message: 'Firm deleted successfully',
+      serverId: serverId || 'legacy'
     });
   } catch (error) {
     console.error('❌ Error deleting firm:', error);
@@ -209,13 +206,15 @@ router.delete('/:firmId', async (req: Request, res: Response) => {
 });
 
 // Get system settings
-router.get('/system/settings', async (_req: Request, res: Response) => {
+router.get('/system/settings', async (req: Request, res: Response) => {
   try {
-    const settings = firmService.getSettings();
-    
+    const serverId = req.query.serverId as string | undefined;
+    const settings = firmService.getSettings(serverId);
+
     return res.json({
       success: true,
-      settings
+      settings,
+      serverId: serverId || 'legacy'
     });
   } catch (error) {
     console.error('❌ Error fetching system settings:', error);
@@ -230,12 +229,14 @@ router.get('/system/settings', async (_req: Request, res: Response) => {
 // Update system settings
 router.put('/system/settings', async (req: Request, res: Response) => {
   try {
-    const settings = firmService.updateSettings(req.body);
-    
+    const serverId = req.query.serverId as string | undefined;
+    const settings = firmService.updateSettings(req.body, serverId);
+
     return res.json({
       success: true,
       message: 'Settings updated successfully',
-      settings
+      settings,
+      serverId: serverId || 'legacy'
     });
   } catch (error) {
     console.error('❌ Error updating system settings:', error);
@@ -248,14 +249,16 @@ router.put('/system/settings', async (req: Request, res: Response) => {
 });
 
 // Get monitored channels (for bot integration)
-router.get('/system/monitored-channels', async (_req: Request, res: Response) => {
+router.get('/system/monitored-channels', async (req: Request, res: Response) => {
   try {
-    const channels = firmService.getMonitoredChannels();
-    
+    const serverId = req.query.serverId as string | undefined;
+    const channels = firmService.getMonitoredChannels(serverId);
+
     return res.json({
       success: true,
       channels,
-      count: channels.length
+      count: channels.length,
+      serverId: serverId || 'legacy'
     });
   } catch (error) {
     console.error('❌ Error fetching monitored channels:', error);
@@ -313,13 +316,15 @@ router.post('/test-endpoint', async (req: Request, res: Response) => {
 });
 
 // Reload configuration from file
-router.post('/system/reload', async (_req: Request, res: Response) => {
+router.post('/system/reload', async (req: Request, res: Response) => {
   try {
-    firmService.reloadConfig();
-    
+    const serverId = req.query.serverId as string | undefined;
+    firmService.reloadConfig(serverId);
+
     return res.json({
       success: true,
-      message: 'Configuration reloaded successfully'
+      message: 'Configuration reloaded successfully',
+      serverId: serverId || 'legacy'
     });
   } catch (error) {
     console.error('❌ Error reloading configuration:', error);

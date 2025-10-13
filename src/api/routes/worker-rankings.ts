@@ -314,15 +314,17 @@ router.get('/', async (_req: Request, res: Response) => {
 });
 
 // Weekly rankings endpoints - MUST be before /:category to avoid conflicts
-router.get('/weekly', async (_req: Request, res: Response) => {
+router.get('/weekly', async (req: Request, res: Response) => {
   try {
+    const { serverId } = req.query;
     const weeklyService = WeeklyRankingService.getInstance();
-    const weeklyRankings = weeklyService.getWeeklyRankings();
+    const weeklyRankings = weeklyService.getWeeklyRankings(serverId as string | undefined);
 
     return res.json({
       success: true,
       data: weeklyRankings,
-      timeUntilReset: weeklyService.getTimeUntilReset()
+      timeUntilReset: weeklyService.getTimeUntilReset(),
+      serverId: serverId || 'legacy'
     });
   } catch (error) {
     console.error('❌ Error getting weekly rankings:', error);
@@ -333,15 +335,17 @@ router.get('/weekly', async (_req: Request, res: Response) => {
   }
 });
 
-router.get('/weekly/stats', async (_req: Request, res: Response) => {
+router.get('/weekly/stats', async (req: Request, res: Response) => {
   try {
+    const { serverId } = req.query;
     const weeklyService = WeeklyRankingService.getInstance();
-    const allTimeStats = weeklyService.getAllTimeStats();
+    const allTimeStats = weeklyService.getAllTimeStats(serverId as string | undefined);
 
     return res.json({
       success: true,
       data: allTimeStats,
-      totalWorkers: Object.keys(allTimeStats).length
+      totalWorkers: Object.keys(allTimeStats).length,
+      serverId: serverId || 'legacy'
     });
   } catch (error) {
     console.error('❌ Error getting all-time stats:', error);
@@ -352,15 +356,17 @@ router.get('/weekly/stats', async (_req: Request, res: Response) => {
   }
 });
 
-router.get('/weekly/prizes', async (_req: Request, res: Response) => {
+router.get('/weekly/prizes', async (req: Request, res: Response) => {
   try {
+    const { serverId } = req.query;
     const weeklyService = WeeklyRankingService.getInstance();
-    const prizeHistory = weeklyService.getPrizeHistory();
+    const prizeHistory = weeklyService.getPrizeHistory(serverId as string | undefined);
 
     return res.json({
       success: true,
       data: prizeHistory,
-      totalWeeks: prizeHistory.length
+      totalWeeks: prizeHistory.length,
+      serverId: serverId || 'legacy'
     });
   } catch (error) {
     console.error('❌ Error getting prize history:', error);
