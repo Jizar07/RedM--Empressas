@@ -30,40 +30,41 @@ function authenticateBot(req: Request, res: Response, next: any) {
 router.post('/session', authenticateBot, async (req: Request, res: Response) => {
   try {
     if (!supplyChainService) {
-      return res.status(503).json({ 
-        success: false, 
-        error: 'Supply chain service not initialized' 
+      return res.status(503).json({
+        success: false,
+        error: 'Supply chain service not initialized'
       });
     }
 
-    const { workerId, workerName, role } = req.body;
-    
+    const { workerId, workerName, role, serverId } = req.body;
+
     if (!workerId || !workerName || !role) {
-      return res.status(400).json({ 
-        success: false, 
-        error: 'Missing required fields: workerId, workerName, role' 
+      return res.status(400).json({
+        success: false,
+        error: 'Missing required fields: workerId, workerName, role'
       });
     }
 
     if (!['manager', 'worker'].includes(role)) {
-      return res.status(400).json({ 
-        success: false, 
-        error: 'Role must be either "manager" or "worker"' 
+      return res.status(400).json({
+        success: false,
+        error: 'Role must be either "manager" or "worker"'
       });
     }
 
-    const session = await supplyChainService.createOrGetSession(workerId, workerName, role as WorkerRole);
-    
-    return res.json({ 
-      success: true, 
-      session 
+    const session = await supplyChainService.createOrGetSession(workerId, workerName, role as WorkerRole, serverId);
+
+    return res.json({
+      success: true,
+      session,
+      serverId: serverId || 'legacy'
     });
 
   } catch (error) {
     console.error('❌ Error creating/getting supply chain session:', error);
-    return res.status(500).json({ 
-      success: false, 
-      error: 'Internal server error' 
+    return res.status(500).json({
+      success: false,
+      error: 'Internal server error'
     });
   }
 });
@@ -75,10 +76,11 @@ router.get('/session/:workerId', authenticateBot, async (req: Request, res: Resp
       return res.status(503).json({ error: 'Service not initialized' });
     }
 
-    const session = supplyChainService.getSession(req.params.workerId);
-    
+    const serverId = req.query.serverId as string | undefined;
+    const session = supplyChainService.getSession(req.params.workerId, serverId);
+
     if (session) {
-      return res.json({ success: true, session });
+      return res.json({ success: true, session, serverId: serverId || 'legacy' });
     } else {
       return res.status(404).json({ success: false, error: 'Session not found' });
     }
@@ -90,20 +92,22 @@ router.get('/session/:workerId', authenticateBot, async (req: Request, res: Resp
 });
 
 // Get all active sessions
-router.get('/sessions', authenticateBot, async (_req: Request, res: Response) => {
+router.get('/sessions', authenticateBot, async (req: Request, res: Response) => {
   try {
     if (!supplyChainService) {
       return res.status(503).json({ error: 'Service not initialized' });
     }
 
-    const sessions = supplyChainService.getAllActiveSessions();
-    const analytics = supplyChainService.getAnalytics();
-    
-    return res.json({ 
-      success: true, 
+    const serverId = req.query.serverId as string | undefined;
+    const sessions = supplyChainService.getAllActiveSessions(serverId);
+    const analytics = supplyChainService.getAnalytics(serverId);
+
+    return res.json({
+      success: true,
       sessions,
       analytics,
-      total: sessions.length
+      total: sessions.length,
+      serverId: serverId || 'legacy'
     });
 
   } catch (error) {
@@ -116,30 +120,30 @@ router.get('/sessions', authenticateBot, async (_req: Request, res: Response) =>
 router.post('/transaction', authenticateBot, async (req: Request, res: Response) => {
   try {
     if (!supplyChainService) {
-      return res.status(503).json({ 
-        success: false, 
-        error: 'Supply chain service not initialized' 
+      return res.status(503).json({
+        success: false,
+        error: 'Supply chain service not initialized'
       });
     }
 
-    const { workerId, type, itemName, quantity, amount, discordMessageId, originalMessage } = req.body;
-    
+    const { workerId, type, itemName, quantity, amount, discordMessageId, originalMessage, serverId } = req.body;
+
     if (!workerId || !type || !itemName || quantity === undefined) {
-      return res.status(400).json({ 
-        success: false, 
-        error: 'Missing required fields: workerId, type, itemName, quantity' 
+      return res.status(400).json({
+        success: false,
+        error: 'Missing required fields: workerId, type, itemName, quantity'
       });
     }
 
     const validTypes: SupplyChainTransactionType[] = [
-      'PLANTS_WITHDRAWN', 'BOXES_CREATED', 'BOXES_WITHDRAWN', 
+      'PLANTS_WITHDRAWN', 'BOXES_CREATED', 'BOXES_WITHDRAWN',
       'FERROVIA_MISSION_COMPLETED', 'REVENUE_COLLECTED', 'REVENUE_DISTRIBUTED'
     ];
 
     if (!validTypes.includes(type)) {
-      return res.status(400).json({ 
-        success: false, 
-        error: 'Invalid transaction type' 
+      return res.status(400).json({
+        success: false,
+        error: 'Invalid transaction type'
       });
     }
 
@@ -150,25 +154,26 @@ router.post('/transaction', authenticateBot, async (req: Request, res: Response)
       amount: amount ? parseFloat(amount) : undefined,
       discordMessageId,
       originalMessage
-    });
+    }, serverId);
 
     if (success) {
-      return res.json({ 
-        success: true, 
-        message: 'Transaction added successfully' 
+      return res.json({
+        success: true,
+        message: 'Transaction added successfully',
+        serverId: serverId || 'legacy'
       });
     } else {
-      return res.status(404).json({ 
-        success: false, 
-        error: 'Session not found' 
+      return res.status(404).json({
+        success: false,
+        error: 'Session not found'
       });
     }
 
   } catch (error) {
     console.error('❌ Error adding supply chain transaction:', error);
-    return res.status(500).json({ 
-      success: false, 
-      error: 'Internal server error' 
+    return res.status(500).json({
+      success: false,
+      error: 'Internal server error'
     });
   }
 });
@@ -180,10 +185,11 @@ router.get('/accountability/:workerId', authenticateBot, async (req: Request, re
       return res.status(503).json({ error: 'Service not initialized' });
     }
 
-    const summary = supplyChainService.getAccountabilitySummary(req.params.workerId);
-    
+    const serverId = req.query.serverId as string | undefined;
+    const summary = supplyChainService.getAccountabilitySummary(req.params.workerId, serverId);
+
     if (summary) {
-      return res.json({ success: true, summary });
+      return res.json({ success: true, summary, serverId: serverId || 'legacy' });
     } else {
       return res.status(404).json({ success: false, error: 'Session not found' });
     }
@@ -195,21 +201,23 @@ router.get('/accountability/:workerId', authenticateBot, async (req: Request, re
 });
 
 // Get sessions with outstanding responsibilities
-router.get('/responsibilities', authenticateBot, async (_req: Request, res: Response) => {
+router.get('/responsibilities', authenticateBot, async (req: Request, res: Response) => {
   try {
     if (!supplyChainService) {
       return res.status(503).json({ error: 'Service not initialized' });
     }
 
-    const sessions = supplyChainService.getSessionsWithResponsibilities();
-    const overdueSessions = supplyChainService.getOverdueSessions();
-    
-    return res.json({ 
-      success: true, 
+    const serverId = req.query.serverId as string | undefined;
+    const sessions = supplyChainService.getSessionsWithResponsibilities(serverId);
+    const overdueSessions = supplyChainService.getOverdueSessions(serverId);
+
+    return res.json({
+      success: true,
       sessionsWithResponsibilities: sessions,
       overdueSessions,
       totalWithResponsibilities: sessions.length,
-      totalOverdue: overdueSessions.length
+      totalOverdue: overdueSessions.length,
+      serverId: serverId || 'legacy'
     });
 
   } catch (error) {
@@ -261,18 +269,19 @@ router.delete('/session/:workerId', authenticateBot, async (req: Request, res: R
       return res.status(503).json({ error: 'Service not initialized' });
     }
 
-    const { reason } = req.body;
-    const success = await supplyChainService.archiveSession(req.params.workerId, reason || 'Manual archive');
-    
+    const { reason, serverId } = req.body;
+    const success = await supplyChainService.archiveSession(req.params.workerId, reason || 'Manual archive', serverId);
+
     if (success) {
-      return res.json({ 
-        success: true, 
-        message: 'Session archived successfully' 
+      return res.json({
+        success: true,
+        message: 'Session archived successfully',
+        serverId: serverId || 'legacy'
       });
     } else {
-      return res.status(404).json({ 
-        success: false, 
-        error: 'Session not found' 
+      return res.status(404).json({
+        success: false,
+        error: 'Session not found'
       });
     }
 
@@ -283,17 +292,19 @@ router.delete('/session/:workerId', authenticateBot, async (req: Request, res: R
 });
 
 // Get analytics
-router.get('/analytics', authenticateBot, async (_req: Request, res: Response) => {
+router.get('/analytics', authenticateBot, async (req: Request, res: Response) => {
   try {
     if (!supplyChainService) {
       return res.status(503).json({ error: 'Service not initialized' });
     }
 
-    const analytics = supplyChainService.getAnalytics();
-    
-    return res.json({ 
-      success: true, 
-      analytics 
+    const serverId = req.query.serverId as string | undefined;
+    const analytics = supplyChainService.getAnalytics(serverId);
+
+    return res.json({
+      success: true,
+      analytics,
+      serverId: serverId || 'legacy'
     });
 
   } catch (error) {
@@ -303,17 +314,19 @@ router.get('/analytics', authenticateBot, async (_req: Request, res: Response) =
 });
 
 // Check and update overdue sessions (maintenance endpoint)
-router.post('/maintenance/check-overdue', authenticateBot, async (_req: Request, res: Response) => {
+router.post('/maintenance/check-overdue', authenticateBot, async (req: Request, res: Response) => {
   try {
     if (!supplyChainService) {
       return res.status(503).json({ error: 'Service not initialized' });
     }
 
-    await supplyChainService.checkAndUpdateOverdueSessions();
-    
-    return res.json({ 
-      success: true, 
-      message: 'Overdue check completed' 
+    const { serverId } = req.body;
+    await supplyChainService.checkAndUpdateOverdueSessions(serverId);
+
+    return res.json({
+      success: true,
+      message: 'Overdue check completed',
+      serverId: serverId || 'legacy'
     });
 
   } catch (error) {
