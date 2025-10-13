@@ -11,19 +11,14 @@ import {
 export class PaymentAuditService {
   private static instance: PaymentAuditService;
   private dataDir: string;
-  private auditsDir: string;
-  private withdrawalsDir: string;
-  private balancesDir: string;
-  private config: PaymentVerificationConfig;
+  private configCache: Map<string, PaymentVerificationConfig> = new Map();
+  private defaultConfig: PaymentVerificationConfig;
 
   private constructor() {
     this.dataDir = path.join(__dirname, '../../data');
-    this.auditsDir = path.join(this.dataDir, 'payment-audits');
-    this.withdrawalsDir = path.join(this.dataDir, 'manager-withdrawals');
-    this.balancesDir = path.join(this.dataDir, 'manager-balances');
 
     // Default configuration
-    this.config = {
+    this.defaultConfig = {
       verificationWindowMinutes: 10, // 10 minutes to verify withdrawal
       allowedDiscrepancy: 0.01, // $0.01 acceptable difference
       autoExpireHours: 24, // 24 hours before expiring pending audits
@@ -32,6 +27,45 @@ export class PaymentAuditService {
     };
 
     this.initialize();
+  }
+
+  /**
+   * Get path for server-specific payment audits directory
+   */
+  private getAuditsDir(serverId?: string): string {
+    if (serverId) {
+      const serverPath = path.join(this.dataDir, 'payment-audits', serverId);
+      if (fs.existsSync(serverPath)) {
+        return serverPath;
+      }
+    }
+    return path.join(this.dataDir, 'payment-audits');
+  }
+
+  /**
+   * Get path for server-specific manager withdrawals directory
+   */
+  private getWithdrawalsDir(serverId?: string): string {
+    if (serverId) {
+      const serverPath = path.join(this.dataDir, 'manager-withdrawals', serverId);
+      if (fs.existsSync(serverPath)) {
+        return serverPath;
+      }
+    }
+    return path.join(this.dataDir, 'manager-withdrawals');
+  }
+
+  /**
+   * Get path for server-specific manager balances directory
+   */
+  private getBalancesDir(serverId?: string): string {
+    if (serverId) {
+      const serverPath = path.join(this.dataDir, 'manager-balances', serverId);
+      if (fs.existsSync(serverPath)) {
+        return serverPath;
+      }
+    }
+    return path.join(this.dataDir, 'manager-balances');
   }
 
   public static getInstance(): PaymentAuditService {
@@ -43,48 +77,109 @@ export class PaymentAuditService {
 
   private initialize(): void {
     try {
-      // Create directories if they don't exist
-      [this.auditsDir, this.withdrawalsDir, this.balancesDir].forEach(dir => {
+      // Create legacy directories if they don't exist
+      const legacyDirs = [
+        path.join(this.dataDir, 'payment-audits'),
+        path.join(this.dataDir, 'manager-withdrawals'),
+        path.join(this.dataDir, 'manager-balances')
+      ];
+
+      legacyDirs.forEach(dir => {
         if (!fs.existsSync(dir)) {
           fs.mkdirSync(dir, { recursive: true });
           console.log(`📁 Created directory: ${dir}`);
         }
       });
 
-      // Load configuration if it exists
-      this.loadConfiguration();
-
       console.log('💰 PaymentAuditService initialized');
-      console.log(`   📊 Verification window: ${this.config.verificationWindowMinutes} minutes`);
-      console.log(`   🔍 Pre-payment validation: ${this.config.enablePrePaymentValidation ? 'ENABLED' : 'DISABLED'}`);
     } catch (error) {
       console.error('❌ Failed to initialize PaymentAuditService:', error);
     }
   }
 
-  private loadConfiguration(): void {
+  /**
+   * Get configuration for a specific server
+   */
+  private getConfiguration(serverId?: string): PaymentVerificationConfig {
+    // Check cache first
+    const cacheKey = serverId || 'legacy';
+    if (this.configCache.has(cacheKey)) {
+      return this.configCache.get(cacheKey)!;
+    }
+
     const configPath = path.join(this.dataDir, 'payment-audit-config.json');
 
     if (fs.existsSync(configPath)) {
       try {
-        const savedConfig = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
-        this.config = { ...this.config, ...savedConfig };
-        console.log('⚙️ Loaded payment audit configuration');
+        const fileData = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
+
+        // Check if it's the new server-based structure
+        if (fileData.servers && typeof fileData.servers === 'object') {
+          if (serverId && fileData.servers[serverId]) {
+            const config = { ...this.defaultConfig, ...fileData.servers[serverId] };
+            this.configCache.set(cacheKey, config);
+            return config;
+          }
+          // If serverId not found, use first available server or default
+          const firstServerId = Object.keys(fileData.servers)[0];
+          if (firstServerId) {
+            const config = { ...this.defaultConfig, ...fileData.servers[firstServerId] };
+            this.configCache.set(cacheKey, config);
+            return config;
+          }
+        } else {
+          // Legacy format - use as-is
+          const config = { ...this.defaultConfig, ...fileData };
+          this.configCache.set(cacheKey, config);
+          return config;
+        }
       } catch (error) {
         console.error('❌ Failed to load payment audit configuration:', error);
       }
-    } else {
-      // Save default configuration
-      this.saveConfiguration();
     }
+
+    // Return default config
+    this.configCache.set(cacheKey, this.defaultConfig);
+    return this.defaultConfig;
   }
 
-  private saveConfiguration(): void {
+  private saveConfiguration(config: PaymentVerificationConfig, serverId?: string): void {
     const configPath = path.join(this.dataDir, 'payment-audit-config.json');
 
     try {
-      fs.writeFileSync(configPath, JSON.stringify(this.config, null, 2));
-      console.log('💾 Saved payment audit configuration');
+      let fileData: any = {};
+
+      // Load existing config if it exists
+      if (fs.existsSync(configPath)) {
+        fileData = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
+      }
+
+      // Ensure servers structure exists
+      if (!fileData.servers) {
+        fileData.servers = {};
+      }
+
+      if (serverId) {
+        // Save to specific server
+        fileData.servers[serverId] = config;
+      } else {
+        // If no serverId, save to first available server or create legacy entry
+        const firstServerId = Object.keys(fileData.servers)[0];
+        if (firstServerId) {
+          fileData.servers[firstServerId] = config;
+        } else {
+          // Fallback: save as legacy format (for backward compatibility during migration)
+          fileData = config;
+        }
+      }
+
+      fs.writeFileSync(configPath, JSON.stringify(fileData, null, 2));
+
+      // Clear cache
+      const cacheKey = serverId || 'legacy';
+      this.configCache.delete(cacheKey);
+
+      console.log(`💾 Saved payment audit configuration [${serverId || 'legacy'}]`);
     } catch (error) {
       console.error('❌ Failed to save payment audit configuration:', error);
     }
@@ -97,10 +192,12 @@ export class PaymentAuditService {
     managerName: string,
     workerId: string,
     workerName: string,
-    amountPaid: number
+    amountPaid: number,
+    serverId?: string
   ): Promise<PaymentAudit> {
     const now = new Date();
     const paymentId = `audit_${Date.now()}_${Math.random().toString(36).substr(2, 6)}`;
+    const config = this.getConfiguration(serverId);
 
     const audit: PaymentAudit = {
       paymentId,
@@ -114,19 +211,19 @@ export class PaymentAuditService {
       verificationStatus: 'pending',
       timeWindow: {
         startTime: new Date(now.getTime() - (5 * 60 * 1000)), // 5 minutes before payment
-        endTime: new Date(now.getTime() + (this.config.verificationWindowMinutes * 60 * 1000))
+        endTime: new Date(now.getTime() + (config.verificationWindowMinutes * 60 * 1000))
       }
     };
 
     // Save audit record
-    await this.savePaymentAudit(audit);
+    await this.savePaymentAudit(audit, serverId);
 
-    console.log(`💰 Created payment audit: ${paymentId} - ${managerName} paid $${amountPaid} to ${workerName}`);
+    console.log(`💰 Created payment audit: ${paymentId} - ${managerName} paid $${amountPaid} to ${workerName} [${serverId || 'legacy'}]`);
 
     // Start verification process
     setTimeout(() => {
-      this.verifyPayment(paymentId);
-    }, this.config.verificationWindowMinutes * 60 * 1000);
+      this.verifyPayment(paymentId, serverId);
+    }, config.verificationWindowMinutes * 60 * 1000);
 
     return audit;
   }
@@ -138,7 +235,8 @@ export class PaymentAuditService {
     amount: number,
     channelId: string,
     messageId: string,
-    originalMessage: string
+    originalMessage: string,
+    serverId?: string
   ): Promise<ManagerWithdrawal> {
     const withdrawalId = `withdrawal_${Date.now()}_${Math.random().toString(36).substr(2, 6)}`;
 
@@ -154,27 +252,36 @@ export class PaymentAuditService {
     };
 
     // Save withdrawal record
-    const withdrawalFile = path.join(this.withdrawalsDir, `${withdrawalId}.json`);
+    const withdrawalsDir = this.getWithdrawalsDir(serverId);
+
+    // Ensure directory exists
+    if (!fs.existsSync(withdrawalsDir)) {
+      fs.mkdirSync(withdrawalsDir, { recursive: true });
+    }
+
+    const withdrawalFile = path.join(withdrawalsDir, `${withdrawalId}.json`);
     fs.writeFileSync(withdrawalFile, JSON.stringify(withdrawal, null, 2));
 
-    console.log(`🏦 Recorded withdrawal: ${managerName} withdrew $${amount}`);
+    console.log(`🏦 Recorded withdrawal: ${managerName} withdrew $${amount} [${serverId || 'legacy'}]`);
 
     // Check for pending payment audits that could match this withdrawal
-    await this.matchWithdrawalToPayments(withdrawal);
+    await this.matchWithdrawalToPayments(withdrawal, serverId);
 
     return withdrawal;
   }
 
   // Verify a specific payment by looking for matching withdrawals
-  public async verifyPayment(paymentId: string): Promise<void> {
+  public async verifyPayment(paymentId: string, serverId?: string): Promise<void> {
     try {
-      const audit = await this.getPaymentAudit(paymentId);
+      const audit = await this.getPaymentAudit(paymentId, serverId);
       if (!audit || audit.verificationStatus !== 'pending') {
         return;
       }
 
+      const config = this.getConfiguration(serverId);
+
       // Look for withdrawals within the time window
-      const matchingWithdrawals = await this.findMatchingWithdrawals(audit);
+      const matchingWithdrawals = await this.findMatchingWithdrawals(audit, serverId);
 
       if (matchingWithdrawals.length === 0) {
         // No matching withdrawal found
@@ -191,7 +298,7 @@ export class PaymentAuditService {
         if (bestMatch) {
           const amountDifference = Math.abs(audit.amountPaid - bestMatch.amount);
 
-          if (amountDifference <= this.config.allowedDiscrepancy) {
+          if (amountDifference <= config.allowedDiscrepancy) {
             audit.verificationStatus = 'verified';
             audit.withdrawalId = bestMatch.withdrawalId;
             audit.amountWithdrawn = bestMatch.amount;
@@ -208,9 +315,9 @@ export class PaymentAuditService {
         }
       }
 
-      await this.savePaymentAudit(audit);
+      await this.savePaymentAudit(audit, serverId);
 
-      console.log(`🔍 Payment verification completed: ${paymentId} - Status: ${audit.verificationStatus}`);
+      console.log(`🔍 Payment verification completed: ${paymentId} - Status: ${audit.verificationStatus} [${serverId || 'legacy'}]`);
 
     } catch (error) {
       console.error(`❌ Error verifying payment ${paymentId}:`, error);
@@ -218,17 +325,19 @@ export class PaymentAuditService {
   }
 
   // Check if a manager has sufficient balance for a payment (if pre-validation is enabled)
-  public async validateManagerBalance(managerId: string, requiredAmount: number): Promise<{
+  public async validateManagerBalance(managerId: string, requiredAmount: number, serverId?: string): Promise<{
     canPay: boolean;
     reason?: string;
     lastKnownBalance?: number;
   }> {
-    if (!this.config.enablePrePaymentValidation) {
+    const config = this.getConfiguration(serverId);
+
+    if (!config.enablePrePaymentValidation) {
       return { canPay: true };
     }
 
     try {
-      const balance = await this.getManagerBalance(managerId);
+      const balance = await this.getManagerBalance(managerId, serverId);
 
       if (!balance || balance.lastKnownBalance === undefined) {
         return {
@@ -259,13 +368,21 @@ export class PaymentAuditService {
   }
 
   // Helper methods
-  private async savePaymentAudit(audit: PaymentAudit): Promise<void> {
-    const auditFile = path.join(this.auditsDir, `${audit.paymentId}.json`);
+  private async savePaymentAudit(audit: PaymentAudit, serverId?: string): Promise<void> {
+    const auditsDir = this.getAuditsDir(serverId);
+
+    // Ensure directory exists
+    if (!fs.existsSync(auditsDir)) {
+      fs.mkdirSync(auditsDir, { recursive: true });
+    }
+
+    const auditFile = path.join(auditsDir, `${audit.paymentId}.json`);
     fs.writeFileSync(auditFile, JSON.stringify(audit, null, 2));
   }
 
-  private async getPaymentAudit(paymentId: string): Promise<PaymentAudit | null> {
-    const auditFile = path.join(this.auditsDir, `${paymentId}.json`);
+  private async getPaymentAudit(paymentId: string, serverId?: string): Promise<PaymentAudit | null> {
+    const auditsDir = this.getAuditsDir(serverId);
+    const auditFile = path.join(auditsDir, `${paymentId}.json`);
 
     if (!fs.existsSync(auditFile)) {
       return null;
@@ -279,16 +396,21 @@ export class PaymentAuditService {
     }
   }
 
-  private async findMatchingWithdrawals(audit: PaymentAudit): Promise<ManagerWithdrawal[]> {
+  private async findMatchingWithdrawals(audit: PaymentAudit, serverId?: string): Promise<ManagerWithdrawal[]> {
     const withdrawals: ManagerWithdrawal[] = [];
+    const withdrawalsDir = this.getWithdrawalsDir(serverId);
+
+    if (!fs.existsSync(withdrawalsDir)) {
+      return withdrawals;
+    }
 
     try {
-      const files = fs.readdirSync(this.withdrawalsDir);
+      const files = fs.readdirSync(withdrawalsDir);
 
       for (const file of files) {
         if (!file.endsWith('.json')) continue;
 
-        const withdrawal = JSON.parse(fs.readFileSync(path.join(this.withdrawalsDir, file), 'utf-8'));
+        const withdrawal = JSON.parse(fs.readFileSync(path.join(withdrawalsDir, file), 'utf-8'));
 
         // Check if withdrawal matches criteria
         if (withdrawal.managerId === audit.managerId &&
@@ -324,14 +446,20 @@ export class PaymentAuditService {
     })[0];
   }
 
-  private async matchWithdrawalToPayments(withdrawal: ManagerWithdrawal): Promise<void> {
+  private async matchWithdrawalToPayments(withdrawal: ManagerWithdrawal, serverId?: string): Promise<void> {
     try {
-      const files = fs.readdirSync(this.auditsDir);
+      const auditsDir = this.getAuditsDir(serverId);
+
+      if (!fs.existsSync(auditsDir)) {
+        return;
+      }
+
+      const files = fs.readdirSync(auditsDir);
 
       for (const file of files) {
         if (!file.endsWith('.json')) continue;
 
-        const audit = JSON.parse(fs.readFileSync(path.join(this.auditsDir, file), 'utf-8'));
+        const audit = JSON.parse(fs.readFileSync(path.join(auditsDir, file), 'utf-8'));
 
         // Check if this withdrawal could match a pending audit
         if (audit.verificationStatus === 'pending' &&
@@ -340,7 +468,7 @@ export class PaymentAuditService {
             new Date(withdrawal.withdrawnAt) <= new Date(audit.timeWindow.endTime)) {
 
           // Trigger verification for this audit
-          await this.verifyPayment(audit.paymentId);
+          await this.verifyPayment(audit.paymentId, serverId);
         }
       }
     } catch (error) {
@@ -348,8 +476,9 @@ export class PaymentAuditService {
     }
   }
 
-  private async getManagerBalance(managerId: string): Promise<ManagerBalance | null> {
-    const balanceFile = path.join(this.balancesDir, `${managerId}.json`);
+  private async getManagerBalance(managerId: string, serverId?: string): Promise<ManagerBalance | null> {
+    const balancesDir = this.getBalancesDir(serverId);
+    const balanceFile = path.join(balancesDir, `${managerId}.json`);
 
     if (!fs.existsSync(balanceFile)) {
       return null;
@@ -364,21 +493,36 @@ export class PaymentAuditService {
   }
 
   // Public methods for external access
-  public getConfiguration(): PaymentVerificationConfig {
-    return { ...this.config };
+  public getConfigurationPublic(serverId?: string): PaymentVerificationConfig {
+    return { ...this.getConfiguration(serverId) };
   }
 
-  public async updateConfiguration(newConfig: Partial<PaymentVerificationConfig>): Promise<void> {
-    this.config = { ...this.config, ...newConfig };
-    this.saveConfiguration();
-    console.log('⚙️ Updated payment audit configuration');
+  public async updateConfiguration(newConfig: Partial<PaymentVerificationConfig>, serverId?: string): Promise<void> {
+    const currentConfig = this.getConfiguration(serverId);
+    const updatedConfig = { ...currentConfig, ...newConfig };
+    this.saveConfiguration(updatedConfig, serverId);
+    console.log(`⚙️ Updated payment audit configuration [${serverId || 'legacy'}]`);
   }
 
-  public async getAuditSummary(): Promise<PaymentAuditSummary> {
+  public async getAuditSummary(serverId?: string): Promise<PaymentAuditSummary> {
     try {
-      const files = fs.readdirSync(this.auditsDir).filter(f => f.endsWith('.json'));
+      const auditsDir = this.getAuditsDir(serverId);
+
+      if (!fs.existsSync(auditsDir)) {
+        return {
+          totalPayments: 0,
+          totalAmountPaid: 0,
+          verifiedPayments: 0,
+          pendingPayments: 0,
+          discrepancyCount: 0,
+          expiredPayments: 0,
+          averageVerificationTime: 0
+        };
+      }
+
+      const files = fs.readdirSync(auditsDir).filter(f => f.endsWith('.json'));
       const audits = files.map(file => {
-        return JSON.parse(fs.readFileSync(path.join(this.auditsDir, file), 'utf-8'));
+        return JSON.parse(fs.readFileSync(path.join(auditsDir, file), 'utf-8'));
       });
 
       const summary: PaymentAuditSummary = {

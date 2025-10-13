@@ -1,8 +1,28 @@
 {
   "channelId": "1414735729082499072",
-  "lastUpdated": "2025-10-13T16:15:52.946Z",
+  "lastUpdated": "2025-10-13T16:28:58.090Z",
   "messageCount": 1000,
   "messages": [
+    {
+      "id": "1427332286973476904",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 13/10/2025 - 13:28:55",
+      "timestamp": "2025-10-13T16:28:55.766Z",
+      "source": "discord",
+      "channelId": "1414735729082499072",
+      "embedContent": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 13/10/2025 - 13:28:55",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1427332145642213571",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 1803\nRecompensa:: 1000\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 13/10/2025 - 13:28:21",
+      "timestamp": "2025-10-13T16:28:22.070Z",
+      "source": "discord",
+      "channelId": "1414735729082499072",
+      "embedContent": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 1803\nRecompensa:: 1000\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 13/10/2025 - 13:28:21",
+      "rawEmbeds": []
+    },
     {
       "id": "1427328990963826689",
       "author": "Endo D. Barth",
@@ -9981,26 +10001,6 @@
       "source": "discord",
       "channelId": "1414735729082499072",
       "embedContent": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 969\nRecompensa:: 1000\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 01:27:13",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1420265056305807470",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 2000\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 01:26:16",
-      "timestamp": "2025-09-24T04:26:16.672Z",
-      "source": "discord",
-      "channelId": "1414735729082499072",
-      "embedContent": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 2000\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 01:26:16",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1420253945221353482",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 00:42:07",
-      "timestamp": "2025-09-24T03:42:07.583Z",
-      "source": "discord",
-      "channelId": "1414735729082499072",
-      "embedContent": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 00:42:07",
       "rawEmbeds": []
     }
   ]

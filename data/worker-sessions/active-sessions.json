@@ -6016,7 +6016,7 @@
     "channelId": "1427277000766390325",
     "sessionId": "session_1760359847469_ns1swj",
     "startTime": "2025-10-13T12:50:47.469Z",
-    "lastActivity": "2025-10-13T15:32:34.375Z",
+    "lastActivity": "2025-10-13T16:34:18.207Z",
     "status": "active",
     "plantTransactions": [],
     "animalTransactions": [
@@ -6092,12 +6092,21 @@
         "amount": 0,
         "transactionId": "tx_1760369554375_9j8nfs",
         "timestamp": "2025-10-13T15:32:34.375Z"
+      },
+      {
+        "type": "animals_taken",
+        "animalType": "Porca",
+        "quantity": 4,
+        "cost": 80,
+        "amount": 0,
+        "transactionId": "tx_1760373258207_510p3",
+        "timestamp": "2025-10-13T16:34:18.207Z"
       }
     ],
     "financialTransactions": [],
     "inventoryTransactions": [],
     "totalCredits": 640,
-    "embedMessageId": "1427318106744688680",
+    "embedMessageId": "1427333641855438970",
     "animalExpectations": [
       {
         "animalsTaken": 4,
@@ -6133,6 +6142,13 @@
         "isComplete": false,
         "transactionId": "tx_1760369554375_9j8nfs",
         "takenTimestamp": "2025-10-13T15:32:34.375Z"
+      },
+      {
+        "animalsTaken": 4,
+        "animalsDelivered": 0,
+        "isComplete": false,
+        "transactionId": "tx_1760373258207_510p3",
+        "takenTimestamp": "2025-10-13T16:34:18.207Z"
       }
     ]
   }

@@ -1,8 +1,18 @@
 {
   "channelId": "1412325130926948362",
-  "lastUpdated": "2025-10-13T16:24:29.931Z",
+  "lastUpdated": "2025-10-13T16:34:18.637Z",
   "messageCount": 1000,
   "messages": [
+    {
+      "id": "1427333638780878910",
+      "author": "Zeca Trindade",
+      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: pig_female x4\nAutor:: Zeca Trindade | FIXO: 72334\nData:: 13/10/2025 - 13:34:17",
+      "timestamp": "2025-10-13T16:34:18.062Z",
+      "source": "discord",
+      "channelId": "1412325130926948362",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: pig_female x4\nAutor:: Zeca Trindade | FIXO: 72334\nData:: 13/10/2025 - 13:34:17",
+      "rawEmbeds": []
+    },
     {
       "id": "1427331170412265494",
       "author": "Smith Ramirez",
@@ -9991,16 +10001,6 @@
       "source": "discord",
       "channelId": "1412325130926948362",
       "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Bulrush x200\nAutor:: Cosmo Versace | FIXO: 78447\nData:: 12/10/2025 - 17:01:03",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1427023165569106053",
-      "author": "Izzynha Evans",
-      "content": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixadeverduras x250\nAutor:: Izzynha Evans | FIXO: 2477\nData:: 12/10/2025 - 17:00:35",
-      "timestamp": "2025-10-12T20:00:35.480Z",
-      "source": "discord",
-      "channelId": "1412325130926948362",
-      "embedContent": "REGISTRO - REGISTRO - fazenda_143\nBAÚ ORGANIZAÇÃO- INSERIR ITEM\nItem adicionado:: caixadeverduras x250\nAutor:: Izzynha Evans | FIXO: 2477\nData:: 12/10/2025 - 17:00:35",
       "rawEmbeds": []
     }
   ]

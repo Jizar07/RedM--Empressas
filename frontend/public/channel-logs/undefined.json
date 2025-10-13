@@ -1,7 +1,94 @@
 {
-  "lastUpdated": "2025-10-13T16:15:53.278Z",
+  "lastUpdated": "2025-10-13T16:28:58.484Z",
   "messageCount": 1000,
   "messages": [
+    {
+      "id": "1427332286973476904",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 13/10/2025 - 13:28:55",
+      "timestamp": "2025-10-13T16:28:55.766Z",
+      "raw_embeds": [
+        {
+          "title": "COOPERATIVA - SACOU",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Ação:`",
+              "value": "```prolog\nSACOU\n```",
+              "inline": true
+            },
+            {
+              "name": "`Quantia:`",
+              "value": "```prolog\n1000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nEndo D. Barth | FIXO: 76312\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n13/10/2025 - 13:28:55\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 13/10/2025 - 13:28:55",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1427332145642213571",
+      "author": "ferrovia",
+      "content": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 1803\nRecompensa:: 1000\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 13/10/2025 - 13:28:21",
+      "timestamp": "2025-10-13T16:28:22.070Z",
+      "raw_embeds": [
+        {
+          "title": "ENTREGA COMPLETA - 3 ROTAS",
+          "description": null,
+          "fields": [
+            {
+              "name": "`Empresa:`",
+              "value": "```prolog\ncooperativa_bowdin\n```",
+              "inline": true
+            },
+            {
+              "name": "`Missão:`",
+              "value": "```prolog\n2\n```",
+              "inline": true
+            },
+            {
+              "name": "`Entregas Completadas:`",
+              "value": "```prolog\n1803\n```",
+              "inline": true
+            },
+            {
+              "name": "`Recompensa:`",
+              "value": "```prolog\n1000\n```",
+              "inline": true
+            },
+            {
+              "name": "`Autor:`",
+              "value": "```prolog\nEndo D. Barth | FIXO: 76312\n```",
+              "inline": true
+            },
+            {
+              "name": "`Data:`",
+              "value": "```prolog\n13/10/2025 - 13:28:21\n```",
+              "inline": false
+            }
+          ]
+        }
+      ],
+      "embedContent": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 1803\nRecompensa:: 1000\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 13/10/2025 - 13:28:21",
+      "rawEmbeds": []
+    },
     {
       "id": "1427328990963826689",
       "author": "ferrovia",
@@ -42416,78 +42503,6 @@
         }
       ],
       "embedContent": "REGISTRO - REGISTRO - berçario fazenda BW1\nMover Item para Loja\nItem adicionado:: pig_male x2\nAutor:: Zero Bala | FIXO: 74829\nData:: 24/09/2025 - 18:14:53",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1420518841863114843",
-      "author": "Bercario",
-      "content": "REGISTRO - REGISTRO - berçario fazenda BW1\nMover Item para Loja\nItem adicionado:: chicken_female x20\nAutor:: Zero Bala | FIXO: 74829\nData:: 24/09/2025 - 18:14:43",
-      "timestamp": "2025-09-24T21:14:43.864Z",
-      "raw_embeds": [
-        {
-          "title": "Mover Item para Loja",
-          "description": null,
-          "fields": [
-            {
-              "name": "`Item adicionado:`",
-              "value": "```prolog\nchicken_female x20\n```",
-              "inline": true
-            },
-            {
-              "name": "`Autor:`",
-              "value": "```prolog\nZero Bala | FIXO: 74829\n```",
-              "inline": true
-            },
-            {
-              "name": "`Data:`",
-              "value": "```prolog\n24/09/2025 - 18:14:43\n```",
-              "inline": false
-            }
-          ]
-        }
-      ],
-      "embedContent": "REGISTRO - REGISTRO - berçario fazenda BW1\nMover Item para Loja\nItem adicionado:: chicken_female x20\nAutor:: Zero Bala | FIXO: 74829\nData:: 24/09/2025 - 18:14:43",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1420454520554782730",
-      "author": "ferrovia",
-      "content": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 3000\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 24/09/2025 - 13:59:08",
-      "timestamp": "2025-09-24T16:59:08.469Z",
-      "raw_embeds": [
-        {
-          "title": "COOPERATIVA - SACOU",
-          "description": null,
-          "fields": [
-            {
-              "name": "`Empresa:`",
-              "value": "```prolog\ncooperativa_bowdin\n```",
-              "inline": true
-            },
-            {
-              "name": "`Ação:`",
-              "value": "```prolog\nSACOU\n```",
-              "inline": true
-            },
-            {
-              "name": "`Quantia:`",
-              "value": "```prolog\n3000\n```",
-              "inline": true
-            },
-            {
-              "name": "`Autor:`",
-              "value": "```prolog\nJizar Stoffeliz | FIXO: 75119\n```",
-              "inline": true
-            },
-            {
-              "name": "`Data:`",
-              "value": "```prolog\n24/09/2025 - 13:59:08\n```",
-              "inline": false
-            }
-          ]
-        }
-      ],
-      "embedContent": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 3000\nAutor:: Jizar Stoffeliz | FIXO: 75119\nData:: 24/09/2025 - 13:59:08",
       "rawEmbeds": []
     }
   ]

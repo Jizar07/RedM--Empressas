@@ -13605,7 +13605,7 @@
     "role": "manager",
     "status": "active",
     "startTime": "2025-10-06T16:21:58.547Z",
-    "lastActivity": "2025-10-13T16:15:50.020Z",
+    "lastActivity": "2025-10-13T16:28:55.822Z",
     "transactions": [
       {
         "transactionId": "tx_1759768448504_1cmizm5rj",
@@ -16554,6 +16554,23 @@
         "amount": 1000,
         "timestamp": "2025-10-13T16:15:50.020Z",
         "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 13/10/2025 - 13:15:49"
+      },
+      {
+        "transactionId": "tx_1760372902296_cm6bmlfp9",
+        "type": "FERROVIA_MISSION_COMPLETED",
+        "itemName": "ferrovia_mission",
+        "quantity": 250,
+        "timestamp": "2025-10-13T16:28:22.296Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nENTREGA COMPLETA - 3 ROTAS\nEmpresa:: cooperativa_bowdin\nMissão:: 2\nEntregas Completadas:: 1803\nRecompensa:: 1000\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 13/10/2025 - 13:28:21"
+      },
+      {
+        "transactionId": "tx_1760372935822_36vuc65rx",
+        "type": "REVENUE_COLLECTED",
+        "itemName": "company_withdrawal",
+        "quantity": 1,
+        "amount": 1000,
+        "timestamp": "2025-10-13T16:28:55.822Z",
+        "originalMessage": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 13/10/2025 - 13:28:55"
       }
     ],
     "openResponsibilities": {
@@ -16562,8 +16579,8 @@
       "dueDate": "2025-10-07T16:21:58.547Z",
       "startDate": "2025-10-06T16:21:58.547Z"
     },
-    "totalBoxesProcessed": 5750,
-    "totalRevenueGenerated": 89000,
+    "totalBoxesProcessed": 6000,
+    "totalRevenueGenerated": 90000,
     "totalRevenueReturned": 25015,
     "totalMoneyWithdrawn": 0,
     "totalMoneyDeposited": 0,
