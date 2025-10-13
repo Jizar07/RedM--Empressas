@@ -1,11 +1,15 @@
 {
-  "verificationWindowMinutes": 10,
-  "allowedDiscrepancy": 0.01,
-  "autoExpireHours": 24,
-  "enablePrePaymentValidation": false,
-  "requiredManagerRoles": [
-    "Admin",
-    "Moderator",
-    "Manager"
-  ]
+  "servers": {
+    "1274479410107646004": {
+      "verificationWindowMinutes": 10,
+      "allowedDiscrepancy": 0.01,
+      "autoExpireHours": 24,
+      "enablePrePaymentValidation": false,
+      "requiredManagerRoles": [
+        "Admin",
+        "Moderator",
+        "Manager"
+      ]
+    }
+  }
 }

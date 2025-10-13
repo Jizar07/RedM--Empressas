@@ -1,92 +1,96 @@
 {
-  "enabled": true,
-  "boxValue": 4.00,
-  "revenueDistribution": {
-    "manager": {
-      "playerShare": 0.50,
-      "farmShare": 0.50
-    },
-    "worker": {
-      "playerShare": 0.75,
-      "farmShare": 0.25
+  "servers": {
+    "1274479410107646004": {
+      "enabled": true,
+      "boxValue": 4,
+      "revenueDistribution": {
+        "manager": {
+          "playerShare": 0.5,
+          "farmShare": 0.5
+        },
+        "worker": {
+          "playerShare": 0.75,
+          "farmShare": 0.25
+        }
+      },
+      "transactionTypes": [
+        {
+          "id": "plants_withdrawal",
+          "name": "Retirada de Plantas",
+          "description": "Plantas retiradas do inventário para fazer caixas",
+          "emoji": "🌿",
+          "requiresQuantity": true,
+          "requiresPlantType": true
+        },
+        {
+          "id": "boxes_deposit",
+          "name": "Depósito de Caixas",
+          "description": "Caixas recebidas/depositadas no inventário",
+          "emoji": "📥",
+          "requiresQuantity": true,
+          "requiresPlantType": false
+        },
+        {
+          "id": "ferrovia_mission",
+          "name": "Missão Ferrovia",
+          "description": "Caixas usadas para completar missões da Ferrovia",
+          "emoji": "🎯",
+          "requiresQuantity": true,
+          "requiresPlantType": false
+        },
+        {
+          "id": "revenue_collection",
+          "name": "Coleta de Receita",
+          "description": "Coleta de receita de missões da Ferrovia",
+          "emoji": "💰",
+          "requiresQuantity": false,
+          "requiresAmount": true
+        }
+      ],
+      "plantTypes": [
+        "Milho",
+        "Trigo",
+        "Junco",
+        "Algodão",
+        "Tabaco",
+        "Cana-de-açúcar"
+      ],
+      "discordSettings": {
+        "enabled": true,
+        "channelCategoryId": "1365579138974355476",
+        "embedColor": "#4169E1",
+        "timeout": 180000
+      },
+      "rolePermissions": {
+        "acceptRoles": [
+          "1274479410107646006"
+        ],
+        "verifyRoles": [
+          "1274479410107646006"
+        ],
+        "editRoles": [
+          "👑│CEO",
+          "❪★❱ Gerentes"
+        ],
+        "rejectRoles": [
+          "👑│CEO",
+          "❪★❱ Gerentes"
+        ],
+        "managerRoles": [
+          "👑│CEO",
+          "❪★❱ Gerentes"
+        ]
+      },
+      "fileSettings": {
+        "maxFileSize": 5,
+        "allowedFormats": [
+          "jpeg",
+          "jpg",
+          "png",
+          "gif"
+        ],
+        "retentionDays": 30
+      }
     }
-  },
-  "transactionTypes": [
-    {
-      "id": "plants_withdrawal",
-      "name": "Retirada de Plantas",
-      "description": "Plantas retiradas do inventário para fazer caixas",
-      "emoji": "🌿",
-      "requiresQuantity": true,
-      "requiresPlantType": true
-    },
-    {
-      "id": "boxes_deposit",
-      "name": "Depósito de Caixas",
-      "description": "Caixas recebidas/depositadas no inventário",
-      "emoji": "📥",
-      "requiresQuantity": true,
-      "requiresPlantType": false
-    },
-    {
-      "id": "ferrovia_mission",
-      "name": "Missão Ferrovia",
-      "description": "Caixas usadas para completar missões da Ferrovia",
-      "emoji": "🎯",
-      "requiresQuantity": true,
-      "requiresPlantType": false
-    },
-    {
-      "id": "revenue_collection",
-      "name": "Coleta de Receita",
-      "description": "Coleta de receita de missões da Ferrovia",
-      "emoji": "💰",
-      "requiresQuantity": false,
-      "requiresAmount": true
-    }
-  ],
-  "plantTypes": [
-    "Milho",
-    "Trigo",
-    "Junco",
-    "Algodão",
-    "Tabaco",
-    "Cana-de-açúcar"
-  ],
-  "discordSettings": {
-    "enabled": true,
-    "channelCategoryId": "1365579138974355476",
-    "embedColor": "#4169E1",
-    "timeout": 180000
-  },
-  "rolePermissions": {
-    "acceptRoles": [
-      "1274479410107646006"
-    ],
-    "verifyRoles": [
-      "1274479410107646006"
-    ],
-    "editRoles": [
-      "👑│CEO",
-      "❪★❱ Gerentes"
-    ],
-    "rejectRoles": [
-      "👑│CEO",
-      "❪★❱ Gerentes"
-    ],
-    "managerRoles": [
-      "👑│CEO",
-      "❪★❱ Gerentes"
-    ]
-  },
-  "fileSettings": {
-    "maxFileSize": 5,
-    "allowedFormats": [
-      "jpeg",
-      "jpg",
-      "png",
-      "gif"
-    ],
-    "retentionDays": 30
   }
 }

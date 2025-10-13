@@ -3461,7 +3461,7 @@
     "channelId": "1420763696560476240",
     "sessionId": "session_1760280166258_x0wr0y",
     "startTime": "2025-10-12T14:42:46.258Z",
-    "lastActivity": "2025-10-13T15:45:35.346Z",
+    "lastActivity": "2025-10-12T14:42:46.262Z",
     "status": "active",
     "plantTransactions": [
       {
@@ -3470,31 +3470,14 @@
         "quantity": 16,
         "transactionId": "tx_1760280166262_twmtpu",
         "timestamp": "2025-10-12T14:42:46.262Z"
-      },
-      {
-        "type": "seed_taken",
-        "itemName": "Apple Semente",
-        "quantity": 10,
-        "transactionId": "tx_1760370335346_hseo26",
-        "timestamp": "2025-10-13T15:45:35.346Z"
       }
     ],
     "animalTransactions": [],
     "financialTransactions": [],
     "inventoryTransactions": [],
-    "totalCredits": 2.4,
-    "embedMessageId": "1427321382584324146",
-    "seedExpectations": [
-      {
-        "seedType": "Apple Semente",
-        "seedQuantity": 10,
-        "expectedPlantType": "Apple Semente",
-        "expectedPlantQuantity": 100,
-        "plantsFulfilled": 0,
-        "isComplete": false,
-        "transactionId": "tx_1760370335346_hseo26"
-      }
-    ]
+    "totalCredits": 4,
+    "embedMessageId": "1426943184344453131",
+    "seedExpectations": []
   },
   "141250620593012736": {
     "workerId": "141250620593012736",

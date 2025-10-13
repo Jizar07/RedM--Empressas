@@ -1,8 +1,28 @@
 {
   "channelId": "1427267559300010177",
-  "lastUpdated": "2025-10-13T15:40:00.466Z",
-  "messageCount": 3,
+  "lastUpdated": "2025-10-13T15:45:37.661Z",
+  "messageCount": 5,
   "messages": [
+    {
+      "id": "1427321379492991126",
+      "author": "Maximo Pokaropa",
+      "content": "REGISTRO - REGISTRO - fazenda_22\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Apple_Seed x10\nAutor:: Maximo Pokaropa | FIXO: 78748\nData:: 13/10/2025 - 12:45:49",
+      "timestamp": "2025-10-13T15:45:35.220Z",
+      "source": "discord",
+      "channelId": "1427267559300010177",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_22\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: Apple_Seed x10\nAutor:: Maximo Pokaropa | FIXO: 78748\nData:: 13/10/2025 - 12:45:49",
+      "rawEmbeds": []
+    },
+    {
+      "id": "1427320952903045163",
+      "author": "Matoaka Pokahontas",
+      "content": "REGISTRO - REGISTRO - fazenda_22\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: goat_male x4\nAutor:: Matoaka Pokahontas | FIXO: 78123\nData:: 13/10/2025 - 12:44:07",
+      "timestamp": "2025-10-13T15:43:53.513Z",
+      "source": "discord",
+      "channelId": "1427267559300010177",
+      "embedContent": "REGISTRO - REGISTRO - fazenda_22\nBAÚ ORGANIZAÇÃO - REMOVER ITEM\nItem removido:: goat_male x4\nAutor:: Matoaka Pokahontas | FIXO: 78123\nData:: 13/10/2025 - 12:44:07",
+      "rawEmbeds": []
+    },
     {
       "id": "1427319974027853945",
       "author": "Bau da Fazenda",

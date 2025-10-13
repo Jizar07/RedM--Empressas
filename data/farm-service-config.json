@@ -1,59 +1,63 @@
 {
-  "enabled": true,
-  "farmCost": 90,
-  "farmProfitRequired": 10,
-  "optimalAnimalIncome": 60,
-  "plantPrices": {
-    "basic": 0.25,
-    "other": 0.25
-  },
-  "basicPlants": [
-    "Milho",
-    "Trigo",
-    "Junco"
-  ],
-  "animalTypes": [
-    "Bovino",
-    "Avino",
-    "Ovino",
-    "Cabrino",
-    "Suino",
-    "Equino"
-  ],
-  "discordSettings": {
-    "enabled": true,
-    "channelId": "1413532297780793364",
-    "embedColor": "#00FF00",
-    "commandName": "registro",
-    "commandDescription": "registro de pagamento"
-  },
-  "ocrSettings": {
-    "enabled": true,
-    "language": "por",
-    "preprocessImages": true
-  },
-  "fileSettings": {
-    "maxFileSize": 5,
-    "allowedFormats": [
-      "jpeg",
-      "jpg",
-      "png",
-      "gif"
-    ],
-    "retentionDays": 30
-  },
-  "rolePermissions": {
-    "acceptRoles": [
-      "👑│CEO",
-      "❪★❱ Gerentes"
-    ],
-    "editRoles": [
-      "👑│CEO",
-      "❪★❱ Gerentes"
-    ],
-    "rejectRoles": [
-      "👑│CEO",
-      "❪★❱ Gerentes"
-    ]
+  "servers": {
+    "1274479410107646004": {
+      "enabled": true,
+      "farmCost": 90,
+      "farmProfitRequired": 10,
+      "optimalAnimalIncome": 60,
+      "plantPrices": {
+        "basic": 0.25,
+        "other": 0.25
+      },
+      "basicPlants": [
+        "Milho",
+        "Trigo",
+        "Junco"
+      ],
+      "animalTypes": [
+        "Bovino",
+        "Avino",
+        "Ovino",
+        "Cabrino",
+        "Suino",
+        "Equino"
+      ],
+      "discordSettings": {
+        "enabled": true,
+        "channelId": "1413532297780793364",
+        "embedColor": "#00FF00",
+        "commandName": "registro",
+        "commandDescription": "registro de pagamento"
+      },
+      "ocrSettings": {
+        "enabled": true,
+        "language": "por",
+        "preprocessImages": true
+      },
+      "fileSettings": {
+        "maxFileSize": 5,
+        "allowedFormats": [
+          "jpeg",
+          "jpg",
+          "png",
+          "gif"
+        ],
+        "retentionDays": 30
+      },
+      "rolePermissions": {
+        "acceptRoles": [
+          "👑│CEO",
+          "❪★❱ Gerentes"
+        ],
+        "editRoles": [
+          "👑│CEO",
+          "❪★❱ Gerentes"
+        ],
+        "rejectRoles": [
+          "👑│CEO",
+          "❪★❱ Gerentes"
+        ]
+      }
+    }
   }
 }
