@@ -4,14 +4,16 @@ import WeeklySalesService from '../../services/WeeklySalesService';
 const router = Router();
 
 // Get current week's sales information
-router.get('/current', async (_req: Request, res: Response) => {
+router.get('/current', async (req: Request, res: Response) => {
   try {
+    const serverId = req.query.serverId as string | undefined;
     const weeklySalesService = WeeklySalesService.getInstance();
-    const currentWeekInfo = weeklySalesService.getCurrentWeekInfo();
+    const currentWeekInfo = weeklySalesService.getCurrentWeekInfo(serverId);
 
     res.json({
       success: true,
-      data: currentWeekInfo
+      data: currentWeekInfo,
+      serverId: serverId || 'legacy'
     });
   } catch (error) {
     console.error('Error getting current week sales:', error);
@@ -24,14 +26,16 @@ router.get('/current', async (_req: Request, res: Response) => {
 });
 
 // Get current week's detailed data (transactions)
-router.get('/current/details', async (_req: Request, res: Response) => {
+router.get('/current/details', async (req: Request, res: Response) => {
   try {
+    const serverId = req.query.serverId as string | undefined;
     const weeklySalesService = WeeklySalesService.getInstance();
-    const currentWeekData = weeklySalesService.getCurrentWeekData();
+    const currentWeekData = weeklySalesService.getCurrentWeekData(serverId);
 
     res.json({
       success: true,
-      data: currentWeekData
+      data: currentWeekData,
+      serverId: serverId || 'legacy'
     });
   } catch (error) {
     console.error('Error getting current week detailed data:', error);
@@ -44,10 +48,11 @@ router.get('/current/details', async (_req: Request, res: Response) => {
 });
 
 // Get all weekly sales data for analytics
-router.get('/all', async (_req: Request, res: Response) => {
+router.get('/all', async (req: Request, res: Response) => {
   try {
+    const serverId = req.query.serverId as string | undefined;
     const weeklySalesService = WeeklySalesService.getInstance();
-    const allWeeklyData = weeklySalesService.getAllWeeklyData();
+    const allWeeklyData = weeklySalesService.getAllWeeklyData(serverId);
 
     // Return summary data (without individual transactions for performance)
     const summaryData = allWeeklyData.map(week => ({
@@ -67,7 +72,8 @@ router.get('/all', async (_req: Request, res: Response) => {
 
     res.json({
       success: true,
-      data: summaryData
+      data: summaryData,
+      serverId: serverId || 'legacy'
     });
   } catch (error) {
     console.error('Error getting all weekly sales data:', error);
@@ -82,7 +88,7 @@ router.get('/all', async (_req: Request, res: Response) => {
 // Add a manual sale transaction (for testing or manual entries)
 router.post('/transaction', async (req: Request, res: Response): Promise<void> => {
   try {
-    const { workerName, itemName, quantity, amount, channelId } = req.body;
+    const { workerName, itemName, quantity, amount, channelId, serverId } = req.body;
 
     if (!workerName || !itemName || !quantity || !amount) {
       res.status(400).json({
@@ -100,14 +106,15 @@ router.post('/transaction', async (req: Request, res: Response): Promise<void> =
       amount: Number(amount),
       timestamp: new Date(),
       channelId
-    });
+    }, serverId);
 
-    const updatedWeekInfo = weeklySalesService.getCurrentWeekInfo();
+    const updatedWeekInfo = weeklySalesService.getCurrentWeekInfo(serverId);
 
     res.json({
       success: true,
       message: 'Sale transaction added successfully',
-      data: updatedWeekInfo
+      data: updatedWeekInfo,
+      serverId: serverId || 'legacy'
     });
   } catch (error) {
     console.error('Error adding sale transaction:', error);
@@ -123,8 +130,9 @@ router.post('/transaction', async (req: Request, res: Response): Promise<void> =
 router.get('/week/:weekIdentifier', async (req: Request, res: Response): Promise<void> => {
   try {
     const { weekIdentifier } = req.params;
+    const serverId = req.query.serverId as string | undefined;
     const weeklySalesService = WeeklySalesService.getInstance();
-    const allWeeklyData = weeklySalesService.getAllWeeklyData();
+    const allWeeklyData = weeklySalesService.getAllWeeklyData(serverId);
 
     const specificWeek = allWeeklyData.find(week => week.weekIdentifier === weekIdentifier);
 
@@ -138,7 +146,8 @@ router.get('/week/:weekIdentifier', async (req: Request, res: Response): Promise
 
     res.json({
       success: true,
-      data: specificWeek
+      data: specificWeek,
+      serverId: serverId || 'legacy'
     });
   } catch (error) {
     console.error('Error getting specific week data:', error);
@@ -153,15 +162,16 @@ router.get('/week/:weekIdentifier', async (req: Request, res: Response): Promise
 // Cleanup old data (admin endpoint)
 router.delete('/cleanup', async (req: Request, res: Response) => {
   try {
-    const { weeksToKeep } = req.query;
+    const { weeksToKeep, serverId } = req.query;
     const weeklySalesService = WeeklySalesService.getInstance();
 
     const weeks = weeksToKeep ? parseInt(weeksToKeep as string) : 12;
-    weeklySalesService.cleanupOldData(weeks);
+    weeklySalesService.cleanupOldData(weeks, serverId as string | undefined);
 
     res.json({
       success: true,
-      message: `Cleaned up old weekly data, kept last ${weeks} weeks`
+      message: `Cleaned up old weekly data, kept last ${weeks} weeks`,
+      serverId: serverId || 'legacy'
     });
   } catch (error) {
     console.error('Error cleaning up old data:', error);
