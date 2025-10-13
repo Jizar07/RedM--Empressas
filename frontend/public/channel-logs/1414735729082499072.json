@@ -1,8 +1,18 @@
 {
   "channelId": "1414735729082499072",
-  "lastUpdated": "2025-10-13T15:59:04.815Z",
+  "lastUpdated": "2025-10-13T16:15:52.946Z",
   "messageCount": 1000,
   "messages": [
+    {
+      "id": "1427328990963826689",
+      "author": "Endo D. Barth",
+      "content": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 13/10/2025 - 13:15:49",
+      "timestamp": "2025-10-13T16:15:49.936Z",
+      "source": "discord",
+      "channelId": "1414735729082499072",
+      "embedContent": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Endo D. Barth | FIXO: 76312\nData:: 13/10/2025 - 13:15:49",
+      "rawEmbeds": []
+    },
     {
       "id": "1427324756188856372",
       "author": "Romano Delaerva",
@@ -9991,16 +10001,6 @@
       "source": "discord",
       "channelId": "1414735729082499072",
       "embedContent": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 00:42:07",
-      "rawEmbeds": []
-    },
-    {
-      "id": "1420250649894846535",
-      "author": "Smith Ramirez",
-      "content": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 00:29:01",
-      "timestamp": "2025-09-24T03:29:01.916Z",
-      "source": "discord",
-      "channelId": "1414735729082499072",
-      "embedContent": "REGISTRO - ATLANTA TREM\nCOOPERATIVA - SACOU\nEmpresa:: cooperativa_bowdin\nAção:: SACOU\nQuantia:: 1000\nAutor:: Smith Ramirez | FIXO: 340\nData:: 24/09/2025 - 00:29:01",
       "rawEmbeds": []
     }
   ]

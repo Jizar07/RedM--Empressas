@@ -56,9 +56,6 @@ interface WeeklyPrizeRecord {
 export class WeeklyRankingService {
   private static instance: WeeklyRankingService;
   private dataDir: string;
-  private weeklyDir: string;
-  private prizesDir: string;
-  private totalsFile: string;
   private resetTimer?: NodeJS.Timeout;
   private updateTimer?: NodeJS.Timeout;
   private client: Client | null = null;
@@ -76,10 +73,49 @@ export class WeeklyRankingService {
 
   private constructor() {
     this.dataDir = path.join(process.cwd(), 'data');
-    this.weeklyDir = path.join(this.dataDir, 'weekly-rankings');
-    this.prizesDir = path.join(this.dataDir, 'weekly-prizes');
-    this.totalsFile = path.join(this.dataDir, 'ranking-totals.json');
     this.ensureDirectories();
+  }
+
+  /**
+   * Get path for server-specific weekly rankings directory
+   */
+  private getWeeklyDir(serverId?: string): string {
+    if (serverId) {
+      const serverPath = path.join(this.dataDir, 'weekly-rankings', serverId);
+      if (fs.existsSync(serverPath)) {
+        return serverPath;
+      }
+    }
+    // Fallback to legacy path
+    return path.join(this.dataDir, 'weekly-rankings');
+  }
+
+  /**
+   * Get path for server-specific weekly prizes directory
+   */
+  private getPrizesDir(serverId?: string): string {
+    if (serverId) {
+      const serverPath = path.join(this.dataDir, 'weekly-prizes', serverId);
+      if (fs.existsSync(serverPath)) {
+        return serverPath;
+      }
+    }
+    // Fallback to legacy path
+    return path.join(this.dataDir, 'weekly-prizes');
+  }
+
+  /**
+   * Get path for server-specific totals file
+   */
+  private getTotalsFile(serverId?: string): string {
+    if (serverId) {
+      const serverPath = path.join(this.dataDir, 'ranking-totals', `${serverId}.json`);
+      if (fs.existsSync(path.dirname(serverPath))) {
+        return serverPath;
+      }
+    }
+    // Fallback to legacy path
+    return path.join(this.dataDir, 'ranking-totals.json');
   }
 
   public static getInstance(): WeeklyRankingService {
@@ -97,15 +133,26 @@ export class WeeklyRankingService {
   }
 
   private ensureDirectories(): void {
-    [this.weeklyDir, this.prizesDir].forEach(dir => {
+    // Ensure legacy directories exist
+    const legacyWeeklyDir = path.join(this.dataDir, 'weekly-rankings');
+    const legacyPrizesDir = path.join(this.dataDir, 'weekly-prizes');
+    const legacyTotalsFile = path.join(this.dataDir, 'ranking-totals.json');
+
+    [legacyWeeklyDir, legacyPrizesDir].forEach(dir => {
       if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir, { recursive: true });
       }
     });
 
-    // Initialize totals file if it doesn't exist
-    if (!fs.existsSync(this.totalsFile)) {
-      fs.writeFileSync(this.totalsFile, JSON.stringify({}));
+    // Initialize legacy totals file if it doesn't exist
+    if (!fs.existsSync(legacyTotalsFile)) {
+      fs.writeFileSync(legacyTotalsFile, JSON.stringify({}));
+    }
+
+    // Ensure server-specific directories exist (will be created on first use)
+    const rankingTotalsDir = path.join(this.dataDir, 'ranking-totals');
+    if (!fs.existsSync(rankingTotalsDir)) {
+      fs.mkdirSync(rankingTotalsDir, { recursive: true });
     }
   }
 
@@ -166,17 +213,18 @@ export class WeeklyRankingService {
   /**
    * Get current week's filename
    */
-  private getCurrentWeekFilename(): string {
+  private getCurrentWeekFilename(serverId?: string): string {
     const { start } = this.getCurrentWeekBoundaries();
     const dateStr = start.toISOString().split('T')[0]; // YYYY-MM-DD
-    return path.join(this.weeklyDir, `week-${dateStr}.json`);
+    const weeklyDir = this.getWeeklyDir(serverId);
+    return path.join(weeklyDir, `week-${dateStr}.json`);
   }
 
   /**
    * Load current week's rankings - CALCULATES FROM ARCHIVED SESSIONS BY DATE RANGE
    */
-  public getCurrentWeekRankings(): WeeklyRankings {
-    const filename = this.getCurrentWeekFilename();
+  public getCurrentWeekRankings(serverId?: string): WeeklyRankings {
+    const filename = this.getCurrentWeekFilename(serverId);
     const { start, end, weekNumber, year } = this.getCurrentWeekBoundaries();
 
     if (fs.existsSync(filename)) {
@@ -204,11 +252,11 @@ export class WeeklyRankingService {
     };
 
     // Calculate thisWeek stats by reading ALL sessions (active + archived) and filtering by timestamp
-    const allTimeTotals = this.getAllTimeTotals();
+    const allTimeTotals = this.getAllTimeTotals(serverId);
     const thisWeekStats: Record<string, { plants: number; animals: number; ferrovia: number; workerName: string }> = {};
 
     // Helper function to process a session
-    const processSession = (sessionData: any, source: string) => {
+    const processSession = (sessionData: any) => {
       const workerId = sessionData.workerId;
       const workerName = sessionData.workerName;
 
@@ -246,89 +294,123 @@ export class WeeklyRankingService {
       // For now, we'll check supply-chain active sessions separately
     };
 
-    // 1. Read ACTIVE sessions from worker-sessions/active-sessions.json
-    const activeSessionsFile = path.join(this.dataDir, 'worker-sessions', 'active-sessions.json');
-    if (fs.existsSync(activeSessionsFile)) {
-      try {
-        const activeSessions = JSON.parse(fs.readFileSync(activeSessionsFile, 'utf8'));
-        if (Array.isArray(activeSessions)) {
-          activeSessions.forEach(session => processSession(session, 'active'));
-        } else if (typeof activeSessions === 'object') {
-          Object.values(activeSessions).forEach(session => processSession(session, 'active'));
+    // Scan for server directories
+    const serverDirsToCheck: string[] = [];
+    const workerSessionsDir = path.join(this.dataDir, 'worker-sessions');
+
+    if (serverId) {
+      // If serverId provided, only check that server
+      serverDirsToCheck.push(serverId);
+    } else {
+      // If no serverId, scan all server directories
+      if (fs.existsSync(workerSessionsDir)) {
+        const entries = fs.readdirSync(workerSessionsDir, { withFileTypes: true });
+        for (const entry of entries) {
+          if (entry.isDirectory() && entry.name.match(/^\d+$/)) {
+            serverDirsToCheck.push(entry.name);
+          }
         }
-        console.log(`📊 Processed active worker sessions`);
-      } catch (err) {
-        console.warn(`⚠️ Failed to read active sessions:`, err);
       }
+      serverDirsToCheck.push(''); // Add legacy path
     }
 
-    // 2. Read ARCHIVED session files
-    const archivedDir = path.join(this.dataDir, 'worker-sessions', 'archived');
-    if (fs.existsSync(archivedDir)) {
-      const sessionFiles = fs.readdirSync(archivedDir).filter(file => file.endsWith('.json'));
-      for (const file of sessionFiles) {
+    // 1. Read ACTIVE sessions from worker-sessions/{serverId}/active-sessions.json
+    for (const serverDir of serverDirsToCheck) {
+      const activeSessionsFile = serverDir
+        ? path.join(workerSessionsDir, serverDir, 'active-sessions.json')
+        : path.join(workerSessionsDir, 'active-sessions.json');
+
+      if (fs.existsSync(activeSessionsFile)) {
         try {
-          const sessionPath = path.join(archivedDir, file);
-          const sessionData = JSON.parse(fs.readFileSync(sessionPath, 'utf8'));
-          processSession(sessionData, 'archived');
+          const activeSessions = JSON.parse(fs.readFileSync(activeSessionsFile, 'utf8'));
+          if (Array.isArray(activeSessions)) {
+            activeSessions.forEach(session => processSession(session));
+          } else if (typeof activeSessions === 'object') {
+            Object.values(activeSessions).forEach(session => processSession(session));
+          }
+          console.log(`📊 Processed active worker sessions for ${serverDir || 'legacy'}`);
         } catch (err) {
-          console.warn(`⚠️ Failed to parse archived session ${file}:`, err);
+          console.warn(`⚠️ Failed to read active sessions for ${serverDir || 'legacy'}:`, err);
         }
       }
-      console.log(`📊 Processed ${sessionFiles.length} archived sessions`);
+
+      // 2. Read ARCHIVED session files
+      const archivedDir = serverDir
+        ? path.join(workerSessionsDir, serverDir, 'archived')
+        : path.join(workerSessionsDir, 'archived');
+
+      if (fs.existsSync(archivedDir)) {
+        const sessionFiles = fs.readdirSync(archivedDir).filter(file => file.endsWith('.json'));
+        for (const file of sessionFiles) {
+          try {
+            const sessionPath = path.join(archivedDir, file);
+            const sessionData = JSON.parse(fs.readFileSync(sessionPath, 'utf8'));
+            processSession(sessionData);
+          } catch (err) {
+            console.warn(`⚠️ Failed to parse archived session ${file}:`, err);
+          }
+        }
+        console.log(`📊 Processed ${sessionFiles.length} archived sessions for ${serverDir || 'legacy'}`);
+      }
     }
 
-    // 3. Read FERROVIA active sessions from supply-chain/active-sessions.json
-    const ferroviaSessionsFile = path.join(this.dataDir, 'supply-chain', 'active-sessions.json');
-    if (fs.existsSync(ferroviaSessionsFile)) {
-      try {
-        const ferroviaSessions = JSON.parse(fs.readFileSync(ferroviaSessionsFile, 'utf8'));
-        if (Array.isArray(ferroviaSessions)) {
-          ferroviaSessions.forEach((session: any) => {
-            const workerId = session.workerId;
-            if (!workerId) return;
+    // 3. Read FERROVIA active sessions from supply-chain/{serverId}/active-sessions.json
+    const supplyChainDir = path.join(this.dataDir, 'supply-chain');
+    for (const serverDir of serverDirsToCheck) {
+      const ferroviaSessionsFile = serverDir
+        ? path.join(supplyChainDir, serverDir, 'active-sessions.json')
+        : path.join(supplyChainDir, 'active-sessions.json');
 
-            if (!thisWeekStats[workerId]) {
-              thisWeekStats[workerId] = { plants: 0, animals: 0, ferrovia: 0, workerName: session.workerName || 'Unknown' };
-            }
+      if (fs.existsSync(ferroviaSessionsFile)) {
+        try {
+          const ferroviaSessions = JSON.parse(fs.readFileSync(ferroviaSessionsFile, 'utf8'));
+          if (Array.isArray(ferroviaSessions)) {
+            ferroviaSessions.forEach((session: any) => {
+              const workerId = session.workerId;
+              if (!workerId) return;
 
-            // Count completed missions within date range
-            if (session.missions && Array.isArray(session.missions)) {
-              session.missions.forEach((mission: any) => {
-                if (mission.status === 'completed' && mission.completedAt) {
-                  const missionTime = new Date(mission.completedAt).getTime();
-                  if (missionTime >= weekStartTime && missionTime <= weekEndTime) {
-                    thisWeekStats[workerId].ferrovia += 1;
+              if (!thisWeekStats[workerId]) {
+                thisWeekStats[workerId] = { plants: 0, animals: 0, ferrovia: 0, workerName: session.workerName || 'Unknown' };
+              }
+
+              // Count completed missions within date range
+              if (session.missions && Array.isArray(session.missions)) {
+                session.missions.forEach((mission: any) => {
+                  if (mission.status === 'completed' && mission.completedAt) {
+                    const missionTime = new Date(mission.completedAt).getTime();
+                    if (missionTime >= weekStartTime && missionTime <= weekEndTime) {
+                      thisWeekStats[workerId].ferrovia += 1;
+                    }
                   }
-                }
-              });
-            }
-          });
-        } else if (typeof ferroviaSessions === 'object') {
-          Object.values(ferroviaSessions).forEach((session: any) => {
-            const workerId = session.workerId;
-            if (!workerId) return;
+                });
+              }
+            });
+          } else if (typeof ferroviaSessions === 'object') {
+            Object.values(ferroviaSessions).forEach((session: any) => {
+              const workerId = session.workerId;
+              if (!workerId) return;
 
-            if (!thisWeekStats[workerId]) {
-              thisWeekStats[workerId] = { plants: 0, animals: 0, ferrovia: 0, workerName: session.workerName || 'Unknown' };
-            }
+              if (!thisWeekStats[workerId]) {
+                thisWeekStats[workerId] = { plants: 0, animals: 0, ferrovia: 0, workerName: session.workerName || 'Unknown' };
+              }
 
-            // Count completed missions
-            if (session.missions && Array.isArray(session.missions)) {
-              session.missions.forEach((mission: any) => {
-                if (mission.status === 'completed' && mission.completedAt) {
-                  const missionTime = new Date(mission.completedAt).getTime();
-                  if (missionTime >= weekStartTime && missionTime <= weekEndTime) {
-                    thisWeekStats[workerId].ferrovia += 1;
+              // Count completed missions
+              if (session.missions && Array.isArray(session.missions)) {
+                session.missions.forEach((mission: any) => {
+                  if (mission.status === 'completed' && mission.completedAt) {
+                    const missionTime = new Date(mission.completedAt).getTime();
+                    if (missionTime >= weekStartTime && missionTime <= weekEndTime) {
+                      thisWeekStats[workerId].ferrovia += 1;
+                    }
                   }
-                }
-              });
-            }
-          });
+                });
+              }
+            });
+          }
+          console.log(`📊 Processed ferrovia sessions for ${serverDir || 'legacy'}`);
+        } catch (err) {
+          console.warn(`⚠️ Failed to read ferrovia sessions for ${serverDir || 'legacy'}:`, err);
         }
-        console.log(`📊 Processed ferrovia sessions`);
-      } catch (err) {
-        console.warn(`⚠️ Failed to read ferrovia sessions:`, err);
       }
     }
 
@@ -373,9 +455,10 @@ export class WeeklyRankingService {
   /**
    * Load all-time totals
    */
-  private getAllTimeTotals(): Record<string, WorkerWeeklyStats> {
+  private getAllTimeTotals(serverId?: string): Record<string, WorkerWeeklyStats> {
     try {
-      const data = fs.readFileSync(this.totalsFile, 'utf8');
+      const totalsFile = this.getTotalsFile(serverId);
+      const data = fs.readFileSync(totalsFile, 'utf8');
       return JSON.parse(data);
     } catch (error) {
       return {};
@@ -385,8 +468,16 @@ export class WeeklyRankingService {
   /**
    * Save all-time totals
    */
-  private saveAllTimeTotals(totals: Record<string, WorkerWeeklyStats>): void {
-    fs.writeFileSync(this.totalsFile, JSON.stringify(totals, null, 2));
+  private saveAllTimeTotals(totals: Record<string, WorkerWeeklyStats>, serverId?: string): void {
+    const totalsFile = this.getTotalsFile(serverId);
+
+    // Ensure directory exists
+    const totalsDir = path.dirname(totalsFile);
+    if (!fs.existsSync(totalsDir)) {
+      fs.mkdirSync(totalsDir, { recursive: true });
+    }
+
+    fs.writeFileSync(totalsFile, JSON.stringify(totals, null, 2));
   }
 
   /**
@@ -396,11 +487,12 @@ export class WeeklyRankingService {
     workerId: string,
     workerName: string,
     type: 'plants' | 'animals' | 'ferrovia',
-    count: number
+    count: number,
+    serverId?: string
   ): void {
     // Update weekly rankings
-    const weeklyData = this.getCurrentWeekRankings();
-    const allTimeTotals = this.getAllTimeTotals();
+    const weeklyData = this.getCurrentWeekRankings(serverId);
+    const allTimeTotals = this.getAllTimeTotals(serverId);
 
     // Initialize worker if not exists
     if (!allTimeTotals[workerId]) {
@@ -431,13 +523,21 @@ export class WeeklyRankingService {
 
     // Save data
     weeklyData.lastUpdated = new Date().toISOString();
-    fs.writeFileSync(this.getCurrentWeekFilename(), JSON.stringify(weeklyData, null, 2));
-    this.saveAllTimeTotals(allTimeTotals);
+    const filename = this.getCurrentWeekFilename(serverId);
+
+    // Ensure directory exists
+    const weeklyDir = path.dirname(filename);
+    if (!fs.existsSync(weeklyDir)) {
+      fs.mkdirSync(weeklyDir, { recursive: true });
+    }
+
+    fs.writeFileSync(filename, JSON.stringify(weeklyData, null, 2));
+    this.saveAllTimeTotals(allTimeTotals, serverId);
 
     // Trigger Discord update
     this.scheduleDiscordUpdate();
 
-    console.log(`📊 Updated ${workerName}: +${count} ${type} (weekly: ${weeklyWorker[type].thisWeek}, total: ${weeklyWorker[type].allTime})`);
+    console.log(`📊 Updated ${workerName}: +${count} ${type} (weekly: ${weeklyWorker[type].thisWeek}, total: ${weeklyWorker[type].allTime}) [${serverId || 'legacy'}]`);
   }
 
   private findOrCreateWeeklyWorker(
@@ -499,45 +599,59 @@ export class WeeklyRankingService {
   /**
    * Reset weekly rankings (called every Sunday)
    */
-  public resetWeeklyRankings(): WeeklyPrizeRecord | null {
-    console.log('🔄 Resetting weekly rankings...');
+  public resetWeeklyRankings(serverId?: string): WeeklyPrizeRecord | null {
+    console.log(`🔄 Resetting weekly rankings for ${serverId || 'legacy'}...`);
 
-    const currentWeek = this.getCurrentWeekRankings();
+    const currentWeek = this.getCurrentWeekRankings(serverId);
     let prizeRecord: WeeklyPrizeRecord | null = null;
 
     // Calculate and save prize records before reset
     if (currentWeek.plantRankings.length > 0) {
       prizeRecord = this.calculateWeeklyPrizes(currentWeek);
       if (prizeRecord) {
-        const prizeFile = path.join(this.prizesDir, `prize-${currentWeek.weekStart.split('T')[0]}.json`);
+        const prizesDir = this.getPrizesDir(serverId);
+
+        // Ensure directory exists
+        if (!fs.existsSync(prizesDir)) {
+          fs.mkdirSync(prizesDir, { recursive: true });
+        }
+
+        const prizeFile = path.join(prizesDir, `prize-${currentWeek.weekStart.split('T')[0]}.json`);
         fs.writeFileSync(prizeFile, JSON.stringify(prizeRecord, null, 2));
       }
     }
 
     // Archive current week
-    const archiveFile = path.join(this.weeklyDir, `archive-week-${currentWeek.weekStart.split('T')[0]}.json`);
+    const weeklyDir = this.getWeeklyDir(serverId);
+
+    // Ensure directory exists
+    if (!fs.existsSync(weeklyDir)) {
+      fs.mkdirSync(weeklyDir, { recursive: true });
+    }
+
+    const archiveFile = path.join(weeklyDir, `archive-week-${currentWeek.weekStart.split('T')[0]}.json`);
     fs.writeFileSync(archiveFile, JSON.stringify(currentWeek, null, 2));
 
     // Remove current week file to force creation of new week
-    const currentFile = this.getCurrentWeekFilename();
+    const currentFile = this.getCurrentWeekFilename(serverId);
     if (fs.existsSync(currentFile)) {
       fs.unlinkSync(currentFile);
     }
 
-    // CRITICAL: Reset all "thisWeek" counters to 0 in ranking-totals.json
-    const allTimeTotals = this.getAllTimeTotals();
+    // CRITICAL: Reset all "thisWeek" counters to 0 in ranking-totals
+    const allTimeTotals = this.getAllTimeTotals(serverId);
     for (const workerId in allTimeTotals) {
       allTimeTotals[workerId].plants.thisWeek = 0;
       allTimeTotals[workerId].animals.thisWeek = 0;
       allTimeTotals[workerId].ferrovia.thisWeek = 0;
     }
-    this.saveAllTimeTotals(allTimeTotals);
-    console.log('🔄 Reset thisWeek counters to 0 for all workers');
+    this.saveAllTimeTotals(allTimeTotals, serverId);
+    console.log(`🔄 Reset thisWeek counters to 0 for all workers [${serverId || 'legacy'}]`);
 
     // Trigger Discord update with new week
     this.scheduleDiscordUpdate();
 
-    console.log('✅ Weekly rankings reset completed');
+    console.log(`✅ Weekly rankings reset completed for ${serverId || 'legacy'}`);
     return prizeRecord;
   }
 
@@ -809,22 +923,28 @@ export class WeeklyRankingService {
   /**
    * Public API methods
    */
-  public getWeeklyRankings(): WeeklyRankings {
-    return this.getCurrentWeekRankings();
+  public getWeeklyRankings(serverId?: string): WeeklyRankings {
+    return this.getCurrentWeekRankings(serverId);
   }
 
-  public getAllTimeStats(): Record<string, WorkerWeeklyStats> {
-    return this.getAllTimeTotals();
+  public getAllTimeStats(serverId?: string): Record<string, WorkerWeeklyStats> {
+    return this.getAllTimeTotals(serverId);
   }
 
-  public getPrizeHistory(): WeeklyPrizeRecord[] {
-    const prizeFiles = fs.readdirSync(this.prizesDir)
+  public getPrizeHistory(serverId?: string): WeeklyPrizeRecord[] {
+    const prizesDir = this.getPrizesDir(serverId);
+
+    if (!fs.existsSync(prizesDir)) {
+      return [];
+    }
+
+    const prizeFiles = fs.readdirSync(prizesDir)
       .filter(file => file.startsWith('prize-') && file.endsWith('.json'))
       .sort()
       .reverse(); // Most recent first
 
     return prizeFiles.map(file => {
-      const data = fs.readFileSync(path.join(this.prizesDir, file), 'utf8');
+      const data = fs.readFileSync(path.join(prizesDir, file), 'utf8');
       return JSON.parse(data);
     });
   }
