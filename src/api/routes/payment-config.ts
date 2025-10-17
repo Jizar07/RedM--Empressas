@@ -29,16 +29,22 @@ router.get('/', async (req: Request, res: Response) => {
 // POST /api/payment-config - Update payment configuration
 router.post('/', async (req: Request, res: Response) => {
   try {
+    console.log('📨 [payment-config POST] Received request body:', JSON.stringify(req.body, null, 2));
+
     const { serverId, ...config } = req.body as PaymentConfig & { serverId?: string };
 
+    console.log('🔍 [payment-config POST] Extracted serverId:', serverId);
+    console.log('🔍 [payment-config POST] Config keys:', Object.keys(config));
+
     if (!serverId) {
+      console.error('❌ [payment-config POST] Missing serverId in request');
       return res.status(400).json({
         success: false,
         error: 'serverId is required'
       });
     }
 
-    console.log(`💾 Updating payment configuration for server ${serverId}`);
+    console.log(`💾 [payment-config POST] Updating payment configuration for server ${serverId}`);
 
     // Validate required fields
     if (!config.defaultPrices || !config.inventoryVerification || !config.rolePermissions) {

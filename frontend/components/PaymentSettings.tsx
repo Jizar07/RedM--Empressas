@@ -113,21 +113,27 @@ export default function PaymentSettings() {
       setError('');
       setSuccess('');
 
+      const payload = {
+        ...config,
+        serverId: selectedServerId
+      };
+
+      console.log('💾 [PaymentSettings] Saving config for server:', selectedServerId);
+      console.log('💾 [PaymentSettings] Payload:', JSON.stringify(payload, null, 2));
+
       const response = await fetch('/api/payment-config', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          ...config,
-          serverId: selectedServerId
-        }),
+        body: JSON.stringify(payload),
       });
 
       const data = await response.json();
+      console.log('✅ [PaymentSettings] Response:', data);
 
       if (data.success) {
-        setSuccess('Configuration saved successfully!');
+        setSuccess(`Configuration saved successfully for server ${data.serverId}!`);
         setConfig(data.data);
         setTimeout(() => setSuccess(''), 3000);
       } else {
@@ -243,9 +249,14 @@ export default function PaymentSettings() {
         <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
           <DollarSign className="w-6 h-6 text-blue-600 dark:text-blue-400" />
         </div>
-        <div>
+        <div className="flex-1">
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Payment Settings</h1>
           <p className="text-gray-600 dark:text-gray-400">Configure default pricing and verification settings for the payment system</p>
+          {selectedServerId && (
+            <p className="text-sm text-blue-600 dark:text-blue-400 font-medium mt-1">
+              Server ID: {selectedServerId}
+            </p>
+          )}
         </div>
       </div>
 

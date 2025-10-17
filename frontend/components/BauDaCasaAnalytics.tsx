@@ -4,10 +4,10 @@ import React from 'react';
 import { FirmConfig } from '@/types/firms';
 import ComprehensiveAnalytics from './ComprehensiveAnalytics';
 
-interface BercarioAnalyticsProps {
+interface BauDaCasaAnalyticsProps {
   firm: FirmConfig;
 }
 
-export default function BercarioAnalytics({ firm }: BercarioAnalyticsProps) {
+export default function BauDaCasaAnalytics({ firm }: BauDaCasaAnalyticsProps) {
   return <ComprehensiveAnalytics firmId={firm.id} firmName={firm.name} />;
 }

@@ -65,6 +65,46 @@ interface WorkerAnalytics {
 router.get('/', async (req: Request, res: Response) => {
   try {
     const serverId = req.query.serverId as string | undefined;
+    const firmId = req.query.firmId as string | undefined;
+
+    console.log(`🔍 [comprehensive-analytics] Request - serverId: ${serverId}, firmId: ${firmId}`);
+
+    // Load firmId → channelId mapping from firms-config.json
+    let targetChannelId: string | undefined;
+    if (firmId) {
+      try {
+        const firmsConfigPath = path.join(process.cwd(), 'data', 'firms-config.json');
+        const firmsConfig = JSON.parse(fs.readFileSync(firmsConfigPath, 'utf8'));
+        const firm = firmsConfig.firms[firmId];
+
+        if (firm) {
+          // Verify firm belongs to the selected server
+          if (serverId && firm.serverId !== serverId) {
+            console.warn(`⚠️ [comprehensive-analytics] Firm "${firmId}" belongs to server "${firm.serverId}", but serverId "${serverId}" was requested`);
+            return res.status(400).json({
+              success: false,
+              error: 'Firm does not belong to selected server'
+            });
+          }
+
+          targetChannelId = firm.channelId;
+          console.log(`📍 [comprehensive-analytics] Firm "${firmId}" (server: ${firm.serverId}) → channelId: ${targetChannelId}`);
+        } else {
+          console.warn(`⚠️ [comprehensive-analytics] Firm "${firmId}" not found in firms-config.json`);
+          return res.status(404).json({
+            success: false,
+            error: 'Firm not found'
+          });
+        }
+      } catch (error) {
+        console.error(`❌ [comprehensive-analytics] Error loading firms-config.json:`, error);
+        return res.status(500).json({
+          success: false,
+          error: 'Failed to load firm configuration'
+        });
+      }
+    }
+
     const workerAnalytics: { [workerId: string]: WorkerAnalytics } = {};
     const globalPlantStats: { [itemName: string]: { deposited: number; seedsTaken: number } } = {};
     const globalAnimalStats = {
@@ -126,6 +166,13 @@ router.get('/', async (req: Request, res: Response) => {
         try {
           const sessionPath = path.join(archivedDir, file);
           const sessionData = JSON.parse(fs.readFileSync(sessionPath, 'utf8'));
+
+          // Skip if firmId specified and channelId doesn't match
+          if (targetChannelId && sessionData.channelId !== targetChannelId) {
+            console.log(`⏭️ [comprehensive-analytics] Skipping archived session ${file} - channelId mismatch (${sessionData.channelId} !== ${targetChannelId})`);
+            continue;
+          }
+
           totalSessions++;
 
           processSession(sessionData, workerAnalytics, globalPlantStats, globalAnimalStats, globalFinancialStats, paymentsBySession, managerUserIds, animalCostPerUnit);
@@ -141,12 +188,21 @@ router.get('/', async (req: Request, res: Response) => {
 
       for (const session of Object.values(activeSessions)) {
         const sessionData = session as any;
+
+        // Skip if firmId specified and channelId doesn't match
+        if (targetChannelId && sessionData.channelId !== targetChannelId) {
+          console.log(`⏭️ [comprehensive-analytics] Skipping active session ${sessionData.sessionId} - channelId mismatch (${sessionData.channelId} !== ${targetChannelId})`);
+          continue;
+        }
+
         totalSessions++;
         processSession(sessionData, workerAnalytics, globalPlantStats, globalAnimalStats, globalFinancialStats, paymentsBySession, managerUserIds, animalCostPerUnit);
       }
     }
 
     totalWorkers = Object.keys(workerAnalytics).length;
+
+    console.log(`✅ [comprehensive-analytics] Processed ${totalSessions} sessions for firmId: ${firmId || 'ALL'}, channelId: ${targetChannelId || 'ALL'}`);
 
     // Convert to arrays and sort by Fazenda's profit
     const workersList = Object.values(workerAnalytics).sort((a, b) => b.fazendaProfit - a.fazendaProfit);

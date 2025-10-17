@@ -5,6 +5,7 @@ import {
   Package, TrendingUp, Users, BarChart3, DollarSign,
   Wheat, PiggyBank, ShoppingCart, Activity, Trophy, Zap
 } from 'lucide-react';
+import { useServer } from '@/contexts/ServerContext';
 
 interface PlantStats {
   itemName: string;
@@ -96,7 +97,13 @@ const MetricCard: React.FC<MetricCardProps> = ({
   );
 };
 
-export default function ComprehensiveAnalytics() {
+interface ComprehensiveAnalyticsProps {
+  firmId?: string;
+  firmName?: string;
+}
+
+export default function ComprehensiveAnalytics({ firmId, firmName }: ComprehensiveAnalyticsProps = {}) {
+  const { selectedServerId } = useServer();
   const [data, setData] = useState<ComprehensiveData | null>(null);
   const [loading, setLoading] = useState(true);
   const [selectedTab, setSelectedTab] = useState<'overview' | 'workers' | 'plants' | 'animals' | 'purchases'>('overview');
@@ -104,17 +111,37 @@ export default function ComprehensiveAnalytics() {
   const [animalCost, setAnimalCost] = useState(23);
 
   useEffect(() => {
-    loadData();
-    loadPaymentConfig();
-  }, []);
+    if (selectedServerId) {
+      loadData();
+      loadPaymentConfig();
+    }
+  }, [firmId, selectedServerId]);
 
   const loadData = async () => {
+    if (!selectedServerId) {
+      console.warn('⚠️ [ComprehensiveAnalytics] No server selected');
+      return;
+    }
+
     try {
       setLoading(true);
-      const response = await fetch('/api/comprehensive-analytics');
+      const params = new URLSearchParams();
+      params.set('serverId', selectedServerId);
+      if (firmId) {
+        params.set('firmId', firmId);
+      }
+
+      const url = `/api/comprehensive-analytics?${params.toString()}`;
+      console.log(`🔍 [ComprehensiveAnalytics] Loading data from: ${url}`);
+      const response = await fetch(url);
       if (response.ok) {
         const result = await response.json();
+        console.log(`✅ [ComprehensiveAnalytics] Loaded data:`, result);
         setData(result.data);
+      } else {
+        console.error(`❌ [ComprehensiveAnalytics] Failed to load: ${response.status} ${response.statusText}`);
+        const errorData = await response.json();
+        console.error(`❌ [ComprehensiveAnalytics] Error details:`, errorData);
       }
     } catch (error) {
       console.error('Error loading comprehensive analytics:', error);
@@ -124,8 +151,10 @@ export default function ComprehensiveAnalytics() {
   };
 
   const loadPaymentConfig = async () => {
+    if (!selectedServerId) return;
+
     try {
-      const response = await fetch('/api/payment-config');
+      const response = await fetch(`/api/payment-config?serverId=${selectedServerId}`);
       if (response.ok) {
         const result = await response.json();
         if (result.success) {
@@ -137,6 +166,14 @@ export default function ComprehensiveAnalytics() {
       console.error('Error loading payment config:', error);
     }
   };
+
+  if (!selectedServerId) {
+    return (
+      <div className="text-center p-8 text-gray-500 dark:text-gray-400">
+        <p>Por favor, selecione um servidor primeiro.</p>
+      </div>
+    );
+  }
 
   if (loading) {
     return (
@@ -150,6 +187,12 @@ export default function ComprehensiveAnalytics() {
     return (
       <div className="text-center p-8 text-gray-500 dark:text-gray-400">
         <p>Não foi possível carregar os dados de análise.</p>
+        <button
+          onClick={loadData}
+          className="mt-4 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg"
+        >
+          Tentar Novamente
+        </button>
       </div>
     );
   }
@@ -158,7 +201,9 @@ export default function ComprehensiveAnalytics() {
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Análises Abrangentes</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+          {firmName ? `Análises - ${firmName}` : 'Análises Abrangentes'}
+        </h2>
         <button
           onClick={loadData}
           className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors flex items-center space-x-2"

@@ -12,6 +12,7 @@ import {
 } from '@/types/firmTemplates';
 import TemplateFirmDashboard from './templates/TemplateFirmDashboard';
 import BercarioInventory from './BercarioInventory';
+import InventoryEditor from './InventoryEditor';
 import BercarioClients from './BercarioClients';
 import BercarioAnalytics from './BercarioAnalytics';
 import BercarioPayments from './BercarioPayments';
@@ -23,6 +24,12 @@ import FerroviaDashboard from './FerroviaDashboard';
 import FerroviaPayments from './FerroviaPayments';
 import FerroviaWorkers from './FerroviaWorkers';
 import VeterinariaWorkers from './VeterinariaWorkers';
+import FazendaAnalytics from './FazendaAnalytics';
+import LojaDaFazendaAnalytics from './LojaDaFazendaAnalytics';
+import BauDaCasaAnalytics from './BauDaCasaAnalytics';
+import FerroviaAnalytics from './FerroviaAnalytics';
+import VeterinariaAnalytics from './VeterinariaAnalytics';
+import ArmariaAnalytics from './ArmariaAnalytics';
 
 interface FirmTemplateRendererProps {
   firm: FirmConfig;
@@ -115,7 +122,7 @@ export default function FirmTemplateRenderer({ firm, activeComponent }: FirmTemp
       case 'workers':
         return <FerroviaWorkers firm={firm} />;
       case 'analytics':
-        return <BercarioAnalytics firm={firm} />;
+        return <FerroviaAnalytics firm={firm} />;
       case 'payments':
         return <FerroviaPayments firm={firm} />;
       default:
@@ -143,7 +150,9 @@ export default function FirmTemplateRenderer({ firm, activeComponent }: FirmTemp
           </div>
         );
       }
-      return <BercarioInventory firm={firm} />;
+      // Use comprehensive InventoryEditor for general firms
+      // BercarioInventory is only for animal-specific tracking
+      return <InventoryEditor firm={firm} />;
 
     case 'workers':
       if (!isComponentEnabled('workers')) {
@@ -167,7 +176,28 @@ export default function FirmTemplateRenderer({ firm, activeComponent }: FirmTemp
           </div>
         );
       }
-      return <BercarioAnalytics firm={firm} />;
+
+      // Route analytics by firm ID
+      switch (firm.id) {
+        case 'fazenda-cabra-da-peste':
+          return <ComprehensiveAnalytics />;
+        case 'fazenda':
+          return <FazendaAnalytics firm={firm} />;
+        case 'loja-da-fazenda':
+          return <LojaDaFazendaAnalytics firm={firm} />;
+        case 'bau-da-casa':
+          return <BauDaCasaAnalytics firm={firm} />;
+        case 'ferrovia':
+          return <FerroviaAnalytics firm={firm} />;
+        case 'bercario':
+          return <BercarioAnalytics firm={firm} />;
+        case 'veterinaria':
+          return <VeterinariaAnalytics firm={firm} />;
+        case 'armaria':
+          return <ArmariaAnalytics firm={firm} />;
+        default:
+          return <BercarioAnalytics firm={firm} />;
+      }
 
     case 'payments':
       if (!isComponentEnabled('payments')) {

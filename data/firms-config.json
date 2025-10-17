@@ -185,6 +185,10 @@
           "secondaryColor": "#15803d"
         }
       },
+      "template": {
+        "type": "fazenda",
+        "enabledComponents": ["dashboard", "inventory", "workers", "analytics"]
+      },
       "createdAt": "2025-10-13T14:52:26.348Z",
       "updatedAt": "2025-10-13T14:52:26.348Z"
     },
@@ -215,6 +219,10 @@
           "secondaryColor": "#15803d"
         }
       },
+      "template": {
+        "type": "fazenda",
+        "enabledComponents": ["dashboard", "inventory", "workers", "analytics"]
+      },
       "createdAt": "2025-10-13T14:53:14.444Z",
       "updatedAt": "2025-10-13T14:53:14.444Z"
     },
@@ -244,6 +252,10 @@
           "primaryColor": "#16a34a",
           "secondaryColor": "#15803d"
         }
+      },
+      "template": {
+        "type": "fazenda",
+        "enabledComponents": ["dashboard", "inventory", "workers", "analytics"]
       },
       "createdAt": "2025-10-13T14:53:59.714Z",
       "updatedAt": "2025-10-13T14:53:59.714Z"
