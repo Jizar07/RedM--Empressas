@@ -5,7 +5,29 @@ This file is synchronized with: https://github.com/Jizar07/RedM--Empressas
 
 ## Version History
 
-### [0.062] - 2025-10-13 **[CURRENT VERSION]**
+### [0.063] - 2026-01-02 **[CURRENT VERSION]**
+- **FARM SESSION TIMESTAMP FIX**: Transaction timestamps now extracted from game log `Data::` field instead of server local time
+- **ISSUE**: Farm active session embeds showed server local time while Ferrovia was fixed
+- **ROOT CAUSE**: WorkerActivityService used `new Date()` for transactions, not extracting from message content
+- **CORE FIX - extractTimestampFromMessage()** (`src/services/WorkerActivityService.ts`):
+  - Added method (lines 401-427) to parse `Data:: DD/MM/YYYY - HH:MM:SS` format
+  - Pattern: `/Data::\s*(\d{2})\/(\d{2})\/(\d{4})\s*-\s*(\d{2}):(\d{2}):(\d{2})/i`
+  - Identical to FerroviaSessionService implementation for consistency
+- **TRANSACTION METHODS UPDATED**:
+  - `addPlantTransaction()` - Added optional `messageContent?: string` parameter
+  - `addAnimalTransaction()` - Added optional `messageContent?: string` parameter
+  - `addFinancialTransaction()` - Added optional `messageContent?: string` parameter
+  - `addInventoryTransaction()` - Added optional `messageContent?: string` parameter
+  - All extract timestamp from message content with fallback to current time
+- **WORKER CHANNEL SERVICE UPDATE** (`src/services/WorkerChannelService.ts`):
+  - `processWorkerTransaction()` extracts `messageContent` from `transaction.originalMessage?.content`
+  - All 7 transaction method calls updated to pass `messageContent`
+- **FILES MODIFIED**:
+  - src/services/WorkerActivityService.ts - New method + 4 updated transaction methods
+  - src/services/WorkerChannelService.ts - Updated processWorkerTransaction() with message content passing
+- **RESULT**: Both Ferrovia AND Farm sessions now show correct game log timestamps
+
+### [0.062] - 2025-10-13
 - **WORKER EMBED CALCULATION FIX**: Complete resolution of incorrect plant pricing in worker embed displays
 - **THREE CRITICAL BUGS FIXED**: Systematic resolution of pricing calculation errors across multiple code paths
 - **KEY FIX #1 - `recalculateSessionCredits()` Wrong Field**:

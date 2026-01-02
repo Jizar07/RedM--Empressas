@@ -97,7 +97,28 @@ When you see "/update" command from the user, perform the following actions:
 3. Update changelog.md if there are version-worthy changes
 4. Update CLAUDE.md if there are architectural or command changes
 
-## Recent Major Updates (v0.062) **[CURRENT VERSION]**
+## Recent Major Updates (v0.063) **[CURRENT VERSION]**
+
+### Farm Session Timestamp Extraction Fix (v0.063)
+- **Feature**: Transaction timestamps now extracted from game log `Data::` field instead of server local time
+- **Issue**: Farm active session embeds showed server local time while Ferrovia was already fixed
+- **Root Cause**: WorkerActivityService used `new Date()` for transactions instead of extracting from message content
+- **Core Fix - extractTimestampFromMessage()** (`src/services/WorkerActivityService.ts` lines 401-427):
+  - Added method to parse `Data:: DD/MM/YYYY - HH:MM:SS` format from game log
+  - Pattern: `/Data::\s*(\d{2})\/(\d{2})\/(\d{4})\s*-\s*(\d{2}):(\d{2}):(\d{2})/i`
+  - Identical to FerroviaSessionService implementation for consistency
+- **Transaction Methods Updated**:
+  - `addPlantTransaction()` - Added optional `messageContent?: string` parameter
+  - `addAnimalTransaction()` - Added optional `messageContent?: string` parameter
+  - `addFinancialTransaction()` - Added optional `messageContent?: string` parameter
+  - `addInventoryTransaction()` - Added optional `messageContent?: string` parameter
+  - All methods extract timestamp from message content with fallback to current time
+- **WorkerChannelService Update** (`src/services/WorkerChannelService.ts`):
+  - `processWorkerTransaction()` extracts `messageContent` from `transaction.originalMessage?.content`
+  - All 7 transaction method calls updated to pass `messageContent`
+- **Result**: Both Ferrovia AND Farm sessions now display correct game log timestamps
+
+## Previous Major Updates (v0.062)
 
 ### Worker Embed Calculation Fix - Triple Root Cause Resolution (v0.062)
 - **Feature**: Complete fix for incorrect plant pricing in worker embed line items while totals were correct

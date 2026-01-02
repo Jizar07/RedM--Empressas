@@ -7,6 +7,7 @@ import WeeklySalesService from './WeeklySalesService';
 import ItemTranslationService from './ItemTranslationService';
 import { WeeklyRankingService } from './WeeklyRankingService';
 import PaymentConfigService from './PaymentConfigService';
+import { WorkerChannelService } from './WorkerChannelService';
 
 interface PlantTransaction {
   type: 'seed_taken' | 'plant_deposited';
@@ -395,6 +396,34 @@ export class WorkerActivityService {
 
   private generateTransactionId(): string {
     return `tx_${Date.now()}_${Math.random().toString(36).substring(7)}`;
+  }
+
+  /**
+   * Extract timestamp from message content using the "Data::" field format
+   * Format: "Data:: DD/MM/YYYY - HH:MM:SS"
+   * This ensures we use the actual game log timestamp, not the server's local time
+   */
+  private extractTimestampFromMessage(messageContent: string): Date | null {
+    if (!messageContent) return null;
+
+    const datePattern = /Data::\s*(\d{2})\/(\d{2})\/(\d{4})\s*-\s*(\d{2}):(\d{2}):(\d{2})/i;
+    const match = messageContent.match(datePattern);
+
+    if (match) {
+      const [, day, month, year, hours, minutes, seconds] = match;
+      const timestamp = new Date(
+        parseInt(year),
+        parseInt(month) - 1, // Month is 0-indexed
+        parseInt(day),
+        parseInt(hours),
+        parseInt(minutes),
+        parseInt(seconds)
+      );
+      console.log(`🕐 WorkerActivity: Extracted timestamp from message: ${timestamp.toISOString()}`);
+      return timestamp;
+    }
+
+    return null;
   }
 
   // Get all archived session IDs to prevent zombie sessions
@@ -860,6 +889,59 @@ export class WorkerActivityService {
   }
 
   /**
+   * Validate and sync channel ID from worker mappings (source of truth)
+   * Prevents "Unknown Channel" errors by ensuring session uses current valid channel
+   *
+   * @param session - Worker session to validate
+   * @returns Valid channel ID or null if channel doesn't exist
+   */
+  private async validateAndSyncChannelId(session: WorkerSession): Promise<string | null> {
+    try {
+      // Get current channel ID from worker mappings (source of truth)
+      const workerChannelService = WorkerChannelService.getInstance(this.client);
+      const workerMapping = workerChannelService.getWorkerChannel(session.workerId);
+
+      if (!workerMapping) {
+        console.warn(`⚠️ No worker mapping found for ${session.workerName} (${session.workerId})`);
+        return null;
+      }
+
+      // Check if session has outdated channel ID
+      if (session.channelId !== workerMapping.channelId) {
+        console.log(`🔄 Channel ID mismatch detected for ${session.workerName}:`);
+        console.log(`   Old Channel: ${session.channelId}`);
+        console.log(`   New Channel: ${workerMapping.channelId}`);
+        console.log(`   🔧 Auto-syncing session to use current channel...`);
+
+        // Update session with current channel ID
+        session.channelId = workerMapping.channelId;
+
+        // Save updated session immediately
+        this.saveActiveSessions();
+
+        console.log(`✅ Session updated with current channel ID`);
+      }
+
+      // Verify channel exists in Discord
+      try {
+        const channel = await this.client.channels.fetch(workerMapping.channelId);
+        if (!channel) {
+          console.error(`❌ Channel ${workerMapping.channelId} not found in Discord for ${session.workerName}`);
+          return null;
+        }
+        return workerMapping.channelId;
+      } catch (error) {
+        console.error(`❌ Error fetching channel ${workerMapping.channelId} for ${session.workerName}:`, error);
+        return null;
+      }
+
+    } catch (error) {
+      console.error(`❌ Error validating channel ID for ${session.workerName}:`, error);
+      return null;
+    }
+  }
+
+  /**
    * Scan worker channel for unregistered plant deposits (ALL messages since session start, unpaid sessions only)
    * This detects plants that were deposited but not tracked because they weren't categorized at the time
    */
@@ -871,9 +953,16 @@ export class WorkerActivityService {
     }
 
     try {
-      const channel = await this.client.channels.fetch(session.channelId) as TextChannel;
+      // Validate and sync channel ID before fetching
+      const validChannelId = await this.validateAndSyncChannelId(session);
+      if (!validChannelId) {
+        console.warn(`⚠️ Cannot scan for unregistered plants - invalid channel for ${session.workerName}`);
+        return;
+      }
+
+      const channel = await this.client.channels.fetch(validChannelId) as TextChannel;
       if (!channel) {
-        console.warn(`⚠️ Channel ${session.channelId} not found for unregistered plant scan`);
+        console.warn(`⚠️ Channel ${validChannelId} not found for unregistered plant scan`);
         return;
       }
 
@@ -1012,7 +1101,7 @@ export class WorkerActivityService {
     return session;
   }
 
-  public async addPlantTransaction(workerId: string, workerName: string, channelId: string, transaction: Omit<PlantTransaction, 'transactionId' | 'timestamp'>): Promise<void> {
+  public async addPlantTransaction(workerId: string, workerName: string, channelId: string, transaction: Omit<PlantTransaction, 'transactionId' | 'timestamp'>, messageContent?: string): Promise<void> {
     // Enhanced: Check for paid session and cleanup if needed
     const existingSession = this.activeSessions.get(workerId);
     if (existingSession && !this.isSessionActive(existingSession)) {
@@ -1021,11 +1110,16 @@ export class WorkerActivityService {
     }
 
     const session = await this.getOrCreateSession(workerId, workerName, channelId);
-    
+
+    // Extract timestamp from message content (game log time) or fallback to current time
+    const extractedTimestamp = messageContent ? this.extractTimestampFromMessage(messageContent) : null;
+    const activityTimestamp = extractedTimestamp || new Date();
+    console.log(`🕐 Plant transaction timestamp: ${activityTimestamp.toISOString()} (source: ${extractedTimestamp ? 'extracted from Data::' : 'current time'})`);
+
     const plantTransaction: PlantTransaction = {
       ...transaction,
       transactionId: this.generateTransactionId(),
-      timestamp: new Date()
+      timestamp: activityTimestamp
     };
 
     session.plantTransactions.push(plantTransaction);
@@ -1075,7 +1169,7 @@ export class WorkerActivityService {
     this.updateWorkerEmbed(session);
   }
 
-  public async addAnimalTransaction(workerId: string, workerName: string, channelId: string, transaction: Omit<AnimalTransaction, 'transactionId' | 'timestamp'>): Promise<void> {
+  public async addAnimalTransaction(workerId: string, workerName: string, channelId: string, transaction: Omit<AnimalTransaction, 'transactionId' | 'timestamp'>, messageContent?: string): Promise<void> {
     // Enhanced: Check for paid session and cleanup if needed
     const existingSession = this.activeSessions.get(workerId);
     if (existingSession && !this.isSessionActive(existingSession)) {
@@ -1084,11 +1178,16 @@ export class WorkerActivityService {
     }
 
     const session = await this.getOrCreateSession(workerId, workerName, channelId);
-    
+
+    // Extract timestamp from message content (game log time) or fallback to current time
+    const extractedTimestamp = messageContent ? this.extractTimestampFromMessage(messageContent) : null;
+    const activityTimestamp = extractedTimestamp || new Date();
+    console.log(`🕐 Animal transaction timestamp: ${activityTimestamp.toISOString()} (source: ${extractedTimestamp ? 'extracted from Data::' : 'current time'})`);
+
     const animalTransaction: AnimalTransaction = {
       ...transaction,
       transactionId: this.generateTransactionId(),
-      timestamp: new Date()
+      timestamp: activityTimestamp
     };
 
     session.animalTransactions.push(animalTransaction);
@@ -1130,7 +1229,7 @@ export class WorkerActivityService {
     this.updateWorkerEmbed(session);
   }
 
-  public async addFinancialTransaction(workerId: string, workerName: string, channelId: string, transaction: Omit<FinancialTransaction, 'transactionId' | 'timestamp'>): Promise<void> {
+  public async addFinancialTransaction(workerId: string, workerName: string, channelId: string, transaction: Omit<FinancialTransaction, 'transactionId' | 'timestamp'>, messageContent?: string): Promise<void> {
     // Enhanced: Check for paid session and cleanup if needed
     const existingSession = this.activeSessions.get(workerId);
     if (existingSession && !this.isSessionActive(existingSession)) {
@@ -1145,10 +1244,15 @@ export class WorkerActivityService {
       session.financialTransactions = [];
     }
 
+    // Extract timestamp from message content (game log time) or fallback to current time
+    const extractedTimestamp = messageContent ? this.extractTimestampFromMessage(messageContent) : null;
+    const activityTimestamp = extractedTimestamp || new Date();
+    console.log(`🕐 Financial transaction timestamp: ${activityTimestamp.toISOString()} (source: ${extractedTimestamp ? 'extracted from Data::' : 'current time'})`);
+
     const financialTransaction: FinancialTransaction = {
       ...transaction,
       transactionId: this.generateTransactionId(),
-      timestamp: new Date()
+      timestamp: activityTimestamp
     };
 
     session.financialTransactions.push(financialTransaction);
@@ -1177,7 +1281,7 @@ export class WorkerActivityService {
     this.updateWorkerEmbed(session);
   }
 
-  public async addInventoryTransaction(workerId: string, workerName: string, channelId: string, transaction: Omit<InventoryTransaction, 'transactionId' | 'timestamp'>): Promise<void> {
+  public async addInventoryTransaction(workerId: string, workerName: string, channelId: string, transaction: Omit<InventoryTransaction, 'transactionId' | 'timestamp'>, messageContent?: string): Promise<void> {
     // Check for paid session and cleanup if needed
     const existingSession = this.activeSessions.get(workerId);
     if (existingSession && !this.isSessionActive(existingSession)) {
@@ -1192,10 +1296,15 @@ export class WorkerActivityService {
       session.inventoryTransactions = [];
     }
 
+    // Extract timestamp from message content (game log time) or fallback to current time
+    const extractedTimestamp = messageContent ? this.extractTimestampFromMessage(messageContent) : null;
+    const activityTimestamp = extractedTimestamp || new Date();
+    console.log(`🕐 Inventory transaction timestamp: ${activityTimestamp.toISOString()} (source: ${extractedTimestamp ? 'extracted from Data::' : 'current time'})`);
+
     const inventoryTransaction: InventoryTransaction = {
       ...transaction,
       transactionId: this.generateTransactionId(),
-      timestamp: new Date()
+      timestamp: activityTimestamp
     };
 
     session.inventoryTransactions.push(inventoryTransaction);
@@ -1229,9 +1338,16 @@ export class WorkerActivityService {
       // Scan for unregistered plants before creating embed
       await this.scanForUnregisteredPlants(session);
 
-      const channel = await this.client.channels.fetch(session.channelId) as TextChannel;
+      // Validate and sync channel ID before fetching
+      const validChannelId = await this.validateAndSyncChannelId(session);
+      if (!validChannelId) {
+        console.error(`❌ Cannot update embed - invalid channel for ${session.workerName}`);
+        return;
+      }
+
+      const channel = await this.client.channels.fetch(validChannelId) as TextChannel;
       if (!channel) {
-        console.error(`❌ Channel ${session.channelId} not found for worker ${session.workerName}`);
+        console.error(`❌ Channel ${validChannelId} not found for worker ${session.workerName}`);
         return;
       }
 
@@ -1465,10 +1581,15 @@ export class WorkerActivityService {
         Object.entries(groupedPlants).forEach(([itemName, data]) => {
           totalPlantCredits += data.credits;
           totalPlants += data.quantity;
+          // Format timestamp with full date (dd/mm HH:mm) - show range if multiple deposits
+          const firstTime = data.firstTimestamp.toLocaleString('pt-BR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
+          const lastTime = data.lastTimestamp.toLocaleString('pt-BR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
+          const timeDisplay = data.count === 1 ? firstTime : `${firstTime} - ${lastTime}`;
+
           if (data.count === 1) {
-            plantLines.push(`• ${data.quantity} ${itemName} ($${data.credits.toFixed(2)})`);
+            plantLines.push(`• [${timeDisplay}] ${data.quantity} ${itemName} ($${data.credits.toFixed(2)})`);
           } else {
-            plantLines.push(`• ${data.quantity} ${itemName} (${data.count} depósitos) ($${data.credits.toFixed(2)})`);
+            plantLines.push(`• [${timeDisplay}] ${data.quantity} ${itemName} (${data.count}x) ($${data.credits.toFixed(2)})`);
           }
         });
       }
@@ -1484,10 +1605,15 @@ export class WorkerActivityService {
         Object.entries(groupedUnregistered).forEach(([itemName, data]) => {
           totalPlantCredits += data.credits;
           totalPlants += data.quantity;
+          // Format timestamp with full date (dd/mm HH:mm) - show range if multiple deposits
+          const firstTime = data.firstTimestamp.toLocaleString('pt-BR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
+          const lastTime = data.lastTimestamp.toLocaleString('pt-BR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
+          const timeDisplay = data.count === 1 ? firstTime : `${firstTime} - ${lastTime}`;
+
           if (data.count === 1) {
-            plantLines.push(`• ${data.quantity} ${itemName} ($${data.credits.toFixed(2)})`);
+            plantLines.push(`• [${timeDisplay}] ${data.quantity} ${itemName} ($${data.credits.toFixed(2)})`);
           } else {
-            plantLines.push(`• ${data.quantity} ${itemName} (${data.count} depósitos) ($${data.credits.toFixed(2)})`);
+            plantLines.push(`• [${timeDisplay}] ${data.quantity} ${itemName} (${data.count}x) ($${data.credits.toFixed(2)})`);
           }
         });
       }
@@ -1773,10 +1899,15 @@ export class WorkerActivityService {
         Object.entries(groupedPlants).forEach(([itemName, data]) => {
           totalPlantCredits += data.credits;
           totalPlants += data.quantity;
+          // Format timestamp with full date (dd/mm HH:mm) - show range if multiple deposits
+          const firstTime = data.firstTimestamp.toLocaleString('pt-BR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
+          const lastTime = data.lastTimestamp.toLocaleString('pt-BR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
+          const timeDisplay = data.count === 1 ? firstTime : `${firstTime} - ${lastTime}`;
+
           if (data.count === 1) {
-            plantLines.push(`• ${data.quantity} ${itemName} ($${data.credits.toFixed(2)})`);
+            plantLines.push(`• [${timeDisplay}] ${data.quantity} ${itemName} ($${data.credits.toFixed(2)})`);
           } else {
-            plantLines.push(`• ${data.quantity} ${itemName} (${data.count} depósitos) ($${data.credits.toFixed(2)})`);
+            plantLines.push(`• [${timeDisplay}] ${data.quantity} ${itemName} (${data.count}x) ($${data.credits.toFixed(2)})`);
           }
         });
       }
@@ -1792,10 +1923,15 @@ export class WorkerActivityService {
         Object.entries(groupedUnregistered).forEach(([itemName, data]) => {
           totalPlantCredits += data.credits;
           totalPlants += data.quantity;
+          // Format timestamp with full date (dd/mm HH:mm) - show range if multiple deposits
+          const firstTime = data.firstTimestamp.toLocaleString('pt-BR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
+          const lastTime = data.lastTimestamp.toLocaleString('pt-BR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
+          const timeDisplay = data.count === 1 ? firstTime : `${firstTime} - ${lastTime}`;
+
           if (data.count === 1) {
-            plantLines.push(`• ${data.quantity} ${itemName} ($${data.credits.toFixed(2)})`);
+            plantLines.push(`• [${timeDisplay}] ${data.quantity} ${itemName} ($${data.credits.toFixed(2)})`);
           } else {
-            plantLines.push(`• ${data.quantity} ${itemName} (${data.count} depósitos) ($${data.credits.toFixed(2)})`);
+            plantLines.push(`• [${timeDisplay}] ${data.quantity} ${itemName} (${data.count}x) ($${data.credits.toFixed(2)})`);
           }
         });
       }

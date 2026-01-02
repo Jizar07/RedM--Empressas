@@ -338,33 +338,31 @@ export class FerroviaSessionService {
 
     // Add recipe-based responsibility tracking section
     const plantsWithdrawn = this.supplyChainService.getPlantsWithdrawnFromSession(session);
-    
+
     // Check if there are any plant transactions (withdrawn or deposited)
-    const hasPlantTransactions = session.transactions.some(t => 
+    const hasPlantTransactions = session.transactions.some(t =>
       t.type === 'PLANTS_WITHDRAWN' || t.type === 'PLANTS_DEPOSITED'
     );
-    
+
     if (hasPlantTransactions || Object.keys(plantsWithdrawn).length > 0) {
       const responsibilityCalculation = this.recipeService.calculateExpectedProduction(plantsWithdrawn);
-      
-      // Always show plants section when there are plant transactions
+
+      // Always show plants section when there are plant transactions WITH TIMESTAMPS
       let plantsValue = '';
-      if (Object.keys(plantsWithdrawn).length > 0) {
-        // Show plants that are still owed (NET > 0)
-        const display = this.recipeService.formatResponsibilityDisplay({
-          ...responsibilityCalculation,
-          expectedProductions: []
-        });
-        plantsValue = display.plantsWithdrawn.join('\n');
+
+      // Use the new function that includes timestamps
+      const plantWithdrawalLines = this.formatPlantWithdrawalsWithTimestamps(session);
+      if (plantWithdrawalLines.length > 0) {
+        plantsValue = plantWithdrawalLines.join('\n');
       }
-      
+
       if (!plantsValue && hasPlantTransactions) {
         // Show when there have been plant transactions but NET is 0
         plantsValue = '✅ Todas as plantas foram devolvidas';
       } else if (!plantsValue) {
         plantsValue = 'Nenhuma planta retirada';
       }
-      
+
       embed.addFields({
         name: '🌿 PLANTAS RETIRADAS',
         value: plantsValue,
@@ -605,6 +603,110 @@ export class FerroviaSessionService {
       embed.addFields({
         name: `🚂 Missões Estimadas (${inferredMissionCount})`,
         value: `• Estimado baseado em caixas retiradas e receita coletada\n• Missões detectadas: ${inferredMissionCount}`,
+        inline: false
+      });
+    }
+
+    // Add box audit section - shows boxes withdrawn vs boxes used in missions vs boxes returned
+    // Group by box type since each route requires 250 boxes of the SAME type
+    const boxesWithdrawnForAudit = session.transactions.filter(t => t.type === 'BOXES_WITHDRAWN');
+    const boxesReturnedForAudit = session.transactions.filter(t => t.type === 'BOXES_RETURNED');
+
+    // Box type display names
+    const boxTypeNames: Record<string, string> = {
+      'caixaanimal': '🐄 Animal',
+      'caixadeverduras': '🥬 Verduras',
+      'caixadelegumes': '🥕 Legumes',
+      'caixadefrutas': '🍎 Frutas',
+      'caixa_agro': '🌾 Agro',
+      'caixa_verduras': '🥬 Verduras'
+    };
+
+    // Group withdrawals and returns by box type
+    const boxesByType: Record<string, { withdrawn: number; returned: number }> = {};
+
+    for (const tx of boxesWithdrawnForAudit) {
+      const boxType = tx.itemName?.toLowerCase() || 'unknown';
+      if (!boxesByType[boxType]) {
+        boxesByType[boxType] = { withdrawn: 0, returned: 0 };
+      }
+      boxesByType[boxType].withdrawn += tx.quantity;
+    }
+
+    for (const tx of boxesReturnedForAudit) {
+      const boxType = tx.itemName?.toLowerCase() || 'unknown';
+      if (!boxesByType[boxType]) {
+        boxesByType[boxType] = { withdrawn: 0, returned: 0 };
+      }
+      boxesByType[boxType].returned += tx.quantity;
+    }
+
+    const missionCount = Math.max(missions.length, inferredMissionCount);
+    const hasBoxActivity = Object.keys(boxesByType).length > 0 || missionCount > 0;
+
+    if (hasBoxActivity) {
+      let auditSection = '';
+      let totalExpectedRoutes = 0;
+      let totalNetBoxes = 0;
+      let hasWarnings = false;
+
+      // Process each box type separately
+      for (const [boxType, counts] of Object.entries(boxesByType)) {
+        // Net boxes can't be negative - returns don't generate credit
+        const rawNetBoxes = counts.withdrawn - counts.returned;
+        const netBoxes = Math.max(0, rawNetBoxes); // Never negative
+        const excessReturned = rawNetBoxes < 0 ? Math.abs(rawNetBoxes) : 0; // Extra boxes returned beyond what was withdrawn
+
+        const expectedRoutes = Math.floor(netBoxes / this.BOXES_PER_MISSION);
+        const remainingBoxes = netBoxes % this.BOXES_PER_MISSION;
+
+        totalExpectedRoutes += expectedRoutes;
+        totalNetBoxes += netBoxes;
+
+        const displayName = boxTypeNames[boxType] || boxType;
+
+        auditSection += `\n**${displayName}:**\n`;
+        auditSection += `• Retiradas: ${counts.withdrawn}`;
+        if (counts.returned > 0) {
+          auditSection += ` | Devolvidas: ${counts.returned}`;
+        }
+        auditSection += `\n`;
+
+        if (excessReturned > 0) {
+          // Returned more than withdrawn - show info but no negative calculation
+          auditSection += `• Líquido: 0 → **0 rota(s)**\n`;
+          auditSection += `• ℹ️ +${excessReturned} extras devolvidas (não gera crédito)\n`;
+        } else {
+          auditSection += `• Líquido: ${netBoxes} → **${expectedRoutes} rota(s)**`;
+          if (remainingBoxes > 0) {
+            auditSection += ` (+${remainingBoxes} sobra)`;
+            hasWarnings = true;
+          }
+          auditSection += `\n`;
+        }
+      }
+
+      // Summary section
+      auditSection += `\n━━━━━━━━━━━━━━━━━━━━\n`;
+      auditSection += `**📊 RESUMO:**\n`;
+      auditSection += `• Total Líquido: ${totalNetBoxes} caixas\n`;
+      auditSection += `• Expectativa: **${totalExpectedRoutes} rota(s)**\n`;
+      auditSection += `• Completadas: **${missionCount}**\n`;
+
+      // Compare expected vs actual routes - only warn if missing routes
+      const routeDifference = totalExpectedRoutes - missionCount;
+
+      if (routeDifference > 0) {
+        auditSection += `\n⚠️ **${routeDifference} rota(s) pendente(s)**`;
+      } else if (totalNetBoxes > 0 && missionCount > 0 && routeDifference <= 0) {
+        auditSection += `\n✅ **Balanço OK**`;
+      } else if (totalNetBoxes === 0 && boxesWithdrawnForAudit.length > 0) {
+        auditSection += `\n✅ **Todas devolvidas**`;
+      }
+
+      embed.addFields({
+        name: '📊 Auditoria de Caixas (por tipo)',
+        value: auditSection,
         inline: false
       });
     }
@@ -933,6 +1035,120 @@ export class FerroviaSessionService {
   }
 
   /**
+   * Group plant withdrawal transactions by type with timestamps
+   * Similar to WorkerActivityService groupPlantTransactionsByTypeAsync
+   */
+  private groupPlantWithdrawalsByType(transactions: any[]): Map<string, { count: number; total: number; firstTimestamp: Date; lastTimestamp: Date }> {
+    const grouped = new Map<string, { count: number; total: number; firstTimestamp: Date; lastTimestamp: Date }>();
+
+    for (const tx of transactions) {
+      const plantType = tx.itemName.toLowerCase();
+      const existing = grouped.get(plantType);
+      const txTimestamp = new Date(tx.timestamp);
+
+      if (existing) {
+        existing.count++;
+        existing.total += tx.quantity;
+        if (txTimestamp < existing.firstTimestamp) {
+          existing.firstTimestamp = txTimestamp;
+        }
+        if (txTimestamp > existing.lastTimestamp) {
+          existing.lastTimestamp = txTimestamp;
+        }
+      } else {
+        grouped.set(plantType, {
+          count: 1,
+          total: tx.quantity,
+          firstTimestamp: txTimestamp,
+          lastTimestamp: txTimestamp
+        });
+      }
+    }
+
+    return grouped;
+  }
+
+  /**
+   * Format plant withdrawals with timestamps for display
+   */
+  private formatPlantWithdrawalsWithTimestamps(session: SupplyChainSession): string[] {
+    const withdrawals = session.transactions.filter(t => t.type === 'PLANTS_WITHDRAWN');
+    const deposits = session.transactions.filter(t => t.type === 'PLANTS_DEPOSITED' || t.type === 'PLANTS_RETURNED');
+
+    if (withdrawals.length === 0) {
+      return [];
+    }
+
+    // Group withdrawals by plant type with timestamps
+    const groupedWithdrawals = this.groupPlantWithdrawalsByType(withdrawals);
+
+    // Calculate net balance per plant type (for showing returns)
+    const netBalance: Record<string, number> = {};
+    withdrawals.forEach(t => {
+      netBalance[t.itemName.toLowerCase()] = (netBalance[t.itemName.toLowerCase()] || 0) + t.quantity;
+    });
+    deposits.forEach(t => {
+      netBalance[t.itemName.toLowerCase()] = (netBalance[t.itemName.toLowerCase()] || 0) - t.quantity;
+    });
+
+    const lines: string[] = [];
+
+    for (const [plantType, data] of groupedWithdrawals.entries()) {
+      const translatedName = this.itemTranslationService.getPortugueseName(plantType);
+      const net = netBalance[plantType] || 0;
+
+      // Format timestamp with full date (dd/mm HH:mm)
+      const firstTime = data.firstTimestamp.toLocaleString('pt-BR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
+      const lastTime = data.lastTimestamp.toLocaleString('pt-BR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
+      const timeDisplay = data.count === 1 ? firstTime : `${firstTime} - ${lastTime}`;
+
+      if (net <= 0) {
+        // All returned - show with checkmark
+        lines.push(`• ~~${data.total} ${translatedName}~~ ✅ Devolvido (${timeDisplay})`);
+      } else if (net < data.total) {
+        // Partially returned
+        const returned = data.total - net;
+        lines.push(`• ${data.total} ${translatedName} (${returned} devolvido, ${net} restante) (${timeDisplay})`);
+      } else {
+        // Still owed
+        lines.push(`• ${data.total} ${translatedName} (${timeDisplay})`);
+      }
+    }
+
+    return lines;
+  }
+
+  /**
+   * Extract timestamp from message content (from the "Data::" field in the log)
+   * Format: "Data:: DD/MM/YYYY - HH:MM:SS"
+   * Returns the parsed Date or null if not found
+   */
+  private extractTimestampFromMessage(messageContent: string): Date | null {
+    // Pattern to match "Data:: DD/MM/YYYY - HH:MM:SS"
+    const datePattern = /Data::\s*(\d{2})\/(\d{2})\/(\d{4})\s*-\s*(\d{2}):(\d{2}):(\d{2})/i;
+    const match = messageContent.match(datePattern);
+
+    if (match) {
+      const [, day, month, year, hours, minutes, seconds] = match;
+      // Create date in local timezone (the log timestamp is in local time)
+      const timestamp = new Date(
+        parseInt(year),
+        parseInt(month) - 1, // Month is 0-indexed
+        parseInt(day),
+        parseInt(hours),
+        parseInt(minutes),
+        parseInt(seconds)
+      );
+
+      console.log(`🕐 Extracted timestamp from message: ${timestamp.toISOString()} (from Data:: ${day}/${month}/${year} - ${hours}:${minutes}:${seconds})`);
+      return timestamp;
+    }
+
+    console.log(`⚠️ Could not extract timestamp from message, pattern not found`);
+    return null;
+  }
+
+  /**
    * Get current boxes in possession (what player currently holds after latest transactions)
    * This tracks the chronological sequence to determine current state, not cumulative history
    */
@@ -1072,44 +1288,51 @@ export class FerroviaSessionService {
   }
 
   // Handle plant deposits (check if Ferrovia return vs Farm Service)
-  public async handlePlantDeposit(workerId: string, workerName: string, channelId: string, plantName: string, quantity: number, messageContent: string): Promise<void> {
+  public async handlePlantDeposit(workerId: string, workerName: string, channelId: string, plantName: string, quantity: number, messageContent: string, messageTimestamp?: Date): Promise<void> {
     try {
       // Get existing session to check for recent seed activity
       const session = await this.supplyChainService.createOrGetSession(workerId, workerName, 'worker');
-      
+
       // Check if there are recent seed withdrawals (within this session)
-      const recentSeeds = session.transactions.filter(t => 
-        t.type === 'SEEDS_WITHDRAWN' && 
+      const recentSeeds = session.transactions.filter(t =>
+        t.type === 'SEEDS_WITHDRAWN' &&
         this.itemTranslationService.isSeed(t.itemName)
       );
-      
+
       if (recentSeeds.length > 0) {
         console.log(`🚜 Plant deposit by ${workerName} is Farm Service (recent seeds found) - ignoring for Ferrovia`);
         return; // This is farm service, not Ferrovia return
       }
-      
+
       // This is a Ferrovia return - track it
       console.log(`🚂 Plant deposit by ${workerName} is Ferrovia return - tracking`);
-      await this.trackSupplyChainActivity(workerId, workerName, channelId, `Plants deposited: ${quantity} ${plantName}`, messageContent);
-      
+      await this.trackSupplyChainActivity(workerId, workerName, channelId, `Plants deposited: ${quantity} ${plantName}`, messageContent, messageTimestamp);
+
     } catch (error) {
       console.error(`❌ Error handling plant deposit for ${workerName}:`, error);
     }
   }
 
   // Track specific supply chain activities and update the embed
-  public async trackSupplyChainActivity(workerId: string, workerName: string, channelId: string, activityType: string, messageContent: string): Promise<void> {
+  public async trackSupplyChainActivity(workerId: string, workerName: string, channelId: string, activityType: string, messageContent: string, messageTimestamp?: Date): Promise<void> {
     try {
       console.log(`🚂 DEBUG - Tracking Ferrovia activity for ${workerName}:`);
       console.log(`🚂 ActivityType: "${activityType}"`);
       console.log(`🚂 Message: "${messageContent}"`);
+
+      // PRIORITY: Extract timestamp from message content (Data:: field) - this is the actual game log time
+      // Fallback to Discord message timestamp, then current time
+      const extractedTimestamp = this.extractTimestampFromMessage(messageContent);
+      const activityTimestamp = extractedTimestamp || messageTimestamp || new Date();
+
+      console.log(`🕐 Using timestamp: ${activityTimestamp.toISOString()} (source: ${extractedTimestamp ? 'extracted from Data::' : messageTimestamp ? 'Discord message' : 'current time'})`);
 
       // Get or create supply chain session
       const session = await this.supplyChainService.createOrGetSession(workerId, workerName, 'worker');
 
       // Parse the activity and create appropriate transaction
       let transaction = null;
-      
+
       if (activityType.startsWith('Plants withdrawn:')) {
         // Plants taken from inventory (for making boxes) - ALL plants
         const plantsMatch = activityType.match(/Plants withdrawn: (\d+) (junco|trigo|milho|corn|wheat|bulrush|milk_weed)/i);
@@ -1119,54 +1342,74 @@ export class FerroviaSessionService {
             type: 'PLANTS_WITHDRAWN' as const,
             itemName: plantsMatch[2],
             quantity: parseInt(plantsMatch[1]),
-            timestamp: new Date(),
+            timestamp: activityTimestamp,
             originalMessage: messageContent
           };
         }
       } else if (activityType.startsWith('Boxes deposited:')) {
         // Boxes made from plants and added to inventory - ALL box types except caixarustica
-        const boxesMatch = activityType.match(/Boxes deposited: (\d+) (caixadeverduras|caixadelegumes|caixa_agro|caixa_verduras)/i);
+        // Format from MultiChannelForwarder: "Boxes deposited: 250 caixadeverduras" (quantity first, then itemName)
+        const boxesMatch = activityType.match(/Boxes deposited:\s*(\d+)\s+(caixadeverduras|caixadelegumes|caixa_agro|caixa_verduras|caixadefrutas|caixaanimal)/i);
         if (boxesMatch) {
+          const quantity = parseInt(boxesMatch[1]);
+          const itemName = boxesMatch[2];
+
           transaction = {
             transactionId: `tx_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
             type: 'BOXES_CREATED' as const,
-            itemName: boxesMatch[2],
-            quantity: parseInt(boxesMatch[1]),
-            timestamp: new Date(),
-            originalMessage: messageContent
-          };
-        }
-      } else if (activityType.startsWith('Boxes withdrawn:')) {
-        // Boxes taken from inventory (for missions) - ALL box types except caixarustica
-        const boxesMatch = activityType.match(/Boxes withdrawn: (\d+) (caixadeverduras|caixadelegumes|caixa_agro|caixa_verduras)/i);
-        if (boxesMatch) {
-          transaction = {
-            transactionId: `tx_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
-            type: 'BOXES_WITHDRAWN' as const,
-            itemName: boxesMatch[2],
-            quantity: parseInt(boxesMatch[1]),
-            timestamp: new Date(),
-            originalMessage: messageContent
-          };
-          
-          // Add to open responsibilities
-          session.openResponsibilities.boxesTaken += parseInt(boxesMatch[1]);
-          session.openResponsibilities.moneyOwed += parseInt(boxesMatch[1]) * 4; // Each box is worth $4
-        }
-      } else if (activityType.startsWith('Boxes returned:')) {
-        // Boxes returned to inventory (unused from Ferrovia)
-        const boxesMatch = activityType.match(/Boxes returned: (\d+) (caixadeverduras|caixadelegumes|caixa_agro|caixa_verduras)/i);
-        if (boxesMatch) {
-          transaction = {
-            transactionId: `tx_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
-            type: 'BOXES_RETURNED' as const,
-            itemName: boxesMatch[2],
-            quantity: parseInt(boxesMatch[1]),
-            timestamp: new Date(),
+            itemName: itemName,
+            quantity: quantity,
+            timestamp: activityTimestamp,
             originalMessage: messageContent
           };
 
-          console.log(`📦 Box return detected: ${parseInt(boxesMatch[1])} ${boxesMatch[2]} returned to inventory`);
+          console.log(`📦 Box creation detected: ${quantity} ${itemName} created and deposited`);
+        }
+      } else if (activityType.startsWith('Boxes withdrawn:')) {
+        // Boxes taken from inventory (for missions) - ALL box types except caixarustica
+        // Format from MultiChannelForwarder: "Boxes withdrawn: 50 caixaanimal" (quantity first, then itemName)
+        console.log(`🔴🔴🔴 BOXES WITHDRAWN DETECTED - activityType: "${activityType}"`);
+        const boxesMatch = activityType.match(/Boxes withdrawn:\s*(\d+)\s+(caixadeverduras|caixadelegumes|caixa_agro|caixa_verduras|caixadefrutas|caixaanimal)/i);
+        console.log(`🔴🔴🔴 REGEX MATCH RESULT: ${boxesMatch ? JSON.stringify(boxesMatch) : 'NULL - NO MATCH'}`);
+        if (boxesMatch) {
+          const quantity = parseInt(boxesMatch[1]);
+          const itemName = boxesMatch[2];
+
+          transaction = {
+            transactionId: `tx_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+            type: 'BOXES_WITHDRAWN' as const,
+            itemName: itemName,
+            quantity: quantity,
+            timestamp: activityTimestamp,
+            originalMessage: messageContent
+          };
+
+          // Add to open responsibilities
+          session.openResponsibilities.boxesTaken += quantity;
+          session.openResponsibilities.moneyOwed += quantity * 4; // Each box is worth $4
+
+          console.log(`🔴🔴🔴 BOX WITHDRAWAL TRANSACTION CREATED: ${quantity} ${itemName}`);
+        }
+      } else if (activityType.startsWith('Boxes returned:')) {
+        // Boxes returned to inventory (unused from Ferrovia)
+        // Format from MultiChannelForwarder: "Boxes returned: 250 caixadeverduras" (quantity first, then itemName)
+        console.log(`🟢🟢🟢 BOXES RETURNED DETECTED - activityType: "${activityType}"`);
+        const boxesMatch = activityType.match(/Boxes returned:\s*(\d+)\s+(caixadeverduras|caixadelegumes|caixa_agro|caixa_verduras|caixadefrutas|caixaanimal)/i);
+        console.log(`🟢🟢🟢 REGEX MATCH RESULT: ${boxesMatch ? JSON.stringify(boxesMatch) : 'NULL - NO MATCH'}`);
+        if (boxesMatch) {
+          const quantity = parseInt(boxesMatch[1]);
+          const itemName = boxesMatch[2];
+
+          transaction = {
+            transactionId: `tx_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+            type: 'BOXES_RETURNED' as const,
+            itemName: itemName,
+            quantity: quantity,
+            timestamp: activityTimestamp,
+            originalMessage: messageContent
+          };
+
+          console.log(`🟢🟢🟢 BOX RETURN TRANSACTION CREATED: ${quantity} ${itemName} returned to inventory`);
         }
       } else if (activityType === 'Mission completed') {
         // Mission completed using boxes
@@ -1176,7 +1419,7 @@ export class FerroviaSessionService {
           type: 'FERROVIA_MISSION_COMPLETED' as const,
           itemName: 'ferrovia_mission',
           quantity: 250, // Each mission uses 250 boxes
-          timestamp: new Date(),
+          timestamp: activityTimestamp,
           originalMessage: messageContent
         };
       } else if (activityType.startsWith('Money collected:')) {
@@ -1190,7 +1433,7 @@ export class FerroviaSessionService {
             itemName: 'ferrovia_revenue',
             quantity: 1,
             amount: amount,
-            timestamp: new Date(),
+            timestamp: activityTimestamp,
             originalMessage: messageContent
           };
 
@@ -1207,7 +1450,7 @@ export class FerroviaSessionService {
             itemName: 'company_withdrawal',
             quantity: 1,
             amount: amount,
-            timestamp: new Date(),
+            timestamp: activityTimestamp,
             originalMessage: messageContent
           };
 
@@ -1224,7 +1467,7 @@ export class FerroviaSessionService {
             itemName: 'bank_deposit',
             quantity: 1,
             amount: amount,
-            timestamp: new Date(),
+            timestamp: activityTimestamp,
             originalMessage: messageContent
           };
 
@@ -1244,7 +1487,7 @@ export class FerroviaSessionService {
             itemName: 'company_deposit',
             quantity: 1,
             amount: amount,
-            timestamp: new Date(),
+            timestamp: activityTimestamp,
             originalMessage: messageContent
           };
 
@@ -1276,7 +1519,7 @@ export class FerroviaSessionService {
             type: isReturn ? 'PLANTS_RETURNED' as const : 'PLANTS_DEPOSITED' as const,
             itemName: plantName,
             quantity: quantity,
-            timestamp: new Date(),
+            timestamp: activityTimestamp,
             originalMessage: messageContent
           };
 
@@ -1291,7 +1534,7 @@ export class FerroviaSessionService {
             type: 'SEEDS_WITHDRAWN' as const,
             itemName: seedsMatch[2],
             quantity: parseInt(seedsMatch[1]),
-            timestamp: new Date(),
+            timestamp: activityTimestamp,
             originalMessage: messageContent
           };
         }

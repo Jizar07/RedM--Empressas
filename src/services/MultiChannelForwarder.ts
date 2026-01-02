@@ -353,6 +353,16 @@ export class MultiChannelForwarder {
       await this.detectManagerWithdrawal(message, realAuthor, extractedContent);
 
       // NEW: Separate Ferrovia supply chain tracking (alongside farm logic)
+      // Ensure services are initialized (fallback if ready event didn't run)
+      if (!this.ferroviaSessionService && message.client) {
+        console.log('🔧 MultiChannelForwarder: Late initialization of FerroviaSessionService');
+        this.ferroviaSessionService = FerroviaSessionService.getInstance(message.client);
+      }
+      if (!this.workerChannelService && message.client) {
+        console.log('🔧 MultiChannelForwarder: Late initialization of WorkerChannelService');
+        this.workerChannelService = WorkerChannelService.getInstance(message.client);
+      }
+
       if (this.workerChannelService && this.ferroviaSessionService) {
         try {
           console.log(`🚂 MultiChannelForwarder: Checking for Ferrovia supply chain activities by ${realAuthor}`);
@@ -368,19 +378,40 @@ export class MultiChannelForwarder {
           const plantsMatch = extractedContent.match(plantsWithdrawnPattern);
           
           // 2. Boxes deposited to inventory (made from plants) - ALL box types except caixarustica
-          // Supports both : and :: formats, and handles newlines
-          const boxesDepositedPattern = /Item adicionado:?\s*:?\s*\n\s*(caixadeverduras|caixadelegumes|caixa_agro|caixa_verduras|caixadefrutas|caixaanimal)\s*x(\d+)/is;
+          // Supports both : and :: formats, and handles newlines (newline is now optional)
+          const boxesDepositedPattern = /Item adicionado:?\s*:?\s*\n?\s*(caixadeverduras|caixadelegumes|caixa_agro|caixa_verduras|caixadefrutas|caixaanimal)\s*x\s*(\d+)/is;
           const boxesDepositedMatch = extractedContent.match(boxesDepositedPattern);
 
           // 3. Boxes taken from inventory (for missions) - ALL box types except caixarustica
           // Supports both : and :: formats, and handles newlines
-          const boxesWithdrawnPattern = /Item removido:?\s*:?\s*\n\s*(caixadeverduras|caixadelegumes|caixa_agro|caixa_verduras|caixadefrutas|caixaanimal)\s*x(\d+)/is;
+          const boxesWithdrawnPattern = /Item removido:?\s*:?\s*\n?\s*(caixadeverduras|caixadelegumes|caixa_agro|caixa_verduras|caixadefrutas|caixaanimal)\s*x\s*(\d+)/is;
           const boxesWithdrawnMatch = extractedContent.match(boxesWithdrawnPattern);
+
+          // Debug: Log box withdrawal detection attempt
+          if (extractedContent.toLowerCase().includes('caixa') && extractedContent.toLowerCase().includes('removido')) {
+            console.log(`📦 DEBUG - Potential box withdrawal detected in message`);
+            console.log(`📦 DEBUG - Content: "${extractedContent.substring(0, 200)}..."`);
+            console.log(`📦 DEBUG - boxesWithdrawnMatch: ${boxesWithdrawnMatch ? JSON.stringify(boxesWithdrawnMatch) : 'null'}`);
+          }
+
+          // Debug: Log box deposit/return detection attempt
+          if (extractedContent.toLowerCase().includes('caixa') && extractedContent.toLowerCase().includes('adicionado')) {
+            console.log(`📦 DEBUG - Potential box deposit/return detected in message`);
+            console.log(`📦 DEBUG - Content: "${extractedContent.substring(0, 200)}..."`);
+            console.log(`📦 DEBUG - boxesDepositedMatch: ${boxesDepositedMatch ? JSON.stringify(boxesDepositedMatch) : 'null'}`);
+          }
 
           // Context detection: Simple heuristic - box returns usually don't have plant mentions
           // Box creation typically involves plant processing, returns are just leftover boxes
           const hasPlantContext = extractedContent.match(/(junco|trigo|milho|corn|wheat|bulrush|milk_weed)/i);
           const isLikelyBoxReturn = boxesDepositedMatch && !hasPlantContext;
+
+          // Debug: Log box return detection logic
+          if (boxesDepositedMatch) {
+            console.log(`📦 DEBUG - Box deposit analysis:`);
+            console.log(`📦 DEBUG - hasPlantContext: ${!!hasPlantContext}`);
+            console.log(`📦 DEBUG - isLikelyBoxReturn: ${isLikelyBoxReturn}`);
+          }
 
           // 4. Mission completion (using boxes)
           const missionCompletedPattern = /(?:completou\s+missão\s+ferrovia|ENTREGA COMPLETA)/i;
@@ -450,16 +481,18 @@ export class MultiChannelForwarder {
             
             if (workerMapping) {
               console.log(`🔗 MultiChannelForwarder: Found worker mapping for ${realAuthor} → ${workerMapping.channelId}`);
-              
+
               // Create separate Ferrovia embed in worker's channel
+              // Pass message.createdAt to use Discord message timestamp instead of server time
               await this.ferroviaSessionService.trackSupplyChainActivity(
                 workerMapping.workerId,
                 workerMapping.workerName,
                 workerMapping.channelId,
                 activityType,
-                extractedContent
+                extractedContent,
+                message.createdAt
               );
-              
+
               console.log(`🎉 MultiChannelForwarder: Successfully created Ferrovia supply chain embed for ${realAuthor}`);
             } else {
               console.log(`⚠️ MultiChannelForwarder: No worker mapping found for ${realAuthor}`);
@@ -470,18 +503,20 @@ export class MultiChannelForwarder {
           if (plantsDepositedMatch && this.ferroviaSessionService) {
             const plantName = plantsDepositedMatch[1];
             const quantity = parseInt(plantsDepositedMatch[2]);
-            
+
             console.log(`🌱 MultiChannelForwarder: Found plant deposit by ${realAuthor}: ${quantity} ${plantName}`);
-            
+
             const workerMapping = this.workerChannelService.findWorkerByName(realAuthor);
             if (workerMapping) {
+              // Pass message.createdAt to use Discord message timestamp instead of server time
               await this.ferroviaSessionService.handlePlantDeposit(
                 workerMapping.workerId,
                 workerMapping.workerName,
                 workerMapping.channelId,
                 plantName,
                 quantity,
-                extractedContent
+                extractedContent,
+                message.createdAt
               );
             }
           }
@@ -490,17 +525,19 @@ export class MultiChannelForwarder {
           if (seedsWithdrawnMatch && this.ferroviaSessionService) {
             const seedName = seedsWithdrawnMatch[1];
             const quantity = parseInt(seedsWithdrawnMatch[2]);
-            
+
             console.log(`🌱 MultiChannelForwarder: Found seed withdrawal by ${realAuthor}: ${quantity} ${seedName}`);
-            
+
             const workerMapping = this.workerChannelService.findWorkerByName(realAuthor);
             if (workerMapping) {
+              // Pass message.createdAt to use Discord message timestamp instead of server time
               await this.ferroviaSessionService.trackSupplyChainActivity(
                 workerMapping.workerId,
                 workerMapping.workerName,
                 workerMapping.channelId,
                 `Seeds withdrawn: ${quantity} ${seedName}`,
-                extractedContent
+                extractedContent,
+                message.createdAt
               );
             }
           }

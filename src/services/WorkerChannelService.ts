@@ -268,6 +268,9 @@ export class WorkerChannelService {
 
       console.log(`✅ Found channel mapping: ${workerMapping.workerName} → ${workerMapping.channelId}`);
 
+      // Extract message content for timestamp extraction (from originalMessage.content)
+      const messageContent = transaction.originalMessage?.content || '';
+
       // Process the transaction based on type
       switch (transaction.type) {
         case 'seed_taken':
@@ -275,7 +278,7 @@ export class WorkerChannelService {
             console.error('❌ Seed transaction missing item name');
             return false;
           }
-          
+
           await this.activityService.addPlantTransaction(
             workerMapping.workerId,
             workerMapping.workerName,
@@ -284,7 +287,8 @@ export class WorkerChannelService {
               type: 'seed_taken',
               itemName: transaction.itemName,
               quantity: transaction.quantity
-            }
+            },
+            messageContent
           );
           break;
 
@@ -293,7 +297,7 @@ export class WorkerChannelService {
             console.error('❌ Plant transaction missing item name');
             return false;
           }
-          
+
           await this.activityService.addPlantTransaction(
             workerMapping.workerId,
             workerMapping.workerName,
@@ -302,7 +306,8 @@ export class WorkerChannelService {
               type: 'plant_deposited',
               itemName: transaction.itemName,
               quantity: transaction.quantity
-            }
+            },
+            messageContent
           );
           break;
 
@@ -317,10 +322,11 @@ export class WorkerChannelService {
               quantity: transaction.quantity,
               cost: transaction.cost || (transaction.quantity * 20), // $20 per animal cost
               amount: 0 // No payment yet
-            }
+            },
+            messageContent
           );
           break;
-          
+
         case 'delivery_completed':
           if (!transaction.amount) {
             console.error('❌ Delivery transaction missing amount');
@@ -335,7 +341,8 @@ export class WorkerChannelService {
               type: 'delivery_completed',
               quantity: transaction.quantity,
               amount: transaction.amount
-            }
+            },
+            messageContent
           );
           break;
 
@@ -355,7 +362,8 @@ export class WorkerChannelService {
               quantity: transaction.quantity,
               amount: transaction.amount,
               description: `Comprou ${transaction.quantity} ${transaction.itemName} no Berçário`
-            }
+            },
+            messageContent
           );
           break;
 
@@ -374,7 +382,8 @@ export class WorkerChannelService {
               itemName: transaction.itemName,
               itemCategory: transaction.itemCategory,
               quantity: transaction.quantity
-            }
+            },
+            messageContent
           );
           break;
 
@@ -393,7 +402,8 @@ export class WorkerChannelService {
               itemName: transaction.itemName,
               itemCategory: transaction.itemCategory,
               quantity: transaction.quantity
-            }
+            },
+            messageContent
           );
           break;
 

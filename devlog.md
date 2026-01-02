@@ -4,6 +4,31 @@ This is a local timestamped file to track all development changes and prompts.
 
 ## Log Entries
 
+### 2026-01-02 18:29:24
+**Action**: Farm Session Timestamp Extraction Fix - Game Log Time Instead of Server Local Time
+**Prompt**: User reported farm active session timestamps showing server local time instead of game log time from the `Data::` field
+**Changes**:
+- **Root Cause**: Ferrovia session was fixed but WorkerActivityService still used `new Date()` for transaction timestamps
+- **Previous Fix Context**: FerroviaSessionService already implemented `extractTimestampFromMessage()` to extract time from `Data:: DD/MM/YYYY - HH:MM:SS` field
+- **Core Fix - WorkerActivityService Timestamp Extraction** (`src/services/WorkerActivityService.ts`):
+  - Added `extractTimestampFromMessage()` method (lines 401-427) identical to FerroviaSessionService implementation
+  - Pattern: `/Data::\s*(\d{2})\/(\d{2})\/(\d{4})\s*-\s*(\d{2}):(\d{2}):(\d{2})/i`
+  - Parses DD/MM/YYYY - HH:MM:SS format from game log
+- **Updated Transaction Methods** (`src/services/WorkerActivityService.ts`):
+  - `addPlantTransaction()` - Added optional `messageContent?: string` parameter (line 1104)
+  - `addAnimalTransaction()` - Added optional `messageContent?: string` parameter (line 1172)
+  - `addFinancialTransaction()` - Added optional `messageContent?: string` parameter (line 1232)
+  - `addInventoryTransaction()` - Added optional `messageContent?: string` parameter (line 1284)
+  - All methods now extract timestamp from message content as priority, fallback to current time
+- **Updated WorkerChannelService** (`src/services/WorkerChannelService.ts`):
+  - Modified `processWorkerTransaction()` to extract `messageContent` from `transaction.originalMessage?.content`
+  - All transaction method calls now pass `messageContent` as the final argument (lines 271-407)
+- **Logging**: Added `🕐` prefix logs showing timestamp source: "extracted from Data::" vs "current time"
+- **FILES MODIFIED**:
+  - src/services/WorkerActivityService.ts - Added extractTimestampFromMessage() and updated 4 transaction methods
+  - src/services/WorkerChannelService.ts - Updated processWorkerTransaction() to pass message content
+- **RESULT**: Farm active session embeds now display correct game log timestamps from `Data::` field, matching the fix applied to Ferrovia
+
 ### 2025-10-13 17:57:32
 **Action**: Worker Embed Calculation Fix - Triple Root Cause Resolution
 **Prompt**: User reported worker embeds showing incorrect plant calculations in line items (2000 plants = $300.00 instead of $500.00) despite totals being correct
